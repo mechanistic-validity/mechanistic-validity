@@ -61,19 +61,19 @@ The full framework applied to published MI results:
 
 | Case study | Verdict |
 |---|---|
-| IOI Circuit (Wang et al. 2022) | Triangulated |
-| Induction Heads (Olsson et al. 2022) | Mechanistically supported |
-| Greater-Than (Hanna et al. 2023) | Mechanistically supported |
-| Grokking (Nanda et al. 2023) | Causally suggestive |
-| Copy Suppression (McDougall et al. 2023) | Mechanistically supported |
-| Successor Heads (Gould et al. 2023) | Causally suggestive |
-| Docstring Circuit (Heimersheim & Janiak 2023) | Causally suggestive |
-| Knowledge Neurons (Dai et al. 2022) | Proposed |
-| Othello World Model (Li et al. 2023) | Triangulated |
-| SAE Features (Cunningham et al. 2023) | Causally suggestive |
-| Superposition (Elhage et al. 2022) | Proposed |
-| Probing Classifiers (Belinkov 2022) | Proposed |
-| Gender Bias Circuits (Vig et al. 2020) | Proposed |
+| [IOI Circuit (Wang et al. 2022)](https://arxiv.org/abs/2211.00593) | Triangulated |
+| [Induction Heads (Olsson et al. 2022)](https://arxiv.org/abs/2209.11895) | Mechanistically supported |
+| [Greater-Than (Hanna et al. 2023)](https://arxiv.org/abs/2305.00586) | Mechanistically supported |
+| [Grokking (Nanda et al. 2023)](https://arxiv.org/abs/2301.05217) | Causally suggestive |
+| [Copy Suppression (McDougall et al. 2023)](https://arxiv.org/abs/2310.04625) | Mechanistically supported |
+| [Successor Heads (Gould et al. 2023)](https://arxiv.org/abs/2312.09230) | Causally suggestive |
+| [Docstring Circuit (Heimersheim & Janiak 2023)](https://arxiv.org/abs/2307.14486) | Causally suggestive |
+| [Knowledge Neurons (Dai et al. 2022)](https://arxiv.org/abs/2104.04264) | Proposed |
+| [Othello World Model (Li et al. 2023)](https://arxiv.org/abs/2210.13382) | Triangulated |
+| [SAE Features (Cunningham et al. 2023)](https://arxiv.org/abs/2309.08600) | Causally suggestive |
+| [Superposition (Elhage et al. 2022)](https://transformer-circuits.pub/2022/toy_model/index.html) | Proposed |
+| [Probing Classifiers (Belinkov 2022)](https://arxiv.org/abs/2102.12452) | Proposed |
+| [Gender Bias Circuits (Vig et al. 2020)](https://arxiv.org/abs/2010.02573) | Proposed |
 
 ## Documentation site quickstart
 
