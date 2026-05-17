@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this framework, please cite it as below."
+type: software
+title: "Mechanistic Validity: A Framework for Evaluating Mechanistic Interpretability Claims"
+authors:
+  - family-names: Tower
+    given-names: Elliot
+    email: elliot@elliottower.ai
+version: 0.1.0
+date-released: 2026-05-17
+license: MIT
+url: https://github.com/mechanistic-validity/mechanistic-validity
+keywords:
+  - mechanistic interpretability
+  - validity
+  - evaluation framework
+  - circuit analysis
+  - neural networks

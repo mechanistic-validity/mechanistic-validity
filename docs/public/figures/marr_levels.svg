@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 620" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0077b6"/>
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e63946"/>
+    </marker>
+    <linearGradient id="compGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="algoGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d1fae5"/>
+      <stop offset="100%" stop-color="#a7f3d0"/>
+    </linearGradient>
+    <linearGradient id="implGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="620" fill="#fafafa" rx="8"/>
+
+  <!-- Title -->
+  <text x="430" y="48" text-anchor="middle" font-size="22" font-weight="600" fill="#1a1a2e">Description Levels and Evidence Requirements</text>
+  <text x="430" y="72" text-anchor="middle" font-size="13" fill="#6b7280" font-style="italic">After Marr (1982), adapted for mechanistic interpretability</text>
+
+  <!-- ═══════ COMPUTATIONAL ═══════ -->
+  <rect x="200" y="95" width="400" height="90" rx="14" fill="url(#compGrad)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="135" text-anchor="middle" font-size="20" font-weight="700" fill="#1e40af">Computational</text>
+  <text x="400" y="162" text-anchor="middle" font-size="13" fill="#1e3a5f">What is computed and why</text>
+
+  <!-- ═══════ ALGORITHMIC ═══════ -->
+  <rect x="200" y="260" width="400" height="90" rx="14" fill="url(#algoGrad)" stroke="#2a9d8f" stroke-width="2" filter="url(#shadow)"/>
+  <text x="400" y="300" text-anchor="middle" font-size="20" font-weight="700" fill="#115e59">Algorithmic</text>
+  <text x="400" y="327" text-anchor="middle" font-size="13" fill="#1a4a42">What procedure is executed</text>
+
+  <!-- ═══════ IMPLEMENTATIONAL ═══════ -->
+  <rect x="120" y="420" width="620" height="165" rx="16" fill="url(#implGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="430" y="455" text-anchor="middle" font-size="20" font-weight="700" fill="#92400e">Implementational</text>
+
+  <!-- Sub-mode boxes -->
+  <rect x="145" y="472" width="130" height="52" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/>
+  <text x="210" y="503" text-anchor="middle" font-size="12.5" font-weight="500" fill="#78350f">Topographic</text>
+
+  <rect x="290" y="472" width="130" height="52" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/>
+  <text x="355" y="503" text-anchor="middle" font-size="12.5" font-weight="500" fill="#78350f">Connectomic</text>
+
+  <rect x="435" y="472" width="130" height="52" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/>
+  <text x="500" y="493" text-anchor="middle" font-size="12.5" font-weight="500" fill="#78350f">Activation-</text>
+  <text x="500" y="510" text-anchor="middle" font-size="12.5" font-weight="500" fill="#78350f">statistical</text>
+
+  <rect x="580" y="472" width="130" height="52" rx="10" fill="#fff7ed" stroke="#d97706" stroke-width="1.2"/>
+  <text x="645" y="503" text-anchor="middle" font-size="12.5" font-weight="500" fill="#78350f">Functional</text>
+
+  <!-- Sub-mode description -->
+  <text x="430" y="555" text-anchor="middle" font-size="11.5" fill="#92400e" font-style="italic">Where most MI circuit claims actually operate</text>
+
+  <!-- ═══════ ARROWS BETWEEN LEVELS ═══════ -->
+
+  <!-- Impl → Algo arrow -->
+  <line x1="400" y1="418" x2="400" y2="352" stroke="#2a9d8f" stroke-width="2.2" marker-end="url(#arrowTeal)"/>
+  <rect x="412" y="370" width="120" height="38" rx="6" fill="#f0fdfa" stroke="#2a9d8f" stroke-width="0.8" opacity="0.9"/>
+  <text x="472" y="385" text-anchor="middle" font-size="11" fill="#115e59">I/O function</text>
+  <text x="472" y="400" text-anchor="middle" font-size="11" fill="#115e59">demonstration</text>
+
+  <!-- Algo → Comp arrow -->
+  <line x1="400" y1="258" x2="400" y2="187" stroke="#0077b6" stroke-width="2.2" marker-end="url(#arrowBlue)"/>
+  <rect x="412" y="205" width="130" height="38" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="0.8" opacity="0.9"/>
+  <text x="477" y="220" text-anchor="middle" font-size="11" fill="#1e40af">Generalization +</text>
+  <text x="477" y="235" text-anchor="middle" font-size="11" fill="#1e40af">edge-case coverage</text>
+
+  <!-- ═══════ COMMON DRIFT ARROW ═══════ -->
+  <path d="M 112,520 C 72,440 65,280 193,140" fill="none" stroke="#e63946" stroke-width="3" stroke-dasharray="10,6" marker-end="url(#arrowRed)"/>
+  <rect x="52" y="283" width="88" height="46" rx="6" fill="#fff1f2" stroke="#e63946" stroke-width="0.8"/>
+  <text x="96" y="303" text-anchor="middle" font-size="13" font-weight="700" fill="#e63946">description</text>
+  <text x="96" y="320" text-anchor="middle" font-size="13" font-weight="700" fill="#e63946">creep</text>
+
+  <!-- ═══════ RIGHT-SIDE LEGEND ═══════ -->
+  <rect x="650" y="110" width="180" height="220" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="740" y="136" text-anchor="middle" font-size="13" font-weight="600" fill="#374151">Evidence needed</text>
+  <line x1="670" y1="146" x2="810" y2="146" stroke="#e5e7eb" stroke-width="1"/>
+
+  <circle cx="678" cy="170" r="5" fill="#3b82f6"/>
+  <text x="692" y="175" font-size="11" fill="#374151">Computational:</text>
+  <text x="692" y="190" font-size="10" fill="#6b7280">Generalization tests,</text>
+  <text x="692" y="203" font-size="10" fill="#6b7280">edge-case coverage</text>
+
+  <circle cx="678" cy="228" r="5" fill="#3ab39e"/>
+  <text x="692" y="233" font-size="11" fill="#374151">Algorithmic:</text>
+  <text x="692" y="248" font-size="10" fill="#6b7280">I/O behavior match,</text>
+  <text x="692" y="261" font-size="10" fill="#6b7280">ablation studies</text>
+
+  <circle cx="678" cy="286" r="5" fill="#fbbf24"/>
+  <text x="692" y="291" font-size="11" fill="#374151">Implementational:</text>
+  <text x="692" y="306" font-size="10" fill="#6b7280">Activation patterns,</text>
+  <text x="692" y="319" font-size="10" fill="#6b7280">weight inspection</text>
+</svg>

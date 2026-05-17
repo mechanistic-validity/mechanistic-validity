@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Marr's Levels — Mermaid</title>
+<style>
+  body {
+    margin: 0;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  h1 { font-size: 22px; color: #1a1a2e; font-weight: 600; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #6b7280; font-style: italic; margin-bottom: 24px; }
+  #diagram { width: 100%; max-width: 900px; }
+</style>
+</head>
+<body>
+<h1>Description Levels and Evidence Requirements</h1>
+<p class="subtitle">After Marr (1982), adapted for mechanistic interpretability</p>
+<div id="diagram">
+<pre class="mermaid">
+graph TB
+    subgraph COMP["<b>Computational</b><br/><i>What is computed and why</i>"]
+    end
+
+    subgraph ALGO["<b>Algorithmic</b><br/><i>What procedure is executed</i>"]
+    end
+
+    subgraph IMPL["<b>Implementational</b>"]
+        TOPO["Topographic"]
+        CONN["Connectomic"]
+        ACTSTAT["Activation-<br/>statistical"]
+        FUNC["Functional"]
+    end
+
+    IMPL -->|"I/O function<br/>demonstration"| ALGO
+    ALGO -->|"Generalization +<br/>edge-case coverage"| COMP
+    IMPL -.->|"common drift"| COMP
+
+    style COMP fill:#dbeafe,stroke:#3b82f6,stroke-width:2px,color:#1e40af
+    style ALGO fill:#d1fae5,stroke:#2a9d8f,stroke-width:2px,color:#115e59
+    style IMPL fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#92400e
+    style TOPO fill:#fff7ed,stroke:#d97706,stroke-width:1px,color:#78350f
+    style CONN fill:#fff7ed,stroke:#d97706,stroke-width:1px,color:#78350f
+    style ACTSTAT fill:#fff7ed,stroke:#d97706,stroke-width:1px,color:#78350f
+    style FUNC fill:#fff7ed,stroke:#d97706,stroke-width:1px,color:#78350f
+
+    linkStyle 0 stroke:#2a9d8f,stroke-width:2px
+    linkStyle 1 stroke:#3b82f6,stroke-width:2px
+    linkStyle 2 stroke:#e63946,stroke-width:2.5px,stroke-dasharray:8
+</pre>
+</div>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#dbeafe',
+      primaryBorderColor: '#3b82f6',
+      primaryTextColor: '#1a1a2e',
+      lineColor: '#6b7280',
+      fontSize: '14px',
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis',
+      padding: 20,
+      nodeSpacing: 40,
+      rankSpacing: 50,
+    }
+  });
+</script>
+</body>
+</html>
