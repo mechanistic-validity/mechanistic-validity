@@ -33,7 +33,7 @@ Below, we evaluate this claim through each of the five validity lenses, applying
 
 **[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Pass.** The $W_{OV}$ matrices of name-mover heads (9.9, 9.6, 10.0) show copying structure — high singular values along name-token directions. S-inhibition heads (7.3, 7.9, 8.6) attend from the final position to the position of the repeated subject. The structural signatures match the claimed roles.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Not tested.** The IOI circuit is not evaluated on related tasks (subject-verb agreement, gendered pronouns). If the same 26 heads also rank highly for other syntactic tasks, the circuit may be capturing general syntactic processing rather than task-specific IOI computation.
+**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Not tested.** The IOI circuit is not evaluated on related tasks (subject-verb agreement, gendered pronouns, etc.). If the same 26 heads also rank highly for other syntactic tasks, the circuit may be capturing general syntactic processing rather than task-specific IOI computation.
 
 **[C4 — Minimality:](/framework/criteria/construct/minimality) Complicated.** The 26-head circuit includes backup name-mover heads that are individually unnecessary — the primary name movers suffice. The backups activate compensatorily when primaries are ablated, raising the question of whether the circuit is over-inclusive under normal operation. Whether backups are "in the circuit" depends on the definition of minimality.
 
@@ -56,7 +56,7 @@ The IOI circuit connects to:
 - **Training dynamics** — does the circuit emerge at a specific phase? (untested)
 - **Cross-model prediction** — do other GPT-2 scales use the same structure? (untested)
 
-Four nodes confirmed, three unconnected. A moderately thick network — stronger than most MI results, but with clear gaps at the generalization edges.
+Four nodes confirmed, three unconnected. A moderately thick network — strong, but with clear gaps at the generalization edges.
 
 ---
 

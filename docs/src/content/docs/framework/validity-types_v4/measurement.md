@@ -13,7 +13,6 @@ description: "Are the instruments that produced the evidence reliable, calibrate
 | Source theory | Classical test theory ([Lord & Novick 1968](https://psycnet.apa.org/record/1969-02031-000)); multi-trait multi-method ([Campbell & Fiske 1959](https://doi.org/10.1037/h0046016)); signal detection theory ([Green & Swets 1966](https://doi.org/10.1901/jeab.1966.9-649)) |
 | Dependency | Measurement validity evaluates the *instrument*, not the *claim*; it is prior to interpreting what the instrument measures |
 | Status in MI | Most easily corrected failures; baselines often omitted |
-| Last updated | 16 May 2026 |
 
 Measurement validity asks whether the instruments used to produce evidence for a circuit claim are themselves valid measurements. It is the type whose failures are most correctable — typically because the remedy is a baseline that was always feasible to compute but was not reported.
 

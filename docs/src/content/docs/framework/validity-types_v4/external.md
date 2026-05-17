@@ -12,7 +12,6 @@ description: "Does the effect generalize beyond the specific conditions of disco
 | Criteria | E1–E6 |
 | Dependency | External validity converts an internally valid result into a property of the model rather than a property of the experiment |
 | Status in MI | Improving with recent benchmarks; still routinely overstated |
-| Last updated | 16 May 2026 |
 
 External validity asks whether the claim made on the conditions tested generalizes to other prompt distributions, other model sizes, other model families, and other intervention strengths. A result that passes all internal-validity tests on one prompt distribution at one intervention strength is a *local result*. External validity is what makes it a *finding*.
 
