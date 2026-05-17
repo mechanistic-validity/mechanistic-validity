@@ -56,7 +56,7 @@ export default defineConfig({
             },
             {
               label: 'Lenses',
-              collapsed: true,
+              collapsed: false,
               items: [
                 { label: 'Philosophy of Science', link: '/framework/lenses_v6/philosophy_of_science' },
                 { label: 'Neuroscience', link: '/framework/lenses_v6/neuroscience' },

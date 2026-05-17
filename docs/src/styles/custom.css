@@ -12,28 +12,6 @@
 }
 .katex-display > .katex { font-size: 1.5em; }
 
-/* Figure placeholder boxes */
-.figure-placeholder {
-  border: 2px dashed var(--sl-color-gray-4);
-  border-radius: 0.5rem;
-  padding: 2.5rem 2rem;
-  margin: 2rem auto;
-  max-width: 40rem;
-  text-align: center;
-  color: var(--sl-color-gray-3);
-  background: var(--sl-color-gray-6);
-  font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-
-.figure-placeholder .caption {
-  margin-top: 0.75rem;
-  font-size: 0.875rem;
-  font-style: normal;
-  color: var(--sl-color-gray-2);
-}
-
 /* Worked example boxes */
 details.worked-example {
   border: 1px solid var(--sl-color-gray-5);
