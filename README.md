@@ -2,15 +2,17 @@
 
 > **Under active development.**
 
-This repository is my working version of a of a new framework for mechanistic interpretability, drawing on philosophy of science, neuroscience, pharmacoloy and measurement theory. I am explicitly choosing **not** to include new experiment results, novel methods, or evaluations, as this work is purely conceptual and theoretical. The goal is merely to document the current gaps in MI, and provde an outline for how these gaps can potentially be addressed in the future. 
+Mechanistic Validity is a framework aimed at extending mechanistic interpretability, using validation methodology from philosophy of science, neuroscience, pharmacology and measurement theory. 
 
-I am including some basic scripts for each evaluation "instrument" as a way to better communciation the ideas, but these should be viewed as examples only.
+This repository does not include any new experiment results, novel methods, or evaluations, as the contribution is purely theoretical. any scripts included are intended to be viewed as examples only.
+
+The goal of this project is to document the current gaps in MI, and provide an outline for how these gaps can potentially be addressed in the future. 
 
 My main inspiration from this has been https://learnmechinterp.com/, which I believe is the best resource for people new to the field. This framework sits on top, providing a way to validate the claims made, rather than document and categorize every individual paper and contribution to the field.  
 
-Below is a high level overview of the framework and documentation site:
+Below is a high level overview of three key concepts in the framework:
 
-## The framework
+## Mechanistic Validity Framework
 
 ### Five validity lenses
 
@@ -24,14 +26,14 @@ Below is a high level overview of the framework and documentation site:
 
 ### Six evidence families
 
-| Family | Code | Count | What it asks |
-|---|---|---|---|
-| Causal | A01–A13 | 13 | Does X causally produce Y? |
-| Structural | B01–B09 | 9 | Do the weights encode the claimed computation? |
-| Information-theoretic | C01–C09 | 9 | What information flows where? |
-| Behavioral | D01–D09 | 9 | Does the circuit reproduce model behavior? |
-| Representational | E01–E10 | 10 | What geometric structure do activations have? |
-| Measurement-theoretic | F01–F08 | 8 | Are the instruments themselves reliable? |
+| Family | What it asks |
+|---|---|
+| Causal | Does X causally produce Y? |
+| Structural | Do the weights encode the claimed computation? |
+| Information-theoretic | What information flows where? |
+| Behavioral | Does the circuit reproduce model behavior? |
+| Representational | What geometric structure do activations have? |
+| Measurement-theoretic | Are the instruments themselves reliable? |
 
 ### Verdict tiers
 
@@ -43,17 +45,6 @@ Below is a high level overview of the framework and documentation site:
 | 4 | Triangulated | Multiple independent instruments converge |
 | 5 | Validated | All five lenses pass |
 
-### Description modes
-
-Seven levels of mechanistic description, from *computational* ("what is computed and why") down through *algorithmic* and four *implementational* sub-modes (topographic, connectomic, activation-statistical, functional).
-
-### Evaluation instruments
-
-Concrete measurement procedures drawn from causal inference, linear algebra, information theory, behavioral testing, representation geometry, and measurement-theoretic reliability analysis.
-
-### 27 validity criteria
-
-Specific pass/fail criteria across five validity types: construct (C1–C5), internal (I1–I5), external (E1–E6), measurement (M1–M6), and interpretive (V1–V5).
 
 ## 13 worked case studies
 
@@ -74,12 +65,6 @@ The full framework applied to published MI results:
 | [Superposition (Elhage et al. 2022)](https://transformer-circuits.pub/2022/toy_model/index.html) | Proposed |
 | [Probing Classifiers (Belinkov 2022)](https://arxiv.org/abs/2102.12452) | Proposed |
 | [Gender Bias Circuits (Vig et al. 2020)](https://arxiv.org/abs/2010.02573) | Proposed |
-
-## Documentation site quickstart
-
-```bash
-cd docs && npm install && npm run dev
-```
 
 ## Citation
 

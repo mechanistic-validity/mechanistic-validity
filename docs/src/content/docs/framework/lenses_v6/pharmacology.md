@@ -17,7 +17,7 @@ There is also a disanalogy worth naming. A drug in a living organism faces degra
 
 ### Affinity is not efficacy
 
-Stephenson (1956) drew a distinction that pharmacology now considers elementary: a drug can bind to a receptor without producing a functional response. Binding (affinity) is necessary but not sufficient for effect (efficacy). A ligand with high affinity and zero efficacy occupies the site, prevents other drugs from acting, but does nothing itself.
+Stephenson (1956) drew a core distinction: a drug can bind to a receptor without producing a functional response. Binding (affinity) is necessary but not sufficient for effect (efficacy). A ligand — any molecule that binds to a receptor — with high affinity and zero efficacy occupies the site, prevents other drugs from acting, but does nothing itself.
 
 In MI: a component can be highly active during a task — large activations, high attribution scores, strong attention to the relevant tokens — without being causally responsible for the behavior. Participation is affinity. Causation is efficacy. Activation patching measures something closer to affinity (is this component engaged?). Ablation measures something closer to efficacy (does removing it change the output?). But even ablation conflates efficacy with the system's compensatory capacity — which is where Black & Leff come in.
 
@@ -29,15 +29,15 @@ In MI: ablating a genuinely load-bearing head can produce a small behavioral eff
 
 ### The metric is part of the finding
 
-Kenakin (2004) identified functional selectivity: the same drug, acting on the same receptor, produces different downstream effects depending on which signaling pathway is measured. A ligand can be an agonist on one readout and an antagonist on another. The choice of assay is not neutral — it determines what you find.
+Kenakin (2004) identified functional selectivity: the same drug, acting on the same receptor, produces different downstream effects depending on which signaling pathway is measured. A ligand can be an agonist on one readout and an antagonist on another. The choice of assay — a standardized test procedure that measures a specific biological response — is not neutral. It determines what you find.
 
 In MI: the same head, under the same ablation, can appear essential or redundant depending on whether you measure logit difference, KL divergence, top-1 accuracy, or cross-entropy. Miller et al. (2024) demonstrated this empirically — the IOI circuit's faithfulness varies dramatically across ablation methods. But it also varies across metrics at a fixed method. A circuit that recovers 87% of logit difference may recover only 60% of full distributional KL. These are not contradictions; they are different functional readouts of the same intervention. The metric must be named as part of the claim, not treated as an interchangeable measurement of "effect."
 
 ### Naming requires criteria
 
-Rang (2006), summarizing IUPHAR's receptor classification framework, argued that naming a new drug target requires standardized evidence: a selective ligand that binds it, a functional assay that demonstrates its downstream effect, and ideally genetic validation (knockout or knockin). Without these, a putative target is a hypothesis, not an entity.
+Rang (2006), summarizing IUPHAR's receptor classification framework, argued that naming a new drug target requires standardized evidence: a selective ligand that binds it, a functional assay that demonstrates its downstream effect, and ideally genetic validation (knockout or knockin) — though there is no direct analog of genetic validation in MI. The closest equivalent is cross-architecture evidence, which tests whether the mechanism appears in models with different training, initialization, and structure. Without these, a putative target is a hypothesis, not an entity.
 
-In MI: naming a circuit ("the IOI circuit," "induction heads," "a deception feature") is an act of classification. The pharmacological standard asks: what is the selective ligand (the intervention that engages this circuit and not others)? What is the functional assay (the behavioral metric that tracks this circuit's contribution)? What is the genetic validation (the cross-model or cross-architecture evidence)? A circuit that has been named but lacks a selective intervention, a specific functional readout, and any form of cross-model validation is a hypothesis with a label — not an established entity.
+In MI: naming a circuit ("the IOI circuit," "induction heads," "a deception feature") is an act of classification. The pharmacological standard asks: what is the selective ligand (the intervention that engages this circuit and not others)? What is the functional assay (the behavioral metric that tracks this circuit's contribution)? What is the cross-architecture evidence (does the mechanism appear in other model families)? A circuit that has been named but lacks a selective intervention, a specific functional readout, and any form of cross-model validation is a hypothesis with a label — not an established entity.
 
 ## Analytical Constructs
 
@@ -50,8 +50,8 @@ The curve reveals structure that no single point can:
 - **Threshold** — the intervention strength at which the effect first becomes detectable. A mechanism with a high threshold may be buffered by redundancy.
 - **EC₅₀** — the strength producing half-maximal effect. This is the sensitivity of the mechanism to disruption.
 - **Plateau** — the maximum effect achievable by intervening on this component alone. A plateau below 100% means other components contribute.
-- **Therapeutic window** — the gap between threshold (mechanism engages) and off-target onset (unrelated behaviors degrade). A wide window means the intervention is specific; a narrow window means any effective intervention also causes collateral damage.
 - **Off-target onset** — the strength at which behaviors unrelated to the target task begin degrading. This is the specificity boundary.
+- **Therapeutic window** — the gap between threshold (mechanism engages) and off-target onset (unrelated behaviors degrade). A wide window means the intervention is specific; a narrow window means any effective intervention also causes collateral damage.
 
 A circuit with a wide therapeutic window — large gap between threshold and off-target onset — is one where you can modulate the target behavior without breaking other things. A circuit with no therapeutic window (threshold ≈ off-target onset) cannot be cleanly separated from the network's general processing.
 

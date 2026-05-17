@@ -17,9 +17,9 @@ The framework's central commitment is that a single high score does not validate
 
 ## The two-layer structure
 
-The framework has two layers. The upper layer is the five **validity types** — construct, internal, external, measurement, interpretive. These are the abstract questions a claim must answer. The lower layer is the five **foundations** — Philosophy of Science, Neuroscience, Pharmacology, Measurement Theory, Mechanistic Interpretability. These are the operational toolkits, one per validity type, that translate the abstract question into criteria, instruments, and reporting rules.
+The framework has two layers. The upper layer is the five **validity types** — construct, internal, external, measurement, interpretive. These are the abstract questions a claim must answer. The lower layer is the five **lenses** — Philosophy of Science, Neuroscience, Pharmacology, Measurement Theory, Mechanistic Interpretability. These are the operational toolkits, one per validity type, that translate the abstract question into criteria, instruments, and reporting rules.
 
-| Validity type | Foundation | What the foundation provides |
+| Validity type | Lens | What the lens provides |
 |---|---|---|
 | Construct | Philosophy of Science | Falsifiability, structural plausibility, task specificity, minimality, convergent validity |
 | Internal | Neuroscience | Necessity, sufficiency, specificity, consistency |
@@ -27,14 +27,14 @@ The framework has two layers. The upper layer is the five **validity types** —
 | Measurement | Measurement Theory | Reliability, invariance, baseline separation, sensitivity, calibration, construct coverage |
 | Interpretive | Mechanistic Interpretability | Level declaration, level-evidence match, narrative coherence, alternative exclusion, scope honesty |
 
-The validity-type pages explain what each type asks of a claim and where current MI practice falls short. The foundation pages give the operational criteria, the instruments that produce evidence for each criterion, the failure modes that appear in practice, and a minimum reporting protocol.
+The validity-type pages explain what each type asks of a claim and where current MI practice falls short. The lens pages give the operational criteria, the instruments that produce evidence for each criterion, the failure modes that appear in practice, and a minimum reporting protocol.
 
 ## What the framework is not
 
 The framework does not rank circuits. It produces a structured verdict — a pattern of which dimensions have evidence and which do not — rather than a scalar score. Two circuits with the same scalar faithfulness can have very different verdict structures under the framework, and the framework's value is in making that difference visible.
 
-The framework also does not assume any particular discovery method is correct. Activation patching, EAP, IIA, weight classifiers, and causal scrubbing all appear in the foundation pages as instruments that produce evidence for one or more criteria. None is privileged. The framework's role is to specify what each instrument actually establishes.
+The framework also does not assume any particular discovery method is correct. Activation patching, EAP, IIA, weight classifiers, and causal scrubbing all appear in the lens pages as instruments that produce evidence for one or more criteria. None is privileged. The framework's role is to specify what each instrument actually establishes.
 
 ## How to get started
 
-A reader new to the framework should begin with [Reading this site](start/reading-this-site.md), which explains how the pages link together and how to use the framework to audit a circuit claim. Readers who already know which validity type they are concerned with can skip to that type's page; readers who already know which method they are using can skip to the corresponding foundation.
+A reader new to the framework should begin with [Reading this site](start/reading-this-site.md), which explains how the pages link together and how to use the framework to audit a circuit claim. Readers who already know which validity type they are concerned with can skip to that type's page; readers who already know which method they are using can skip to the corresponding lens.

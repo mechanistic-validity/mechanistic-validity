@@ -12,7 +12,6 @@ description: "Formal specification: quantitative thresholds, pass conditions, an
 | Criteria | C1–C5 |
 | Dependency | Construct validity is prior to all other validity types — ambiguity here propagates downstream |
 | Status in MI | Most neglected type; most circuit papers name the construct without specifying it |
-| Last updated | 16 May 2026 |
 
 Construct validity asks whether the entity being claimed exists as a well-defined theoretical object. The [Philosophy of Science lens](/framework/lenses_v1/philosophy_of_science) explains the intellectual background and shows the criteria applied to real cases. This page gives the formal definitions, quantitative thresholds, and calibration data.
 

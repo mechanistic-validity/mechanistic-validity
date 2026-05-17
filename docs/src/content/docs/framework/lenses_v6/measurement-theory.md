@@ -9,7 +9,7 @@ This lens asks one question: **is the instrument that produced the number trustw
 
 Every circuit finding begins with a number. An IIA score of 0.48. A faithfulness recovery of 87%. A logit difference of 3.10. The other lenses evaluate the claim that number supports — whether the causal logic holds, whether the effect generalizes, whether the interpretation is licensed. This lens evaluates something more basic: whether the number itself means what it appears to mean.
 
-Measurement validity is the step MI most consistently skips. We run the instrument, get a number, and proceed directly to interpretation. What we skip is the question a measurement theorist would ask first: is this instrument reliable enough that the number is telling us about the model rather than about our choice of prompts? Is the score calibrated to anything we can interpret? Does the instrument measure the construct it claims to measure, or is it measuring its own capacity?
+Measurement validity is a step MI often skips. We run the instrument, get a number, and proceed directly to interpretation. What we skip is the question a measurement theorist would ask first: is this instrument reliable enough that the number is telling us about the model rather than about our choice of prompts? Is the score calibrated to anything we can interpret? Does the instrument measure the construct it claims to measure, or is it measuring its own capacity?
 
 The distinction is the same one pharmacology makes between assay validation and drug efficacy. You validate the assay before interpreting what it measures. A failed assay produces numbers regardless — they just don't mean what you think.
 
@@ -31,7 +31,7 @@ In MI: an instrument that identifies every head as "part of the circuit" has per
 
 Classical test theory decomposes every measurement into true score plus error: $X = T + E$. The observed faithfulness score of 87% is not the circuit's true faithfulness — it is the true faithfulness plus whatever noise the prompt sample, random seed, and measurement procedure introduced. The proportion of variance attributable to the true score is the reliability coefficient.
 
-In MI: when we report IIA = 0.48, we are reporting an observed score. The true score might be 0.52 (prompt sample was slightly unfavorable) or 0.44 (prompt sample was favorable). Without a confidence interval, we cannot know. Two circuits with observed scores of 0.48 and 0.52 may have overlapping true-score distributions — the apparent difference may be entirely measurement error. Reporting point estimates without confidence intervals invites over-interpretation of noise.
+In MI: when we report IIA = 0.48, we are reporting an observed score. The true score might be 0.52 (prompt sample was slightly unfavorable) or 0.44 (prompt sample or seed was favorable). Without a confidence interval, we cannot know. Two circuits with observed scores of 0.48 and 0.52 may have overlapping true-score distributions — the apparent difference may be entirely measurement error. Reporting point estimates without confidence intervals invites over-interpretation of noise.
 
 ### Convergent vs discriminant validity
 

@@ -1,13 +1,13 @@
 ---
 title: "Mechanistic Interpretability"
-description: "The interpretive validity lens: is the sentence licensed by the number at the level at which it is stated?"
+description: "The interpretive validity lens: does the claim match the strength and scope of the evidence?"
 ---
 
 # The Mechanistic Interpretability Lens
 
-This lens asks one question: **is the sentence licensed by the number at the level at which it is stated?**
+This lens asks one question: **does the claim match the strength and scope of the evidence?**
 
-Every MI finding produces a number and a sentence. The number is a measurement: an IIA score, a faithfulness percentage, a logit difference. The sentence is an interpretation: "the model *computes* indirect object identification through a circuit of 26 heads," or "induction heads *implement* in-context learning." Whether the sentence is justified by the number depends entirely on the level at which the sentence is stated.
+Every MI result pairs a measurement with an interpretation. The measurement might be an IIA score, a faithfulness percentage, a logit difference, an ablation effect, or an alignment score. The interpretation is the claim attached to that measurement: "the model *computes* indirect object identification through a circuit of 26 heads," or "induction heads *implement* in-context learning." Whether the interpretation is justified depends on whether the claim is stated at a level the evidence can actually support.
 
 This is the only lens in the framework not imported from another field. The pharmacological, measurement-theoretic, neuroscientific, and philosophical lenses each bring criteria developed and validated in their home disciplines. The criteria here are derived from the empirical track record of MI itself — from published cases where the number was real but the sentence outran it, and from analysis of what a corrected sentence would have required.
 
@@ -31,11 +31,11 @@ In MI: a maximally faithful circuit you cannot interpret is an honest mystery �
 
 "Head 9.9 is in the IOI circuit" (identity) and "Head 9.9 is a name-mover" (role) are different claims requiring different evidence. Identity requires only causal evidence — ablating the component changes the output. Role requires mechanistic evidence — the weight structure matches the claimed function, the component doesn't perform this function on non-target inputs, and the role label makes predictions that can be tested independently.
 
-In MI: the slide from identity to role happens in one sentence in most papers and is the single most common silent overclaim. A head identified by activation patching receives a functional label ("name-mover," "induction head," "inhibition head") that implies a richer mechanistic story than the patching result establishes. The label is a hypothesis about role, not a conclusion from identity. Testing the label requires additional evidence: does the W_OV structure match? Does the head perform this function and not others? Would a different head with the same structural properties also earn the label?
+In MI: the slide from identity to role happens in one sentence in most papers and is a common overclaim. A head identified by activation patching receives a functional label ("name-mover," "induction head," "inhibition head") that implies a richer mechanistic story than the patching result establishes. The label is a hypothesis about role, not a conclusion from identity. Testing the label requires additional evidence: does the W_OV structure match? Does the head perform this function and not others? Would a different head with the same structural properties also earn the label?
 
 ### Activation evidence vs weight evidence
 
-"We observed this during inference" and "this is structurally encoded in the weights" are different epistemic types that MI conflates. Activation-based evidence is dynamic and context-dependent — it tells you what happens on specific inputs. Weight-based evidence is static and context-free — it tells you what is structurally possible regardless of input.
+"We observed this during inference" and "this is structurally encoded in the weights" are different epistemic types that are often treated interchangeably. Activation-based evidence is dynamic and context-dependent — it tells you what happens on specific inputs. Weight-based evidence is static and context-free — it tells you what is structurally possible regardless of input.
 
 In MI: activations and weights can disagree. Weights may encode capabilities the model never uses in practice — structural potential that is never activated on naturalistic inputs. Activations may show computations that are not legible from weight inspection alone — distributed or superposed representations that no single weight matrix reveals. A claim supported by both activation and weight evidence is qualitatively stronger than one supported by either alone, because the two evidence types are sensitive to different failure modes. Activation-only claims miss structural context; weight-only claims miss dynamic behavior.
 
@@ -54,7 +54,7 @@ For the IOI circuit:
 - **Algorithmic → Interpretation**: Moderate (yellow-green). "Detect-inhibit-copy" is a specified multi-step process, but whether it is the *unique* algorithm or one of several compatible algorithms is not established.
 - **Computational → Interpretation**: Weak (gray). We know the circuit performs IOI, but whether IOI is the right computational description — or whether it is a special case of "contextual coreference resolution" — is untested.
 
-Most MI papers have one fat green arrow (implementational) and two thin or gray ones. The map makes visible exactly where the interpretive story needs more evidence. No other field uses Marr's three levels — this is distinctively MI's contribution to validity assessment.
+The map makes visible exactly where the interpretive story needs more evidence.
 
 ### The intervention-interpretation matrix
 
@@ -79,7 +79,7 @@ Each cell: ✓ (evidence confirms), ✗ (evidence contradicts), ? (not tested), 
 
 The ∅ cells are the key insight. Ablation *cannot* support a representational claim (it tests necessity, not what is represented). Naturalistic observation *cannot* support a causal claim. Unconstrained nonlinear IIA *cannot* support a representational claim (Sutter et al. 2025). These are not missing experiments — they are category errors. The matrix makes them visible.
 
-The most common failure in MI: having only cells filled in the ablation row but making claims in the algorithmic or computational columns — where ablation cells are structurally ∅.
+A common gap: having only cells filled in the ablation row but making claims in the algorithmic or computational columns — where ablation cells are structurally ∅.
 
 ### The causal sufficiency graph
 
