@@ -1,0 +1,58 @@
+---
+import backlinksData from '../data/backlinks.json';
+
+const { currentSlug } = Astro.props;
+
+const normalized = currentSlug.replace(/\/+$/, '/');
+const backlinks = backlinksData[normalized] ?? backlinksData[normalized.replace(/\/$/, '')] ?? [];
+---
+
+{backlinks.length > 0 && (
+  <div class="backlinks-panel">
+    <h2 class="backlinks-heading">Cited by</h2>
+    <ul class="backlinks-list">
+      {backlinks.map(({ slug, title }) => (
+        <li>
+          <a href={slug}>{title}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .backlinks-panel {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+  .backlinks-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sl-color-text-accent);
+    margin-bottom: 0.75rem;
+  }
+  .backlinks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .backlinks-list a {
+    font-size: 0.8125rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-text);
+    text-decoration: none;
+  }
+  .backlinks-list a:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent-high);
+  }
+</style>

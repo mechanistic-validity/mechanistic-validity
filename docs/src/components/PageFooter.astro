@@ -1,0 +1,9 @@
+---
+import Default from '@astrojs/starlight/components/Pagination.astro';
+import Backlinks from './Backlinks.astro';
+
+const currentSlug = '/' + Astro.url.pathname.replace(/^\//, '');
+---
+
+<Backlinks currentSlug={currentSlug} />
+<Default><slot /></Default>

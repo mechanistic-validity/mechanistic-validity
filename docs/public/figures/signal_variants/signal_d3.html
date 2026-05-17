@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Signal Detection — D3.js</title>
+<style>
+  body { margin: 0; background: #fafafa; display: flex; justify-content: center; padding: 20px; }
+  .panel-title { font-size: 14px; font-weight: 600; fill: #333; }
+  .axis text { font-size: 11px; fill: #555; }
+  .axis line, .axis path { stroke: #ccc; }
+  .label { font-size: 12px; fill: #555; }
+</style>
+</head>
+<body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const W = 1000, H = 460;
+const margin = {top: 70, right: 30, bottom: 50, left: 55};
+const panelW = (W - margin.left - margin.right - 40) / 2;
+const panelH = H - margin.top - margin.bottom;
+
+const svg = d3.select("body").append("svg").attr("width", W).attr("height", H)
+  .attr("font-family", "system-ui, -apple-system, sans-serif");
+svg.append("rect").attr("width", W).attr("height", H).attr("fill", "#fafafa");
+
+svg.append("text").attr("x", W/2).attr("y", 35).attr("text-anchor", "middle")
+  .attr("font-size", 20).attr("font-weight", 600).attr("fill", "#333")
+  .text("Signal Detection Framework for Circuit Identification");
+
+function normalPDF(x, mu, sigma) {
+  return Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2)) / (sigma * Math.sqrt(2 * Math.PI));
+}
+
+const panels = [
+  {title: "Standard baselines", muSignal: 3.0, dprime: "d′ = 2.0", offsetX: 0},
+  {title: "High random baseline", muSignal: 1.8, dprime: "d′ = 0.8", offsetX: panelW + 40},
+];
+const muNoise = 1.0;
+const xDomain = [-2.5, 6.5];
+const yDomain = [0, 0.48];
+
+const xPoints = d3.range(xDomain[0], xDomain[1], 0.02);
+
+panels.forEach(p => {
+  const g = svg.append("g").attr("transform", `translate(${margin.left + p.offsetX}, ${margin.top})`);
+
+  const xScale = d3.scaleLinear().domain(xDomain).range([0, panelW]);
+  const yScale = d3.scaleLinear().domain(yDomain).range([panelH, 0]);
+
+  // Axes
+  g.append("g").attr("class", "axis").attr("transform", `translate(0,${panelH})`)
+    .call(d3.axisBottom(xScale).ticks(6));
+  g.append("g").attr("class", "axis").call(d3.axisLeft(yScale).ticks(5));
+
+  // Labels
+  g.append("text").attr("x", panelW/2).attr("y", panelH + 40).attr("text-anchor", "middle")
+    .attr("class", "label").text("Instrument score");
+  if (p.offsetX === 0) {
+    g.append("text").attr("x", -40).attr("y", panelH/2).attr("text-anchor", "middle")
+      .attr("transform", `rotate(-90, -40, ${panelH/2})`).attr("class", "label").text("Density");
+  }
+  g.append("text").attr("x", panelW/2).attr("y", -12).attr("text-anchor", "middle")
+    .attr("class", "panel-title").text(p.title);
+
+  // Area generators
+  const areaGen = (mu) => d3.area()
+    .x(d => xScale(d))
+    .y0(panelH)
+    .y1(d => yScale(normalPDF(d, mu, 1.0)));
+  const lineGen = (mu) => d3.line()
+    .x(d => xScale(d))
+    .y(d => yScale(normalPDF(d, mu, 1.0)));
+
+  // Non-circuit (red)
+  g.append("path").datum(xPoints).attr("d", areaGen(muNoise))
+    .attr("fill", "rgba(239,68,68,0.25)").attr("stroke", "none");
+  g.append("path").datum(xPoints).attr("d", lineGen(muNoise))
+    .attr("fill", "none").attr("stroke", "#ef4444").attr("stroke-width", 2);
+
+  // Circuit (blue)
+  g.append("path").datum(xPoints).attr("d", areaGen(p.muSignal))
+    .attr("fill", "rgba(59,130,246,0.25)").attr("stroke", "none");
+  g.append("path").datum(xPoints).attr("d", lineGen(p.muSignal))
+    .attr("fill", "none").attr("stroke", "#3b82f6").attr("stroke-width", 2);
+
+  // Criterion line
+  const crit = (muNoise + p.muSignal) / 2;
+  g.append("line").attr("x1", xScale(crit)).attr("y1", 0).attr("x2", xScale(crit)).attr("y2", panelH)
+    .attr("stroke", "#555").attr("stroke-width", 1.5).attr("stroke-dasharray", "6,4");
+  g.append("text").attr("x", xScale(crit)).attr("y", -2).attr("text-anchor", "middle")
+    .attr("font-size", 10).attr("fill", "#555").text("criterion");
+
+  // d' annotation
+  const dY = yScale(0.05);
+  g.append("line").attr("x1", xScale(muNoise)).attr("y1", dY).attr("x2", xScale(p.muSignal)).attr("y2", dY)
+    .attr("stroke", "#22a352").attr("stroke-width", 2.5).attr("marker-start", "url(#arrG)").attr("marker-end", "url(#arrG)");
+  g.append("text").attr("x", xScale((muNoise + p.muSignal) / 2)).attr("y", dY - 8)
+    .attr("text-anchor", "middle").attr("font-size", 14).attr("font-weight", 700).attr("fill", "#22a352")
+    .text(p.dprime);
+
+  // Legend (first panel only)
+  if (p.offsetX === 0) {
+    const lg = g.append("g").attr("transform", "translate(8, 8)");
+    lg.append("rect").attr("width", 100).attr("height", 48).attr("rx", 4).attr("fill", "rgba(255,255,255,0.85)").attr("stroke", "#ddd");
+    lg.append("rect").attr("x", 8).attr("y", 8).attr("width", 14).attr("height", 10).attr("rx", 2).attr("fill", "rgba(239,68,68,0.4)");
+    lg.append("text").attr("x", 28).attr("y", 17).attr("font-size", 10).attr("fill", "#333").text("Non-circuit");
+    lg.append("rect").attr("x", 8).attr("y", 26).attr("width", 14).attr("height", 10).attr("rx", 2).attr("fill", "rgba(59,130,246,0.4)");
+    lg.append("text").attr("x", 28).attr("y", 35).attr("font-size", 10).attr("fill", "#333").text("Circuit");
+  }
+});
+
+// Arrow marker
+const defs = svg.append("defs");
+defs.append("marker").attr("id", "arrG").attr("viewBox", "0 0 10 10").attr("refX", 5).attr("refY", 5)
+  .attr("markerWidth", 5).attr("markerHeight", 5).attr("orient", "auto-start-reverse")
+  .append("path").attr("d", "M0,0 L10,5 L0,10 Z").attr("fill", "#22a352");
+</script>
+</body>
+</html>
