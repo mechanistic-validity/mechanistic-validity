@@ -1,14 +1,14 @@
 # Mechanistic Validity
 
-> **Under active development.** Feedback welcome.
+> **Under active development.**
 
-A framework for evaluating the validity of mechanistic interpretability claims about neural networks, drawing on philosophy of science, neuroscience, pharmacology, measurement theory, and MI itself.
+This repository is my working version of a of a new framework for mechanistic interpretability, drawing on philosophy of science, neuroscience, pharmacoloy and measurement theory. I am explicitly choosing **not** to include new experiment results, novel methods, or evaluations, as this work is purely conceptual and theoretical. The goal is merely to document the current gaps in MI, and provde an outline for how these gaps can potentially be addressed in the future. 
 
-## Why this exists
+I am including some basic scripts for each evaluation "instrument" as a way to better communciation the ideas, but these should be viewed as examples only.
 
-Mechanistic interpretability makes claims like "this circuit implements indirect object identification" or "this neuron represents the concept of dogs." But how do we know these claims are true? What standards of evidence should we apply?
+My main inspiration from this has been https://learnmechinterp.com/, which I believe is the best resource for people new to the field. This framework sits on top, providing a way to validate the claims made, rather than document and categorize every individual paper and contribution to the field.  
 
-Other sciences solved this decades ago. This project adapts their validity frameworks into a unified evaluation lens for circuit-level claims.
+Below is a high level overview of the framework and documentation site:
 
 ## The framework
 
@@ -47,7 +47,7 @@ Other sciences solved this decades ago. This project adapts their validity frame
 
 Seven levels of mechanistic description, from *computational* ("what is computed and why") down through *algorithmic* and four *implementational* sub-modes (topographic, connectomic, activation-statistical, functional).
 
-### 58 evaluation instruments
+### Evaluation instruments
 
 Concrete measurement procedures drawn from causal inference, linear algebra, information theory, behavioral testing, representation geometry, and measurement-theoretic reliability analysis.
 
@@ -75,7 +75,7 @@ The full framework applied to published MI results:
 | Probing Classifiers (Belinkov 2022) | Proposed |
 | Gender Bias Circuits (Vig et al. 2020) | Proposed |
 
-## Quick start
+## Documentation site quickstart
 
 ```bash
 cd docs && npm install && npm run dev
