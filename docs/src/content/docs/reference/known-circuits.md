@@ -1,6 +1,6 @@
 ---
-title: "Known Circuits"
-description: "IOI, greater-than, SVA, and gendered-pronoun circuit component lists."
+title: "Known Circuits & Baselines"
+description: "Circuit component lists and published baseline values for IOI, greater-than, SVA, and other tasks."
 ---
 
-# Known Circuits
+# Known Circuits & Baselines
