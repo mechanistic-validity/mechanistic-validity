@@ -287,7 +287,7 @@ export default defineConfig({
         },
         {
           label: 'Case Studies',
-          collapsed: true,
+          collapsed: false,
           items: [
             { label: 'Overview', link: '/framework/lenses_v6/examples/' },
             { label: 'IOI Circuit', link: '/framework/lenses_v6/examples/examples-ioi' },
@@ -306,7 +306,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'How-to Guides',
+          label: 'How-to Guide',
           collapsed: false,
           items: [
             { label: 'Overview', link: '/how-to/' },
