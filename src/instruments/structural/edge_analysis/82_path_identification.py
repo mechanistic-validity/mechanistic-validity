@@ -42,6 +42,7 @@ from _common import (
     log,
     logit_diff_from_logits,
     parse_common_args,
+    save_incremental,
     save_results,
 )
 
@@ -184,16 +185,20 @@ def main():
     log("G1: PATH IDENTIFICATION")
     log("=" * 60)
 
-    results = run_path_identification(model, tasks, args.n_prompts)
-
     out = args.out or "82_path_identification.json"
-    save_results(results, out)
+    jsonl_out = out.replace(".json", ".jsonl")
+    results = []
 
+    for task in tasks:
+        task_results = run_path_identification(model, [task], args.n_prompts)
+        results.extend(task_results)
+        for r in task_results:
+            save_incremental(r, jsonl_out)
+            p = "PASS" if r.metadata["passed"] else "FAIL"
+            log(f"  {task}: max_spec={r.value:.2f}x  [{p}]")
+
+    save_results(results, out)
     log(f"\nDone. {len(results)} tasks evaluated.")
-    for r in results:
-        t = r.metadata["task"]
-        p = "PASS" if r.metadata["passed"] else "FAIL"
-        log(f"  {t}: max_spec={r.value:.2f}x  [{p}]")
 
 
 if __name__ == "__main__":

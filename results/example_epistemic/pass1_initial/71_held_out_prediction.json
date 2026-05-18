@@ -1,0 +1,29 @@
+[
+  {
+    "metric_id": "F2.held_out_prediction",
+    "value": 0.5409768149256706,
+    "baseline_random": 0.6915517225861549,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 4,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "per_head_correlation": {
+        "L6H5": 0.3022940456867218,
+        "L9H2": 0.4245753288269043,
+        "L9H5": 0.5876491069793701,
+        "L10H5": 0.8493887782096863
+      },
+      "baseline_mean_correlation": 0.6915517225861549,
+      "baseline_median_correlation": 0.8209437429904938,
+      "frac_above_baseline_median": 0.25,
+      "n_circuit_heads": 4,
+      "n_baseline_heads": 10,
+      "n_prompts_train": 20,
+      "n_prompts_test": 20,
+      "interpretation": "Pearson r of train-predicted vs actual test activation magnitude (higher = more predictable)"
+    }
+  }
+]

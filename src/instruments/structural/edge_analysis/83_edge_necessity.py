@@ -40,6 +40,7 @@ from _common import (
     log,
     logit_diff_from_logits,
     parse_common_args,
+    save_incremental,
     save_results,
 )
 
@@ -168,16 +169,20 @@ def main():
     log("G2: EDGE NECESSITY")
     log("=" * 60)
 
-    results = run_edge_necessity(model, tasks, args.n_prompts)
-
     out = args.out or "83_edge_necessity.json"
-    save_results(results, out)
+    jsonl_out = out.replace(".json", ".jsonl")
+    results = []
 
+    for task in tasks:
+        task_results = run_edge_necessity(model, [task], args.n_prompts)
+        results.extend(task_results)
+        for r in task_results:
+            save_incremental(r, jsonl_out)
+            p = "PASS" if r.metadata["passed"] else "FAIL"
+            log(f"  {task}: frac_necessary={r.value:.2f}  [{p}]")
+
+    save_results(results, out)
     log(f"\nDone. {len(results)} tasks evaluated.")
-    for r in results:
-        t = r.metadata["task"]
-        p = "PASS" if r.metadata["passed"] else "FAIL"
-        log(f"  {t}: frac_necessary={r.value:.2f}  [{p}]")
 
 
 if __name__ == "__main__":

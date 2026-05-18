@@ -30,6 +30,9 @@ from lib.tasks.rti import circuit as _rti_circuit  # noqa: E402
 from lib.tasks.acronym import circuit as _acr_circuit  # noqa: E402
 from lib.tasks.copy_suppression import circuit as _cs_circuit  # noqa: E402
 from lib.tasks.epistemic_framing import circuit as _ef_circuit  # noqa: E402
+from lib.tasks.epistemic_framing import circuit_expanded as _ef_expanded_circuit  # noqa: E402
+from lib.tasks.epistemic_framing import circuit_tight as _ef_tight_circuit  # noqa: E402
+from lib.tasks.epistemic_framing import circuit_eap as _ef_eap_circuit  # noqa: E402
 from lib.tasks.prompts import TASK_REGISTRY  # noqa: E402
 
 _TASK_TO_MODULE = {
@@ -38,6 +41,9 @@ _TASK_TO_MODULE = {
     "gendered_pronoun": _gp_circuit, "rti": _rti_circuit,
     "acronym": _acr_circuit, "copy_suppression": _cs_circuit,
     "epistemic_framing": _ef_circuit,
+    "epistemic_expanded": _ef_expanded_circuit,
+    "epistemic_tight": _ef_tight_circuit,
+    "epistemic_eap": _ef_eap_circuit,
     "rti_pattern": _rti_circuit, "sequence_internal": _ind_circuit,
     "alternating_pair": _ind_circuit, "novel_song": _ind_circuit,
     "centering_theory": _ioi_circuit, "resumptive": _ioi_circuit,
@@ -76,6 +82,9 @@ CIRCUIT_TASKS = [
 ]
 EXPERIMENTAL_TASKS = [
     "epistemic_framing",
+    "epistemic_expanded",
+    "epistemic_tight",
+    "epistemic_eap",
 ]
 ALIAS_TASKS = [
     "rti_pattern", "sequence_internal", "alternating_pair", "novel_song",
@@ -393,6 +402,16 @@ def save_results(results: list[EvalResult] | dict, filename: str) -> Path:
     with open(path, "w") as f:
         json.dump(data, f, indent=2, default=_jsonable)
     log(f"Saved {path.name} ({path.stat().st_size / 1024:.1f}KB)")
+    return path
+
+
+def save_incremental(result: EvalResult, filename: str) -> Path:
+    """Append one result as a JSONL line — survives crashes between tasks."""
+    path = DATA_DIR / filename
+    line = json.dumps(result.to_dict(), default=_jsonable)
+    with open(path, "a") as f:
+        f.write(line + "\n")
+    log(f"Incremental save -> {path.name}")
     return path
 
 

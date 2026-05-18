@@ -1,0 +1,42 @@
+[
+  {
+    "metric_id": "CM2.error_boundary_analysis",
+    "value": 0.35,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 120,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "boundary_alignment": 0.35,
+      "per_difficulty_alignment": {
+        "easy": 0.35,
+        "medium": 0.35,
+        "hard": 0.35
+      },
+      "difficulty_stats": {
+        "easy": {
+          "n_prompts": 40,
+          "model_accuracy": 0.925,
+          "mean_faithfulness": -0.18757344125728706
+        },
+        "medium": {
+          "n_prompts": 40,
+          "model_accuracy": 0.925,
+          "mean_faithfulness": -4.788432018861262
+        },
+        "hard": {
+          "n_prompts": 40,
+          "model_accuracy": 0.925,
+          "mean_faithfulness": -0.14103892252010614
+        }
+      },
+      "n_circuit_heads": 4,
+      "faithfulness_threshold": 0.3,
+      "passed": false,
+      "threshold": 0.6
+    }
+  }
+]

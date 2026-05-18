@@ -4,18 +4,23 @@ Instrument:     G04 — Graph Structure
 Categories:     structural
 Validity layer: Internal
 Criteria:       G4 Compositional Sufficiency
-Establishes:    Whether the circuit subgraph reproduces the full computation when isolated
+Establishes:    Whether the circuit's band composition is superadditive
 Requires:       CPU or GPU, model
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Ablate all heads except circuit heads and measure how much of the
-original logit diff is recovered. This is faithfulness at the
-graph/edge level: the circuit subgraph is sufficient if it recovers
-a meaningful fraction of the full model's behavior.
+Tests whether the circuit's graph structure (edges between bands)
+carries real signal beyond the individual bands. Computes:
 
-Uses compute_faithfulness from _common.py.
+1. Full circuit faithfulness (keep all circuit heads, ablate rest)
+2. Per-band faithfulness (keep one band at a time, ablate rest)
+3. Superadditivity = full_circuit - max(individual_bands)
 
-Pass condition: recovery > 0.3 (30%).
+If bands compose meaningfully through their edges, the full circuit
+should recover MORE than any single band. This is what distinguishes
+G4 from A2: A2 tests whether the heads are sufficient, G4 tests
+whether their inter-band wiring adds value.
+
+Pass condition: superadditivity > 0.05 AND full_recovery > 0.2.
 
 Usage:
     uv run python 85_compositional_sufficiency.py --tasks ioi --n-prompts 40
@@ -43,58 +48,34 @@ from _common import (
     logit_diff_from_logits,
     make_ablation_hook,
     parse_common_args,
+    save_incremental,
     save_results,
 )
 
 
-@torch.no_grad()
-def compute_per_band_recovery(model, prompts, correct_ids, incorrect_ids,
-                              circuit: dict, mean_z: torch.Tensor) -> dict[str, float]:
-    """Compute faithfulness for each band (functional role group) in isolation."""
-    n_layers = model.cfg.n_layers
-    n_heads = model.cfg.n_heads
+def get_band_heads(circuit: dict, band_name: str) -> set[tuple[int, int]]:
     roles = circuit["roles"]
     bands = circuit.get("bands", {})
-
-    band_scores = {}
-    for band_name, band_def in bands.items():
-        band_heads = set()
-        # BANDS values are (layer_range, role_name_list) tuples
-        if isinstance(band_def, (tuple, list)) and len(band_def) == 2:
-            _layer_range, role_names = band_def
-        else:
-            role_names = band_def
-        for role_name in role_names:
-            for head in roles.get(role_name, []):
-                band_heads.add(tuple(head))
-        if not band_heads:
-            continue
-
-        non_band = {(L, H) for L in range(n_layers) for H in range(n_heads)} - band_heads
-        non_band_by_layer = heads_to_layer_dict(non_band)
-        hooks = make_ablation_hook(non_band_by_layer, mean_z, "mean")
-
-        num, den = 0.0, 0.0
-        for i, p in enumerate(prompts):
-            if i >= len(correct_ids):
-                break
-            tokens = model.to_tokens(p.text)
-            clean_logits = model(tokens)
-            clean_ld = logit_diff_from_logits(clean_logits, correct_ids[i], incorrect_ids[i])
-            ablated_logits = model.run_with_hooks(tokens, fwd_hooks=hooks)
-            ablated_ld = logit_diff_from_logits(ablated_logits, correct_ids[i], incorrect_ids[i])
-            num += ablated_ld
-            den += clean_ld
-
-        band_scores[band_name] = num / den if abs(den) > 1e-8 else 0.0
-
-    return band_scores
+    band_def = bands.get(band_name)
+    if band_def is None:
+        return set()
+    if isinstance(band_def, (tuple, list)) and len(band_def) == 2:
+        _layer_range, role_names = band_def
+    else:
+        role_names = band_def
+    heads = set()
+    for role_name in role_names:
+        for head in roles.get(role_name, []):
+            heads.add(tuple(head))
+    return heads
 
 
 @torch.no_grad()
 def run_compositional_sufficiency(model, tasks: list[str],
                                   n_prompts: int = 40) -> list[EvalResult]:
     tokenizer = model.tokenizer
+    n_layers = model.cfg.n_layers
+    n_heads = model.cfg.n_heads
     results = []
 
     for task in tasks:
@@ -112,42 +93,53 @@ def run_compositional_sufficiency(model, tasks: list[str],
         if not correct_ids:
             continue
 
+        bands = circuit.get("bands", {})
+        if len(bands) < 2:
+            log(f"  {task}: <2 bands, skipping")
+            continue
+
         log(f"  {task}: {len(all_heads)} heads, {len(all_edges)} edges, "
-            f"{len(prompts)} prompts")
+            f"{len(bands)} bands, {len(prompts)} prompts")
 
         mean_z = calibrate_mean_z(model, prompts, n_calibration=min(100, len(prompts)))
 
-        # Full circuit faithfulness
-        recovery = compute_faithfulness(
-            model, prompts, correct_ids, incorrect_ids, all_heads, mean_z)
-        log(f"    full_circuit_recovery={recovery:.3f}")
+        full_recovery = float(compute_faithfulness(
+            model, prompts, correct_ids, incorrect_ids, all_heads, mean_z))
+        log(f"    full_circuit: recovery={full_recovery:.3f}")
 
-        # Per-band recovery
-        band_scores = compute_per_band_recovery(
-            model, prompts, correct_ids, incorrect_ids, circuit, mean_z)
-        for band_name, score in band_scores.items():
-            log(f"    band '{band_name}': recovery={score:.3f}")
+        band_scores = {}
+        for band_name in bands:
+            band_h = get_band_heads(circuit, band_name)
+            if not band_h:
+                continue
+            band_faith = float(compute_faithfulness(
+                model, prompts, correct_ids, incorrect_ids, band_h, mean_z))
+            band_scores[band_name] = band_faith
+            log(f"    band '{band_name}' ({len(band_h)} heads): recovery={band_faith:.3f}")
 
-        recovery = float(recovery)
-        passed = bool(recovery > 0.3)
+        max_band = max(band_scores.values()) if band_scores else 0.0
+        superadditivity = full_recovery - max_band
 
-        log(f"    [{'PASS' if passed else 'FAIL'}]  recovery={recovery:.3f}  threshold=0.30")
+        passed = bool(superadditivity > 0.05 and full_recovery > 0.2)
 
-        # Ensure per_band_recovery values are plain floats
-        clean_band_scores = {k: float(v) for k, v in band_scores.items()}
+        log(f"    full={full_recovery:.3f}, max_band={max_band:.3f}, "
+            f"superadditivity={superadditivity:+.3f}")
+        log(f"    [{'PASS' if passed else 'FAIL'}]")
 
         results.append(EvalResult(
             metric_id="G4.compositional_sufficiency",
-            value=recovery,
+            value=float(superadditivity),
             n_samples=len(prompts),
             metadata={
                 "task": task,
-                "recovery": recovery,
+                "full_recovery": full_recovery,
+                "per_band_recovery": {k: float(v) for k, v in band_scores.items()},
+                "max_band_recovery": float(max_band),
+                "superadditivity": float(superadditivity),
                 "n_circuit_heads": len(all_heads),
                 "n_circuit_edges": len(all_edges),
-                "per_band_recovery": clean_band_scores,
+                "n_bands": len(bands),
                 "passed": passed,
-                "threshold": 0.3,
             },
         ))
 
@@ -165,16 +157,20 @@ def main():
     log("G4: COMPOSITIONAL SUFFICIENCY")
     log("=" * 60)
 
-    results = run_compositional_sufficiency(model, tasks, args.n_prompts)
-
     out = args.out or "85_compositional_sufficiency.json"
-    save_results(results, out)
+    jsonl_out = out.replace(".json", ".jsonl")
+    results = []
 
+    for task in tasks:
+        task_results = run_compositional_sufficiency(model, [task], args.n_prompts)
+        results.extend(task_results)
+        for r in task_results:
+            save_incremental(r, jsonl_out)
+            p = "PASS" if r.metadata["passed"] else "FAIL"
+            log(f"  {task}: superadditivity={r.value:+.3f}  [{p}]")
+
+    save_results(results, out)
     log(f"\nDone. {len(results)} tasks evaluated.")
-    for r in results:
-        t = r.metadata["task"]
-        p = "PASS" if r.metadata["passed"] else "FAIL"
-        log(f"  {t}: recovery={r.value:.3f}  [{p}]")
 
 
 if __name__ == "__main__":

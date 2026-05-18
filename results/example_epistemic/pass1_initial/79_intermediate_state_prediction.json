@@ -1,0 +1,45 @@
+[
+  {
+    "metric_id": "A4.intermediate_state_prediction",
+    "value": -0.1640347563279184,
+    "baseline_random": 0.06511883838964537,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "edge_results": {
+        "L6H5->L9H2": {
+          "rho": -0.20702682281828486,
+          "pval": 0.19992252372490865
+        },
+        "L6H5->L9H5": {
+          "rho": -0.06724593879863998,
+          "pval": 0.6801330141464649
+        },
+        "L6H5->L10H5": {
+          "rho": -0.31752927842840956,
+          "pval": 0.0458736504677277
+        },
+        "L9H2->L10H5": {
+          "rho": -0.24669437098602193,
+          "pval": 0.12488589738611679
+        },
+        "L9H5->L10H5": {
+          "rho": 0.018322629391764263,
+          "pval": 0.9106512259549164
+        }
+      },
+      "mean_pathway_rho": -0.1640347563279184,
+      "mean_baseline_rho": 0.06511883838964537,
+      "uplift": -0.22915359471756375,
+      "n_edges": 5,
+      "n_baseline_pairs": 23,
+      "passed": false,
+      "threshold_rho": 0.3,
+      "threshold_uplift": 0.15
+    }
+  }
+]

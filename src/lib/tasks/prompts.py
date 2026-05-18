@@ -51,6 +51,9 @@ TASK_REGISTRY: dict[str, TaskBuilder] = {
     "token_flood": token_flood_prompts,
     "buffalo": buffalo_prompts,
     "epistemic_framing": epistemic_framing_prompts,
+    "epistemic_expanded": epistemic_framing_prompts,
+    "epistemic_tight": epistemic_framing_prompts,
+    "epistemic_eap": epistemic_framing_prompts,
 }
 
 

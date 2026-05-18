@@ -1,0 +1,28 @@
+[
+  {
+    "metric_id": "A2.composition_test",
+    "value": -0.12466656257907816,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "full_circuit_faithfulness": -0.12466656257907816,
+      "per_pathway_faithfulness": {
+        "detector->integrator": -0.1284352000099176,
+        "integrator->executor": -0.146851443230876,
+        "detector->executor": -0.1382370763570244,
+        "detector->integrator->executor": -0.12466656257907816
+      },
+      "max_single_pathway_faithfulness": -0.12466656257907816,
+      "n_circuit_heads": 4,
+      "n_pathways": 4,
+      "passed": false,
+      "threshold_full": 0.3,
+      "threshold_pathway": 0.2
+    }
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "metric_id": "F3.replacement_constant",
+    "value": 0.9927919553960036,
+    "baseline_random": 1.0,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 4,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "per_head_recovery": {
+        "L6H5": 0.9995224738161947,
+        "L9H2": 0.9625880570182799,
+        "L9H5": 1.0097515672962292,
+        "L10H5": 0.9993057234533105
+      },
+      "replacement_type": "constant_mean_activation",
+      "n_circuit_heads": 4,
+      "interpretation": "recovery when replacing head with mean activation (1.0 = perfect, 0.0 = head is critical)"
+    }
+  },
+  {
+    "metric_id": "F3.replacement_linear_ov",
+    "value": 0.40963481160236803,
+    "baseline_random": 1.0,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 4,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "per_head_recovery": {
+        "L6H5": -0.029002973008278313,
+        "L9H2": 0.7502957039532573,
+        "L9H5": 0.35946081990191475,
+        "L10H5": 0.5577856955625783
+      },
+      "replacement_type": "linear_ov_no_attention",
+      "n_circuit_heads": 4,
+      "interpretation": "recovery when replacing head with resid_pre @ W_V (1.0 = attention pattern irrelevant)"
+    }
+  }
+]

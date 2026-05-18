@@ -1,0 +1,44 @@
+[
+  {
+    "metric_id": "R1.probe_decodability",
+    "value": 0.6666666666666667,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "n_circuit_heads": 4,
+      "circuit_layers": [
+        6,
+        9,
+        10
+      ],
+      "n_correct_predictions": 14,
+      "selectivity_threshold": 0.1,
+      "per_layer": {
+        "6": {
+          "task_accuracy": 1.0,
+          "control_accuracy": 0.3333333333333333,
+          "selectivity": 0.6666666666666667,
+          "pass": true
+        },
+        "9": {
+          "task_accuracy": 1.0,
+          "control_accuracy": 0.3333333333333333,
+          "selectivity": 0.6666666666666667,
+          "pass": true
+        },
+        "10": {
+          "task_accuracy": 1.0,
+          "control_accuracy": 0.3333333333333333,
+          "selectivity": 0.6666666666666667,
+          "pass": true
+        }
+      },
+      "any_layer_passes": true
+    }
+  }
+]

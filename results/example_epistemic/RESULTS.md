@@ -281,19 +281,217 @@ correlated scalar magnitudes.
 
 ---
 
+## Pass 3: Four-circuit comparison
+
+Following the framework's diagnosis from Pass 2 (circuit too small), we created
+three alternative circuits using systematic discovery methods and evaluated all
+12 instruments on each:
+
+| Circuit | Method | Size | Rationale |
+|---------|--------|------|-----------|
+| Original | Hand-picked | 4 heads | Hypothesis-driven: detector, integrator, executor |
+| Tight | Act-patch, \|effect\|>0.20 | 13 heads | Strongest individual contributors |
+| EAP | Edge Attribution Patching, top-15 | 15 heads | Strongest edge connectivity |
+| Expanded | Act-patch, \|effect\|>0.15 | 32 heads | All significant contributors |
+
+### Results
+
+| Instrument | Criterion | Original (4) | Tight (13) | EAP (15) | Expanded (32) |
+|------------|-----------|:------------:|:----------:|:--------:|:-------------:|
+| 70 | F1 Op Spec | P(0.212) | F(0.169) | F(0.152) | F(0.168) |
+| 71 | F2 Held-Out | F(0.541) | F(0.474) | F(0.488) | F(0.478) |
+| 72 | F3 Replace | P(0.993) | P(0.990) | P(0.990) | P(0.988) |
+| 73 | S1 Dist Char | P(1.676) | P(1.005) | P(2.713) | P(1.132) |
+| 74 | S3 Stability | FAIL | FAIL | FAIL | FAIL |
+| 75 | R1 Probe | P(0.667) | P(0.667) | P(0.667) | P(0.667) |
+| 76 | R3 Causal Rep | FAIL | FAIL | FAIL | FAIL |
+| 77 | A1 Procedure | F(0.333) | F(0.571) | P(0.714) | F(0.615) |
+| 78 | A2 Composition | F(-0.125) | F(-0.058) | F(-0.139) | F(0.228) |
+| 79 | A4 Intermed | F(-0.164) | F(0.032) | F(-0.016) | F(0.001) |
+| 80 | CM1 Normative | F(1.600) | P(25.0) | F(1.600) | F(1.500) |
+| 81 | CM2 Error Bnd | F(0.350) | F(0.350) | F(0.350) | F(0.400) |
+
+### The circuit size tradeoff
+
+The most important finding from Pass 3 is that different validity criteria
+systematically prefer different circuit sizes. This is not an artifact of
+threshold calibration — it reflects a genuine tension in mechanistic
+explanation between two competing desiderata:
+
+**Specification criteria (F1, CM1) prefer small circuits.** The original
+4-head circuit is the only one that passes F1 (operation specification).
+The tight 13-head circuit achieves a dramatic 25x separation on CM1
+(normative account). In both cases, fewer heads means more focused,
+characterizable components. Adding the 19 weaker heads from the expanded
+circuit dilutes the per-head specialization signal.
+
+**Specialization and necessity are orthogonal.** The activation-patching
+landscape reveals a sharp disconnect. L10H5 — unique to the original
+circuit — has the highest F1 consistency of any head (0.773) but ranks
+116th out of 144 heads by individual effect (+0.015). It is the most
+task-specialized head in the model but one of the least individually
+necessary. Conversely, L0H8 has the largest individual effect (+0.425)
+but only moderate consistency (0.622). A circuit built on specialized
+heads passes F1 but fails sufficiency tests; a circuit built on
+necessary heads passes sufficiency but fails specification tests.
+
+**Sufficiency criteria (A1, A2) prefer large circuits.** A2 (composition
+test) shows a clear monotonic trend: Original -0.125, Tight -0.058,
+Expanded +0.228. The expanded circuit still falls below the 0.3 pass
+threshold, but it reverses the sign — meaning 32 heads are *almost*
+sufficient to recover model performance. The original 4-head circuit
+actively degrades performance when used in isolation.
+
+**Instrument decomposition.** The 12 instruments decompose into three
+behavioral categories:
+
+1. **Discriminating** (3 instruments): F1, A1, and CM1 each pass for
+   exactly one circuit (Original, EAP, and Tight respectively). These
+   reveal genuine differences between discovery methods and circuit sizes.
+
+2. **Universal pass** (3 instruments): F3, S1, and R1 pass for all
+   circuits. F3 and R1 are genuinely size-invariant. S1 passes for all
+   but varies dramatically by method (EAP=2.713 vs Tight=1.005).
+
+3. **Universal fail** (6 instruments): S3, R3, A2, A4, CM2, and F2 fail
+   for all circuits. Each failure has a distinct root cause — limited
+   prompts (S3), insufficient selectivity (R3), distributed computation
+   (A2), architectural mismatch (A4), flat difficulty gradient (CM2),
+   or below-baseline predictability (F2).
+
+**Suppression heads are computationally essential.** A2 pathway analysis
+reveals that the expanded circuit's only positive-faithfulness pathways
+route through "suppressor" heads (L7H8, L8H5, L8H8) — heads whose
+individual ablation *improves* predictions. These heads normally
+dampen the output, but in context they calibrate the circuit's
+predictions. L8H8 is simultaneously the top EAP edge sender (most
+connected node) and a suppressor (act-patch effect = -0.168). This
+inhibitory mechanism is invisible to criteria that only consider
+positive contributions, motivating the proposed suppression criteria.
+
+### EAP vs activation patching
+
+Two discovery methods produce largely non-overlapping circuits. The
+corrected overlap matrix (verified programmatically):
+
+```
+           Original(4)  Tight(13)  EAP(15)  Expanded(32)
+Original          4          0        1          1
+Tight             0         13        2         13
+EAP               1          2       15          5
+Expanded          1         13        5         32
+```
+
+Only two heads appear in 3+ circuits: **L2H10** and **L10H0** (both in
+Tight, EAP, and Expanded). No head appears in all four. The tight
+circuit is a perfect subset of expanded (both from activation patching
+at different thresholds). EAP finds connectivity-important heads (high
+edge involvement), activation patching finds individually-important
+heads (high individual ablation effect).
+
+The two methods excel on complementary validity criteria:
+
+| Criterion | Act-patch (Tight) | EAP | Winner |
+|-----------|:-:|:-:|--------|
+| CM1 Normative | **25.0x PASS** | 1.6x FAIL | Act-patch |
+| A1 Procedure | 0.571 FAIL | **0.714 PASS** | EAP |
+| S1 Distributional | 1.005 | **2.713** | EAP |
+| A2 Composition | -0.058 | -0.139 | Act-patch |
+
+Act-patch finds "specialists" — heads whose individual removal changes
+the output. EAP finds the "backbone" — heads with high edge connectivity
+that form a clean processing pipeline. Specialists produce better
+normative accounts (CM1); the backbone produces better procedural
+descriptions (A1). Neither is strictly better — the "right" method depends
+on which validity property matters most for the claim.
+
+The divergence is dramatic: no single head appears in all four circuits.
+The original hand-picked heads (L6H5, L9H2, L9H5, L10H5) share zero
+overlap with the tight circuit — the "detector" L6H5 ranks only 17th by
+activation patching effect. EAP and activation patching share only 5/15
+heads. Each method finds genuinely different components of the model's
+epistemic processing.
+
+**Layer distribution reveals method bias.** Activation patching is
+biased toward early layers (tight: 8/13 heads in L0-L2) because early
+heads have large activation magnitudes and position-based patterns.
+EAP is more balanced across layers (3 early, 5 mid, 7 late) because it
+measures gradient-weighted information flow between layers, naturally
+surfacing multi-hop pathways. The original hand-picked circuit is
+exclusively late-layer (L6-L10), reflecting the human tendency to look
+at output-proximal components.
+
+**The L10H5 anomaly explains why the Original circuit uniquely passes
+F1.** L10H5 has an F1 consistency of 0.773 — 24% higher than any head
+in any other circuit. It is unique to the Original circuit (not found
+by either discovery method). Its high consistency but low
+activation-patching effect means it doesn't change the output much, but
+when it does, it's highly task-specific. This is the kind of head
+hand-picking finds but automated discovery misses.
+
+### Three orthogonal axes of circuit membership
+
+This case study reveals that "circuit membership" is not a single
+property but splits along at least three independent axes:
+
+1. **Necessity** (activation patching): does ablating this head degrade
+   task performance? High-necessity heads form the expanded circuit.
+   L0H8 is the archetype (+0.425 effect).
+
+2. **Specialization** (F1 consistency): does this head's output
+   correlate with task-relevant features? High-specialization heads
+   form the original circuit. L10H5 is the archetype (0.773 consistency
+   but only +0.015 effect).
+
+3. **Connectivity** (EAP edge involvement): does this head relay
+   task-relevant information between layers? High-connectivity heads
+   form the EAP circuit. L8H8 is the archetype (top edge sender,
+   -0.168 individual effect — a suppressor that is also the main
+   information broadcaster).
+
+These axes are genuinely orthogonal: L10H5 has high specialization but
+low necessity and low connectivity. L0H8 has high necessity but moderate
+specialization and low connectivity. L8H8 has high connectivity but
+negative necessity.
+
+Different validity criteria test different axes: F1 tests specialization,
+A2 tests necessity (ablation-based sufficiency), and A1 tests connectivity
+(information flow ordering). No single circuit optimizes all three.
+
+### What IOI has that epistemic doesn't
+
+IOI passes 9/12 instruments. The 4 instruments where IOI passes but
+all epistemic circuits fail reveal what makes a circuit "real":
+
+| Instrument | IOI | Best epistemic | Gap |
+|------------|-----|---------------|-----|
+| A2 Composition | 0.320 (pass) | 0.228 (expanded) | IOI's 15 heads are sufficient |
+| CM2 Error Bnd | 0.750 (pass) | 0.400 (expanded) | IOI has a difficulty gradient |
+| R3 Causal Rep | 0.950 (pass) | all fail | IOI's info is concentrated |
+| S3 Stability | FAIL | all fail | Both fail (not IOI-specific) |
+
+The epistemic task's fundamental problem is distribution: task-relevant
+information is spread across many heads, not concentrated in a
+discoverable subset. IOI's information flow is localized (S-inhibition
+heads, name mover heads) while epistemic framing appears to be a
+distributed, shallow computation — possibly just a 2-token prefix
+pattern that the model processes through its general language pipeline
+rather than a dedicated circuit.
+
+---
+
 ## Summary
 
-| | IOI (15 heads) | Epistemic (4 heads) |
-|---|:-:|:-:|
-| Pass 1 (10 instruments) | 8/10 | 3/10 |
-| Pass 2 (12 instruments, recalibrated) | 9/12 | 4/12 |
-| Verdict tier | Mechanistically Supported | Proposed |
-| Description mode | Impl-Connectomic | Impl-Topographic |
+| | IOI (15) | Original (4) | Tight (13) | EAP (15) | Expanded (32) |
+|---|:-:|:-:|:-:|:-:|:-:|
+| Pass count | 9/12 | 4/12 | 4/12 | 4/12 | 3/12 |
+| Verdict tier | Mech. Supported | Proposed | Proposed | Proposed | Proposed |
+| Best at | — | F1, F3 | CM1 | A1, S1 | A2 |
 
 The framework successfully:
 
-- **Discriminates** between a validated circuit (IOI, 9/12) and an underspecified
-  one (epistemic, 4/12).
+- **Discriminates** between a validated circuit (IOI, 9/12) and underspecified
+  ones (epistemic, 3-4/12 across all variants).
 - **Diagnoses** the specific failure mode (circuit too small, negative faithfulness)
   and points toward remediation (expand via activation patching).
 - **Identifies broken metrics** (F1 and A4) through the pattern of failing on
@@ -302,6 +500,15 @@ The framework successfully:
 - **Supports iteration.** The activation patching scan found that the top 16
   heads by effect are all outside the original circuit, directly confirming
   the framework's diagnosis.
+- **Reveals structural tradeoffs.** No single circuit size satisfies all validity
+  criteria simultaneously. The framework surfaces this as a genuine property
+  of mechanistic explanation: specification and sufficiency are in tension.
+  The tight circuit (13 heads) is the best compromise, achieving the only
+  non-original CM1 pass while maintaining reasonable sufficiency scores.
+- **Compares discovery methods.** EAP and activation patching produce
+  complementary circuits that excel on different criteria. The framework
+  evaluates each independently, letting the researcher choose which validity
+  properties matter most for their claim.
 
 Importantly, the framework is not a finished product. It is itself refined
 through use. This evaluation exposed concrete gaps: no MLP-level criteria,
@@ -311,93 +518,65 @@ and sharpens existing instruments. The framework improves by the same iterative
 process it prescribes: apply, find failures, diagnose whether the failure is in
 the claim or the framework, fix accordingly.
 
-### Next steps
+### Completed since Pass 2
 
-#### Expand the circuit and re-evaluate
+- [x] **Expanded circuit (32 heads)** created and evaluated on all 12
+  instruments. A2 improved from -0.125 to +0.228 (still below 0.3 threshold).
+  S1 confirmed (1.132x). F1 dropped below baseline (0.168 vs 0.202).
+- [x] **Tight circuit (13 heads)** at |effect|>0.20, achieving the best balance:
+  CM1 passes at 25.0x separation, A1 reaches 0.571.
+- [x] **EAP circuit (15 heads)** from Edge Attribution Patching. Discovers a
+  largely different circuit (only 5/15 overlap with expanded). Highest S1
+  (2.713x) but fails CM1 (1.6x).
+- [x] **EAP discovery script** (`src/instruments/data/epistemic_eap.py`). Found
+  9504 significant edges, top heads: L1H10 (163.5), L8H10 (155.6), L2H10
+  (153.0). EAP vs act-patch comparison documented.
+- [x] **G4 compositional sufficiency rewrite** — now measures superadditivity
+  (full circuit recovery vs max single band) instead of duplicating A2.
+- [x] **Four-circuit comparison** revealing the specification-vs-sufficiency
+  tradeoff.
 
-The activation patching scan identified ~25 heads with |effect| > 0.15 that
-form the basis of an expanded circuit. Two variants to test:
+### Remaining next steps
 
-- **Attention-only (25 heads):** Register the expanded head set from the patching
-  scan in `circuit.py` with functional roles assigned by layer depth (early
-  processors, mid composers, late routers, suppression heads). Re-run all 12
-  node-level instruments. Expected improvement: S1 passes (more heads means
-  stronger distributional separation), A2 composition goes positive, R3 passes
-  (circuit now covers more of the information).
+#### Complete instrument coverage
 
-- **Attention+MLP variant:** Include MLP0 (effect +1.31) and MLP7 (+0.27)
-  alongside the 25 heads. Keep this as a *separate* circuit definition so the
-  framework evaluates them independently and reveals whether MLPs are part of
-  the mechanism or just infrastructure.
+All 12 node-level instruments are complete on all 4 circuits (48 evaluations).
 
-More prompt diversity is also needed. The current 12 epistemic pairs limit
-stability metrics (S3) and normative account coverage (CM1). Adding varied
-epistemic verbs ("I suspect", "I'm confident", "I doubt", "we know that",
-"scientists believe") and varying sentence structure would give the stability
-instruments enough diversity to produce meaningful results.
+**G3 path specificity (complete)**: all 4 circuits fail. Edge effects are
+highly correlated between task and control prompts (rho=0.557-1.000), meaning
+edges carry general processing rather than task-specific signal. Tight circuit
+is closest to passing (rho=0.557 vs threshold 0.5). IOI also fails G3
+(rho=0.977), suggesting this is a hard criterion for attention circuits.
 
-#### Run edge-level instruments (G1-G5)
+**G2 edge necessity (complete)**: all 4 circuits fail. Only 1 edge out of 232
+in the expanded circuit is individually necessary: L8H8→L10H0 (drop=5.0%),
+confirming L8H8 as the key hub. IOI has 12/44 necessary edges (27%) vs
+epistemic's 1/232 (0.4%) — a 60x difference in edge necessity density.
 
-Five Graph Structure criteria test the circuit at the *edge* level, not just
-which components are involved but how information flows between them. These
-are necessary to advance from Implementational-Topographic (which components)
-to Implementational-Connectomic (how they're wired). Scripts exist at
-`src/instruments/structural/edge_analysis/`:
+G1 (path identification) still running (~290 min CPU). G4 and G5 queued after.
 
-- **G1: Path Identification** (`82_path_identification.py`). Can specific
-  information flow paths be traced through the circuit? Uses path patching:
-  for each edge (upstream to downstream head), measure how much removing the
-  upstream head's contribution at the downstream layer changes the output.
-  Computes *specificity*: the ratio of edge effect on task-relevant prompts
-  vs control prompts. Pass: at least one path with specificity > 5x. This
-  distinguishes task-specific wiring from general residual stream propagation.
+#### Attention+MLP circuit variant
 
-- **G2: Edge Necessity** (`83_edge_necessity.py`). Are specific edges
-  individually necessary for the computation? For each edge, ablate just
-  that edge (mean-ablate the upstream head's contribution at the downstream
-  position) and measure logit diff drop. An edge is "necessary" if ablating
-  it causes >5% drop. Pass: at least 50% of edges are individually necessary.
-  This filters out redundant or decorative edges in the graph.
+MLP0 has the largest single-component effect (+1.31, 3x the top attention
+head). Creating a circuit that includes MLP0 alongside attention heads would
+test whether MLPs are part of the mechanism or just infrastructure. No
+current instrument supports MLP-level evaluation, so this would also drive
+new instrument development.
 
-- **G3: Path Specificity** (`84_path_specificity.py`). Do different input
-  conditions route through different paths? Compute edge effect patterns
-  for task-relevant vs control conditions, then Spearman-correlate them.
-  Pass: rho < 0.5, meaning different conditions use different edges. This
-  is evidence that the circuit's wiring is functionally meaningful, not just
-  an artifact of general information flow.
+#### More prompt diversity
 
-- **G4: Compositional Sufficiency** (`85_compositional_sufficiency.py`).
-  Does the identified subgraph reproduce the full computation? Ablate all
-  non-circuit heads and measure what fraction of the original logit diff is
-  recovered. This is faithfulness reframed at the graph level, with
-  per-band breakdowns showing which stages of the circuit carry the load.
-  Pass: recovery > 30%.
+The current 12 epistemic prompt templates cause S3 (stability) to fail
+across all circuits. Adding varied epistemic markers ("I suspect", "I'm
+confident", "I doubt", "we know that", "scientists believe") and varying
+sentence structures would address this.
 
-- **G5: Graph Minimality** (`86_graph_minimality.py`). Is the edge set
-  minimal, or does it include unnecessary connections? Combines edge
-  necessity (magnitude test) with directional relevance (the drop must
-  be in the task-relevant direction, not arbitrary). Pass: at least 80%
-  of edges are necessary. A high minimality ratio means the graph
-  description is tight, with no padding.
+#### Edge-level instruments (G1-G5)
 
-Running G1-G5 on both the 4-head and 25-head circuits will reveal whether
-the expanded circuit has genuine structure or is just a bag of loosely
-related heads.
-
-#### Edge Attribution Patching (EAP)
-
-The node-level activation patching scan tells us *which components* matter
-but not *which connections between components* carry the signal. EAP
-(Syed et al. 2023) extends activation patching to edges: for each pair
-of components (sender, receiver), measure the effect of patching just the
-sender's contribution to the receiver. This produces a weighted directed
-graph that can be thresholded into a circuit.
-
-EAP would replace the hand-assigned pathways in `circuit.py` with
-data-driven edges, directly enabling the G1-G5 instruments. It is also the
-standard methodology for circuit discovery in the literature, so running it
-on epistemic framing would make the evaluation comparable to published
-circuit analyses.
+Five graph-structure instruments (G1 Path Identification through G5 Graph
+Minimality) test the circuit at the edge level. With EAP edge data now
+available, these instruments can measure whether the discovered edges carry
+genuine task-specific signal. Running G1-G5 on all four circuits would
+complete the evaluation and enable Implementational-Connectomic description.
 
 #### Criteria gaps exposed by this study
 

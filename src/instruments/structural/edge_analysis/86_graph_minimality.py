@@ -37,6 +37,7 @@ from _common import (
     log,
     logit_diff_from_logits,
     parse_common_args,
+    save_incremental,
     save_results,
 )
 
@@ -185,14 +186,20 @@ def main():
     log("G5: GRAPH MINIMALITY")
     log("=" * 60)
 
-    results = run_graph_minimality(model, tasks, args.n_prompts)
-
     out = args.out or "86_graph_minimality.json"
-    save_results(results, out)
+    jsonl_out = out.replace(".json", ".jsonl")
+    results = []
 
-    for r in results:
-        p = "PASS" if r.metadata["passed"] else "FAIL"
-        log(f"  {r.metadata['task']}: minimality={r.value:.2f}  [{p}]")
+    for task in tasks:
+        task_results = run_graph_minimality(model, [task], args.n_prompts)
+        results.extend(task_results)
+        for r in task_results:
+            save_incremental(r, jsonl_out)
+            p = "PASS" if r.metadata["passed"] else "FAIL"
+            log(f"  {task}: minimality={r.value:.2f}  [{p}]")
+
+    save_results(results, out)
+    log(f"\nDone. {len(results)} tasks evaluated.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,62 @@
+[
+  {
+    "metric_id": "CM1.normative_account",
+    "value": 1.6,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "activation_rate": 0.25,
+      "max_separation_ratio": 1.6,
+      "best_feature": "conjunctions",
+      "feature_analysis": {
+        "epistemic_verbs": {
+          "high_rate": 0.15,
+          "low_rate": 0.15,
+          "separation_ratio": 1.0
+        },
+        "modal_verbs": {
+          "high_rate": 0.3,
+          "low_rate": 0.35,
+          "separation_ratio": 0.8571428571428572
+        },
+        "hedging_words": {
+          "high_rate": 0.0,
+          "low_rate": 0.15,
+          "separation_ratio": 0.0
+        },
+        "quantifiers": {
+          "high_rate": 0.25,
+          "low_rate": 0.25,
+          "separation_ratio": 1.0
+        },
+        "conjunctions": {
+          "high_rate": 0.4,
+          "low_rate": 0.25,
+          "separation_ratio": 1.6
+        },
+        "negation": {
+          "high_rate": 0.15,
+          "low_rate": 0.1,
+          "separation_ratio": 1.4999999999999998
+        },
+        "pronouns": {
+          "high_rate": 0.5,
+          "low_rate": 0.45,
+          "separation_ratio": 1.1111111111111112
+        }
+      },
+      "n_circuit_heads": 4,
+      "median_activation": 26.780184507369995,
+      "p75_activation": 34.41078805923462,
+      "passed": false,
+      "threshold_separation": 2.0,
+      "threshold_rate_low": 0.05,
+      "threshold_rate_high": 0.5
+    }
+  }
+]

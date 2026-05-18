@@ -1,0 +1,70 @@
+[
+  {
+    "metric_id": "S1.distributional_characterization",
+    "value": 1.6764449631017921,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "n_circuit_heads": 4,
+      "n_non_circuit_heads": 140,
+      "circuit_head_stats": {
+        "L6H5": {
+          "mean": -0.5248492024838924,
+          "ci_low": -0.7845648513361811,
+          "ci_high": -0.26155044568702585,
+          "variance": 0.8019556076519618,
+          "std": 0.8955197416316191,
+          "skewness": 0.145103045215858,
+          "kurtosis": -1.7124246834633148,
+          "sparsity": 0.0
+        },
+        "L9H2": {
+          "mean": 2.705620211362839,
+          "ci_low": 2.228385574370623,
+          "ci_high": 3.191239252462983,
+          "variance": 2.5846147222248916,
+          "std": 1.6076736989280167,
+          "skewness": 0.34961121241021464,
+          "kurtosis": -1.4677668493165534,
+          "sparsity": 0.0
+        },
+        "L9H5": {
+          "mean": -2.4104205280542375,
+          "ci_low": -3.4851935164630414,
+          "ci_high": -1.3629071086645128,
+          "variance": 11.547927773404027,
+          "std": 3.398224208819075,
+          "skewness": 0.022604568507065992,
+          "kurtosis": -0.23542760476689661,
+          "sparsity": 0.0
+        },
+        "L10H5": {
+          "mean": 0.7401594370603561,
+          "ci_low": 0.36632433086633687,
+          "ci_high": 1.1920764097198842,
+          "variance": 1.9379376462317977,
+          "std": 1.3920982889982294,
+          "skewness": 2.880516656750274,
+          "kurtosis": 6.142137348160775,
+          "sparsity": 0.0
+        }
+      },
+      "circuit_mean_magnitude": 1.5952623447403314,
+      "non_circuit_mean_magnitude": 0.9515745400843609,
+      "circuit_mean_variance": 4.21810893737817,
+      "non_circuit_mean_variance": 3.796855795156631,
+      "effective_ranks": {
+        "L9H5": 8.657882302036198,
+        "L10H5": 3.7549054147537015,
+        "L9H2": 9.524303089748624,
+        "L6H5": 7.617217969717022
+      },
+      "mean_effective_rank": 7.3885771940638865
+    }
+  }
+]
