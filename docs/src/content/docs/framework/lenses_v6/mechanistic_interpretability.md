@@ -33,17 +33,13 @@ In MI: a maximally faithful circuit you cannot interpret is an honest mystery �
 
 In MI: the slide from identity to role happens in one sentence in most papers and is a common overclaim. A head identified by activation patching receives a functional label ("name-mover," "induction head," "inhibition head") that implies a richer mechanistic story than the patching result establishes. The label is a hypothesis about role, not a conclusion from identity. Testing the label requires additional evidence: does the W_OV structure match? Does the head perform this function and not others? Would a different head with the same structural properties also earn the label?
 
-### Activation evidence vs weight evidence
-
-"We observed this during inference" and "this is structurally encoded in the weights" are different epistemic types that are often treated interchangeably. Activation-based evidence is dynamic and context-dependent — it tells you what happens on specific inputs. Weight-based evidence is static and context-free — it tells you what is structurally possible regardless of input.
-
-In MI: activations and weights can disagree. Weights may encode capabilities the model never uses in practice — structural potential that is never activated on naturalistic inputs. Activations may show computations that are not legible from weight inspection alone — distributed or superposed representations that no single weight matrix reveals. A claim supported by both activation and weight evidence is qualitatively stronger than one supported by either alone, because the two evidence types are sensitive to different failure modes. Activation-only claims miss structural context; weight-only claims miss dynamic behavior.
-
 ## Analytical Constructs
 
 MI's analytical toolkit consists of three complementary constructs, each probing a different validity dimension.
 
 ### The evidence convergence map
+
+Marr (1982) proposed three levels of analysis for information-processing systems, originally in the context of computational neuroscience and vision research. This framework adapts these levels to MI, where the same tendency to conflate levels of description appears in circuit claims.
 
 A triangular diagram with three vertices — Computational, Algorithmic, Implementational (Marr's three levels) — and arrows from each pointing toward a central interpretation node. For each circuit claim, color the arrows: green (evidence exists and converges), red (evidence contradicts), gray (not yet tested).
 
@@ -111,7 +107,7 @@ A random-initialization model should produce an empty graph (no solid edges). If
 | [Wang et al.](https://arxiv.org/abs/2211.00593) | 2022 | **Circuit non-uniqueness** — activation patching returns "a" circuit, not "the" circuit; the circuit is relative to the procedure, the prompt distribution, and the ablation method |
 | [Conmy et al.](https://arxiv.org/abs/2304.14997) | NeurIPS 2023 | **Automated circuit discovery** — ACDC and EAP find circuits by a specific procedure; different procedures find different but comparably faithful circuits |
 
-## Validity type: [Interpretive validity](/framework/validity-types/interpretive)
+## Validity type: [Interpretive validity](/framework/validity-types_v4/interpretive)
 
 > **Level assignment:** For a claim $\mathcal{C}$, define $L(\mathcal{C}) \in \{I, A, C\}$ where $I$ = implementational (names components, weights, or activations), $A$ = algorithmic (names a procedure), $C$ = computational (names a problem and asserts a solution). Interpretive validity requires $L(\mathcal{E}) \geq L(\mathcal{C})$: evidence at a lower level does not license a claim at a higher level.
 

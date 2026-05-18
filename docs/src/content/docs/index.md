@@ -9,6 +9,10 @@ Mechanistic Validity is a framework for evaluating claims about circuits in neur
 
 The framework does not introduce new measurement methods. It organizes existing methods — ablation, activation patching, IIA, causal scrubbing, weight analysis, baseline calibration — under a common evaluative vocabulary drawn from the standard typology of validity in philosophy of science and adapted to the conditions of mechanistic interpretability.
 
+<p align="center">
+  <img src="/mechanistic-validity/figures/readme-v2/pipeline-matplotlib9.png" alt="Mechanistic Validity Pipeline" width="800"/>
+</p>
+
 ## What the framework is for
 
 The framework applies to claims of the form *component C implements computation T in model M*. Such claims are made routinely in circuit-discovery papers and are typically supported by a small number of instruments — most often activation patching plus one form of ablation. The framework specifies what additional evidence is required for the claim to be considered validated under each of five named dimensions, and what verdict is licensed when only a subset of that evidence is present.
@@ -19,15 +23,15 @@ The framework's central commitment is that a single high score does not validate
 
 The framework has two layers. The upper layer is the five **validity types** — construct, internal, external, measurement, interpretive. These are the abstract questions a claim must answer. The lower layer is the five **lenses** — Philosophy of Science, Neuroscience, Pharmacology, Measurement Theory, Mechanistic Interpretability. These are the operational toolkits, one per validity type, that translate the abstract question into criteria, instruments, and reporting rules.
 
-| Validity type | Lens | What the lens provides |
+| Lens | Validity type | What the lens provides |
 |---|---|---|
-| Construct | Philosophy of Science | Falsifiability, structural plausibility, task specificity, minimality, convergent validity |
-| Internal | Neuroscience | Necessity, sufficiency, specificity, consistency |
-| External | Pharmacology | Intervention reach, graded response, selectivity, effect magnitude, robustness, cross-architecture generalization |
-| Measurement | Measurement Theory | Reliability, invariance, baseline separation, sensitivity, calibration, construct coverage |
-| Interpretive | Mechanistic Interpretability | Level declaration, level-evidence match, narrative coherence, alternative exclusion, scope honesty |
+| [Philosophy of Science](/mechanistic-validity/framework/lenses_v6/philosophy_of_science/) | [Construct](/mechanistic-validity/framework/validity-types_v4/construct/) | Falsifiability, structural plausibility, task specificity, minimality, convergent validity |
+| [Neuroscience](/mechanistic-validity/framework/lenses_v6/neuroscience/) | [Internal](/mechanistic-validity/framework/validity-types_v4/internal/) | Necessity, sufficiency, specificity, consistency |
+| [Pharmacology](/mechanistic-validity/framework/lenses_v6/pharmacology/) | [External](/mechanistic-validity/framework/validity-types_v4/external/) | Intervention reach, graded response, selectivity, effect magnitude, robustness, cross-architecture generalization |
+| [Measurement Theory](/mechanistic-validity/framework/lenses_v6/measurement-theory/) | [Measurement](/mechanistic-validity/framework/validity-types_v4/measurement/) | Reliability, invariance, baseline separation, sensitivity, calibration, construct coverage |
+| [Mechanistic Interpretability](/mechanistic-validity/framework/lenses_v6/mechanistic_interpretability/) | [Interpretive](/mechanistic-validity/framework/validity-types_v4/interpretive/) | Level declaration, level-evidence match, narrative coherence, alternative exclusion, scope honesty |
 
-The validity-type pages explain what each type asks of a claim and where current MI practice falls short. The lens pages give the operational criteria, the instruments that produce evidence for each criterion, the failure modes that appear in practice, and a minimum reporting protocol.
+The lens pages are the recommended starting point — they give the operational criteria, the instruments that produce evidence for each criterion, the failure modes that appear in practice, and a minimum reporting protocol.
 
 ## What the framework is not
 

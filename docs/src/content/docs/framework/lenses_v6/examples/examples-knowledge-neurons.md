@@ -175,7 +175,7 @@ The one filled convergent cell (causal tracing vs. ROME success) is high by desi
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is [implementational](/framework/modes/implementational) — it names where facts are stored and how they can be modified.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is [implementational](/framework/modes_v3/implementational) — it names where facts are stored and how they can be modified.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Partial.** The evidence (causal tracing) is at the causal/behavioral level. The claim (facts are *stored* in MLPs) is a structural/implementational assertion. There is a gap — causal importance does not establish storage.
 

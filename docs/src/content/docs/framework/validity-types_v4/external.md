@@ -8,14 +8,14 @@ description: "Does the effect generalize beyond the specific conditions of disco
 | | |
 |---|---|
 | Question | Does the claim generalize beyond the conditions in which it was tested? |
-| Lens | [Pharmacology](/framework/lenses_v1/pharmacology) |
+| Lens | [Pharmacology](/framework/lenses_v6/pharmacology) |
 | Criteria | E1–E6 |
 | Dependency | External validity converts an internally valid result into a property of the model rather than a property of the experiment |
 | Status in MI | Improving with recent benchmarks; still routinely overstated |
 
 External validity asks whether the claim made on the conditions tested generalizes to other prompt distributions, other model sizes, other model families, and other intervention strengths. A result that passes all internal-validity tests on one prompt distribution at one intervention strength is a *local result*. External validity is what makes it a *finding*.
 
-The [Pharmacology lens](/framework/lenses_v1/pharmacology) operationalizes external validity because pharmacology has developed the most rigorous standards for exactly this set of questions: dose-response curves, therapeutic windows, selectivity ratios, and cross-population generalization. The MI analogs map cleanly onto this framework.
+The [Pharmacology lens](/framework/lenses_v6/pharmacology) operationalizes external validity because pharmacology has developed the most rigorous standards for exactly this set of questions: dose-response curves, therapeutic windows, selectivity ratios, and cross-population generalization. The MI analogs map cleanly onto this framework.
 
 ## Why external validity is distinct from internal consistency
 

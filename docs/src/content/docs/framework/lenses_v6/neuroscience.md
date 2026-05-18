@@ -74,7 +74,7 @@ A perfect diagonal matrix (each circuit affects only its own task) is the ideali
 | [Gallego et al., "Neural manifolds for the control of movement"](https://doi.org/10.1016/j.neuron.2017.05.025) | 2017 | Neuroscience | **Neural manifolds** — population-level patterns (neural modes), not individual neurons, are the computational units; the right level of analysis determines what you can discover |
 | [Miller, Chughtai & Saunders, "Transformers are uninterpretable with myopic methods"](https://arxiv.org/abs/2407.08734) | 2024 | Mechanistic Interpretability | **Faithfulness as joint property** — faithfulness is a function of circuit × ablation method; ablation type is part of the claim |
 
-## Validity type: [Internal validity](/framework/validity-types/internal)
+## Validity type: [Internal validity](/framework/validity-types_v4/internal)
 
 > **Constitutive relevance ([Craver 2007](https://doi.org/10.1093/acprof:oso/9780199299317.001.0001)):** A component is constitutively relevant to a mechanism if and only if intervening on the component changes the behavior, *and* intervening on the behavior changes the component's activity. This is strictly stronger than mere causal relevance.
 

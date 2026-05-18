@@ -49,11 +49,11 @@ The dependency order does not mean that work on any single type must wait for th
 
 Each validity type has a dedicated casebook that translates the type's abstract requirements into operational criteria, instruments, and reporting rules.
 
-- *Construct validity* is operationalized by the [Philosophy of Science Casebook](../lenses_v1/philosophy_of_science.md), which provides falsifiability, structural plausibility, task specificity, minimality, and convergent validity criteria.
+- *Construct validity* is operationalized by the [Philosophy of Science Casebook](../lenses_v6/philosophy_of_science), which provides falsifiability, structural plausibility, task specificity, minimality, and convergent validity criteria.
 - *Measurement validity* is operationalized by the [Measurement Theory Casebook](../lenses_v6/measurement-theory), which provides reliability, invariance, baseline separation, sensitivity, calibration, and construct coverage criteria.
-- *Internal validity* is operationalized by the [Neuroscience Casebook](../lenses_v1/neuroscience.md), which provides necessity, sufficiency, specificity, consistency, and confound-control criteria.
-- *External validity* is operationalized by the [Pharmacology Casebook](../lenses_v1/pharmacology.md), which provides intervention reach, graded response, selectivity, effect magnitude, robustness, and cross-architecture generalization criteria.
-- *Interpretive validity* is operationalized by the [Mechanistic Interpretability Casebook](../lenses_v1/known-interpretive-failures.md), which provides level declaration, level-evidence match, narrative coherence, alternative exclusion, and scope honesty criteria.
+- *Internal validity* is operationalized by the [Neuroscience Casebook](../lenses_v6/neuroscience), which provides necessity, sufficiency, specificity, consistency, and confound-control criteria.
+- *External validity* is operationalized by the [Pharmacology Casebook](../lenses_v6/pharmacology), which provides intervention reach, graded response, selectivity, effect magnitude, robustness, and cross-architecture generalization criteria.
+- *Interpretive validity* is operationalized by the [Mechanistic Interpretability Casebook](../lenses_v6/mechanistic_interpretability), which provides level declaration, level-evidence match, narrative coherence, alternative exclusion, and scope honesty criteria.
 
 ## How validity types connect to verdicts
 

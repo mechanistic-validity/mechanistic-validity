@@ -207,7 +207,7 @@ Entirely empty. Standard probing does not produce MTMM data because it uses one 
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** Probing makes a [representational](/framework/modes/representational) claim — the model encodes a concept.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** Probing makes a [representational](/framework/modes_v3/representational) claim — the model encodes a concept.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Partial.** Probing provides representational evidence (the concept is decodable). But "decodable" does not equal "encoded." The model may not *use* this information — it could be a byproduct of other computations. The evidence is necessary but not sufficient for the representational claim.
 

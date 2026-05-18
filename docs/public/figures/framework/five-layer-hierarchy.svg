@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="700" height="500" fill="none"/>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 3 L 0 6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Direction labels -->
+  <text x="30" y="75" fill="#64748b" font-size="11" font-weight="500" text-anchor="middle">Evaluate</text>
+  <line x1="30" y1="85" x2="30" y2="400" stroke="#64748b" stroke-width="1.2"/>
+  <polygon points="26,397 30,407 34,397" fill="#64748b"/>
+
+  <text x="670" y="75" fill="#64748b" font-size="11" font-weight="500" text-anchor="middle">Build</text>
+  <line x1="670" y1="400" x2="670" y2="85" stroke="#64748b" stroke-width="1.2"/>
+  <polygon points="666,88 670,78 674,88" fill="#64748b"/>
+
+  <!-- Arrows between layers -->
+  <line x1="350" y1="410" x2="350" y2="380" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="350" y1="320" x2="350" y2="290" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="350" y1="230" x2="350" y2="200" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="350" y1="140" x2="350" y2="110" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Layer E: Verdict -->
+  <rect x="130" y="50" width="440" height="55" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="160" y="73" font-size="10" fill="#7c3aed" font-weight="600" letter-spacing="1.5">LAYER E</text>
+  <text x="245" y="73" font-size="13" fill="#1e293b" font-weight="600">Verdict</text>
+  <text x="160" y="92" font-size="11" fill="#64748b">7 verdict tiers and 7 description modes, stated with explicit scope</text>
+
+  <!-- Layer D: Validity Types -->
+  <rect x="130" y="140" width="440" height="55" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="160" y="163" font-size="10" fill="#2563eb" font-weight="600" letter-spacing="1.5">LAYER D</text>
+  <text x="245" y="163" font-size="13" fill="#1e293b" font-weight="600">Validity Types</text>
+  <text x="160" y="182" font-size="11" fill="#64748b">5 abstract questions a claim must answer</text>
+
+  <!-- Layer C: Criteria -->
+  <rect x="130" y="230" width="440" height="55" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="160" y="253" font-size="10" fill="#16a34a" font-weight="600" letter-spacing="1.5">LAYER C</text>
+  <text x="245" y="253" font-size="13" fill="#1e293b" font-weight="600">Criteria</text>
+  <text x="160" y="272" font-size="11" fill="#64748b">27 specific conditions, each with a minimum reporting rule</text>
+
+  <!-- Layer B: Evidence Families -->
+  <rect x="130" y="320" width="440" height="55" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="160" y="343" font-size="10" fill="#d97706" font-weight="600" letter-spacing="1.5">LAYER B</text>
+  <text x="245" y="343" font-size="13" fill="#1e293b" font-weight="600">Evidence Families</text>
+  <text x="160" y="362" font-size="11" fill="#64748b">6 categories of measurement, each with different failure modes</text>
+
+  <!-- Layer A: Instruments -->
+  <rect x="130" y="410" width="440" height="68" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="160" y="433" font-size="10" fill="#dc2626" font-weight="600" letter-spacing="1.5">LAYER A</text>
+  <text x="245" y="433" font-size="13" fill="#1e293b" font-weight="600">Instruments</text>
+  <text x="160" y="452" font-size="11" fill="#64748b">58 measurement procedures from causal inference, linear algebra,</text>
+  <text x="160" y="466" font-size="11" fill="#64748b">information theory, and behavioral testing</text>
+
+  <!-- Bottom caption -->
+  <text x="350" y="490" text-anchor="middle" font-size="11" fill="#94a3b8" font-style="italic">Evidence tells us what we measured; validity tells us what we can conclude.</text>
+</svg>

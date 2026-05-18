@@ -7,7 +7,7 @@ description: "The Othello-GPT world model (Li et al. 2023) evaluated through all
 
 [Li et al. (2023)](https://arxiv.org/abs/2210.13382) train a GPT on Othello game transcripts and claim the model develops an internal **world model** — a linear representation of the board state that tracks which squares are occupied by black, white, or empty. The claim is that the model does not merely memorize move sequences but represents the underlying game state, and that this representation is causally used during move prediction.
 
-This is a [representational](/framework/modes/representational)-level claim with algorithmic implications: it asserts not just that board state information is present in activations but that the model constructs and uses a world model for prediction.
+This is a [representational](/framework/modes_v3/representational)-level claim with algorithmic implications: it asserts not just that board state information is present in activations but that the model constructs and uses a world model for prediction.
 
 ## Composite Verdict
 
@@ -178,7 +178,7 @@ One convergent cell partially filled (probing and patching partially agree on bo
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [representational](/framework/modes/representational) level — it asserts that the model encodes board state as a linear representation in activation space.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [representational](/framework/modes_v3/representational) level — it asserts that the model encodes board state as a linear representation in activation space.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Pass.** Representational evidence (linear probing) supports a representational claim. The causal intervention adds algorithmic-level evidence. The evidence matches or exceeds the claim level.
 

@@ -5,7 +5,7 @@ description: "Sparse autoencoder features (Bricken et al. 2023, Templeton et al.
 
 # Case Study: SAE Features
 
-Sparse autoencoder features ([Bricken et al. 2023](https://transformer-circuits.pub/2023/monosemantic-features/index.html), [Templeton et al. 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html)) are directions in activation space extracted by training an overcomplete dictionary. Each feature is given a label — "Golden Gate Bridge," "deception," "code syntax" — based on the inputs that maximally activate it. The claim is that these features are real computational units: [representational](/framework/modes/representational)-level entities that the model uses during inference.
+Sparse autoencoder features ([Bricken et al. 2023](https://transformer-circuits.pub/2023/monosemantic-features/index.html), [Templeton et al. 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html)) are directions in activation space extracted by training an overcomplete dictionary. Each feature is given a label — "Golden Gate Bridge," "deception," "code syntax" — based on the inputs that maximally activate it. The claim is that these features are real computational units: [representational](/framework/modes_v3/representational)-level entities that the model uses during inference.
 
 This case study evaluates SAE features *as a class*. Individual strong features (those that replicate and steer) score higher; the bulk of the dictionary scores lower. The evaluations below reflect the typical case.
 
@@ -214,7 +214,7 @@ The only filled cell (cross-seed SAE comparison) shows low-moderate agreement fo
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [representational](/framework/modes/representational) level — features are directions in activation space that encode information about inputs.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [representational](/framework/modes_v3/representational) level — features are directions in activation space that encode information about inputs.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Weak.** The primary evidence for feature identity is behavioral (max-activating examples, steering). But the claim is representational — it asserts that the model *encodes* this information, not just that manipulating the direction changes behavior. Behavioral evidence (steering) underdetermines representational claims: a direction can produce deceptive outputs when steered without being "the deception representation."
 

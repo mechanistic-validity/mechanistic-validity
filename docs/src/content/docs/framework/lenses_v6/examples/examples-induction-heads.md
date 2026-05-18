@@ -172,7 +172,7 @@ The convergent diagonal (two methods, same construct) shows high agreement. The 
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [algorithmic](/framework/modes/algorithmic) level — it names a two-step computation (attend to token after previous occurrence → copy to output) and identifies the components that implement it.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [algorithmic](/framework/modes_v3/algorithmic) level — it names a two-step computation (attend to token after previous occurrence → copy to output) and identifies the components that implement it.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Pass.** The evidence includes behavioral effects (ablation), structural signatures ($W_{OV}$, $W_{QK}$), and compositional analysis (path patching). This multi-modal evidence supports an algorithmic-level claim.
 

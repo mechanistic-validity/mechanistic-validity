@@ -161,13 +161,13 @@
       "title": "Criteria"
     }
   ],
-  "/framework/00_taxonomy/": [
+  "/framework/taxonomy/": [
     {
       "slug": "/framework/criteria/",
       "title": "Criteria"
     }
   ],
-  "/framework/criteria/00_taxonomy/": [
+  "/framework/criteria/taxonomy/": [
     {
       "slug": "/framework/criteria/interpretive/level-declaration/",
       "title": "Level Declaration"
@@ -1933,7 +1933,7 @@
       "title": "Interpretive Validity"
     }
   ],
-  "/framework/modes/structural/": [
+  "/framework/modes_v3/structural/": [
     {
       "slug": "/framework/lenses_v6/examples/examples-greater-than/",
       "title": "Case Study: Greater-Than Circuit"
@@ -1943,7 +1943,7 @@
       "title": "Case Study: Grokking / Modular Addition"
     }
   ],
-  "/framework/modes/algorithmic/": [
+  "/framework/modes_v3/algorithmic/": [
     {
       "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
       "title": "Case Study: Induction Heads"
@@ -1953,13 +1953,13 @@
       "title": "Case Study: IOI Circuit"
     }
   ],
-  "/framework/modes/implementational/": [
+  "/framework/modes_v3/implementational/": [
     {
       "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
       "title": "Case Study: Knowledge Neurons / ROME"
     }
   ],
-  "/framework/modes/representational/": [
+  "/framework/modes_v3/representational/": [
     {
       "slug": "/framework/lenses_v6/examples/examples-othello/",
       "title": "Case Study: Othello World Model"
@@ -1983,6 +1983,10 @@
       "title": "Case Studies"
     },
     {
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
       "slug": "/framework/lenses_v6/neuroscience/",
       "title": "Neuroscience"
     },
@@ -1993,10 +1997,6 @@
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
       "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
     }
   ],
   "/framework/lenses_v6/examples/examples-superposition/": [
@@ -2011,6 +2011,10 @@
       "title": "Case Studies"
     },
     {
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
       "slug": "/framework/lenses_v6/mechanistic_interpretability/",
       "title": "Mechanistic Interpretability"
     },
@@ -2025,10 +2029,6 @@
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
       "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
     }
   ],
   "/framework/lenses_v6/examples/examples-ioi/": [
@@ -2037,6 +2037,10 @@
       "title": "Case Studies"
     },
     {
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
       "slug": "/framework/lenses_v6/mechanistic_interpretability/",
       "title": "Mechanistic Interpretability"
     },
@@ -2051,10 +2055,6 @@
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
       "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
     }
   ],
   "/framework/lenses_v6/examples/examples-greater-than/": [
@@ -2133,18 +2133,22 @@
       "title": "Case Studies"
     },
     {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
     },
     {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
+      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
+      "title": "Mechanistic Interpretability"
     }
   ],
   "/framework/lenses_v6/examples/examples-sae-features/": [
     {
       "slug": "/framework/lenses_v6/examples/",
       "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
     },
     {
       "slug": "/framework/lenses_v6/mechanistic_interpretability/",
@@ -2157,10 +2161,6 @@
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
       "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
     }
   ],
   "/framework/lenses_v6/examples/examples-probing/": [
@@ -2169,12 +2169,12 @@
       "title": "Case Studies"
     },
     {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
     },
     {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
+      "slug": "/framework/lenses_v6/neuroscience/",
+      "title": "Neuroscience"
     }
   ],
   "/framework/lenses_v6/examples/examples-gender-bias/": [
@@ -2191,20 +2191,54 @@
       "title": "Philosophy of Science"
     }
   ],
-  "/framework/validity-types/interpretive/": [
+  "/framework/validity-types_v4/measurement/": [
     {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/validity-types_v4/internal/",
+      "title": "Internal Validity"
     },
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
     }
   ],
-  "/framework/validity-types/internal/": [
+  "/figures/signal_detection_minimal.svg/": [
+    {
+      "slug": "/framework/lenses_v6/measurement-theory/",
+      "title": "Measurement Theory"
+    }
+  ],
+  "/framework/validity-types_v4/interpretive/": [
+    {
+      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/validity-types_v4/internal/",
+      "title": "Internal Validity"
+    },
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/figures/marr_levels.svg/": [
+    {
+      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
+      "title": "Mechanistic Interpretability"
+    }
+  ],
+  "/framework/validity-types_v4/internal/": [
     {
       "slug": "/framework/lenses_v6/neuroscience/",
       "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses_v6/pharmacology/",
+      "title": "Pharmacology"
     },
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
@@ -2239,38 +2273,40 @@
     {
       "slug": "/framework/validity-types_v4/internal/",
       "title": "Internal Validity"
-    }
-  ],
-  "/framework/validity-types_v4/internal/": [
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    }
-  ],
-  "/framework/validity-types/external/": [
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
     },
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
     }
   ],
-  "/framework/validity-types/construct/": [
+  "/figures/selectivity_index_minimal.svg/": [
+    {
+      "slug": "/framework/lenses_v6/pharmacology/",
+      "title": "Pharmacology"
+    }
+  ],
+  "/framework/validity-types_v4/construct/": [
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
       "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/validity-types_v4/internal/",
+      "title": "Internal Validity"
     },
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
     }
   ],
-  "/framework/modes/": [
+  "/framework/modes_v3/": [
     {
       "slug": "/framework/lenses_v6/philosophy_of_science/",
       "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/verdicts_v3/",
+      "title": "Verdicts"
     }
   ],
   "/framework/validity-types_v2/construct_v3/": [
@@ -2285,83 +2321,7 @@
       "title": "Philosophy of Science"
     }
   ],
-  "/framework/validity-types/measurement/": [
-    {
-      "slug": "/framework/lenses_v6/psychometrics/",
-      "title": "Psychometrics"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/framework/01_modes/A_computational/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/B_algorithmic/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/C_representational/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/D_implementational/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/E_architectural/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/F_structural/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/G_transportable/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/01_modes/H_marr-comparison/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/taxonomy/B_dependency-order/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/taxonomy/C_verdict-anatomy/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/taxonomy/D_design-principles/": [
-    {
-      "slug": "/framework/taxonomy/",
-      "title": "Taxonomy"
-    }
-  ],
-  "/framework/lenses_v1/philosophy_of_science/": [
+  "/framework/lenses_v6/philosophy_of_science/": [
     {
       "slug": "/framework/validity-types_v4/construct/",
       "title": "Construct Validity"
@@ -2381,7 +2341,7 @@
       "title": "Construct Validity"
     }
   ],
-  "/framework/lenses_v1/pharmacology/": [
+  "/framework/lenses_v6/pharmacology/": [
     {
       "slug": "/framework/validity-types_v4/external/",
       "title": "External Validity"
@@ -2395,7 +2355,7 @@
       "title": "Reading This Site"
     }
   ],
-  "/framework/lenses_v1/psychometrics/": [
+  "/framework/lenses_v6/measurement-theory/": [
     {
       "slug": "/framework/validity-types_v4/",
       "title": "The Five Validity Types"
@@ -2409,7 +2369,7 @@
       "title": "Reading This Site"
     }
   ],
-  "/framework/lenses_v1/neuroscience/": [
+  "/framework/lenses_v6/neuroscience/": [
     {
       "slug": "/framework/validity-types_v4/",
       "title": "The Five Validity Types"
@@ -2423,7 +2383,7 @@
       "title": "Reading This Site"
     }
   ],
-  "/framework/lenses_v1/known-interpretive-failures/": [
+  "/framework/lenses_v6/mechanistic_interpretability/": [
     {
       "slug": "/framework/validity-types_v4/",
       "title": "The Five Validity Types"
@@ -2435,30 +2395,6 @@
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
-    }
-  ],
-  "/framework/validity-types_v4/measurement/": [
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/validity-types_v4/construct/": [
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/validity-types_v4/interpretive/": [
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/modes_v3/": [
-    {
-      "slug": "/framework/verdicts_v3/",
-      "title": "Verdicts"
     }
   ],
   "/how-to/A_audit-a-claim/": [
@@ -2507,6 +2443,66 @@
       "title": "Run a Convergence Check"
     }
   ],
+  "/mechanistic-validity/framework/lenses_v6/philosophy_of_science/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/validity-types_v4/construct/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/lenses_v6/neuroscience/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/validity-types_v4/internal/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/lenses_v6/pharmacology/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/validity-types_v4/external/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/lenses_v6/measurement-theory/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/validity-types_v4/measurement/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/lenses_v6/mechanistic_interpretability/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
+  "/mechanistic-validity/framework/validity-types_v4/interpretive/": [
+    {
+      "slug": "/index/",
+      "title": "Overview"
+    }
+  ],
   "/start/reading-this-site/": [
     {
       "slug": "/index/",
@@ -2523,13 +2519,13 @@
       "title": "Reading This Site"
     }
   ],
-  "/framework/validity-types/": [
+  "/framework/validity-types_v4/": [
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
     }
   ],
-  "/framework/lenses_v1/": [
+  "/framework/lenses_v6/": [
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
@@ -2539,18 +2535,6 @@
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
-    }
-  ],
-  "/assets/my-diagram.png/": [
-    {
-      "slug": "/style-examples/",
-      "title": "Style Examples"
-    }
-  ],
-  "/style-examples/page-name/": [
-    {
-      "slug": "/style-examples/",
-      "title": "Style Examples"
     }
   ]
 }

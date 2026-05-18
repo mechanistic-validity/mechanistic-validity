@@ -70,7 +70,7 @@ To construct the curve: sweep α from 0 to 1 in increments (e.g., 0.05), measuri
 | [Rang, "The receptor concept: pharmacology's big idea"](https://doi.org/10.1038/nrd2009) | 2006 | Pharmacology | **Target classification criteria** — naming a new drug target requires standardized evidence (selective ligand, functional assay, genetic validation); naming without criteria is labeling without content |
 | [Miller, Chughtai & Saunders, "Transformers are uninterpretable with myopic methods"](https://arxiv.org/abs/2407.08734) | 2024 | Mechanistic Interpretability | **Faithfulness as a joint property** — circuit faithfulness is a function of circuit $\times$ ablation method; absolute magnitude must be reported with the method named |
 
-## Validity type: [External validity](/framework/validity-types/external)
+## Validity type: [External validity](/framework/validity-types_v4/external)
 
 > **The Hill equation:** $E = E_{\max} \cdot C^n / (C^n + \text{EC}_{50}^n)$, where $E$ is the effect, $C$ is the intervention strength, $E_{\max}$ is the maximal response, $\text{EC}_{50}$ is the strength producing half-maximal effect, and $n$ controls the curve's steepness. In MI: $C$ is the ablation fraction, steering multiplier, or patching proportion; $E$ is the behavioral metric.
 

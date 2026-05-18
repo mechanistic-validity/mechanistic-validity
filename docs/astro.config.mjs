@@ -41,19 +41,7 @@ export default defineConfig({
           label: 'Mechanistic Validity Framework',
           collapsed: false,
           items: [
-            {
-              label: 'Overview',
-              collapsed: true,
-              items: [
-                { label: 'Taxonomy', link: '/framework/taxonomy/' },
-                { label: 'Layers overview', link: '/framework/taxonomy/layers-overview' },
-                { label: 'Dependency order', link: '/framework/taxonomy/dependency-order' },
-                { label: 'Verdict anatomy', link: '/framework/taxonomy/verdict-anatomy' },
-                { label: 'Design principles', link: '/framework/taxonomy/design-principles' },
-                { label: 'Reading this site', link: '/start/reading-this-site' },
-                { label: 'Quickstart', link: '/start/quickstart' },
-              ],
-            },
+            { label: 'Framework Overview', link: '/framework/taxonomy/' },
             {
               label: 'Lenses',
               collapsed: false,
@@ -307,7 +295,7 @@ export default defineConfig({
         },
         {
           label: 'How-to Guide',
-          collapsed: false,
+          collapsed: true,
           items: [
             { label: 'Overview', link: '/how-to/' },
             { label: 'Audit a claim', link: '/how-to/audit-a-claim' },
