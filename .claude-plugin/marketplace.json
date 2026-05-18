@@ -1,0 +1,21 @@
+{
+  "name": "mechanistic-validity",
+  "owner": {
+    "name": "mechanistic-validity"
+  },
+  "metadata": {
+    "description": "Mechanistic Validity framework for evaluating mechanistic interpretability claims",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "mechval",
+      "description": "Load the Mechanistic Validity framework — criteria, modes, instruments, verdicts",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/mechval"
+      ]
+    }
+  ]
+}

@@ -102,18 +102,47 @@ class EvalResult:
 
     def to_dict(self) -> dict:
         d = asdict(self)
-        d["metadata"] = {k: _jsonable(v) for k, v in d["metadata"].items()}
+        d["metadata"] = _sanitize_for_json(d["metadata"])
         return d
 
 
 def _jsonable(v: Any) -> Any:
+    if isinstance(v, np.bool_):
+        return bool(v)
     if isinstance(v, (np.floating, np.integer)):
         return v.item()
     if isinstance(v, np.ndarray):
         return v.tolist()
     if isinstance(v, torch.Tensor):
         return v.detach().cpu().tolist()
+    if isinstance(v, set):
+        return sorted(v)
+    if isinstance(v, tuple):
+        return list(v)
+    if isinstance(v, range):
+        return list(v)
     return v
+
+
+def _sanitize_for_json(obj: Any) -> Any:
+    """Recursively convert non-JSON-serializable types to plain Python types."""
+    if isinstance(obj, dict):
+        return {str(k): _sanitize_for_json(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_sanitize_for_json(v) for v in obj]
+    if isinstance(obj, set):
+        return sorted(_sanitize_for_json(v) for v in obj)
+    if isinstance(obj, np.bool_):
+        return bool(obj)
+    if isinstance(obj, (np.floating, np.integer)):
+        return obj.item()
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    if isinstance(obj, torch.Tensor):
+        return obj.detach().cpu().tolist()
+    if isinstance(obj, range):
+        return list(obj)
+    return obj
 
 
 # ---------------------------------------------------------------------------
