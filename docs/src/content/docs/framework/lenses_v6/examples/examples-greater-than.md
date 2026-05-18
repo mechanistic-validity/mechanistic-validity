@@ -177,7 +177,7 @@ The convergent cells (two methods agree on the same heads) are strong — heads 
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/framework/modes/structural) level with algorithmic aspects — it names specific weight-space signatures and the computation they implement.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/framework/modes_v3/structural) level with algorithmic aspects — it names specific weight-space signatures and the computation they implement.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Strong.** The evidence is primarily structural ($W_{OV}$ analysis), which directly supports a structural-level claim. The match between evidence type and claim level is unusually tight.
 

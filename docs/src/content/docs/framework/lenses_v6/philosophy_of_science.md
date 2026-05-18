@@ -71,13 +71,13 @@ Two methods should agree more about the same circuit than about different circui
 | [Craver, *Explaining the Brain*](https://global.oup.com/academic/product/explaining-the-brain-9780199568222) | 2007 | Neuroscience / Philosophy | **Constitutive relevance** — mechanistic explanation requires that components make a difference, not merely be present |
 | [Méloux et al., "Not all circuits are the same"](https://arxiv.org/abs/2410.10186) | 2025 | Mechanistic Interpretability | **Construct non-uniqueness** — multiple equally faithful circuits exist for the same task; "the circuit" may not refer to a determinate entity |
 
-## Validity type: [Construct validity](/framework/validity-types/construct)
+## Validity type: [Construct validity](/framework/validity-types_v4/construct)
 
 > **Nomological network ([Cronbach & Meehl 1955](https://doi.org/10.1037/h0040957)):** A construct is valid only insofar as it occupies a determinate position in a web of lawful relations with other constructs and observables. A circuit that relates to no other theoretical construct except the specific behavior it was discovered on is not a construct — it is a re-description of the data.
 
 This lens applies to any mechanistic claim, not just circuits. An SAE feature, an MLP neuron, a residual-stream direction, a learned decomposition — anything given a name and a computational role is a construct that can be evaluated.
 
-The difficulty of the construct validity question depends on the [description mode](/framework/modes/). A structural claim ("$W_{OV}$ has rank-1 copying structure") is almost self-verifying — the construct is the measurement. An implementational claim ("these heads are name-movers") requires asking whether "name-mover" is a coherent category. An algorithmic claim ("the circuit implements token copying via OV composition") requires asking whether the named algorithm is the real one or just one of many consistent explanations. The higher the mode, the harder construct validity is to establish.
+The difficulty of the construct validity question depends on the [description mode](/framework/modes_v3/). A structural claim ("$W_{OV}$ has rank-1 copying structure") is almost self-verifying — the construct is the measurement. An implementational claim ("these heads are name-movers") requires asking whether "name-mover" is a coherent category. An algorithmic claim ("the circuit implements token copying via OV composition") requires asking whether the named algorithm is the real one or just one of many consistent explanations. The higher the mode, the harder construct validity is to establish.
 
 For formal definitions, quantitative thresholds, and calibration data, see [Construct Validity — Formal Specification](/framework/validity-types_v2/construct_v3).
 
@@ -216,7 +216,7 @@ Construct validity gates advancement through the [verdict tiers](/framework/verd
 - **Mechanistically supported → Triangulated:** Requires at least one construct criterion beyond C1. Typically C2 (structural plausibility) or C5 (convergent validity).
 - **Triangulated → Validated:** Requires substantial construct validity coverage — C1 through C5.
 
-A claim can have perfect [internal validity](/framework/validity-types/internal) (all ablations, all patching, full consistency) and still stall at Mechanistically supported because the construct itself is poorly defined.
+A claim can have perfect [internal validity](/framework/validity-types_v4/internal) (all ablations, all patching, full consistency) and still stall at Mechanistically supported because the construct itself is poorly defined.
 
 ## Protocol
 

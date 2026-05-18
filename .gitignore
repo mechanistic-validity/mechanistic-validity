@@ -14,3 +14,8 @@ venv/
 .vscode/
 *.swp
 *.swo
+docs/public/figures/readme/
+docs/public/figures/readme-v2/
+src/instruments/data/
+/docs/public/figures/readme/
+/docs/public/figures/readme-v2/

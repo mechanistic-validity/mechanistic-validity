@@ -179,7 +179,7 @@ Within the toy domain: strong convergent validity — multiple methods agree on 
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is [representational](/framework/modes/representational) — about how features are geometrically organized in activation space.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is [representational](/framework/modes_v3/representational) — about how features are geometrically organized in activation space.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Pass.** Representational evidence (geometric analysis) supports a representational claim. Match is direct.
 

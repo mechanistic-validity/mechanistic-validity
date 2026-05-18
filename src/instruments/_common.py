@@ -29,6 +29,7 @@ from lib.tasks.gendered_pronoun import circuit as _gp_circuit  # noqa: E402
 from lib.tasks.rti import circuit as _rti_circuit  # noqa: E402
 from lib.tasks.acronym import circuit as _acr_circuit  # noqa: E402
 from lib.tasks.copy_suppression import circuit as _cs_circuit  # noqa: E402
+from lib.tasks.epistemic_framing import circuit as _ef_circuit  # noqa: E402
 from lib.tasks.prompts import TASK_REGISTRY  # noqa: E402
 
 _TASK_TO_MODULE = {
@@ -36,6 +37,7 @@ _TASK_TO_MODULE = {
     "induction": _ind_circuit, "sva": _sva_circuit,
     "gendered_pronoun": _gp_circuit, "rti": _rti_circuit,
     "acronym": _acr_circuit, "copy_suppression": _cs_circuit,
+    "epistemic_framing": _ef_circuit,
     "rti_pattern": _rti_circuit, "sequence_internal": _ind_circuit,
     "alternating_pair": _ind_circuit, "novel_song": _ind_circuit,
     "centering_theory": _ioi_circuit, "resumptive": _ioi_circuit,
@@ -72,11 +74,14 @@ CIRCUIT_TASKS = [
     "ioi", "greater_than", "induction", "sva", "gendered_pronoun",
     "rti", "acronym", "copy_suppression",
 ]
+EXPERIMENTAL_TASKS = [
+    "epistemic_framing",
+]
 ALIAS_TASKS = [
     "rti_pattern", "sequence_internal", "alternating_pair", "novel_song",
     "centering_theory", "resumptive", "self_allo", "token_flood", "buffalo",
 ]
-ALL_TASKS = sorted(CIRCUIT_TASKS + ALIAS_TASKS)
+ALL_TASKS = sorted(CIRCUIT_TASKS + EXPERIMENTAL_TASKS + ALIAS_TASKS)
 
 
 # ---------------------------------------------------------------------------

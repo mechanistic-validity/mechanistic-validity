@@ -31,6 +31,7 @@ from lib.tasks.rti.prompts import (
     rti_pattern_prompts,
     token_flood_prompts,
 )
+from lib.tasks.epistemic_framing.prompts import epistemic_framing_prompts
 
 TASK_REGISTRY: dict[str, TaskBuilder] = {
     "ioi": ioi_prompts,
@@ -49,6 +50,7 @@ TASK_REGISTRY: dict[str, TaskBuilder] = {
     "self_allo": self_allo_prompts,
     "token_flood": token_flood_prompts,
     "buffalo": buffalo_prompts,
+    "epistemic_framing": epistemic_framing_prompts,
 }
 
 

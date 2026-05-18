@@ -1,81 +1,119 @@
 ---
-title: "Mechanistic Validity Taxonomy"
-description: "The spine of the Mechanistic Validity framework: how the five layers and seven description modes fit together."
+title: "Framework Overview"
+description: "The full Mechanistic Validity taxonomy: six layers, five validity types, seven description modes, verdict tiers, and design principles."
 ---
 
+# Framework Overview
 
-# Mechanistic Validity Taxonomy
+Every circuit claim in mechanistic interpretability is a chain from a concrete measurement to a conclusion. This framework names every link in that chain. Reading bottom-up is how you *build* a claim. Reading top-down is how you *evaluate* one.
 
-| | |
+## Six-layer hierarchy
+
+<img src="/mechanistic-validity/figures/framework/pipeline-vert-example.png" alt="Mechanistic Validity Pipeline with worked example" width="100%"/>
+
+The framework can be read in three directions:
+
+- **Bottom-up (1 → 6):** Building a new claim — what does my instrument establish?
+- **Top-down (6 → 1):** Auditing an existing claim — what evidence would this verdict require?
+- **Sideways (across layer 2):** Checking convergent validity — do independent evidence families agree?
+
+### 1. Description Mode
+
+The level of description at which the claim operates. This is set first because it determines what counts as relevant evidence. A claim about *where* an effect occurs (implementational) requires different instruments than a claim about *what* computation is performed (algorithmic) or *how* information is encoded (representational).
+
+There are three top-level modes and four implementational sub-types (7 total):
+
+| If the evidence establishes... | Licensed tag |
 |---|---|
-| Role | Organizing spine of the entire framework |
-| Layers | A (Instruments) → B (Evidence families) → C (Criteria) → D (Validity types) → E (Verdicts) |
-| Verdict annotation | Mode tag: the seven description levels |
+| What function the system computes and why | `[computational]` |
+| What procedure the system executes | `[algorithmic]` |
+| What information is encoded and in what geometry | `[representational]` |
+| Which components are involved | `[implementational–topographic]` |
+| How components are wired to each other | `[implementational–connectomic]` |
+| Distributional properties of activations | `[implementational–statistical]` |
+| What input-output transformation a component performs | `[implementational–functional]` |
 
-Every circuit claim in mechanistic interpretability is a chain from a concrete measurement to a conclusion. The taxonomy names every link in that chain. Reading bottom-up is how you *build* a claim. Reading top-down is how you *evaluate* one.
+### 2. Evidence Family
 
-## The five-layer hierarchy
+Classifies an instrument's output by the *kind of signal* it produces. Two instruments from different families that agree constitute stronger evidence than two from the same family, because they have structurally different failure modes.
 
-```
-Mode tag ── [computational] [algorithmic] [representational]
-             [implementational] [architectural] [structural] [transportable]
-                │
-                ▼
-Layer E  ── Verdict ────────── The claim, stated with explicit scope and mode tag
-                │
-Layer D  ── Validity types ─── The five abstract questions a claim must answer
-             │  ├── Construct
-             │  ├── Internal
-             │  ├── External
-             │  ├── Measurement
-             │  └── Interpretive
-             │
-Layer C  ── Criteria ─────────  ~27 specific, falsifiable conditions, grouped by type
-             │
-Layer B  ── Evidence families ─ The six kinds of signal an instrument can produce
-             │  Causal | Structural | Representational | Behavioral | Info-theoretic | Measurement
-             │
-Layer A  ── Instruments ──────  The concrete runnable tests
-```
-
-A claim that skips Layer D is not a finding. It is a measurement with a story attached.
-
-## How to read the taxonomy
-
-| Direction | Use case |
-|---|---|
-| Bottom-up (A → E) | Building a new claim: what does my instrument establish? |
-| Top-down (E → A) | Auditing an existing claim: what evidence would this verdict require? |
-| Sideways (across Layer B) | Checking convergent validity: do independent evidence families agree? |
-| Mode tag last | After the verdict is assembled, check whether the declared description level is licensed |
-
-## How the layers gate each other
-
-The layers form a dependency order:
-1. Layer A must be run before Layer B can be assigned.
-2. Layer C cannot be assessed before Layer B.
-3. Layer D cannot be satisfied before Layer C.
-4. Layer E cannot be written before Layer D.
-5. The mode tag is applied to Layer E last.
-
-The dependency order is the reason the audit procedure runs construct validity first and interpretive validity last.
-
-## The mode tag
-
-Every verdict carries a bracketed description-mode tag that names the level of description the claim operates at.
-
-| Tag | Claim type | Page |
+| Family | Signal type | Instruments |
 |---|---|---|
-| `[computational]` | What is being computed and why | [Computational](/framework/modes_v3/computational) |
-| `[algorithmic]` | What operation is performed | [Algorithmic](/framework/modes_v3/algorithmic) |
-| `[representational]` | What is encoded, where, how | [Representational](/framework/modes_v3/representational) |
-| `[implementational]` | Which weights/components carry it | [Implementational](/framework/modes_v3/implementational-topographic) |
-| `[architectural]` | How computational labor is distributed | — |
-| `[structural]` | What the weights say before any input | — |
-| `[transportable]` | Which features survive cross-model shift | — |
+| Causal | Interventions and counterfactuals | 13 |
+| Structural | Weight-space analysis (no forward pass) | 9 |
+| Representational | Latent geometry and decodability | 10 |
+| Behavioral | Held-out task and generalization tests | 9 |
+| Information-theoretic | Coding properties and information flow | 9 |
+| Measurement-theoretic | Reliability and calibration audits | 8 |
 
-## Where to go from here
+### 3. Instruments
 
-- [Dependency order](/framework/taxonomy/dependency-order) — why construct validity gates internal, and how the five types constrain each other
-- [Verdict anatomy](/framework/taxonomy/verdict-anatomy) — how to read and write a verdict
-- [Design principles](/framework/taxonomy/design-principles) — the commitments behind the framework
+The concrete runnable test: the thing you actually execute on the model. Instruments include activation patching, resample ablation, DAS-IIA, weight classifiers, bootstrap stability checks, and spectral SVD of weight matrices. An instrument produces a number or a set of numbers. By itself, a number from this layer is not a finding — it is data that must be interpreted upward through the hierarchy.
+
+### 4. Criteria
+
+27 falsifiable, operationally defined conditions across five validity types. Each criterion has a clear pass/fail threshold — no subjective judgment calls.
+
+| Validity type | # | Examples |
+|---|---|---|
+| Construct | 5 | Falsifiability, structural plausibility, task specificity, minimality, convergent validity |
+| Internal | 5 | Necessity, sufficiency, specificity, consistency, confound control |
+| External | 6 | Intervention reach, graded response, selectivity, effect magnitude, robustness, cross-architecture generalization |
+| Measurement | 6 | Reliability, invariance, baseline separation, sensitivity, calibration, construct coverage |
+| Interpretive | 5 | Level declaration, level–evidence match, narrative coherence, alternative exclusion, scope honesty |
+
+### 5. Validity Type
+
+The five abstract dimensions a circuit claim must address. A validity type is satisfied when all its criteria are met; partial satisfaction is reported as partial validity. A claim can be internally valid without being externally valid, and can pass all four traditional types while failing interpretive validity.
+
+### 6. Verdict
+
+The claim itself, stated with explicit scope. A verdict names: (1) the component or set of components, (2) the computation or behavior attributed to them, (3) the model and task, (4) the verdict-strength tier, and (5) the description-mode tag.
+
+## Verdict tiers
+
+| Tier | What it means |
+|---|---|
+| **Proposed** | No intervention evidence — structural or representational only |
+| **Causally suggestive** | Necessity shown (ablation degrades behavior), sufficiency not yet established |
+| **Mechanistically supported** | Necessity + sufficiency (ablation + patching, at least 2 ablation variants) |
+| **Triangulated** | All internal criteria met, plus at least 1 external and 1 construct criterion |
+| **Validated** | All five validity types addressed with explicit baselines and convergent evidence |
+| **Underdetermined** | Evidence present but consistent with multiple mechanisms |
+| **Disconfirmed** | Fails decisively on a key criterion |
+
+**Example:** L8.MLP causally mediates subject-verb number agreement in GPT-2 Small on the Linzen SVA dataset — *Mechanistically supported* `[implementational–functional]`; external validity and interpretive validity unaddressed.
+
+The "unaddressed" clause is not optional — it prevents silent upgrading by selective citation.
+
+## Dependency order
+
+The validity types gate each other. Skipping a step is the most common structural problem in MI papers.
+
+1. **Construct** — define the construct before calibrating instruments
+2. **Measurement** — calibrate instruments before making causal claims
+3. **Internal** — establish causal evidence with trustworthy measurements
+4. **External** — generalize only after establishing a local result
+5. **Interpretive** — audit the assembled verdict
+
+<details class="worked-example">
+<summary>Common dependency violations</summary>
+
+| Pattern | What it looks like | Violation |
+|---|---|---|
+| Circular construct | Circuit named for what instruments found | Construct: no independent definition |
+| Uncalibrated IIA | IIA 0.48 without random-vector baseline | Measurement gates internal |
+| Single-seed generalization | Reported as robust from one seed | Measurement (reliability) gates internal |
+| Cross-arch before local | Cross-model result before within-model necessity | Internal gates external |
+| Algorithmic tag from ablation | "implements SVA" from ablation alone | Interpretive: tag not licensed |
+</details>
+
+## Design principles
+
+The framework produces a structured verdict, not a scalar score. Two circuits with identical faithfulness numbers can have radically different validity profiles — you cannot upgrade a claim to *Validated* by piling up more evidence of one type while the others remain unaddressed. Most circuit-discovery work should land at *Causally suggestive* or *Mechanistically supported*, and that is a real result, not a failure.
+
+Description level is a property of the claim, not the instrument. Activation patching is not inherently an algorithmic-level test; DAS-IIA is not inherently representational. The description tag is determined by what the researcher concludes, not by which tool produced the number.
+
+When two instruments disagree about which components constitute the circuit, the disagreement is itself a primary finding — it points to a methodological gap, sensitivity to different properties, or an underspecified construct. Multi-instrument studies should report overlap (e.g., Jaccard similarity) as a first-class result rather than picking a winner.
+
+An IIA score of 0.48 at L8.MLP is a measurement. Whether it constitutes *evidence* that L8.MLP implements a mechanism is a validity question — one that requires knowing the random-vector baseline, the untrained-model baseline, the cross-task control, and the replication rate across seeds. Evidence tells us what we measured; validity tells us what we can conclude.

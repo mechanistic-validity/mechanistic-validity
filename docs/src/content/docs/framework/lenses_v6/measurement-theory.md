@@ -37,7 +37,7 @@ In MI: when we report IIA = 0.48, we are reporting an observed score. The true s
 
 Campbell and Fiske (1959) argued that validity requires two things simultaneously: instruments measuring the same construct should agree (convergent validity), AND instruments measuring different constructs should disagree (discriminant validity). Agreement alone is not enough — if all your instruments agree about everything, they may share a bias rather than measuring a real signal.
 
-In MI: if activation patching and weight-space analysis identify the same heads as the IOI circuit (convergent validity), that is strong evidence. But if they also identify the same heads for every other task (poor discriminant validity), the agreement reflects shared methodological bias rather than a real task-specific structure. The MTMM matrix formalizes this: cross-method agreement on the same circuit should exceed same-method agreement across different circuits.
+In MI: if activation patching and ablation identify the same heads as the IOI circuit (convergent validity), that is strong evidence. But if they also identify the same heads for every other task (poor discriminant validity), the agreement reflects shared methodological bias rather than a real task-specific structure. The MTMM matrix formalizes this: cross-method agreement on the same circuit should exceed same-method agreement across different circuits.
 
 ## Analytical Constructs
 
@@ -47,19 +47,42 @@ The signature artifact of measurement-theoretic evaluation is the multitrait-mul
 
 For k circuits measured by m methods, the MTMM matrix is a $km \times km$ correlation matrix with a specific block structure:
 
-- **Monotrait-heteromethod correlations** (convergent validity) — do different methods agree about the same circuit? These should be high. If activation patching and weight-space analysis identify the same heads for the IOI circuit, that is convergent validity.
-- **Heterotrait-monomethod correlations** (method effects) — do same-method measurements of different circuits correlate? These should be low. If activation patching gives similar scores to the IOI circuit and the Greater-Than circuit, that may reflect method bias rather than real similarity.
-- **Heterotrait-heteromethod correlations** (discriminant validity) — do different methods measuring different circuits disagree? These should be lowest. This is the noise floor.
+- **Monotrait-heteromethod correlations** (convergent validity) — do different methods agree about the same circuit? These should be high. If activation patching and ablation identify the same heads for the IOI circuit, that is convergent validity.
+- **Heterotrait-monomethod correlations** (method effects) — do same-method measurements of different circuits correlate? These should be low. If activation patching gives similar scores to the IOI circuit and the Greater-Than circuit, that may reflect method bias rather than real similarity. In other words: is the method finding task-specific structure, or just "important heads" regardless of task?
+- **Heterotrait-heteromethod correlations** (discriminant validity) — do different methods measuring different circuits agree? These should be lowest. This is the noise floor — if unrelated methods on unrelated circuits still correlate, something systematic is inflating scores.
 
 The validity condition: convergent > method effect > discriminant. Formally:
 
 $$r(\text{trait}_i, \text{method}_a; \text{trait}_i, \text{method}_b) > r(\text{trait}_i, \text{method}_a; \text{trait}_j, \text{method}_a) > r(\text{trait}_i, \text{method}_a; \text{trait}_j, \text{method}_b)$$
 
-In MI terms: the correlation between EAP-identified IOI circuit and weight-identified IOI circuit should exceed the correlation between EAP-identified IOI circuit and EAP-identified Greater-Than circuit, which should exceed the correlation between EAP-identified IOI circuit and weight-identified Greater-Than circuit.
+In MI terms: the correlation between activation-patching-identified IOI circuit and ablation-identified IOI circuit should exceed the correlation between activation-patching-identified IOI circuit and activation-patching-identified Greater-Than circuit, which should exceed the correlation between activation-patching-identified IOI circuit and ablation-identified Greater-Than circuit.
 
 To construct the matrix: identify k circuits and m discovery/evaluation methods. Run each method on each circuit. Compute pairwise Jaccard similarities (or correlation of attribution scores) between all km measurements. Arrange into the MTMM block structure. Check the validity ordering.
 
 When the ordering is violated — when same-method correlations across circuits exceed cross-method correlations within circuits — the instruments share more variance with each other than with the construct they claim to measure. This is method bias, and it means the "circuit" may partly be an artifact of the discovery procedure.
+
+<details class="worked-example">
+<summary>Worked example: MTMM matrix for IOI and Greater-Than circuits</summary>
+
+Suppose we run two methods (activation patching and ablation) on two circuits (IOI and Greater-Than) in GPT-2 Small. Each method returns an attribution score per head. We compute Jaccard similarity between every pair of results:
+
+|  | Patching-IOI | Patching-GT | Ablation-IOI | Ablation-GT |
+|---|---|---|---|---|
+| **Patching-IOI** | — | 0.30 | **0.78** | 0.12 |
+| **Patching-GT** | 0.30 | — | 0.15 | **0.72** |
+| **Ablation-IOI** | **0.78** | 0.15 | — | 0.25 |
+| **Ablation-GT** | 0.12 | **0.72** | 0.25 | — |
+
+Reading the matrix:
+
+- **Bold cells (0.78, 0.72)**: convergent validity. Different methods agree about the same circuit. This is the signal we want to be high.
+- **0.30, 0.25 cells**: method effects. Same method applied to different circuits returns partially overlapping results. If these were as high as the bold cells (say 0.80), it would mean patching finds the same heads regardless of task — generic "important heads" rather than task-specific circuits.
+- **0.12, 0.15 cells**: discriminant validity. Different methods on different circuits. This is the noise floor.
+
+The ordering holds: 0.78 > 0.30 > 0.12. The methods are measuring something task-specific rather than sharing a methodological bias.
+
+If instead the matrix looked like this — patching-IOI vs patching-GT = 0.85, but patching-IOI vs ablation-IOI = 0.40 — the method effect would exceed convergent validity. That would mean patching agrees with itself across tasks more than it agrees with ablation on the same task. The "IOI circuit found by patching" would partly be an artifact of how patching works, not a property of the model.
+</details>
 
 ## Sources
 
@@ -73,7 +96,7 @@ When the ordering is violated — when same-method correlations across circuits 
 | [Hewitt & Liang, "A structural probe for finding syntax in word representations"](https://aclanthology.org/D19-1275/) | 2019 | Natural Language Processing | **Selectivity = linguistic accuracy $-$ control accuracy** — probe accuracy without a baseline measures instrument capacity, not representation structure |
 | [Sutter et al., "How to evaluate satisfiability of interpretability claims"](https://arxiv.org/abs/2507.08802) | 2025 | Mechanistic Interpretability | **Baseline separation** — unconstrained nonlinear IIA achieves near-perfect scores on random-init models; the baseline is not optional |
 
-## Validity type: [Measurement validity](/framework/validity-types/measurement)
+## Validity type: [Measurement validity](/framework/validity-types_v4/measurement)
 
 > **Classical test theory (Lord & Novick 1968):** An observed score $X = T + E$, where $T$ is the true score and $E$ is measurement error. Reliability $\rho_{XX'} = \sigma^2_T / (\sigma^2_T + \sigma^2_E)$ is the proportion of observed variance attributable to the true score. An instrument with $\rho_{XX'} = 0.5$ carries as much noise as signal.
 

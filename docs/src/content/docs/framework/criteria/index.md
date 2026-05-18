@@ -63,7 +63,7 @@ Layer C is where the framework becomes operational. Each criterion is a specific
 
 ## How to use this index
 
-**Building a claim (bottom-up):** Identify instruments run (Layer A). For each, locate the criteria it addresses from the mapping table in [../00_taxonomy/index.md](../00_taxonomy/index.md). Check each criterion's pass condition. Assemble the verdict from satisfied and unsatisfied criteria.
+**Building a claim (bottom-up):** Identify instruments run (Layer A). For each, locate the criteria it addresses from the mapping table in [../taxonomy/](../taxonomy/). Check each criterion's pass condition. Assemble the verdict from satisfied and unsatisfied criteria.
 
 **Auditing a claim (top-down):** Start with the verdict tier. All criteria in the required validity types must be satisfied. Check each criterion page against reported evidence. Note gaps.
 

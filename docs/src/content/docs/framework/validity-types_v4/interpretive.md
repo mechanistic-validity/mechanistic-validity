@@ -8,7 +8,7 @@ description: "Is the story told about the mechanism the right story, told at the
 | | |
 |---|---|
 | Question | Is the narrative about the mechanism the right narrative, told at the right level of abstraction? |
-| Lens | [Mechanistic Interpretability](/framework/lenses_v1/known-interpretive-failures) |
+| Lens | [Mechanistic Interpretability](/framework/lenses_v6/mechanistic_interpretability) |
 | Criteria | V1–V5 |
 | Foundational framing | [Marr (1982)](https://doi.org/10.7551/mitpress/9780262514620.001.0001) three levels; [Geiger et al. (2021)](https://arxiv.org/abs/2106.02997) causal abstraction; [Méloux et al. (2026)](https://openreview.net/forum?id=vERnMGBqxJ) non-identifiability |
 | Dependency | Downstream of all four other validity types — interpretive validity cannot be evaluated until the mechanism is real, generalizable, coherent, and well-measured |

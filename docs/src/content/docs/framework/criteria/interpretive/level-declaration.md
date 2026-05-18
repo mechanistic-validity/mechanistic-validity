@@ -18,7 +18,7 @@ criterion_id: "V1"
 
 Level declaration is the simplest interpretive criterion: before any claim can be evaluated for interpretive validity, it must declare what level of description it is making. Without a declared level, there is no standard against which to measure evidence–claim fit.
 
-The five description mode tags (from [../00_taxonomy/index.md](../00_taxonomy/index.md)):
+The five description mode tags (from [../taxonomy/](../taxonomy/)):
 
 | Tag | Meaning | Minimum validity requirements |
 |---|---|---|

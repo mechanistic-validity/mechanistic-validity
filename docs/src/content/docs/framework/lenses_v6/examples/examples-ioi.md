@@ -177,7 +177,7 @@ Reliability: unknown (no confidence intervals reported for the 87% figure). The 
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is clearly at the [algorithmic](/framework/modes/algorithmic) level — it names a multi-step computation (detect duplicates → inhibit → copy) implemented by specific components.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is clearly at the [algorithmic](/framework/modes_v3/algorithmic) level — it names a multi-step computation (detect duplicates → inhibit → copy) implemented by specific components.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Pass.** The evidence includes both behavioral effects (ablation changes outputs) and structural signatures ($W_{OV}$ analysis), which jointly support an algorithmic-level claim. The evidence is not solely behavioral (which would support only a computational-level claim).
 

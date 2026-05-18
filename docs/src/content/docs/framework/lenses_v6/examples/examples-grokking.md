@@ -176,7 +176,7 @@ All convergent cells are high — four independent methods identify the same str
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/framework/modes/structural) level — it fully specifies the algorithm in terms of weight matrices.
+**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/framework/modes_v3/structural) level — it fully specifies the algorithm in terms of weight matrices.
 
 **[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Strong pass.** The evidence *is* the structure — weight matrices are directly decoded into the algorithm. Evidence and claim are at the same level.
 
