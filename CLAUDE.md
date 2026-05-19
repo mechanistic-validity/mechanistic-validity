@@ -53,28 +53,49 @@ docs/                           Astro-based documentation site
   public/figures/               Figures for README and docs
 
 src/                            Example implementations (Python)
-  metrics/                      Atomic measurements organized by evidence family
-    causal/                     A-family: causal probes (ablation, patching, DAS, etc.)
-    structural/                 B-family: weight-space measurements (SVD, norms, etc.)
-    behavioral/                 D-family: behavioral tests (faithfulness, KL, etc.)
-    representational/           E-family: representation analysis (CKA, RSA, probes, etc.)
-    information/                C-family: information-theoretic (MI, PID, etc.)
-    common.py                   Shared CLI, EvalResult, load_model, task utilities
-  calibrations/                 Trustworthiness gates (run on metric outputs)
-    bootstrap_stability/        F01: score stability under resampling
-    convergent_validity/        F03: do different metrics agree?
-    discriminant_validity/      F04: do different constructs disagree?
-    internal_consistency/       F05: multi-item consistency
-    inter_rater/                F06: agreement across runs
-    measurement_invariance/     F07: metric × condition stability
-    sensitivity/                F13: detection power (AUROC)
-    ablation_invariance/        Ablation method invariance
-    certified_stability/        Certified stable classification
-    multiple_comparisons/       Multiple comparison correction
-    test_retest/                Split-half reliability
-  methods/                      Composed procedures (orchestrate metrics + calibrations)
-    mib_faithfulness/           MIB Track 1/2 faithfulness curves
-  lib/                          Shared utilities, task definitions, features
+  mechanistic_validity/         Installable package — programmatic API
+    __init__.py                 Public API: run(), verify(), calibrate(), etc.
+    models.py                   Pydantic v2 enums and I/O models
+    spec.py                     MechanisticClaimSpec + Track 3 models
+    views.py                    View aggregations V1-V4
+    gates.py                    Gate checks G0-G3
+    cli.py                      Cyclopts CLI (`mv` command)
+    config.py                   pydantic-settings (MV_* env vars, mv_config.yaml)
+    tracing.py                  W&B Weave shim (@mv.op decorator)
+    registry.py                 Gymnasium-style load_task() / list_tasks() API
+    metrics/                    Atomic measurements organized by evidence family
+      causal/                   A-family: causal probes (ablation, patching, DAS, etc.)
+      structural/               B-family: weight-space measurements (SVD, norms, etc.)
+      behavioral/               D-family: behavioral tests (faithfulness, KL, etc.)
+      representational/         E-family: representation analysis (CKA, RSA, probes, etc.)
+      information/              C-family: information-theoretic (MI, PID, etc.)
+      common.py                 Shared CLI, EvalResult, load_model, task utilities
+    calibrations/               Trustworthiness gates (run on metric outputs)
+      bootstrap_stability/      F01: score stability under resampling
+      convergent_validity/      F03: do different metrics agree?
+      discriminant_validity/    F04: do different constructs disagree?
+      internal_consistency/     F05: multi-item consistency
+      inter_rater/              F06: agreement across runs
+      measurement_invariance/   F07: metric × condition stability
+      sensitivity/              F13: detection power (AUROC)
+      ablation_invariance/      Ablation method invariance
+      certified_stability/      Certified stable classification
+      multiple_comparisons/     Multiple comparison correction
+      test_retest/              Split-half reliability
+    methods/                    Composed procedures (orchestrate metrics + calibrations)
+      mib_faithfulness/         MIB Track 1/2 faithfulness curves
+    lib/                        Shared utilities, task definitions, features
+      tasks/                    Per-task modules (circuit, prompts, claim_spec)
+        ioi/                    IOI circuit + prompts + claim spec
+        greater_than/           Greater-than circuit + prompts + claim spec
+        induction/              Induction circuit + prompts + claim spec
+        sva/                    SVA circuit + prompts + claim spec
+        rti/                    RTI circuit + prompts + claim spec
+        gendered_pronoun/       Gendered pronoun circuit + prompts + claim spec
+        copy_suppression/       Copy suppression circuit + prompts + claim spec
+        acronym/                Acronym circuit + prompts + claim spec
+        epistemic_framing/      Epistemic circuit + prompts + 4 rival claim specs
+        _builtins.py            All 54 task class registrations
 
 scripts/                        Build/utility scripts
 ```
@@ -99,8 +120,9 @@ Track 1: Circuit Discovery    — "Which components are in the circuit?"
          (EAP, ACDC, HISP, weight-space discovery)
 Track 2: Causal Variable ID   — "Which representations encode task variables?"
          (DAS, IIA, steering vectors)
-Track 3: Characterization     — "What kind of circuit is this?"
-         (fingerprinting, dose-response, pairwise synergy)
+Track 3: Causal Model Testing — "Does the proposed mechanism actually work this way?"
+         (MechanisticClaimSpec, role_ablation, pre-registered predictions)
+         FULLY IMPLEMENTED — see "Benchmark infrastructure" section below
 ```
 
 ### Seven description modes (partial order)
@@ -133,7 +155,7 @@ Construct → Measurement → Internal → External → Interpretive
 
 ## Metric scripts (`src/metrics/`)
 
-93 canonical metric scripts organized by evidence family. Each script has
+84 registered metrics organized by evidence family. Each script has
 a standardized docstring header:
 
 ```
@@ -162,19 +184,35 @@ Key functions:
 - `compute_faithfulness(...)` / `compute_completeness(...)` — core metrics
 - `EvalResult` dataclass → `save_results()` → JSON
 
-### Registered tasks (8 + 9 aliases)
+### Registered tasks (54 total)
 
-Base: ioi, greater_than, induction, sva, gendered_pronoun, rti, acronym, copy_suppression
-Aliases: rti_pattern, sequence_internal, alternating_pair, novel_song, centering_theory,
-         resumptive, self_allo, token_flood, buffalo
+54 tasks across 4 circuit statuses:
+
+| Status | Count | Examples |
+|--------|-------|---------|
+| full_circuit | 12 | ioi, greater_than, induction, sva, rti, epistemic_framing (4 variants) |
+| proxy_circuit | 10 | rti_pattern, token_flood, buffalo, centering_theory, resumptive, self_allo |
+| generator_only | 25 | 7 linguistic probes, 12 BLiMP categories, 6 phonetic composition |
+| planned | 7 | less_than, sva_pp, docstring, bracket_matching, sentiment |
+
+10 domains: patterns, linguistics_coreference, linguistics_agreement,
+linguistics_pragmatics, linguistics_syntax, linguistics_semantics,
+linguistics_binding, linguistics_morphology, linguistics_phonology, math
+
+9 experiment groups: published, rti_discovery, ioi_ablations,
+repetition_taxonomy, epistemic_study, linguistic_probes, blimp,
+phonetic_composition, roadmap
 
 Each task has a circuit module with ROLES/BANDS/PATHWAYS and a prompt builder in TASK_REGISTRY.
 
 ### Adding a new task
 
-1. Create `src/lib/tasks/<task_name>/circuit.py` with ROLES, BANDS, PATHWAYS
-2. Create `src/lib/tasks/<task_name>/prompts.py` registered in TASK_REGISTRY
-3. Update `common.py`: import module, add to `_TASK_TO_MODULE` and `CIRCUIT_TASKS`
+1. Create `src/mechanistic_validity/lib/tasks/<task_name>/circuit.py` with ROLES, BANDS, PATHWAYS
+2. Create `src/mechanistic_validity/lib/tasks/<task_name>/prompts.py` with a prompt builder function
+3. Add a `CircuitTask` subclass in `src/mechanistic_validity/lib/tasks/_builtins.py`
+   with `task_id`, `source`, `domain`, `experiment_group`, `circuit_status`
+4. Add the class to `BUILTIN_TASK_CLASSES` at the bottom of `_builtins.py`
+5. Optionally add a `claim_spec.py` for Track 3 support (see "Adding a claim spec" below)
 
 ### Metric → Criteria mapping (by evidence family)
 
@@ -200,6 +238,179 @@ Hard gates (must pass): F01 bootstrap stability, F09 random baseline, F10 untrai
 | F06 | Inter-rater agreement | Across independent runs? |
 | F07 | Measurement invariance | Metric × condition interaction? |
 | F13 | Sensitivity / AUROC | Can we detect known-true heads? |
+
+## Benchmark infrastructure (Track 3)
+
+### Programmatic API
+
+The repo ships an installable Python package (`mechanistic_validity`) with a
+Gymnasium-style task registry and a programmatic API:
+
+```python
+import mechanistic_validity as mv
+
+# Load a task
+task = mv.load_task("ioi")
+circuit = task.get_circuit()
+
+# Run a metric
+results = mv.run("role_ablation", tasks=["ioi"])
+
+# Track 3: Causal Model Testing
+spec = mv.load_task("ioi").get_claim_spec()
+result = mv.verify(spec, device="cpu")
+
+# Views (scoring aggregations)
+mv.run_view("effect_estimation", tasks=["ioi"])
+
+# Gates (precondition checks)
+mv.check_gate("measurement_calibration", task="ioi")
+
+# Listing
+mv.list_tasks()              # all 54 tasks
+mv.list_metrics()            # all 84 metrics
+mv.list_calibrations()       # all 14 calibrations
+mv.list_domains()            # 10 linguistic domains
+mv.list_experiment_groups()  # 9 experiment groups
+```
+
+CLI via Cyclopts (`pip install mechanistic-validity[cli]`):
+
+```bash
+mv run role_ablation --tasks ioi sva --device cpu
+mv verify path/to/claim_spec.json --device cpu
+mv view effect_estimation --tasks ioi
+mv gate measurement_calibration --task ioi
+mv tasks --has-circuit
+mv metrics --family causal
+```
+
+### Track 3: Causal Model Testing (MechanisticClaimSpec)
+
+Track 3 is the novel contribution: pre-registered mechanistic hypotheses as
+structured Pydantic models. A `MechanisticClaimSpec` declares a mechanism DAG
+(computational steps + edges), positive predictions, negative controls, rival
+specs, and gate metadata. `mv.verify(spec)` runs all predictions and returns a
+`SpecVerificationResult` with per-prediction verdicts, mode-level aggregation,
+and a claim ceiling.
+
+Core model hierarchy (in `src/mechanistic_validity/spec.py`):
+
+```
+MechanisticClaimSpec
+  .steps: list[ComputationalStep]      — DAG nodes (name, category, maps_to_heads/mlps)
+  .edges: list[ComputationalEdge]      — DAG edges (source, target, mechanism)
+  .predictions: list[CausalPrediction] — positive predictions
+  .negative_controls: list[CausalPrediction] — should-not-affect controls
+  .rival_specs: list[str]              — linked spec IDs for V4 adjudication
+  .identifiability: IdentifiabilityGate
+  .superposition_risk: SuperpositionGate
+
+SpecVerificationResult
+  .prediction_results: list[PredictionResult]
+  .mode_verdicts: list[ModeVerdict]    — per-description-mode aggregation
+  .claim_ceiling: DescriptionMode      — highest mode all predictions pass
+  .verdict_tier: VerdictTier
+```
+
+Core metric: `role_ablation` — ablate one role's components, measure the effect
+on another role or on output. This is the workhorse for claim spec verification:
+each `CausalPrediction` specifies an `intervention_target` (which role to
+ablate) and a `measurement_target` (which role or output to measure), and
+`mv.verify()` routes to `role_ablation` automatically.
+
+### Claim specs (12 tasks)
+
+Claim specs live in `src/mechanistic_validity/lib/tasks/<task>/claim_spec.py`.
+12 tasks currently have specs:
+
+| Task | Spec count | Rival specs |
+|------|-----------|-------------|
+| ioi | 1 | -- |
+| greater_than | 1 | -- |
+| induction | 1 | -- |
+| sva | 1 | -- |
+| rti | 1 | -- |
+| gendered_pronoun | 1 | -- |
+| copy_suppression | 1 | -- |
+| acronym | 1 | -- |
+| epistemic_framing | 1 | epistemic_tight, epistemic_eap, epistemic_expanded |
+| epistemic_tight | 1 | epistemic_framing, epistemic_eap, epistemic_expanded |
+| epistemic_eap | 1 | epistemic_framing, epistemic_tight, epistemic_expanded |
+| epistemic_expanded | 1 | epistemic_framing, epistemic_tight, epistemic_eap |
+
+The epistemic study has 4 rival specs linked for V4 adjudication (mechanism
+comparison). Other tasks have a single canonical spec.
+
+### Proxy circuits
+
+Tasks with `circuit_status="proxy_circuit"` inherit a circuit from a related
+task and hypothesize that the same mechanism applies to a different behavioral
+phenomenon. These are hypotheses that need V2 transportability testing to verify.
+
+Examples:
+- rti_pattern, token_flood, buffalo all use RTI's 15-head circuit
+- centering_theory, resumptive, self_allo all use IOI's 15-head circuit
+- sequence_internal, alternating_pair, novel_song all use induction's circuit
+
+### Views (scoring aggregations)
+
+Views group existing metrics into causal-inference-grounded scoring lenses.
+They are not separate measurement infrastructure — they reuse registered metrics.
+
+```
+V1: Causal Effect Estimation   (Pearl/Rubin)
+    Metrics: mediation, mediation_v2, cate, effect_size, dose_response, pse,
+             intervention_specificity
+
+V2: Causal Transportability    (Pearl/Bareinboim)
+    Metrics: cross_task_generalization, cross_model_invariance, generalization_gap
+
+V3: Counterfactual Verification (Pearl rung-3)
+    Metrics: das_iia, iia_variants, counterfactual_consistency, corrupt_restore,
+             multi_axis_iia
+
+V4: Mechanism Adjudication     (SEM equivalent-models)
+    Metrics: discriminant_validity
+```
+
+### Gates (precondition checks)
+
+Gates are pass/fail checks that must hold before tracks and views are meaningful.
+
+```
+G0: Construct Operationalization — is the construct defined independently?
+    (checks: task has prompts + circuit)
+G1: Measurement Calibration — are metrics stable and separable from baselines?
+    (delegates to bootstrap/seed_variance calibrations)
+G2: Causal Identifiability — can the effects be estimated with available interventions?
+    (checks IdentifiabilityGate on the claim spec)
+G3: Confound/Superposition Risk — are interventions confounded by polysemanticity?
+    (checks SuperpositionGate on the claim spec)
+```
+
+G0 and G1 operate on tasks. G2 and G3 require a `MechanisticClaimSpec`.
+
+### Adding a claim spec to a task
+
+1. Create `src/mechanistic_validity/lib/tasks/<task>/claim_spec.py`
+2. Define a `MechanisticClaimSpec` with steps, edges, predictions, negative controls
+3. Import the spec in `_builtins.py` and wire `get_claim_spec()` on the task class
+4. For rival specs, add additional `claim_spec_<variant>.py` files and link via
+   `rival_specs` field on each spec
+
+### API counts summary
+
+| Category | Count |
+|----------|-------|
+| Metrics | 84 |
+| Calibrations | 14 |
+| Tasks | 54 (12 full_circuit, 10 proxy_circuit, 25 generator_only, 7 planned) |
+| Claim specs | 12 |
+| Domains | 10 |
+| Experiment groups | 9 |
+| Views | 4 (V1-V4) |
+| Gates | 4 (G0-G3) |
 
 ## Plugin / Skills
 
