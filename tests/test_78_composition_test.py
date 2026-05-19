@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "mdc_glennan" / "78_composition_test.py"
 )
 _spec = importlib.util.spec_from_file_location("composition_test_78", _MOD_PATH)
@@ -20,7 +20,7 @@ compute_pathway_faithfulness = _mod.compute_pathway_faithfulness
 extract_pathway_head_sets = _mod.extract_pathway_head_sets
 run_composition_test = _mod.run_composition_test
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

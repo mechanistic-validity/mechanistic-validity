@@ -6,13 +6,13 @@ import numpy as np
 import pytest
 from scipy.spatial.distance import pdist
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "representational"
     / "persistent_homology"
     / "67_persistent_homology.py"

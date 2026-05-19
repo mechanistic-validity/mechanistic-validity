@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "woodward" / "03_sigma_ablation.py"
 )
 _spec = importlib.util.spec_from_file_location("sigma_ablation_03", _MOD_PATH)
@@ -21,7 +21,7 @@ faithfulness_with_ablation = _mod.faithfulness_with_ablation
 cache_all_z = _mod.cache_all_z
 ABLATION_METHODS = _mod.ABLATION_METHODS
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

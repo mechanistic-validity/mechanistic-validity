@@ -8,7 +8,7 @@ from scipy import stats
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "causal_discovery" / "42_pc_algorithm.py"
 )
 _spec = importlib.util.spec_from_file_location("pc_algorithm_42", _MOD_PATH)
@@ -20,7 +20,7 @@ pc_algorithm = _mod.pc_algorithm
 partial_correlation = _mod.partial_correlation
 compare_to_known_circuit = _mod.compare_to_known_circuit
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

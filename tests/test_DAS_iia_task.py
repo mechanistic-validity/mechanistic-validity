@@ -10,7 +10,7 @@ _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "causal"
     / "counterfactual_das"
     / "DAS_iia_task.py"
@@ -25,7 +25,7 @@ compute_pca_directions = _mod.compute_pca_directions
 compute_iia = _mod.compute_iia
 run_das_iia = _mod.run_das_iia
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -5,7 +5,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "minimality" / "C4b_minimality_class.py"
 )
 _spec = importlib.util.spec_from_file_location("C4b_minimality_class", _MOD_PATH)
@@ -18,7 +18,7 @@ run_minimality_class = _mod.run_minimality_class
 CLASS_VALUES = _mod.CLASS_VALUES
 FAITHFULNESS_THRESHOLD = _mod.FAITHFULNESS_THRESHOLD
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

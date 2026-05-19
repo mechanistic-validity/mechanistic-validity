@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "structural" / "edge_analysis" / "83_edge_necessity.py"
 )
 _spec = importlib.util.spec_from_file_location("_edge_nec_83", _MOD_PATH)
@@ -35,7 +35,7 @@ def circuit_results(gpt2_model):
 
 
 def test_ablate_single_edge_returns_two_floats(gpt2_model):
-    from mechanistic_validity.instruments.common import (
+    from mechanistic_validity.metrics.common import (
         calibrate_mean_z, generate_prompts, get_token_ids,
     )
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)

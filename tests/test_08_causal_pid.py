@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "pid" / "08_pid.py"
 )
 _spec = importlib.util.spec_from_file_location("pid_08", _MOD_PATH)
@@ -20,7 +20,7 @@ quantile_bin = _mod.quantile_bin
 compute_pid_manual = _mod.compute_pid_manual
 N_BINS = _mod.N_BINS
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

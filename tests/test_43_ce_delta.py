@@ -9,7 +9,7 @@ import torch.nn.functional as F
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "behavioral" / "ce_delta" / "43_ce_delta.py"
 )
 _spec = importlib.util.spec_from_file_location("ce_delta_43", _MOD_PATH)
@@ -21,7 +21,7 @@ compute_ce_at_last = _mod.compute_ce_at_last
 compute_ce_with_hooks = _mod.compute_ce_with_hooks
 run_ce_delta = _mod.run_ce_delta
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

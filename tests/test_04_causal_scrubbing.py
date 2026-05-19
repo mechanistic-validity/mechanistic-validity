@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "scm_pearl" / "04_causal_scrubbing.py"
 )
 _spec = importlib.util.spec_from_file_location("causal_scrubbing_04", _MOD_PATH)
@@ -18,7 +18,7 @@ _spec.loader.exec_module(_mod)
 run_causal_scrubbing = _mod.run_causal_scrubbing
 scrub_circuit = _mod.scrub_circuit
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

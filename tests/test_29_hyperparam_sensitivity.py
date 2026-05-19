@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "mdl_slt" / "29_hyperparam_sensitivity.py"
 )
 _spec = importlib.util.spec_from_file_location("hyperparam_29", _MOD_PATH)
@@ -21,7 +21,7 @@ faithfulness_with_ablation_type = _mod.faithfulness_with_ablation_type
 N_PROMPTS_SETTINGS = _mod.N_PROMPTS_SETTINGS
 ABLATION_SETTINGS = _mod.ABLATION_SETTINGS
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

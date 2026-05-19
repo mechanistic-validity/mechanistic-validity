@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "counterfactual_das" / "20_corrupt_restore.py"
 )
 _spec = importlib.util.spec_from_file_location("corrupt_restore_20", _MOD_PATH)
@@ -21,7 +21,7 @@ make_corrupt_then_restore_hooks = _mod.make_corrupt_then_restore_hooks
 make_full_corrupt_hooks = _mod.make_full_corrupt_hooks
 run_corrupt_restore = _mod.run_corrupt_restore
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -32,7 +32,7 @@ def gpt2_model():
 
 
 def test_cache_clean_z_returns_all_layers(gpt2_model):
-    from mechanistic_validity.instruments.common import generate_prompts
+    from mechanistic_validity.metrics.common import generate_prompts
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=1)
     tokens = gpt2_model.to_tokens(prompts[0].text)

@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "mediation" / "24_pse.py"
 )
 _spec = importlib.util.spec_from_file_location("pse_24", _MOD_PATH)
@@ -19,7 +19,7 @@ _spec.loader.exec_module(_mod)
 compute_pse = _mod.compute_pse
 run_pse = _mod.run_pse
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -30,7 +30,7 @@ def gpt2_model():
 
 
 def test_compute_pse_returns_per_head_and_clean_lds(gpt2_model):
-    from mechanistic_validity.instruments.common import (
+    from mechanistic_validity.metrics.common import (
         calibrate_mean_z,
         generate_prompts,
         get_circuit_heads,
@@ -52,7 +52,7 @@ def test_compute_pse_returns_per_head_and_clean_lds(gpt2_model):
 
 
 def test_compute_pse_values_are_finite(gpt2_model):
-    from mechanistic_validity.instruments.common import (
+    from mechanistic_validity.metrics.common import (
         calibrate_mean_z,
         generate_prompts,
         get_circuit_heads,

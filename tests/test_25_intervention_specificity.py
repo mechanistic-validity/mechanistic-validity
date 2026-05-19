@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "rubin_cate" / "25_intervention_specificity.py"
 )
 _spec = importlib.util.spec_from_file_location("intervention_specificity_25", _MOD_PATH)
@@ -19,7 +19,7 @@ _spec.loader.exec_module(_mod)
 run_intervention_specificity = _mod.run_intervention_specificity
 compute_ablation_effect = _mod.compute_ablation_effect
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

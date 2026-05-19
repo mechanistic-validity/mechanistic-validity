@@ -9,7 +9,7 @@ import torch.nn.functional as F
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "behavioral" / "logit_diff_recovery" / "21_output_variants.py"
 )
 _spec = importlib.util.spec_from_file_location("logit_diff_output_variants_21", _MOD_PATH)
@@ -25,7 +25,7 @@ metric_kl_divergence = _mod.metric_kl_divergence
 run_output_variants = _mod.run_output_variants
 METRICS = _mod.METRICS
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "counterfactual_das" / "34_counterfactual_consistency.py"
 )
 _spec = importlib.util.spec_from_file_location("counterfactual_consistency_34", _MOD_PATH)
@@ -20,7 +20,7 @@ compute_logit_diffs_for_prompts = _mod.compute_logit_diffs_for_prompts
 run_counterfactual_consistency = _mod.run_counterfactual_consistency
 PARAPHRASE_SEEDS = _mod.PARAPHRASE_SEEDS
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -35,7 +35,7 @@ def gpt2_model():
 
 
 def test_compute_logit_diffs_returns_list(gpt2_model):
-    from mechanistic_validity.instruments.common import generate_prompts, get_token_ids
+    from mechanistic_validity.metrics.common import generate_prompts, get_token_ids
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=3)
     correct_ids, incorrect_ids = get_token_ids(prompts, gpt2_model.tokenizer)

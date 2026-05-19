@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.instruments.common import EvalResult, load_model, get_circuit_heads
+from mechanistic_validity.metrics.common import EvalResult, load_model, get_circuit_heads
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "structural" / "polysemanticity" / "52_polysemanticity.py"
 )
 _spec = importlib.util.spec_from_file_location("_poly_52", _MOD_PATH)

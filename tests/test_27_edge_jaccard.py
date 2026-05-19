@@ -4,13 +4,13 @@ from pathlib import Path
 
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult
+from mechanistic_validity.metrics.common import EvalResult
 
 _EJ_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "structural"
     / "template_distance"
     / "27_edge_jaccard.py"

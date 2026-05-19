@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "mdc_glennan" / "18_weight_extended.py"
 )
 _spec = importlib.util.spec_from_file_location("weight_extended_18", _MOD_PATH)
@@ -23,7 +23,7 @@ compute_cosine_alignment = _mod.compute_cosine_alignment
 compute_spectral_norms = _mod.compute_spectral_norms
 run_weight_extended = _mod.run_weight_extended
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

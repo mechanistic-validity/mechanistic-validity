@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.instruments.information.transfer_entropy.53_transfer_entropy"
+    "mechanistic_validity.metrics.information.transfer_entropy.53_transfer_entropy"
 )
 partial_correlation = _mod.partial_correlation
 compute_transfer_entropy_proxy = _mod.compute_transfer_entropy_proxy

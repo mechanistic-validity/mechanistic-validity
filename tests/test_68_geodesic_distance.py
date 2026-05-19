@@ -5,13 +5,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "representational"
     / "geodesic_distance"
     / "68_geodesic_distance.py"

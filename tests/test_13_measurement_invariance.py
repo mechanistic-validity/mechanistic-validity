@@ -5,12 +5,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
-    / "measurement" / "measurement_invariance" / "13_measurement_invariance.py"
+    / "src" / "mechanistic_validity" / "calibrations" / "measurement_invariance" / "13_measurement_invariance.py"
 )
 _spec = importlib.util.spec_from_file_location("_mi_13", _MOD_PATH)
 _mod = importlib.util.module_from_spec(_spec)

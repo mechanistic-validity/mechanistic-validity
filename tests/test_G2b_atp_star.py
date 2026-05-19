@@ -9,7 +9,7 @@ _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "causal"
     / "atp_star"
     / "G2b_atp_star.py"
@@ -23,7 +23,7 @@ compute_atp_star_scores = _mod.compute_atp_star_scores
 score_circuit_edges = _mod.score_circuit_edges
 run_atp_star = _mod.run_atp_star
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

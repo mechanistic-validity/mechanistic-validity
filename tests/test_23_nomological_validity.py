@@ -6,14 +6,13 @@ import numpy as np
 import pytest
 from scipy import stats
 
-from mechanistic_validity.instruments.common import EvalResult
+from mechanistic_validity.metrics.common import EvalResult
 
 _NV_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
-    / "measurement"
+    / "calibrations"
     / "convergent_validity"
     / "23_nomological_validity.py"
 )

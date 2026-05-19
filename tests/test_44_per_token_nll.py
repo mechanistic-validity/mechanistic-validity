@@ -9,7 +9,7 @@ import torch.nn.functional as F
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "behavioral" / "per_token_nll" / "44_per_token_nll.py"
 )
 _spec = importlib.util.spec_from_file_location("per_token_nll_44", _MOD_PATH)
@@ -20,7 +20,7 @@ _spec.loader.exec_module(_mod)
 per_position_nll = _mod.per_position_nll
 run_per_token_nll = _mod.run_per_token_nll
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

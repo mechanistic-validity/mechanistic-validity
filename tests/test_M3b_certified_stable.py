@@ -7,8 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
-    / "measurement" / "certified_stability" / "M3b_certified_stable.py"
+    / "src" / "mechanistic_validity" / "calibrations" / "certified_stability" / "M3b_certified_stable.py"
 )
 _spec = importlib.util.spec_from_file_location("certified_m3b", _MOD_PATH)
 _mod = importlib.util.module_from_spec(_spec)
@@ -18,7 +17,7 @@ _spec.loader.exec_module(_mod)
 classify_head = _mod.classify_head
 run_certified_stability = _mod.run_certified_stability
 
-from mechanistic_validity.instruments.common import EvalResult, get_circuit_heads, load_model
+from mechanistic_validity.metrics.common import EvalResult, get_circuit_heads, load_model
 
 TASK = "ioi"
 

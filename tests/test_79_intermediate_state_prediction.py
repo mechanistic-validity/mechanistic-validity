@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "counterfactual_das" / "79_intermediate_state_prediction.py"
 )
 _spec = importlib.util.spec_from_file_location("intermediate_state_79", _MOD_PATH)
@@ -21,7 +21,7 @@ run_intermediate_state_prediction = _mod.run_intermediate_state_prediction
 PATHWAY_CORR_THRESHOLD = _mod.PATHWAY_CORR_THRESHOLD
 UPLIFT_THRESHOLD = _mod.UPLIFT_THRESHOLD
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -37,7 +37,7 @@ def gpt2_model():
 
 
 def test_collect_logit_attributions_shape(gpt2_model):
-    from mechanistic_validity.instruments.common import generate_prompts, get_token_ids
+    from mechanistic_validity.metrics.common import generate_prompts, get_token_ids
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=5)
     correct_ids, incorrect_ids = get_token_ids(prompts, gpt2_model.tokenizer)
@@ -51,7 +51,7 @@ def test_collect_logit_attributions_shape(gpt2_model):
 
 
 def test_collect_logit_attributions_values_are_finite(gpt2_model):
-    from mechanistic_validity.instruments.common import generate_prompts, get_token_ids
+    from mechanistic_validity.metrics.common import generate_prompts, get_token_ids
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=5)
     correct_ids, incorrect_ids = get_token_ids(prompts, gpt2_model.tokenizer)

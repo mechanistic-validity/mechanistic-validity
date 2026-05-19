@@ -5,13 +5,12 @@ from pathlib import Path
 
 import pytest
 
-import mechanistic_validity.instruments.common as common
-from mechanistic_validity.instruments.common import EvalResult, set_data_dir
+import mechanistic_validity.metrics.common as common
+from mechanistic_validity.metrics.common import EvalResult, set_data_dir
 
 _MC_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
-    / "measurement" / "multiple_comparisons" / "93_multiple_comparisons.py"
+    / "src" / "mechanistic_validity" / "calibrations" / "multiple_comparisons" / "93_multiple_comparisons.py"
 )
 _spec = importlib.util.spec_from_file_location("_mc93", _MC_PATH)
 _mc_mod = importlib.util.module_from_spec(_spec)

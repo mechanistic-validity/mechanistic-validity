@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "behavioral" / "generalization_gap" / "46_generalization_gap.py"
 )
 _spec = importlib.util.spec_from_file_location("generalization_gap_46", _MOD_PATH)
@@ -20,7 +20,7 @@ run_generalization_gap = _mod.run_generalization_gap
 PADDING_PREFIXES = _mod.PADDING_PREFIXES
 PADDING_SUFFIXES = _mod.PADDING_SUFFIXES
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

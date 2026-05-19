@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.instruments.information.synergistic_info.58_o_information"
+    "mechanistic_validity.metrics.information.synergistic_info.58_o_information"
 )
 quantile_bin = _mod.quantile_bin
 entropy_binned = _mod.entropy_binned

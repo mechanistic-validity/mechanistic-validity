@@ -6,13 +6,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult
+from mechanistic_validity.metrics.common import EvalResult
 
 _MOTIF_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "structural"
     / "network_motifs"
     / "97_network_motifs.py"

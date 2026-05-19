@@ -8,8 +8,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
-    / "measurement" / "mib_faithfulness" / "MIB_faithfulness_curve.py"
+    / "src" / "mechanistic_validity" / "methods" / "mib_faithfulness" / "MIB_faithfulness_curve.py"
 )
 _spec = importlib.util.spec_from_file_location("mib_faith", _MOD_PATH)
 _mod = importlib.util.module_from_spec(_spec)
@@ -22,7 +21,7 @@ compute_cmd = _mod.compute_cmd
 run_mib_faithfulness = _mod.run_mib_faithfulness
 MIB_THRESHOLDS = _mod.MIB_THRESHOLDS
 
-from mechanistic_validity.instruments.common import EvalResult, get_circuit_info, load_model
+from mechanistic_validity.metrics.common import EvalResult, get_circuit_info, load_model
 
 TASK = "ioi"
 

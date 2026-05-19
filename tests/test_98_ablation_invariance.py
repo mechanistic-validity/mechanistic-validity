@@ -7,8 +7,7 @@ import pytest
 
 _AI_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
-    / "measurement" / "ablation_invariance" / "98_ablation_invariance.py"
+    / "src" / "mechanistic_validity" / "calibrations" / "ablation_invariance" / "98_ablation_invariance.py"
 )
 _spec = importlib.util.spec_from_file_location("ablation_invariance_98", _AI_PATH)
 _ai_mod = importlib.util.module_from_spec(_spec)
@@ -19,7 +18,7 @@ run_ablation_invariance = _ai_mod.run_ablation_invariance
 ABLATION_METHODS = _ai_mod.ABLATION_METHODS
 DIVERGENCE_THRESHOLD = _ai_mod.DIVERGENCE_THRESHOLD
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 
 @pytest.fixture(scope="module")

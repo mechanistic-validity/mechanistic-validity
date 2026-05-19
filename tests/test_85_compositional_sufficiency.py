@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "structural" / "edge_analysis" / "85_compositional_sufficiency.py"
 )
 _spec = importlib.util.spec_from_file_location("_comp_suff_85", _MOD_PATH)
@@ -35,7 +35,7 @@ def circuit_results(gpt2_model):
 
 
 def test_get_band_heads_returns_set():
-    from mechanistic_validity.instruments.common import get_circuit
+    from mechanistic_validity.metrics.common import get_circuit
     circuit = get_circuit(TASK)
     bands = circuit.get("bands", {})
     assert len(bands) >= 2
@@ -48,7 +48,7 @@ def test_get_band_heads_returns_set():
 
 
 def test_get_band_heads_nonexistent_band_returns_empty():
-    from mechanistic_validity.instruments.common import get_circuit
+    from mechanistic_validity.metrics.common import get_circuit
     circuit = get_circuit(TASK)
     heads = get_band_heads(circuit, "nonexistent_band_xyz")
     assert heads == set()

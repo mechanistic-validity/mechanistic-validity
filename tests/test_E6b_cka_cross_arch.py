@@ -9,7 +9,7 @@ _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "representational"
     / "cka"
     / "E6b_cka_cross_arch.py"
@@ -22,7 +22,7 @@ _spec.loader.exec_module(_mod)
 linear_cka = _mod.linear_cka
 run_cka_analysis = _mod.run_cka_analysis
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

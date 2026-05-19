@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "mdc_glennan" / "19_logic_gates.py"
 )
 _spec = importlib.util.spec_from_file_location("logic_gates_19", _MOD_PATH)
@@ -20,7 +20,7 @@ classify_gate = _mod.classify_gate
 completeness_denoising = _mod.completeness_denoising
 run_logic_gates = _mod.run_logic_gates
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

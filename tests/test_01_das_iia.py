@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "counterfactual_das" / "01_das_iia.py"
 )
 _spec = importlib.util.spec_from_file_location("das_iia_01", _MOD_PATH)
@@ -22,7 +22,7 @@ train_rotation = _mod.train_rotation
 random_rotation = _mod.random_rotation
 run_das_iia = _mod.run_das_iia
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

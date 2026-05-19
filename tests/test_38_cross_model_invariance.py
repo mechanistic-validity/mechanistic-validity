@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "transportability" / "38_cross_model_invariance.py"
 )
 _spec = importlib.util.spec_from_file_location("cross_model_38", _MOD_PATH)
@@ -20,7 +20,7 @@ compute_sv_distribution = _mod.compute_sv_distribution
 MODEL_PARAM_COUNTS = _mod.MODEL_PARAM_COUNTS
 run_cross_model_invariance = _mod.run_cross_model_invariance
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

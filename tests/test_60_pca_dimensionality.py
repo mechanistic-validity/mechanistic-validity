@@ -5,13 +5,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
     / "mechanistic_validity"
-    / "instruments"
+    / "metrics"
     / "representational"
     / "pca_dimensionality"
     / "60_pca_dimensionality.py"
@@ -79,7 +79,7 @@ def gpt2_model():
 
 
 def test_collect_residual_activations_shape(gpt2_model):
-    from mechanistic_validity.instruments.common import generate_prompts
+    from mechanistic_validity.metrics.common import generate_prompts
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)
     acts = collect_residual_activations(gpt2_model, prompts, layer=0)

@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "behavioral" / "generalization_gap" / "81_error_boundary_analysis.py"
 )
 _spec = importlib.util.spec_from_file_location("error_boundary_81", _MOD_PATH)
@@ -21,7 +21,7 @@ compute_boundary_alignment = _mod.compute_boundary_alignment
 run_error_boundary_analysis = _mod.run_error_boundary_analysis
 DIFFICULTY_TEMPLATES = _mod.DIFFICULTY_TEMPLATES
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -9,7 +9,7 @@ import torch
 # Load the 01_das_iia dependency first
 _DAS_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "counterfactual_das" / "01_das_iia.py"
 )
 _das_spec = importlib.util.spec_from_file_location("01_das_iia", _DAS_PATH)
@@ -19,7 +19,7 @@ _das_spec.loader.exec_module(_das_mod)
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "causal" / "counterfactual_das" / "31_multi_axis_iia.py"
 )
 _spec = importlib.util.spec_from_file_location("multi_axis_iia_31", _MOD_PATH)
@@ -33,7 +33,7 @@ compute_residual_iia = _mod.compute_residual_iia
 run_multi_axis_iia = _mod.run_multi_axis_iia
 MULTI_AXIS_TASKS = _mod.MULTI_AXIS_TASKS
 
-from mechanistic_validity.instruments.common import EvalResult, load_model
+from mechanistic_validity.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

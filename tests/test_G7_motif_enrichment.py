@@ -6,11 +6,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.instruments.common import EvalResult
+from mechanistic_validity.metrics.common import EvalResult
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "instruments"
+    / "src" / "mechanistic_validity" / "metrics"
     / "structural" / "network_motifs" / "G7_motif_enrichment.py"
 )
 _spec = importlib.util.spec_from_file_location("G7_motif_enrichment", _MOD_PATH)
