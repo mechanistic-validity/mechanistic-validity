@@ -10,7 +10,7 @@ Mechanistic Validity is a framework for evaluating claims about circuits in neur
 The framework does not introduce new measurement methods. It organizes existing methods — ablation, activation patching, IIA, causal scrubbing, weight analysis, baseline calibration — under a common evaluative vocabulary drawn from the standard typology of validity in philosophy of science and adapted to the conditions of mechanistic interpretability.
 
 <p align="center">
-  <img src="/mechanistic-validity/figures/readme-v2/pipeline-matplotlib9.png" alt="Mechanistic Validity Pipeline" width="800"/>
+  <img src="/mechanistic-validity/figures/framework/pipeline-horizontal.png" alt="Mechanistic Validity Pipeline" width="800"/>
 </p>
 
 ## What the framework is for
