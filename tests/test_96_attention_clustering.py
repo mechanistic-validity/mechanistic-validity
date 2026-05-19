@@ -48,10 +48,17 @@ def test_compute_cluster_purity_no_circuit_heads():
     assert compute_cluster_purity(labels, circuit_mask) == pytest.approx(0.0)
 
 
-def test_run_attention_clustering_ioi(gpt2_model):
-    results = run_attention_clustering(gpt2_model, ["ioi"], n_prompts=5)
-    assert len(results) == 1
-    r = results[0]
+TASK = "ioi"
+
+
+@pytest.fixture(scope="module")
+def circuit_results(gpt2_model):
+    return run_attention_clustering(gpt2_model, [TASK], n_prompts=5)
+
+
+def test_run_attention_clustering_returns_result(circuit_results):
+    assert len(circuit_results) == 1
+    r = circuit_results[0]
     assert isinstance(r, EvalResult)
     assert r.metric_id == "S96.attention_clustering"
     assert r.n_samples == 5
@@ -63,17 +70,15 @@ def test_run_attention_clustering_ioi(gpt2_model):
     assert 0.0 <= purity <= 1.0
 
 
-def test_run_attention_clustering_value_equals_silhouette(gpt2_model):
-    results = run_attention_clustering(gpt2_model, ["ioi"], n_prompts=5)
-    r = results[0]
+def test_run_attention_clustering_value_equals_silhouette(circuit_results):
+    r = circuit_results[0]
     assert r.value == pytest.approx(r.metadata["silhouette_score"])
 
 
-def test_run_attention_clustering_metadata_fields(gpt2_model):
-    results = run_attention_clustering(gpt2_model, ["ioi"], n_prompts=5)
-    r = results[0]
+def test_run_attention_clustering_metadata_fields(circuit_results, gpt2_model):
+    r = circuit_results[0]
     meta = r.metadata
-    assert meta["task"] == "ioi"
+    assert meta["task"] == TASK
     assert meta["n_circuit_heads"] >= 2
     assert meta["n_total_heads"] == gpt2_model.cfg.n_layers * gpt2_model.cfg.n_heads
     assert meta["k_clusters"] == meta["n_circuit_heads"]

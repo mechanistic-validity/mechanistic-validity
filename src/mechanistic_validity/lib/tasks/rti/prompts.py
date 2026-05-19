@@ -33,7 +33,7 @@ TEMPLATES = [
 
 
 def make_rti_prompts(tokenizer: Any, n: int = 400, seed: int = 42) -> list[dict]:
-    """Raw RTI prompt dicts (used by common.py via _RtiPromptAdapter)."""
+    """Raw RTI prompt dicts (wrapped into TaskPrompt by RTITask)."""
     rng = random.Random(seed)
     n_pairs = min(len(NAMES_A), len(NAMES_B))
     prompts: list[dict] = []

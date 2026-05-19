@@ -13,7 +13,7 @@ My main inspiration from this has been https://learnmechinterp.com/, which I bel
 Below is a high level overview of three key concepts in the framework:
 
 <p align="center">
-  <img src="docs/public/figures/readme-v2/pipeline-matplotlib9.png" alt="Mechanistic Validity Pipeline" width="800"/>
+  <img src="docs/public/figures/framework/pipeline-horizontal.png" alt="Mechanistic Validity Pipeline" width="800"/>
 </p>
 
 ## Mechanistic Validity Framework

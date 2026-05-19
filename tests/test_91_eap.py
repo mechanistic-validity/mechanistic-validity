@@ -133,7 +133,7 @@ def test_edge_scores_shape():
 
     from mechanistic_validity.instruments.common import generate_prompts, get_token_ids
 
-    prompts = generate_prompts("ioi", model.tokenizer, n_prompts=2)
+    prompts = generate_prompts(TASK, model.tokenizer, n_prompts=2)
     correct_ids, incorrect_ids = get_token_ids(prompts, model.tokenizer)
 
     edge_scores = compute_eap_scores(model, prompts, correct_ids, incorrect_ids)
@@ -142,10 +142,13 @@ def test_edge_scores_shape():
     assert edge_scores.dtype == np.float64
 
 
-def test_run_eap_ioi_returns_valid_result():
+TASK = "ioi"
+
+
+def test_run_eap_returns_valid_result():
     model = load_model("gpt2", "cpu")
 
-    results = run_eap(model, tasks=["ioi"], n_prompts=5)
+    results = run_eap(model, tasks=[TASK], n_prompts=5)
 
     assert len(results) == 1
     r = results[0]
@@ -155,7 +158,7 @@ def test_run_eap_ioi_returns_valid_result():
     assert r.n_samples == 5
 
     meta = r.metadata
-    assert meta["task"] == "ioi"
+    assert meta["task"] == TASK
     assert "auroc" in meta
     assert meta["auroc"] == pytest.approx(r.value)
     assert "passed" in meta

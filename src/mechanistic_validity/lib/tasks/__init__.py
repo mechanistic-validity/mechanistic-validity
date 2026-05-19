@@ -19,3 +19,19 @@ class TaskPrompt:
 
 
 TaskBuilder = Callable[..., list[TaskPrompt]]
+
+
+def __getattr__(name: str):
+    if name == "CircuitSpec":
+        from mechanistic_validity.lib.tasks.spec import CircuitSpec
+        return CircuitSpec
+    if name in ("CircuitTask", "HeadCircuitTask"):
+        from mechanistic_validity.lib.tasks import task as _task_mod
+        return getattr(_task_mod, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+__all__ = [
+    "TokenizerLike", "TaskPrompt", "TaskBuilder",
+    "CircuitSpec", "CircuitTask", "HeadCircuitTask",
+]

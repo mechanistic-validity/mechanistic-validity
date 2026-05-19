@@ -28,7 +28,6 @@ import torch
 from mechanistic_validity.instruments.common import (
     CIRCUIT_TASKS,
     EvalResult,
-    _RtiPromptAdapter,
     calibrate_mean_z,
     compute_faithfulness,
     generate_prompts,
@@ -40,23 +39,17 @@ from mechanistic_validity.instruments.common import (
     parse_common_args,
     save_results,
 )
-from run_probes_rti_v2 import make_rti_prompts
-from tasks.task_prompts import TASK_REGISTRY
+from mechanistic_validity.registry import load_task
 
 PARAPHRASE_SEEDS = [42, 100, 200, 300, 400]
 
 
 def generate_prompts_with_seed(task_name: str, tokenizer, n_prompts: int, seed: int):
-    """Generate prompts using a specific seed for variety."""
-    if task_name == "rti":
-        raw = make_rti_prompts(tokenizer, n=n_prompts, seed=seed)
-        return [_RtiPromptAdapter(d, tokenizer) for d in raw]
-    if task_name not in TASK_REGISTRY:
+    try:
+        t = load_task(task_name)
+    except ValueError:
         return []
-    builder = TASK_REGISTRY[task_name]
-    if task_name == "buffalo":
-        return builder(tokenizer, seed=seed)[:n_prompts]
-    return builder(tokenizer, n_prompts=n_prompts, seed=seed)
+    return t.get_prompts(tokenizer, n_prompts=n_prompts, seed=seed)
 
 
 @torch.no_grad()
@@ -179,7 +172,7 @@ def main():
     results = run_counterfactual_consistency(model, tasks, args.n_prompts)
 
     out = args.out or "34_counterfactual_consistency.json"
-    save_results(results, out)
+    save_results(results, out, args=args)
 
     log(f"\nDone. {len(results)} tasks evaluated.")
     for r in results:

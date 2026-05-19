@@ -4,8 +4,12 @@ Provides model loading, circuit/prompt access, logit-diff computation,
 mean-activation calibration, and result serialization. All evaluator
 scripts import from here.
 """
+import datetime
 import json
 import os
+import platform
+import subprocess
+import sys
 import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -18,40 +22,11 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 DATA_DIR = Path(os.environ.get("INSTRUMENT_DATA_DIR", str(SCRIPT_DIR / "data")))
 DATA_DIR.mkdir(exist_ok=True)
 
-from mechanistic_validity.lib.tasks.ioi import circuit as _ioi_circuit
-from mechanistic_validity.lib.tasks.greater_than import circuit as _gt_circuit  # noqa: E402
-from mechanistic_validity.lib.tasks.induction import circuit as _ind_circuit
-from mechanistic_validity.lib.tasks.sva import circuit as _sva_circuit  # noqa: E402
-from mechanistic_validity.lib.tasks.gendered_pronoun import circuit as _gp_circuit
-from mechanistic_validity.lib.tasks.rti import circuit as _rti_circuit  # noqa: E402
-from mechanistic_validity.lib.tasks.acronym import circuit as _acr_circuit
-from mechanistic_validity.lib.tasks.copy_suppression import circuit as _cs_circuit  # noqa: E402
-from mechanistic_validity.lib.tasks.epistemic_framing import circuit as _ef_circuit, circuit_tight as _ef_tight_circuit, \
-    circuit_eap as _ef_eap_circuit, circuit_expanded as _ef_expanded_circuit
-from mechanistic_validity.lib.tasks.prompts import TASK_REGISTRY  # noqa: E402
-
-_TASK_TO_MODULE = {
-    "ioi": _ioi_circuit, "greater_than": _gt_circuit,
-    "induction": _ind_circuit, "sva": _sva_circuit,
-    "gendered_pronoun": _gp_circuit, "rti": _rti_circuit,
-    "acronym": _acr_circuit, "copy_suppression": _cs_circuit,
-    "epistemic_framing": _ef_circuit,
-    "epistemic_expanded": _ef_expanded_circuit,
-    "epistemic_tight": _ef_tight_circuit,
-    "epistemic_eap": _ef_eap_circuit,
-    "rti_pattern": _rti_circuit, "sequence_internal": _ind_circuit,
-    "alternating_pair": _ind_circuit, "novel_song": _ind_circuit,
-    "centering_theory": _ioi_circuit, "resumptive": _ioi_circuit,
-    "self_allo": _ioi_circuit, "token_flood": _rti_circuit,
-    "buffalo": _rti_circuit,
-}
+from mechanistic_validity.registry import list_tasks, load_task
 
 
 def get_circuit(task: str) -> dict:
-    if task not in _TASK_TO_MODULE:
-        raise ValueError(f"Unknown task: {task}. Available: {list(_TASK_TO_MODULE.keys())}")
-    mod = _TASK_TO_MODULE[task]
-    return {"roles": mod.ROLES, "bands": mod.BANDS, "pathways": mod.PATHWAYS}
+    return load_task(task).get_circuit().to_dict()
 
 
 def get_all_heads(circuit: dict) -> set[tuple[int, int]]:
@@ -71,26 +46,28 @@ def get_all_edges(circuit: dict) -> set[tuple[int, int, int, int]]:
                     edges.add((s[0], s[1], r[0], r[1]))
     return edges
 
-CIRCUIT_TASKS = [
-    "ioi", "greater_than", "induction", "sva", "gendered_pronoun",
-    "rti", "acronym", "copy_suppression",
-]
-EXPERIMENTAL_TASKS = [
-    "epistemic_framing",
-    "epistemic_expanded",
-    "epistemic_tight",
-    "epistemic_eap",
-]
-ALIAS_TASKS = [
-    "rti_pattern", "sequence_internal", "alternating_pair", "novel_song",
-    "centering_theory", "resumptive", "self_allo", "token_flood", "buffalo",
-]
-ALL_TASKS = sorted(CIRCUIT_TASKS + EXPERIMENTAL_TASKS + ALIAS_TASKS)
+CIRCUIT_TASKS = list_tasks(source="published")
+EXPERIMENTAL_TASKS = list_tasks(source="experimental")
+ALIAS_TASKS = [t for t in list_tasks(source="ours") if t not in ("rti",)]
+ALL_TASKS = sorted(list_tasks())
 
 
 # ---------------------------------------------------------------------------
 # Result container
 # ---------------------------------------------------------------------------
+
+@dataclass
+class InstrumentInfo:
+    """Method citation and description for an instrument."""
+    name: str
+    paper_ref: str | None = None
+    paper_cite: str | None = None
+    description: str | None = None
+    category: str | None = None
+
+    def to_dict(self) -> dict:
+        return {k: v for k, v in asdict(self).items() if v is not None}
+
 
 @dataclass
 class EvalResult:
@@ -102,11 +79,17 @@ class EvalResult:
     n_samples: int = 0
     ci_low: float | None = None
     ci_high: float | None = None
+    faithfulness_curve: dict[float, float] | None = None
+    cpr: float | None = None
+    cmd: float | None = None
+    instrument_info: InstrumentInfo | None = None
     metadata: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         d = asdict(self)
         d["metadata"] = _sanitize_for_json(d["metadata"])
+        if d["instrument_info"] is None:
+            del d["instrument_info"]
         return d
 
 
@@ -209,27 +192,12 @@ def get_all_circuit_info():
 # Prompt generation
 # ---------------------------------------------------------------------------
 
-class _RtiPromptAdapter:
-    def __init__(self, d, tokenizer):
-        self.text = d["text"]
-        self.target_correct = tokenizer.decode([d["correct_id"]])
-        self.target_incorrect = tokenizer.decode([d["wrong_id"]])
-        self.metadata = {}
-        self._correct_id = d["correct_id"]
-        self._wrong_id = d["wrong_id"]
-
-
 def generate_prompts(task_name: str, tokenizer, n_prompts: int = 40):
-    if task_name == "rti":
-        from mechanistic_validity.lib.tasks.rti.prompts import make_rti_prompts
-        raw = make_rti_prompts(tokenizer, n=n_prompts, seed=42)
-        return [_RtiPromptAdapter(d, tokenizer) for d in raw]
-    if task_name not in TASK_REGISTRY:
+    try:
+        task = load_task(task_name)
+    except ValueError:
         return []
-    builder = TASK_REGISTRY[task_name]
-    if task_name == "buffalo":
-        return builder(tokenizer, seed=42)[:n_prompts]
-    return builder(tokenizer, n_prompts=n_prompts, seed=42)
+    return task.get_prompts(tokenizer, n_prompts=n_prompts, seed=42)
 
 
 def get_token_ids(prompts, tokenizer) -> tuple[list[int], list[int]]:
@@ -385,17 +353,86 @@ def compute_completeness(model, prompts, correct_ids, incorrect_ids,
 
 
 # ---------------------------------------------------------------------------
+# Provenance — every output JSON is self-documenting
+# ---------------------------------------------------------------------------
+
+def _git_info() -> dict[str, str]:
+    info: dict[str, str] = {}
+    try:
+        info["commit"] = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL, text=True,
+        ).strip()
+        info["branch"] = subprocess.check_output(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"], stderr=subprocess.DEVNULL, text=True,
+        ).strip()
+        dirty = subprocess.check_output(
+            ["git", "status", "--porcelain"], stderr=subprocess.DEVNULL, text=True,
+        ).strip()
+        info["dirty"] = bool(dirty)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+    return info
+
+
+def _pkg_version() -> str:
+    try:
+        from importlib.metadata import version
+        return version("mechanistic-validity")
+    except Exception:
+        return "dev"
+
+
+def get_provenance() -> dict[str, Any]:
+    """Snapshot of when/where/what-version this run happened."""
+    return {
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "python": sys.version.split()[0],
+        "platform": platform.platform(),
+        "package_version": _pkg_version(),
+        "git": _git_info(),
+    }
+
+
+def args_to_config(args: Any) -> dict[str, Any]:
+    """Convert an argparse Namespace (or any object with __dict__) to a config dict."""
+    if args is None:
+        return {}
+    d = vars(args) if hasattr(args, "__dict__") else dict(args)
+    return {k: _sanitize_for_json(v) for k, v in d.items()}
+
+
+# ---------------------------------------------------------------------------
 # Result I/O
 # ---------------------------------------------------------------------------
 
-def save_results(results: list[EvalResult] | dict, filename: str) -> Path:
+def save_results(results: list[EvalResult] | dict, filename: str,
+                 config: dict | None = None, args: Any = None) -> Path:
+    """Save results as a self-documenting JSON with provenance envelope.
+
+    The output format:
+        {
+          "provenance": { timestamp, git, version, ... },
+          "config": { model, device, tasks, n_prompts, ... },
+          "results": [ ... ]
+        }
+
+    Instruments call: save_results(results, "01_foo.json", args=args)
+    """
     path = DATA_DIR / filename
     if isinstance(results, list):
         data = [r.to_dict() for r in results]
     else:
         data = results
+
+    cfg = config or args_to_config(args)
+
+    envelope = {
+        "provenance": get_provenance(),
+        "config": cfg,
+        "results": data,
+    }
     with open(path, "w") as f:
-        json.dump(data, f, indent=2, default=_jsonable)
+        json.dump(envelope, f, indent=2, default=_jsonable)
     log(f"Saved {path.name} ({path.stat().st_size / 1024:.1f}KB)")
     return path
 
@@ -411,6 +448,19 @@ def save_incremental(result: EvalResult, filename: str) -> Path:
 
 
 def load_results(filename: str) -> Any:
+    """Load results. Handles both envelope format and legacy flat lists."""
+    path = DATA_DIR / filename
+    if not path.exists():
+        return None
+    with open(path) as f:
+        data = json.load(f)
+    if isinstance(data, dict) and "results" in data:
+        return data["results"]
+    return data
+
+
+def load_results_full(filename: str) -> dict | None:
+    """Load the full envelope (provenance + config + results)."""
     path = DATA_DIR / filename
     if not path.exists():
         return None
@@ -454,16 +504,25 @@ def parse_common_args(description: str = "Circuit evaluator"):
 
 
 # ---------------------------------------------------------------------------
-# Literature baselines (from task_reference_baselines.py + MIB)
+# Literature baselines (loaded from task registry)
 # ---------------------------------------------------------------------------
 
-LITERATURE_BASELINES = {
-    "ioi": {"faithfulness": 0.87, "das_iia": 0.95, "eap_auroc": 0.90},
-    "greater_than": {"faithfulness": 0.80, "eap_auroc": 0.85},
-    "induction": {"faithfulness": 0.75, "eap_auroc": 0.80},
-    "sva": {"faithfulness": 0.70, "das_iia": 0.60, "eap_auroc": 0.40},
-    "gendered_pronoun": {"faithfulness": 0.85, "eap_auroc": 0.72},
-    "copy_suppression": {"faithfulness": 0.65, "eap_auroc": 0.74},
-    "acronym": {"eap_auroc": 0.81},
-    "rti": {"eap_auroc": 0.39},
-}
+def _build_literature_baselines() -> dict[str, dict]:
+    baselines: dict[str, dict] = {}
+    for task_id in list_tasks():
+        try:
+            task = load_task(task_id)
+            b = task.get_baselines()
+            if b:
+                baselines[task_id] = b
+        except Exception:
+            pass
+    return baselines
+
+
+LITERATURE_BASELINES = _build_literature_baselines()
+
+
+def get_task_baselines(task_id: str) -> dict:
+    """Get baselines for a specific task from the registry."""
+    return LITERATURE_BASELINES.get(task_id, {})

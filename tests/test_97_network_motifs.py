@@ -191,16 +191,19 @@ def test_random_graph_too_few_nodes():
     assert len(edges) == 0
 
 
-# ── Full run on "ioi" task ───────────────────────────────────────────
+TASK = "ioi"
 
-def test_run_network_motifs_ioi():
-    results = run_network_motifs(["ioi"], n_random=50)
+
+# ── Full run ─────────────────────────────────────────────────────────
+
+def test_run_network_motifs_returns_result():
+    results = run_network_motifs([TASK], n_random=50)
     assert len(results) == 1
     r = results[0]
     assert isinstance(r, EvalResult)
     assert r.metric_id == "G5.network_motif_enrichment"
     assert r.n_samples == 50
-    assert r.metadata["task"] == "ioi"
+    assert r.metadata["task"] == TASK
     assert r.metadata["n_nodes"] >= 3
     assert r.metadata["n_edges"] >= 1
     assert "motifs" in r.metadata
@@ -211,8 +214,8 @@ def test_run_network_motifs_ioi():
         assert "observed" in motifs[name]
 
 
-def test_run_network_motifs_ioi_z_scores_are_finite():
-    results = run_network_motifs(["ioi"], n_random=50)
+def test_run_network_motifs_z_scores_are_finite():
+    results = run_network_motifs([TASK], n_random=50)
     r = results[0]
     motifs = r.metadata["motifs"]
     for name, data in motifs.items():
@@ -221,8 +224,8 @@ def test_run_network_motifs_ioi_z_scores_are_finite():
     assert math.isfinite(r.value)
 
 
-def test_run_network_motifs_ioi_observed_counts_nonneg():
-    results = run_network_motifs(["ioi"], n_random=50)
+def test_run_network_motifs_observed_counts_nonneg():
+    results = run_network_motifs([TASK], n_random=50)
     r = results[0]
     motifs = r.metadata["motifs"]
     for name, data in motifs.items():
@@ -230,7 +233,7 @@ def test_run_network_motifs_ioi_observed_counts_nonneg():
 
 
 def test_run_network_motifs_value_is_best_z():
-    results = run_network_motifs(["ioi"], n_random=50)
+    results = run_network_motifs([TASK], n_random=50)
     r = results[0]
     motifs = r.metadata["motifs"]
     best_z = max(m["z_score"] for m in motifs.values())

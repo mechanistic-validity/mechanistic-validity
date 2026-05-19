@@ -29,8 +29,6 @@ Usage:
     uv run python 97_network_motifs.py --tasks ioi sva greater_than
 """
 
-import itertools
-
 import numpy as np
 
 from mechanistic_validity.instruments.common import (
@@ -196,8 +194,8 @@ def run_network_motifs(tasks: list[str], n_random: int = N_RANDOM_DEFAULT) -> li
             std_rand = float(rand_arr.std())
 
             if std_rand < 1e-10:
-                # All random graphs have the same count
-                z_score = 0.0 if abs(observed - mean_rand) < 1e-10 else float("inf")
+                # All random graphs have the same count; cap at 100 to avoid inf
+                z_score = 0.0 if abs(observed - mean_rand) < 1e-10 else 100.0
             else:
                 z_score = (observed - mean_rand) / std_rand
 

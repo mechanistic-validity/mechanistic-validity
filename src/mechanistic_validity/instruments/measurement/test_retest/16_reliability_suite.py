@@ -29,7 +29,6 @@ import torch
 from mechanistic_validity.instruments.common import (
     CIRCUIT_TASKS,
     EvalResult,
-    _RtiPromptAdapter,
     calibrate_mean_z,
     compute_faithfulness,
     generate_prompts,
@@ -43,25 +42,15 @@ from mechanistic_validity.instruments.common import (
     parse_common_args,
     save_results,
 )
-from run_probes_rti_v2 import make_rti_prompts
-from tasks.task_prompts import TASK_REGISTRY
+from mechanistic_validity.registry import load_task
 
-
-# ---------------------------------------------------------------------------
-# Prompt generation with explicit seed override
-# ---------------------------------------------------------------------------
 
 def _generate_prompts_with_seed(task: str, tokenizer, n_prompts: int, seed: int):
-    """Generate prompts with a specific seed (bypasses _common's fixed seed=42)."""
-    if task == "rti":
-        raw = make_rti_prompts(tokenizer, n=n_prompts, seed=seed)
-        return [_RtiPromptAdapter(d, tokenizer) for d in raw]
-    if task not in TASK_REGISTRY:
+    try:
+        t = load_task(task)
+    except ValueError:
         return []
-    builder = TASK_REGISTRY[task]
-    if task == "buffalo":
-        return builder(tokenizer, seed=seed)[:n_prompts]
-    return builder(tokenizer, n_prompts=n_prompts, seed=seed)
+    return t.get_prompts(tokenizer, n_prompts=n_prompts, seed=seed)
 
 
 # ---------------------------------------------------------------------------

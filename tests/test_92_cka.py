@@ -86,8 +86,11 @@ def gpt2_model():
     return load_model("gpt2", "cpu")
 
 
-def test_run_cka_ioi_returns_eval_result(gpt2_model):
-    result = run_cka(gpt2_model, "ioi", n_prompts=5)
+TASK = "ioi"
+
+
+def test_run_cka_returns_eval_result(gpt2_model):
+    result = run_cka(gpt2_model, TASK, n_prompts=5)
     assert result is not None
     assert isinstance(result, EvalResult)
     assert result.metric_id == "E92.cka"

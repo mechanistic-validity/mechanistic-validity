@@ -154,7 +154,10 @@ def test_hedges_g_identical_distributions_is_zero():
     assert hedges_g(g, g.copy()) == pytest.approx(0.0)
 
 
-# ── Integration: run_effect_size on IOI ──────────────────────────────
+# ── Integration: run_effect_size ─────────────────────────────────────
+
+TASK = "ioi"
+
 
 @pytest.fixture(scope="module")
 def gpt2_model():
@@ -162,49 +165,49 @@ def gpt2_model():
 
 
 @pytest.fixture(scope="module")
-def ioi_result(gpt2_model):
-    return run_effect_size(gpt2_model, "ioi", n_prompts=5)
+def circuit_result(gpt2_model):
+    return run_effect_size(gpt2_model, TASK, n_prompts=5)
 
 
-def test_run_effect_size_ioi_returns_eval_result(ioi_result):
-    assert ioi_result is not None
-    assert isinstance(ioi_result, EvalResult)
+def test_run_effect_size_returns_eval_result(circuit_result):
+    assert circuit_result is not None
+    assert isinstance(circuit_result, EvalResult)
 
 
-def test_run_effect_size_ioi_has_correct_metric_id(ioi_result):
-    assert ioi_result.metric_id == "M90.effect_size"
+def test_run_effect_size_has_correct_metric_id(circuit_result):
+    assert circuit_result.metric_id == "M90.effect_size"
 
 
-def test_run_effect_size_ioi_metadata_keys(ioi_result):
+def test_run_effect_size_metadata_keys(circuit_result):
     expected_keys = {
         "task", "cohens_d", "glass_delta", "hedges_g",
         "circuit_mean", "circuit_std", "non_circuit_mean", "non_circuit_std",
         "n_circuit_heads", "n_non_circuit_heads", "passed", "threshold",
     }
-    assert set(ioi_result.metadata.keys()) == expected_keys
+    assert set(circuit_result.metadata.keys()) == expected_keys
 
 
-def test_run_effect_size_ioi_value_equals_cohens_d(ioi_result):
-    assert ioi_result.value == pytest.approx(ioi_result.metadata["cohens_d"])
+def test_run_effect_size_value_equals_cohens_d(circuit_result):
+    assert circuit_result.value == pytest.approx(circuit_result.metadata["cohens_d"])
 
 
-def test_run_effect_size_ioi_n_samples_matches_prompts(ioi_result):
-    assert ioi_result.n_samples <= 5
-    assert ioi_result.n_samples > 0
+def test_run_effect_size_n_samples_matches_prompts(circuit_result):
+    assert circuit_result.n_samples <= 5
+    assert circuit_result.n_samples > 0
 
 
-def test_run_effect_size_ioi_head_counts_are_positive(ioi_result):
-    assert ioi_result.metadata["n_circuit_heads"] > 0
-    assert ioi_result.metadata["n_non_circuit_heads"] > 0
+def test_run_effect_size_head_counts_are_positive(circuit_result):
+    assert circuit_result.metadata["n_circuit_heads"] > 0
+    assert circuit_result.metadata["n_non_circuit_heads"] > 0
 
 
-def test_run_effect_size_ioi_circuit_mean_higher_than_non_circuit(ioi_result):
-    assert ioi_result.metadata["circuit_mean"] > ioi_result.metadata["non_circuit_mean"]
+def test_run_effect_size_circuit_mean_higher_than_non_circuit(circuit_result):
+    assert circuit_result.metadata["circuit_mean"] > circuit_result.metadata["non_circuit_mean"]
 
 
-def test_run_effect_size_ioi_hedges_g_smaller_than_cohens_d(ioi_result):
-    d = ioi_result.metadata["cohens_d"]
-    g = ioi_result.metadata["hedges_g"]
+def test_run_effect_size_hedges_g_smaller_than_cohens_d(circuit_result):
+    d = circuit_result.metadata["cohens_d"]
+    g = circuit_result.metadata["hedges_g"]
     if abs(d) > 1e-8:
         assert abs(g) <= abs(d) + 1e-10
 
