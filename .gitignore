@@ -16,6 +16,6 @@ venv/
 *.swo
 docs/public/figures/readme/
 docs/public/figures/readme-v2/
-src/instruments/data/
+src/mechanistic_validity/instruments/data/
 /docs/public/figures/readme/
 /docs/public/figures/readme-v2/
