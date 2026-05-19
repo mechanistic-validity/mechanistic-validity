@@ -37,18 +37,19 @@ There are three top-level modes and four implementational sub-types (7 total):
 
 Classifies an instrument's output by the *kind of signal* it produces. Two instruments from different families that agree constitute stronger evidence than two from the same family, because they have structurally different failure modes.
 
-| Family | Signal type | Instruments |
+| Family | Signal type | Metrics |
 |---|---|---|
 | Causal | Interventions and counterfactuals | 13 |
-| Structural | Weight-space analysis (no forward pass) | 9 |
-| Representational | Latent geometry and decodability | 10 |
-| Behavioral | Held-out task and generalization tests | 9 |
+| Structural | Weight-space analysis (no forward pass) | 12 |
+| Representational | Latent geometry and decodability | 11 |
+| Behavioral | Held-out task and generalization tests | 10 |
 | Information-theoretic | Coding properties and information flow | 9 |
-| Measurement-theoretic | Reliability and calibration audits | 8 |
 
-### 3. Instruments
+### 3. Metrics & Calibrations
 
-The concrete runnable test: the thing you actually execute on the model. Instruments include activation patching, resample ablation, DAS-IIA, weight classifiers, bootstrap stability checks, and spectral SVD of weight matrices. An instrument produces a number or a set of numbers. By itself, a number from this layer is not a finding — it is data that must be interpreted upward through the hierarchy.
+**Metrics** are the concrete runnable tests: the things you actually execute on the model. Metrics include activation patching, resample ablation, DAS-IIA, K-composition, copying score, and spectral SVD of weight matrices. A metric produces a number or a set of numbers. By itself, a number from this layer is not a finding — it is data that must be interpreted upward through the hierarchy.
+
+**Calibrations** gate metric outputs before they can serve as evidence. They determine whether a metric's numbers are trustworthy — stable across seeds, separable from random baselines, and replicable. Without calibration, apparent findings may be noise artifacts. Key calibrations include bootstrap stability (F01), random baseline separation (F09), and untrained model baseline (F10).
 
 ### 4. Criteria
 
