@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "mdc_glennan" / "72_replacement_test.py"
 )
 _spec = importlib.util.spec_from_file_location("replacement_test_72", _MOD_PATH)
@@ -20,7 +20,7 @@ recovery_constant_replacement = _mod.recovery_constant_replacement
 recovery_linear_ov_replacement = _mod.recovery_linear_ov_replacement
 run_replacement_test = _mod.run_replacement_test
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -31,7 +31,7 @@ def gpt2_model():
 
 
 def test_recovery_constant_returns_finite(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         calibrate_mean_z,
         generate_prompts,
         get_token_ids,
@@ -48,7 +48,7 @@ def test_recovery_constant_returns_finite(gpt2_model):
 
 
 def test_recovery_linear_ov_returns_finite(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         generate_prompts,
         get_token_ids,
     )

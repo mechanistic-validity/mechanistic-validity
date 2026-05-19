@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.information.notears_dag.09_notears"
+    "mechval.metrics.information.notears_dag.09_notears"
 )
 notears_linear = _mod.notears_linear
 compute_shd = _mod.compute_shd

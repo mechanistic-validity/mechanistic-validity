@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "structural" / "edge_analysis" / "84_path_specificity.py"
 )
 _spec = importlib.util.spec_from_file_location("_path_spec_84", _MOD_PATH)
@@ -35,7 +35,7 @@ def circuit_results(gpt2_model):
 
 
 def test_compute_edge_effects_for_prompt_returns_dict(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         calibrate_mean_z, generate_prompts, get_circuit_info, get_token_ids,
     )
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)

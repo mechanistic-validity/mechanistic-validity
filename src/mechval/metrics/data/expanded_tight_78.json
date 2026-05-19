@@ -1,0 +1,68 @@
+[
+  {
+    "metric_id": "A2.composition_test",
+    "value": 0.22839140162113022,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_expanded",
+      "full_circuit_faithfulness": 0.22839140162113022,
+      "per_pathway_faithfulness": {
+        "early_processor->mid_composer": -0.07823859543686743,
+        "early_processor->late_router": -0.09088534940827164,
+        "early_suppressor->mid_suppressor": -0.17915725715807032,
+        "early_suppressor->mid_composer": -0.06426056625436638,
+        "mid_composer->late_router": -0.044889803629124654,
+        "mid_suppressor->late_router": -0.0912359541825849,
+        "mid_composer->late_suppressor": 0.01154963776565238,
+        "late_suppressor->late_router": -0.03041550497269788,
+        "early_processor->mid_composer->late_router": -0.03168142723530295,
+        "early_processor->mid_composer->late_suppressor->late_router": 0.1080984973376668,
+        "early_suppressor->mid_suppressor->late_router": -0.08326297060421063,
+        "early_suppressor->mid_composer->late_router": 0.005015238653162618,
+        "early_suppressor->mid_composer->late_suppressor->late_router": 0.16569428552644974
+      },
+      "max_single_pathway_faithfulness": 0.16569428552644974,
+      "n_circuit_heads": 32,
+      "n_pathways": 13,
+      "passed": false,
+      "threshold_full": 0.3,
+      "threshold_pathway": 0.2
+    }
+  },
+  {
+    "metric_id": "A2.composition_test",
+    "value": -0.05849982387353509,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_tight",
+      "full_circuit_faithfulness": -0.05849982387353509,
+      "per_pathway_faithfulness": {
+        "early_processor->mid_composer": -0.15066093073320622,
+        "early_processor->late_router": -0.12688659220709175,
+        "early_suppressor->mid_suppressor": -0.1424649848580416,
+        "early_suppressor->mid_composer": -0.12526305603061821,
+        "mid_composer->late_router": -0.09245053729712521,
+        "mid_suppressor->late_router": -0.08807366778549702,
+        "early_processor->mid_composer->late_router": -0.10543445999257713,
+        "early_suppressor->mid_suppressor->late_router": -0.07933087018584023,
+        "early_suppressor->mid_composer->late_router": -0.06622853110071443
+      },
+      "max_single_pathway_faithfulness": -0.06622853110071443,
+      "n_circuit_heads": 13,
+      "n_pathways": 9,
+      "passed": false,
+      "threshold_full": 0.3,
+      "threshold_pathway": 0.2
+    }
+  }
+]

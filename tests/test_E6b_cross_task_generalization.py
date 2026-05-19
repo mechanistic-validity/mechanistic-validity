@@ -5,11 +5,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "cross_task_transfer" / "E6b_cross_task_generalization.py"
 )
 _spec = importlib.util.spec_from_file_location("_cross_task_gen", _MOD_PATH)

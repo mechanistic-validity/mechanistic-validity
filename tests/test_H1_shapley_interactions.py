@@ -8,7 +8,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "hedonic_pas" / "H1_shapley_interactions.py"
 )
 _spec = importlib.util.spec_from_file_location("hedonic_h1", _MOD_PATH)
@@ -20,7 +20,7 @@ compute_pas = _mod.compute_pas
 compute_oca = _mod.compute_oca
 run_hedonic_synergy = _mod.run_hedonic_synergy
 
-from mechanistic_validity.metrics.common import EvalResult, get_circuit_heads, load_model
+from mechval.metrics.common import EvalResult, get_circuit_heads, load_model
 
 TASK = "ioi"
 

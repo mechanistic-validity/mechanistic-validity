@@ -1,0 +1,643 @@
+{
+  "task": "epistemic_framing",
+  "model": "gpt2",
+  "device": "cpu",
+  "n_prompts": 40,
+  "elapsed_seconds": 35.86721611022949,
+  "threshold": 0.005,
+  "n_significant_edges": 9504,
+  "top_edges": [
+    {
+      "sender": "L8H8",
+      "receiver": "L10H0",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 2.5587120056152344
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L9H5",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 2.536597728729248
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L9H6",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 2.496103525161743
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L7H6",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 7,
+      "receiver_head": 6,
+      "score": 2.3202052116394043
+    },
+    {
+      "sender": "L8H10",
+      "receiver": "L10H0",
+      "sender_layer": 8,
+      "sender_head": 10,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 2.2600724697113037
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L7H6",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 7,
+      "receiver_head": 6,
+      "score": 2.239969491958618
+    },
+    {
+      "sender": "L9H3",
+      "receiver": "L10H0",
+      "sender_layer": 9,
+      "sender_head": 3,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 2.215263605117798
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L9H2",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 2,
+      "score": 2.2012228965759277
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L7H6",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 7,
+      "receiver_head": 6,
+      "score": 2.1888387203216553
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L8H10",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 8,
+      "receiver_head": 10,
+      "score": 2.1766858100891113
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L7H6",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 7,
+      "receiver_head": 6,
+      "score": 2.1742429733276367
+    },
+    {
+      "sender": "L8H10",
+      "receiver": "L9H6",
+      "sender_layer": 8,
+      "sender_head": 10,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 2.1722424030303955
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L10H7",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 10,
+      "receiver_head": 7,
+      "score": 2.163494110107422
+    },
+    {
+      "sender": "L8H10",
+      "receiver": "L9H5",
+      "sender_layer": 8,
+      "sender_head": 10,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 2.1545093059539795
+    },
+    {
+      "sender": "L10H7",
+      "receiver": "L11H2",
+      "sender_layer": 10,
+      "sender_head": 7,
+      "receiver_layer": 11,
+      "receiver_head": 2,
+      "score": 2.1359715461730957
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L10H0",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 2.1113345623016357
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L9H5",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 2.1109206676483154
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L8H10",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 8,
+      "receiver_head": 10,
+      "score": 2.100517749786377
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L6H2",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 6,
+      "receiver_head": 2,
+      "score": 2.094008445739746
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L11H3",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 11,
+      "receiver_head": 3,
+      "score": 2.0848145484924316
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L6H6",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 6,
+      "receiver_head": 6,
+      "score": 2.0746755599975586
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L9H6",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 2.0740957260131836
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L10H0",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 2.058946132659912
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L8H10",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 8,
+      "receiver_head": 10,
+      "score": 2.056617498397827
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L9H5",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 2.0475833415985107
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L8H10",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 8,
+      "receiver_head": 10,
+      "score": 2.0423314571380615
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L9H6",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 2.022571563720703
+    },
+    {
+      "sender": "L1H10",
+      "receiver": "L8H9",
+      "sender_layer": 1,
+      "sender_head": 10,
+      "receiver_layer": 8,
+      "receiver_head": 9,
+      "score": 2.0189578533172607
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L6H2",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 6,
+      "receiver_head": 2,
+      "score": 2.013317584991455
+    },
+    {
+      "sender": "L10H7",
+      "receiver": "L11H3",
+      "sender_layer": 10,
+      "sender_head": 7,
+      "receiver_layer": 11,
+      "receiver_head": 3,
+      "score": 2.00569486618042
+    },
+    {
+      "sender": "L7H8",
+      "receiver": "L8H10",
+      "sender_layer": 7,
+      "sender_head": 8,
+      "receiver_layer": 8,
+      "receiver_head": 10,
+      "score": 2.0024797916412354
+    },
+    {
+      "sender": "L7H8",
+      "receiver": "L10H0",
+      "sender_layer": 7,
+      "sender_head": 8,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 2.0021660327911377
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L6H6",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 6,
+      "receiver_head": 6,
+      "score": 2.0000298023223877
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L9H5",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 1.9936292171478271
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L9H9",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 9,
+      "score": 1.9911798238754272
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L10H0",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 1.990075707435608
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L9H5",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 1.98284113407135
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L6H2",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 6,
+      "receiver_head": 2,
+      "score": 1.9727529287338257
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L6H2",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 6,
+      "receiver_head": 2,
+      "score": 1.9642333984375
+    },
+    {
+      "sender": "L7H8",
+      "receiver": "L9H6",
+      "sender_layer": 7,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 1.9628063440322876
+    },
+    {
+      "sender": "L9H0",
+      "receiver": "L10H0",
+      "sender_layer": 9,
+      "sender_head": 0,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 1.9598373174667358
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L9H6",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 1.9547224044799805
+    },
+    {
+      "sender": "L7H8",
+      "receiver": "L9H5",
+      "sender_layer": 7,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 5,
+      "score": 1.954233169555664
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L9H7",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 9,
+      "receiver_head": 7,
+      "score": 1.953643560409546
+    },
+    {
+      "sender": "L2H10",
+      "receiver": "L6H6",
+      "sender_layer": 2,
+      "sender_head": 10,
+      "receiver_layer": 6,
+      "receiver_head": 6,
+      "score": 1.951859474182129
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L10H0",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 10,
+      "receiver_head": 0,
+      "score": 1.9516513347625732
+    },
+    {
+      "sender": "L4H7",
+      "receiver": "L8H9",
+      "sender_layer": 4,
+      "sender_head": 7,
+      "receiver_layer": 8,
+      "receiver_head": 9,
+      "score": 1.9460865259170532
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L6H6",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 6,
+      "receiver_head": 6,
+      "score": 1.9432986974716187
+    },
+    {
+      "sender": "L8H8",
+      "receiver": "L11H2",
+      "sender_layer": 8,
+      "sender_head": 8,
+      "receiver_layer": 11,
+      "receiver_head": 2,
+      "score": 1.9394168853759766
+    },
+    {
+      "sender": "L4H11",
+      "receiver": "L9H6",
+      "sender_layer": 4,
+      "sender_head": 11,
+      "receiver_layer": 9,
+      "receiver_head": 6,
+      "score": 1.933415174484253
+    }
+  ],
+  "top_heads_by_edge_involvement": [
+    {
+      "head": "L1H10",
+      "layer": 1,
+      "head_idx": 10,
+      "total_edge_score": 163.52791611850262
+    },
+    {
+      "head": "L8H10",
+      "layer": 8,
+      "head_idx": 10,
+      "total_edge_score": 155.5887449681759
+    },
+    {
+      "head": "L2H10",
+      "layer": 2,
+      "head_idx": 10,
+      "total_edge_score": 152.9604733735323
+    },
+    {
+      "head": "L4H7",
+      "layer": 4,
+      "head_idx": 7,
+      "total_edge_score": 146.78960712254047
+    },
+    {
+      "head": "L8H8",
+      "layer": 8,
+      "head_idx": 8,
+      "total_edge_score": 145.63665023446083
+    },
+    {
+      "head": "L10H0",
+      "layer": 10,
+      "head_idx": 0,
+      "total_edge_score": 142.6961817741394
+    },
+    {
+      "head": "L9H5",
+      "layer": 9,
+      "head_idx": 5,
+      "total_edge_score": 138.57872346043587
+    },
+    {
+      "head": "L5H9",
+      "layer": 5,
+      "head_idx": 9,
+      "total_edge_score": 137.58452460169792
+    },
+    {
+      "head": "L4H11",
+      "layer": 4,
+      "head_idx": 11,
+      "total_edge_score": 134.43780253827572
+    },
+    {
+      "head": "L1H3",
+      "layer": 1,
+      "head_idx": 3,
+      "total_edge_score": 132.28562426567078
+    },
+    {
+      "head": "L10H7",
+      "layer": 10,
+      "head_idx": 7,
+      "total_edge_score": 128.61193215847015
+    },
+    {
+      "head": "L7H6",
+      "layer": 7,
+      "head_idx": 6,
+      "total_edge_score": 125.92644584178925
+    },
+    {
+      "head": "L5H10",
+      "layer": 5,
+      "head_idx": 10,
+      "total_edge_score": 125.10621136426926
+    },
+    {
+      "head": "L4H3",
+      "layer": 4,
+      "head_idx": 3,
+      "total_edge_score": 124.34565363824368
+    },
+    {
+      "head": "L9H6",
+      "layer": 9,
+      "head_idx": 6,
+      "total_edge_score": 122.03942638635635
+    },
+    {
+      "head": "L2H8",
+      "layer": 2,
+      "head_idx": 8,
+      "total_edge_score": 121.71346338093281
+    },
+    {
+      "head": "L11H2",
+      "layer": 11,
+      "head_idx": 2,
+      "total_edge_score": 120.73190838098526
+    },
+    {
+      "head": "L4H0",
+      "layer": 4,
+      "head_idx": 0,
+      "total_edge_score": 120.70230209827423
+    },
+    {
+      "head": "L7H8",
+      "layer": 7,
+      "head_idx": 8,
+      "total_edge_score": 120.4348798841238
+    },
+    {
+      "head": "L2H4",
+      "layer": 2,
+      "head_idx": 4,
+      "total_edge_score": 119.74514646828175
+    },
+    {
+      "head": "L7H3",
+      "layer": 7,
+      "head_idx": 3,
+      "total_edge_score": 118.75430744886398
+    },
+    {
+      "head": "L9H2",
+      "layer": 9,
+      "head_idx": 2,
+      "total_edge_score": 118.11557886004448
+    },
+    {
+      "head": "L2H9",
+      "layer": 2,
+      "head_idx": 9,
+      "total_edge_score": 118.0352682620287
+    },
+    {
+      "head": "L8H9",
+      "layer": 8,
+      "head_idx": 9,
+      "total_edge_score": 116.19912576675415
+    },
+    {
+      "head": "L1H11",
+      "layer": 1,
+      "head_idx": 11,
+      "total_edge_score": 116.02971604466438
+    },
+    {
+      "head": "L11H3",
+      "layer": 11,
+      "head_idx": 3,
+      "total_edge_score": 115.61549580097198
+    },
+    {
+      "head": "L8H11",
+      "layer": 8,
+      "head_idx": 11,
+      "total_edge_score": 112.99902418255806
+    },
+    {
+      "head": "L6H7",
+      "layer": 6,
+      "head_idx": 7,
+      "total_edge_score": 112.88490656018257
+    },
+    {
+      "head": "L3H7",
+      "layer": 3,
+      "head_idx": 7,
+      "total_edge_score": 112.83984288573265
+    },
+    {
+      "head": "L6H0",
+      "layer": 6,
+      "head_idx": 0,
+      "total_edge_score": 112.68612243235111
+    }
+  ]
+}

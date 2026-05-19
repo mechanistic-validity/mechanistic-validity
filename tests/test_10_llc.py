@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.metrics.common import EvalResult, load_model, get_circuit_heads
+from mechval.metrics.common import EvalResult, load_model, get_circuit_heads
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "structural" / "llc_rllc" / "10_llc.py"
 )
 _spec = importlib.util.spec_from_file_location("_llc_10", _MOD_PATH)
@@ -35,7 +35,7 @@ def circuit_results(gpt2_model):
 
 
 def test_estimate_llc_hessian_returns_float(gpt2_model):
-    from mechanistic_validity.metrics.common import generate_prompts, get_token_ids
+    from mechval.metrics.common import generate_prompts, get_token_ids
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)
     correct_ids, incorrect_ids = get_token_ids(prompts, gpt2_model.tokenizer)
     llc = estimate_llc_hessian(gpt2_model, prompts, correct_ids, incorrect_ids,

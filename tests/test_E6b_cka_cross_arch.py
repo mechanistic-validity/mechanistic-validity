@@ -8,7 +8,7 @@ import pytest
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "metrics"
     / "representational"
     / "cka"
@@ -22,7 +22,7 @@ _spec.loader.exec_module(_mod)
 linear_cka = _mod.linear_cka
 run_cka_analysis = _mod.run_cka_analysis
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

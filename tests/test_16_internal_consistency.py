@@ -6,11 +6,11 @@ from unittest.mock import patch
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "calibrations" / "internal_consistency" / "16_reliability_suite.py"
+    / "src" / "mechval" / "calibrations" / "internal_consistency" / "16_reliability_suite.py"
 )
 _spec = importlib.util.spec_from_file_location("_ic_16", _MOD_PATH)
 _mod = importlib.util.module_from_spec(_spec)

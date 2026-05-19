@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "mdc_glennan" / "71_held_out_prediction.py"
 )
 _spec = importlib.util.spec_from_file_location("held_out_71", _MOD_PATH)
@@ -21,7 +21,7 @@ held_out_prediction_correlation = _mod.held_out_prediction_correlation
 collect_head_z = _mod.collect_head_z
 run_held_out_prediction = _mod.run_held_out_prediction
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -74,7 +74,7 @@ def gpt2_model():
 
 
 def test_collect_head_z_shape(gpt2_model):
-    from mechanistic_validity.metrics.common import generate_prompts
+    from mechval.metrics.common import generate_prompts
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=4)
     z = collect_head_z(gpt2_model, prompts, layer=0, head=0)

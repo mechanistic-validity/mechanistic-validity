@@ -9,7 +9,7 @@ import torch
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "metrics"
     / "causal"
     / "counterfactual_das"
@@ -25,7 +25,7 @@ compute_pca_directions = _mod.compute_pca_directions
 compute_iia = _mod.compute_iia
 run_das_iia = _mod.run_das_iia
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

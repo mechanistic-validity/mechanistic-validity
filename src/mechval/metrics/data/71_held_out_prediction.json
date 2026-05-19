@@ -1,0 +1,76 @@
+[
+  {
+    "metric_id": "F2.held_out_prediction",
+    "value": 0.4737989565787407,
+    "baseline_random": 0.5890780555514189,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 13,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_tight",
+      "per_head_correlation": {
+        "L0H0": -0.06592482328414917,
+        "L0H4": 0.5500438809394836,
+        "L0H6": 0.20380033552646637,
+        "L0H7": -0.02440625987946987,
+        "L0H8": 0.8017444610595703,
+        "L0H9": 0.6897389888763428,
+        "L2H1": 0.7390986680984497,
+        "L2H10": -0.14038249850273132,
+        "L3H8": 0.5219858884811401,
+        "L4H6": 0.743527889251709,
+        "L5H2": 0.9186469316482544,
+        "L5H3": 0.6600643992424011,
+        "L10H0": 0.5614485740661621
+      },
+      "baseline_mean_correlation": 0.5890780555514189,
+      "baseline_median_correlation": 0.6151346564292908,
+      "frac_above_baseline_median": 0.46153846153846156,
+      "n_circuit_heads": 13,
+      "n_baseline_heads": 13,
+      "n_prompts_train": 20,
+      "n_prompts_test": 20,
+      "interpretation": "Pearson r of train-predicted vs actual test activation magnitude (higher = more predictable)"
+    }
+  },
+  {
+    "metric_id": "F2.held_out_prediction",
+    "value": 0.48795568545659385,
+    "baseline_random": 0.5776049390435218,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 15,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_eap",
+      "per_head_correlation": {
+        "L1H3": 0.24841046333312988,
+        "L1H10": 0.2894074022769928,
+        "L2H10": -0.14038249850273132,
+        "L4H3": 0.693966269493103,
+        "L4H7": 0.7021095752716064,
+        "L4H11": -0.398202508687973,
+        "L5H9": 0.8534349203109741,
+        "L5H10": 0.7148699164390564,
+        "L7H6": 0.9570031762123108,
+        "L8H8": 0.553790807723999,
+        "L8H10": 0.5036040544509888,
+        "L9H5": 0.5876491069793701,
+        "L9H6": 0.47859761118888855,
+        "L10H0": 0.5614485740661621,
+        "L10H7": 0.7136284112930298
+      },
+      "baseline_mean_correlation": 0.5776049390435218,
+      "baseline_median_correlation": 0.6725058555603027,
+      "frac_above_baseline_median": 0.4,
+      "n_circuit_heads": 15,
+      "n_baseline_heads": 15,
+      "n_prompts_train": 20,
+      "n_prompts_test": 20,
+      "interpretation": "Pearson r of train-predicted vs actual test activation magnitude (higher = more predictable)"
+    }
+  }
+]

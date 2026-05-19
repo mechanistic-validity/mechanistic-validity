@@ -6,12 +6,12 @@ import numpy as np
 import pytest
 from scipy import stats as sp_stats
 
-from mechanistic_validity.metrics.common import EvalResult
+from mechval.metrics.common import EvalResult
 
 _CV_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "calibrations"
     / "convergent_validity"
     / "12_convergent_validity.py"

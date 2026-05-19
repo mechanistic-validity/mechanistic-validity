@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "calibration" / "45_calibration.py"
 )
 _spec = importlib.util.spec_from_file_location("calibration_45", _MOD_PATH)
@@ -18,7 +18,7 @@ _spec.loader.exec_module(_mod)
 compute_ece = _mod.compute_ece
 run_calibration = _mod.run_calibration
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

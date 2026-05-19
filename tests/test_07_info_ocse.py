@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.information.osce.07_ocse"
+    "mechval.metrics.information.osce.07_ocse"
 )
 stability_selection = _mod.stability_selection
 gaussian_cmi = _mod.gaussian_cmi

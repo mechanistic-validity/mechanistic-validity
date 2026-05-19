@@ -4,12 +4,12 @@ from pathlib import Path
 
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult
+from mechval.metrics.common import EvalResult
 
 _WEJ_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "metrics"
     / "structural"
     / "weight_alignment"

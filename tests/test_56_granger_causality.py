@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.information.granger.56_granger_causality"
+    "mechval.metrics.information.granger.56_granger_causality"
 )
 granger_f_test = _mod.granger_f_test
 run_granger = _mod.run_granger

@@ -1,0 +1,56 @@
+[
+  {
+    "metric_id": "A1.procedure_specification",
+    "value": 0.6153846153846154,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_expanded",
+      "ordering_score": 0.6153846153846154,
+      "pathway_fraction": 0.530478218847557,
+      "n_chains": 6,
+      "chain_lengths": [
+        2,
+        4,
+        3,
+        3,
+        4,
+        3
+      ],
+      "n_circuit_heads": 32,
+      "n_pathways": 8,
+      "passed": false,
+      "threshold": 0.7
+    }
+  },
+  {
+    "metric_id": "A1.procedure_specification",
+    "value": 0.5714285714285714,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_tight",
+      "ordering_score": 0.5714285714285714,
+      "pathway_fraction": 0.6805079383966695,
+      "n_chains": 4,
+      "chain_lengths": [
+        2,
+        3,
+        3,
+        3
+      ],
+      "n_circuit_heads": 13,
+      "n_pathways": 6,
+      "passed": false,
+      "threshold": 0.7
+    }
+  }
+]

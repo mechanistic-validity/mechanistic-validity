@@ -8,7 +8,7 @@ import pytest
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "metrics"
     / "causal"
     / "atp_star"
@@ -23,7 +23,7 @@ compute_atp_star_scores = _mod.compute_atp_star_scores
 score_circuit_edges = _mod.score_circuit_edges
 run_atp_star = _mod.run_atp_star
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -1,0 +1,435 @@
+{
+  "provenance": {
+    "timestamp": "2026-05-19T05:31:46.486710+00:00",
+    "python": "3.11.15",
+    "platform": "macOS-26.4.1-x86_64-i386-64bit",
+    "package_version": "0.1.0",
+    "git": {
+      "commit": "bca51738a2bc4452187a4de596ece68e3c78002f",
+      "branch": "main",
+      "dirty": true
+    }
+  },
+  "config": {},
+  "results": [
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": 0.1920727218344102,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "acronym",
+        "n_circuit_heads": 8,
+        "n_total_heads": 144,
+        "k_clusters": 8,
+        "cluster_purity": 0.5,
+        "silhouette_score": 0.1920727218344102,
+        "passed": true,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            11,
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": 0.3098597144960777,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "copy_suppression",
+        "n_circuit_heads": 7,
+        "n_total_heads": 144,
+        "k_clusters": 7,
+        "cluster_purity": 0.42857142857142855,
+        "silhouette_score": 0.3098597144960777,
+        "passed": true,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            11,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": -0.2270375845592097,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "gendered_pronoun",
+        "n_circuit_heads": 5,
+        "n_total_heads": 144,
+        "k_clusters": 5,
+        "cluster_purity": 0.8,
+        "silhouette_score": -0.2270375845592097,
+        "passed": false,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            0,
+            10
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            8,
+            6
+          ]
+        ]
+      }
+    },
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": -0.16233140777141944,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "greater_than",
+        "n_circuit_heads": 7,
+        "n_total_heads": 144,
+        "k_clusters": 7,
+        "cluster_purity": 0.8571428571428571,
+        "silhouette_score": -0.16233140777141944,
+        "passed": false,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": 0.37169505272931713,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "induction",
+        "n_circuit_heads": 7,
+        "n_total_heads": 144,
+        "k_clusters": 7,
+        "cluster_purity": 0.7142857142857143,
+        "silhouette_score": 0.37169505272931713,
+        "passed": true,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            2
+          ],
+          [
+            7,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": 0.23089128987282034,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "ioi",
+        "n_circuit_heads": 15,
+        "n_total_heads": 144,
+        "k_clusters": 15,
+        "cluster_purity": 0.26666666666666666,
+        "silhouette_score": 0.23089128987282034,
+        "passed": true,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            11,
+            10
+          ]
+        ]
+      }
+    },
+    {
+      "metric_id": "S96.attention_clustering",
+      "value": 0.02192414307406339,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "sva",
+        "n_circuit_heads": 12,
+        "n_total_heads": 144,
+        "k_clusters": 12,
+        "cluster_purity": 0.25,
+        "silhouette_score": 0.02192414307406339,
+        "passed": false,
+        "threshold": 0.1,
+        "circuit_heads": [
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            11,
+            7
+          ]
+        ]
+      }
+    }
+  ]
+}

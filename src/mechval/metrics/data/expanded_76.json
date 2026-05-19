@@ -1,0 +1,49 @@
+[
+  {
+    "metric_id": "R3.causal_representation",
+    "value": 1.0,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 20,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_expanded",
+      "n_circuit_heads": 32,
+      "n_pairs": 20,
+      "circuit_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "control_layer": 9,
+      "per_layer_iia": {
+        "0": 0.4,
+        "1": 0.4,
+        "2": 0.4,
+        "3": 0.4,
+        "4": 0.4,
+        "5": 0.4,
+        "6": 0.55,
+        "7": 0.8,
+        "8": 0.9,
+        "10": 1.0
+      },
+      "best_circuit_iia": 1.0,
+      "control_iia": 1.0,
+      "pass_circuit": true,
+      "pass_control": false,
+      "passed": false,
+      "iia_circuit_threshold": 0.7,
+      "iia_control_threshold": 0.3
+    }
+  }
+]

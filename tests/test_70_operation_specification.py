@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "mdc_glennan" / "70_operation_specification.py"
 )
 _spec = importlib.util.spec_from_file_location("operation_spec_70", _MOD_PATH)
@@ -20,7 +20,7 @@ collect_head_outputs = _mod.collect_head_outputs
 r_squared = _mod.r_squared
 run_operation_specification = _mod.run_operation_specification
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -58,7 +58,7 @@ def gpt2_model():
 
 
 def test_collect_head_outputs_returns_correct_shapes(gpt2_model):
-    from mechanistic_validity.metrics.common import generate_prompts
+    from mechval.metrics.common import generate_prompts
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=4)
     actual_z, attn_ov_pred, consistency = collect_head_outputs(

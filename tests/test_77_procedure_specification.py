@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "mdc_glennan" / "77_procedure_specification.py"
 )
 _spec = importlib.util.spec_from_file_location("procedure_spec_77", _MOD_PATH)
@@ -21,7 +21,7 @@ compute_pathway_ordering_score = _mod.compute_pathway_ordering_score
 build_pathway_chains = _mod.build_pathway_chains
 run_procedure_specification = _mod.run_procedure_specification
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -102,7 +102,7 @@ def gpt2_model():
 
 
 def test_compute_head_logit_attribution_returns_dict(gpt2_model):
-    from mechanistic_validity.metrics.common import generate_prompts, get_token_ids
+    from mechval.metrics.common import generate_prompts, get_token_ids
 
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, n_prompts=2)
     correct_ids, incorrect_ids = get_token_ids(prompts, gpt2_model.tokenizer)

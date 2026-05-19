@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "rubin_cate" / "06_cate.py"
 )
 _spec = importlib.util.spec_from_file_location("cate_06", _MOD_PATH)
@@ -20,7 +20,7 @@ run_cate = _mod.run_cate
 extract_context_features = _mod.extract_context_features
 compute_per_prompt_effects = _mod.compute_per_prompt_effects
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

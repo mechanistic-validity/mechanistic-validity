@@ -5,11 +5,11 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "calibrations" / "discriminant_validity" / "17_discriminant_validity.py"
+    / "src" / "mechval" / "calibrations" / "discriminant_validity" / "17_discriminant_validity.py"
 )
 _spec = importlib.util.spec_from_file_location("_dv_17", _MOD_PATH)
 _mod = importlib.util.module_from_spec(_spec)

@@ -3,10 +3,10 @@ import math
 
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, get_circuit_heads, load_model
+from mechval.metrics.common import EvalResult, get_circuit_heads, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.causal.hedonic_pas.94_pairwise_synergy"
+    "mechval.metrics.causal.hedonic_pas.94_pairwise_synergy"
 )
 compute_pairwise_synergy = _mod.compute_pairwise_synergy
 run_pairwise_synergy = _mod.run_pairwise_synergy

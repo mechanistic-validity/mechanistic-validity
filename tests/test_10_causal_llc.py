@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "mdl_slt" / "10_llc.py"
 )
 _spec = importlib.util.spec_from_file_location("llc_10", _MOD_PATH)
@@ -19,7 +19,7 @@ _spec.loader.exec_module(_mod)
 run_llc = _mod.run_llc
 estimate_llc_hessian = _mod.estimate_llc_hessian
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

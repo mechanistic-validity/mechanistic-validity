@@ -1,0 +1,27 @@
+[
+  {
+    "metric_id": "A1.procedure_specification",
+    "value": 0.7142857142857143,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_eap",
+      "ordering_score": 0.7142857142857143,
+      "pathway_fraction": 0.6914484451263818,
+      "n_chains": 3,
+      "chain_lengths": [
+        3,
+        4,
+        3
+      ],
+      "n_circuit_heads": 15,
+      "n_pathways": 5,
+      "passed": true,
+      "threshold": 0.7
+    }
+  }
+]

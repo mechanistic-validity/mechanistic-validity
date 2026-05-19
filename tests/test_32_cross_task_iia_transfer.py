@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "granger_te" / "32_cross_task_iia_transfer.py"
 )
 _spec = importlib.util.spec_from_file_location("cross_task_iia_32", _MOD_PATH)
@@ -17,7 +17,7 @@ _spec.loader.exec_module(_mod)
 
 run_cross_task_transfer = _mod.run_cross_task_transfer
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

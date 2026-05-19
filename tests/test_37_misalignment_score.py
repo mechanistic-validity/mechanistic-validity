@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "woodward" / "37_misalignment_score.py"
 )
 _spec = importlib.util.spec_from_file_location("misalignment_37", _MOD_PATH)
@@ -20,7 +20,7 @@ run_misalignment = _mod.run_misalignment
 compute_noising_effect = _mod.compute_noising_effect
 compute_denoising_effect = _mod.compute_denoising_effect
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

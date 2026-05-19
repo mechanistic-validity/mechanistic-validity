@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.information.info_bottleneck.57_info_bottleneck"
+    "mechval.metrics.information.info_bottleneck.57_info_bottleneck"
 )
 quantile_bin = _mod.quantile_bin
 mi_continuous_discrete = _mod.mi_continuous_discrete

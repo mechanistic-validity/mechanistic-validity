@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.information.pid.08_pid"
+    "mechval.metrics.information.pid.08_pid"
 )
 quantile_bin = _mod.quantile_bin
 compute_pid_manual = _mod.compute_pid_manual

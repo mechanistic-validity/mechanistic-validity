@@ -4,10 +4,10 @@ import math
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _mod = importlib.import_module(
-    "mechanistic_validity.metrics.information.conditional_mi.55_conditional_mi"
+    "mechval.metrics.information.conditional_mi.55_conditional_mi"
 )
 quantile_bin = _mod.quantile_bin
 binned_mi = _mod.binned_mi

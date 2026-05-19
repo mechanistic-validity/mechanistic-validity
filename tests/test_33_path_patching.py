@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "counterfactual_das" / "33_path_patching.py"
 )
 _spec = importlib.util.spec_from_file_location("path_patching_33", _MOD_PATH)
@@ -19,7 +19,7 @@ _spec.loader.exec_module(_mod)
 path_patch_edge = _mod.path_patch_edge
 run_path_patching = _mod.run_path_patching
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -78,7 +78,7 @@ def test_run_path_patching_n_edges_positive(circuit_results):
 
 
 def test_path_patch_edge_returns_finite(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         calibrate_mean_z,
         generate_prompts,
         get_token_ids,

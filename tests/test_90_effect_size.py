@@ -8,7 +8,7 @@ import pytest
 
 _ES_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "effect_size" / "90_effect_size.py"
 )
 _spec = importlib.util.spec_from_file_location("effect_size_90", _ES_PATH)
@@ -21,7 +21,7 @@ glass_delta = _es_mod.glass_delta
 hedges_g = _es_mod.hedges_g
 run_effect_size = _es_mod.run_effect_size
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 
 # ── Pure math: Cohen's d ─────────────────────────────────────────────

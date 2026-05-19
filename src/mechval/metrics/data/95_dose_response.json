@@ -1,0 +1,547 @@
+{
+  "provenance": {
+    "timestamp": "2026-05-19T05:43:03.168970+00:00",
+    "python": "3.11.15",
+    "platform": "macOS-26.4.1-x86_64-i386-64bit",
+    "package_version": "0.1.0",
+    "git": {
+      "commit": "bca51738a2bc4452187a4de596ece68e3c78002f",
+      "branch": "main",
+      "dirty": true
+    }
+  },
+  "config": {},
+  "results": [
+    {
+      "metric_id": "B95.dose_response",
+      "value": 1.0,
+      "baseline_random": 0.07815272331237777,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "acronym",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          5.529783058166504,
+          4.872097301483154,
+          3.9943287849426268,
+          2.912617492675781,
+          1.686939811706543
+        ],
+        "monotonicity": 1.0,
+        "circuit_slope": 3.8428432464599607,
+        "mean_random_slope": 0.07815272331237777,
+        "selectivity": 49.17094483195487,
+        "n_circuit_heads": 8,
+        "circuit_heads": [
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            11,
+            4
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": true,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    },
+    {
+      "metric_id": "B95.dose_response",
+      "value": 0.25,
+      "baseline_random": 0.30664885520935053,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "copy_suppression",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          3.7285423278808594,
+          4.185677719116211,
+          4.543507194519043,
+          4.658321189880371,
+          4.48157901763916
+        ],
+        "monotonicity": 0.25,
+        "circuit_slope": -0.753036689758301,
+        "mean_random_slope": 0.30664885520935053,
+        "selectivity": -2.455697052070191,
+        "n_circuit_heads": 7,
+        "circuit_heads": [
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": false,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    },
+    {
+      "metric_id": "B95.dose_response",
+      "value": 1.0,
+      "baseline_random": 0.06899256706237833,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "gendered_pronoun",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          4.071045780181885,
+          4.070371055603028,
+          4.069065856933594,
+          4.067088317871094,
+          4.0640030860900875
+        ],
+        "monotonicity": 1.0,
+        "circuit_slope": 0.0070426940917975855,
+        "mean_random_slope": 0.06899256706237833,
+        "selectivity": 0.10207902664978484,
+        "n_circuit_heads": 5,
+        "circuit_heads": [
+          [
+            0,
+            10
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            8,
+            6
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": false,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    },
+    {
+      "metric_id": "B95.dose_response",
+      "value": 1.0,
+      "baseline_random": -0.0018937778472900458,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "greater_than",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          1.2411422729492188,
+          1.222172164916992,
+          1.1972795486450196,
+          1.169947052001953,
+          1.1449467658996582
+        ],
+        "monotonicity": 1.0,
+        "circuit_slope": 0.09619550704956059,
+        "mean_random_slope": -0.0018937778472900458,
+        "selectivity": -50.7955604123336,
+        "n_circuit_heads": 7,
+        "circuit_heads": [
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            1
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": false,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    },
+    {
+      "metric_id": "B95.dose_response",
+      "value": 0.0,
+      "baseline_random": -0.17118891462683677,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "induction",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          -1.0478400886058807,
+          -0.8878541052341461,
+          -0.7059486329555511,
+          -0.541602635383606,
+          -0.2922202587127686
+        ],
+        "monotonicity": 0.0,
+        "circuit_slope": -0.7556198298931122,
+        "mean_random_slope": -0.17118891462683677,
+        "selectivity": 4.413953038607886,
+        "n_circuit_heads": 7,
+        "circuit_heads": [
+          [
+            2,
+            2
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            2
+          ],
+          [
+            7,
+            10
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": false,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    },
+    {
+      "metric_id": "B95.dose_response",
+      "value": 1.0,
+      "baseline_random": 1.089431257247925,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "ioi",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          3.1848621368408203,
+          2.663605499267578,
+          1.804685401916504,
+          0.964657974243164,
+          0.30309085845947265
+        ],
+        "monotonicity": 1.0,
+        "circuit_slope": 2.881771278381348,
+        "mean_random_slope": 1.089431257247925,
+        "selectivity": 2.645207083245579,
+        "n_circuit_heads": 15,
+        "circuit_heads": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            11,
+            10
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": true,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    },
+    {
+      "metric_id": "B95.dose_response",
+      "value": 0.0,
+      "baseline_random": 0.08232829809188848,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "sva",
+        "fractions": [
+          0.0,
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "circuit_curve": [
+          1.7510445594787598,
+          1.8112686157226563,
+          1.8687992095947266,
+          1.909156370162964,
+          1.9205866813659669
+        ],
+        "monotonicity": 0.0,
+        "circuit_slope": -0.16954212188720708,
+        "mean_random_slope": 0.08232829809188848,
+        "selectivity": -2.0593419980330125,
+        "n_circuit_heads": 12,
+        "circuit_heads": [
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            9,
+            4
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            11,
+            7
+          ]
+        ],
+        "n_random_baselines": 20,
+        "passed": false,
+        "threshold_monotonicity": 0.8,
+        "threshold_selectivity": 2.0
+      }
+    }
+  ]
+}

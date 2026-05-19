@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "causal_discovery" / "09_notears.py"
 )
 _spec = importlib.util.spec_from_file_location("notears_09", _MOD_PATH)
@@ -19,7 +19,7 @@ run_notears = _mod.run_notears
 notears_linear = _mod.notears_linear
 compute_shd = _mod.compute_shd
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

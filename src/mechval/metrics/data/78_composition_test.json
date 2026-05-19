@@ -1,0 +1,32 @@
+[
+  {
+    "metric_id": "A2.composition_test",
+    "value": -0.1385817513544871,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_eap",
+      "full_circuit_faithfulness": -0.1385817513544871,
+      "per_pathway_faithfulness": {
+        "early_relay->mid_hub": -0.20379257778520263,
+        "early_relay->late_integrator": -0.15362633420706923,
+        "mid_hub->late_integrator": -0.1614725620872381,
+        "mid_hub->output": -0.14184130579813087,
+        "late_integrator->output": -0.13227535305763727,
+        "early_relay->late_integrator->output": -0.11374890735240063,
+        "early_relay->mid_hub->late_integrator->output": -0.1385817513544871,
+        "early_relay->mid_hub->output": -0.159552286261966
+      },
+      "max_single_pathway_faithfulness": -0.11374890735240063,
+      "n_circuit_heads": 15,
+      "n_pathways": 8,
+      "passed": false,
+      "threshold_full": 0.3,
+      "threshold_pathway": 0.2
+    }
+  }
+]

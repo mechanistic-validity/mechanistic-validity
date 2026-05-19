@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "transportability" / "41_transportability.py"
 )
 _spec = importlib.util.spec_from_file_location("transportability_41", _MOD_PATH)
@@ -19,7 +19,7 @@ normalize_layer_positions = _mod.normalize_layer_positions
 layer_profile = _mod.layer_profile
 compute_structural_transportability = _mod.compute_structural_transportability
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

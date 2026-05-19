@@ -6,12 +6,12 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult
+from mechval.metrics.common import EvalResult
 
 _BDM_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "metrics"
     / "behavioral"
     / "logit_diff_recovery"

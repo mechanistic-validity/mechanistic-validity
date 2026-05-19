@@ -1,0 +1,1462 @@
+[
+  {
+    "metric_id": "G2.edge_necessity",
+    "value": 0.0,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_framing",
+      "n_edges": 5,
+      "n_necessary": 0,
+      "frac_necessary": 0.0,
+      "per_edge": {
+        "L6H5->L9H2": {
+          "drop_frac": -0.00575191041712329,
+          "necessary": false
+        },
+        "L6H5->L9H5": {
+          "drop_frac": -0.00575191041712329,
+          "necessary": false
+        },
+        "L6H5->L10H5": {
+          "drop_frac": -0.004568248132927608,
+          "necessary": false
+        },
+        "L9H2->L10H5": {
+          "drop_frac": 0.0343233309269218,
+          "necessary": false
+        },
+        "L9H5->L10H5": {
+          "drop_frac": -0.019787374235826355,
+          "necessary": false
+        }
+      },
+      "passed": false,
+      "threshold_frac": 0.5,
+      "threshold_drop": 0.05
+    }
+  },
+  {
+    "metric_id": "G2.edge_necessity",
+    "value": 0.0,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_tight",
+      "n_edges": 32,
+      "n_necessary": 0,
+      "frac_necessary": 0.0,
+      "per_edge": {
+        "L0H0->L3H8": {
+          "drop_frac": 0.001455661685772051,
+          "necessary": false
+        },
+        "L0H0->L5H3": {
+          "drop_frac": 0.002509352577065601,
+          "necessary": false
+        },
+        "L0H0->L10H0": {
+          "drop_frac": -0.0005940704838087693,
+          "necessary": false
+        },
+        "L0H4->L3H8": {
+          "drop_frac": -6.712650712683017e-05,
+          "necessary": false
+        },
+        "L0H4->L5H3": {
+          "drop_frac": -0.0013757037506415995,
+          "necessary": false
+        },
+        "L0H4->L10H0": {
+          "drop_frac": -0.0031067910308075737,
+          "necessary": false
+        },
+        "L0H6->L3H8": {
+          "drop_frac": 0.005924957787177211,
+          "necessary": false
+        },
+        "L0H6->L4H6": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L5H2": {
+          "drop_frac": 0.005128773277906666,
+          "necessary": false
+        },
+        "L0H6->L5H3": {
+          "drop_frac": 0.005128773277906666,
+          "necessary": false
+        },
+        "L0H7->L3H8": {
+          "drop_frac": 0.0035065493556757435,
+          "necessary": false
+        },
+        "L0H7->L4H6": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L5H2": {
+          "drop_frac": 0.0055667258149964685,
+          "necessary": false
+        },
+        "L0H7->L5H3": {
+          "drop_frac": 0.0055667258149964685,
+          "necessary": false
+        },
+        "L0H8->L3H8": {
+          "drop_frac": 0.0019079012229775776,
+          "necessary": false
+        },
+        "L0H8->L5H3": {
+          "drop_frac": 0.004350060112665021,
+          "necessary": false
+        },
+        "L0H8->L10H0": {
+          "drop_frac": 0.005860800647159105,
+          "necessary": false
+        },
+        "L0H9->L3H8": {
+          "drop_frac": 0.002529529045881068,
+          "necessary": false
+        },
+        "L0H9->L4H6": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L5H2": {
+          "drop_frac": 0.0025837703808032483,
+          "necessary": false
+        },
+        "L0H9->L5H3": {
+          "drop_frac": 0.0025837703808032483,
+          "necessary": false
+        },
+        "L2H1->L3H8": {
+          "drop_frac": 0.0038534054719649687,
+          "necessary": false
+        },
+        "L2H1->L4H6": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L5H2": {
+          "drop_frac": 0.0018945502676969543,
+          "necessary": false
+        },
+        "L2H1->L5H3": {
+          "drop_frac": 0.0018945502676969543,
+          "necessary": false
+        },
+        "L2H10->L3H8": {
+          "drop_frac": -0.003877550054292101,
+          "necessary": false
+        },
+        "L2H10->L5H3": {
+          "drop_frac": -0.003498129430842652,
+          "necessary": false
+        },
+        "L2H10->L10H0": {
+          "drop_frac": 0.0013430854992803466,
+          "necessary": false
+        },
+        "L3H8->L10H0": {
+          "drop_frac": -0.0013096476488526933,
+          "necessary": false
+        },
+        "L4H6->L10H0": {
+          "drop_frac": -0.0010112867166553721,
+          "necessary": false
+        },
+        "L5H2->L10H0": {
+          "drop_frac": -0.003493641790053984,
+          "necessary": false
+        },
+        "L5H3->L10H0": {
+          "drop_frac": -0.0013878141106142348,
+          "necessary": false
+        }
+      },
+      "passed": false,
+      "threshold_frac": 0.5,
+      "threshold_drop": 0.05
+    }
+  },
+  {
+    "metric_id": "G2.edge_necessity",
+    "value": 0.02666666666666667,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_eap",
+      "n_edges": 75,
+      "n_necessary": 2,
+      "frac_necessary": 0.02666666666666667,
+      "per_edge": {
+        "L1H3->L4H3": {
+          "drop_frac": 0.0014043180590239458,
+          "necessary": false
+        },
+        "L1H3->L4H7": {
+          "drop_frac": 0.0014043180590239458,
+          "necessary": false
+        },
+        "L1H3->L4H11": {
+          "drop_frac": 0.0014043180590239458,
+          "necessary": false
+        },
+        "L1H3->L5H9": {
+          "drop_frac": 0.0009353237671373511,
+          "necessary": false
+        },
+        "L1H3->L5H10": {
+          "drop_frac": 0.0009353237671373511,
+          "necessary": false
+        },
+        "L1H3->L7H6": {
+          "drop_frac": -0.0013303302088946967,
+          "necessary": false
+        },
+        "L1H3->L8H8": {
+          "drop_frac": 0.0008511110827561355,
+          "necessary": false
+        },
+        "L1H3->L8H10": {
+          "drop_frac": 0.0008511110827561355,
+          "necessary": false
+        },
+        "L1H3->L9H5": {
+          "drop_frac": -0.000645575343160128,
+          "necessary": false
+        },
+        "L1H3->L9H6": {
+          "drop_frac": -0.000645575343160128,
+          "necessary": false
+        },
+        "L1H10->L4H3": {
+          "drop_frac": -0.002345105819935796,
+          "necessary": false
+        },
+        "L1H10->L4H7": {
+          "drop_frac": -0.002345105819935796,
+          "necessary": false
+        },
+        "L1H10->L4H11": {
+          "drop_frac": -0.002345105819935796,
+          "necessary": false
+        },
+        "L1H10->L5H9": {
+          "drop_frac": -0.002610929117073324,
+          "necessary": false
+        },
+        "L1H10->L5H10": {
+          "drop_frac": -0.002610929117073324,
+          "necessary": false
+        },
+        "L1H10->L7H6": {
+          "drop_frac": -0.0036935388672217732,
+          "necessary": false
+        },
+        "L1H10->L8H8": {
+          "drop_frac": -0.001958259539372874,
+          "necessary": false
+        },
+        "L1H10->L8H10": {
+          "drop_frac": -0.001958259539372874,
+          "necessary": false
+        },
+        "L1H10->L9H5": {
+          "drop_frac": -0.0036334214996501498,
+          "necessary": false
+        },
+        "L1H10->L9H6": {
+          "drop_frac": -0.0036334214996501498,
+          "necessary": false
+        },
+        "L2H10->L4H3": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L4H7": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L4H11": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L5H9": {
+          "drop_frac": -0.003498129430842652,
+          "necessary": false
+        },
+        "L2H10->L5H10": {
+          "drop_frac": -0.003498129430842652,
+          "necessary": false
+        },
+        "L2H10->L7H6": {
+          "drop_frac": -0.0023358976468203906,
+          "necessary": false
+        },
+        "L2H10->L8H8": {
+          "drop_frac": -0.0017539106508838256,
+          "necessary": false
+        },
+        "L2H10->L8H10": {
+          "drop_frac": -0.0017539106508838256,
+          "necessary": false
+        },
+        "L2H10->L9H5": {
+          "drop_frac": -0.000725457140672441,
+          "necessary": false
+        },
+        "L2H10->L9H6": {
+          "drop_frac": -0.000725457140672441,
+          "necessary": false
+        },
+        "L4H3->L7H6": {
+          "drop_frac": 0.019519038397289263,
+          "necessary": false
+        },
+        "L4H3->L8H8": {
+          "drop_frac": 0.012821216605419253,
+          "necessary": false
+        },
+        "L4H3->L8H10": {
+          "drop_frac": 0.012821216605419253,
+          "necessary": false
+        },
+        "L4H3->L9H5": {
+          "drop_frac": 0.021056234514756227,
+          "necessary": false
+        },
+        "L4H3->L9H6": {
+          "drop_frac": 0.021056234514756227,
+          "necessary": false
+        },
+        "L4H3->L10H0": {
+          "drop_frac": 0.024335857938813273,
+          "necessary": false
+        },
+        "L4H3->L10H7": {
+          "drop_frac": 0.024335857938813273,
+          "necessary": false
+        },
+        "L4H7->L7H6": {
+          "drop_frac": 0.00926447912331811,
+          "necessary": false
+        },
+        "L4H7->L8H8": {
+          "drop_frac": 0.013098209739010826,
+          "necessary": false
+        },
+        "L4H7->L8H10": {
+          "drop_frac": 0.013098209739010826,
+          "necessary": false
+        },
+        "L4H7->L9H5": {
+          "drop_frac": 0.0008074483980763488,
+          "necessary": false
+        },
+        "L4H7->L9H6": {
+          "drop_frac": 0.0008074483980763488,
+          "necessary": false
+        },
+        "L4H7->L10H0": {
+          "drop_frac": 0.0007671760767470415,
+          "necessary": false
+        },
+        "L4H7->L10H7": {
+          "drop_frac": 0.0007671760767470415,
+          "necessary": false
+        },
+        "L4H11->L7H6": {
+          "drop_frac": -5.0089595389985e-05,
+          "necessary": false
+        },
+        "L4H11->L8H8": {
+          "drop_frac": 0.004314481451561687,
+          "necessary": false
+        },
+        "L4H11->L8H10": {
+          "drop_frac": 0.004314481451561687,
+          "necessary": false
+        },
+        "L4H11->L9H5": {
+          "drop_frac": 0.008398480896867786,
+          "necessary": false
+        },
+        "L4H11->L9H6": {
+          "drop_frac": 0.008398480896867786,
+          "necessary": false
+        },
+        "L4H11->L10H0": {
+          "drop_frac": 0.006998995337256125,
+          "necessary": false
+        },
+        "L4H11->L10H7": {
+          "drop_frac": 0.006998995337256125,
+          "necessary": false
+        },
+        "L5H9->L7H6": {
+          "drop_frac": -0.002497891626188968,
+          "necessary": false
+        },
+        "L5H9->L8H8": {
+          "drop_frac": -0.0002825467010346764,
+          "necessary": false
+        },
+        "L5H9->L8H10": {
+          "drop_frac": -0.0002825467010346764,
+          "necessary": false
+        },
+        "L5H9->L9H5": {
+          "drop_frac": -0.0015502201288577569,
+          "necessary": false
+        },
+        "L5H9->L9H6": {
+          "drop_frac": -0.0015502201288577569,
+          "necessary": false
+        },
+        "L5H9->L10H0": {
+          "drop_frac": -0.0019876710534041772,
+          "necessary": false
+        },
+        "L5H9->L10H7": {
+          "drop_frac": -0.0019876710534041772,
+          "necessary": false
+        },
+        "L5H10->L7H6": {
+          "drop_frac": 0.013994815287966221,
+          "necessary": false
+        },
+        "L5H10->L8H8": {
+          "drop_frac": 0.01596421331300922,
+          "necessary": false
+        },
+        "L5H10->L8H10": {
+          "drop_frac": 0.01596421331300922,
+          "necessary": false
+        },
+        "L5H10->L9H5": {
+          "drop_frac": 0.017210138254135695,
+          "necessary": false
+        },
+        "L5H10->L9H6": {
+          "drop_frac": 0.017210138254135695,
+          "necessary": false
+        },
+        "L5H10->L10H0": {
+          "drop_frac": 0.01576432519320824,
+          "necessary": false
+        },
+        "L5H10->L10H7": {
+          "drop_frac": 0.01576432519320824,
+          "necessary": false
+        },
+        "L7H6->L10H0": {
+          "drop_frac": -0.007115544115943151,
+          "necessary": false
+        },
+        "L7H6->L10H7": {
+          "drop_frac": -0.007115544115943151,
+          "necessary": false
+        },
+        "L8H8->L10H0": {
+          "drop_frac": 0.05002312724938806,
+          "necessary": true
+        },
+        "L8H8->L10H7": {
+          "drop_frac": 0.05002312724938806,
+          "necessary": true
+        },
+        "L8H10->L10H0": {
+          "drop_frac": -0.04077011803431322,
+          "necessary": false
+        },
+        "L8H10->L10H7": {
+          "drop_frac": -0.04077011803431322,
+          "necessary": false
+        },
+        "L9H5->L10H0": {
+          "drop_frac": -0.019787374235826355,
+          "necessary": false
+        },
+        "L9H5->L10H7": {
+          "drop_frac": -0.019787374235826355,
+          "necessary": false
+        },
+        "L9H6->L10H0": {
+          "drop_frac": -0.0033446270352419823,
+          "necessary": false
+        },
+        "L9H6->L10H7": {
+          "drop_frac": -0.0033446270352419823,
+          "necessary": false
+        }
+      },
+      "passed": false,
+      "threshold_frac": 0.5,
+      "threshold_drop": 0.05
+    }
+  },
+  {
+    "metric_id": "G2.edge_necessity",
+    "value": 0.004310344827586207,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_expanded",
+      "n_edges": 232,
+      "n_necessary": 1,
+      "frac_necessary": 0.004310344827586207,
+      "per_edge": {
+        "L0H0->L3H8": {
+          "drop_frac": 0.001455661685772051,
+          "necessary": false
+        },
+        "L0H0->L4H0": {
+          "drop_frac": 0.001461837790210892,
+          "necessary": false
+        },
+        "L0H0->L4H1": {
+          "drop_frac": 0.001461837790210892,
+          "necessary": false
+        },
+        "L0H0->L4H4": {
+          "drop_frac": 0.001461837790210892,
+          "necessary": false
+        },
+        "L0H0->L4H7": {
+          "drop_frac": 0.001461837790210892,
+          "necessary": false
+        },
+        "L0H0->L4H9": {
+          "drop_frac": 0.001461837790210892,
+          "necessary": false
+        },
+        "L0H0->L5H3": {
+          "drop_frac": 0.002509352577065601,
+          "necessary": false
+        },
+        "L0H0->L5H7": {
+          "drop_frac": 0.002509352577065601,
+          "necessary": false
+        },
+        "L0H0->L6H5": {
+          "drop_frac": -0.0011424225672473532,
+          "necessary": false
+        },
+        "L0H0->L7H3": {
+          "drop_frac": -0.0010949037361414474,
+          "necessary": false
+        },
+        "L0H0->L7H9": {
+          "drop_frac": -0.0010949037361414474,
+          "necessary": false
+        },
+        "L0H0->L10H0": {
+          "drop_frac": -0.0005940704838087693,
+          "necessary": false
+        },
+        "L0H2->L3H8": {
+          "drop_frac": 0.003615932240887797,
+          "necessary": false
+        },
+        "L0H2->L4H0": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L4H1": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L4H3": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L4H4": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L4H6": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L4H7": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L4H9": {
+          "drop_frac": 0.004667240472600953,
+          "necessary": false
+        },
+        "L0H2->L5H2": {
+          "drop_frac": 0.0029086272041241768,
+          "necessary": false
+        },
+        "L0H2->L5H3": {
+          "drop_frac": 0.0029086272041241768,
+          "necessary": false
+        },
+        "L0H2->L5H7": {
+          "drop_frac": 0.0029086272041241768,
+          "necessary": false
+        },
+        "L0H4->L3H8": {
+          "drop_frac": -6.712650712683017e-05,
+          "necessary": false
+        },
+        "L0H4->L4H0": {
+          "drop_frac": -0.002951671830491547,
+          "necessary": false
+        },
+        "L0H4->L4H1": {
+          "drop_frac": -0.002951671830491547,
+          "necessary": false
+        },
+        "L0H4->L4H4": {
+          "drop_frac": -0.002951671830491547,
+          "necessary": false
+        },
+        "L0H4->L4H7": {
+          "drop_frac": -0.002951671830491547,
+          "necessary": false
+        },
+        "L0H4->L4H9": {
+          "drop_frac": -0.002951671830491547,
+          "necessary": false
+        },
+        "L0H4->L5H3": {
+          "drop_frac": -0.0013757037506415995,
+          "necessary": false
+        },
+        "L0H4->L5H7": {
+          "drop_frac": -0.0013757037506415995,
+          "necessary": false
+        },
+        "L0H4->L6H5": {
+          "drop_frac": -0.0008141126790081058,
+          "necessary": false
+        },
+        "L0H4->L7H3": {
+          "drop_frac": -0.006683812470126242,
+          "necessary": false
+        },
+        "L0H4->L7H9": {
+          "drop_frac": -0.006683812470126242,
+          "necessary": false
+        },
+        "L0H4->L10H0": {
+          "drop_frac": -0.0031067910308075737,
+          "necessary": false
+        },
+        "L0H6->L3H8": {
+          "drop_frac": 0.005924957787177211,
+          "necessary": false
+        },
+        "L0H6->L4H0": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L4H1": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L4H3": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L4H4": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L4H6": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L4H7": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L4H9": {
+          "drop_frac": 0.0067811611329837975,
+          "necessary": false
+        },
+        "L0H6->L5H2": {
+          "drop_frac": 0.005128773277906666,
+          "necessary": false
+        },
+        "L0H6->L5H3": {
+          "drop_frac": 0.005128773277906666,
+          "necessary": false
+        },
+        "L0H6->L5H7": {
+          "drop_frac": 0.005128773277906666,
+          "necessary": false
+        },
+        "L0H7->L3H8": {
+          "drop_frac": 0.0035065493556757435,
+          "necessary": false
+        },
+        "L0H7->L4H0": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L4H1": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L4H3": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L4H4": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L4H6": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L4H7": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L4H9": {
+          "drop_frac": 0.0058429396576727055,
+          "necessary": false
+        },
+        "L0H7->L5H2": {
+          "drop_frac": 0.0055667258149964685,
+          "necessary": false
+        },
+        "L0H7->L5H3": {
+          "drop_frac": 0.0055667258149964685,
+          "necessary": false
+        },
+        "L0H7->L5H7": {
+          "drop_frac": 0.0055667258149964685,
+          "necessary": false
+        },
+        "L0H8->L3H8": {
+          "drop_frac": 0.0019079012229775776,
+          "necessary": false
+        },
+        "L0H8->L4H0": {
+          "drop_frac": 0.0035029126647372288,
+          "necessary": false
+        },
+        "L0H8->L4H1": {
+          "drop_frac": 0.0035029126647372288,
+          "necessary": false
+        },
+        "L0H8->L4H4": {
+          "drop_frac": 0.0035029126647372288,
+          "necessary": false
+        },
+        "L0H8->L4H7": {
+          "drop_frac": 0.0035029126647372288,
+          "necessary": false
+        },
+        "L0H8->L4H9": {
+          "drop_frac": 0.0035029126647372288,
+          "necessary": false
+        },
+        "L0H8->L5H3": {
+          "drop_frac": 0.004350060112665021,
+          "necessary": false
+        },
+        "L0H8->L5H7": {
+          "drop_frac": 0.004350060112665021,
+          "necessary": false
+        },
+        "L0H8->L6H5": {
+          "drop_frac": 0.00039981654775268733,
+          "necessary": false
+        },
+        "L0H8->L7H3": {
+          "drop_frac": 0.005968091987213018,
+          "necessary": false
+        },
+        "L0H8->L7H9": {
+          "drop_frac": 0.005968091987213018,
+          "necessary": false
+        },
+        "L0H8->L10H0": {
+          "drop_frac": 0.005860800647159105,
+          "necessary": false
+        },
+        "L0H9->L3H8": {
+          "drop_frac": 0.002529529045881068,
+          "necessary": false
+        },
+        "L0H9->L4H0": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L4H1": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L4H3": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L4H4": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L4H6": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L4H7": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L4H9": {
+          "drop_frac": 0.0020635623439875486,
+          "necessary": false
+        },
+        "L0H9->L5H2": {
+          "drop_frac": 0.0025837703808032483,
+          "necessary": false
+        },
+        "L0H9->L5H3": {
+          "drop_frac": 0.0025837703808032483,
+          "necessary": false
+        },
+        "L0H9->L5H7": {
+          "drop_frac": 0.0025837703808032483,
+          "necessary": false
+        },
+        "L0H11->L3H8": {
+          "drop_frac": -0.0009189944873811927,
+          "necessary": false
+        },
+        "L0H11->L4H0": {
+          "drop_frac": -0.0007688645403970484,
+          "necessary": false
+        },
+        "L0H11->L4H1": {
+          "drop_frac": -0.0007688645403970484,
+          "necessary": false
+        },
+        "L0H11->L4H4": {
+          "drop_frac": -0.0007688645403970484,
+          "necessary": false
+        },
+        "L0H11->L4H7": {
+          "drop_frac": -0.0007688645403970484,
+          "necessary": false
+        },
+        "L0H11->L4H9": {
+          "drop_frac": -0.0007688645403970484,
+          "necessary": false
+        },
+        "L0H11->L5H3": {
+          "drop_frac": -0.002715094336098747,
+          "necessary": false
+        },
+        "L0H11->L5H7": {
+          "drop_frac": -0.002715094336098747,
+          "necessary": false
+        },
+        "L0H11->L6H5": {
+          "drop_frac": -0.003743059669817216,
+          "necessary": false
+        },
+        "L0H11->L7H3": {
+          "drop_frac": -0.0043969519280916995,
+          "necessary": false
+        },
+        "L0H11->L7H9": {
+          "drop_frac": -0.0043969519280916995,
+          "necessary": false
+        },
+        "L0H11->L10H0": {
+          "drop_frac": -0.0021538526017721915,
+          "necessary": false
+        },
+        "L1H4->L3H8": {
+          "drop_frac": -0.00030159006294438014,
+          "necessary": false
+        },
+        "L1H4->L4H0": {
+          "drop_frac": -0.007341874382666708,
+          "necessary": false
+        },
+        "L1H4->L4H1": {
+          "drop_frac": -0.007341874382666708,
+          "necessary": false
+        },
+        "L1H4->L4H4": {
+          "drop_frac": -0.007341874382666708,
+          "necessary": false
+        },
+        "L1H4->L4H7": {
+          "drop_frac": -0.007341874382666708,
+          "necessary": false
+        },
+        "L1H4->L4H9": {
+          "drop_frac": -0.007341874382666708,
+          "necessary": false
+        },
+        "L1H4->L5H3": {
+          "drop_frac": -0.007407567711098377,
+          "necessary": false
+        },
+        "L1H4->L5H7": {
+          "drop_frac": -0.007407567711098377,
+          "necessary": false
+        },
+        "L1H4->L6H5": {
+          "drop_frac": -0.00538341330253985,
+          "necessary": false
+        },
+        "L1H4->L7H3": {
+          "drop_frac": -0.0026258386541846202,
+          "necessary": false
+        },
+        "L1H4->L7H9": {
+          "drop_frac": -0.0026258386541846202,
+          "necessary": false
+        },
+        "L1H4->L10H0": {
+          "drop_frac": 0.0014384948922160385,
+          "necessary": false
+        },
+        "L2H0->L3H8": {
+          "drop_frac": 0.0014882037995153324,
+          "necessary": false
+        },
+        "L2H0->L4H0": {
+          "drop_frac": 0.0013242347207576492,
+          "necessary": false
+        },
+        "L2H0->L4H1": {
+          "drop_frac": 0.0013242347207576492,
+          "necessary": false
+        },
+        "L2H0->L4H4": {
+          "drop_frac": 0.0013242347207576492,
+          "necessary": false
+        },
+        "L2H0->L4H7": {
+          "drop_frac": 0.0013242347207576492,
+          "necessary": false
+        },
+        "L2H0->L4H9": {
+          "drop_frac": 0.0013242347207576492,
+          "necessary": false
+        },
+        "L2H0->L5H3": {
+          "drop_frac": -0.001528328324291685,
+          "necessary": false
+        },
+        "L2H0->L5H7": {
+          "drop_frac": -0.001528328324291685,
+          "necessary": false
+        },
+        "L2H0->L6H5": {
+          "drop_frac": -0.0018646416198057581,
+          "necessary": false
+        },
+        "L2H0->L7H3": {
+          "drop_frac": -0.0019086402057420172,
+          "necessary": false
+        },
+        "L2H0->L7H9": {
+          "drop_frac": -0.0019086402057420172,
+          "necessary": false
+        },
+        "L2H0->L10H0": {
+          "drop_frac": 0.0018877157967953002,
+          "necessary": false
+        },
+        "L2H1->L3H8": {
+          "drop_frac": 0.0038534054719649687,
+          "necessary": false
+        },
+        "L2H1->L4H0": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L4H1": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L4H3": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L4H4": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L4H6": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L4H7": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L4H9": {
+          "drop_frac": 0.0027717317666516206,
+          "necessary": false
+        },
+        "L2H1->L5H2": {
+          "drop_frac": 0.0018945502676969543,
+          "necessary": false
+        },
+        "L2H1->L5H3": {
+          "drop_frac": 0.0018945502676969543,
+          "necessary": false
+        },
+        "L2H1->L5H7": {
+          "drop_frac": 0.0018945502676969543,
+          "necessary": false
+        },
+        "L2H5->L3H8": {
+          "drop_frac": 0.010066920353328955,
+          "necessary": false
+        },
+        "L2H5->L4H0": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L4H1": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L4H3": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L4H4": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L4H6": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L4H7": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L4H9": {
+          "drop_frac": 0.005435097309228083,
+          "necessary": false
+        },
+        "L2H5->L5H2": {
+          "drop_frac": 0.006043490622619985,
+          "necessary": false
+        },
+        "L2H5->L5H3": {
+          "drop_frac": 0.006043490622619985,
+          "necessary": false
+        },
+        "L2H5->L5H7": {
+          "drop_frac": 0.006043490622619985,
+          "necessary": false
+        },
+        "L2H8->L3H8": {
+          "drop_frac": -0.006654947355472372,
+          "necessary": false
+        },
+        "L2H8->L4H0": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L4H1": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L4H3": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L4H4": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L4H6": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L4H7": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L4H9": {
+          "drop_frac": 0.0027350423920597996,
+          "necessary": false
+        },
+        "L2H8->L5H2": {
+          "drop_frac": 0.000847837165174691,
+          "necessary": false
+        },
+        "L2H8->L5H3": {
+          "drop_frac": 0.000847837165174691,
+          "necessary": false
+        },
+        "L2H8->L5H7": {
+          "drop_frac": 0.000847837165174691,
+          "necessary": false
+        },
+        "L2H10->L3H8": {
+          "drop_frac": -0.003877550054292101,
+          "necessary": false
+        },
+        "L2H10->L4H0": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L4H1": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L4H4": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L4H7": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L4H9": {
+          "drop_frac": -0.006992017548484838,
+          "necessary": false
+        },
+        "L2H10->L5H3": {
+          "drop_frac": -0.003498129430842652,
+          "necessary": false
+        },
+        "L2H10->L5H7": {
+          "drop_frac": -0.003498129430842652,
+          "necessary": false
+        },
+        "L2H10->L6H5": {
+          "drop_frac": -0.0009612374294161172,
+          "necessary": false
+        },
+        "L2H10->L7H3": {
+          "drop_frac": -0.0023358976468203906,
+          "necessary": false
+        },
+        "L2H10->L7H9": {
+          "drop_frac": -0.0023358976468203906,
+          "necessary": false
+        },
+        "L2H10->L10H0": {
+          "drop_frac": 0.0013430854992803466,
+          "necessary": false
+        },
+        "L3H8->L6H5": {
+          "drop_frac": -0.0017555811998000448,
+          "necessary": false
+        },
+        "L3H8->L7H3": {
+          "drop_frac": 0.0018142922607772719,
+          "necessary": false
+        },
+        "L3H8->L7H8": {
+          "drop_frac": 0.0018142922607772719,
+          "necessary": false
+        },
+        "L3H8->L7H9": {
+          "drop_frac": 0.0018142922607772719,
+          "necessary": false
+        },
+        "L3H8->L8H5": {
+          "drop_frac": 0.002323411077440386,
+          "necessary": false
+        },
+        "L3H8->L8H8": {
+          "drop_frac": 0.002323411077440386,
+          "necessary": false
+        },
+        "L3H8->L10H0": {
+          "drop_frac": -0.0013096476488526933,
+          "necessary": false
+        },
+        "L4H0->L6H5": {
+          "drop_frac": 0.011005088084439018,
+          "necessary": false
+        },
+        "L4H0->L7H3": {
+          "drop_frac": 0.010550009061944102,
+          "necessary": false
+        },
+        "L4H0->L7H8": {
+          "drop_frac": 0.010550009061944102,
+          "necessary": false
+        },
+        "L4H0->L7H9": {
+          "drop_frac": 0.010550009061944102,
+          "necessary": false
+        },
+        "L4H0->L8H5": {
+          "drop_frac": -0.0037212932683869894,
+          "necessary": false
+        },
+        "L4H0->L8H8": {
+          "drop_frac": -0.0037212932683869894,
+          "necessary": false
+        },
+        "L4H0->L10H0": {
+          "drop_frac": 0.000563207876348851,
+          "necessary": false
+        },
+        "L4H1->L6H5": {
+          "drop_frac": -0.004891089548708701,
+          "necessary": false
+        },
+        "L4H1->L7H3": {
+          "drop_frac": -0.0007508288822572625,
+          "necessary": false
+        },
+        "L4H1->L7H8": {
+          "drop_frac": -0.0007508288822572625,
+          "necessary": false
+        },
+        "L4H1->L7H9": {
+          "drop_frac": -0.0007508288822572625,
+          "necessary": false
+        },
+        "L4H1->L8H5": {
+          "drop_frac": 0.005025759080520627,
+          "necessary": false
+        },
+        "L4H1->L8H8": {
+          "drop_frac": 0.005025759080520627,
+          "necessary": false
+        },
+        "L4H1->L10H0": {
+          "drop_frac": 0.0009076902904244917,
+          "necessary": false
+        },
+        "L4H3->L6H5": {
+          "drop_frac": 0.024001819814477535,
+          "necessary": false
+        },
+        "L4H3->L7H3": {
+          "drop_frac": 0.019519038397289263,
+          "necessary": false
+        },
+        "L4H3->L7H9": {
+          "drop_frac": 0.019519038397289263,
+          "necessary": false
+        },
+        "L4H3->L10H0": {
+          "drop_frac": 0.024335857938813273,
+          "necessary": false
+        },
+        "L4H4->L6H5": {
+          "drop_frac": 0.0006513618021413011,
+          "necessary": false
+        },
+        "L4H4->L7H3": {
+          "drop_frac": -0.0045370227521102854,
+          "necessary": false
+        },
+        "L4H4->L7H8": {
+          "drop_frac": -0.0045370227521102854,
+          "necessary": false
+        },
+        "L4H4->L7H9": {
+          "drop_frac": -0.0045370227521102854,
+          "necessary": false
+        },
+        "L4H4->L8H5": {
+          "drop_frac": -0.004250951327222641,
+          "necessary": false
+        },
+        "L4H4->L8H8": {
+          "drop_frac": -0.004250951327222641,
+          "necessary": false
+        },
+        "L4H4->L10H0": {
+          "drop_frac": -0.0031902333816402634,
+          "necessary": false
+        },
+        "L4H6->L6H5": {
+          "drop_frac": 0.0012547927343017522,
+          "necessary": false
+        },
+        "L4H6->L7H3": {
+          "drop_frac": 0.00021576505253146272,
+          "necessary": false
+        },
+        "L4H6->L7H9": {
+          "drop_frac": 0.00021576505253146272,
+          "necessary": false
+        },
+        "L4H6->L10H0": {
+          "drop_frac": -0.0010112867166553721,
+          "necessary": false
+        },
+        "L4H7->L6H5": {
+          "drop_frac": 0.016516981378301654,
+          "necessary": false
+        },
+        "L4H7->L7H3": {
+          "drop_frac": 0.00926447912331811,
+          "necessary": false
+        },
+        "L4H7->L7H8": {
+          "drop_frac": 0.00926447912331811,
+          "necessary": false
+        },
+        "L4H7->L7H9": {
+          "drop_frac": 0.00926447912331811,
+          "necessary": false
+        },
+        "L4H7->L8H5": {
+          "drop_frac": 0.013098209739010826,
+          "necessary": false
+        },
+        "L4H7->L8H8": {
+          "drop_frac": 0.013098209739010826,
+          "necessary": false
+        },
+        "L4H7->L10H0": {
+          "drop_frac": 0.0007671760767470415,
+          "necessary": false
+        },
+        "L4H9->L6H5": {
+          "drop_frac": -0.004036816515456835,
+          "necessary": false
+        },
+        "L4H9->L7H3": {
+          "drop_frac": -0.00890827151604418,
+          "necessary": false
+        },
+        "L4H9->L7H8": {
+          "drop_frac": -0.00890827151604418,
+          "necessary": false
+        },
+        "L4H9->L7H9": {
+          "drop_frac": -0.00890827151604418,
+          "necessary": false
+        },
+        "L4H9->L8H5": {
+          "drop_frac": -0.013198245611921497,
+          "necessary": false
+        },
+        "L4H9->L8H8": {
+          "drop_frac": -0.013198245611921497,
+          "necessary": false
+        },
+        "L4H9->L10H0": {
+          "drop_frac": -0.0020277104831955815,
+          "necessary": false
+        },
+        "L5H2->L6H5": {
+          "drop_frac": 0.010361031014958834,
+          "necessary": false
+        },
+        "L5H2->L7H3": {
+          "drop_frac": 0.00861584483938082,
+          "necessary": false
+        },
+        "L5H2->L7H9": {
+          "drop_frac": 0.00861584483938082,
+          "necessary": false
+        },
+        "L5H2->L10H0": {
+          "drop_frac": -0.003493641790053984,
+          "necessary": false
+        },
+        "L5H3->L6H5": {
+          "drop_frac": -0.004847820988170071,
+          "necessary": false
+        },
+        "L5H3->L7H3": {
+          "drop_frac": -0.0005896141938040214,
+          "necessary": false
+        },
+        "L5H3->L7H8": {
+          "drop_frac": -0.0005896141938040214,
+          "necessary": false
+        },
+        "L5H3->L7H9": {
+          "drop_frac": -0.0005896141938040214,
+          "necessary": false
+        },
+        "L5H3->L8H5": {
+          "drop_frac": -0.006228917073651687,
+          "necessary": false
+        },
+        "L5H3->L8H8": {
+          "drop_frac": -0.006228917073651687,
+          "necessary": false
+        },
+        "L5H3->L10H0": {
+          "drop_frac": -0.0013878141106142348,
+          "necessary": false
+        },
+        "L5H7->L6H5": {
+          "drop_frac": 0.008844718998288025,
+          "necessary": false
+        },
+        "L5H7->L7H3": {
+          "drop_frac": 0.009884593151225146,
+          "necessary": false
+        },
+        "L5H7->L7H8": {
+          "drop_frac": 0.009884593151225146,
+          "necessary": false
+        },
+        "L5H7->L7H9": {
+          "drop_frac": 0.009884593151225146,
+          "necessary": false
+        },
+        "L5H7->L8H5": {
+          "drop_frac": 0.0112121689698154,
+          "necessary": false
+        },
+        "L5H7->L8H8": {
+          "drop_frac": 0.0112121689698154,
+          "necessary": false
+        },
+        "L5H7->L10H0": {
+          "drop_frac": 0.004537098889728591,
+          "necessary": false
+        },
+        "L7H8->L10H0": {
+          "drop_frac": 0.025587569338920754,
+          "necessary": false
+        },
+        "L8H5->L10H0": {
+          "drop_frac": 0.023265775066195725,
+          "necessary": false
+        },
+        "L8H8->L10H0": {
+          "drop_frac": 0.05002312724938806,
+          "necessary": true
+        }
+      },
+      "passed": false,
+      "threshold_frac": 0.5,
+      "threshold_drop": 0.05
+    }
+  }
+]

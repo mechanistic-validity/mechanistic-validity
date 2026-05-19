@@ -4,11 +4,11 @@ from pathlib import Path
 
 import pytest
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "construct_boundary" / "RI3b_boundary_sweep.py"
 )
 _spec = importlib.util.spec_from_file_location("_boundary_sweep", _MOD_PATH)
@@ -82,7 +82,7 @@ def test_no_circuit_returns_zero(gpt2_model):
 
 
 def test_measure_circuit_activation_positive(gpt2_model):
-    from mechanistic_validity.metrics.common import get_circuit_heads
+    from mechval.metrics.common import get_circuit_heads
     heads = get_circuit_heads(TASK)
     if heads:
         act = measure_circuit_activation(gpt2_model, "The answer is", heads)

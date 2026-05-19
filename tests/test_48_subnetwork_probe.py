@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "subnetwork_probe" / "48_subnetwork_probe.py"
 )
 _spec = importlib.util.spec_from_file_location("subnetwork_probe_48", _MOD_PATH)
@@ -18,7 +18,7 @@ _spec.loader.exec_module(_mod)
 logistic_probe_accuracy = _mod.logistic_probe_accuracy
 run_subnetwork_probe = _mod.run_subnetwork_probe
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

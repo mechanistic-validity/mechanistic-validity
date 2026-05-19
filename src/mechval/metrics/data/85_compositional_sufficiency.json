@@ -1,0 +1,26 @@
+[
+  {
+    "metric_id": "G4.compositional_sufficiency",
+    "value": -0.06346386229165417,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 20,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "ioi",
+      "recovery": -0.06346386229165417,
+      "n_circuit_heads": 15,
+      "n_circuit_edges": 44,
+      "per_band_recovery": {
+        "early": -0.13316451669181384,
+        "mid": -0.14365642233203366,
+        "midlate": -0.10883557235465542,
+        "late": -0.23937940775557195
+      },
+      "passed": false,
+      "threshold": 0.3
+    }
+  }
+]

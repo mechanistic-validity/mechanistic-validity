@@ -9,7 +9,7 @@ import torch
 # Load the 01_das_iia dependency first
 _DAS_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "counterfactual_das" / "01_das_iia.py"
 )
 _das_spec = importlib.util.spec_from_file_location("01_das_iia", _DAS_PATH)
@@ -19,7 +19,7 @@ _das_spec.loader.exec_module(_das_mod)
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "counterfactual_das" / "15_iia_variants.py"
 )
 _spec = importlib.util.spec_from_file_location("iia_variants_15", _MOD_PATH)
@@ -30,7 +30,7 @@ _spec.loader.exec_module(_mod)
 compute_neuron_iia = _mod.compute_neuron_iia
 run_iia_variants = _mod.run_iia_variants
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "scm_pearl" / "02_activation_patching.py"
 )
 _spec = importlib.util.spec_from_file_location("activation_patching_02", _MOD_PATH)
@@ -18,7 +18,7 @@ _spec.loader.exec_module(_mod)
 run_activation_patching = _mod.run_activation_patching
 patch_head_effect = _mod.patch_head_effect
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

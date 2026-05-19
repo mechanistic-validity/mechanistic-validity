@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "logit_diff_recovery" / "22_mean_centered_logit.py"
 )
 _spec = importlib.util.spec_from_file_location("mean_centered_logit_22", _MOD_PATH)
@@ -20,7 +20,7 @@ logit_diff_standard = _mod.logit_diff_standard
 logit_diff_mean_centered = _mod.logit_diff_mean_centered
 run_mean_centered_logit = _mod.run_mean_centered_logit
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

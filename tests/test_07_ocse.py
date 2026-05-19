@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "granger_te" / "07_ocse.py"
 )
 _spec = importlib.util.spec_from_file_location("ocse_07", _MOD_PATH)
@@ -21,7 +21,7 @@ gaussian_cmi = _mod.gaussian_cmi
 compute_ocse_parents = _mod.compute_ocse_parents
 _compute_f1 = _mod._compute_f1
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

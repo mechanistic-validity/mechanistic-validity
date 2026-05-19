@@ -8,7 +8,7 @@ import pytest
 _EAP_PATH = (
     Path(__file__).resolve().parent.parent
     / "src"
-    / "mechanistic_validity"
+    / "mechval"
     / "metrics"
     / "causal"
     / "eap"
@@ -23,7 +23,7 @@ compute_auroc = _eap_mod.compute_auroc
 compute_eap_scores = _eap_mod.compute_eap_scores
 run_eap = _eap_mod.run_eap
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 
 def test_compute_auroc_perfect_discrimination():
@@ -131,7 +131,7 @@ def test_edge_scores_shape():
     n_heads = model.cfg.n_heads
     n_total = n_layers * n_heads
 
-    from mechanistic_validity.metrics.common import generate_prompts, get_token_ids
+    from mechval.metrics.common import generate_prompts, get_token_ids
 
     prompts = generate_prompts(TASK, model.tokenizer, n_prompts=2)
     correct_ids, incorrect_ids = get_token_ids(prompts, model.tokenizer)

@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.metrics.common import EvalResult, load_model, get_circuit_heads
+from mechval.metrics.common import EvalResult, load_model, get_circuit_heads
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "structural" / "spectral_svd" / "18_weight_extended.py"
 )
 _spec = importlib.util.spec_from_file_location("_spectral_svd_18", _MOD_PATH)

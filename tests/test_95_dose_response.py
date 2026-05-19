@@ -7,7 +7,7 @@ import pytest
 
 _DR_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "dose_response" / "95_dose_response.py"
 )
 _spec = importlib.util.spec_from_file_location("dose_response_95", _DR_PATH)
@@ -22,7 +22,7 @@ sweep_dose_response = _dr_mod.sweep_dose_response
 run_dose_response = _dr_mod.run_dose_response
 ABLATION_FRACTIONS = _dr_mod.ABLATION_FRACTIONS
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 
 # -- Pure math: compute_monotonicity ------------------------------------------

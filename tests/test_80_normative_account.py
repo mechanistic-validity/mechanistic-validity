@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "generalization_gap" / "80_normative_account.py"
 )
 _spec = importlib.util.spec_from_file_location("normative_account_80", _MOD_PATH)
@@ -22,7 +22,7 @@ run_normative_account = _mod.run_normative_account
 LINGUISTIC_FEATURES = _mod.LINGUISTIC_FEATURES
 DIVERSE_PROMPTS = _mod.DIVERSE_PROMPTS
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -8,7 +8,7 @@ import torch
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "woodward" / "35_resample_complement.py"
 )
 _spec = importlib.util.spec_from_file_location("resample_complement_35", _MOD_PATH)
@@ -21,7 +21,7 @@ compute_resample_faithfulness = _mod.compute_resample_faithfulness
 cache_all_z = _mod.cache_all_z
 make_resample_hooks = _mod.make_resample_hooks
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

@@ -1,0 +1,182 @@
+[
+  {
+    "metric_id": "CM1.normative_account",
+    "value": 1.4999999999999998,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_expanded",
+      "activation_rate": 0.25,
+      "max_separation_ratio": 1.4999999999999998,
+      "best_feature": "quantifiers",
+      "feature_analysis": {
+        "epistemic_verbs": {
+          "high_rate": 0.15,
+          "low_rate": 0.15,
+          "separation_ratio": 1.0
+        },
+        "modal_verbs": {
+          "high_rate": 0.35,
+          "low_rate": 0.3,
+          "separation_ratio": 1.1666666666666667
+        },
+        "hedging_words": {
+          "high_rate": 0.05,
+          "low_rate": 0.1,
+          "separation_ratio": 0.5
+        },
+        "quantifiers": {
+          "high_rate": 0.3,
+          "low_rate": 0.2,
+          "separation_ratio": 1.4999999999999998
+        },
+        "conjunctions": {
+          "high_rate": 0.35,
+          "low_rate": 0.3,
+          "separation_ratio": 1.1666666666666667
+        },
+        "negation": {
+          "high_rate": 0.1,
+          "low_rate": 0.15,
+          "separation_ratio": 0.6666666666666667
+        },
+        "pronouns": {
+          "high_rate": 0.55,
+          "low_rate": 0.4,
+          "separation_ratio": 1.375
+        }
+      },
+      "n_circuit_heads": 32,
+      "median_activation": 176.30937403440475,
+      "p75_activation": 186.24487435817719,
+      "passed": false,
+      "threshold_separation": 2.0,
+      "threshold_rate_low": 0.05,
+      "threshold_rate_high": 0.5
+    }
+  },
+  {
+    "metric_id": "CM1.normative_account",
+    "value": 25.0,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_tight",
+      "activation_rate": 0.25,
+      "max_separation_ratio": 25.0,
+      "best_feature": "negation",
+      "feature_analysis": {
+        "epistemic_verbs": {
+          "high_rate": 0.15,
+          "low_rate": 0.15,
+          "separation_ratio": 1.0
+        },
+        "modal_verbs": {
+          "high_rate": 0.3,
+          "low_rate": 0.35,
+          "separation_ratio": 0.8571428571428572
+        },
+        "hedging_words": {
+          "high_rate": 0.0,
+          "low_rate": 0.15,
+          "separation_ratio": 0.0
+        },
+        "quantifiers": {
+          "high_rate": 0.35,
+          "low_rate": 0.15,
+          "separation_ratio": 2.3333333333333335
+        },
+        "conjunctions": {
+          "high_rate": 0.35,
+          "low_rate": 0.3,
+          "separation_ratio": 1.1666666666666667
+        },
+        "negation": {
+          "high_rate": 0.25,
+          "low_rate": 0.0,
+          "separation_ratio": 25.0
+        },
+        "pronouns": {
+          "high_rate": 0.5,
+          "low_rate": 0.45,
+          "separation_ratio": 1.1111111111111112
+        }
+      },
+      "n_circuit_heads": 13,
+      "median_activation": 76.37420129776001,
+      "p75_activation": 79.56594055891037,
+      "passed": true,
+      "threshold_separation": 2.0,
+      "threshold_rate_low": 0.05,
+      "threshold_rate_high": 0.5
+    }
+  },
+  {
+    "metric_id": "CM1.normative_account",
+    "value": 1.6,
+    "baseline_random": null,
+    "baseline_untrained": null,
+    "baseline_literature": null,
+    "n_samples": 40,
+    "ci_low": null,
+    "ci_high": null,
+    "metadata": {
+      "task": "epistemic_eap",
+      "activation_rate": 0.25,
+      "max_separation_ratio": 1.6,
+      "best_feature": "conjunctions",
+      "feature_analysis": {
+        "epistemic_verbs": {
+          "high_rate": 0.15,
+          "low_rate": 0.15,
+          "separation_ratio": 1.0
+        },
+        "modal_verbs": {
+          "high_rate": 0.3,
+          "low_rate": 0.35,
+          "separation_ratio": 0.8571428571428572
+        },
+        "hedging_words": {
+          "high_rate": 0.05,
+          "low_rate": 0.1,
+          "separation_ratio": 0.5
+        },
+        "quantifiers": {
+          "high_rate": 0.3,
+          "low_rate": 0.2,
+          "separation_ratio": 1.4999999999999998
+        },
+        "conjunctions": {
+          "high_rate": 0.4,
+          "low_rate": 0.25,
+          "separation_ratio": 1.6
+        },
+        "negation": {
+          "high_rate": 0.05,
+          "low_rate": 0.2,
+          "separation_ratio": 0.25
+        },
+        "pronouns": {
+          "high_rate": 0.4,
+          "low_rate": 0.55,
+          "separation_ratio": 0.7272727272727273
+        }
+      },
+      "n_circuit_heads": 15,
+      "median_activation": 103.32828712463379,
+      "p75_activation": 108.30099266767502,
+      "passed": false,
+      "threshold_separation": 2.0,
+      "threshold_rate_low": 0.05,
+      "threshold_rate_high": 0.5
+    }
+  }
+]

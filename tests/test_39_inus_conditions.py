@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "causal" / "regularity_inus" / "39_inus_conditions.py"
 )
 _spec = importlib.util.spec_from_file_location("inus_39", _MOD_PATH)
@@ -18,7 +18,7 @@ _spec.loader.exec_module(_mod)
 classify_inus = _mod.classify_inus
 find_minimal_sufficient_sets = _mod.find_minimal_sufficient_sets
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 
@@ -89,7 +89,7 @@ def gpt2_model():
 
 
 def test_find_minimal_sufficient_sets_runs(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         calibrate_mean_z,
         generate_prompts,
         get_circuit_heads,

@@ -7,7 +7,7 @@ import pytest
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "behavioral" / "mdl_compression" / "47_mdl_compression.py"
 )
 _spec = importlib.util.spec_from_file_location("mdl_compression_47", _MOD_PATH)
@@ -19,7 +19,7 @@ compute_kl_coding_cost = _mod.compute_kl_coding_cost
 run_mdl_compression = _mod.run_mdl_compression
 GPT2_TOTAL_HEADS = _mod.GPT2_TOTAL_HEADS
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 TASK = "ioi"
 

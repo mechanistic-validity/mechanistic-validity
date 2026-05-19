@@ -6,11 +6,11 @@ import numpy as np
 import pytest
 from scipy import stats as sp_stats
 
-from mechanistic_validity.metrics.common import EvalResult, load_model
+from mechval.metrics.common import EvalResult, load_model
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "calibrations" / "inter_rater" / "59_inter_rater.py"
+    / "src" / "mechval" / "calibrations" / "inter_rater" / "59_inter_rater.py"
 )
 _spec = importlib.util.spec_from_file_location("_ir_59", _MOD_PATH)
 _mod = importlib.util.module_from_spec(_spec)
@@ -119,7 +119,7 @@ def gpt2_model():
 
 
 def test_rank_by_patching_returns_correct_shape(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         generate_prompts, get_circuit_heads, get_token_ids,
     )
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)
@@ -130,7 +130,7 @@ def test_rank_by_patching_returns_correct_shape(gpt2_model):
 
 
 def test_rank_by_dla_returns_correct_shape(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         generate_prompts, get_token_ids,
     )
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)
@@ -141,7 +141,7 @@ def test_rank_by_dla_returns_correct_shape(gpt2_model):
 
 
 def test_rank_by_ov_norm_returns_correct_shape(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         generate_prompts, get_token_ids,
     )
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)
@@ -152,7 +152,7 @@ def test_rank_by_ov_norm_returns_correct_shape(gpt2_model):
 
 
 def test_rank_by_ov_norm_all_nonnegative(gpt2_model):
-    from mechanistic_validity.metrics.common import (
+    from mechval.metrics.common import (
         generate_prompts, get_token_ids,
     )
     prompts = generate_prompts(TASK, gpt2_model.tokenizer, 3)

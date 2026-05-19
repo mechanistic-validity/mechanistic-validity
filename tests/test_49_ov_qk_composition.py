@@ -6,13 +6,13 @@ import numpy as np
 import pytest
 import torch
 
-from mechanistic_validity.metrics.common import (
+from mechval.metrics.common import (
     EvalResult, load_model, get_circuit_heads, get_circuit, get_all_edges,
 )
 
 _MOD_PATH = (
     Path(__file__).resolve().parent.parent
-    / "src" / "mechanistic_validity" / "metrics"
+    / "src" / "mechval" / "metrics"
     / "structural" / "ov_qk_analysis" / "49_ov_qk_composition.py"
 )
 _spec = importlib.util.spec_from_file_location("_ov_qk_49", _MOD_PATH)
