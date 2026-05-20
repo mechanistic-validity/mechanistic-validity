@@ -9,19 +9,19 @@ criterion_id: "M4"
 | | |
 |---|---|
 | Validity type | Measurement |
-| Pass condition | Instrument detects real circuits at acceptable hit rates (AUROC ≥ 0.85) without excessive false positives (AUPRC above random baseline) |
+| Pass condition | Metric detects real circuits at acceptable hit rates (AUROC ≥ 0.85) without excessive false positives (AUPRC above random baseline) |
 | Evidence family | Measurement |
 | Minimum reporting | AUROC for circuit head membership classification; AUPRC with random baseline comparison |
 | Common failure mode | Reporting only positive results; never characterizing the false positive rate |
 
 ## What this criterion requires
 
-Sensitivity is the detection-theory characterization of the measurement instrument.
+Sensitivity is the detection-theory characterization of the measurement metric.
 
 Satisfied when:
 
 1. **AUROC ≥ 0.85** for circuit head membership classification. AUROC = 0.5 means chance performance; 1.0 is perfect.
-2. **AUPRC is above the random baseline.** For a circuit of k heads out of n total, random baseline AUPRC = k/n. For GPT-2 Small IOI (26 heads out of 144 total): random baseline = 0.18. The instrument's AUPRC should substantially exceed this.
+2. **AUPRC is above the random baseline.** For a circuit of k heads out of n total, random baseline AUPRC = k/n. For GPT-2 Small IOI (26 heads out of 144 total): random baseline = 0.18. The metric's AUPRC should substantially exceed this.
 
 ## The Test 16 AP = 1.0 result
 

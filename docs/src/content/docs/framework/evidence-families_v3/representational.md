@@ -15,7 +15,7 @@ The focus is on *encoding* — whether information is present and in what geomet
 
 This family sits between structural evidence (which asks what the weights can compute) and causal evidence (which asks what matters for the output). Representational evidence asks what information is *available* at each point in the computation — which constrains but does not determine what is actually used.
 
-## Instruments
+## Metrics
 
 - **E01 DAS-IIA** — Distributed Alignment Search with Interchange Intervention Accuracy
 - **E02 Linear Probe** — Linear classifiers trained on intermediate activations to decode variables

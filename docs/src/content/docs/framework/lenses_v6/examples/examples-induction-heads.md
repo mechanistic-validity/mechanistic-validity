@@ -132,13 +132,13 @@ The key pharmacological insight: this is one of the few MI mechanisms where the 
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments reliable and well-calibrated?*
+*Are the metrics reliable and well-calibrated?*
 
 ### Criteria
 
 **[M1 — Reliability:](/framework/criteria/measurement/reliability) Strong (implicit).** The induction head identification criterion (CopyScore on $W_{OV}$ + attention pattern on repeated sequences) produces consistent results across analyses. Different researchers examining the same model identify the same heads.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Strong.** The measurement is invariant across model sizes — the same identification criteria work from small models to GPT-3-scale. This is measurement invariance in the measurement-theoretic sense: the instrument generalizes.
+**[M2 — Invariance:](/framework/criteria/measurement/invariance) Strong.** The measurement is invariant across model sizes — the same identification criteria work from small models to GPT-3-scale. This is measurement invariance in the measurement-theoretic sense: the metric generalizes.
 
 **[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Pass.** Non-induction heads clearly fail the CopyScore criterion. The measurement cleanly separates heads that implement the mechanism from heads that do not.
 

@@ -127,7 +127,7 @@ Unlike the other four types, interpretive validity requires cross-family consist
 
 | Criterion | Evidence families required | Why cross-family is mandatory |
 |---|---|---|
-| V1 — Level declaration | None — this is a labeling act | No instrument can tell you what level you're claiming; the researcher must declare it |
+| V1 — Level declaration | None — this is a labeling act | No metric can tell you what level you're claiming; the researcher must declare it |
 | V2 — Level-evidence match | Representational (for algorithmic) + Structural (for implementational) | Algorithmic claims require IIA; implementational claims require weight signatures; one cannot substitute for the other |
 | V3 — Narrative coherence | Structural + Causal + Representational together | The story must be consistent across all three families simultaneously |
 | V4 — Alternative exclusion | Behavioral (test alternatives on new distributions) + Causal (test alternative circuits causally) | Alternatives must be tested empirically, not dismissed conceptually |

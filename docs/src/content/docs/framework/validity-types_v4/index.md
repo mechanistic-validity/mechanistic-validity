@@ -19,7 +19,7 @@ The intellectual lineage of the five-type framework:
 
 ## Why five types rather than one global score
 
-A single score summarizing "how good a circuit is" obscures the fact that circuit claims can fail in qualitatively different ways. A circuit can be measured by a reliable instrument and still correspond to no coherent computational concept. A circuit can correspond to a coherent concept and rest on purely correlational evidence. A circuit can survive rigorous causal testing at one intervention strength on one prompt distribution and collapse under any other. A circuit can pass all of those tests and still be described at the wrong level of abstraction. These are not points on a continuum; they are independent failures that demand independent remedies.
+A single score summarizing "how good a circuit is" obscures the fact that circuit claims can fail in qualitatively different ways. A circuit can be measured by a reliable metric and still correspond to no coherent computational concept. A circuit can correspond to a coherent concept and rest on purely correlational evidence. A circuit can survive rigorous causal testing at one intervention strength on one prompt distribution and collapse under any other. A circuit can pass all of those tests and still be described at the wrong level of abstraction. These are not points on a continuum; they are independent failures that demand independent remedies.
 
 The five-type taxonomy makes those failures named and reportable. A verdict that satisfies internal validity but not construct validity is honestly described as *causally implicated but theoretically underspecified*, and the remedy is a clearer construct rather than more interventions. A verdict that satisfies construct validity but not external validity is *coherent but local*, and the remedy is replication rather than redefinition. A verdict that passes all four traditional types but fails interpretive validity is *validated but overclaimed*, and the remedy is scoping the narrative to match the evidence level. These distinctions are routinely collapsed in MI write-ups, with the result that claims of different types are presented as if they were equivalent.
 
@@ -28,7 +28,7 @@ The five-type taxonomy makes those failures named and reportable. A verdict that
 | Type | Question | Parent discipline | Key criteria |
 |---|---|---|
 | **Construct** | Is the claimed entity a coherent theoretical concept? | Philosophy of science (Cronbach & Meehl 1955; Craver 2007) | C1 Falsifiability, C2 Structural plausibility, C3 Task specificity, C4 Minimality, C5 Convergent validity |
-| **Measurement** | Is the instrument that produced the evidence trustworthy? | Measurement theory (Campbell & Fiske 1959; Lord & Novick 1968) | M1 Reliability, M2 Invariance, M3 Baseline separation, M4 Sensitivity, M5 Calibration, M6 Construct coverage |
+| **Measurement** | Is the metric that produced the evidence trustworthy? | Measurement theory (Campbell & Fiske 1959; Lord & Novick 1968) | M1 Reliability, M2 Invariance, M3 Baseline separation, M4 Sensitivity, M5 Calibration, M6 Construct coverage |
 | **Internal** | Does the evidence establish that the component implements the computation? | Systems neuroscience (Woodward 2003; Craver 2007) | I1 Necessity, I2 Sufficiency, I3 Specificity, I4 Consistency, I5 Confound control |
 | **External** | Does the claim generalize beyond the tested conditions? | Pharmacology (Clark 1926; Hill 1910; Gaddum 1937) | E1 Intervention reach, E2 Graded response, E3 Selectivity, E4 Effect magnitude, E5 Robustness, E6 Cross-architecture |
 | **Interpretive** | Is the narrative about the mechanism licensed by the evidence? | Mechanistic interpretability methodology (Marr 1982; Geiger et al. 2024) | V1 Level declaration, V2 Level-evidence match, V3 Narrative coherence, V4 Alternative exclusion, V5 Scope honesty |
@@ -38,7 +38,7 @@ The five-type taxonomy makes those failures named and reportable. A verdict that
 The types are not independent in the sense that they can be evaluated in any order; they have an implicit dependency structure:
 
 1. **Construct validity comes first.** A construct that is not clearly defined cannot be measured, and an ambiguous construct cannot have its causal role meaningfully tested.
-2. **Measurement validity gates internal validity.** An instrument that is unreliable cannot support a causal inference. A high IIA score computed without a random-vector baseline does not license a representational claim, regardless of how well the internal interventions performed.
+2. **Measurement validity gates internal validity.** A metric that is unreliable cannot support a causal inference. A high IIA score computed without a random-vector baseline does not license a representational claim, regardless of how well the internal interventions performed.
 3. **Internal validity gates external validity.** A finding that has not been established causally within the discovery conditions cannot be said to generalize. External validity asks about the *reach* of an established result, not the credibility of an unestablished one.
 4. **External validity gates upgrade from result to property.** An internally valid claim that does not generalize is a local result rather than a finding. The upgrade from *result on a benchmark* to *property of the model* requires external validity evidence.
 5. **Interpretive validity is downstream of all four.** A narrative about a mechanism cannot be evaluated until the mechanism itself has been established as real, generalizable, coherent, and well-measured.
@@ -47,7 +47,7 @@ The dependency order does not mean that work on any single type must wait for th
 
 ## How each type connects to its casebook
 
-Each validity type has a dedicated casebook that translates the type's abstract requirements into operational criteria, instruments, and reporting rules.
+Each validity type has a dedicated casebook that translates the type's abstract requirements into operational criteria, metrics, and reporting rules.
 
 - *Construct validity* is operationalized by the [Philosophy of Science Casebook](../lenses_v6/philosophy_of_science), which provides falsifiability, structural plausibility, task specificity, minimality, and convergent validity criteria.
 - *Measurement validity* is operationalized by the [Measurement Theory Casebook](../lenses_v6/measurement-theory), which provides reliability, invariance, baseline separation, sensitivity, calibration, and construct coverage criteria.

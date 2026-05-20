@@ -29,11 +29,11 @@ In MI: a circuit discovered by activation patching and evaluated by activation p
 
 Bridgman (1927) proposed that a scientific concept is nothing more than the operations used to measure it — "length" is what a ruler measures. This is operationalism. The alternative (scientific realism) holds that concepts refer to real entities in the world, and measurements are fallible attempts to detect them.
 
-In MI: is "the IOI circuit" whatever activation patching returns (operational definition), or does it refer to a real computational structure in the model that we're trying to discover (realist interpretation)? Under operationalism, different methods finding different circuits is not a contradiction — they define different constructs. Under realism, it means at least one method is wrong. The framework adopts a moderate realism: circuits are real computational structures, but our instruments are fallible, and disagreement between methods is informative rather than definitional.
+In MI: is "the IOI circuit" whatever activation patching returns (operational definition), or does it refer to a real computational structure in the model that we're trying to discover (realist interpretation)? Under operationalism, different methods finding different circuits is not a contradiction — they define different constructs. Under realism, it means at least one method is wrong. The framework adopts a moderate realism: circuits are real computational structures, but our metrics are fallible, and disagreement between methods is informative rather than definitional.
 
 ### Underdetermination
 
-Duhem (1906) and Quine (1951) argued that observations underdetermine theory — any finite set of observations is consistent with multiple incompatible theories. You cannot test a hypothesis in isolation; every test relies on auxiliary assumptions (the instrument works, the setup is correct, background conditions are stable). When a test fails, it could be the hypothesis that's wrong, or any of the auxiliaries.
+Duhem (1906) and Quine (1951) argued that observations underdetermine theory — any finite set of observations is consistent with multiple incompatible theories. You cannot test a hypothesis in isolation; every test relies on auxiliary assumptions (the metric works, the setup is correct, background conditions are stable). When a test fails, it could be the hypothesis that's wrong, or any of the auxiliaries.
 
 In MI: Méloux et al. (2025) showed that multiple circuits are equally faithful for the same task — the behavioral evidence underdetermines which is "the" circuit. More broadly, when an ablation test fails (low effect), it could mean the component isn't part of the circuit (hypothesis wrong), or that the ablation method is inappropriate (auxiliary wrong), or that the prompt distribution doesn't engage the mechanism (background condition wrong). Quine's holism means no single failed test definitively refutes a circuit claim — but it also means no single passed test definitively confirms one.
 
@@ -47,7 +47,7 @@ The construct "induction head" ([Olsson et al. 2022](https://arxiv.org/abs/2209.
 
 A "circuit" that connects to nothing outside the specific behavior it was discovered on — where the only evidence for the construct is the same data that motivated it — sits at the degenerate edge of this network. It may still be real, but it has not yet earned the status of a validated theoretical entity.
 
-[Campbell and Fiske (1959)](https://doi.org/10.1037/h0046016) made this more precise with the multitrait-multimethod matrix (MTMM). If we measure $k$ traits (circuits) using $m$ methods (instruments), we can arrange the correlations into a $km \times km$ matrix. Convergent validity shows up as high correlations between different methods measuring the same trait. Discriminant validity shows up as low correlations between the same method measuring different traits. For trait $i$ measured by methods $a$ and $b$:
+[Campbell and Fiske (1959)](https://doi.org/10.1037/h0046016) made this more precise with the multitrait-multimethod matrix (MTMM). If we measure $k$ traits (circuits) using $m$ methods (metrics), we can arrange the correlations into a $km \times km$ matrix. Convergent validity shows up as high correlations between different methods measuring the same trait. Discriminant validity shows up as low correlations between the same method measuring different traits. For trait $i$ measured by methods $a$ and $b$:
 
 $$r_{ia, ib} > r_{ia, jb} \quad \text{for } i \neq j$$
 
@@ -64,7 +64,7 @@ Two methods should agree more about the same circuit than about different circui
 | [Quine, "Two Dogmas of Empiricism"](https://doi.org/10.2307/2181906) | 1951 | Philosophy of Science | **Holism** — no single observation confirms or disconfirms an isolated hypothesis; a failed ablation test indicts the circuit claim, the ablation method, or the prompt distribution jointly |
 | [Cronbach & Meehl, "Construct validity in psychological tests"](https://doi.org/10.1037/h0040957) | 1955 | Measurement Theory | **Nomological network** — a construct is valid only insofar as it occupies a determinate position in a web of lawful relations with other constructs and observables |
 | [Popper, *The Logic of Scientific Discovery*](https://doi.org/10.4324/9780203994627) | 1959 | Philosophy of Science | **Falsifiability** — a construct has empirical content only if there exist observations that would disconfirm it; a circuit claim consistent with any experimental outcome is vacuous |
-| [Campbell & Fiske, "Convergent and discriminant validation by the multitrait-multimethod matrix"](https://doi.org/10.1037/h0046016) | 1959 | Measurement Theory | **Multitrait-multimethod matrix** — convergence across independent instruments; discriminant validity across distinct traits |
+| [Campbell & Fiske, "Convergent and discriminant validation by the multitrait-multimethod matrix"](https://doi.org/10.1037/h0046016) | 1959 | Measurement Theory | **Multitrait-multimethod matrix** — convergence across independent metrics; discriminant validity across distinct traits |
 | [Hempel, *Aspects of Scientific Explanation*](https://doi.org/10.1029/EO067i020p00253) | 1965 | Philosophy of Science | **Theoretical terms** — labels like "name-mover" or "induction head" must be connected to observables via explicit correspondence rules; without these, the terms are empirically empty |
 | [Lakatos, *Falsification and the Methodology of Scientific Research Programmes*](https://doi.org/10.1017/CBO9780511621123.010) | 1970 | Philosophy of Science | **Progressive vs degenerating programmes** — a construct is progressive if it predicts novel facts beyond the data it was discovered on; a circuit found by patching and only ever evaluated by patching is degenerating |
 | [Woodward, *Making Things Happen*](https://global.oup.com/academic/product/making-things-happen-9780195189537) | 2003 | Philosophy of Science | **Invariant difference-making** — causes must hold under a range of interventions, not just the one tested |
@@ -89,7 +89,7 @@ For formal definitions, quantitative thresholds, and calibration data, see [Cons
 | C2 | Structural plausibility | Do weight-space signatures match the claimed computational role? | [C2](/framework/criteria/construct/structural-plausibility) |
 | C3 | Task specificity | Does the circuit score highly only on its discovery task, not unrelated ones? | [C3](/framework/criteria/construct/task-specificity) |
 | C4 | Minimality | Is it the smallest set that satisfies sufficiency, with no redundant members? | [C4](/framework/criteria/construct/minimality) |
-| C5 | Convergent validity | Do independent instruments identify the same components? | [C5](/framework/criteria/construct/convergent-validity) |
+| C5 | Convergent validity | Do independent metrics identify the same components? | [C5](/framework/criteria/construct/convergent-validity) |
 
 Falsifiability (C1) is a precondition — without it, a claim cannot advance beyond [Proposed](/framework/verdicts/proposed) regardless of other evidence. Convergent validity (C5) is the most powerful and the most frequently absent.
 
@@ -113,7 +113,7 @@ A name-mover head should appear in late layers and have a $W_{OV}$ matrix that a
 
 This is the construct-validity analog of nomological coherence: a circuit component must cohere with what the transformer architecture can mechanistically do at that position. A head in layer 0 cannot read from a head in layer 5. A head with a full-rank $W_{OV}$ is not performing low-rank copying. These are architectural constraints.
 
-**Instruments.** $W_{OV}$ singular value analysis and copying score, attention pattern visualization at task-relevant token positions, direct logit attribution decomposed by component, cross-model structural comparison for the same claimed role.
+**Metrics.** $W_{OV}$ singular value analysis and copying score, attention pattern visualization at task-relevant token positions, direct logit attribution decomposed by component, cross-model structural comparison for the same claimed role.
 
 **Failure modes.** *Role inflation* — the behavioral output matches the claimed role but the weight-space mechanism does not. *Layer mislocation* — a component at the wrong layer for its claimed role produces the right output through compositional coincidence.
 
@@ -165,7 +165,7 @@ But individual necessity is not the whole story. Two components can be individua
 
 ### Convergent validity
 
-Multiple independent instruments should identify the same components.
+Multiple independent metrics should identify the same components.
 
 When two methods that share no major assumptions identify the same circuit, their agreement is informative — it is unlikely to be an artifact of either method's biases. When one method's output is the other's input (using activation patching to discover a circuit and then path patching to "confirm" it), agreement is mechanical. The shared assumption must be named.
 
@@ -194,9 +194,9 @@ $$J(C_{\text{AP}}, C_{\text{WC}}) = \frac{20}{30} = 0.67$$
 This is informative because the methods share almost no assumptions — one intervenes on activations during forward passes, the other examines static weights. The 6 heads found only by activation patching may implement their role through a dynamic mechanism invisible to weight inspection. The 4 heads found only by weight classification may have the structural signature but not the activation profile on the tested prompts. Both discrepancies are scientifically interesting and should be reported rather than resolved by picking one method's output.
 </details>
 
-**Failure modes.** *Shared-bias convergence* — two instruments converge because they share an assumption (linearity, gradient-based attribution), not because the claim is true. *Pipeline convergence* — one instrument's output feeds the other, making agreement circular. *Threshold-dependent agreement* — two methods agree at one threshold but diverge at another; Jaccard should be reported across a range of thresholds.
+**Failure modes.** *Shared-bias convergence* — two metrics converge because they share an assumption (linearity, gradient-based attribution), not because the claim is true. *Pipeline convergence* — one metric's output feeds the other, making agreement circular. *Threshold-dependent agreement* — two methods agree at one threshold but diverge at another; Jaccard should be reported across a range of thresholds.
 
-**Minimum reporting.** At least two instruments with non-overlapping major assumptions. Agreement reported as Jaccard similarity at the component level, ideally across a threshold sweep.
+**Minimum reporting.** At least two metrics with non-overlapping major assumptions. Agreement reported as Jaccard similarity at the component level, ideally across a threshold sweep.
 
 ## Underdetermination
 
@@ -230,7 +230,7 @@ For a proposed circuit $C$ and behavior $B$, the following protocol operationali
 
 4. **Minimality.** Per-component leave-one-out ablation within the circuit. Report which components are individually necessary versus jointly necessary. If compensatory or backup mechanisms are observed, report them as such.
 
-5. **Convergent validity.** Apply at least two instruments with non-overlapping major assumptions. Report Jaccard similarity at the component level. If the methods disagree, characterize the disagreement.
+5. **Convergent validity.** Apply at least two metrics with non-overlapping major assumptions. Report Jaccard similarity at the component level. If the methods disagree, characterize the disagreement.
 
 6. **Underdetermination.** If an alternative circuit $C'$ with comparable faithfulness is known, report it. State the Jaccard overlap and identify the robust core — the components present in all known faithful circuits.
 

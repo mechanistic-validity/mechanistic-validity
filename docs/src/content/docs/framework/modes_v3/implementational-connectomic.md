@@ -69,7 +69,7 @@ The key distinction from topographic: a topographic claim is invariant to permut
 | $I_{\text{con}} \to I_{\text{fun}}$ (upgrade to functional) | Specify what each node in the graph *does* to its input to produce its output. The graph tells you the wiring; the functional claim tells you the components. |
 | $I_{\text{con}} \to A$ (upgrade to algorithmic) | Combine the graph (connectomic) with the node functions (functional) and demonstrate sufficiency of the procedure. An algorithm = wiring + operations + sufficiency. |
 
-## Instruments that provide connectomic-level evidence
+## Metrics that provide connectomic-level evidence
 
 - **A02 (Path patching)** — direct causal evidence of edge-level effects
 - **B02 (OV/QK composition)** — weight-space evidence for compositional wiring
@@ -79,7 +79,7 @@ The key distinction from topographic: a topographic claim is invariant to permut
 
 ## Key references
 
-- Goldowsky-Dill, N., et al. (2023). ["Localizing Model Behavior with Path Patching."](https://arxiv.org/abs/2304.05969) — Path patching as edge-level causal instrument.
+- Goldowsky-Dill, N., et al. (2023). ["Localizing Model Behavior with Path Patching."](https://arxiv.org/abs/2304.05969) — Path patching as edge-level causal metric.
 - Conmy, A., et al. (2023). ["Towards Automated Circuit Discovery for Mechanistic Interpretability."](https://arxiv.org/abs/2304.14997) *NeurIPS 2023.* — ACDC; edge-based circuit discovery.
 - Elhage, N., et al. (2021). ["A Mathematical Framework for Transformer Circuits."](https://transformer-circuits.pub/2021/framework/index.html) *Transformer Circuits Thread.* — QK/OV composition as structural wiring evidence.
 - Sporns, O., Tononi, G., & Kotter, R. (2005). ["The Human Connectome: A Structural Description of the Human Brain."](https://doi.org/10.1371/journal.pcbi.0010042) *PLoS Computational Biology.* — Connectomics framework.

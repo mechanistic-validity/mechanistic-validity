@@ -136,7 +136,7 @@ This is the pharmacological ideal: a perfectly linear dose-response with perfect
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments reliable and well-calibrated?*
+*Are the metrics reliable and well-calibrated?*
 
 ### Criteria
 

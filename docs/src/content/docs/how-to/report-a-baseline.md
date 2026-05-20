@@ -65,7 +65,7 @@ Learning contribution     = 0.48 − [X] = [Δ]
 
 **IIA-specific reference values:**
 
-| Instrument | Task | GPT-2 Small range | Source |
+| Metric | Task | GPT-2 Small range | Source |
 |---|---|---|---|
 | Transcoder IIA | SVA | 0.40–0.60 | Published (multiple) |
 | DAS IIA | IOI | 0.86–0.95 | MIB benchmark (Mueller et al.) |

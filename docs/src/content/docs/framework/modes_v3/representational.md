@@ -80,7 +80,7 @@ Why this fails: No geometric form is specified (linear? subspace? distributed?).
 | $R \to A$ (upgrade to algorithmic) | Show ordering, composition, and procedure: the representations flow through specific steps that jointly produce the behavior. How is the representation *read* and *used*? |
 | $R \to I_{\text{fun}}$ (downgrade) | If the causal test fails (IIA is at baseline), the claim downgrades to "this component produces outputs with this geometric structure" — a functional/statistical characterization, not a representational one. |
 
-## Instruments that provide representational-level evidence
+## Metrics that provide representational-level evidence
 
 - **E01 (PCA dimensionality)** — geometry of activation subspaces per layer
 - **E03 (RSA)** — whether neural similarity structure matches task-variable structure

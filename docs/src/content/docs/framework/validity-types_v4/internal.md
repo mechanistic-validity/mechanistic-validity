@@ -10,7 +10,7 @@ description: "Formal specification: quantitative thresholds, pass conditions, an
 | Question | Does the evidence establish that the component implements the computation, not merely participates in it? |
 | Lens | [Neuroscience](/framework/lenses_v6/neuroscience) |
 | Criteria | I1–I5 |
-| Dependency | Internal validity is the workhorse — most MI evidence is internal-validity evidence. But it says nothing about whether the finding generalizes ([external](/framework/validity-types_v4/external)), whether the instrument is reliable ([measurement](/framework/validity-types_v4/measurement)), whether the construct is coherent ([construct](/framework/validity-types_v4/construct)), or whether the narrative is correct ([interpretive](/framework/validity-types_v4/interpretive)). |
+| Dependency | Internal validity is the workhorse — most MI evidence is internal-validity evidence. But it says nothing about whether the finding generalizes ([external](/framework/validity-types_v4/external)), whether the metric is reliable ([measurement](/framework/validity-types_v4/measurement)), whether the construct is coherent ([construct](/framework/validity-types_v4/construct)), or whether the narrative is correct ([interpretive](/framework/validity-types_v4/interpretive)). |
 | Status in MI | Best-addressed by existing methods; still routinely method-conditional |
 
 Internal validity asks whether the causal inference from intervention to behavior is licensed within the experimental setup. The [Neuroscience lens](/framework/lenses_v6/neuroscience) explains the intellectual background. This page gives the formal definitions, quantitative thresholds, and calibration data.

@@ -9,7 +9,7 @@ This lens asks one question: **does the component implement the computation, or 
 
 Activating during a task, or even contributing causally to a task, is not enough. A bottleneck component is causally necessary for every computation that routes through it, but it does not implement any of them in particular. Systems neuroscience developed a checklist — necessity, sufficiency, specificity, consistency, confound control — to draw exactly this distinction. The same checklist applies to circuits in neural networks without modification.
 
-The instruments of MI — ablation, activation patching, path patching, steering — are direct analogs of the neuroscience techniques. What MI sometimes lacks is the interpretive framework that makes the results meaningful. An ablation study that reports only necessity, without specificity controls, establishes less than it appears to.
+The metrics of MI — ablation, activation patching, path patching, steering — are direct analogs of the neuroscience techniques. What MI sometimes lacks is the interpretive framework that makes the results meaningful. An ablation study that reports only necessity, without specificity controls, establishes less than it appears to.
 
 There is also a disanalogy worth naming. In biological systems, lesion studies observe a system that cannot adapt to the damage — the deficit is permanent. Neural network ablation is instantaneous: the model never gets to recalibrate around the missing component. This makes ablation a weaker test than it appears, because the observed degradation may partly reflect the network's inability to route around the damage, not the component's irreplaceability. The stronger test is Craver's mutual manipulability in full: not just "does ablating the component degrade the behavior?" (bottom-up) but "does training away the behavior change the component?" (top-down). If you fine-tune a model to remove IOI capability, do the name-mover heads lose their copying structure in $W_{OV}$? This top-down direction is rarely tested in MI, but it is what constitutive relevance actually requires.
 
@@ -148,7 +148,7 @@ Restoring, isolating, or stimulating the component should reproduce the behavior
 
 Where necessity asks "does removing this component break the behavior?", sufficiency asks the converse: "does this component, on its own or in isolation, produce the behavior?" Sufficiency is the stronger claim and the harder one to establish honestly.
 
-The standard instrument is activation patching in the restoration direction (also called denoising). We run the model on a corrupted input (where the behavior is absent), then patch in the clean activation of the proposed circuit, and measure how much of the behavior is recovered. The faithfulness score $F$ for a circuit $C$ on task $T$ is typically defined as:
+The standard metric is activation patching in the restoration direction (also called denoising). We run the model on a corrupted input (where the behavior is absent), then patch in the clean activation of the proposed circuit, and measure how much of the behavior is recovered. The faithfulness score $F$ for a circuit $C$ on task $T$ is typically defined as:
 
 $$F(C, T) = \frac{M_{\text{patched}}(C) - M_{\text{corrupted}}}{M_{\text{clean}} - M_{\text{corrupted}}}$$
 

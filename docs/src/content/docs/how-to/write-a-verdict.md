@@ -15,7 +15,7 @@ A verdict statement has six required components. Missing any one makes the verdi
              in [model] on [task] / [prompt distribution].
 
 **Satisfied:**
-- [Criterion ID] ([Name]): [instrument], [value vs. threshold], [n], [seeds] ✓
+- [Criterion ID] ([Name]): [metric], [value vs. threshold], [n], [seeds] ✓
   (repeat for each satisfied criterion)
 
 **Partial:**
@@ -27,7 +27,7 @@ A verdict statement has six required components. Missing any one makes the verdi
   (list ALL required criteria for the declared tag that are open)
 
 **Upgrade path:**
-- → [Next tier]: [specific criteria to satisfy], [specific instruments to run]
+- → [Next tier]: [specific criteria to satisfy], [specific metrics to run]
   (one upgrade path per tier level, up to Triangulated minimum)
 
 **Scope:** [model + size]. [Task] on [distribution] ([n], [seeds], [checkpoint]).
@@ -115,5 +115,5 @@ Scope: GPT-2 Small (124M). IOI on Wang et al. (2022) 15-template set.
 | Necessity + complement ablation (sufficiency) | *Mechanistically supported* `[causal-mechanistic]` |
 | I1–I5 + ≥1 external + ≥1 construct | *Triangulated* `[causal-mechanistic]` |
 | IIA above baseline, no ablation | *Causally suggestive* `[representational]` |
-| Instruments disagree (Jaccard ≈ 0) | *Underdetermined* regardless of tier |
+| Metrics disagree (Jaccard ≈ 0) | *Underdetermined* regardless of tier |
 | Falsification condition triggered | *Disconfirmed* |

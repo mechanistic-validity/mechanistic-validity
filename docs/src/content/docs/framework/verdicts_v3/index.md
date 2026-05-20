@@ -31,7 +31,7 @@ The tier system makes these thresholds explicit. Each tier has a *minimum eviden
 **Minimum evidence package:**
 - A defined construct (the entity is named and its boundaries are stated)
 - A falsifiable prediction (at least one testable consequence of the claim)
-- A measurement (at least one number has been produced, with instrument stated)
+- A measurement (at least one number has been produced, with metric stated)
 
 **What is NOT required:** Causal evidence. A claim can be Proposed based purely on correlational, structural, or statistical evidence — e.g., "this probe achieves 90% accuracy on syntactic number at layer 8" or "these SAE features have cosine similarity > 0.7 with known direction $\hat{v}$."
 

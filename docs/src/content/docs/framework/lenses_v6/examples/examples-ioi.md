@@ -135,7 +135,7 @@ The curve is two endpoints with no interior. We know the maximum effect is large
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments reliable and well-calibrated?*
+*Are the metrics reliable and well-calibrated?*
 
 ### Criteria
 
@@ -153,7 +153,7 @@ The curve is two endpoints with no interior. We know the maximum effect is large
 
 ### Key Distinctions
 
-- **Reliability vs validity:** The 87% faithfulness is reported without confidence intervals — we don't know if the instrument is reliable. A reliable instrument pointed at the wrong target produces confident wrong answers, but we can't even confirm reliability here.
+- **Reliability vs validity:** The 87% faithfulness is reported without confidence intervals — we don't know if the metric is reliable. A reliable metric pointed at the wrong target produces confident wrong answers, but we can't even confirm reliability here.
 - **Convergent vs discriminant validity:** One convergent comparison exists (activation patching vs. weight-space analysis partially agree). Zero discriminant comparisons — we don't know if the methods agree more about IOI than about everything else.
 
 ### MTMM Matrix

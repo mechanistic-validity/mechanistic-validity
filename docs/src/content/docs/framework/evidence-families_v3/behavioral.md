@@ -15,7 +15,7 @@ The logic is straightforward: if you claim "this circuit performs indirect objec
 
 This family also includes *negative* behavioral tests: does the circuit fail to produce behavior on tasks it should not explain? A name-mover circuit that also explains arithmetic behavior is either misidentified or captures something more general than claimed. Cross-task transfer and cross-scale transfer tests probe whether the circuit's behavioral profile matches its claimed scope.
 
-## Instruments
+## Metrics
 
 - **D01 Faithfulness** — Overall output distribution match between circuit and full model
 - **D02 Logit Diff Recovery** — Recovery of the logit difference between target tokens
