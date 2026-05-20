@@ -23,6 +23,17 @@ This case study evaluates SAE features *as a class*. Individual strong features 
 
 This is not a claim that SAE features are wrong — many may be real. It is a claim that the evidence for their validity, measured against the same standards applied to circuits, has not been marshaled. The primary gaps are convergent validity (C5 — does a different method find the same features?), measurement reliability (M1 — does a different training run find the same features?), and alternative exclusion (V4 — is the label the right one?). These three gaps share a common theme: the features may be properties of the dictionary rather than properties of the model.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Max-activating examples (feature identification) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
+| Activation steering / feature clamping | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Feature ablation (zeroing) | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Decoder vector projection through unembedding | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

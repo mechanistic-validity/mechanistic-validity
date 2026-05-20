@@ -21,6 +21,17 @@ This is a structural-level claim with algorithmic aspects: it names specific wei
 
 **Overall verdict: Causally suggestive, approaching Mechanistically supported.** The Greater-Than circuit's distinguishing strength is structural plausibility (C2) — the $W_{OV}$ ordering evidence is among the most precise weight-space characterizations published. This makes it a model case for how structural evidence can support an algorithmic claim. Its primary gaps are the same as most circuits: single model, single ablation method, no formal double dissociation. The honest scope investigation (generalization to other ordinal tasks) is a genuine strength that most papers lack.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| $W_{OV}$ decomposition / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Cross-task generalization (months, numbers) | [D06 Cross-Task Transfer](/framework/metrics/behavioral/d06-cross-task-transfer) | Behavioral |
+| Logit prediction analysis | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

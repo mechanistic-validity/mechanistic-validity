@@ -21,6 +21,16 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 **Overall verdict: Causally suggestive, with significant interpretive challenges.** ROME/knowledge neurons have strong necessity (I1) and narrow sufficiency (I2) — causal tracing works and edits succeed on target. But the specificity failure (I3) and the alternative-exclusion failure (V4) together suggest that the interpretive framing ("knowledge is localized in MLPs") may be wrong even though the practical tool (ROME edits) works. This is an instructive case: a tool can work for the wrong reasons. The framework helps distinguish "the edit works" (external validity for the intervention) from "the mechanistic story is correct" (interpretive validity for the localization claim).
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Causal tracing (activation patching with noise) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Rank-one model editing (ROME) | [A05 MDC/Glennan](/framework/metrics/causal/a05-mdc-glennan) | Causal |
+| MEMIT (multi-layer editing) | [A05 MDC/Glennan](/framework/metrics/causal/a05-mdc-glennan) | Causal |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

@@ -21,6 +21,16 @@ This is interesting as a case study because it operates in a specific domain (co
 
 **Overall verdict: Causally suggestive.** The docstring circuit has solid necessity evidence but weak interpretive validity — "variable binding" may be overclaiming what is actually "positional copying." This case study illustrates a common pattern: the circuit is real (ablation confirms it matters), but the *label* may not be right. The framework distinguishes between "the circuit exists" (internal validity) and "the circuit does what you named it" (interpretive validity). Here, internal validity is ahead of interpretive validity.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Activation patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Automated circuit discovery (ACDC) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity
