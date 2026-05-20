@@ -21,6 +21,16 @@ This extends the Greater-Than claim from a task-specific circuit to a *general c
 
 **Overall verdict: Causally suggestive, approaching Mechanistically supported.** Successor heads benefit from the same structural clarity as the Greater-Than circuit, with the additional strength of cross-domain generalization. The multi-domain pattern makes the "general computational primitive" claim more convincing than a single-task circuit claim. The case for successor heads as a natural kind is stronger than for most circuits because the same structural signature appears across unrelated domains — this is convergent evidence from the phenomenon itself, even without formal C5 convergent validity from multiple discovery methods.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| $W_{OV}$ decomposition (multi-domain ordinal structure) | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Cross-task generalization (years, months, days, letters) | [D06 Cross-Task Transfer](/framework/metrics/behavioral/d06-cross-task-transfer) | Behavioral |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

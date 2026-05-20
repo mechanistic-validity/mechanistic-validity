@@ -21,6 +21,19 @@ Below, we evaluate this claim through each of the five validity lenses, applying
 
 **Overall verdict: Causally suggestive, approaching Mechanistically supported.** The IOI circuit has strong necessity and sufficiency evidence (I1, I2), strong narrative coherence (V3), and confirmed structural plausibility (C2). It stalls short of Mechanistically supported because specificity (I3/C3), confound control (I5), measurement reliability (M1), and alternative exclusion (V4) are all untested or weak. This is the most thoroughly analyzed circuit in MI — the remaining gaps reflect the difficulty of the bar, not deficiencies of the paper.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Activation patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Path patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Mean ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
+| $W_{OV}$ / $W_{QK}$ decomposition | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| Logit difference | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

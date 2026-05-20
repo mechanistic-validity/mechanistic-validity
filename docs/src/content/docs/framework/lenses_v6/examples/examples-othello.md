@@ -23,6 +23,15 @@ This is a [representational](/framework/modes_v3/representational)-level claim w
 
 This case study illustrates a pattern worth naming: **interpretive inflation** — a mechanistic finding (linear probe recovers board state) is described using a term (world model) that implies more structure, compositionality, and causal role than the evidence supports. The finding is real; the label is aspirational. The framework's contribution here is not to dismiss the finding but to name precisely where the label exceeds the evidence and what additional tests would close the gap.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Linear probing (board state recovery) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
+| Causal intervention / activation patching (board state) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

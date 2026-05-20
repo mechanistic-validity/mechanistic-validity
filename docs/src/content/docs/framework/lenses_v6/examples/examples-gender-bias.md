@@ -23,6 +23,17 @@ This case study is important because it connects mechanistic claims to real-worl
 
 This case study illustrates the framework's most important function: sometimes the right verdict is not "the evidence is insufficient" but "the construct is not coherent enough to evaluate." When task specificity (C3) fails fundamentally — when the phenomenon cannot be separated from a related phenomenon that uses the same components — the mechanistic claim cannot be established regardless of how much evidence is collected. The framework names this problem rather than hiding it behind aggregate scores.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Gender direction projection (embedding geometry) | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
+| Causal mediation analysis (Vig et al.) | [A06 Mediation](/framework/metrics/causal/a06-mediation) | Causal |
+| Iterative nullspace projection / INLP (Ravfogel et al.) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
+| Activation steering along gender direction | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

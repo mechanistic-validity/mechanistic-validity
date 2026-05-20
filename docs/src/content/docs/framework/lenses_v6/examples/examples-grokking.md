@@ -23,6 +23,18 @@ This is the strongest structural evidence in published MI — the weight matrice
 
 The limitation is scope: E6 (cross-architecture) is the only weak point, and it is a fundamental one. A toy model with perfect internal validity but unknown external validity establishes a *proof of concept* rather than a *general finding*. The framework's contribution here is to name precisely what is achieved (complete explanation of one model) and what is not (evidence that real models work this way). The grokking result is the ceiling of MI — it shows what "fully understood" looks like. The gap between this and any real-model circuit is the gap the field is working to close.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Weight-space Fourier decomposition | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
+| Per-frequency ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Activation probing (Fourier components) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
+| Mechanistic prediction (exact output reproduction) | [D04 CE Delta](/framework/metrics/behavioral/d04-ce-delta) | Behavioral |
+| Training dynamics analysis (phase transition) | [D04 CE Delta](/framework/metrics/behavioral/d04-ce-delta) | Behavioral |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

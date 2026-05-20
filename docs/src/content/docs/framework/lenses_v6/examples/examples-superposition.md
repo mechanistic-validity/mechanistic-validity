@@ -23,6 +23,18 @@ This is a *theoretical claim about the representational strategy* of neural netw
 
 The gap to real models is the central open question of the superposition research program. SAE success is *consistent with* superposition but does not *confirm* it — SAEs could work for other reasons, and the geometric structure of superposition in real models has not been directly measured with the same precision as in toy models. The framework's verdict: superposition is a validated theory looking for a confirmed instance in a real model. Until that instance is found, the real-model claims remain at *Proposed*.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Weight geometry analysis (near-orthogonal feature directions) | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
+| Feature ablation (projection out of feature direction) | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Feature stimulation (activation addition) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Phase diagram analysis (feature/dimension ratio) | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
+| Interference / crosstalk measurement | [C01 Mutual Information](/framework/metrics/information/c01-mutual-information) | Information |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

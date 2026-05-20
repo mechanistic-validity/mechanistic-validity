@@ -19,6 +19,18 @@ description: "The induction head mechanism (Olsson et al. 2022) evaluated throug
 
 **Overall verdict: Triangulated.** Induction heads pass all five criteria for construct validity, four of five for internal validity, all six for external validity, and all five for interpretive validity. Evidence converges across multiple independent lenses with non-overlapping assumptions. This is the strongest mechanistic claim in MI — it reaches Triangulated status primarily because the mechanism is simple, general-purpose, and independently verifiable from multiple angles. The single remaining gap (I5 — systematic multi-method comparison) is a reporting gap, not an evidence gap, since path patching partially addresses confounds.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Path patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| $W_{OV}$ CopyScore / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| $W_{QK}$ compositional analysis | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| Training dynamics (loss curve phase transition) | [D04 CE Delta](/framework/metrics/behavioral/d04-ce-delta) | Behavioral |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity

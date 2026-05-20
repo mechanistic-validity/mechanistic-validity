@@ -21,6 +21,16 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 **Overall verdict: Causally suggestive, approaching Mechanistically supported.** Copy suppression is notable for its unusually clean specificity result (I3) — ablation produces a specific error type rather than general degradation. This is rare in MI and provides stronger evidence than typical necessity results. The mechanism is a good example of how negative-effect components (inhibitory mechanisms) can be as well-characterized as positive-effect ones.
 
+## Metrics used in original work
+
+| Method | Our metric | Family |
+|---|---|---|
+| Ablation (mean ablation) | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
+| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
+| $W_{OV}$ decomposition (anti-copying structure) | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+
+> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+
 ---
 
 ## Philosophy of Science Lens — Construct Validity
