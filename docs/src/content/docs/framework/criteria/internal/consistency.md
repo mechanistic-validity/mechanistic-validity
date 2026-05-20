@@ -27,9 +27,9 @@ Consistency is the replication criterion for internal validity. Three forms:
 ## Consistency vs. reliability (M1)
 
 - **Consistency (I4):** Stability of the *finding* — does the causal effect hold across experimental variation?
-- **Reliability (M1):** Stability of the *instrument* — does the measurement tool give the same answer when re-applied?
+- **Reliability (M1):** Stability of the *metric* — does the measurement tool give the same answer when re-applied?
 
-These can diverge: a reliable instrument can measure an inconsistent effect (the effect changes sign across prompt families). Report both.
+These can diverge: a reliable metric can measure an inconsistent effect (the effect changes sign across prompt families). Report both.
 
 ## Sigma-ablation
 

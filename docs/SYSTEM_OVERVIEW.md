@@ -828,7 +828,7 @@ docs/                               Astro/Starlight documentation site
         measurement/                M1-M6
         interpretive/               V1-V5
       evidence-families_v3/         6 evidence families
-      instruments_v2/               Metric documentation (by family)
+      metrics/                      Metric documentation (by family)
       verdicts_v3/                  Verdict tiers
       lenses_v6/                    13 worked case studies
     how-to/                         Practical guides

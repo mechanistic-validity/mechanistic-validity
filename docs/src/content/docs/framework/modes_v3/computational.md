@@ -84,7 +84,7 @@ This satisfies all three requirements: specification, normative account, and err
 | $A \to C$ (upgrade from algorithmic) | Normative account: why this algorithm solves the *right* problem. Error analysis showing failures correspond to problem boundaries, not arbitrary implementation limits. |
 | $C \to A$ (downgrade to algorithmic) | If the normative account is missing or the error analysis shows failures unrelated to problem structure, the claim is algorithmic at best. |
 
-## Instruments that provide computational-level evidence
+## Metrics that provide computational-level evidence
 
 - **D01 (Behavioral: logit attribution)** — measures output quality across conditions
 - **D07 (Generalization gap)** — tests whether the circuit generalizes beyond its discovery distribution

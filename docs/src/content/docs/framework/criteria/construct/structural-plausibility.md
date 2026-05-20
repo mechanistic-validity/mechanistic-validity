@@ -31,7 +31,7 @@ Satisfied when:
 
 These findings satisfy structural plausibility for the IOI circuit claim (Finding 25). They do not establish causation; they make the construct coherent.
 
-## Primary instruments
+## Primary metrics
 
 - B01 SpectralSVD: spectral gap of W_OV for copying/inhibition heads
 - B02 OVQK analysis: eigenvalue analysis for attention pattern detection

@@ -15,7 +15,7 @@ The key insight is that weight matrices encode computational structure. The sing
 
 Because this evidence is input-independent, it provides a distinct epistemic contribution: it reveals architectural *capacity*. A weight structure that cannot perform a computation rules out that component from the circuit, regardless of what activation-based methods might suggest (which could be confounded by information flowing through other paths).
 
-## Instruments
+## Metrics
 
 - **B01 SVD/Spectral** — Singular value decomposition and spectral analysis of weight matrices
 - **B02 Effective Rank** — Numerical rank and dimensionality of projection subspaces

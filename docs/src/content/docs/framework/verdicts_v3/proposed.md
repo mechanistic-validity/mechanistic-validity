@@ -32,7 +32,7 @@ A claim can remain at Proposed indefinitely without being wrong or uninteresting
 ## Minimum reporting for this tier
 
 - Name of the construct and its operational definition
-- The specific measurement instrument (probe architecture, SAE variant, similarity metric)
+- The specific measurement metric (probe architecture, SAE variant, similarity metric)
 - At least one quantitative result with confidence interval or equivalent
 - Statement of what causal experiment would move the claim to Tier 2
 

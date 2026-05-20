@@ -137,7 +137,7 @@ The structural evidence *predicts* a smooth dose-response curve, but the empiric
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments reliable?*
+*Are the metrics reliable?*
 
 ### Criteria
 

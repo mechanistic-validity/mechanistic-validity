@@ -85,7 +85,7 @@ Why this fails: "Moving names" is not a mathematical specification of an input-o
 | $I_{\text{fun}} \to R$ (upgrade to representational) | Demonstrate that the component's function is specifically *representational* — that its input or output encodes a specific causal variable in a specific geometric form. A head that suppresses a direction is functional; showing that direction encodes "repeated name identity" makes it representational. |
 | $I_{\text{fun}} \to A$ (upgrade to algorithmic) | Combine multiple components' functions into an ordered procedure with information flow. An algorithm = multiple functional components + their composition + sufficiency of the joint procedure. |
 
-## Instruments that provide functional-level evidence
+## Metrics that provide functional-level evidence
 
 - **B02 (OV/QK composition analysis)** — weight-space characterization of the head's operation
 - **B05 (NMF/ICA on weight matrices)** — decomposition of the operation into interpretable factors

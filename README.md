@@ -25,7 +25,7 @@ Below is a high level overview of three key concepts in the framework:
 | Construct | Philosophy of science | Is the claim falsifiable and well-defined? |
 | Internal | Neuroscience | Is the causal evidence sound? |
 | External | Pharmacology | Does it generalize beyond the test conditions? |
-| Measurement | Measurement theory | Are the instruments reliable and calibrated? |
+| Measurement | Measurement theory | Are the metrics reliable and calibrated? |
 | Interpretive | MI | Is the description level declared and consistent? |
 
 ### Six evidence families
@@ -37,7 +37,7 @@ Below is a high level overview of three key concepts in the framework:
 | Information-theoretic | What information flows where? |
 | Behavioral | Does the circuit reproduce model behavior? |
 | Representational | What geometric structure do activations have? |
-| Measurement-theoretic | Are the instruments themselves reliable? |
+| Measurement-theoretic | Are the metrics themselves reliable? |
 
 ### Verdict tiers
 
@@ -46,7 +46,7 @@ Below is a high level overview of three key concepts in the framework:
 | 1 | Proposed | Structural alignment only, no causal evidence |
 | 2 | Causally suggestive | Necessity established (ablation degrades behavior) |
 | 3 | Mechanistically supported | Necessity + sufficiency |
-| 4 | Triangulated | Multiple independent instruments converge |
+| 4 | Triangulated | Multiple independent metrics converge |
 | 5 | Validated | All five lenses pass |
 
 
@@ -69,6 +69,14 @@ The full framework applied to published MI results:
 | [Superposition (Elhage et al. 2022)](https://transformer-circuits.pub/2022/toy_model/index.html) | Proposed |
 | [Probing Classifiers (Belinkov 2022)](https://arxiv.org/abs/2102.12452) | Proposed |
 | [Gender Bias Circuits (Vig et al. 2020)](https://arxiv.org/abs/2010.02573) | Proposed |
+
+## Repositories
+
+| Repository | Description |
+|---|---|
+| [mechanistic-validity](https://github.com/mechanistic-validity/mechanistic-validity) | Framework: metrics, calibrations, claim specs, docs site |
+| [mechanistic-validity-lab](https://github.com/mechanistic-validity/mechanistic-validity-lab) | Infrastructure: sweep runner, result tracking, Modal/RunPod |
+| [mechanistic-validity-experiments](https://github.com/mechanistic-validity/mechanistic-validity-experiments) | Research: experiments using the framework |
 
 ## Citation
 

@@ -159,7 +159,7 @@ The structural prediction (items further from reference get proportionally large
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments reliable and well-calibrated?*
+*Are the metrics reliable and well-calibrated?*
 
 ### Criteria
 

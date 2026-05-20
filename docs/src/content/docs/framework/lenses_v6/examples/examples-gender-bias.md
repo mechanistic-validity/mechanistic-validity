@@ -162,21 +162,21 @@ What's missing:
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the bias instruments reliable and well-calibrated?*
+*Are the bias metrics reliable and well-calibrated?*
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Weak.** Different bias benchmarks give different answers. The measurement of "bias" itself is unreliable across instruments.
+**[M1 — Reliability:](/framework/criteria/measurement/reliability) Weak.** Different bias benchmarks give different answers. The measurement of "bias" itself is unreliable across metrics.
 
 **[M2 — Invariance:](/framework/criteria/measurement/invariance) Weak.** A model that appears debiased on one benchmark appears biased on another. The measurement is not invariant across evaluation conditions.
 
 **[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Partial.** Gender direction projections clearly separate male/female-associated words. But separating "bias" from "knowledge" in the measurement is the unsolved problem.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Unknown.** Can the instrument distinguish between "the model is unbiased" and "the model has learned to hide bias from the benchmark"? Gonen & Goldberg's "lipstick on a pig" result suggests the latter is common.
+**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Unknown.** Can the metric distinguish between "the model is unbiased" and "the model has learned to hide bias from the benchmark"? Gonen & Goldberg's "lipstick on a pig" result suggests the latter is common.
 
 **[M5 — Calibration:](/framework/criteria/measurement/calibration) Poorly understood.** What level of bias-benchmark performance constitutes "debiased"? There is no agreed threshold.
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Weak.** Each benchmark measures one facet of bias. No single instrument captures the full construct. "Bias" is a multi-dimensional construct measured by one-dimensional instruments.
+**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Weak.** Each benchmark measures one facet of bias. No single metric captures the full construct. "Bias" is a multi-dimensional construct measured by one-dimensional metrics.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
@@ -185,13 +185,13 @@ What's missing:
 | M3 Baseline separation | Partial | Direction separates; bias/knowledge don't |
 | M4 Sensitivity | Unknown | Hiding vs. removing |
 | M5 Calibration | Poorly understood | No agreed threshold |
-| M6 Construct coverage | Weak | Multi-dimensional construct, 1D instruments |
+| M6 Construct coverage | Weak | Multi-dimensional construct, 1D metrics |
 
 ### Key Distinctions
 
 - **Reliability vs validity:** Bias measurements are unreliable (different benchmarks disagree) AND of uncertain validity (they may measure surface patterns rather than genuine bias). When reliability is low, validity cannot be established — you cannot validate a measurement that produces different results each time.
 - **Convergent vs discriminant validity:** Multiple bias benchmarks should *converge* (score the same model similarly) — they often do not. Different benchmarks should *discriminate* between bias and non-bias — but they cannot distinguish "debiased" from "degraded." Both convergent and discriminant validity fail for bias measurement.
-- **The construct precedes the instrument:** Measurement theory assumes a well-defined construct that the instrument measures. If the construct itself (separable gender bias) is incoherent, no instrument can validly measure it — the problem is pre-measurement.
+- **The construct precedes the metric:** Measurement theory assumes a well-defined construct that the metric measures. If the construct itself (separable gender bias) is incoherent, no metric can validly measure it — the problem is pre-measurement.
 
 ### MTMM Matrix
 
@@ -202,7 +202,7 @@ What's missing:
 | **CrowS-Pairs** | low | low-moderate | — | ? |
 | **Direction projection** | moderate | ? | ? | — |
 
-Cross-benchmark convergence (the off-diagonal cells) is low to moderate — different instruments disagree about how biased a model is. This is a reliability crisis for the construct: if multiple instruments measuring "the same thing" produce different results, either they are measuring different things (the construct is multi-dimensional) or they are all poorly calibrated. For gender bias, both are likely true simultaneously.
+Cross-benchmark convergence (the off-diagonal cells) is low to moderate — different metrics disagree about how biased a model is. This is a reliability crisis for the construct: if multiple metrics measuring "the same thing" produce different results, either they are measuring different things (the construct is multi-dimensional) or they are all poorly calibrated. For gender bias, both are likely true simultaneously.
 
 ---
 

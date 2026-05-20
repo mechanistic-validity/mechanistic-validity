@@ -10,13 +10,13 @@ criterion_id: "C1"
 |---|---|
 | Validity type | Construct |
 | Pass condition | A named, specific result is stated *before data collection* that would disconfirm the circuit claim |
-| Evidence family | Any (criterion is about claim structure, not the instrument) |
+| Evidence family | Any (criterion is about claim structure, not the metric) |
 | Minimum reporting | The disconfirmation condition verbatim, with a threshold value, stated prospectively |
 | Common failure mode | "The circuit is real unless ablation fails" — too inclusive to be falsifiable |
 
 ## What this criterion requires
 
-Falsifiability is the minimum condition for a claim to have determinate content. A circuit claim that cannot be disconfirmed by any specifiable result is not a scientific claim; it is a label applied to whatever the instruments found.
+Falsifiability is the minimum condition for a claim to have determinate content. A circuit claim that cannot be disconfirmed by any specifiable result is not a scientific claim; it is a label applied to whatever the metrics found.
 
 The criterion requires:
 
@@ -26,7 +26,7 @@ The criterion requires:
 
 ## Why this is a construct criterion
 
-Falsifiability lives under construct validity because the problem is about the *content* of the claim, not whether an experiment succeeded. A claim defined only by what the instruments found — "the SVA circuit is whatever components show above-chance IIA on SVA" — is unfalsifiable by construction: adding components in response to any negative result always restores the claim.
+Falsifiability lives under construct validity because the problem is about the *content* of the claim, not whether an experiment succeeded. A claim defined only by what the metrics found — "the SVA circuit is whatever components show above-chance IIA on SVA" — is unfalsifiable by construction: adding components in response to any negative result always restores the claim.
 
 ## Example from this project
 
@@ -38,8 +38,8 @@ Falsifiability lives under construct validity because the problem is about the *
 
 **Post-hoc:** The threshold was set after seeing the data.
 
-**Vague:** "If the circuit doesn't generalize, we would revisit the claim." Names no instrument, no threshold, no specific result.
+**Vague:** "If the circuit doesn't generalize, we would revisit the claim." Names no metric, no threshold, no specific result.
 
 ## Relation to other criteria
 
-Falsifiability interacts with **minimality (C4)**: a non-minimal circuit is harder to falsify because many components provide fallback explanations. It also interacts with **convergent validity (C5)**: when instruments disagree (Jaccard ≈ 0), the falsifiability condition must specify which instrument's result counts as disconfirmation.
+Falsifiability interacts with **minimality (C4)**: a non-minimal circuit is harder to falsify because many components provide fallback explanations. It also interacts with **convergent validity (C5)**: when metrics disagree (Jaccard ≈ 0), the falsifiability condition must specify which metric's result counts as disconfirmation.

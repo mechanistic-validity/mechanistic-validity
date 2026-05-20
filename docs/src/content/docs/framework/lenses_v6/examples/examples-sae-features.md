@@ -164,17 +164,17 @@ The dose-response evidence shows that *something* happens when you intervene, bu
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Is the SAE decomposition a reliable instrument?*
+*Is the SAE decomposition a reliable metric?*
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Weak.** Different SAE training runs (different seeds, hyperparameters) produce different dictionaries. The Jaccard overlap between features identified by two independent SAEs is low for most of the dictionary. The instrument's test-retest reliability is poor.
+**[M1 — Reliability:](/framework/criteria/measurement/reliability) Weak.** Different SAE training runs (different seeds, hyperparameters) produce different dictionaries. The Jaccard overlap between features identified by two independent SAEs is low for most of the dictionary. The metric's test-retest reliability is poor.
 
 **[M2 — Invariance:](/framework/criteria/measurement/invariance) Not tested.** Do SAE features show the same properties when the dictionary is trained on different data subsets? When applied to different layers? Measurement invariance across conditions is not reported.
 
 **[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Partial.** Strong features (high activation, clear semantic coherence) are clearly separated from noise. But the boundary between "real features" and "dictionary artifacts" is not well-defined. How many of the 16,384 features in a typical SAE are real?
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Unknown.** Can the instrument distinguish between a genuine "deception" feature and a "formal language" feature that happens to co-occur with deception in the training data? The sensitivity to genuine semantic distinctions versus statistical co-occurrence is not characterized.
+**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Unknown.** Can the metric distinguish between a genuine "deception" feature and a "formal language" feature that happens to co-occur with deception in the training data? The sensitivity to genuine semantic distinctions versus statistical co-occurrence is not characterized.
 
 **[M5 — Calibration:](/framework/criteria/measurement/calibration) Not reported.** What activation level constitutes "the feature is on"? Thresholds are typically chosen post-hoc. Without calibration, activation magnitudes are hard to interpret.
 
@@ -191,9 +191,9 @@ The dose-response evidence shows that *something* happens when you intervene, bu
 
 ### Key Distinctions
 
-- **Reliability vs validity:** Low cross-seed reliability (M1) places a ceiling on validity — if the instrument does not produce the same result twice, the result cannot be valid regardless of how compelling any single run appears. For SAE features, the reliability ceiling is low for most of the dictionary.
+- **Reliability vs validity:** Low cross-seed reliability (M1) places a ceiling on validity — if the metric does not produce the same result twice, the result cannot be valid regardless of how compelling any single run appears. For SAE features, the reliability ceiling is low for most of the dictionary.
 - **Convergent vs discriminant validity:** SAE features lack both. Convergent: does a different decomposition method (NMF, ICA, probing) find the same features? Discriminant: do features that should be distinct (deception vs. sarcasm) actually have low overlap? Neither is systematically tested.
-- **The instrument creates the object:** Unlike probes or circuits (which measure pre-existing model properties), SAEs *construct* the feature set. The measurement and the measured object are not independent — a core measurement-theoretic concern.
+- **The metric creates the object:** Unlike probes or circuits (which measure pre-existing model properties), SAEs *construct* the feature set. The measurement and the measured object are not independent — a core measurement-theoretic concern.
 
 ### MTMM Matrix
 

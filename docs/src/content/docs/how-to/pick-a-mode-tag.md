@@ -59,6 +59,6 @@ Mode tag (description level) and verdict tier (strength of evidence) are **indep
 
 - `[representational]` *Validated* — thoroughly validated representational claim
 - `[causal-mechanistic]` *Causally suggestive* — causal claim with only necessity established
-- `[structural-mechanistic]` *Triangulated* — structural claim corroborated by multiple instruments
+- `[structural-mechanistic]` *Triangulated* — structural claim corroborated by multiple metrics
 
 Always state both.

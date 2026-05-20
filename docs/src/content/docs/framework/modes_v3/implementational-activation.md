@@ -73,7 +73,7 @@ Why this fails on two levels: (1) High activation magnitude is not evidence of a
 | $I_{\text{stat}} \to I_{\text{fun}}$ (to functional) | Demonstrate that the statistical properties correspond to a specific input-output function via causal intervention. Does forcing the activation to a specific value produce predictable output changes? |
 | $I_{\text{stat}} \to R$ (to representational) | Show that the activation distribution *tracks a specific variable* — not just that it has a specific shape, but that the shape corresponds to a causal variable in the data. |
 
-## Instruments that provide statistical-level evidence
+## Metrics that provide statistical-level evidence
 
 - **E01 (PCA dimensionality)** — effective rank and variance explained per component
 - **E02 (Participation ratio)** — spectral concentration of output covariance

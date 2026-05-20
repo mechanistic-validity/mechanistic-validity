@@ -157,7 +157,7 @@ For standard probing, the dose-response section is N/A — no intervention means
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Is the probe a reliable and well-calibrated instrument?*
+*Is the probe a reliable and well-calibrated metric?*
 
 ### Criteria
 
@@ -184,9 +184,9 @@ For standard probing, the dose-response section is N/A — no intervention means
 
 ### Key Distinctions
 
-- **Reliability vs validity:** Probe results are unreliable (vary with hyperparameters, architecture, dataset) and of uncertain validity (decodability does not equal representation). The combination is particularly concerning — we cannot even confirm that the instrument produces stable measurements, let alone that those measurements reflect something real about the model.
+- **Reliability vs validity:** Probe results are unreliable (vary with hyperparameters, architecture, dataset) and of uncertain validity (decodability does not equal representation). The combination is particularly concerning — we cannot even confirm that the metric produces stable measurements, let alone that those measurements reflect something real about the model.
 - **Convergent vs discriminant validity:** Standard probing provides neither. Convergent: does a different method (causal intervention, weight analysis) confirm the same representation? Discriminant: does the probe for concept A give *low* scores when applied to concept B? Both are almost always absent.
-- **The instrument may create the signal:** A sufficiently powerful probe can decode many concepts from any high-dimensional space. The "measurement" may be a property of the probe (its capacity to find linear separability) rather than a property of the model (its representational content). This is the Hewitt & Liang insight formalized as a measurement-theoretic concern.
+- **The metric may create the signal:** A sufficiently powerful probe can decode many concepts from any high-dimensional space. The "measurement" may be a property of the probe (its capacity to find linear separability) rather than a property of the model (its representational content). This is the Hewitt & Liang insight formalized as a measurement-theoretic concern.
 
 ### MTMM Matrix
 

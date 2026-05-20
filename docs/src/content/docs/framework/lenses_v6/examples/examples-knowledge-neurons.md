@@ -135,7 +135,7 @@ This is the pharmacological core of the ROME critique: without a dose-response c
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Is causal tracing a reliable instrument for localizing knowledge?*
+*Is causal tracing a reliable metric for localizing knowledge?*
 
 ### Criteria
 
@@ -153,7 +153,7 @@ This is the pharmacological core of the ROME critique: without a dose-response c
 
 ### Key Distinctions
 
-- **Sensitivity vs specificity (of the instrument):** Causal tracing has reasonable sensitivity (it reliably identifies layers that matter for factual recall) but poor specificity (it cannot distinguish "where the fact is stored" from "where the subject entity is processed"). This sensitivity/specificity imbalance is the core measurement problem — the instrument detects something real but cannot determine what it is detecting.
+- **Sensitivity vs specificity (of the metric):** Causal tracing has reasonable sensitivity (it reliably identifies layers that matter for factual recall) but poor specificity (it cannot distinguish "where the fact is stored" from "where the subject entity is processed"). This sensitivity/specificity imbalance is the core measurement problem — the metric detects something real but cannot determine what it is detecting.
 - **Convergent vs discriminant validity:** Convergent validity is weak — causal tracing and ROME editing are not truly independent methods (ROME edits where tracing points). Discriminant validity is untested — would causal tracing incorrectly "localize" non-factual knowledge (e.g., syntactic patterns) to the same MLP layers? If so, the method lacks discriminant power for the specific claim of factual storage.
 
 ### MTMM Matrix

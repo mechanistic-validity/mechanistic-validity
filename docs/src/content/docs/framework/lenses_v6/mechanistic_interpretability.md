@@ -94,7 +94,7 @@ The central question: does the solid-edge subgraph form a connected path from in
 
 For the IOI circuit: nodes are the S-inhibition heads, name-mover heads, and backup name-movers. Edges from S-inhibition → name-movers are solid (path patching confirms information flow). Edges to backup heads are dashed (we know they activate compensatorily but the causal pathway is less precisely characterized). The red ✗ edges are the tested-and-rejected hypotheses — equally informative for understanding what the circuit is NOT.
 
-A random-initialization model should produce an empty graph (no solid edges). If solid edges appear in a random model, the instrument is unreliable. This provides a natural baseline comparison.
+A random-initialization model should produce an empty graph (no solid edges). If solid edges appear in a random model, the metric is unreliable. This provides a natural baseline comparison.
 
 ## Sources
 

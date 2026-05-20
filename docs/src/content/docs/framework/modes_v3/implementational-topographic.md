@@ -70,7 +70,7 @@ The claim is about *membership in a causal set*, not about the structure of that
 | $I_{\text{top}} \to I_{\text{stat}}$ (→ activation-statistical) | Characterize the distributional properties of activations at the identified components. |
 | $I_{\text{top}} \to I_{\text{fun}}$ (→ functional) | Specify the input-output function of individual components — what each one *does*, not just that it matters. |
 
-## Instruments that provide topographic-level evidence
+## Metrics that provide topographic-level evidence
 
 - **A01 (Activation patching)** — single-node necessity via mean/resample ablation
 - **A04 (Resample ablation / complement ablation)** — sufficiency of the proposed set

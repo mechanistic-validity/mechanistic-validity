@@ -13,13 +13,13 @@ Every circuit claim in mechanistic interpretability is a chain from a concrete m
 
 The framework can be read in three directions:
 
-- **Bottom-up (1 → 6):** Building a new claim — what does my instrument establish?
+- **Bottom-up (1 → 6):** Building a new claim — what does my metric establish?
 - **Top-down (6 → 1):** Auditing an existing claim — what evidence would this verdict require?
 - **Sideways (across layer 2):** Checking convergent validity — do independent evidence families agree?
 
 ### 1. Description Mode
 
-The level of description at which the claim operates. This is set first because it determines what counts as relevant evidence. A claim about *where* an effect occurs (implementational) requires different instruments than a claim about *what* computation is performed (algorithmic) or *how* information is encoded (representational).
+The level of description at which the claim operates. This is set first because it determines what counts as relevant evidence. A claim about *where* an effect occurs (implementational) requires different metrics than a claim about *what* computation is performed (algorithmic) or *how* information is encoded (representational).
 
 There are three top-level modes and four implementational sub-types (7 total):
 
@@ -35,7 +35,7 @@ There are three top-level modes and four implementational sub-types (7 total):
 
 ### 2. Evidence Family
 
-Classifies an instrument's output by the *kind of signal* it produces. Two instruments from different families that agree constitute stronger evidence than two from the same family, because they have structurally different failure modes.
+Classifies a metric's output by the *kind of signal* it produces. Two metrics from different families that agree constitute stronger evidence than two from the same family, because they have structurally different failure modes.
 
 | Family | Signal type | Metrics |
 |---|---|---|
@@ -91,8 +91,8 @@ The "unaddressed" clause is not optional — it prevents silent upgrading by sel
 
 The validity types gate each other. Skipping a step is the most common structural problem in MI papers.
 
-1. **Construct** — define the construct before calibrating instruments
-2. **Measurement** — calibrate instruments before making causal claims
+1. **Construct** — define the construct before calibrating metrics
+2. **Measurement** — calibrate metrics before making causal claims
 3. **Internal** — establish causal evidence with trustworthy measurements
 4. **External** — generalize only after establishing a local result
 5. **Interpretive** — audit the assembled verdict
@@ -102,7 +102,7 @@ The validity types gate each other. Skipping a step is the most common structura
 
 | Pattern | What it looks like | Violation |
 |---|---|---|
-| Circular construct | Circuit named for what instruments found | Construct: no independent definition |
+| Circular construct | Circuit named for what metrics found | Construct: no independent definition |
 | Uncalibrated IIA | IIA 0.48 without random-vector baseline | Measurement gates internal |
 | Single-seed generalization | Reported as robust from one seed | Measurement (reliability) gates internal |
 | Cross-arch before local | Cross-model result before within-model necessity | Internal gates external |
@@ -113,8 +113,8 @@ The validity types gate each other. Skipping a step is the most common structura
 
 The framework produces a structured verdict, not a scalar score. Two circuits with identical faithfulness numbers can have radically different validity profiles — you cannot upgrade a claim to *Validated* by piling up more evidence of one type while the others remain unaddressed. Most circuit-discovery work should land at *Causally suggestive* or *Mechanistically supported*, and that is a real result, not a failure.
 
-Description level is a property of the claim, not the instrument. Activation patching is not inherently an algorithmic-level test; DAS-IIA is not inherently representational. The description tag is determined by what the researcher concludes, not by which tool produced the number.
+Description level is a property of the claim, not the metric. Activation patching is not inherently an algorithmic-level test; DAS-IIA is not inherently representational. The description tag is determined by what the researcher concludes, not by which tool produced the number.
 
-When two instruments disagree about which components constitute the circuit, the disagreement is itself a primary finding — it points to a methodological gap, sensitivity to different properties, or an underspecified construct. Multi-instrument studies should report overlap (e.g., Jaccard similarity) as a first-class result rather than picking a winner.
+When two metrics disagree about which components constitute the circuit, the disagreement is itself a primary finding — it points to a methodological gap, sensitivity to different properties, or an underspecified construct. Multi-metric studies should report overlap (e.g., Jaccard similarity) as a first-class result rather than picking a winner.
 
 An IIA score of 0.48 at L8.MLP is a measurement. Whether it constitutes *evidence* that L8.MLP implements a mechanism is a validity question — one that requires knowing the random-vector baseline, the untrained-model baseline, the cross-task control, and the replication rate across seeds. Evidence tells us what we measured; validity tells us what we can conclude.

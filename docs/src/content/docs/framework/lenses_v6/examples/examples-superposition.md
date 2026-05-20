@@ -139,7 +139,7 @@ The toy-model curve is complete and quantitatively predicted by theory. The real
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments measuring superposition reliably?*
+*Are the metrics measuring superposition reliably?*
 
 ### Criteria
 
@@ -169,7 +169,7 @@ The toy-model curve is complete and quantitatively predicted by theory. The real
 | **SAE feature count (real)** | N/A | N/A | — | Moderate (correlated) |
 | **Polysemanticity score (real)** | N/A | N/A | Moderate | — |
 
-Within the toy domain: strong convergent validity — multiple methods agree on which features are superposed and to what degree. Within the real-model domain: moderate convergent validity — SAE feature count and polysemanticity co-occur but neither directly measures superposition geometry. Cross-domain (toy-to-real): no direct validity comparison possible because the measurement instruments differ fundamentally. This gap in the MTMM is the measurement-theoretic expression of the toy-to-real transfer problem.
+Within the toy domain: strong convergent validity — multiple methods agree on which features are superposed and to what degree. Within the real-model domain: moderate convergent validity — SAE feature count and polysemanticity co-occur but neither directly measures superposition geometry. Cross-domain (toy-to-real): no direct validity comparison possible because the measurement metrics differ fundamentally. This gap in the MTMM is the measurement-theoretic expression of the toy-to-real transfer problem.
 
 ---
 

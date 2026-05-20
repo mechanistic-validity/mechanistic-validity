@@ -133,7 +133,7 @@ We have two endpoints and nothing between. The curve shape (linear degradation? 
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments measuring variable binding reliably?*
+*Are the metrics measuring variable binding reliably?*
 
 ### Criteria
 
@@ -151,7 +151,7 @@ We have two endpoints and nothing between. The curve shape (linear degradation? 
 
 ### Key Distinctions
 
-- **Sensitivity vs specificity (of the measurement):** The measurement instrument (activation patching + accuracy) is sensitive to *some* mechanism being important but cannot discriminate between the binding and copying hypotheses. The instrument detects that something matters without resolving what that something does — a sensitivity/specificity mismatch.
+- **Sensitivity vs specificity (of the measurement):** The measurement metric (activation patching + accuracy) is sensitive to *some* mechanism being important but cannot discriminate between the binding and copying hypotheses. The metric detects that something matters without resolving what that something does — a sensitivity/specificity mismatch.
 - **Convergent vs discriminant validity:** No convergent comparison (e.g., activation patching vs. probing vs. weight analysis on the same circuit). No discriminant comparison (e.g., does the method identify different circuits for different code tasks?). The MTMM is empty.
 
 ### MTMM Matrix

@@ -133,7 +133,7 @@ The key insight from a pharmacological perspective: the selectivity of the full-
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Are the instruments reliable and well-calibrated?*
+*Are the metrics reliable and well-calibrated?*
 
 ### Criteria
 

@@ -131,9 +131,9 @@ This pattern indicates backup mechanisms. [Wang et al. (2022)](https://arxiv.org
 
 > [Full criterion page →](/framework/criteria/construct/convergent-validity)
 
-Multiple independent instruments should identify the same components.
+Multiple independent metrics should identify the same components.
 
-**Pass condition:** $J(C_A, C_B) \geq 0.5$ between instruments from different evidence families.
+**Pass condition:** $J(C_A, C_B) \geq 0.5$ between metrics from different evidence families.
 
 **Jaccard similarity:**
 
@@ -146,7 +146,7 @@ $$J(C_A, C_B) = \frac{|C_A \cap C_B|}{|C_A \cup C_B|}$$
 | $J < 0.3$ | Weak — circuit is method-dependent |
 | $J \approx 0$ | Failed — methods identify different components entirely |
 
-**Independence requirement:** The two instruments must come from different [evidence families](/framework/evidence-families/) with non-overlapping major assumptions.
+**Independence requirement:** The two metrics must come from different [evidence families](/framework/evidence-families/) with non-overlapping major assumptions.
 
 | Valid pair | Why independent |
 |---|---|
@@ -179,7 +179,7 @@ Two methods should agree more about the same circuit than about different circui
 |---|---|---|---|
 | Pre-registered, structurally coherent, but single-method | C1, C2 | Well-defined construct, method-dependent identification | "Coherent construct, convergence not yet tested" |
 | Convergent, but not task-specific | C1, C5 | Real entity, but may be general-purpose | "Convergent but non-discriminant" |
-| Minimal and specific, but no convergence | C3, C4 | Task-specific finding from one method | "Task-specific by one instrument, convergence needed" |
+| Minimal and specific, but no convergence | C3, C4 | Task-specific finding from one method | "Task-specific by one metric, convergence needed" |
 | All met except falsifiability | C2–C5 | Strong post-hoc case, but not pre-registered | "Retrospectively well-supported, not prospectively falsifiable" |
 | None met | — | Label without construct backing | "Named but not validated as a construct" |
 

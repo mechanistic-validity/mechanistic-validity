@@ -138,7 +138,7 @@ The curve has one confirmed point (full-strength patching works) and a layer-wis
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Is the linear probe a reliable instrument?*
+*Is the linear probe a reliable metric?*
 
 ### Criteria
 
@@ -157,7 +157,7 @@ The curve has one confirmed point (full-strength patching works) and a layer-wis
 ### Key Distinctions
 
 - **Reliability vs validity:** Probe accuracy on the trained model is high (~90%+) vs. low on untrained models, establishing a baseline separation that partially addresses reliability. But validity — does high probe accuracy actually indicate a "world model" rather than exploitable statistical regularities? — is the deeper unresolved question. The measurement is reliable but its interpretation is underdetermined.
-- **True score vs observed score:** The probe gives an observed score (accuracy on board-state recovery). The true score (degree to which the model genuinely represents and uses a world model) is unknown. The gap between observed and true score is the fundamental measurement problem — the instrument measures something, but what it measures may not be the construct of interest.
+- **True score vs observed score:** The probe gives an observed score (accuracy on board-state recovery). The true score (degree to which the model genuinely represents and uses a world model) is unknown. The gap between observed and true score is the fundamental measurement problem — the metric measures something, but what it measures may not be the construct of interest.
 
 ### MTMM Matrix
 

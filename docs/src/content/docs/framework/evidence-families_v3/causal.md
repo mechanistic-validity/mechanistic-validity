@@ -9,13 +9,13 @@ Causal evidence captures what happens when you actively intervene on a model's i
 
 ## What this family measures
 
-Causal evidence is produced by instruments that perform interventions: ablations, activations patches, interchange interventions, and mediation analyses. The core logic is counterfactual — what would the model's output have been if this component had taken a different value?
+Causal evidence is produced by metrics that perform interventions: ablations, activations patches, interchange interventions, and mediation analyses. The core logic is counterfactual — what would the model's output have been if this component had taken a different value?
 
 This makes causal evidence the most direct test of whether a component is necessary or sufficient for a behavior. When you ablate a component and behavior degrades, you have evidence of necessity. When you patch a component's activation from one context into another and behavior transfers, you have evidence of sufficiency.
 
-The interventional nature of this evidence distinguishes it from purely observational approaches. Rather than asking "does this component correlate with the behavior?" causal instruments ask "does changing this component change the behavior?" This is a stronger claim, but comes with its own limitations around what interventions can and cannot reveal about underlying computation.
+The interventional nature of this evidence distinguishes it from purely observational approaches. Rather than asking "does this component correlate with the behavior?" causal metrics ask "does changing this component change the behavior?" This is a stronger claim, but comes with its own limitations around what interventions can and cannot reveal about underlying computation.
 
-## Instruments
+## Metrics
 
 - **A01 Pearl SCM** — Structural causal model formalization of circuit graphs; do-calculus interventions
 - **A02 Counterfactual DAS** — Distributed Alignment Search with counterfactual pairs
@@ -46,4 +46,4 @@ This is particularly problematic for residual stream components, where every dow
 
 Causal evidence is strongest when combined with structural or representational evidence from different families. When causal ablation shows a component is necessary AND weight-space analysis shows the component has the right structure to perform the computation AND probing shows the relevant variable is encoded there, the three independent lines of evidence triangulate on the same conclusion.
 
-Causal + causal (e.g., ablation + patching) is valuable but provides less triangulation than causal + structural, because both instruments share the same fundamental assumption: that single-site interventions cleanly isolate component contributions. When causal evidence agrees with evidence from a family that makes entirely different assumptions, the resulting confidence is multiplicative rather than additive.
+Causal + causal (e.g., ablation + patching) is valuable but provides less triangulation than causal + structural, because both metrics share the same fundamental assumption: that single-site interventions cleanly isolate component contributions. When causal evidence agrees with evidence from a family that makes entirely different assumptions, the resulting confidence is multiplicative rather than additive.

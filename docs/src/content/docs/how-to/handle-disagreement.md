@@ -2,9 +2,9 @@
 title: "Handle Disagreement"
 ---
 
-# G — How to Handle Instrument Disagreement
+# G — How to Handle Metric Disagreement
 
-Disagreement between instruments is not a problem to minimize. It is the most informative signal the framework produces. This guide provides the protocol for characterizing, interpreting, and resolving instrument disagreement.
+Disagreement between metrics is not a problem to minimize. It is the most informative signal the framework produces. This guide provides the protocol for characterizing, interpreting, and resolving metric disagreement.
 
 ---
 
@@ -12,7 +12,7 @@ Disagreement between instruments is not a problem to minimize. It is the most in
 
 First, determine which type of disagreement you have.
 
-### Type A: Instruments from the same evidence family disagree
+### Type A: Metrics from the same evidence family disagree
 
 Example: Zero ablation and resample ablation give opposite results (one shows Δ > 0, the other Δ ≈ 0).
 
@@ -20,7 +20,7 @@ Example: Zero ablation and resample ablation give opposite results (one shows Δ
 
 **Resolution:** Use the resample ablation result as ground truth for I1 (necessity). Downgrade or remove the mean ablation result from the necessity claim. Report the discrepancy explicitly.
 
-### Type B: Causal instruments agree, structural instrument disagrees (Jaccard ≈ 0)
+### Type B: Causal metrics agree, structural metric disagrees (Jaccard ≈ 0)
 
 Example: Zero ablation + EAP agree on components {A, B, C}. Weight classifier nominates {D, E, F}. Jaccard ≈ 0.
 
@@ -29,7 +29,7 @@ Example: Zero ablation + EAP agree on components {A, B, C}. Weight classifier no
 2. **EAP is wrong:** misses structurally plausible but low-gradient components.
 3. **Both are right about different things:** weight classifier finds structurally plausible components; EAP finds causally active components; these are different populations.
 
-### Type C: Representational instrument disagrees with causal instrument
+### Type C: Representational metric disagrees with causal metric
 
 Example: DAS-IIA at component X is high (0.48), but ablating X shows no degradation (Δ ≈ 0).
 
@@ -37,7 +37,7 @@ Example: DAS-IIA at component X is high (0.48), but ablating X shows no degradat
 
 **Resolution:** This is a genuine finding — the component has representational content without being causally necessary. It should be reported as `[representational]` *Causally suggestive* rather than `[causal-mechanistic]`. The causal mechanism is elsewhere.
 
-### Type D: Causal instrument shows necessity but not sufficiency
+### Type D: Causal metric shows necessity but not sufficiency
 
 Example: Ablation degrades behavior, but complement ablation (circuit only) cannot reproduce behavior.
 
@@ -86,7 +86,7 @@ If `IIA(weight-circuit) ≈ IIA(random-vector)` and `IIA(EAP-circuit) >> IIA(ran
 | Convergence on one seed, robustness failure | Finding is locally real, not general | *Mechanistically supported* with narrow scope; E5 fail |
 | High IIA, baseline separation near zero | IIA is noise, not signal | M3 fails; `[representational]` downgraded to `[functional]` |
 | Structural alignment, ablation no effect | Represents but doesn't implement | `[representational]` *Proposed* only |
-| All instruments agree, control task also affected | C3 (task specificity) fails; component is a hub | Add hub-vs-specific analysis; I3 (specificity) may also fail |
+| All metrics agree, control task also affected | C3 (task specificity) fails; component is a hub | Add hub-vs-specific analysis; I3 (specificity) may also fail |
 
 ---
 
@@ -95,9 +95,9 @@ If `IIA(weight-circuit) ≈ IIA(random-vector)` and `IIA(EAP-circuit) >> IIA(ran
 For the project's primary disagreement, the report block should read:
 
 ```
-## Instrument Disagreement: Weight-circuit vs. EAP-circuit (SVA, GPT-2 Small)
+## Metric Disagreement: Weight-circuit vs. EAP-circuit (SVA, GPT-2 Small)
 
-Disagreement type: Type B (causal and structural instruments disagree; Jaccard ≈ 0)
+Disagreement type: Type B (causal and structural metrics disagree; Jaccard ≈ 0)
 
 Weight-circuit nominations (structural): {[components], n=[k]}
 EAP-circuit nominations (causal):        {[components], n=[k]}

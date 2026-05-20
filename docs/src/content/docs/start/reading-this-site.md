@@ -5,7 +5,7 @@ description: "How the pages link together and how to use the framework to audit 
 
 # Reading This Site
 
-The site is organized around the two-layer structure of the framework. There is one page per validity type, one page per disciplinary mapping, one page per criterion, and one page per instrument. The navigation on the left mirrors that structure.
+The site is organized around the two-layer structure of the framework. There is one page per validity type, one page per disciplinary mapping, one page per criterion, and one page per metric. The navigation on the left mirrors that structure.
 
 ## The reading order for newcomers
 
@@ -16,7 +16,7 @@ For a reader who has not used the framework before, the recommended order is:
 3. *[Construct](../framework/validity-types_v4/construct) → [Internal](../framework/validity-types_v4/internal) → [External](../framework/validity-types_v4/external) → [Measurement](../framework/validity-types_v4/measurement) → [Interpretive](../framework/validity-types_v4/interpretive).* Each in turn; the order is the order in which they gate one another.
 4. *[Casebooks](../framework/lenses_v6/).* The lower-layer summary.
 5. *Each casebook in turn.* [Neuroscience](../framework/lenses_v6/neuroscience), [Pharmacology](../framework/lenses_v6/pharmacology), [Philosophy of Science](../framework/lenses_v6/philosophy_of_science), [Measurement Theory](../framework/lenses_v6/measurement-theory), [Known Interpretive Failures](../framework/lenses_v6/mechanistic_interpretability).
-6. *Criteria by validity type.* Where each individual criterion lives and what instruments contribute evidence to it.
+6. *Criteria by validity type.* Where each individual criterion lives and what metrics contribute evidence to it.
 
 This sequence takes about one hour to read through. It is the minimum the framework expects of a reader before applying the verdict language to their own results.
 
@@ -25,7 +25,7 @@ This sequence takes about one hour to read through. It is the minimum the framew
 A reader who already knows what they want to ask can enter the site at a more targeted point.
 
 - *Auditing a circuit claim.* Start at the [verdict checklist](../how-to/audit-a-claim.md) — it links to every criterion and every minimum-reporting rule.
-- *Choosing an instrument.* Start at the Methods & Instruments index — each method page lists the criteria it contributes evidence to.
+- *Choosing a metric.* Start at the Methods & Metrics index — each method page lists the criteria it contributes evidence to.
 - *Looking up a baseline.* Start at the Published baselines table — every value is linked to its source.
 - *Understanding a partial-pass verdict.* Each mapping page contains a partial-pass table that names the recommended verdict language for every pattern of evidence.
 
@@ -49,7 +49,7 @@ The audit is the framework's central work product. A claim that scores 0.87 on f
 ## Conventions used throughout
 
 - *Criteria* are written in lower-case (necessity, graded response). They are properties evidence is collected for.
-- *Instruments* are written in lower-case (activation patching, resample ablation). They are procedures that produce evidence.
+- *Metrics* are written in lower-case (activation patching, resample ablation). They are procedures that produce evidence.
 - *Validity types* are written in lower-case (internal validity). They are the abstract questions.
 - *Disciplinary mappings* are written in title case (Neuroscience Mapping). They are the operational toolkits.
 - *Verdicts* are written in italics and follow the partial-pass language from the relevant mapping page.

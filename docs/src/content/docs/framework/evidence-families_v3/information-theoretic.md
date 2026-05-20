@@ -9,13 +9,13 @@ Information-theoretic evidence captures how much information flows through model
 
 ## What this family measures
 
-Information-theoretic evidence comes from estimating mutual information, conditional dependencies, and information decompositions between components of a model's computation. These instruments ask: "How many bits about variable X are carried by component Y?" and "How does information about the task flow from input to output through the network?"
+Information-theoretic evidence comes from estimating mutual information, conditional dependencies, and information decompositions between components of a model's computation. These metrics ask: "How many bits about variable X are carried by component Y?" and "How does information about the task flow from input to output through the network?"
 
 The distinctive feature of this family is its agnosticism about *mechanism*. Mutual information between a hidden layer and a task label quantifies how much the layer "knows" about the task without specifying how that knowledge is encoded or what computation produced it. Transfer entropy quantifies directed information flow without assuming linearity. Partial information decomposition separates redundant, unique, and synergistic contributions without requiring a specific functional form.
 
-This abstraction is both the family's power and its limitation. By measuring information content rather than specific computations, these instruments can detect relationships that more targeted methods miss — including nonlinear encodings, distributed representations, and synergistic interactions between components.
+This abstraction is both the family's power and its limitation. By measuring information content rather than specific computations, these metrics can detect relationships that more targeted methods miss — including nonlinear encodings, distributed representations, and synergistic interactions between components.
 
-## Instruments
+## Metrics
 
 - **C01 Mutual Information** — Bits shared between a component's activations and a task-relevant variable
 - **C02 Conditional MI** — Information about a target variable given knowledge of other components

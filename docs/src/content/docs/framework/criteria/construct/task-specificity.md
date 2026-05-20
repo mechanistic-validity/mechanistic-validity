@@ -9,7 +9,7 @@ criterion_id: "C3"
 | | |
 |---|---|
 | Validity type | Construct |
-| Pass condition | The proposed circuit does not score highly on unrelated tasks under the same instrument and intervention strength |
+| Pass condition | The proposed circuit does not score highly on unrelated tasks under the same metric and intervention strength |
 | Evidence family | Representational (cross-task IIA), Behavioral (cross-task faithfulness) |
 | Minimum reporting | IIA or faithfulness on ≥1 unrelated control task; ratio of on-task to off-task score |
 | Common failure mode | Reporting only the target-task score; never testing whether the same circuit scores well on completely unrelated behaviors |
@@ -21,7 +21,7 @@ Task specificity is the discriminant side of construct validity. It asks whether
 Satisfied when:
 
 1. **The circuit is tested on ≥1 unrelated control task.** Different in computational structure, not just a variant. For SVA: Greater-Than is a good control. For IOI: Greater-Than or gendered pronoun.
-2. **The circuit's score on the control task is substantially lower.** On-task:off-task ratio ≥ 2:1, or off-task score not significantly above chance using the same instrument and strength.
+2. **The circuit's score on the control task is substantially lower.** On-task:off-task ratio ≥ 2:1, or off-task score not significantly above chance using the same metric and strength.
 3. **Cross-task IIA contamination is near zero.** Using the same subspace alignment, the IIA on the control task should be near baseline.
 
 ## The specificity ratio

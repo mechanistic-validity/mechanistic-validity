@@ -16,7 +16,7 @@ criterion_id: "M1"
 
 ## What this criterion requires
 
-Reliability is the test-retest stability of the measurement instrument. A reliable instrument produces the same result when re-applied under the same conditions.
+Reliability is the test-retest stability of the measurement metric. A reliable metric produces the same result when re-applied under the same conditions.
 
 Three dimensions:
 
@@ -30,10 +30,10 @@ The `c11bootstrap.py` script implements bootstrap stability for circuit faithful
 
 ## Reliability vs. consistency (I4)
 
-- **Reliability (M1):** Does the *instrument* give the same answer when re-applied?
+- **Reliability (M1):** Does the *metric* give the same answer when re-applied?
 - **Consistency (I4):** Does the *causal effect* hold across experimental variation?
 
-High reliability, low consistency: instrument is stable but the effect it measures varies across prompt families. Low reliability, high apparent consistency: instrument is noisy but averages out to a consistent-looking result. Report both.
+High reliability, low consistency: metric is stable but the effect it measures varies across prompt families. Low reliability, high apparent consistency: metric is noisy but averages out to a consistent-looking result. Report both.
 
 ## Minimum reporting rule
 

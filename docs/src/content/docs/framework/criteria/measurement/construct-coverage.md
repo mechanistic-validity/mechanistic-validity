@@ -9,14 +9,14 @@ criterion_id: "M6"
 | | |
 |---|---|
 | Validity type | Measurement |
-| Pass condition | The instrument measures its nominal target, not a correlated proxy |
+| Pass condition | The metric measures its nominal target, not a correlated proxy |
 | Evidence family | Measurement, Representational |
 | Minimum reporting | Explicit statement of the gap between nominal and actual measurement target; constrained vs. unconstrained IIA comparison |
-| Common failure mode | Treating the instrument's nominal claim as its actual claim |
+| Common failure mode | Treating the metric's nominal claim as its actual claim |
 
 ## What this criterion requires
 
-Every instrument has a gap between what it nominally measures and what it actually measures. Construct coverage requires making this gap explicit.
+Every metric has a gap between what it nominally measures and what it actually measures. Construct coverage requires making this gap explicit.
 
 **IIA:** Nominally measures "does this subspace contain the causal variable?" Actually measures "can a linear map from this subspace predict the interchange outcome?" A linear map has enough degrees of freedom to fit patterns correlated with the variable but not isomorphic to it. Construct coverage for IIA: (a) use constrained linear maps (not unconstrained or nonlinear); (b) compare constrained result to unconstrained — if unconstrained substantially outperforms constrained, constrained IIA may underestimate true causal alignment.
 
@@ -36,7 +36,7 @@ If constrained = 0.48 and unconstrained = 0.51: constraint has not substantially
 
 ## Minimum reporting rule
 
-- Explicit statement of what the instrument nominally measures and what it actually measures.
+- Explicit statement of what the metric nominally measures and what it actually measures.
 - For IIA: constrained vs. unconstrained IIA comparison.
 - For weight classifier: whether tested on circuit types outside its training distribution.
 - For faithfulness: whether held-out template testing was included.

@@ -82,7 +82,7 @@ Now each step has a specified operation, input, and output.
 | $A \to C$ (upgrade to computational) | Provide the normative account: why does this algorithm solve the *right* problem? Show error analysis consistent with problem boundaries. |
 | $A \to I_{\text{fun}}$ (downgrade) | If path-level causal evidence fails — information flow is not directional or the procedure is not sufficient in isolation — the claim is at best functional (individual operations) without the algorithmic composition. |
 
-## Instruments that provide algorithmic-level evidence
+## Metrics that provide algorithmic-level evidence
 
 - **A02 (Path patching)** — directed causal evidence of information flow
 - **A04 (Resample ablation)** — sufficiency of the proposed procedure
@@ -97,4 +97,4 @@ Now each step has a specified operation, input, and output.
 - Olsson, C., et al. (2022). ["In-context Learning and Induction Heads."](https://arxiv.org/abs/2209.11895) *Transformer Circuits Thread.* — Canonical algorithmic-mode claim with QK composition evidence.
 - Wang, K., et al. (2022). ["Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 Small."](https://arxiv.org/abs/2211.00593) *ICLR 2023.* — IOI circuit with partial algorithmic characterization.
 - Conmy, A., et al. (2023). ["Towards Automated Circuit Discovery for Mechanistic Interpretability."](https://arxiv.org/abs/2304.14997) *NeurIPS 2023.* — ACDC; automated circuit-as-algorithm discovery via edge patching.
-- Goldowsky-Dill, N., et al. (2023). ["Localizing Model Behavior with Path Patching."](https://arxiv.org/abs/2304.05969) — Path patching as algorithmic-level instrument.
+- Goldowsky-Dill, N., et al. (2023). ["Localizing Model Behavior with Path Patching."](https://arxiv.org/abs/2304.05969) — Path patching as algorithmic-level metric.
