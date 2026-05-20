@@ -53,6 +53,8 @@ INSTRUMENT_INFO = InstrumentInfo(
     paper_cite="Chowdhury et al. 2025 (UMass)",
     description="Pairwise Ablation Synergy and Orthogonal Co-Activation between circuit heads",
     category="causal",
+    tier="core",
+    origin="established",
 )
 
 

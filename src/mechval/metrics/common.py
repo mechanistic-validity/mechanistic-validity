@@ -68,6 +68,9 @@ class InstrumentInfo:
     paper_cite: str | None = None
     description: str | None = None
     category: str | None = None
+    tier: str | None = None
+    origin: str | None = None
+    subcategory: str | None = None
 
     def to_dict(self) -> dict:
         return {k: v for k, v in asdict(self).items() if v is not None}
@@ -207,11 +210,19 @@ def generate_prompts(task_name: str, tokenizer, n_prompts: int = 40):
 def get_token_ids(prompts, tokenizer) -> tuple[list[int], list[int]]:
     correct_ids, incorrect_ids = [], []
     for p in prompts:
-        ct = tokenizer.encode(p.target_correct)
-        it = tokenizer.encode(p.target_incorrect)
-        if len(ct) >= 1 and len(it) >= 1:
-            correct_ids.append(ct[0])
-            incorrect_ids.append(it[0])
+        scoring = p.metadata.get("scoring", "text") if hasattr(p, "metadata") and p.metadata else "text"
+        if scoring == "by_id":
+            try:
+                correct_ids.append(int(p.target_correct))
+                incorrect_ids.append(int(p.target_incorrect))
+            except (ValueError, TypeError):
+                continue
+        else:
+            ct = tokenizer.encode(p.target_correct)
+            it = tokenizer.encode(p.target_incorrect)
+            if len(ct) >= 1 and len(it) >= 1:
+                correct_ids.append(ct[0])
+                incorrect_ids.append(it[0])
     return correct_ids, incorrect_ids
 
 

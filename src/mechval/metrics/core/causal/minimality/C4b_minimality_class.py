@@ -59,6 +59,8 @@ INSTRUMENT_INFO = InstrumentInfo(
     paper_cite="Hadad, Katz & Bassan 2026 (ICLR)",
     description="Four-class minimality hierarchy for mechanistic circuits",
     category="causal",
+    tier="core",
+    origin="established",
 )
 
 FAITHFULNESS_THRESHOLD = 0.5

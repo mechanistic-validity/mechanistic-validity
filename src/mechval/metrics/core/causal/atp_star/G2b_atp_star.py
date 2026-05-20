@@ -50,6 +50,8 @@ INSTRUMENT_INFO = InstrumentInfo(
     paper_cite="Kramar et al. 2024 (DeepMind)",
     description="Cancellation-corrected attribution patching for circuit edge discovery",
     category="causal",
+    tier="core",
+    origin="established",
 )
 
 
