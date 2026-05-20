@@ -2400,7 +2400,7 @@ wheels = [
 ]
 
 [[package]]
-name = "mechanistic-validity"
+name = "mechval"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
