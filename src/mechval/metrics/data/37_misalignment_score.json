@@ -1,0 +1,191 @@
+{
+  "provenance": {
+    "timestamp": "2026-05-21T00:24:59.106869+00:00",
+    "python": "3.11.15",
+    "platform": "macOS-26.4.1-x86_64-i386-64bit",
+    "package_version": "0.1.0",
+    "git": {
+      "commit": "45b42f8799b7f4ed482cc07cd386f54367967c77",
+      "branch": "refactor/metrics-taxonomy",
+      "dirty": true
+    }
+  },
+  "config": {},
+  "results": [
+    {
+      "metric_id": "C37.misalignment_score",
+      "value": 0.6153866628030621,
+      "baseline_random": null,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 2,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "ioi",
+        "aggregate_misalignment": 0.6153866628030621,
+        "max_misalignment": 2.156243622402455,
+        "n_severe_misaligned": 6,
+        "severity_threshold": 0.3,
+        "per_head": {
+          "L0H1": {
+            "noising_necessity": 0.3021141079872933,
+            "denoising_sufficiency": 0.0030396410622510264,
+            "misalignment": 0.2990744669250423,
+            "direction": "necessity>sufficiency"
+          },
+          "L2H2": {
+            "noising_necessity": -0.1913478158192289,
+            "denoising_sufficiency": -0.03660782690996099,
+            "misalignment": 0.15473998890926793,
+            "direction": "sufficiency>necessity"
+          },
+          "L3H0": {
+            "noising_necessity": 0.13981017371996557,
+            "denoising_sufficiency": -0.0011789276290333718,
+            "misalignment": 0.14098910134899895,
+            "direction": "necessity>sufficiency"
+          },
+          "L4H11": {
+            "noising_necessity": 0.04260616939708981,
+            "denoising_sufficiency": -0.13865545910530058,
+            "misalignment": 0.1812616285023904,
+            "direction": "necessity>sufficiency"
+          },
+          "L5H5": {
+            "noising_necessity": 0.48774730085798923,
+            "denoising_sufficiency": -0.008754330852918872,
+            "misalignment": 0.4965016317109081,
+            "direction": "necessity>sufficiency"
+          },
+          "L6H9": {
+            "noising_necessity": 0.4681114204142382,
+            "denoising_sufficiency": -0.006192538348404712,
+            "misalignment": 0.4743039587626429,
+            "direction": "necessity>sufficiency"
+          },
+          "L7H3": {
+            "noising_necessity": -0.019438852967258433,
+            "denoising_sufficiency": 0.05476774355679636,
+            "misalignment": 0.07420659652405479,
+            "direction": "sufficiency>necessity"
+          },
+          "L7H9": {
+            "noising_necessity": 0.0004859449347278805,
+            "denoising_sufficiency": 0.2968719152736068,
+            "misalignment": 0.2963859703388789,
+            "direction": "sufficiency>necessity"
+          },
+          "L8H6": {
+            "noising_necessity": -0.07778474441460066,
+            "denoising_sufficiency": -0.22746950451125653,
+            "misalignment": 0.14968476009665588,
+            "direction": "necessity>sufficiency"
+          },
+          "L8H10": {
+            "noising_necessity": -0.1481884694960079,
+            "denoising_sufficiency": 0.049974406429634,
+            "misalignment": 0.19816287592564188,
+            "direction": "sufficiency>necessity"
+          },
+          "L9H6": {
+            "noising_necessity": -0.004935011771881935,
+            "denoising_sufficiency": 1.5611851633781055,
+            "misalignment": 1.5661201751499874,
+            "direction": "sufficiency>necessity"
+          },
+          "L9H9": {
+            "noising_necessity": 0.0072942538702536076,
+            "denoising_sufficiency": 2.1635378762727084,
+            "misalignment": 2.156243622402455,
+            "direction": "sufficiency>necessity"
+          },
+          "L10H0": {
+            "noising_necessity": 0.03972693846464708,
+            "denoising_sufficiency": -0.020520884194808353,
+            "misalignment": 0.060247822659455434,
+            "direction": "necessity>sufficiency"
+          },
+          "L10H7": {
+            "noising_necessity": -0.038004386898197344,
+            "denoising_sufficiency": -1.7077204656802007,
+            "misalignment": 1.6697160787820033,
+            "direction": "necessity>sufficiency"
+          },
+          "L11H10": {
+            "noising_necessity": -0.18325295372141925,
+            "denoising_sufficiency": -1.496414217728969,
+            "misalignment": 1.3131612640075496,
+            "direction": "necessity>sufficiency"
+          }
+        },
+        "n_circuit_heads": 15,
+        "circuit_heads": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            9,
+            9
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            11,
+            10
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "provenance": {
+    "timestamp": "2026-05-21T00:25:33.203900+00:00",
+    "python": "3.11.15",
+    "platform": "macOS-26.4.1-x86_64-i386-64bit",
+    "package_version": "0.1.0",
+    "git": {
+      "commit": "45b42f8799b7f4ed482cc07cd386f54367967c77",
+      "branch": "refactor/metrics-taxonomy",
+      "dirty": true
+    }
+  },
+  "config": {},
+  "results": [
+    {
+      "metric_id": "C9.notears",
+      "value": 0.2,
+      "baseline_random": 5.0,
+      "baseline_untrained": null,
+      "baseline_literature": null,
+      "n_samples": 5,
+      "ci_low": null,
+      "ci_high": null,
+      "faithfulness_curve": null,
+      "cpr": null,
+      "cmd": null,
+      "metadata": {
+        "task": "ioi",
+        "precision": 0.4,
+        "recall": 0.13333333333333333,
+        "discovered_heads": [
+          "L0H3",
+          "L0H4",
+          "L0H6",
+          "L10H0",
+          "L11H10"
+        ],
+        "n_parents": 5,
+        "n_circuit_heads": 15,
+        "n_total_heads_tested": 30
+      }
+    }
+  ]
+}
