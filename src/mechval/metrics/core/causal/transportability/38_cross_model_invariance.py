@@ -170,8 +170,21 @@ def compute_sv_distribution(model, circuit_heads: set[tuple[int, int]],
 
 
 @torch.no_grad()
-def run_cross_model_invariance(model_names: list[str], tasks: list[str],
-                               device: str, n_prompts: int = 40) -> list[EvalResult]:
+def run_cross_model_invariance(model=None, tasks: list[str] | None = None,
+                               device: str = "cpu", n_prompts: int = 40,
+                               model_names: list[str] | None = None) -> list[EvalResult]:
+    if model is not None and not isinstance(model, (list, str)):
+        device = str(next(model.parameters()).device)
+        passed_model_name = getattr(model.cfg, "model_name", "gpt2")
+    else:
+        passed_model_name = None
+        if model is not None:
+            model_names = model if isinstance(model, list) else [model]
+            model = None
+    if model_names is None:
+        model_names = ["gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl"]
+    if tasks is None:
+        tasks = CIRCUIT_TASKS
     results = []
 
     for task in tasks:
@@ -186,10 +199,14 @@ def run_cross_model_invariance(model_names: list[str], tasks: list[str],
         per_model = {}
 
         for model_name in model_names:
-            log(f"    Loading {model_name}...")
-            model = load_model(model_name, device)
-            tokenizer = model.tokenizer
-            n_layers = model.cfg.n_layers
+            if passed_model_name == model_name and model is not None:
+                cur_model = model
+                log(f"    Reusing passed {model_name}")
+            else:
+                log(f"    Loading {model_name}...")
+                cur_model = load_model(model_name, device)
+            tokenizer = cur_model.tokenizer
+            n_layers = cur_model.cfg.n_layers
 
             prompts = generate_prompts(task, tokenizer, n_prompts)
             if not prompts:
@@ -206,13 +223,13 @@ def run_cross_model_invariance(model_names: list[str], tasks: list[str],
             else:
                 log(f"    {model_name}: discovering circuit via patching (top-{k})...")
                 circuit_heads = discover_circuit_by_patching(
-                    model, prompts, correct_ids, incorrect_ids, k
+                    cur_model, prompts, correct_ids, incorrect_ids, k
                 )
                 log(f"    {model_name}: found {len(circuit_heads)} heads")
 
-            mean_z = calibrate_mean_z(model, prompts, n_calibration=min(50, len(prompts)))
+            mean_z = calibrate_mean_z(cur_model, prompts, n_calibration=min(50, len(prompts)))
             faith = compute_faithfulness(
-                model, prompts, correct_ids, incorrect_ids, circuit_heads, mean_z
+                cur_model, prompts, correct_ids, incorrect_ids, circuit_heads, mean_z
             )
             log(f"    {model_name}: faithfulness={faith:.3f}")
 
@@ -423,7 +440,8 @@ def main():
     log(f"Models: {model_names}")
     log(f"Tasks: {tasks}")
 
-    results = run_cross_model_invariance(model_names, tasks, args.device, args.n_prompts)
+    results = run_cross_model_invariance(model_names=model_names, tasks=tasks,
+                                         device=args.device, n_prompts=args.n_prompts)
 
     out = args.out or "38_cross_model_invariance.json"
     save_results(results, out)

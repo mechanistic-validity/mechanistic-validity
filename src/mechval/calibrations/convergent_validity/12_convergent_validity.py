@@ -153,8 +153,11 @@ def compute_convergent_validity(task: str, metrics: list[str] | None = None) -> 
     )
 
 
-def run_convergent_validity(tasks: list[str],
+def run_convergent_validity(model=None, tasks: list[str] | None = None,
+                             device: str = "cpu", n_prompts: int = 40,
                              metrics: list[str] | None = None) -> list[EvalResult]:
+    if tasks is None:
+        tasks = list(CIRCUIT_TASKS)
     results = []
     for task in tasks:
         result = compute_convergent_validity(task, metrics)

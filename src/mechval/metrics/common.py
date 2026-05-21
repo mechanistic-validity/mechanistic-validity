@@ -51,7 +51,7 @@ def get_all_edges(circuit: dict) -> set[tuple[int, int, int, int]]:
 
 CIRCUIT_TASKS = list_tasks(source="published")
 EXPERIMENTAL_TASKS = list_tasks(source="experimental")
-ALIAS_TASKS = [t for t in list_tasks(source="ours") if t not in ("rti",)]
+ALIAS_TASKS = list_tasks(source="ours")
 ALL_TASKS = sorted(list_tasks())
 EVALUABLE_TASKS = sorted(list_tasks(has_circuit=True))
 
@@ -218,8 +218,8 @@ def get_token_ids(prompts, tokenizer) -> tuple[list[int], list[int]]:
             except (ValueError, TypeError):
                 continue
         else:
-            ct = tokenizer.encode(p.target_correct)
-            it = tokenizer.encode(p.target_incorrect)
+            ct = tokenizer.encode(p.target_correct, add_special_tokens=False)
+            it = tokenizer.encode(p.target_incorrect, add_special_tokens=False)
             if len(ct) >= 1 and len(it) >= 1:
                 correct_ids.append(ct[0])
                 incorrect_ids.append(it[0])

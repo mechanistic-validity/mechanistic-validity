@@ -27,7 +27,20 @@ Quick start::
 import json
 from pathlib import Path
 
-from mechval.registry import list_tasks, load_task, list_experiment_groups, list_domains
+from mechval.registry import (
+    list_tasks,
+    load_task,
+    get_task,
+    list_experiment_groups,
+    list_domains,
+    register_task,
+    register_metric,
+    register_protocol,
+    list_protocols,
+    get_protocol,
+    dispatch_protocol,
+    get_external_metrics,
+)
 from mechval.lib.tasks.spec import CircuitSpec
 from mechval.lib.tasks.task import CircuitTask
 from mechval.spec import MechanisticClaimSpec, SpecVerificationResult
@@ -47,7 +60,7 @@ from mechval.spec_verification import verify
 
 
 def run(metric: str, **kwargs):
-    if metric not in METRIC_REGISTRY:
+    if metric not in METRIC_REGISTRY and metric not in get_external_metrics():
         raise ValueError(f"Unknown metric: {metric!r}. Available: {list_metrics()}")
     return dispatch(METRIC_REGISTRY, metric, **kwargs)
 
@@ -108,12 +121,19 @@ for _ep in _entry_points(group="mechval.plugins"):
 
 __all__ = [
     "load_task",
+    "get_task",
     "list_tasks",
     "list_families",
     "list_metrics",
     "list_calibrations",
     "list_experiment_groups",
     "list_domains",
+    "register_task",
+    "register_metric",
+    "register_protocol",
+    "list_protocols",
+    "get_protocol",
+    "dispatch_protocol",
     "run",
     "calibrate",
     "verify",

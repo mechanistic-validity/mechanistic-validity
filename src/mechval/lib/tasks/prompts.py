@@ -9,29 +9,13 @@ from typing import Any
 
 from mechval.lib.tasks import TaskBuilder, TaskPrompt, TokenizerLike
 
-from mechval.lib.tasks.ioi.prompts import (
-    centering_theory_prompts,
-    ioi_prompts,
-    resumptive_prompts,
-    self_allo_prompts,
-)
+from mechval.lib.tasks.ioi.prompts import ioi_prompts
 from mechval.lib.tasks.greater_than.prompts import greater_than_prompts
 from mechval.lib.tasks.copy_suppression.prompts import copy_suppression_prompts
-from mechval.lib.tasks.induction.prompts import (
-    alternating_pair_prompts,
-    induction_prompts,
-    novel_song_prompts,
-    sequence_internal_prompts,
-)
+from mechval.lib.tasks.induction.prompts import induction_prompts
 from mechval.lib.tasks.gendered_pronoun.prompts import gendered_pronoun_prompts
 from mechval.lib.tasks.sva.prompts import sva_prompts
 from mechval.lib.tasks.acronym.prompts import acronym_prompts
-from mechval.lib.tasks.rti.prompts import (
-    buffalo_prompts,
-    rti_pattern_prompts,
-    token_flood_prompts,
-)
-from mechval.lib.tasks.epistemic_framing.prompts import epistemic_framing_prompts
 
 TASK_REGISTRY: dict[str, TaskBuilder] = {
     "ioi": ioi_prompts,
@@ -41,19 +25,6 @@ TASK_REGISTRY: dict[str, TaskBuilder] = {
     "gendered_pronoun": gendered_pronoun_prompts,
     "sva": sva_prompts,
     "acronym": acronym_prompts,
-    "rti_pattern": rti_pattern_prompts,
-    "sequence_internal": sequence_internal_prompts,
-    "alternating_pair": alternating_pair_prompts,
-    "novel_song": novel_song_prompts,
-    "centering_theory": centering_theory_prompts,
-    "resumptive": resumptive_prompts,
-    "self_allo": self_allo_prompts,
-    "token_flood": token_flood_prompts,
-    "buffalo": buffalo_prompts,
-    "epistemic_framing": epistemic_framing_prompts,
-    "epistemic_expanded": epistemic_framing_prompts,
-    "epistemic_tight": epistemic_framing_prompts,
-    "epistemic_eap": epistemic_framing_prompts,
 }
 
 

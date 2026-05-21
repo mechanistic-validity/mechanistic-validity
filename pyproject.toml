@@ -54,6 +54,21 @@ cli = [
 [project.scripts]
 mechval = "mechval.cli:app"
 
+# External packages can register tasks, metrics, and protocols via entry points.
+# Example for an external package's pyproject.toml:
+#
+#   [project.entry-points."mechval.tasks"]
+#   my_task = "my_package.tasks:MyTask"
+#
+#   [project.entry-points."mechval.metrics"]
+#   my_metric = "my_package.metrics:run_my_metric"
+#
+#   [project.entry-points."mechval.protocols"]
+#   my_protocol = "my_package.protocols:run_protocol"
+#
+#   [project.entry-points."mechval.plugins"]
+#   my_plugin = "my_package:init_plugin"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

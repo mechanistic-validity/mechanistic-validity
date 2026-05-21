@@ -137,7 +137,10 @@ def jaccard_similarity(set_a: set, set_b: set) -> float:
     return len(set_a & set_b) / len(union)
 
 
-def run_weight_eap_jaccard(tasks: list[str]) -> list[EvalResult]:
+def run_weight_eap_jaccard(model=None, tasks: list[str] | None = None, device: str = "cpu") -> list[EvalResult]:
+    del model, device  # unused — compares pre-stored head sets, no model needed
+    if tasks is None:
+        tasks = CIRCUIT_TASKS
     results = []
 
     for task in tasks:
@@ -191,7 +194,7 @@ def main():
     log("C28: WEIGHT-EAP HEAD JACCARD")
     log("=" * 60)
 
-    results = run_weight_eap_jaccard(tasks)
+    results = run_weight_eap_jaccard(tasks=tasks)
 
     out = args.out or "28_weight_eap_jaccard.json"
     save_results(results, out)

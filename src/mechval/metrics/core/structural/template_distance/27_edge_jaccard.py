@@ -137,7 +137,9 @@ def jaccard_similarity(set_a: set, set_b: set) -> float:
     return len(set_a & set_b) / len(union)
 
 
-def run_edge_jaccard(tasks: list[str]) -> list[EvalResult]:
+def run_edge_jaccard(model=None, tasks: list[str] | None = None, device: str = "cpu") -> list[EvalResult]:
+    if tasks is None:
+        tasks = list(CIRCUIT_TASKS)
     results = []
 
     for task in tasks:

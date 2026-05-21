@@ -49,6 +49,7 @@ def patch_head_effect(model, clean_tokens, corrupt_tokens, correct_id, incorrect
     corrupt_ld = logit_diff_from_logits(corrupt_logits, correct_id, incorrect_id)
     gap = clean_ld - corrupt_ld
     if abs(gap) < 1e-8:
+        log(f"    [patch_head L{layer}H{head}] zero gap: clean_ld={clean_ld:.4f} corrupt_ld={corrupt_ld:.4f} correct={correct_id} incorrect={incorrect_id}")
         return 0.0
 
     def patch_hook(z, hook, _L=layer, _H=head):
@@ -96,6 +97,12 @@ def run_activation_patching(model, tasks: list[str], n_prompts: int = 40,
             continue
 
         log(f"  {task} ({len(circuit_heads)} heads, {len(prompts)} prompts)...")
+
+        if prompts:
+            p0 = prompts[0]
+            t0 = model.to_tokens(p0.text)
+            ld0 = logit_diff_from_logits(model(t0), correct_ids[0], incorrect_ids[0])
+            log(f"    baseline logit_diff={ld0:.4f} correct={correct_ids[0]} incorrect={incorrect_ids[0]} text={p0.text[:80]!r}")
 
         head_effects = np.zeros((n_layers, n_heads))
         n_valid = 0

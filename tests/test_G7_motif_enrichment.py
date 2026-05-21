@@ -164,7 +164,7 @@ def test_rewire_few_edges():
 
 @pytest.fixture(scope="module")
 def circuit_results():
-    return run_motif_enrichment([TASK], n_random=30)
+    return run_motif_enrichment(tasks=[TASK], n_random=30)
 
 
 def test_run_returns_result(circuit_results):
@@ -211,5 +211,5 @@ def test_value_is_best_z(circuit_results):
 
 
 def test_unknown_task():
-    results = run_motif_enrichment(["nonexistent_task_xyz"])
+    results = run_motif_enrichment(tasks=["nonexistent_task_xyz"])
     assert results == []

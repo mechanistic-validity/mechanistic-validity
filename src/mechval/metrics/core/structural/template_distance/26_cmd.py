@@ -40,7 +40,9 @@ def jaccard_distance(set_a: set, set_b: set) -> float:
     return 1.0 - len(intersection) / len(union)
 
 
-def run_cmd(tasks: list[str]) -> list[EvalResult]:
+def run_cmd(model=None, tasks: list[str] | None = None, device: str = "cpu") -> list[EvalResult]:
+    if tasks is None:
+        tasks = list(CIRCUIT_TASKS)
     results = []
 
     # Gather circuit heads for all tasks

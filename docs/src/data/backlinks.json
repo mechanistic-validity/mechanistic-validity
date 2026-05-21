@@ -173,158 +173,82 @@
       "title": "Level Declaration"
     }
   ],
-  "/framework/instruments_v2/causal/x/": [
+  "/framework/metrics/causal/a01-scm-pearl/": [
     {
-      "slug": "/framework/instruments_v2/causal/a02-counterfactual-das/",
-      "title": "A02 — Counterfactual DAS / IIA"
+      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
     }
   ],
-  "/framework/instruments_v2/information/c04-pid/": [
+  "/framework/metrics/behavioral/d02-logit-diff-recovery/": [
     {
-      "slug": "/framework/instruments_v2/information/c01-mutual-information/",
-      "title": "C01 — Mutual Information"
+      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
     },
     {
-      "slug": "/framework/instruments_v2/information/c02-conditional-mi/",
-      "title": "C02 — Conditional Mutual Information"
+      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
     },
     {
-      "slug": "/framework/instruments_v2/information/c05-info-bottleneck/",
-      "title": "C05 — Information Bottleneck"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c06-o-information/",
-      "title": "C06 — O-Information"
+      "slug": "/framework/lenses_v6/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
     }
   ],
-  "/framework/instruments_v2/information/c08-ocse/": [
+  "/framework/metrics/structural/b03-ov-qk-decomposition/": [
     {
-      "slug": "/framework/instruments_v2/information/c01-mutual-information/",
-      "title": "C01 — Mutual Information"
+      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
     },
     {
-      "slug": "/framework/instruments_v2/information/c02-conditional-mi/",
-      "title": "C02 — Conditional Mutual Information"
+      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
     },
     {
-      "slug": "/framework/instruments_v2/information/c03-transfer-entropy/",
-      "title": "C03 — Transfer Entropy"
+      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
     },
     {
-      "slug": "/framework/instruments_v2/information/c07-granger-causality/",
-      "title": "C07 — Granger Causality"
+      "slug": "/framework/lenses_v6/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
     },
     {
-      "slug": "/framework/instruments_v2/information/c09-notears/",
-      "title": "C09 — NOTEARS DAG Discovery"
-    }
-  ],
-  "/framework/instruments_v2/causal/": [
-    {
-      "slug": "/framework/instruments_v2/information/c01-mutual-information/",
-      "title": "C01 — Mutual Information"
+      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
     },
     {
-      "slug": "/framework/instruments_v2/information/c02-conditional-mi/",
-      "title": "C02 — Conditional Mutual Information"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c03-transfer-entropy/",
-      "title": "C03 — Transfer Entropy"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c04-pid/",
-      "title": "C04 — Partial Information Decomposition"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c06-o-information/",
-      "title": "C06 — O-Information"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c07-granger-causality/",
-      "title": "C07 — Granger Causality"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c08-ocse/",
-      "title": "C08 — Observational Causal Sensitivity Estimation"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c09-notears/",
-      "title": "C09 — NOTEARS DAG Discovery"
-    }
-  ],
-  "/framework/instruments_v2/information/c07-granger-causality/": [
-    {
-      "slug": "/framework/instruments_v2/information/c03-transfer-entropy/",
-      "title": "C03 — Transfer Entropy"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c08-ocse/",
-      "title": "C08 — Observational Causal Sensitivity Estimation"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c09-notears/",
-      "title": "C09 — NOTEARS DAG Discovery"
-    }
-  ],
-  "/framework/instruments_v2/information/c09-notears/": [
-    {
-      "slug": "/framework/instruments_v2/information/c03-transfer-entropy/",
-      "title": "C03 — Transfer Entropy"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c07-granger-causality/",
-      "title": "C07 — Granger Causality"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c08-ocse/",
-      "title": "C08 — Observational Causal Sensitivity Estimation"
-    }
-  ],
-  "/framework/instruments_v2/information/c01-mutual-information/": [
-    {
-      "slug": "/framework/instruments_v2/information/c04-pid/",
-      "title": "C04 — Partial Information Decomposition"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c05-info-bottleneck/",
-      "title": "C05 — Information Bottleneck"
-    }
-  ],
-  "/framework/instruments_v2/information/c02-conditional-mi/": [
-    {
-      "slug": "/framework/instruments_v2/information/c04-pid/",
-      "title": "C04 — Partial Information Decomposition"
-    }
-  ],
-  "/framework/instruments_v2/information/c06-o-information/": [
-    {
-      "slug": "/framework/instruments_v2/information/c04-pid/",
-      "title": "C04 — Partial Information Decomposition"
-    }
-  ],
-  "/framework/instruments_v2/structural/": [
-    {
-      "slug": "/framework/instruments_v2/information/c05-info-bottleneck/",
-      "title": "C05 — Information Bottleneck"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c06-o-information/",
-      "title": "C06 — O-Information"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c09-notears/",
-      "title": "C09 — NOTEARS DAG Discovery"
-    }
-  ],
-  "/framework/instruments_v2/information/c03-transfer-entropy/": [
-    {
-      "slug": "/framework/instruments_v2/information/c07-granger-causality/",
-      "title": "C07 — Granger Causality"
-    },
-    {
-      "slug": "/framework/instruments_v2/information/c08-ocse/",
-      "title": "C08 — Observational Causal Sensitivity Estimation"
+      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
     }
   ],
   "/framework/criteria/construct/falsifiability/": [
@@ -1933,6 +1857,92 @@
       "title": "Interpretive Validity"
     }
   ],
+  "/framework/metrics/causal/a02-counterfactual-das/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    }
+  ],
+  "/framework/metrics/structural/b01-svd-spectral/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    }
+  ],
+  "/framework/metrics/causal/a06-mediation/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    }
+  ],
+  "/framework/metrics/representational/e02-linear-probe/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    }
+  ],
+  "/framework/metrics/behavioral/d06-cross-task-transfer/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    }
+  ],
   "/framework/modes_v3/structural/": [
     {
       "slug": "/framework/lenses_v6/examples/examples-greater-than/",
@@ -1943,6 +1953,16 @@
       "title": "Case Study: Grokking / Modular Addition"
     }
   ],
+  "/framework/metrics/behavioral/d04-ce-delta/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    }
+  ],
   "/framework/modes_v3/algorithmic/": [
     {
       "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
@@ -1951,6 +1971,12 @@
     {
       "slug": "/framework/lenses_v6/examples/examples-ioi/",
       "title": "Case Study: IOI Circuit"
+    }
+  ],
+  "/framework/metrics/causal/a05-mdc-glennan/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
     }
   ],
   "/framework/modes_v3/implementational/": [
@@ -1975,6 +2001,26 @@
     {
       "slug": "/framework/lenses_v6/examples/examples-superposition/",
       "title": "Case Study: Superposition"
+    }
+  ],
+  "/framework/metrics/representational/e01-das-iia/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    }
+  ],
+  "/framework/metrics/information/c01-mutual-information/": [
+    {
+      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/metrics/information/c04-pid/",
+      "title": "C04 — Partial Information Decomposition"
+    },
+    {
+      "slug": "/framework/metrics/information/c05-info-bottleneck/",
+      "title": "C05 — Information Bottleneck"
     }
   ],
   "/framework/lenses_v6/examples/examples-grokking/": [
@@ -2321,6 +2367,150 @@
       "title": "Philosophy of Science"
     }
   ],
+  "/framework/metrics/causal/x/": [
+    {
+      "slug": "/framework/metrics/causal/a02-counterfactual-das/",
+      "title": "A02 — Counterfactual DAS / IIA"
+    }
+  ],
+  "/framework/metrics/information/c04-pid/": [
+    {
+      "slug": "/framework/metrics/information/c01-mutual-information/",
+      "title": "C01 — Mutual Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c02-conditional-mi/",
+      "title": "C02 — Conditional Mutual Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c05-info-bottleneck/",
+      "title": "C05 — Information Bottleneck"
+    },
+    {
+      "slug": "/framework/metrics/information/c06-o-information/",
+      "title": "C06 — O-Information"
+    }
+  ],
+  "/framework/metrics/information/c08-ocse/": [
+    {
+      "slug": "/framework/metrics/information/c01-mutual-information/",
+      "title": "C01 — Mutual Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c02-conditional-mi/",
+      "title": "C02 — Conditional Mutual Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c03-transfer-entropy/",
+      "title": "C03 — Transfer Entropy"
+    },
+    {
+      "slug": "/framework/metrics/information/c07-granger-causality/",
+      "title": "C07 — Granger Causality"
+    },
+    {
+      "slug": "/framework/metrics/information/c09-notears/",
+      "title": "C09 — NOTEARS DAG Discovery"
+    }
+  ],
+  "/framework/metrics/causal/": [
+    {
+      "slug": "/framework/metrics/information/c01-mutual-information/",
+      "title": "C01 — Mutual Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c02-conditional-mi/",
+      "title": "C02 — Conditional Mutual Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c03-transfer-entropy/",
+      "title": "C03 — Transfer Entropy"
+    },
+    {
+      "slug": "/framework/metrics/information/c04-pid/",
+      "title": "C04 — Partial Information Decomposition"
+    },
+    {
+      "slug": "/framework/metrics/information/c06-o-information/",
+      "title": "C06 — O-Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c07-granger-causality/",
+      "title": "C07 — Granger Causality"
+    },
+    {
+      "slug": "/framework/metrics/information/c08-ocse/",
+      "title": "C08 — Observational Causal Sensitivity Estimation"
+    },
+    {
+      "slug": "/framework/metrics/information/c09-notears/",
+      "title": "C09 — NOTEARS DAG Discovery"
+    }
+  ],
+  "/framework/metrics/information/c07-granger-causality/": [
+    {
+      "slug": "/framework/metrics/information/c03-transfer-entropy/",
+      "title": "C03 — Transfer Entropy"
+    },
+    {
+      "slug": "/framework/metrics/information/c08-ocse/",
+      "title": "C08 — Observational Causal Sensitivity Estimation"
+    },
+    {
+      "slug": "/framework/metrics/information/c09-notears/",
+      "title": "C09 — NOTEARS DAG Discovery"
+    }
+  ],
+  "/framework/metrics/information/c09-notears/": [
+    {
+      "slug": "/framework/metrics/information/c03-transfer-entropy/",
+      "title": "C03 — Transfer Entropy"
+    },
+    {
+      "slug": "/framework/metrics/information/c07-granger-causality/",
+      "title": "C07 — Granger Causality"
+    },
+    {
+      "slug": "/framework/metrics/information/c08-ocse/",
+      "title": "C08 — Observational Causal Sensitivity Estimation"
+    }
+  ],
+  "/framework/metrics/information/c02-conditional-mi/": [
+    {
+      "slug": "/framework/metrics/information/c04-pid/",
+      "title": "C04 — Partial Information Decomposition"
+    }
+  ],
+  "/framework/metrics/information/c06-o-information/": [
+    {
+      "slug": "/framework/metrics/information/c04-pid/",
+      "title": "C04 — Partial Information Decomposition"
+    }
+  ],
+  "/framework/metrics/structural/": [
+    {
+      "slug": "/framework/metrics/information/c05-info-bottleneck/",
+      "title": "C05 — Information Bottleneck"
+    },
+    {
+      "slug": "/framework/metrics/information/c06-o-information/",
+      "title": "C06 — O-Information"
+    },
+    {
+      "slug": "/framework/metrics/information/c09-notears/",
+      "title": "C09 — NOTEARS DAG Discovery"
+    }
+  ],
+  "/framework/metrics/information/c03-transfer-entropy/": [
+    {
+      "slug": "/framework/metrics/information/c07-granger-causality/",
+      "title": "C07 — Granger Causality"
+    },
+    {
+      "slug": "/framework/metrics/information/c08-ocse/",
+      "title": "C08 — Observational Causal Sensitivity Estimation"
+    }
+  ],
   "/framework/lenses_v6/philosophy_of_science/": [
     {
       "slug": "/framework/validity-types_v4/construct/",
@@ -2415,7 +2605,7 @@
       "title": "How-To Guides"
     }
   ],
-  "/how-to/D_choose-an-instrument/": [
+  "/how-to/D_choose-a-metric/": [
     {
       "slug": "/how-to/",
       "title": "How-To Guides"

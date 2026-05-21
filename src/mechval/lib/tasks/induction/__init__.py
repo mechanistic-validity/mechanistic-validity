@@ -2,5 +2,4 @@
 
 Source: "In-context Learning and Induction Heads" (arXiv:2209.11895)
 Circuit: 4 heads (previous-token + induction heads)
-Also covers alias tasks: sequence_internal, alternating_pair, novel_song
 """

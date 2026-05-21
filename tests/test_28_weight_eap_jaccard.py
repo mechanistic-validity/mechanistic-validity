@@ -131,7 +131,7 @@ TASK = "ioi"
 
 
 def test_run_weight_eap_jaccard_returns_list():
-    results = run_weight_eap_jaccard([TASK])
+    results = run_weight_eap_jaccard(tasks=[TASK])
     assert isinstance(results, list)
     for r in results:
         assert isinstance(r, EvalResult)
@@ -143,5 +143,5 @@ def test_run_weight_eap_jaccard_returns_list():
 
 
 def test_run_weight_eap_jaccard_unknown_task():
-    results = run_weight_eap_jaccard(["nonexistent_xyz"])
+    results = run_weight_eap_jaccard(tasks=["nonexistent_xyz"])
     assert results == []

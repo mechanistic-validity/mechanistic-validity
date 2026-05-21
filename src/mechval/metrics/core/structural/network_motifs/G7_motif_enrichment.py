@@ -177,7 +177,11 @@ def degree_preserving_rewire(nodes: list, edges: set[tuple],
     return edge_set
 
 
-def run_motif_enrichment(tasks: list[str], n_random: int = N_RANDOM_DEFAULT) -> list[EvalResult]:
+def run_motif_enrichment(model=None, tasks: list[str] | None = None, device: str = "cpu",
+                         n_random: int = N_RANDOM_DEFAULT) -> list[EvalResult]:
+    del model, device  # unused — pure graph metric, no model needed
+    if tasks is None:
+        tasks = CIRCUIT_TASKS
     rng = np.random.default_rng()
     results = []
 
@@ -296,7 +300,7 @@ def main():
     results = []
 
     for task in tasks:
-        task_results = run_motif_enrichment([task], n_random=args.n_random)
+        task_results = run_motif_enrichment(tasks=[task], n_random=args.n_random)
         results.extend(task_results)
         for r in task_results:
             save_incremental(r, jsonl_out)

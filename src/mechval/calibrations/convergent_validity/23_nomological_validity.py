@@ -92,7 +92,9 @@ def _role_depth_correlation(circuit: dict) -> tuple[float, float, dict]:
     return float(r), float(p), head_role_map
 
 
-def run_nomological_validity(tasks: list[str]) -> list[EvalResult]:
+def run_nomological_validity(model=None, tasks: list[str] | None = None, device: str = "cpu", n_prompts: int = 40) -> list[EvalResult]:
+    if tasks is None:
+        tasks = list(CIRCUIT_TASKS)
     results = []
 
     for task in tasks:

@@ -51,7 +51,7 @@ def compute_attention_entropy(model, prompts, n_prompts: int = 40):
     count = 0
 
     for prompt in prompts[:n_prompts]:
-        tokens = prompt.clean_tokens.to(model.cfg.device)
+        tokens = model.to_tokens(prompt.text).to(model.cfg.device)
         if tokens.dim() == 1:
             tokens = tokens.unsqueeze(0)
 

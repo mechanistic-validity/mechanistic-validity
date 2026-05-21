@@ -1,10 +1,13 @@
 """Metric and calibration registries.
 
 Maps metric/calibration names to (module_path, function_name) tuples
-for lazy import dispatch.
+for lazy import dispatch. External metrics registered via
+``mechval.registry.register_metric()`` are merged automatically.
 """
 import importlib
 import inspect
+
+from mechval.registry import get_external_metrics
 
 
 METRIC_REGISTRY: dict[str, tuple[str, str]] = {
@@ -102,73 +105,25 @@ METRIC_REGISTRY: dict[str, tuple[str, str]] = {
     "epistemic_gradient": ("mechval.metrics.core.behavioral.minimal_pairs.A5_epistemic_gradient", "run_epistemic_gradient"),
     "cross_task_generalization": ("mechval.metrics.core.behavioral.cross_task_transfer.E6b_cross_task_generalization", "run_cross_task_generalization"),
 
-    # ── Cognitive science: signal detection ────────────────────────────
-    "dprime": ("mechval.metrics.cognitive_science.signal_detection.EX1_dprime", "run_dprime"),
-    # ── Cognitive science: psychometrics ───────────────────────────────
-    "dif": ("mechval.metrics.cognitive_science.psychometrics.EX2_dif", "run_dif"),
-    # ── Cognitive science: linguistics ─────────────────────────────────
-    "priming": ("mechval.metrics.cognitive_science.linguistics.EX3_priming", "run_priming"),
-    "garden_path": ("mechval.metrics.cognitive_science.linguistics.EX4_garden_path", "run_garden_path"),
-    "binding_theory": ("mechval.metrics.cognitive_science.linguistics.EX5_binding_theory", "run_binding_theory"),
-    "animacy": ("mechval.metrics.cognitive_science.linguistics.EX6_animacy", "run_animacy"),
-    # ── Cognitive science: developmental ───────────────────────────────
-    "object_permanence": ("mechval.metrics.cognitive_science.developmental.EX7_object_permanence", "run_object_permanence"),
-    "theory_of_mind": ("mechval.metrics.cognitive_science.developmental.EX8_theory_of_mind", "run_theory_of_mind"),
-    "critical_period": ("mechval.metrics.cognitive_science.developmental.EX9_critical_period", "run_critical_period"),
-    # ── Cognitive science: hebbian / psychophysics ─────────────────────
-    "hebbian": ("mechval.metrics.cognitive_science.hebbian.EX10_hebbian", "run_hebbian"),
-    "weber_fechner": ("mechval.metrics.cognitive_science.psychophysics.EX11_weber_fechner", "run_weber_fechner"),
+    # ── Core: Measurement ─────────────────────────────────────────────
+    "dprime": ("mechval.metrics.core.measurement.signal_detection.EX1_dprime", "run_dprime"),
+    "dif": ("mechval.metrics.core.measurement.psychometrics.EX2_dif", "run_dif"),
+    "weber_fechner": ("mechval.metrics.core.measurement.psychophysics.EX11_weber_fechner", "run_weber_fechner"),
 
-    # ── Cross-discipline: game theory ──────────────────────────────────
-    "nash_equilibrium": ("mechval.metrics.cross_discipline.game_theory.GT1_nash_equilibrium", "run_nash_equilibrium"),
-    "banzhaf_power": ("mechval.metrics.cross_discipline.game_theory.GT2_banzhaf_power", "run_banzhaf_power"),
-    "core_stability": ("mechval.metrics.cross_discipline.game_theory.GT3_core_stability", "run_core_stability"),
-    "voting_power": ("mechval.metrics.cross_discipline.game_theory.GT4_voting_power", "run_voting_power"),
-    "envy_freeness": ("mechval.metrics.cross_discipline.game_theory.GT5_envy_freeness", "run_envy_freeness"),
-    "coalition_discovery": ("mechval.metrics.cross_discipline.game_theory.GT6_coalition_discovery", "run_coalition_discovery"),
-    "coalition_tracking": ("mechval.metrics.cross_discipline.game_theory.GT7_coalition_tracking", "run_coalition_tracking"),
-    "replicator_dynamics": ("mechval.metrics.cross_discipline.game_theory.GT8_replicator_dynamics", "run_replicator_dynamics"),
-    "nucleolus": ("mechval.metrics.cross_discipline.game_theory.GT9_nucleolus", "run_nucleolus"),
-    # ── Cross-discipline: ecology ──────────────────────────────────────
-    "niche_partitioning": ("mechval.metrics.cross_discipline.ecology.EC1_niche_partitioning", "run_niche_partitioning"),
-    "keystone_species": ("mechval.metrics.cross_discipline.ecology.EC2_keystone_species", "run_keystone_species"),
-    "succession": ("mechval.metrics.cross_discipline.ecology.EC3_succession", "run_succession"),
-    # ── Cross-discipline: physics ──────────────────────────────────────
-    "phase_transitions": ("mechval.metrics.cross_discipline.physics.PH1_phase_transitions", "run_phase_transitions"),
-    "symmetry_breaking": ("mechval.metrics.cross_discipline.physics.PH2_symmetry_breaking", "run_symmetry_breaking"),
-    "renormalization": ("mechval.metrics.cross_discipline.physics.PH3_renormalization", "run_renormalization"),
-    # ── Cross-discipline: engineering ──────────────────────────────────
-    "graceful_degradation": ("mechval.metrics.cross_discipline.engineering.EN1_graceful_degradation", "run_graceful_degradation"),
-    "fault_tolerance": ("mechval.metrics.cross_discipline.engineering.EN2_fault_tolerance", "run_fault_tolerance"),
-    "stress_testing": ("mechval.metrics.cross_discipline.engineering.EN3_stress_testing", "run_stress_testing"),
-    "error_propagation": ("mechval.metrics.cross_discipline.engineering.EN4_error_propagation", "run_error_propagation"),
-    # ── Cross-discipline: genetics ─────────────────────────────────────
-    "knock_in": ("mechval.metrics.cross_discipline.genetics.GN1_knock_in", "run_knock_in"),
-    "epistasis": ("mechval.metrics.cross_discipline.genetics.GN2_epistasis", "run_epistasis"),
-    "chimera": ("mechval.metrics.cross_discipline.genetics.GN3_chimera", "run_chimera"),
-    "convergent_evolution": ("mechval.metrics.cross_discipline.genetics.GN4_convergent_evolution", "run_convergent_evolution"),
-    "phylogenetic_tracking": ("mechval.metrics.cross_discipline.genetics.GN5_phylogenetic_tracking", "run_phylogenetic_tracking"),
-    # ── Cross-discipline: information theory ───────────────────────────
-    "channel_capacity": ("mechval.metrics.cross_discipline.information_theory.IT1_channel_capacity", "run_channel_capacity"),
-    "rate_distortion": ("mechval.metrics.cross_discipline.information_theory.IT2_rate_distortion", "run_rate_distortion"),
-    "kolmogorov_complexity": ("mechval.metrics.cross_discipline.information_theory.IT3_kolmogorov_complexity", "run_kolmogorov_complexity"),
-    # ── Cross-discipline: computational biology ────────────────────────
-    "network_motifs": ("mechval.metrics.cross_discipline.computational_biology.CB1_network_motifs", "run_network_motifs"),
-    # ── Cross-discipline: economics ────────────────────────────────────
-    "mechanism_design": ("mechval.metrics.cross_discipline.economics.ECON1_mechanism_design", "run_mechanism_design"),
-    "attention_auction": ("mechval.metrics.cross_discipline.economics.ECON2_attention_auction", "run_attention_auction"),
+    # ── Extended: economics ──────────────────────────────────────────────
+    "mechanism_design": ("mechval.metrics.extended.economics.ECON1_mechanism_design", "run_mechanism_design"),
+    "attention_auction": ("mechval.metrics.extended.economics.ECON2_attention_auction", "run_attention_auction"),
+    # ── Extended: genetics ────────────────────────────────────────────────
+    "knock_in": ("mechval.metrics.extended.genetics.GN1_knock_in", "run_knock_in"),
+    "epistasis": ("mechval.metrics.extended.genetics.GN2_epistasis", "run_epistasis"),
+    "chimera": ("mechval.metrics.extended.genetics.GN3_chimera", "run_chimera"),
+    "convergent_evolution": ("mechval.metrics.extended.genetics.GN4_convergent_evolution", "run_convergent_evolution"),
+    "phylogenetic_tracking": ("mechval.metrics.extended.genetics.GN5_phylogenetic_tracking", "run_phylogenetic_tracking"),
+    # ── Extended: information theory ──────────────────────────────────────
+    "channel_capacity": ("mechval.metrics.extended.information_theory.IT1_channel_capacity", "run_channel_capacity"),
+    "rate_distortion": ("mechval.metrics.extended.information_theory.IT2_rate_distortion", "run_rate_distortion"),
+    "kolmogorov_complexity": ("mechval.metrics.extended.information_theory.IT3_kolmogorov_complexity", "run_kolmogorov_complexity"),
 
-    # ── Cognitive science: meta-cognitive probes ───────────────────────
-    "free_energy_gradient": ("mechval.metrics.cognitive_science.meta_cognitive.SM01_free_energy_gradient", "run_free_energy_gradient"),
-    "self_reference_topology": ("mechval.metrics.cognitive_science.meta_cognitive.SM02_self_reference_topology", "run_self_reference_topology"),
-    "prediction_error": ("mechval.metrics.cognitive_science.meta_cognitive.SM03_prediction_error", "run_prediction_error"),
-    "world_vs_self": ("mechval.metrics.cognitive_science.meta_cognitive.SM04_world_vs_self_dissociation", "run_world_vs_self_dissociation"),
-    "attention_schema": ("mechval.metrics.cognitive_science.meta_cognitive.SM05_attention_schema", "run_attention_schema"),
-    "entropy_cascade": ("mechval.metrics.cognitive_science.meta_cognitive.SM06_entropy_cascade", "run_entropy_cascade"),
-    "autopoiesis": ("mechval.metrics.cognitive_science.meta_cognitive.SM07_autopoiesis", "run_autopoiesis"),
-    "privileged_access": ("mechval.metrics.cognitive_science.meta_cognitive.SM08_privileged_access", "run_privileged_access"),
-    "counterfactual_self": ("mechval.metrics.cognitive_science.meta_cognitive.SM09_counterfactual_self", "run_counterfactual_self"),
-    "phylogenetic_development": ("mechval.metrics.cognitive_science.meta_cognitive.SM10_phylogenetic_development", "run_phylogenetic_development"),
 }
 
 
@@ -192,9 +147,21 @@ CALIBRATION_REGISTRY: dict[str, tuple[str, str]] = {
 
 def _resolve_family(mod_path: str) -> str:
     parts = mod_path.split(".")
-    if parts[2] == "core":
+    # Built-in: mechval.metrics.core.<family>.* or mechval.metrics.<family>.*
+    if len(parts) >= 4 and parts[2] == "core":
         return parts[3]
-    return parts[2]
+    if len(parts) >= 3:
+        return parts[2]
+    return "external"
+
+
+def _all_metrics() -> dict[str, tuple[str, str]]:
+    """Merge built-in METRIC_REGISTRY with externally registered metrics.
+
+    Built-in metrics take precedence over external ones with the same ID.
+    """
+    external = get_external_metrics()
+    return {**external, **METRIC_REGISTRY}
 
 
 METRIC_FAMILIES: dict[str, str] = {
@@ -202,14 +169,26 @@ METRIC_FAMILIES: dict[str, str] = {
 }
 
 
+def _all_metric_families() -> dict[str, str]:
+    """Metric families including external registrations."""
+    result = dict(METRIC_FAMILIES)
+    for name, (mod, _) in get_external_metrics().items():
+        if name not in result:
+            result[name] = _resolve_family(mod)
+    return result
+
+
 def list_families() -> list[str]:
-    return sorted(set(METRIC_FAMILIES.values()))
+    return sorted(set(_all_metric_families().values()))
 
 
 def list_metrics(family: str | None = None) -> list[str]:
+    """List all metrics (built-in + external), optionally filtered by family."""
+    all_m = _all_metrics()
     if family is not None:
-        return sorted(k for k, f in METRIC_FAMILIES.items() if f == family)
-    return sorted(METRIC_REGISTRY.keys())
+        families = _all_metric_families()
+        return sorted(k for k in all_m if families.get(k) == family)
+    return sorted(all_m)
 
 
 def list_calibrations() -> list[str]:
@@ -217,7 +196,16 @@ def list_calibrations() -> list[str]:
 
 
 def dispatch(registry: dict, name: str, **kwargs):
-    mod_path, fn_name = registry[name]
+    # Check the provided registry first, then fall back to external metrics
+    if name in registry:
+        mod_path, fn_name = registry[name]
+    else:
+        external = get_external_metrics()
+        if name in external:
+            mod_path, fn_name = external[name]
+        else:
+            raise KeyError(f"Unknown metric/calibration: {name!r}")
+
     mod = importlib.import_module(mod_path)
     fn = getattr(mod, fn_name)
 
