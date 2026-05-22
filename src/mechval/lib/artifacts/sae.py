@@ -11,13 +11,16 @@ class SAEAdapter(ArtifactAdapter):
         super().__init__(manifest)
         self._sae = None
 
-    def load(self) -> None:
+    def load(self, device: str | None = None) -> None:
         from sae_lens import SAE
 
-        self._sae = SAE.from_pretrained(
+        kwargs = dict(
             release=self.manifest.construction.get("release", ""),
             sae_id=self.manifest.construction.get("sae_id", ""),
         )
+        if device is not None:
+            kwargs["device"] = device
+        self._sae = SAE.from_pretrained(**kwargs)
 
     def directions(self, layer: int | None = None):
         if self._sae is None:
@@ -32,6 +35,7 @@ class SAEAdapter(ArtifactAdapter):
         with torch.no_grad():
             _, cache = model.run_with_cache(tokens, names_filter=[hook_name])
             acts = cache[hook_name]
+            self._sae.to(acts.device)
             return self._sae.encode(acts)
 
     def ablate(self, model, tokens, units: list[int], site: str):
@@ -42,6 +46,7 @@ class SAEAdapter(ArtifactAdapter):
         with torch.no_grad():
             _, cache = model.run_with_cache(tokens, names_filter=[site])
             acts = cache[site]
+            self._sae.to(acts.device)
             feature_acts = self._sae.encode(acts)
             feature_acts[:, :, units] = 0.0
             reconstructed = self._sae.decode(feature_acts)

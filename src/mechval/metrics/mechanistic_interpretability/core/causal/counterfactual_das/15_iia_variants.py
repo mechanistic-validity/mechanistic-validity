@@ -38,7 +38,7 @@ from mechval.metrics.common import (
     save_results,
 )
 
-_das = importlib.import_module("mechval.metrics.core.causal.counterfactual_das.01_das_iia")
+_das = importlib.import_module("mechval.metrics.mechanistic_interpretability.core.causal.counterfactual_das.01_das_iia")
 compute_iia_with_rotation = _das.compute_iia_with_rotation
 make_counterfactual_pairs = _das.make_counterfactual_pairs
 train_rotation = _das.train_rotation
