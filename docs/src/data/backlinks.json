@@ -173,1845 +173,95 @@
       "title": "Level Declaration"
     }
   ],
+  "/framework/evidence-families/": [
+    {
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    },
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
   "/framework/metrics/causal/a01-scm-pearl/": [
     {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    },
+    {
+      "slug": "/framework/evidence/methods-index/",
+      "title": "Methods Index"
+    },
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
       "title": "Case Study: Copy Suppression"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
+      "slug": "/framework/examples/examples-docstring/",
       "title": "Case Study: Docstring Circuit"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
+      "slug": "/framework/examples/examples-greater-than/",
       "title": "Case Study: Greater-Than Circuit"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
+      "slug": "/framework/examples/examples-grokking/",
       "title": "Case Study: Grokking / Modular Addition"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
+      "slug": "/framework/examples/examples-induction-heads/",
       "title": "Case Study: Induction Heads"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
+      "slug": "/framework/examples/examples-ioi/",
       "title": "Case Study: IOI Circuit"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
+      "slug": "/framework/examples/examples-sae-features/",
       "title": "Case Study: SAE Features"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
+      "slug": "/framework/examples/examples-successor-heads/",
       "title": "Case Study: Successor Heads"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    }
-  ],
-  "/framework/metrics/behavioral/d02-logit-diff-recovery/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    }
-  ],
-  "/framework/metrics/structural/b03-ov-qk-decomposition/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    }
-  ],
-  "/framework/criteria/construct/falsifiability/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    }
-  ],
-  "/framework/criteria/construct/structural-plausibility/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    }
-  ],
-  "/framework/criteria/construct/task-specificity/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    }
-  ],
-  "/framework/criteria/construct/minimality/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    }
-  ],
-  "/framework/criteria/construct/convergent-validity/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    }
-  ],
-  "/framework/criteria/internal/necessity/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/criteria/internal/sufficiency/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/criteria/internal/specificity/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/criteria/internal/consistency/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/criteria/internal/confound-control/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    }
-  ],
-  "/framework/criteria/external/intervention-reach/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    }
-  ],
-  "/framework/criteria/external/graded-response/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    }
-  ],
-  "/framework/criteria/external/selectivity/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    }
-  ],
-  "/framework/criteria/external/effect-magnitude/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    }
-  ],
-  "/framework/criteria/external/robustness/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    }
-  ],
-  "/framework/criteria/external/cross-architecture/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    }
-  ],
-  "/framework/criteria/measurement/reliability/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    }
-  ],
-  "/framework/criteria/measurement/invariance/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    }
-  ],
-  "/framework/criteria/measurement/baseline-separation/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    }
-  ],
-  "/framework/criteria/measurement/sensitivity/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    }
-  ],
-  "/framework/criteria/measurement/calibration/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    }
-  ],
-  "/framework/criteria/measurement/construct-coverage/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    }
-  ],
-  "/framework/criteria/interpretive/level-declaration/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/interpretive/",
-      "title": "Interpretive Validity"
-    }
-  ],
-  "/framework/criteria/interpretive/level-evidence-match/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/interpretive/",
-      "title": "Interpretive Validity"
-    }
-  ],
-  "/framework/criteria/interpretive/narrative-coherence/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/interpretive/",
-      "title": "Interpretive Validity"
-    }
-  ],
-  "/framework/criteria/interpretive/alternative-exclusion/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/interpretive/",
-      "title": "Interpretive Validity"
-    }
-  ],
-  "/framework/criteria/interpretive/scope-honesty/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-copy-suppression/",
-      "title": "Case Study: Copy Suppression"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    },
-    {
-      "slug": "/framework/validity-types_v4/interpretive/",
-      "title": "Interpretive Validity"
-    }
-  ],
-  "/framework/metrics/causal/a02-counterfactual-das/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-docstring/",
-      "title": "Case Study: Docstring Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "slug": "/framework/examples/examples-superposition/",
       "title": "Case Study: Superposition"
     }
   ],
   "/framework/metrics/structural/b01-svd-spectral/": [
     {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
       "title": "Case Study: Gender Bias Circuits"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
+      "slug": "/framework/examples/examples-grokking/",
       "title": "Case Study: Grokking / Modular Addition"
     },
     {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "slug": "/framework/examples/examples-superposition/",
       "title": "Case Study: Superposition"
-    }
-  ],
-  "/framework/metrics/causal/a06-mediation/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    }
-  ],
-  "/framework/metrics/representational/e02-linear-probe/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-gender-bias/",
-      "title": "Case Study: Gender Bias Circuits"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    }
-  ],
-  "/framework/metrics/behavioral/d06-cross-task-transfer/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-successor-heads/",
-      "title": "Case Study: Successor Heads"
-    }
-  ],
-  "/framework/modes_v3/structural/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-greater-than/",
-      "title": "Case Study: Greater-Than Circuit"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    }
-  ],
-  "/framework/metrics/behavioral/d04-ce-delta/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-grokking/",
-      "title": "Case Study: Grokking / Modular Addition"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    }
-  ],
-  "/framework/modes_v3/algorithmic/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-induction-heads/",
-      "title": "Case Study: Induction Heads"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-ioi/",
-      "title": "Case Study: IOI Circuit"
-    }
-  ],
-  "/framework/metrics/causal/a05-mdc-glennan/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    }
-  ],
-  "/framework/modes_v3/implementational/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-knowledge-neurons/",
-      "title": "Case Study: Knowledge Neurons / ROME"
-    }
-  ],
-  "/framework/modes_v3/representational/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-othello/",
-      "title": "Case Study: Othello World Model"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-sae-features/",
-      "title": "Case Study: SAE Features"
-    },
-    {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
-      "title": "Case Study: Superposition"
-    }
-  ],
-  "/framework/metrics/representational/e01-das-iia/": [
-    {
-      "slug": "/framework/lenses_v6/examples/examples-probing/",
-      "title": "Case Study: Probing Classifiers"
     }
   ],
   "/framework/metrics/information/c01-mutual-information/": [
     {
-      "slug": "/framework/lenses_v6/examples/examples-superposition/",
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
       "title": "Case Study: Superposition"
     },
     {
@@ -2023,348 +273,2926 @@
       "title": "C05 — Information Bottleneck"
     }
   ],
-  "/framework/lenses_v6/examples/examples-grokking/": [
+  "/framework/metrics/behavioral/d01-faithfulness/": [
     {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    }
+  ],
+  "/framework/metrics/representational/e01-das-iia/": [
+    {
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
     },
     {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    }
+  ],
+  "/framework/metrics/measurement/f01-bootstrap-stability/": [
+    {
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
     },
     {
-      "slug": "/framework/lenses_v6/neuroscience/",
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/evidence/protocols/": [
+    {
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    },
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/evidence/synthesis-protocols/": [
+    {
+      "slug": "/framework/evidence/",
+      "title": "Evidence"
+    },
+    {
+      "slug": "/framework/evidence/protocols/",
+      "title": "Protocols"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/lenses/core/mi-causal-metrics/": [
+    {
+      "slug": "/framework/evidence/methods-index/",
+      "title": "Methods Index"
+    },
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-methods-metrics/",
+      "title": "MI Methods (Redirected)"
+    }
+  ],
+  "/framework/lenses/core/mi-steering-metrics/": [
+    {
+      "slug": "/framework/evidence/methods-index/",
+      "title": "Methods Index"
+    },
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-methods-metrics/",
+      "title": "MI Methods (Redirected)"
+    }
+  ],
+  "/framework/lenses/core/mi-information-metrics/": [
+    {
+      "slug": "/framework/evidence/methods-index/",
+      "title": "Methods Index"
+    },
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    }
+  ],
+  "/framework/lenses/core/mi-artifact-quality-metrics/": [
+    {
+      "slug": "/framework/evidence/methods-index/",
+      "title": "Methods Index"
+    },
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-faithfulness-metrics/",
+      "title": "MI Faithfulness Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-safety-metrics/",
+      "title": "MI Safety Metrics"
+    }
+  ],
+  "/framework/lenses/core/mi-faithfulness-metrics/": [
+    {
+      "slug": "/framework/evidence/methods-index/",
+      "title": "Methods Index"
+    },
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-artifact-quality-metrics/",
+      "title": "MI Artifact Quality Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-safety-metrics/",
+      "title": "MI Safety Metrics"
+    }
+  ],
+  "/framework/lenses/core/mi-structural-metrics/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    }
+  ],
+  "/framework/lenses/core/mi-behavioral-metrics/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    }
+  ],
+  "/framework/lenses/core/mi-representational-metrics/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    }
+  ],
+  "/framework/lenses/core/mi-safety-metrics/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-artifact-quality-metrics/",
+      "title": "MI Artifact Quality Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-faithfulness-metrics/",
+      "title": "MI Faithfulness Metrics"
+    }
+  ],
+  "/framework/lenses/core/mi-benchmarks-metrics/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-evaluation-metrics/",
+      "title": "MI Evaluation Metrics"
+    }
+  ],
+  "/framework/lenses/core/mi-evaluation-metrics/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-benchmarks-metrics/",
+      "title": "MI Benchmarks Metrics"
+    }
+  ],
+  "/framework/evidence/methods-index/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-causal-metrics/",
+      "title": "MI Causal Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-methods-metrics/",
+      "title": "MI Methods (Redirected)"
+    }
+  ],
+  "/framework/evidence/calibrations/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/evidence/naming-convention/": [
+    {
+      "slug": "/framework/evidence/mi-metrics-overview/",
+      "title": "Extended MI Metrics Overview"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/": [
+    {
+      "slug": "/framework/evidence-families/",
+      "title": "Evidence Families"
+    }
+  ],
+  "/framework/description-modes/": [
+    {
+      "slug": "/framework/evidence-families/",
+      "title": "Evidence Families"
+    },
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/verdicts/",
+      "title": "Verdicts"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/evidence/": [
+    {
+      "slug": "/framework/evidence-families/",
+      "title": "Evidence Families"
+    },
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    }
+  ],
+  "/framework/validity-types/": [
+    {
+      "slug": "/framework/evidence-families/",
+      "title": "Evidence Families"
+    },
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    },
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/validity-types/internal/": [
+    {
+      "slug": "/framework/evidence-families/",
+      "title": "Evidence Families"
+    },
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
       "title": "Neuroscience"
     },
     {
-      "slug": "/framework/lenses_v6/pharmacology/",
+      "slug": "/framework/lenses/core/pharmacology/",
       "title": "Pharmacology"
     },
     {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
+      "slug": "/framework/lenses/core/philosophy-of-science/",
       "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/control-theory-metrics/",
+      "title": "Control Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/control-theory/",
+      "title": "Control Theory"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics/",
+      "title": "Genetics"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory-metrics/",
+      "title": "Information Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory/",
+      "title": "Information Theory"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    },
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
     }
   ],
-  "/framework/lenses_v6/examples/examples-superposition/": [
+  "/framework/metrics/behavioral/d02-logit-diff-recovery/": [
     {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
     }
   ],
-  "/framework/lenses_v6/examples/examples-induction-heads/": [
+  "/framework/metrics/structural/b03-ov-qk-decomposition/": [
     {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
     },
     {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
     },
     {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
     },
     {
-      "slug": "/framework/lenses_v6/neuroscience/",
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    }
+  ],
+  "/framework/criteria/construct/falsifiability/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    }
+  ],
+  "/framework/criteria/construct/structural-plausibility/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    }
+  ],
+  "/framework/criteria/construct/task-specificity/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    }
+  ],
+  "/framework/criteria/construct/minimality/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    }
+  ],
+  "/framework/criteria/construct/convergent-validity/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    }
+  ],
+  "/framework/criteria/internal/necessity/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
       "title": "Neuroscience"
     },
     {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-ioi/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
-    },
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-greater-than/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-successor-heads/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-copy-suppression/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-docstring/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-knowledge-neurons/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-othello/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
-    },
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-sae-features/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
-    },
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-probing/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
-    },
-    {
-      "slug": "/framework/lenses_v6/neuroscience/",
-      "title": "Neuroscience"
-    }
-  ],
-  "/framework/lenses_v6/examples/examples-gender-bias/": [
-    {
-      "slug": "/framework/lenses_v6/examples/",
-      "title": "Case Studies"
-    },
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    },
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/validity-types_v4/measurement/": [
-    {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
+      "slug": "/framework/validity-types/internal/",
       "title": "Internal Validity"
+    }
+  ],
+  "/framework/criteria/internal/sufficiency/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
     },
     {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/figures/signal_detection_minimal.svg/": [
-    {
-      "slug": "/framework/lenses_v6/measurement-theory/",
-      "title": "Measurement Theory"
-    }
-  ],
-  "/framework/validity-types_v4/interpretive/": [
-    {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
     },
     {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
     },
     {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/figures/marr_levels.svg/": [
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
     {
-      "slug": "/framework/lenses_v6/mechanistic_interpretability/",
-      "title": "Mechanistic Interpretability"
-    }
-  ],
-  "/framework/validity-types_v4/internal/": [
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
     {
-      "slug": "/framework/lenses_v6/neuroscience/",
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
       "title": "Neuroscience"
     },
     {
-      "slug": "/framework/lenses_v6/pharmacology/",
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    }
+  ],
+  "/framework/criteria/internal/specificity/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    }
+  ],
+  "/framework/criteria/internal/consistency/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    }
+  ],
+  "/framework/criteria/internal/confound-control/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    }
+  ],
+  "/framework/criteria/external/intervention-reach/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    }
+  ],
+  "/framework/criteria/external/graded-response/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    }
+  ],
+  "/framework/criteria/external/selectivity/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    }
+  ],
+  "/framework/criteria/external/effect-magnitude/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    }
+  ],
+  "/framework/criteria/external/robustness/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    }
+  ],
+  "/framework/criteria/external/cross-architecture/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    }
+  ],
+  "/framework/criteria/measurement/reliability/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/criteria/measurement/invariance/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/criteria/measurement/baseline-separation/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/criteria/measurement/sensitivity/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/criteria/measurement/calibration/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/criteria/measurement/construct-coverage/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/criteria/interpretive/level-declaration/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/interpretive/",
+      "title": "Interpretive Validity"
+    }
+  ],
+  "/framework/criteria/interpretive/level-evidence-match/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/interpretive/",
+      "title": "Interpretive Validity"
+    }
+  ],
+  "/framework/criteria/interpretive/narrative-coherence/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/interpretive/",
+      "title": "Interpretive Validity"
+    }
+  ],
+  "/framework/criteria/interpretive/alternative-exclusion/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/interpretive/",
+      "title": "Interpretive Validity"
+    }
+  ],
+  "/framework/criteria/interpretive/scope-honesty/": [
+    {
+      "slug": "/framework/examples/examples-copy-suppression/",
+      "title": "Case Study: Copy Suppression"
+    },
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    },
+    {
+      "slug": "/framework/validity-types/interpretive/",
+      "title": "Interpretive Validity"
+    }
+  ],
+  "/framework/metrics/causal/a02-counterfactual-das/": [
+    {
+      "slug": "/framework/examples/examples-docstring/",
+      "title": "Case Study: Docstring Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    }
+  ],
+  "/framework/metrics/causal/a06-mediation/": [
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    }
+  ],
+  "/framework/metrics/representational/e02-linear-probe/": [
+    {
+      "slug": "/framework/examples/examples-gender-bias/",
+      "title": "Case Study: Gender Bias Circuits"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    }
+  ],
+  "/framework/metrics/behavioral/d06-cross-task-transfer/": [
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-successor-heads/",
+      "title": "Case Study: Successor Heads"
+    }
+  ],
+  "/framework/modes/structural/": [
+    {
+      "slug": "/framework/examples/examples-greater-than/",
+      "title": "Case Study: Greater-Than Circuit"
+    },
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    }
+  ],
+  "/framework/metrics/behavioral/d04-ce-delta/": [
+    {
+      "slug": "/framework/examples/examples-grokking/",
+      "title": "Case Study: Grokking / Modular Addition"
+    },
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    }
+  ],
+  "/framework/modes/algorithmic/": [
+    {
+      "slug": "/framework/examples/examples-induction-heads/",
+      "title": "Case Study: Induction Heads"
+    },
+    {
+      "slug": "/framework/examples/examples-ioi/",
+      "title": "Case Study: IOI Circuit"
+    }
+  ],
+  "/framework/metrics/causal/a05-mdc-glennan/": [
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    }
+  ],
+  "/framework/modes/implementational/": [
+    {
+      "slug": "/framework/examples/examples-knowledge-neurons/",
+      "title": "Case Study: Knowledge Neurons / ROME"
+    }
+  ],
+  "/framework/modes/representational/": [
+    {
+      "slug": "/framework/examples/examples-othello/",
+      "title": "Case Study: Othello World Model"
+    },
+    {
+      "slug": "/framework/examples/examples-probing/",
+      "title": "Case Study: Probing Classifiers"
+    },
+    {
+      "slug": "/framework/examples/examples-sae-features/",
+      "title": "Case Study: SAE Features"
+    },
+    {
+      "slug": "/framework/examples/examples-superposition/",
+      "title": "Case Study: Superposition"
+    }
+  ],
+  "/framework/examples/examples/examples-grokking/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
       "title": "Pharmacology"
     },
     {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    }
+  ],
+  "/framework/examples/examples/examples-superposition/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    }
+  ],
+  "/framework/examples/examples/examples-induction-heads/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
       "title": "Philosophy of Science"
     },
     {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
+      "slug": "/framework/lenses/supporting/control-theory/",
+      "title": "Control Theory"
+    },
+    {
+      "slug": "/framework/lenses/supporting/economics/",
+      "title": "Economics"
+    },
+    {
+      "slug": "/framework/lenses/supporting/geometry/",
+      "title": "Geometry"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory/",
+      "title": "Information Theory"
     }
   ],
-  "/framework/validity-types_v2/internal/": [
+  "/framework/examples/examples/examples-ioi/": [
     {
-      "slug": "/framework/lenses_v6/neuroscience/",
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
       "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/lenses/supporting/control-theory/",
+      "title": "Control Theory"
+    },
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems/",
+      "title": "Dynamical Systems"
+    },
+    {
+      "slug": "/framework/lenses/supporting/economics/",
+      "title": "Economics"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics/",
+      "title": "Genetics"
+    },
+    {
+      "slug": "/framework/lenses/supporting/geometry/",
+      "title": "Geometry"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory/",
+      "title": "Information Theory"
+    }
+  ],
+  "/framework/examples/examples/examples-greater-than/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/lenses/supporting/economics/",
+      "title": "Economics"
+    }
+  ],
+  "/framework/examples/examples/examples-successor-heads/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    }
+  ],
+  "/framework/examples/examples/examples-copy-suppression/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    }
+  ],
+  "/framework/examples/examples/examples-docstring/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    }
+  ],
+  "/framework/examples/examples/examples-knowledge-neurons/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    }
+  ],
+  "/framework/examples/examples/examples-othello/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    }
+  ],
+  "/framework/examples/examples/examples-sae-features/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    }
+  ],
+  "/framework/examples/examples/examples-probing/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    }
+  ],
+  "/framework/examples/examples/examples-gender-bias/": [
+    {
+      "slug": "/framework/examples/",
+      "title": "Case Studies"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
     }
   ],
   "/framework/verdicts/": [
     {
-      "slug": "/framework/lenses_v6/neuroscience/",
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
       "title": "Neuroscience"
     },
     {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
+      "slug": "/framework/lenses/core/philosophy-of-science/",
       "title": "Philosophy of Science"
-    }
-  ],
-  "/framework/validity-types_v4/external/": [
-    {
-      "slug": "/framework/lenses_v6/pharmacology/",
-      "title": "Pharmacology"
     },
     {
-      "slug": "/framework/validity-types_v4/internal/",
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/validity-types/construct/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science/",
+      "title": "Philosophy of Science"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems-metrics/",
+      "title": "Dynamical Systems -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems/",
+      "title": "Dynamical Systems"
+    },
+    {
+      "slug": "/framework/lenses/supporting/geometry/",
+      "title": "Geometry"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory-metrics/",
+      "title": "Information Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory/",
+      "title": "Information Theory"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
       "title": "Internal Validity"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
     },
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
+    }
+  ],
+  "/framework/lenses/core/philosophy-of-science/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/philosophy-of-science-metrics/",
+      "title": "Philosophy of Science -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/validity-types/construct/",
+      "title": "Construct Validity"
+    },
+    {
+      "slug": "/framework/validity-types/",
+      "title": "The Five Validity Types"
+    }
+  ],
+  "/framework/validity-types/measurement/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/control-theory-metrics/",
+      "title": "Control Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems-metrics/",
+      "title": "Dynamical Systems -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory-metrics/",
+      "title": "Information Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory/",
+      "title": "Information Theory"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    },
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/lenses/core/measurement-theory/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics-metrics/",
+      "title": "Genetics -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/validity-types/",
+      "title": "The Five Validity Types"
+    },
+    {
+      "slug": "/framework/validity-types/measurement/",
+      "title": "Measurement Validity"
+    }
+  ],
+  "/framework/lenses/core/neuroscience/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/neuroscience-metrics/",
+      "title": "Neuroscience -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics-metrics/",
+      "title": "Genetics -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/validity-types/",
+      "title": "The Five Validity Types"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    }
+  ],
+  "/framework/validity-types/external/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/control-theory-metrics/",
+      "title": "Control Theory -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/economics/",
+      "title": "Economics"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    },
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/lenses/core/pharmacology/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/pharmacology-metrics/",
+      "title": "Pharmacology -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics-metrics/",
+      "title": "Genetics -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/validity-types/external/",
+      "title": "External Validity"
+    },
+    {
+      "slug": "/framework/validity-types/",
+      "title": "The Five Validity Types"
+    }
+  ],
+  "/framework/validity-types/interpretive/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/validity-types/internal/",
+      "title": "Internal Validity"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    },
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/lenses/core/mechanistic-interpretability/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-artifact-quality-metrics/",
+      "title": "MI Artifact Quality Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-behavioral-metrics/",
+      "title": "MI Behavioral Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-benchmarks-metrics/",
+      "title": "MI Benchmarks Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-causal-metrics/",
+      "title": "MI Causal Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-evaluation-metrics/",
+      "title": "MI Evaluation Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-faithfulness-metrics/",
+      "title": "MI Faithfulness Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-information-metrics/",
+      "title": "MI Information Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-representational-metrics/",
+      "title": "MI Representational Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-safety-metrics/",
+      "title": "MI Safety Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-structural-metrics/",
+      "title": "MI Structural Metrics"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/validity-types/",
+      "title": "The Five Validity Types"
+    },
+    {
+      "slug": "/framework/validity-types/interpretive/",
+      "title": "Interpretive Validity"
+    }
+  ],
+  "/framework/lenses/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/framework/lenses/supporting/genetics/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics-metrics/",
+      "title": "Genetics -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/supporting/economics/": [
+    {
+      "slug": "/framework/",
+      "title": "Mechanistic Validity"
+    },
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/economics-metrics/",
+      "title": "Economics -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f02-seed-variance/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f03-convergent-validity/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f04-discriminant-validity/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f05-internal-consistency/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f06-inter-rater/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f07-measurement-invariance/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/metrics/measurement/f08-incremental-validity/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory-metrics/",
+      "title": "Measurement Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/core/measurement-theory-metrics/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-evaluation-metrics/",
+      "title": "MI Evaluation Metrics"
+    }
+  ],
+  "/figures/signal_detection_minimal.svg/": [
+    {
+      "slug": "/framework/lenses/core/measurement-theory/",
+      "title": "Measurement Theory"
+    }
+  ],
+  "/framework/evidence/mi-metrics-overview/": [
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    },
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
+  "/figures/marr_levels.svg/": [
+    {
+      "slug": "/framework/lenses/core/mechanistic-interpretability/",
+      "title": "Mechanistic Interpretability"
+    }
+  ],
+  "/framework/lenses/supporting/genetics-metrics/": [
+    {
+      "slug": "/framework/lenses/core/mi-benchmarks-metrics/",
+      "title": "MI Benchmarks Metrics"
+    },
+    {
+      "slug": "/framework/lenses/core/mi-evaluation-metrics/",
+      "title": "MI Evaluation Metrics"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics/",
+      "title": "Genetics"
+    }
+  ],
+  "/framework/lenses/core/neuroscience-metrics/": [
+    {
+      "slug": "/framework/lenses/core/neuroscience/",
+      "title": "Neuroscience"
+    }
+  ],
+  "/framework/lenses/core/pharmacology-metrics/": [
+    {
+      "slug": "/framework/lenses/core/pharmacology/",
+      "title": "Pharmacology"
     }
   ],
   "/figures/selectivity_index_minimal.svg/": [
     {
-      "slug": "/framework/lenses_v6/pharmacology/",
+      "slug": "/framework/lenses/core/pharmacology/",
       "title": "Pharmacology"
     }
   ],
-  "/framework/validity-types_v4/construct/": [
+  "/framework/lenses/core/philosophy-of-science-metrics/": [
     {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/framework/modes_v3/": [
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
-      "title": "Philosophy of Science"
-    },
-    {
-      "slug": "/framework/verdicts_v3/",
-      "title": "Verdicts"
-    }
-  ],
-  "/framework/validity-types_v2/construct_v3/": [
-    {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
+      "slug": "/framework/lenses/core/philosophy-of-science/",
       "title": "Philosophy of Science"
     }
   ],
   "/framework/verdicts/proposed/": [
     {
-      "slug": "/framework/lenses_v6/philosophy_of_science/",
+      "slug": "/framework/lenses/core/philosophy-of-science/",
       "title": "Philosophy of Science"
+    }
+  ],
+  "/framework/lenses/supporting/control-theory/": [
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/control-theory-metrics/",
+      "title": "Control Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/supporting/dynamical-systems/": [
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems-metrics/",
+      "title": "Dynamical Systems -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/supporting/geometry/": [
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/genetics-metrics/",
+      "title": "Genetics -- Metrics & Protocols"
+    },
+    {
+      "slug": "/framework/lenses/supporting/geometry-metrics/",
+      "title": "Geometry -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/supporting/information-theory/": [
+    {
+      "slug": "/framework/lenses/",
+      "title": "Analytical Lenses"
+    },
+    {
+      "slug": "/framework/lenses/supporting/information-theory-metrics/",
+      "title": "Information Theory -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/supporting/control-theory-metrics/": [
+    {
+      "slug": "/framework/lenses/supporting/control-theory/",
+      "title": "Control Theory"
+    },
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems-metrics/",
+      "title": "Dynamical Systems -- Metrics & Protocols"
+    }
+  ],
+  "/framework/lenses/supporting/dynamical-systems-metrics/": [
+    {
+      "slug": "/framework/lenses/supporting/dynamical-systems/",
+      "title": "Dynamical Systems"
+    }
+  ],
+  "/framework/lenses/supporting/economics-metrics/": [
+    {
+      "slug": "/framework/lenses/supporting/economics/",
+      "title": "Economics"
+    }
+  ],
+  "/framework/lenses/supporting/geometry-metrics/": [
+    {
+      "slug": "/framework/lenses/supporting/geometry/",
+      "title": "Geometry"
+    }
+  ],
+  "/framework/lenses/supporting/information-theory-metrics/": [
+    {
+      "slug": "/framework/lenses/supporting/information-theory/",
+      "title": "Information Theory"
     }
   ],
   "/framework/metrics/causal/x/": [
@@ -2511,82 +3339,6 @@
       "title": "C08 — Observational Causal Sensitivity Estimation"
     }
   ],
-  "/framework/lenses_v6/philosophy_of_science/": [
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    },
-    {
-      "slug": "/framework/validity-types_v4/",
-      "title": "The Five Validity Types"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/framework/evidence-families/": [
-    {
-      "slug": "/framework/validity-types_v4/construct/",
-      "title": "Construct Validity"
-    }
-  ],
-  "/framework/lenses_v6/pharmacology/": [
-    {
-      "slug": "/framework/validity-types_v4/external/",
-      "title": "External Validity"
-    },
-    {
-      "slug": "/framework/validity-types_v4/",
-      "title": "The Five Validity Types"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/framework/lenses_v6/measurement-theory/": [
-    {
-      "slug": "/framework/validity-types_v4/",
-      "title": "The Five Validity Types"
-    },
-    {
-      "slug": "/framework/validity-types_v4/measurement/",
-      "title": "Measurement Validity"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/framework/lenses_v6/neuroscience/": [
-    {
-      "slug": "/framework/validity-types_v4/",
-      "title": "The Five Validity Types"
-    },
-    {
-      "slug": "/framework/validity-types_v4/internal/",
-      "title": "Internal Validity"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
-  "/framework/lenses_v6/mechanistic_interpretability/": [
-    {
-      "slug": "/framework/validity-types_v4/",
-      "title": "The Five Validity Types"
-    },
-    {
-      "slug": "/framework/validity-types_v4/interpretive/",
-      "title": "Interpretive Validity"
-    },
-    {
-      "slug": "/start/reading-this-site/",
-      "title": "Reading This Site"
-    }
-  ],
   "/how-to/A_audit-a-claim/": [
     {
       "slug": "/how-to/",
@@ -2633,61 +3385,61 @@
       "title": "Run a Convergence Check"
     }
   ],
-  "/mechanistic-validity/framework/lenses_v6/philosophy_of_science/": [
+  "/mechanistic-validity/framework/examples/philosophy_of_science/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/validity-types_v4/construct/": [
+  "/mechanistic-validity/framework/validity-types/construct/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/lenses_v6/neuroscience/": [
+  "/mechanistic-validity/framework/examples/neuroscience/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/validity-types_v4/internal/": [
+  "/mechanistic-validity/framework/validity-types/internal/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/lenses_v6/pharmacology/": [
+  "/mechanistic-validity/framework/examples/pharmacology/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/validity-types_v4/external/": [
+  "/mechanistic-validity/framework/validity-types/external/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/lenses_v6/measurement-theory/": [
+  "/mechanistic-validity/framework/examples/measurement-theory/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/validity-types_v4/measurement/": [
+  "/mechanistic-validity/framework/validity-types/measurement/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/lenses_v6/mechanistic_interpretability/": [
+  "/mechanistic-validity/framework/examples/mechanistic_interpretability/": [
     {
       "slug": "/index/",
       "title": "Overview"
     }
   ],
-  "/mechanistic-validity/framework/validity-types_v4/interpretive/": [
+  "/mechanistic-validity/framework/validity-types/interpretive/": [
     {
       "slug": "/index/",
       "title": "Overview"
@@ -2703,19 +3455,49 @@
       "title": "Overview"
     }
   ],
+  "/framework/metrics/": [
+    {
+      "slug": "/start/glossary/",
+      "title": "Glossary"
+    }
+  ],
   "/start/overview/": [
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
     }
   ],
-  "/framework/validity-types_v4/": [
+  "/framework/examples/": [
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"
     }
   ],
-  "/framework/lenses_v6/": [
+  "/framework/examples/neuroscience/": [
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/examples/pharmacology/": [
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/examples/philosophy_of_science/": [
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/examples/measurement-theory/": [
+    {
+      "slug": "/start/reading-this-site/",
+      "title": "Reading This Site"
+    }
+  ],
+  "/framework/examples/mechanistic_interpretability/": [
     {
       "slug": "/start/reading-this-site/",
       "title": "Reading This Site"

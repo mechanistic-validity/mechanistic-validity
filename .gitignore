@@ -190,3 +190,5 @@ ACKNOWLEDGEMENTS_LOCAL.md
 /synthesis_results*.json
 /run_wildcard*.py
 /*.jsonl
+
+**/.DS_Store

@@ -12,10 +12,10 @@ The site is organized around the two-layer structure of the framework. There is 
 For a reader who has not used the framework before, the recommended order is:
 
 1. *[Overview](overview.md).* What the framework is and why it has two layers.
-2. *[The Five Validity Types](../framework/validity-types_v4/).* The upper-layer summary.
-3. *[Construct](../framework/validity-types_v4/construct) → [Internal](../framework/validity-types_v4/internal) → [External](../framework/validity-types_v4/external) → [Measurement](../framework/validity-types_v4/measurement) → [Interpretive](../framework/validity-types_v4/interpretive).* Each in turn; the order is the order in which they gate one another.
-4. *[Casebooks](../framework/lenses_v6/).* The lower-layer summary.
-5. *Each casebook in turn.* [Neuroscience](../framework/lenses_v6/neuroscience), [Pharmacology](../framework/lenses_v6/pharmacology), [Philosophy of Science](../framework/lenses_v6/philosophy_of_science), [Measurement Theory](../framework/lenses_v6/measurement-theory), [Known Interpretive Failures](../framework/lenses_v6/mechanistic_interpretability).
+2. *[The Five Validity Types](../framework/validity-types/).* The upper-layer summary.
+3. *[Construct](../framework/validity-types/construct) → [Internal](../framework/validity-types/internal) → [External](../framework/validity-types/external) → [Measurement](../framework/validity-types/measurement) → [Interpretive](../framework/validity-types/interpretive).* Each in turn; the order is the order in which they gate one another.
+4. *[Casebooks](../framework/examples/).* The lower-layer summary.
+5. *Each casebook in turn.* [Neuroscience](../framework/examples/neuroscience), [Pharmacology](../framework/examples/pharmacology), [Philosophy of Science](../framework/examples/philosophy_of_science), [Measurement Theory](../framework/examples/measurement-theory), [Known Interpretive Failures](../framework/examples/mechanistic_interpretability).
 6. *Criteria by validity type.* Where each individual criterion lives and what metrics contribute evidence to it.
 
 This sequence takes about one hour to read through. It is the minimum the framework expects of a reader before applying the verdict language to their own results.

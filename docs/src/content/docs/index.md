@@ -25,11 +25,11 @@ The framework has two layers. The upper layer is the five **validity types** —
 
 | Lens | Validity type | What the lens provides |
 |---|---|---|
-| [Philosophy of Science](/mechanistic-validity/framework/lenses_v6/philosophy_of_science/) | [Construct](/mechanistic-validity/framework/validity-types_v4/construct/) | Falsifiability, structural plausibility, task specificity, minimality, convergent validity |
-| [Neuroscience](/mechanistic-validity/framework/lenses_v6/neuroscience/) | [Internal](/mechanistic-validity/framework/validity-types_v4/internal/) | Necessity, sufficiency, specificity, consistency |
-| [Pharmacology](/mechanistic-validity/framework/lenses_v6/pharmacology/) | [External](/mechanistic-validity/framework/validity-types_v4/external/) | Intervention reach, graded response, selectivity, effect magnitude, robustness, cross-architecture generalization |
-| [Measurement Theory](/mechanistic-validity/framework/lenses_v6/measurement-theory/) | [Measurement](/mechanistic-validity/framework/validity-types_v4/measurement/) | Reliability, invariance, baseline separation, sensitivity, calibration, construct coverage |
-| [Mechanistic Interpretability](/mechanistic-validity/framework/lenses_v6/mechanistic_interpretability/) | [Interpretive](/mechanistic-validity/framework/validity-types_v4/interpretive/) | Level declaration, level-evidence match, narrative coherence, alternative exclusion, scope honesty |
+| [Philosophy of Science](/mechanistic-validity/framework/examples/philosophy_of_science/) | [Construct](/mechanistic-validity/framework/validity-types/construct/) | Falsifiability, structural plausibility, task specificity, minimality, convergent validity |
+| [Neuroscience](/mechanistic-validity/framework/examples/neuroscience/) | [Internal](/mechanistic-validity/framework/validity-types/internal/) | Necessity, sufficiency, specificity, consistency |
+| [Pharmacology](/mechanistic-validity/framework/examples/pharmacology/) | [External](/mechanistic-validity/framework/validity-types/external/) | Intervention reach, graded response, selectivity, effect magnitude, robustness, cross-architecture generalization |
+| [Measurement Theory](/mechanistic-validity/framework/examples/measurement-theory/) | [Measurement](/mechanistic-validity/framework/validity-types/measurement/) | Reliability, invariance, baseline separation, sensitivity, calibration, construct coverage |
+| [Mechanistic Interpretability](/mechanistic-validity/framework/examples/mechanistic_interpretability/) | [Interpretive](/mechanistic-validity/framework/validity-types/interpretive/) | Level declaration, level-evidence match, narrative coherence, alternative exclusion, scope honesty |
 
 The lens pages are the recommended starting point — they give the operational criteria, the metrics that produce evidence for each criterion, the failure modes that appear in practice, and a minimum reporting protocol.
 
