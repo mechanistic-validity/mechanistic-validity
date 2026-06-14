@@ -70,7 +70,7 @@ export default defineConfig({
               ],
             },
             {
-              label: '3. Evidence',
+              label: '3. Metrics',
               collapsed: false,
               items: [
                 { label: 'Overview', link: '/framework/evidence/' },
@@ -216,19 +216,19 @@ export default defineConfig({
               ],
             },
             {
-              label: '4. Validity Types & Criteria',
+              label: '4–5. Criteria & Validity Types',
               collapsed: false,
               items: [
                 { label: 'Overview', link: '/framework/validity-types/' },
                 { label: 'Construct (C1–C5)', link: '/framework/validity-types/construct' },
                 { label: 'Measurement (M1–M6)', link: '/framework/validity-types/measurement' },
-                { label: 'Internal (I1–I5)', link: '/framework/validity-types/internal' },
+                { label: 'Internal (I1–I6)', link: '/framework/validity-types/internal' },
                 { label: 'External (E1–E6)', link: '/framework/validity-types/external' },
                 { label: 'Interpretive (V1–V5)', link: '/framework/validity-types/interpretive' },
               ],
             },
             {
-              label: '5. Verdicts',
+              label: '6. Verdicts',
               collapsed: true,
               items: [
                 { label: 'Overview', link: '/framework/verdicts/' },

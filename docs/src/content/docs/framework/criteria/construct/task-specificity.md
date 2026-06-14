@@ -32,9 +32,9 @@ R = IIA(target task) / IIA(control task)
 
 R = 1.0 means the circuit scores equally on both — task specificity fails. R ≥ 2.0 with off-task score not significantly above baseline is a reasonable pass threshold.
 
-## Application to this project
+## Worked example
 
-The SVA circuit claim at L8.MLP requires: IIA on Greater-Than or IOI (same DAS-IIA setup). If L8.MLP shows IIA = 0.48 on SVA and IIA = 0.10 on Greater-Than (R = 4.8), task specificity is satisfied. If IIA = 0.45 on Greater-Than (R = 1.07), the construct is "general information-processing locus," not SVA-specific — a weaker and different claim.
+An SVA circuit claim requires: IIA on a control task (e.g., Greater-Than or IOI) using the same DAS-IIA setup. If the component shows high IIA on SVA and low IIA on Greater-Than (R ≥ 2.0), task specificity is satisfied. If IIA is comparable on both tasks (R ≈ 1.0), the construct is "general information-processing locus," not SVA-specific — a weaker and different claim.
 
 ## Minimum reporting rule
 

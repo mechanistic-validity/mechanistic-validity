@@ -34,6 +34,10 @@ When a component's activation is replaced with the dataset mean, all downstream 
 
 Causal scrubbing (`c04causalscrubbing.py`, A01 SCMPearl) replaces activations at each component with activations from a run where the causal variable is absent, while leaving all other activations unchanged. This is a component-specific counterfactual that controls for all pathway confounds simultaneously. A successful causal scrubbing result is the strongest single piece of confound-control evidence.
 
+## Confound control vs. rival mechanisms
+
+I5 asks whether the causal effect is due to the nominated component's *specific computation* or to *collateral disruption*. It does not ask whether a *different* set of components could produce the same effect without collateral disruption — that is the domain of [I6 Rival Mechanism Exclusion](/framework/criteria/internal/rival-mechanism-exclusion/). A claim can pass I5 (the effect is genuinely due to this component, not collateral damage) while failing I6 (other components could produce the same effect).
+
 ## Minimum reporting rule
 
 - Whether component-specific ablation was compared to full-circuit ablation.

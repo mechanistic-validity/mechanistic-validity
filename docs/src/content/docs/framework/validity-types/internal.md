@@ -9,7 +9,7 @@ description: "Formal specification: quantitative thresholds, pass conditions, an
 |---|---|
 | Question | Does the evidence establish that the component implements the computation, not merely participates in it? |
 | Lens | [Neuroscience](/framework/lenses/core/neuroscience) |
-| Criteria | I1–I5 |
+| Criteria | I1–I6 |
 | Dependency | Internal validity is the workhorse — most MI evidence is internal-validity evidence. But it says nothing about whether the finding generalizes ([external](/framework/validity-types/external)), whether the metric is reliable ([measurement](/framework/validity-types/measurement)), whether the construct is coherent ([construct](/framework/validity-types/construct)), or whether the narrative is correct ([interpretive](/framework/validity-types/interpretive)). |
 | Status in MI | Best-addressed by existing methods; still routinely method-conditional |
 
@@ -159,7 +159,7 @@ The observed effect should not be explained by collateral disruption to non-circ
 | Necessary + sufficient, not specific | I1, I2 | General-capability component | "Real mechanism, not task-specific" |
 | Necessary + sufficient + specific, not consistent | I1, I2, I3 | Benchmark artifact possible | "Locally established, not yet robust" |
 | Strong I1 + I2, single ablation method | I1, I2 (conditional) | Method-conditional claim | "Sufficient under [method]; not tested under alternatives" |
-| All five met | I1–I5 | Full internal validity | Upgrade to external validity testing |
+| All six met | I1–I6 | Full internal validity | Upgrade to external validity testing |
 
 ## Protocol
 
@@ -170,3 +170,4 @@ For circuit $C$ and behavior $B$:
 3. **I3.** Compute $\text{Necessity}(C, B')$ for one related off-task $B'$. Report specificity ratio.
 4. **I4.** Replicate across at least two of: cross-prompt, cross-seed, cross-checkpoint.
 5. **I5.** Compare results across ablation methods. If inconsistent, report the range and flag as method-conditional.
+6. **I6.** Test at least one rival component set of comparable size. Report faithfulness gap. If rivals achieve comparable faithfulness, scope claim to "a sufficient mechanism."

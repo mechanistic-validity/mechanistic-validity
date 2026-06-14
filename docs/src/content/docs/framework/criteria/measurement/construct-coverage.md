@@ -22,7 +22,7 @@ Every metric has a gap between what it nominally measures and what it actually m
 
 **Nonlinear IIA:** Construct coverage *fails* by definition. Unconstrained nonlinear alignment maps can achieve IIA ≈ 1.0 on random models, meaning nonlinear IIA measures alignment map flexibility, not causal variable representation. Any result using nonlinear IIA must be accompanied by a comparison to the unconstrained baseline.
 
-**Weight classifier:** Nominally measures "does this component have the structural signature of a circuit member?" Actually measures "does this component's weight-space representation exceed a learned threshold for circuit membership trained on specific published circuits." Components implementing the same computation via different parametric structure may be missed. Construct coverage: report out-of-distribution performance (on circuit types not in the training set).
+**Structural classifiers:** Any learned classifier that nominally measures "does this component have the structural signature of a circuit member?" actually measures "does this component's weight-space representation exceed a learned threshold trained on specific published circuits." Components implementing the same computation via different parametric structure may be missed. Construct coverage: report out-of-distribution performance (on circuit types not in the training set).
 
 **Faithfulness:** Nominally measures "does the circuit implement the same input-output mapping as the full model?" Actually measures "does the circuit produce the same logit difference on the training prompt distribution?" A circuit can have high faithfulness on training prompts and low faithfulness on held-out templates. Construct coverage: test on held-out templates (overlaps with E5 robustness).
 
@@ -38,5 +38,5 @@ If constrained = 0.48 and unconstrained = 0.51: constraint has not substantially
 
 - Explicit statement of what the metric nominally measures and what it actually measures.
 - For IIA: constrained vs. unconstrained IIA comparison.
-- For weight classifier: whether tested on circuit types outside its training distribution.
+- For structural classifiers: whether tested on circuit types outside the training distribution.
 - For faithfulness: whether held-out template testing was included.

@@ -28,15 +28,9 @@ For any MI circuit claim, the standard alternatives are:
 
 4. **The prompt-artifact alternative:** The finding reflects regularities in the specific prompt distribution used for discovery, not a general mechanism. Addressed by robustness (E5).
 
-5. **The Jaccard-disagreement alternative (project-specific):** The weight-circuit and EAP-circuit nominate different components (Jaccard ≈ 0). The alternatives are: (a) weight classifier is wrong; (b) EAP is wrong; (c) both are measuring different real properties. Each must be considered, with evidence or argument.
+5. **The rival-mechanism alternative:** A different set of components achieves comparable faithfulness on the same task. The evidence establishes *a* sufficient mechanism, not *the* mechanism. Addressed by rival mechanism exclusion ([I6](/framework/criteria/internal/rival-mechanism-exclusion/)). This alternative is distinct from the others because it does not challenge the evidence — it challenges the uniqueness of the conclusion.
 
-## The Jaccard ≈ 0 case
-
-For this project, alternative exclusion for the Jaccard ≈ 0 finding requires:
-
-- **If weight classifier is wrong:** What methodological flaw would explain it finding circuit-like structural properties in components that EAP identifies as causally inactive? (Possible: the classifier was trained on templates that happen to share structural properties with non-circuit heads in this architecture.)
-- **If EAP is wrong:** What methodological flaw would explain EAP missing the structurally plausible components? (Possible: EAP overweights high-activation layers; if weight-circuit components are in lower-activation layers, EAP may undercount them.)
-- **If both are partially right:** This is the "complementary evidence" interpretation — weight classifier finds structurally consistent components that are not the primary causal route, while EAP finds the primary causal route. This interpretation requires its own empirical test (DAS-IIA on both sets of components to determine which has higher causal alignment).
+6. **The method-disagreement alternative:** Two discovery methods nominate different component sets for the same task. The alternatives are: (a) method A is wrong; (b) method B is wrong; (c) both measure different real properties (complementary evidence). Each must be considered, with evidence or argument — typically by testing faithfulness of each component set independently.
 
 ## Minimum reporting rule
 

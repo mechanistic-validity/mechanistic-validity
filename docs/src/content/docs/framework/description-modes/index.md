@@ -156,6 +156,20 @@ A *causal* representational claim (stronger) additionally requires that interven
 - Predictions tested: the function's predicted output compared to the component's actual output on held-out inputs
 - The function should be *necessary*: replacing the component with its claimed function should preserve the behavior (sufficiency), and the claimed function should not be achievable by a simpler description (minimality)
 
+## Distribution-level vs. token-level claims
+
+Claims at the Algorithmic and Implementational-functional modes are implicitly **distributional** unless explicitly scoped to a specific input or input class. "The IOI circuit" is a claim over a distribution of IOI-formatted inputs; on any specific forward pass, a different causal subgraph may be the actual cause.
+
+This distinction matters because the evidence required differs:
+
+| Scope | Claim form | Evidence required |
+|---|---|---|
+| **Distributional** | "This circuit handles IOI across the IOI distribution" | Standard activation patching, faithfulness metrics averaged over prompt samples |
+| **Input-class** | "This circuit handles IOI when the indirect object appears in position 4–6" | Faithfulness conditioned on input class; degradation outside the class |
+| **Token-level** | "On this specific forward pass, these heads were the actual causes" | Halpern-Pearl actual causation ([A11](/framework/metrics/causal/a11-actual-cause/)), not averaged intervention effects |
+
+Most published MI claims are distributional but written as if they were token-level ("the model uses this circuit to..."). When the claim is genuinely token-level — asserting that specific components were the actual causes on a specific input — standard activation patching is insufficient because it averages over counterfactuals. Token-level mechanistic claims require actual-causation evidence (A11).
+
 ## Mode as a constraint on interpretation
 
 The mode is not a post-hoc label — it is a pre-analysis commitment that constrains what the analysis means. Before running an experiment, a researcher should state: "This experiment will provide evidence at mode $\mu$. If it succeeds, the claim is: [specific claim at mode $\mu$]. The evidence required is: [specific list]. If I wish to make a claim at mode $\mu' > \mu$, I will additionally need: [specific bridging evidence]."
