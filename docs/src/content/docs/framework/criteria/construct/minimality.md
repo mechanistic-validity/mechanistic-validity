@@ -20,10 +20,6 @@ Minimality requires no redundant members. Every component must be individually n
 
 Formally: for circuit C = {c_1, ..., c_n}, minimality requires that for every c_i in C, ablating c_i while leaving all others intact produces a performance decrease.
 
-## Minimality and the "than" factors
-
-The `than_factor_specialization.py` script tests this directly for the 5 "than" factors (f121, f219, f421, f546, f608): if all 5 activate similarly across comparative, rather-than, and quantity contexts, they are a non-minimal set — one factor would be sufficient. If they specialize by context (the script's SPECIALIZED verdict), each factor is individually necessary for its context type — the set is minimal and each member has a distinct functional role.
-
 ## The per-component pruning pass
 
 1. Take proposed circuit C.
@@ -45,6 +41,20 @@ Multiple minimal circuits can exist (backup name-mover heads in IOI). This is a 
 - Set of components pruned during minimality pass, if any.
 - If no minimality pass was run, flag as open criterion.
 
+## Minimality type declaration
+
+Three kinds of minimality can come apart completely. A claim must declare which it asserts:
+
+| Type | Definition | How established |
+|---|---|---|
+| **Statistical** | Smallest faithful subgraph under the discovery procedure | Greedy edge-pruning, ACDC threshold sweep |
+| **Causal** | Fewest components that are INUS conditions for the behavior | Per-component necessity testing (I1) with confound control (I5) |
+| **Mechanistic** | Decomposition carved at the model's natural joints | Independent structural evidence (weight-space signatures, convergent validity across methods) |
+
+A circuit found by greedy edge-pruning is statistically minimal by construction. Calling it causally minimal requires per-component necessity evidence. Calling it mechanistically natural requires convergent structural evidence from independent methods — the decomposition must correspond to structure the model actually uses, not just the smallest set the discovery algorithm converged to.
+
+**Pass condition for type declaration:** The type of minimality is explicitly stated and the evidence matches that declaration. Mismatch (e.g., statistical minimality claimed as mechanistic naturalness without structural evidence) is a criterion failure.
+
 ## Common failure
 
-Discovery methods (ACDC, EAP, weight classifier) return components ranked by attribution score. Taking top-k without per-component ablation check risks including redundant members.
+Discovery methods (ACDC, EAP, attribution patching) return components ranked by attribution score. Taking top-k without per-component ablation check risks including redundant members.

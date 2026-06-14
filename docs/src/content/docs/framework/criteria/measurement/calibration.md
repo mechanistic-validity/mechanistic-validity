@@ -22,7 +22,7 @@ Calibration transforms a raw score into an interpretable claim. Every reported s
 2. **The SOTA range for the metric.**
 3. **A within-project comparison.**
 
-## The calibration table for this project
+## Reference calibration table
 
 | Task | Metric | Published baseline | Source |
 |---|---|---|---|
@@ -31,17 +31,14 @@ Calibration transforms a raw score into an interpretable claim. Every reported s
 | Greater-Than | Prob diff recovery | 89.5% | Hanna et al. 2023 |
 | SVA | Logit diff faithfulness | 93% | Lazo et al. 2025 |
 | SVA | DAS-IIA (transcoder/CLT) | 0.40–0.60 | Mueller et al. MIB; transcoder papers |
-| Gendered pronoun | Logit diff faithfulness | ≥ full model | Mathwin 2023 |
-| BLiMP SVA | Behavioral accuracy | 95–97% | Warstadt et al. 2020 |
-| BLiMP anaphor_gender | Behavioral accuracy | 99% | Warstadt et al. 2020 |
 
-Every result in the project should include a calibration sentence: *"This score of X is [above/within/below] the published range of Y–Z for [task] in [model] ([source])."*
+Every result should include a calibration sentence: *"This score of X is [above/within/below] the published range of Y–Z for [task] in [model] ([source])."*
 
 If no published baseline exists for the task/model combination, state this explicitly and propose the relevant comparison.
 
-## The SVA IIA = 0.48 finding contextualized
+## Worked example
 
-> "The DAS-IIA score of 0.48 at L8.MLP for SVA in GPT-2 Small is within the published transcoder baseline range of 0.40–0.60 (Mueller et al. MIB; Lazo et al. 2025), making it competitive with SOTA for this task. Subject to baseline separation confirmation (M3), this constitutes a calibrated, competitive result."
+> "The DAS-IIA score of 0.48 for SVA in GPT-2 Small is within the published transcoder baseline range of 0.40–0.60 (Mueller et al. MIB; Lazo et al. 2025), making it competitive with SOTA for this task. Subject to baseline separation confirmation (M3), this constitutes a calibrated, competitive result."
 
 This is what a calibrated result statement looks like.
 

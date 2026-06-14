@@ -16,36 +16,35 @@ criterion_id: "C5"
 
 ## What this criterion requires
 
-Convergent validity is the core of this entire project. Running one metric and claiming a circuit is not enough.
+Running one metric and claiming a circuit is not enough. Convergent validity requires triangulation across independent measurement traditions.
 
 Satisfied when:
 
 1. **≥2 metrics from different evidence families** have been run. Two ablation variants (both causal) do not satisfy — they measure the same thing differently. Metrics must come from different epistemic traditions: e.g., causal + structural, or representational + behavioral.
 2. **The metrics agree on component membership.** Jaccard ≥ 0.5 is a reasonable pass threshold for circuits of ≤ 20 components.
-3. **Disagreement is treated as a finding.** Jaccard ≈ 0 must be reported as a primary result and investigated — not silently resolved by choosing the preferred metric.
+3. **Disagreement is treated as a finding.** Low Jaccard overlap must be reported as a primary result and investigated — not silently resolved by choosing the preferred metric.
 
-## The Jaccard ≈ 0 finding in this project
+## When methods disagree
 
-The weight-circuit (structural analysis) and EAP-circuit (attribution patching) have Jaccard ≈ 0. This is one of the project's most informative findings. It means one of:
+When two discovery methods from different evidence families nominate substantially different component sets (Jaccard < 0.5), the disagreement typically means one of:
 
 - One metric has a methodological flaw explaining its output;
-- The two metrics are sensitive to different real properties (structurally similar but causally inactive components vs. causally active but structurally atypical ones);
-- The construct "SVA circuit" is underspecified and metrics track different things under the same label.
+- The two metrics are sensitive to different real properties (e.g., structurally consistent but causally inactive components vs. causally active but structurally atypical ones);
+- The construct (e.g., "the SVA circuit") is underspecified and metrics track different things under the same label.
 
 All three interpretations are scientifically important. Convergent validity is failed; the disagreement is the finding.
 
 ## Metric coverage for convergent validity
 
-| Metric | Evidence family |
+| Metric type | Evidence family |
 |---|---|
-| Weight classifier (B03) | Structural |
-| EAP attribution patching (A01) | Causal |
-| DAS-IIA (A02) | Representational |
-| Activation patching (A01) | Causal |
-| LLC per component (B04) | Structural |
-| Bootstrap stability (F01) | Measurement |
+| Attribution patching | Causal |
+| DAS-IIA | Representational |
+| Weight-space analysis (SVD, composition scores) | Structural |
+| Activation statistics (LLC, probe accuracy) | Structural / Representational |
+| Bootstrap stability | Measurement |
 
-Any two metrics from different rows constitute a valid test.
+Any two metrics from different evidence families constitute a valid test.
 
 ## Minimum reporting rule
 

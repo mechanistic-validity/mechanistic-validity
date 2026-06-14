@@ -28,6 +28,7 @@ Layer C is where the framework becomes operational. Each criterion is a specific
 | I3 | Specificity | Effect is selective; control-axis IIA ≈ 0 while causal-axis IIA is high | [internal/C_specificity.md](internal/C_specificity.md) |
 | I4 | Consistency | Finding holds across prompt samples, ablation methods, and random seeds | [internal/D_consistency.md](internal/D_consistency.md) |
 | I5 | Confound control | Effect not explained by collateral disruption to non-circuit components | [internal/E_confound-control.md](internal/E_confound-control.md) |
+| I6 | Rival mechanism exclusion | No alternative component set achieves comparable faithfulness, or rivals declared and claim scoped | [internal/rival-mechanism-exclusion.md](internal/rival-mechanism-exclusion.md) |
 
 ### External validity — Does the claim generalize?
 

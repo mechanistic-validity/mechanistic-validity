@@ -30,9 +30,9 @@ A component causally necessary for the target behavior *because* it is necessary
 
 Without specificity, necessity is consistent with the hub hypothesis. With control-axis IIA ≈ 0, the hub interpretation is ruled out.
 
-## Application to this project
+## Worked example
 
-For SVA at L8.MLP: causal axis = subject number (singular vs. plural). Natural control axis = object number — same sentence, similar position, but not the claimed causal variable. If IIA = 0.48 on subject-number and 0.04 on object-number, specificity is satisfied.
+For subject-verb agreement: causal axis = subject number (singular vs. plural). Natural control axis = object number — same sentence, similar position, but not the claimed causal variable. If IIA is high on subject-number and near zero on object-number, specificity is satisfied.
 
 ## Minimum reporting rule
 

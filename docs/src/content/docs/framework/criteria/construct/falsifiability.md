@@ -28,9 +28,9 @@ The criterion requires:
 
 Falsifiability lives under construct validity because the problem is about the *content* of the claim, not whether an experiment succeeded. A claim defined only by what the metrics found — "the SVA circuit is whatever components show above-chance IIA on SVA" — is unfalsifiable by construction: adding components in response to any negative result always restores the claim.
 
-## Example from this project
+## Worked example
 
-> **Falsification condition:** If DAS-IIA at L8.MLP on a held-out SVA set (n=200 prompts, 3 random seeds) does not exceed the random-vector baseline by ≥0.10 in at least 2 of 3 seeds, the claim that L8.MLP is a primary causal locus for SVA in GPT-2 Small is disconfirmed.
+> **Falsification condition:** If DAS-IIA on a held-out prompt set (n ≥ 200 prompts, 3 random seeds) does not exceed the random-vector baseline by ≥ 0.10 in at least 2 of 3 seeds, the claim that the nominated component is a primary causal locus for the target task is disconfirmed.
 
 ## Common failures
 
@@ -42,4 +42,4 @@ Falsifiability lives under construct validity because the problem is about the *
 
 ## Relation to other criteria
 
-Falsifiability interacts with **minimality (C4)**: a non-minimal circuit is harder to falsify because many components provide fallback explanations. It also interacts with **convergent validity (C5)**: when metrics disagree (Jaccard ≈ 0), the falsifiability condition must specify which metric's result counts as disconfirmation.
+Falsifiability interacts with **minimality (C4)**: a non-minimal circuit is harder to falsify because many components provide fallback explanations. It also interacts with **convergent validity (C5)**: when metrics from different evidence families disagree, the falsifiability condition must specify which metric's result counts as disconfirmation.

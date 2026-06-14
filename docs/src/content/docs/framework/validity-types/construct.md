@@ -150,7 +150,7 @@ $$J(C_A, C_B) = \frac{|C_A \cap C_B|}{|C_A \cup C_B|}$$
 
 | Valid pair | Why independent |
 |---|---|
-| Activation patching + weight classifier | Causal (interventionist) vs structural (static weights) |
+| Activation patching + weight-space analysis | Causal (interventionist) vs structural (static weights) |
 | DAS-IIA + SVD spectral analysis | Representational (learned subspace) vs structural (spectral) |
 | EAP + linear probe | Causal (gradient-based) vs representational (supervised) |
 
@@ -169,8 +169,7 @@ Two methods should agree more about the same circuit than about different circui
 
 | Circuit pair | Methods | $J$ | Interpretation |
 |---|---|---|---|
-| IOI: patching vs weight classifier | Causal vs structural | ~0.67 (project estimate) | Strong convergent validity |
-| SVA: weight circuit vs EAP circuit | Structural vs causal | ~0.0 (observed in this project) | Failed — underdetermined |
+| IOI: patching vs structural analysis | Causal vs structural | ~0.67 | Strong convergent validity |
 | Induction heads: behavioral vs structural | Behavioral vs structural | High (qualitative) | Cross-model agreement supports convergent validity |
 
 ## Partial-pass interpretation
