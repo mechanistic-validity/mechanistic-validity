@@ -1,0 +1,76 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc, fit, backgrounds}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    fbox/.style={
+        rectangle, rounded corners=2pt,
+        draw=black!70, fill=black!5,
+        minimum height=1.0cm, minimum width=2.2cm,
+        font=\sffamily\small, align=center,
+        line width=0.6pt,
+    },
+    ebox/.style={
+        ellipse,
+        draw=black!70, fill=black!8,
+        minimum height=1.0cm, minimum width=2.4cm,
+        font=\sffamily\small\bfseries, align=center,
+        line width=0.8pt,
+    },
+    mbox/.style={
+        rectangle, rounded corners=2pt,
+        draw=black!50, fill=white,
+        minimum height=1.0cm, minimum width=2.2cm,
+        font=\sffamily\small, align=center,
+        line width=0.6pt, dashed,
+    },
+    arr/.style={-{Stealth[length=5pt]}, line width=0.7pt, black!60},
+    dotarr/.style={-{Stealth[length=5pt]}, line width=0.7pt, black!40, densely dotted},
+    seclabel/.style={font=\sffamily\footnotesize\bfseries},
+    sublabel/.style={font=\sffamily\scriptsize\itshape\color{black!40}},
+]
+
+% === TOP ROW: §5 FRAMEWORK ===
+\node[fbox] (mode) at (0, 0) {Description\\Mode};
+\node[fbox] (family) at (2.9, 0) {Evidence\\Family};
+\node[fbox] (criteria) at (8.7, 0) {Criteria};
+\node[fbox] (type) at (11.6, 0) {Validity\\Type};
+\node[fbox] (verdict) at (14.5, 0) {Verdict};
+
+\draw[arr] (mode) -- (family);
+\draw[arr] (criteria) -- (type);
+\draw[arr] (type) -- (verdict);
+
+\node[seclabel, above=8pt of mode, xshift=1.2cm] {\textsection 5\; Framework};
+
+% === MIDDLE: EVIDENCE NODE ===
+\node[ebox] (evidence) at (5.8, -1.5) {Evidence};
+
+% Family classifies evidence, evidence evaluated against criteria
+\draw[arr] (family.south) -- (evidence.north west);
+\draw[arr] (evidence.north east) -- (criteria.south);
+
+% === BOTTOM ROW: §6 METHODOLOGY ===
+\node[mbox] (metrics) at (2.9, -3.0) {Metrics};
+\node[mbox] (cals) at (5.8, -3.0) {Calibrations};
+\node[mbox] (protocols) at (8.7, -3.0) {Protocols};
+\node[mbox] (synthesis) at (11.6, -3.0) {Synthesis};
+
+\draw[arr] (metrics) -- (cals);
+\draw[arr] (cals) -- (protocols);
+\draw[arr] (protocols) -- (synthesis);
+
+\node[seclabel, below=8pt of metrics, xshift=2.7cm] {\textsection 6\; Methodology};
+
+% Methodology generates evidence
+\draw[dotarr, line width=1pt] (cals.north) -- (evidence.south);
+
+% === Sublabels ===
+\node[sublabel, right=4pt of evidence] {classifies \& evaluates};
+\node[sublabel, below=2pt of cals, xshift=0cm, yshift=8pt] {};
+
+\end{tikzpicture}
+
+\end{document}
