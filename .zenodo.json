@@ -1,0 +1,25 @@
+{
+  "title": "Mechanistic Validity: A Theory of Validity for Mechanistic Claims",
+  "upload_type": "software",
+  "description": "A theory of validity for mechanistic claims across empirical science, with five validity dimensions forming a dependency chain.",
+  "creators": [
+    {
+      "name": "Tower, Elliot",
+      "orcid": "0000-0001-7004-8884"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "mechanistic validity",
+    "philosophy of science",
+    "interpretability",
+    "validity theory"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/mechanistic-validity/mechanistic-validity",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
