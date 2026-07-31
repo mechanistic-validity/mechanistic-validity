@@ -1,0 +1,1507 @@
+% ============================================================
+% Mechanistic Validity: Scientific Formalization and Theory of
+% Validity for Interpretability Claims
+% ============================================================
+\pdfoutput=1
+
+\documentclass{article}
+
+% TMLR format
+\usepackage[preprint]{tmlr}
+
+\newcommand{\openreview}{\url{https://openreview.net/forum?id=XXXX}}
+\def\month{06}
+\def\year{2026}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{array}
+
+% --- Macros ---
+\newcommand{\mechval}{\textsc{MechVal}}
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+
+% tight tables
+\newcommand{\tighttable}{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.05}}
+
+% add space between caption and table rule
+\usepackage{caption}
+\captionsetup[table]{skip=8pt}
+
+\title{Mechanistic Validity: A Theory of Validity for Mechanistic Claims}
+
+\author{
+Elliot Tower \\
+\texttt{elliot@elliottower.ai}
+}
+
+
+
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\begin{abstract}
+Mechanistic claims are ubiquitous in empirical science---\emph{this circuit implements this computation}, \emph{this gene causes this disease}, \emph{this pathway mediates this outcome}. What makes such a claim valid?
+
+A mechanistic claim can be supported by strong experimental evidence and still be unwarranted. A mechanism can be measured by a reliable metric and still correspond to no coherent computational concept. It can correspond to a coherent concept and rest on purely correlational evidence. It can survive rigorous causal testing at one intervention strength on one prompt distribution and collapse under any other. It can pass all of those tests and still be described at the wrong level of abstraction. These are not points on a continuum---they are independent failures that demand independent remedies. A single high score does not validate a mechanistic claim. Validation is a pattern of evidence across multiple dimensions, and a claim is only as strong as the dimension on which it has the weakest support.
+
+We introduce Mechanistic Validity (\mechval{}), a theory of validity for mechanistic claims. \mechval{} evaluates claims through a seven-layer pipeline: a \emph{description mode} declares what kind of explanation is being offered---not a label applied after analysis, but a constraint declared before it. \emph{Evidence families} classify the sources of signal. \emph{Metrics} identify which concrete tests can measure the claim. \emph{Criteria} test whether the evidence meets the required conditions. Five \emph{validity types}---construct, measurement, internal, external, interpretive---determine which dimensions the evidence addresses, in dependency order: an ambiguous construct cannot be measured; an unreliable metric cannot support a causal inference; a finding not established locally cannot be said to generalize; a narrative cannot be evaluated until the mechanism has been established. \emph{Synthesis protocols} aggregate the evidence. A \emph{verdict} assigns a tier from Proposed to Validated, determined by the weakest gating validity type, not the average. Each criterion is grounded in a specific intellectual tradition that developed it for a reason---usually because a field got burned by ignoring it. Falsifiability is a criterion because philosophy of science spent a century learning what happens when claims cannot be disconfirmed. Necessity-plus-sufficiency is a criterion because neuroscience spent decades discovering that necessity alone does not establish implementation. Dose-response is a criterion because pharmacology learned that single-dose measurements hide compensatory dynamics.
+
+Applied to 13 published claims in mechanistic interpretability of neural networks, the tier system discriminates sharply. Claims range from Proposed (probing classifiers, which establish decodability without causal intervention) through Causally Suggestive and Mechanistically Supported to Triangulated (induction heads, with converging structural, causal, and cross-context evidence)---with every verdict traceable to specific present or missing evidence. One claim---gender bias circuits---reaches Disconfirmed: the construct itself is incoherent, because the heads mediating ``bias'' are the same heads encoding grammatical gender. No published claim currently reaches Validated. The gap between what the field asserts and what the evidence warrants is systematic, not idiosyncratic.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+Mechanistic interpretability has produced a remarkable catalog of internal mechanisms:
+induction heads that implement in-context copying \citep{olsson2022context}, a multi-role
+circuit for indirect object identification \citep{wang2023interpretability}, a greater-than
+algorithm \citep{hanna2023greater}, and sparse autoencoder features proposed to correspond
+to human-interpretable concepts \citep{cunningham2023sparse, bricken2024monosemanticity}. The field has also begun to
+build evaluation infrastructure: faithfulness metrics for circuits
+\citep{miller2024transformer}, the Mechanistic Interpretability Benchmark for comparing
+localization methods across tasks and models \citep{mueller2025mib}, SAEBench for auditing
+sparse autoencoder quality \citep{karvonen2025saebench}, and causal scrubbing for testing
+mechanistic hypotheses via behavior-preserving resampling \citep{chan2022causal}.
+
+But how well-supported are these claims? The IOI circuit---perhaps the field's most cited
+mechanistic result---reports 87\% faithfulness under mean ablation, but
+\citet{miller2024transformer} show that under other ablation methods the number drops below
+50\%; the circuit has never been replicated in a second model family. The greater-than
+circuit reports no negative controls: ablation effects on non-target tasks are never
+measured, so the claimed specificity is untested. Probing studies routinely report high
+accuracy without any causal intervention, leaving open whether the model \emph{uses} the
+decoded information or whether the probe is exploiting incidental linear separability in
+high-dimensional space. The gender bias mediation circuit was validated on a single model
+with a single metric---and the heads identified as mediating bias turn out to be the same
+heads encoding grammatical gender, meaning the construct itself may not be separable.
+Knowledge neuron editing corrupts related facts \citep{dai2022knowledge}, revealing
+off-target effects that were never checked. And unconstrained nonlinear alignment maps can
+achieve 100\% interchange-intervention accuracy on randomly initialized models
+\citep{sutter2025nonlinear}---a worked example of what happens when measurement validity is
+skipped. Meanwhile, two of six standard SAE evaluation metrics fail basic diagnostics for
+reseed stability and baseline separation \citep{karvonen2025saebench}, and automated
+reproducibility checks surface claim-evidence coherence issues that narrative review misses
+\citep{bai2026mecheval}.
+
+These are not failures of execution---they are gaps in the \emph{kind} of evidence
+collected. Each study tests what the proposed mechanism \emph{does}; almost none tests what
+it does \emph{not} do, whether the measurement itself is trustworthy, or whether the
+finding survives a change in method, model, or prompt distribution. A mechanistic
+narrative that was retrofitted to match ablation results is currently indistinguishable
+from one that has survived refutation attempts. This matters because a mechanistic
+explanation has many adjustable parts---which components to include, what roles to assign,
+which edges to draw---and a narrative with enough flexibility will always fit the
+observations. Shared metrics are not yet shared validity criteria.
+
+Every quantitative science that has reached clinical or policy relevance has developed formal validity criteria in response to a specific high-profile failure. Clinical medicine developed randomized controlled trials after thalidomide. Human genetics developed genome-wide association studies and pre-registration after the candidate gene collapse. Pharmacology developed Phase~III requirements after rofecoxib. In each case, the validity framework was reactive---it came after the damage. Mechanistic interpretability is at the same inflection point: the question is whether the field formalizes its validity criteria proactively, before the high-profile failure, or after.
+
+The need for a principled framework is not only academic.  A major coordinated funding signal in AI safety research---the Schmidt Sciences Trustworthy AI agenda \citep{schmidt2026trustworthy}---calls for construct validity, predictive validity, and cross-model generalization of interpretability findings, using precisely these terms but without a unified framework for operationalizing them.  The agenda asks whether mechanistic claims about deception, planning, and situational awareness can be trusted enough to inform deployment decisions.
+
+\mechval{} provides the missing protocol: a structured framework that takes the validity vocabulary the field already uses informally and makes it operational, falsifiable, and auditable. It evaluates claims through a five-layer pipeline: a \emph{description mode} declares at what level the claim is stated---computational, algorithmic, or implementational. \emph{Evidence families} classify the kinds of signal available (weights, activations, behavior, training). Evidence is scored against 30 operational \emph{criteria} grouped into five \emph{validity types}---construct, measurement, internal, external, and interpretive---in dependency order. The result is a \emph{verdict}: a structured validity profile showing which criteria are met, which are untested, and which fail, with a tier from Proposed to Validated summarizing the overall evidential status. The concrete measurement procedures---metrics, calibrations, protocols, and synthesis methods---that generate the evidence are described separately in \Cref{sec:methodology}.
+
+The pipeline has two uses. When \emph{running experiments}, evidence builds upward from metrics through criteria to a verdict. When \emph{auditing a claim}, the process reverses: starting from a verdict, the framework identifies which criteria are unmet and whether the description mode is supported by the available evidence. Most published MI claims, when audited, land at Causally Suggestive or Mechanistically Supported---necessity is shown but specificity, measurement calibration, or cross-method consistency remain untested.
+
+\mechval{} is claim-centric and method-agnostic: it evaluates circuits, SAE features, probing classifiers, steering vectors, transcoders, and crosscoders with the same criteria. It does not replace existing benchmarks or methods. It provides a common layer above them: claim-level validation built on method-level evaluation.
+
+We describe lessons from validity failures across sciences (\Cref{sec:motivation}), the framework (\Cref{sec:framework}), the concrete methodology for generating evidence (\Cref{sec:methodology}), its theoretical foundations (\Cref{sec:foundations}), its application to 13 published circuits (\Cref{sec:case-studies}), and its implications for the field (\Cref{sec:discussion}).
+
+
+% ============================================================
+\section{Motivation: What Happens Without Validity Criteria}
+\label{sec:motivation}
+
+The introduction surveyed specific evidence gaps in published MI claims. This section places those gaps in a broader context: every mature empirical science has learned---often painfully---that strong individual results are not the same as valid conclusions. Mechanistic interpretability is not the first field to face this problem. The specific failure modes that appear in MI have close analogs in neuroscience, genetics, psychology, and pharmacology, and in each case the failure maps onto a validity criterion that would have detected it.
+
+\subsection{Validity Failures in Mechanistic Interpretability}
+\label{sec:mi-failures}
+
+We organize published MI validity failures by the criterion they violate. This is not a literature review of MI methods; it is a catalog of the \emph{kinds} of evidence gaps that recur across the field's most prominent results.
+
+\paragraph{Measurement validity (M1--M2): metrics that do not measure what they claim.}
+\citet{karvonen2025saebench} audit six standard SAE evaluation metrics and find that two fail basic diagnostics: scores on shuffled or random baselines are indistinguishable from scores on real features. The metrics are reliable in the test-retest sense (M1)---they give the same answer when rerun---but fail baseline separation (M2): a high score does not distinguish genuine feature quality from chance. Separately, \citet{sutter2025nonlinear} show that unconstrained nonlinear alignment maps achieve 100\% interchange-intervention accuracy on randomly initialized models. The IIA metric is working correctly; it is measuring the alignment map's flexibility, not the model's representational structure. Both cases illustrate the same principle: a reliable metric pointed at the wrong target produces confident wrong answers.
+
+\paragraph{Internal validity (I1--I5): causal claims without adequate controls.}
+The IOI circuit demonstrates necessity (I1) and sufficiency (I2)---ablating the circuit degrades IOI performance, and running the circuit alone recovers 87\% of the logit difference. But specificity (I3) is untested: the original paper does not report whether ablating the IOI circuit degrades performance on unrelated tasks. If ablating the ``IOI circuit'' also degrades, say, subject-verb agreement, then what was discovered is not an IOI-specific mechanism but a general-purpose subnetwork. Similarly, the greater-than circuit \citep{hanna2023greater} reports no negative controls: ablation effects on non-target tasks are never measured. The knowledge neuron literature \citep{dai2022knowledge} reveals a related failure: editing one factual association corrupts related facts, demonstrating off-target effects (I3 failure) that were not anticipated or controlled for.
+
+Double dissociation (I4) is almost never tested. A proper double dissociation would require showing that ablating circuit A breaks task X but not task Y, \emph{and} ablating circuit B breaks task Y but not task X. \citet{meloux2025everything} raise a more fundamental challenge: activation patching returns alternative head sets with comparable faithfulness scores for the same task. The ``IOI circuit'' is not the unique set of heads implementing indirect object identification---it is \emph{one of several} head sets that pass the same faithfulness threshold. This is Quine's underdetermination problem \citep{quine1951two} made concrete in mechanistic interpretability: the data (faithfulness scores) are consistent with multiple incompatible theories (circuits), and the standard experimental procedure cannot distinguish between them.
+
+This result does not invalidate circuit discovery---it constrains what circuit discovery can claim. A circuit that passes faithfulness tests has demonstrated that it is \emph{a sufficient subnetwork}, not \emph{the mechanism}. The distinction matters: if three different head sets each recover 85\% of logit difference, the interesting question is not which one is ``the circuit'' but what they share (the intersection may be the genuine causal core) and how they differ (the symmetric differences may reflect the method's degrees of freedom). \mechval{} handles this through the Underdetermined verdict: when evidence is consistent with multiple competing mechanisms, the framework requires additional experiments that discriminate between rivals rather than selecting one post hoc. Reporting non-uniqueness explicitly---as \citet{meloux2025everything} do---is a stronger scientific contribution than suppressing it.
+
+\paragraph{External validity (E1--E4): findings that do not generalize.}
+\citet{miller2024transformer} show that the IOI circuit's headline 87\% faithfulness is specific to mean ablation; under resample ablation, faithfulness drops below 50\%. The causal claim is method-conditional (E1 failure). Prompt generalization (E2) is rarely tested systematically. Cross-model generalization (E4) is almost never tested: the IOI circuit has been studied extensively in GPT-2 Small but has not been replicated in a second model family. A mechanism that appears only in one model under one ablation method with one prompt format has not established external validity.
+
+\paragraph{Construct validity (C1--C4): constructs that are not well-defined.}
+Gender bias circuits \citep{vig2020gender} fail discriminant validity (C4): the heads identified as mediating gender bias are the same heads encoding grammatical gender agreement. Ablating these heads reduces biased completions but equally degrades correct pronoun resolution. The construct ``gender bias circuit'' presupposes a separation between bias and knowledge that does not exist in the model's representations.
+
+\paragraph{Interpretive validity (V1--V5): labels that exceed the evidence.}
+The Othello ``world model'' \citep{li2023othello} is a linear probe showing that board state is decodable from activations. The evidence supports ``linearly decodable'' (representational-statistical); the label ``world model'' implies a computational-level claim about the model maintaining and updating an internal representation for planning. The gap between what was measured and what was named is an interpretive inflation (V4).
+
+\subsection{Validity Failures Across the Sciences}
+
+The failure modes cataloged above are not unique to MI. Every field that makes causal claims from observational or experimental data has encountered the same structural problems---and in many cases, the consequences were severe enough to reshape entire research programs. We present five cases, chosen because each maps onto a specific \mechval{} criterion and because the fields involved---neuroscience, medicine, genetics, physics---are the same fields whose validity methods \mechval{} draws from.
+
+\paragraph{Dead salmon fMRI (M2: baseline separation).}
+\citet{bennett2010neural} scanned a dead Atlantic salmon while presenting it with photographs of humans in social situations. Using the standard uncorrected threshold ($p < 0.001$, 3-voxel extent), 16 significant voxels appeared in the salmon's brain cavity. When appropriate multiple comparisons corrections were applied, not a single voxel survived. \citet{eklund2016cluster} extended this systematically: running 3 million null-task analyses on resting-state data from 499 controls, they found that standard fMRI software produced false positive rates up to 70\%, potentially questioning the validity of thousands of published studies. The dead salmon test \emph{is} M2, operationalized: any finding that does not exceed a null distribution constructed from equivalent procedures fails baseline separation.
+
+\paragraph{Cardiac stents for stable angina (I3: specificity).}
+For three decades, percutaneous coronary intervention (stenting) was standard treatment for stable angina, with approximately 500,000 procedures performed annually in the US at \$30,000 each. The causal model was straightforward: coronary stenosis restricts blood flow, stenting restores flow, symptoms resolve. The ORBITA trial \citep{alhabib2018orbita} was the first placebo-controlled test: patients underwent cardiac catheterization, but half received a sham procedure with no stent placed. The result: zero difference in exercise tolerance or angina symptoms between stent and sham groups. The entire symptomatic benefit was placebo. I3 requires that the mechanism connecting intervention to outcome be validated, not assumed. The same structure appears in MI circuit ablation: ablating a circuit and observing performance recovery does not establish that the circuit \emph{caused} the computation---without a sham control (ablating a non-circuit of equal size), the recovery might reflect the network's general resilience to perturbation rather than the circuit's specific causal role.
+
+\paragraph{Candidate gene psychiatry (I5: confound control).}
+The candidate gene era (1990s--2010s) produced thousands of published associations between specific gene variants---particularly 5-HTTLPR, the serotonin transporter gene---and depression risk. \citet{border2019no} tested all 18 most-studied candidate genes using data from 620,000 individuals across three independent samples. The result: the 18 candidate genes were ``no more associated with depression than randomly chosen genes.'' Twenty-five years of published literature, estimated at \$250 million in NIH funding, was characterized as likely false positives from underpowered studies with no pre-registration and pervasive HARKing. I5 requires that alternative explanations (population stratification, prior drug exposure, selective reporting) be ruled out before a causal association claim is published.
+
+\paragraph{Cold fusion (M1/M2: measurement reliability and baseline separation).}
+In 1989, Pons and Fleischmann announced room-temperature nuclear fusion. Labs worldwide scrambled to replicate; several initially reported confirmations. Within months, all retracted: neutron detectors gave false positives when exposed to heat, thermometers had faulty wiring, and the original paper reported a gamma peak without its corresponding Compton edge---a physical impossibility indicating instrumentation error, not fusion. Approximately \$100 million in public funding was spent before a DOE panel concluded the evidence was dead. M1 and M2 require that the measurement instrument be validated independently of the expected outcome and that positive findings exceed a null distribution. In MI, the parallel is direct: a metric that produces high scores on random models (Sutter) or on shuffled baselines (SAEBench) has the same structural problem as a neutron detector that fires when heated.
+
+\paragraph{BOLD signal (M1: the instrument measures the wrong thing).}
+Functional MRI does not measure neural activity---it measures blood oxygenation changes that are \emph{coupled} to neural activity through a hemodynamic mechanism that varies by brain region, age, disease state, and individual. The coupling relationship is still not fully characterized. Every functional neuroimaging claim since 1990 that says ``region X activates during task Y'' is technically a claim about hemodynamics, not neurons---and the two can dissociate. This is more structurally important than the dead salmon (which is about statistical correction): it is an M1 failure baked into the entire measurement instrument. The MI analog is activation patching: patching measures how the model's output changes when an activation is replaced, but this conflates the component's causal role with the network's compensatory capacity---the observed effect is a joint property of both, and a single patching experiment cannot separate them.
+
+\subsection{Validity Failures in Machine Learning}
+
+The failures above come from fields with decades of methodological reflection. Machine learning has its own growing catalog---and its own internal diagnosis: \citet{lipton2019troubling} argue that ML systematically fails to distinguish explanation from speculation, misattributes empirical gains to proposed innovations rather than hyperparameter tuning, and overloads suggestive language (``reading comprehension,'' ``reasoning,'' ``understanding'') without validating that the label matches what is happening. The cases below are instances of this structural problem.
+
+\paragraph{Emergent abilities mirage (M4: calibration).}
+\citet{schaeffer2024emergent} showed that ``emergent abilities'' in large language models---apparent phase transitions where capabilities appear suddenly at scale---are artifacts of nonlinear evaluation metrics. Exact-match accuracy creates a sharp threshold where the model goes from 0\% to near-100\%; switch to linear metrics (token edit distance, Brier score) and the ``emergence'' disappears---the ability was always there, growing smoothly. M4 requires that reported numbers correspond to meaningful quantities. The metric created the phenomenon: emergence was real in the measurement but not in the model.
+
+\paragraph{COVID-19 ML diagnostics (I5: confound control).}
+\citet{roberts2021common} reviewed 61 studies claiming to detect COVID-19 from chest X-rays and CT scans. Not a single model was clinically usable. \citet{degrave2021ai} showed why: saliency maps revealed that models relied on laterality markers, image border artifacts, and patient positioning---not lung pathology. Internal AUC was 0.99; on radiographs from new hospitals, it dropped to 0.76. The datasets were near-worst-case for confounding: COVID-positive images came from one source, COVID-negative from another, so any systematic difference between sources correlated perfectly with disease label. I5 requires that confounders be identified and controlled before a causal claim is made. The same failure appears in MI probing studies: a probe that decodes a concept from activations may be exploiting a confound (a correlated feature, incidental linear separability in high-dimensional space) rather than detecting the model's actual computation.
+
+\paragraph{Shortcut learning (E2/C4: generalization and discriminant validity).}
+\citet{geirhos2019imagenet} showed that ImageNet-trained CNNs are primarily texture detectors, not shape detectors---directly opposite to human perception and to what the field assumed. A cat-shaped object with elephant texture is classified as an elephant. Models achieving 90\%+ accuracy on the benchmark had learned a fundamentally different construct than intended. E2 requires that findings generalize across conditions; C4 requires that the measure distinguish the target construct from its neighbors. ``ImageNet accuracy'' was treated as licensing claims about ``visual understanding,'' but the benchmark could not distinguish texture matching from shape recognition.
+
+\subsection{The Common Structure}
+
+\Cref{tab:cross-science} maps these failures to \mechval{} criteria alongside the MI cases from \Cref{sec:mi-failures}.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Validity failures across fields, mapped to \mechval{} criteria. Each failure involves a strong individual result with an untested link in the inference chain.}
+\label{tab:cross-science}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{5.5cm}@{}}
+\toprule
+\textbf{Case} & \textbf{Field} & \textbf{Criterion} & \textbf{Untested link} \\
+\midrule
+Dead salmon fMRI & Neuroscience & M2 Baseline sep. & No null distribution; 70\% false positive rate \\
+Cold fusion & Physics & M1/M2 Reliability & Instrument error; \$100M spent \\
+BOLD signal & Neuroscience & M1 Reliability & Hemodynamics $\neq$ neural activity \\
+SAEBench metrics & MI & M2 Baseline sep. & Random baselines $\approx$ real features \\
+Sutter IIA & MI & M2 Baseline sep. & 100\% IIA on random models \\
+\midrule
+Cardiac stents & Medicine & I3 Specificity & Sham-controlled: zero benefit \\
+Knowledge neurons & MI & I3 Specificity & Editing one fact corrupts neighbors \\
+Candidate genes & Genetics & I5 Confound ctrl & 18 genes $=$ random in $n=620$K \\
+COVID-19 ML & ML & I5 Confound ctrl & 0/61 models learned COVID pathology \\
+\midrule
+IOI circuit & MI & E1 Interv.\ reach & 87\% $\to$ $<$50\% under other ablation \\
+Shortcut learning & ML & E2/C4 Generalization & Texture $\neq$ shape understanding \\
+\midrule
+Emergent abilities & ML & M4 Calibration & Metric created the phase transition \\
+Othello ``world model'' & MI & V4 Interp.\ inflation & ``Decodable'' narrated as ``world model'' \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Despite the diversity of these failures---across physics, neuroscience, genetics, medicine, and machine learning---they share a common structure: in each case, an individual experimental result was strong, but the \emph{inference chain} from measurement to conclusion had an untested link. The result was real; the conclusion was not warranted by the evidence pattern. Claims migrated upward in inferential scope faster than supporting validity criteria could be established: a significant voxel cluster became a ``brain region'' that ``processes'' emotion (fMRI), a gene-environment interaction in a study of 200 became a ``biomarker for depression'' (candidate genes), a high accuracy score became ``visual understanding'' (shortcut learning), a sharp metric curve became ``emergent abilities'' (nonlinear evaluation), and symptom relief after stenting became ``evidence of a causal mechanism'' (ORBITA). In each case, there was no institutional check requiring the claim to be at the validity tier its evidence actually supported.
+
+\mechval{} provides exactly this check. Each failure mode maps onto a specific criterion: measurement unreliability onto M1, lack of baselines onto M2, missing specificity controls onto I3, method-conditional results onto E1, interpretive inflation onto V4, unfalsifiable constructs onto C1. The framework does not prevent researchers from making ambitious claims; it makes the distance between evidence and claim precisely visible, so that the field can prioritize the experiments that would close the gap rather than investing years of follow-up work on conclusions that were not adequately supported.
+
+
+% ============================================================
+\section{Related Work}
+\label{sec:related}
+
+\mechval{} is designed to complement, not replace, existing MI evaluation infrastructure. MIB \citep{mueller2025mib} is method-vs-method: which discovery algorithm produces the best circuit? TracR \citep{lindner2024interp} is method-vs-ground-truth: does the method find the true circuit in a synthetic model? \mechval{} is claim-centric: given a claim about how a model works, what evidence supports it and what remains untested? MIB and TracR evaluate discovery methods; \mechval{} evaluates the claims built on their outputs.
+
+Recent work applies construct validity theory to ML evaluation more broadly. \citet{bean2025measuring} find that fewer than 16\% of LLM benchmarks use statistical validity methods---a striking parallel to our finding that most MI claims lack measurement validity (M1--M6). Bean et al.'s diagnosis is that benchmarks are treated as self-validating once they gain community adoption; the same dynamic applies to MI metrics, where faithfulness and IIA are used as primary evidence without calibration checks. \citet{freiesleben2025benchmarking} develop a psychometric framework for benchmark evaluation grounded in Cronbach, Meehl, and Messick, arguing that benchmarks should be evaluated as measurement instruments with explicit reliability and validity properties. We agree with both contributions and extend them in two directions: from benchmarks to mechanistic claims (our unit of analysis is a causal assertion about how a model works, not a task-performance score), and from construct validity alone to five distinct validity types in dependency order---construct, measurement, internal, external, and interpretive---each grounded in an established scientific tradition. Where Freiesleben et al.\ ask ``does this benchmark measure the right thing?'' and Bean et al.\ ask ``is this benchmark statistically sound?,'' \mechval{} asks ``does the evidence pattern support the causal claim?''
+
+SAEBench \citep{karvonen2025saebench} audits SAE evaluation metrics; \mechval{} treats that audit as evidence about its own measurement-validity criteria (M1--M6). MechEvalAgent \citep{bai2026mecheval} checks whether published MI code reproduces; \mechval{} asks whether the evidence pattern supports the claim. Unstructured LLM-as-judge evaluation \citep{zheng2023judging} lacks the operational criteria to distinguish validity from plausibility. A companion paper automates \mechval{} via structured LLM extraction against the 30 criteria.
+
+
+
+\begin{figure}[H]
+\centering
+\vspace{-8pt}
+\includegraphics[width=\linewidth, trim=0 15 0 15, clip]{pipeline-horizontal.pdf}
+\vspace{-12pt}
+\caption{The \mechval{} pipeline. Each step poses a question that must be answered before proceeding to the next.}
+\label{fig:pipeline}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\vspace{-8pt}
+\includegraphics[width=\linewidth, trim=0 15 0 15, clip]{pipeline-clean.pdf}
+\vspace{-12pt}
+\caption{The \mechval{} pipeline (compact view).}
+\label{fig:pipeline-clean}
+\end{figure}
+
+
+% ============================================================
+\section{From Claim to Verdict}
+\label{sec:overview}
+
+Consider a concrete claim: ``The IOI circuit uses three name-mover heads (9.9, 9.6, 10.0) to copy the indirect object to the output position.'' This claim appears in a widely-cited paper, is supported by ablation experiments, and has a clear mechanistic narrative. What has this claim established, and what remains untested?
+
+The framework evaluates such a claim through five layers (\Cref{fig:pipeline}):
+
+\begin{enumerate}[nosep]
+\item \textbf{Description mode.} At what level is the claim made? The IOI claim operates at the implementational-functional level: it names specific heads and says what each one does. A weaker claim (``GPT-2 solves IOI'') would be computational; a stronger one (``head 9.9 implements copying via its OV circuit'') would require additional structural evidence.
+
+\item \textbf{Evidence family.} What kinds of evidence are available? The original IOI paper provides primarily activation-based evidence (ablation) and some behavioral evidence (faithfulness). Weight-based evidence (weight-space analysis of the OV circuits) and cross-model evidence (does the same circuit appear in GPT-2 Medium?) would strengthen the claim by adding independent failure modes.
+
+\item \textbf{Criteria.} Does the evidence meet the bar? The IOI circuit passes necessity (I1: ablation degrades performance) and sufficiency (I2: the circuit alone recovers 87\% of logit difference). But specificity (I3: does the circuit affect \emph{only} IOI?) is untested, and the 87\% faithfulness number is method-conditional---it drops below 50\% under non-mean-ablation methods \citep{miller2024transformer}, partially failing intervention reach (E1). The concrete metrics used---activation patching, role ablation, faithfulness scores---are described in \Cref{sec:methodology}.
+
+\item \textbf{Validity type.} Which validity dimensions are satisfied? Construct validity (the claim is well-defined), partial internal validity (necessity and sufficiency shown but specificity untested), partial external validity (limited prompt generalization, no cross-model replication). Measurement validity is unaddressed---no calibration of the ablation metrics themselves.
+
+\item \textbf{Verdict.} What tier does the claim reach? Mechanistically Supported---necessity and sufficiency are established with at least one method, but the evidence comes primarily from one methodological family (ablation-based), key criteria remain untested (I3, I4, E4), and the faithfulness result is method-conditional. The verdict is not a judgment on the paper's quality; it is a precise characterization of what has been established and what has not.
+\end{enumerate}
+
+The 30 criteria also formalize common failure modes observed in published MI research (\Cref{tab:failures}).
+
+\begingroup
+\small
+\begin{table}[H]
+\centering
+\caption{Twelve common failure modes in MI research, each mapped to the criteria that detect it.}
+\label{tab:failures}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}p{4.0cm}@{}}
+\toprule
+\textbf{Failure mode} & \textbf{What happens} & \textbf{Criterion} & \textbf{Example} \\
+\midrule
+Cherry-picking metrics & Run multiple ablation methods, report only the best number & E1 Intervention\newline reach & IOI: 87\% mean ablation reported; resample ablation (40\%) omitted \\
+\midrule
+No baseline control & Report high score without testing a random or untrained model & M2 Baseline\newline separation & Unconstrained nonlinear IIA achieves 95\% on random models; structured methods with identifiability constraints do not \citep{sutter2025nonlinear} \\
+\midrule
+No negative controls & Only test predictions that should pass; never test what the mechanism should \emph{not} affect & I3 Specificity\newline C1 Falsifiability & Successor heads: cross-domain ablation effects on non-successor tasks never reported \\
+\midrule
+Construct incoherence & Target construct is not separable from a neighboring one & C4 Discriminant\newline validity & Gender bias circuits: bias and knowledge share the same heads \\
+\midrule
+Off-target effects & Ablation works for the target task; other tasks never checked & I3 Specificity & Knowledge neurons: editing one fact corrupts related facts (ripple effects) \\
+\midrule
+Circuit redefinition & Drop heads that hurt faithfulness, call it ``refined'' & C1 Falsifiability & Adjusting circuit membership to maximize the target metric \\
+\midrule
+Post-hoc role labeling & Name heads after observed behavior; the label cannot fail & C1 Falsifiability & ``Name mover'' assigned after seeing logit attribution \\
+\midrule
+No double dissociation & Show necessity but never test the converse & I4 Double\newline dissociation & IOI circuit ablated $\to$ IOI breaks; SVA circuit $\to$ IOI intact never tested \\
+\midrule
+Interpretive inflation & Label implies intent or algorithm beyond what evidence shows & V4 Anthropo-\newline morphism check & ``World model'' for Othello (evidence supports ``linearly decodable'') \\
+\midrule
+Scope creep & Validate on one prompt format, claim generality & V5 Scope decl.\newline E2 Prompt gen. & Greater-than circuit tested only on year ranges; claimed as general ordinal comparison \\
+\midrule
+Flexible scope & Narrow the claim after seeing results so it cannot fail & V5 Scope\newline declaration & Restricting scope post-hoc to the subset of prompts that work \\
+\midrule
+Ignoring alternatives & Circuit works, but so does a different set of heads & I4 Double dissoc.\newline C3 Convergent val. & Meloux et al.\ find alternative IOI circuits with comparable faithfulness \\
+\bottomrule
+\end{tabular}
+\end{table}
+\endgroup
+
+
+% ============================================================
+\section{The Framework}
+\label{sec:framework}
+
+
+The \mechval{} framework has five layers, presented here in pipeline order (\Cref{fig:pipeline}): description modes (\Cref{sec:description-modes}), evidence families (\Cref{sec:evidence-families}), criteria (\Cref{sec:criteria}), validity types (\Cref{sec:validity-types}), and verdict tiers (\Cref{sec:verdict-tiers}). The concrete measurement procedures---metrics, calibrations, protocols, and synthesis methods---that generate the evidence evaluated against these layers are described separately in \Cref{sec:methodology}.
+
+\subsection{Description Modes}
+\label{sec:description-modes}
+
+A description mode is a commitment about what kind of explanation is being offered (\Cref{tab:modes}). It is not a label applied after analysis---it is a declaration that determines what counts as evidence, what counts as a gap, and what the finding means if it succeeds. The distinction matters because mechanistic interpretability routinely conflates levels: a paper that discovers \emph{which components} are active (implementational-topographic) writes a narrative about \emph{what the model computes} (computational). Each level upgrade requires additional bridging evidence that the lower level cannot provide.
+
+The seven modes extend Marr's three-level hierarchy \citep{marr1982vision} by splitting the implementational level into four sub-types---functional, connectomic, statistical, and topographic---reflecting the fact that MI papers routinely conflate claims at these different levels. The modes form a partial order by evidential commitment. A computational claim commits to a function being computed and a reason it is the right function. An algorithmic claim commits to a specific procedure. A representational claim commits to what information is encoded but not how it is processed. The four implementational sub-types commit to progressively weaker structural facts: which components are involved (topographic), how they are wired (connectomic), what their activations look like (statistical), and what input-output transformation each performs (functional).
+
+\begin{table}[H]
+\centering
+\small
+\caption{Seven description modes, ordered from most committal (computational) to least committal (topographic). Higher modes require all evidence from lower modes plus bridging evidence. Implementational-statistical is partially orthogonal: it characterizes activation distributions rather than making structural commitments.}
+\label{tab:modes}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}rl>{\raggedright\arraybackslash}p{4.8cm}>{\raggedright\arraybackslash}p{5.2cm}@{}}
+\toprule
+& \textbf{Mode} & \textbf{What it asks} & \textbf{Example} \\
+\midrule
+1 & Computational & What function does the system compute, and why? & ``GPT-2 predicts the indirect object'' \\
+\midrule
+2 & Algorithmic & What procedure does it execute? & ``A detect-inhibit-copy algorithm'' \\
+\midrule
+3 & Representational & What information is encoded, and in what geometry? & ``The IO name is linearly encoded at layer 8'' \\
+\midrule
+4 & Impl.-Functional & What transformation does each component perform? & ``Head 9.9 copies names to the output'' \\
+\midrule
+5 & Impl.-Connectomic & How are components wired? & ``S-inhibition feeds name movers via residual stream'' \\
+\midrule
+6 & Impl.-Statistical & What do activations look like? & ``Head 9.9 attends strongly to IO position'' \\
+\midrule
+7 & Impl.-Topographic & Which components are involved? & ``Heads 9.9, 9.6, 10.0'' \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A claim may carry evidence at several modes simultaneously; the framework does not average them. Each mode-level sub-claim receives its own assessment, and the overall verdict is reported at the strongest mode whose required evidence is complete, with lower-mode evidence noted as supporting and higher-mode evidence as suggestive. The mode assigned to a verdict is thus the strongest level for which all required evidence is present. Partial evidence at a higher level does not upgrade the mode---it is reported as suggestive while the verdict is issued at the established mode. For example, a claim at the algorithmic level (``the model runs a detect-inhibit-copy algorithm'') requires both the topographic evidence (which heads are involved) and the additional evidence that the heads implement the claimed procedure---path-level causal tracing, timing consistency, and sufficiency of the minimal circuit.
+
+\subsection{Evidence Families}
+\label{sec:evidence-families}
+
+An evidence family classifies a metric's output by the source of signal it draws on, independent of the specific tool used to generate it (\Cref{tab:families}). The classification matters because convergent validity---two independent lines of evidence agreeing---is the strongest form of support for a mechanistic claim. But not all agreement is equally informative: two activation-based metrics agreeing shares failure modes, while an activation-based intervention and a weight-space analysis agreeing is substantially stronger, because convergent evidence provides triangulated support across independent methodologies.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Four evidence families, classified by the source of signal. Convergent evidence across families with independent failure modes is qualitatively stronger than redundant evidence from the same family.}
+\label{tab:families}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}ll>{\raggedright\arraybackslash}p{4.5cm}>{\raggedright\arraybackslash}p{5cm}@{}}
+\toprule
+& \textbf{Family} & \textbf{What it measures} & \textbf{Examples} \\
+\midrule
+A & Weights (structural) & Weight-space properties (no forward pass) & SVD, effective rank, OV/QK composition, MDL, circuit transplant \\
+\midrule
+B & Activations (representational) & Runtime representations and their manipulation & Probing, CKA, activation patching, DAS-IIA, MI, PID, steering \\
+\midrule
+C & Behavior (behavioral) & Input-output behavior under manipulation & Faithfulness, logit diff, KL divergence, dose-response, prompt perturbation \\
+\midrule
+D & Training (temporal) & How the model changed during training & Loss curves, checkpoint comparison, grokking dynamics, phase transitions \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The primary function of the family classification is to structure convergent validity assessments. When evaluating a claim, the analyst asks three questions: How many evidence families support the claim? Which families are represented? And are there families that \emph{should} support the claim but do not? Absence of expected evidence from a family is informative: it may indicate a gap in the claim or a limitation of the proposed mechanism.
+
+Each family answers a different question about the mechanism. Weights: what does the architecture encode before any data flows? Activations: what does the model compute at runtime? Behavior: does the circuit reproduce the model's outputs? Training: how did the mechanism develop? Within each family, evidence can be observational (measuring without changing the model) or interventional (changing something and observing the effect), and interventional evidence is epistemically stronger because it rules out confounds that observational evidence cannot.
+
+Each family has characteristic strengths and blind spots. Weight-based metrics (A) cannot be confounded by runtime compensation but cannot distinguish used capacity from unused capacity. Activation-based metrics (B) establish necessity and sufficiency directly but are vulnerable to backup circuits that compensate after ablation. Behavioral metrics (C) test whether the circuit reproduces the model's outputs, but behavioral equivalence does not imply mechanistic equivalence---different circuits can produce the same behavior for different reasons. Training-based metrics (D) reveal developmental trajectories but cannot establish that a mechanism is causally responsible for current behavior. Measurement calibrations---bootstrap stability, seed variance, baseline separation---cut across all four families and are described in \Cref{sec:calibrations}.
+
+\subsection{Criteria}
+\label{sec:criteria}
+
+Criteria are specific, falsifiable conditions that must be met for a validity type to be satisfied (\Cref{tab:criteria}). Each criterion has a concrete pass condition---for example, I1 (necessity) requires that ablating the component degrades performance across at least two independent methods, not just one. A claim either passes, partially passes, or fails each criterion, producing a structured validity profile rather than a single score.
+
+\begingroup
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\begin{table}[H]
+\centering
+\small
+\caption{Thirty criteria across five validity types. Each criterion has a concrete test; a claim either passes, partially passes, or fails, producing a structured validity profile.}
+\label{tab:criteria}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}llp{8.5cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Criterion} & \textbf{Description} \\
+\midrule
+C1 & Falsifiability & Can the claim be refuted? \\
+C2 & Structural plausibility & Is the mechanism physically possible in the architecture? \\
+C3 & Convergent validity & Do multiple independent methods agree? \\
+C4 & Discriminant validity & Does the measure distinguish this from neighboring constructs? \\
+C5 & Nomological validity & Does the claim fit into a broader theory? \\
+\midrule
+M1 & Reliability & Do repeated measurements give the same answer? \\
+M2 & Baseline separation & Is the score distinguishable from random/untrained baselines? \\
+M3 & Stability & Is the classification robust to perturbation? \\
+M4 & Calibration & Are the numbers meaningful? \\
+M5 & Sensitivity & Can the instrument detect known-true effects? \\
+M6 & Invariance & Does the metric behave consistently across conditions? \\
+\midrule
+I1 & Necessity & Is the circuit required for the behavior? \\
+I2 & Sufficiency & Is the circuit enough to produce the behavior? \\
+I3 & Specificity & Does the circuit do this task and not everything? \\
+I4 & Double dissociation & Can this circuit be separated from other circuits? \\
+I5 & Confound control & Are alternative explanations ruled out? \\
+I6 & Epistatic interaction & Do circuit components interact non-additively? \\
+I7 & Rescue reversibility & Does restoring a corrupted component recover behavior? \\
+I10 & Confounding sensitivity & How strong must an unmeasured confounder be to explain the result? \\
+\midrule
+E1 & Intervention reach & Do different intervention methods agree? \\
+E2 & Prompt generalization & Does it work on diverse prompts? \\
+E3 & Cross-task generalization & Does the mechanism transfer to related tasks? \\
+E4 & Cross-model generalization & Does the mechanism appear in other models? \\
+E5 & Graded response & Does partial ablation produce partial effects? \\
+E6 & Novel prediction & Does the mechanism predict new, untested behaviors? \\
+\midrule
+V1 & Level declaration & At what description mode is the claim made? \\
+V2 & Level-evidence match & Does the evidence support claims at that level? \\
+V3 & Alternative level & Could the evidence be explained at a different level? \\
+V4 & Anthropomorphism check & Is the interpretation projecting human concepts? \\
+V5 & Scope declaration & What does the claim explicitly not cover? \\
+\bottomrule
+\end{tabular}
+\end{table}
+\endgroup
+
+
+
+
+\begingroup
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\begin{table}[H]
+\centering
+\small
+\caption{Criterion status categories. Status labels summarize the evidential state of an individual criterion, not the overall verdict for the claim.}
+\label{tab:criterion-status}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lp{10.5cm}@{}}
+\toprule
+\textbf{Status} & \textbf{Meaning} \\
+\midrule
+Confirmed & Tests capable of exposing the relevant failure mode were conducted and passed. \\
+\midrule
+Partially confirmed  & Supportive evidence exists, but it is too narrow, method-dependent, weakly calibrated, or insufficiently severe to establish the criterion. \\
+\midrule
+Inconclusive & Relevant tests give conflicting results across methods, datasets, interventions, calibrations, or scopes. \\
+\midrule
+Disconfirmed & An appropriate test was conducted and the criterion failed. \\
+\midrule
+Untested & No test capable of evaluating the criterion has been conducted. \\
+\bottomrule
+\end{tabular}
+\end{table}
+\endgroup
+
+For each validity criterion, we assign a criterion status from an ordered five-level scale: Confirmed, Partially confirmed, Inconclusive, Disconfirmed, or Untested. These statuses are ordinal verdict categories in the error-statistical tradition of \citet{mayo1996error, mayo2018statistical}: a criterion is Confirmed if and only if the relevant experimental tests were conducted under conditions of sufficient severity to have detected failure, and the criterion passed those tests. Following \citet{achinstein2001book}, we further distinguish criteria where the available evidence constitutes a genuine epistemic reason to accept the criterion (Confirmed) from those where evidence is present but falls short of that bar (Partially confirmed, Inconclusive). This framework is non-probabilistic: status assignments do not represent posterior beliefs or confidence levels. Instead, following \citet{campbell1963experimental} and \citet{cook1979quasi}, validity claims are evaluated by whether the relevant tests rule out plausible rival explanations. The Untested status applies when no test capable of evaluating the criterion has been conducted, whereas Inconclusive indicates contested evidence and Disconfirmed indicates that a test was conducted and the criterion failed.
+
+
+These statuses evaluate individual criteria, not the overall claim. A claim can therefore contain Confirmed internal-validity criteria, Untested measurement-validity criteria, and Mixed external-validity criteria while still receiving a single overall verdict tier. This keeps criterion-level strengths, gaps, and failures explicit instead of compressing them into an undifferentiated verdict.
+
+\subsection{Validity Types}
+\label{sec:validity-types}
+
+The five validity types form a dependency chain \citep{shadish2002experimental}: later types cannot be established without first satisfying earlier ones. The ordering reflects logical precedence: a construct that is not well-defined cannot be reliably measured, an unreliable measurement cannot support a causal claim, a causal claim in one setting cannot be generalized, and an interpretation cannot be evaluated until the underlying evidence is characterized.
+
+\begin{equation}
+\text{Construct} \rightarrow \text{Measurement} \rightarrow \text{Internal} \rightarrow \text{External} \rightarrow \text{Interpretive}
+\label{eq:dependency}
+\end{equation}
+
+The pipeline (\Cref{fig:pipeline}) is procedural---it describes how evidence is built or audited. The validity-type chain is logical---it describes which types presuppose which. At pipeline step 5 (validity type), the framework evaluates every validity type the claim asserts, but the dependency order constrains the verdict: a claim cannot be credited with external validity beyond the level its measurement and internal validity support. The chain is a ceiling, not a sequence of gates.
+
+Each type addresses a distinct question about the claim:
+
+\paragraph{Construct validity.} Is the thing being measured well-defined? Before any measurement is taken, the construct must be specified precisely enough that the claim is falsifiable, structurally plausible, and distinguishable from neighboring constructs. A ``deception feature'' that cannot be distinguished from an ``uncertainty feature'' fails construct validity regardless of how carefully it is measured. This draws on philosophy of science (Popper's falsifiability, Hempel's operationalism) and psychometrics (construct validity, convergent and discriminant validity).
+
+\paragraph{Measurement validity.} Are the instruments trustworthy? \citet{borsboom2004concept} argue that a measure is valid if and only if the attribute exists and variation in it causally produces variation in the measurement outcome. This causal account grounds the framework's measurement criteria. Once the construct is defined, the measurement tools used to detect it must be reliable (stable across repetitions), calibrated (separable from random baselines), and invariant (consistent across conditions). A metric that gives different answers when run with different random seeds is not evidence. This draws on psychometrics (test-retest reliability, measurement invariance) and pharmacology (assay validation).
+
+\paragraph{Internal validity.} Does the evidence support the causal claim? Given a well-defined construct and trustworthy instruments, the evidence must establish that the identified component is causally involved in the behavior---not merely correlated with it. This requires demonstrating necessity (the component is required), sufficiency (the component is enough), and specificity (the component does this task and not everything). This draws on neuroscience (lesion studies, optogenetics, double dissociation) and causal inference \citep{pearl2009causality}.
+
+\paragraph{External validity.} Does the mechanism generalize? Causal evidence on one prompt set, with one ablation method, in one model, establishes internal validity at best. External validity requires that the mechanism generalizes across prompts, ablation methods, related tasks, and ideally across models. This draws on pharmacology (Phase~III generalization, dose-response) and causal inference (transportability; \citealp{pearl2011transportability}).
+
+\paragraph{Interpretive validity.} Is the interpretation of the mechanism correct? Finally, the natural-language description of the mechanism must be justified by the evidence. A head called a ``name mover'' based on direct logit attribution carries theoretical implications beyond what the evidence strictly supports. Interpretive validity requires declaring the description level, matching evidence to that level, and checking for anthropomorphic inflation. This draws on Messick's unified theory of validity \citep{messick1995validity}---which frames validity as the warrant for \emph{interpretations} of scores, not properties of the test itself---and on Marr's levels of analysis \citep{marr1982vision}.
+
+\subsection{Verdict Tiers}
+\label{sec:verdict-tiers}
+
+Claims are assigned to one of five verdict tiers representing qualitative transitions in evidential status (\Cref{tab:verdicts}). Two additional labels---Underdetermined and Disconfirmed---handle special cases. The tiers form a strict hierarchy: each requires all evidence from the tier below plus additional evidence.
+
+\begin{table}[H]
+\centering
+\tighttable
+\caption{Verdict tiers with requirements. Each tier subsumes the requirements of all lower tiers.}
+\label{tab:verdicts}
+\small
+\begin{tabular}{@{}lp{4.5cm}p{5.5cm}@{}}
+\toprule
+\textbf{Tier} & \textbf{Meaning} & \textbf{Requirements beyond previous tier} \\
+\midrule
+Proposed & Structural or representational evidence only & Construct validity criteria met (C1--C5) \\
+\midrule
+Causally Suggestive & Necessity shown, sufficiency not established & Internal validity I1 (necessity via ablation) \\
+\midrule
+Mechanistically Supported & Necessity + sufficiency with consistent methods & I1 + I2 (sufficiency), intervention reach (E1), at least 2 ablation variants \\
+\midrule
+Triangulated & Multiple converging lines of independent evidence & Full internal + external + construct criteria from $\geq 3$ evidence families \\
+\midrule
+Validated & All five validity types addressed & Measurement + interpretive validity with explicit baselines \\
+\midrule
+Underdetermined & Evidence consistent with multiple mechanisms & Cannot resolve between rival specifications \\
+\midrule
+Disconfirmed & Fails decisively on a key criterion & Negative result \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:tier-promotion} operationalizes tier transitions as minimum evidence requirements. These thresholds are provisional and domain-dependent, but they give the tiers teeth: two researchers applying the framework should agree on a verdict most of the time.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Minimum evidence requirements for tier promotion. Each transition requires all prior-tier requirements plus the listed additions.}
+\label{tab:tier-promotion}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{10cm}@{}}
+\toprule
+\textbf{Transition} & \textbf{Minimum requirement} \\
+\midrule
+$\to$ Proposed & Construct defined under a declared description mode (C1--C2 satisfied); at least one admissible measurement conducted \\
+\midrule
+Proposed $\to$ Causally Suggestive & Necessity demonstrated via causal intervention (I1 confirmed); at least one measurement passes baseline separation (M2) \\
+\midrule
+Causally Suggestive $\to$ Mechanistically Supported & Sufficiency established (I2); intervention reach across $\geq 2$ ablation methods (E1); specificity test conducted (I3 at least partially confirmed) \\
+\midrule
+Mech.\ Supported $\to$ Triangulated & Convergent evidence from $\geq 3$ evidence families with independent failure modes (C3); cross-distribution replication (E2 or E4); double dissociation attempted (I4) \\
+\midrule
+Triangulated $\to$ Validated & Measurement calibration (M1--M6) explicitly addressed; interpretive validity (V1--V5) audited; external validity tested across models (E4) and prompt distributions (E2) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Every tier carries a specific epistemic meaning: a claim at \emph{Proposed} is not a failed claim but one whose evidential status---and the path to strengthening it---is precisely characterized. The verdict tells researchers exactly what additional evidence would advance the claim: a Proposed claim needs causal intervention (I1) to reach Causally Suggestive; a Causally Suggestive claim needs sufficiency evidence (I2) and method consistency (E1) to reach Mechanistically Supported.
+
+Underdetermined and Disconfirmed serve distinct purposes. Underdetermined means the evidence is consistent with multiple competing mechanisms and the framework cannot resolve between them---this is not a lack of evidence but an excess of explanations, requiring additional experiments that discriminate between rivals. Disconfirmed means a criterion has been decisively failed---for example, when the construct itself turns out to be incoherent (C4), as in the gender bias circuits case study.
+
+% ============================================================
+\section{Methodology}
+\label{sec:methodology}
+
+The framework layers described in \Cref{sec:framework} define what counts as evidence and how it is evaluated. This section provides the concrete measurement procedures---metrics, calibrations, protocols, and synthesis methods---that generate the evidence evaluated against those layers. These are organized by evidence family and by evidential function.
+
+\subsection{Metrics}
+\label{sec:metrics}
+
+Metrics are concrete, runnable tests that produce measurements about a neural network---the layer of the hierarchy where empirical contact with the model actually happens. Everything above (evidence families, criteria, validity types, verdicts) depends on what metrics measure and how well they measure it. A metric alone cannot establish a claim; a claim requires evidence from multiple metrics, evaluated against the criteria appropriate to the validity type being asserted.
+
+Each metric takes a model, a task, and optionally an intervention as input, and produces a number as output. Metrics can be composed: one metric's output feeds into another. Calibrations (described in \Cref{sec:calibrations}) are meta-metrics---they take another metric's output as input and assess whether it is stable (bootstrap stability), reproducible (seed variance), or distinguishable from baselines (baseline separation). A high score on a primary metric is not evidence if the corresponding calibration fails. The framework organizes evidence into four evidence families; the current catalog enumerates metric definitions across families A--D; \Cref{tab:causal_metrics} illustrates a cross-family subset. The full inventory is in \Cref{appendix:metrics}.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Causal and interventionist metrics (illustrative subset across families): effects of interventions on model computation.}
+\label{tab:causal_metrics}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{9.5cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+A01 SCM / Pearl & Structural causal models and do-calculus as the formal language for circuit claims \\
+\midrule
+A02 Counterfactual DAS & Distributed Alignment Search and IIA for testing causal abstraction hypotheses \\
+\midrule
+A03 Rubin CATE & Conditional average treatment effects across input subpopulations \\
+\midrule
+A04 Woodward & Interventionist theory of causation applied to circuit ablation \\
+\midrule
+A05 MDC / Glennan & New mechanical philosophy: components organized to produce phenomena \\
+\midrule
+A06 Mediation & Natural direct and indirect effects decomposition for circuit paths \\
+\midrule
+A07 Granger / TE & Observational causal discovery via conditional MI and temporal precedence \\
+\midrule
+A08 PID & Decomposing MI into redundant, unique, and synergistic contributions \\
+\midrule
+A09 MDL / SLT & Minimum description length and singular learning theory for circuit complexity \\
+\midrule
+A10 Regularity / INUS & INUS conditions: insufficient but necessary parts of sufficient sets \\
+\midrule
+A11 Actual Cause & Halpern-Pearl actual causation on specific inputs, not just potential causes \\
+\midrule
+A12 Transportability & Formal conditions for circuit generalization across models and distributions \\
+\midrule
+A13 Causal Discovery & NOTEARS / PC algorithms for learning DAGs over circuit components \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The causal and interventionist metrics in \Cref{tab:causal_metrics} draw on multiple distinct traditions of causation, each formalized as a metric. \emph{Interventionist frameworks} (Pearl's SCM, Rubin's potential outcomes, Woodward's interventionism, Geiger et al.'s DAS) formalize what happens when components are ablated or patched. \emph{Information-theoretic approaches} (Granger causality, partial information decomposition) measure directed information flow without requiring explicit interventions. \emph{Structural approaches} (mediation analysis, INUS conditions, Halpern-Pearl actual causation, singular learning theory) characterize the causal graph itself---its paths, its minimal sufficient sets, and its complexity. And \emph{generalization approaches} (Pearl and Bareinboim's transportability, constraint-based discovery algorithms like PC and NOTEARS) address whether causal findings transfer across settings and whether circuit distinction can be learned from observational data.
+
+Many metrics correspond to entire experimental methodologies in their source fields; the framework represents them as metrics to provide a common unit of comparison across evidence families and allow them to be scored against the same criteria. Some concepts appear in multiple families because they serve different evidential roles in each: Granger causality can serve as an activation-based metric (testing directed influence between components at runtime) or a weight-based metric (quantifying structural information flow); partial information decomposition can decompose causal contributions (activation-based) or characterize static mutual information structure (weight-based). The family assignment reflects the source of signal the metric draws on in that context, not the mathematical formalism.
+
+\subsection{Calibrations}
+\label{sec:calibrations}
+
+Calibrations assess the quality of measurement instruments themselves, corresponding to criteria M1--M6: reliability, baseline separation, stability, calibration, sensitivity, and invariance (\Cref{sec:criteria}). The current catalog includes 14 calibration metrics (see \Cref{appendix:metrics}), each of which takes another metric's output as input and evaluates whether that output can be trusted. A primary metric that fails its calibration checks does not constitute evidence, regardless of the score it produces.
+
+\subsection{Protocols}
+\label{sec:methodology-protocols}
+
+Protocols are multi-step designed experiments that compose metrics to test specific criteria that resist single-metric assessment. Three criteria---V4 (interpretive inflation), I5 (confound control), and E1 (intervention reach)---are among the most commonly cited as important but the least well-operationalized in practice. We provide concrete, computable protocols for each, transforming them from checklist items into measurement procedures.
+
+\subsubsection{V4: Interpretive Inflation Control}
+
+A circuit label like ``name mover'' carries implicit claims: that the circuit copies names specifically (not arbitrary tokens), that copying is the mechanism (not a side effect), and that the label is at the right level of abstraction. V4 checks whether these implicit claims have supporting evidence.
+
+\paragraph{V4a: Label scope audit.} For a circuit $C$ with label $L$, enumerate the $K$ implicit claims in $L$. For each claim, determine whether evidence at Causally Suggestive or above exists. The label evidence ratio $\text{LER} = |\{k : \text{status}(k) \geq \text{CS}\}| / K$ quantifies how well-supported the label is. $\text{LER} < 0.5$ flags interpretive inflation.
+
+\paragraph{V4b: Contrastive label test.} Construct a contrastive task $T'$ that preserves surface behavior but breaks the mechanism implied by $L$. For ``name mover,'' make both subject and indirect object equally salient; if the circuit still selects the IO specifically, the label is supported. The contrastive selectivity $\Delta = \text{IIA}(C, T) - \text{IIA}(C, T')$ should exceed 0.2 for the label to stand; $\Delta < 0.05$ indicates the label is likely inflated.
+
+\paragraph{V4c: Ablation scope test.} Ablate $C$ and measure performance on both the target task $T$ and $N$ unrelated tasks. The specificity index $\text{SI} = \Delta_T / \bar{\Delta}_{\text{other}}$ should exceed 2.0; a circuit that degrades many tasks equally is too broad for a task-specific label.
+
+\subsubsection{I5: Confound Control}
+
+Every task confounds multiple variables simultaneously. IOI confounds token frequency, positional structure, name familiarity, syntactic role, and semantic role. I5 asks whether the identified circuit is sensitive to these confounds.
+
+\paragraph{I5a: Minimal confound enumeration.} For task $T$, enumerate $K$ plausible confounds $\{C_1, \ldots, C_K\}$. For each, construct a matched task $T_k$ that holds everything constant except $C_k$. The confound invariance $\delta_k = |\text{IIA}(C, T) - \text{IIA}(C, T_k)| / \text{IIA}(C, T)$ quantifies sensitivity. The worst-case $\max_k \delta_k > 0.3$ flags an I5 failure.
+
+\paragraph{I5b: Causal graph consistency.} Given a proposed mechanism $A \to B \to \text{output}$, test conditional independence $A \perp \text{output} \mid B$. If this fails (Fisher's Z-test, $p < 0.05$), $B$ is not the complete mediator---there is a backdoor path through an uncontrolled confound. This uses observational activation data, requiring no additional interventions.
+
+\paragraph{I5c: Synthetic ground truth injection.} The gold standard: use a model trained on a task where the ground truth circuit is known by construction (e.g., modular arithmetic with a provably correct Fourier circuit). Run the discovery method and measure $\text{Jaccard}(\text{discovered}, \text{ground truth})$. This eliminates all natural confounds because the mechanism was defined, not discovered.
+
+\subsubsection{I6: Epistatic Interaction}
+
+A circuit is not a bag of independently necessary components---it is a structured mechanism whose parts may cooperate or compensate. I6 asks whether circuit components interact non-additively.
+
+\paragraph{I6a: Pairwise epistasis scores.} For all component pairs $(A, B)$ in circuit $C$, compute the epistasis score $\epsilon_{AB} = f(\text{ablate } A \cup B) - f(\text{ablate } A) - f(\text{ablate } B) + f(\emptyset)$, where $f$ is the task metric on the intact model. Positive $\epsilon$ indicates synergy (the pair cooperates beyond their individual contributions); negative $\epsilon$ indicates buffering (partial redundancy). An epistasis matrix with $|\epsilon_{AB}| < 0.05$ for all pairs indicates additive structure---the circuit is a list, not a mechanism. Significant non-zero entries ($|\epsilon_{AB}| > 0.1$) identify the circuit's functional joints: the edges where components are genuinely coupled.
+
+\paragraph{I6b: Higher-order interaction test.} For a circuit with $K$ components, compute the full interaction contrast $\Delta^K = \sum_{S \subseteq C} (-1)^{|C|-|S|} f(\text{ablate } S)$. This is the $K$-way analog of the pairwise epistasis score, detecting irreducibly collective effects. For practical circuits ($K > 6$), approximate by sampling random subsets and testing whether the observed distribution of subset ablation effects deviates from the additive prediction (permutation test, $p < 0.01$).
+
+\subsubsection{E1: Intervention Reach}
+
+Necessity (ablation degrades performance) does not entail reach (the circuit can be used to \emph{steer} behavior). E1 asks whether the identified mechanism has genuine causal leverage in the positive direction.
+
+\paragraph{E1a: Activation steering reach.} Identify the subspace in $C$'s activations associated with behavior $X$. Amplify that direction by factor $\alpha$. The steering reach $r = \Delta_{\text{behavior}} / \alpha$ should be approximately linear; the steering specificity $s = \Delta_X / \Delta_{\text{other}}$ should exceed 2.0. This is the MI analog of optogenetic activation (not just silencing).
+
+\paragraph{E1b: Cross-context transfer.} Test circuit interventions on distributions beyond the discovery distribution: $D_{\text{transfer}}$ (paraphrased prompts), $D_{\text{novel}}$ (same mechanism, different domain), $D_{\text{OOD}}$ (entirely different context requiring the same computation). The E1 score is the harmonic mean of transfer IIA across distributions.
+
+\paragraph{E1c: Counterfactual circuit transplant.} Take the weight-space subspace identified as the circuit in model $A$ and transplant it into model $B$ that lacks the capability. The capability transfer ratio $\tau = (\text{acc}_{B,\text{after}} - \text{acc}_{B,\text{before}}) / \text{acc}_A$ should exceed 0.5 for genuine reach. $\tau < 0.1$ means the circuit is descriptive, not generative. This is the positive direction of the sufficiency test: not ``does removing it break things'' but ``does installing it create things.''
+
+These nine protocols (three per criterion) are implemented as runnable evaluation scripts in the open-source \mechval{} codebase, following the same interface as the metrics in \Cref{sec:metrics}.
+
+\subsection{Synthesis}
+\label{sec:methodology-synthesis}
+
+Synthesis methods aggregate evidence across multiple methods to evaluate convergent validity (C3) and external validity (E2--E4). The criteria in \Cref{tab:criteria} include convergent validity (C3), which asks whether independent methods agree, and external validity criteria (E2--E4), which ask whether findings generalize. This subsection provides four concrete synthesis procedures of increasing sophistication.
+
+\paragraph{Naive baseline: Jaccard overlap.} Given $K$ methods that each identify a set of circuit components, the pairwise Jaccard similarity $J_{ij} = |S_i \cap S_j| / |S_i \cup S_j|$ provides a simple agreement measure. Mean pairwise Jaccard above 0.3 suggests non-trivial agreement, but this treats all methods as equally reliable and ignores ranked output.
+
+\paragraph{Robust Rank Aggregation.} When methods produce ranked lists rather than binary sets, Robust Rank Aggregation \citep{kolde2012robust} tests whether a component appears consistently near the top across lists---more than expected by chance under a uniform null. This provides a $p$-value per component (Bonferroni-corrected), giving a principled answer to ``does this head appear in the circuit according to multiple methods?'' RRA is the recommended operationalization of C3 for head-level circuit claims.
+
+\paragraph{Dawid-Skene consensus.} When methods have different reliability profiles (e.g., activation patching is more sensitive but less specific than weight analysis), the Dawid-Skene EM algorithm \citep{dawid1979maximum} jointly estimates: (1) the true binary label per component (in-circuit vs.\ not), and (2) a per-method confusion matrix (sensitivity and specificity). This is C3 done properly---it accounts for the fact that methods have different error profiles rather than treating all votes equally.
+
+\paragraph{Distributional stability.} For external validity (E2--E4), the Wasserstein distance $W_1$ between circuit score distributions across tasks or models quantifies how much the circuit's importance profile shifts. Small $W_1$ (relative to a permutation null) indicates that the circuit is stable; large $W_1$ indicates task- or model-specificity. This operationalizes E2 (prompt generalization) and E4 (cross-model generalization) as continuous metrics rather than binary pass/fail.
+
+% ============================================================
+\section{Theoretical Foundations}
+\label{sec:foundations}
+
+This section outlines the theoretical foundations of our framework. We draw on seven disciplines that each developed rigorous standards for a different validity question, and we apply them to mechanistic interpretability as lenses. A lens is not a method or a metric; it is an analytical vocabulary that shapes which questions you ask of a claim and how you read the answers. Each of the seven --- philosophy of science, psychometrics, causal inference, neuroscience, pharmacology, molecular genetics, and mechanistic interpretability itself --- contributes the conditions it requires before an inference is accepted, and names the failure modes it guards against.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth, trim=0 30 0 0, clip]{foundations-pyramid.pdf}
+\caption{Seven theoretical foundations, each grounding a specific validity type. Causal inference, neuroscience, and molecular genetics all contribute to internal validity through complementary approaches (formal frameworks, experimental designs, and interaction structure, respectively).}
+\label{fig:foundations}
+\end{figure}
+
+Each lens maps to a corresponding validity type, and answers a core question about a given claim: philosophy of science asks \emph{is the construct well-defined?} Causal inference and neuroscience ask \emph{does the component implement the computation?} Psychometrics asks \emph{is the measurement accurate?} Pharmacology asks \emph{does it generalize?} And mechanistic interpretability asks \emph{does the interpretation match the evidence?}
+
+\subsection{Philosophy of Science}
+\label{sec:phil-sci}
+
+The construct validity criteria (C1--C5) draw on Popper's falsifiability criterion, Mayo's severe testing \citep{mayo2018statistical}, and Glennan's new mechanical philosophy \citep{glennan2017new}. A key distinction is between \emph{confirmation} and \emph{corroboration}: a circuit discovered by activation patching and evaluated by activation patching has only been shown to pass the test it was built to pass. Corroboration requires a genuinely risky test the circuit was not optimized for---a behavioral prediction on held-out prompts, a weight-space analysis, a different causal method. The verdict tier system reflects this hierarchy: single-method evidence (Causally Suggestive) is qualitatively weaker than convergent evidence from independent methods (Triangulated).
+
+C5 (nomological validity) requires that the claim fit into a broader theoretical network, following Cronbach and Meehl's nomological network concept. The Duhem-Quine underdetermination thesis \citep{quine1951two, duhem1906theorie} is directly relevant: observational evidence (faithfulness scores, IIA) is always consistent with multiple theories (circuits), because the theory under test never faces the evidence alone---it is conjoined with auxiliary hypotheses about ablation semantics, baseline distributions, and metric validity. \citet{meloux2025everything}'s finding that alternative head sets achieve comparable faithfulness is this thesis instantiated: the ``circuit'' is underdetermined by the data.
+
+Glymour's bootstrapping theory of confirmation \citep{glymour1980theory} provides the constructive response. Glymour argues that evidence confirms a hypothesis when it can be used to \emph{compute} a consequence of the hypothesis that is also independently testable---and crucially, this computation must use the hypothesis non-trivially, not just any hypothesis that entails the same prediction. Applied to MI: a circuit claim is bootstrapped when the evidence bears on the claim in a way that would not equally confirm a rival circuit. Convergent evidence from independent methods (ablation, weight analysis, information flow) satisfies this condition because each method's auxiliary hypotheses are different; a finding that survives across methods has been non-trivially tested. This is the formal justification for requiring convergent evidence (C3) at higher tiers: single-method evidence cannot resolve underdetermination, but cross-method convergence can progressively narrow the space of compatible theories.
+
+\begin{table}[H]
+\centering\small
+\caption{Philosophy of science foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{4.5cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+Falsifiability & \citet{popper1959logic} & C1 & What evidence would refute ``this is a name mover''? \\
+\midrule
+Nomological network & \citet{cronbach1955construct} & C5 & Does the claim connect to in-context learning theory? \\
+\midrule
+MTMM matrix & \citet{campbell1959convergent} & C3, C4 & Convergent: probing + patching agree. Discriminant: feature $\neq$ neighboring feature \\
+\midrule
+Underdetermination & \citet{quine1951two, duhem1906theorie} & I4 & Multiple circuits explain the same behavior \\
+\midrule
+Bootstrapping & \citet{glymour1980theory} & C3 & Cross-method convergence narrows the space of compatible theories \\
+\midrule
+Severe testing & \citet{mayo2018statistical} & C1 & A test that could easily have failed but did not \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Psychometrics}
+\label{sec:psychometrics}
+
+The measurement validity criteria (M1--M6) draw on psychometric test construction. Classical test theory decomposes an observed score into true score plus error ($X = T + E$); M1 (reliability) is the proportion of true-score variance. Generalizability theory extends this by decomposing error into distinct sources---prompt variation, random seed, checkpoint selection---each of which can be quantified and reduced independently.
+
+\begin{table}[H]
+\centering\small
+\caption{Psychometrics foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.2cm}l>{\raggedright\arraybackslash}p{4.5cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+Classical test theory & \citet{lord1968statistical} & M1 & Same metric, same model $\to$ same answer \\
+\midrule
+Generalizability theory & \citet{cronbach1972dependability} & M6 & Decompose variance into prompt/seed/checkpoint \\
+\midrule
+Signal detection ($d'$) & \citet{green1966signal} & M2 & Is the score distinguishable from random? \\
+\midrule
+MTMM matrix & \citet{campbell1959convergent} & C3, C4 & Convergent + discriminant validity \\
+\midrule
+Selectivity & \citet{hewitt2019designing} & I3 & Probe accuracy minus control accuracy \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The closest prior art in psychometrics is \citet{borsboom2004concept}'s causal account of validity: a measure is valid if and only if the attribute exists and variation in it causally produces variation in the measurement outcome. This is our core claim, extended from trait measurement to mechanism claims. Campbell and Fiske's \citep{campbell1959convergent} multi-trait multi-method matrix directly grounds our convergent (C3) and discriminant (C4) validity criteria. Where we go beyond the psychometric tradition: psychometrics assumes the construct exists and asks whether the measure is valid. We add that mechanistic validity requires first declaring the \emph{description mode}---what kind of thing the construct is---because different modes generate different validity criteria and different evidence requirements. A claim about ``which components are active'' (implementational-topographic) and a claim about ``what algorithm the model runs'' (algorithmic) require fundamentally different evidence, even when they concern the same model and the same task.
+
+An important insight is that a reliable metric pointed at the wrong target produces confident wrong answers. \citet{sutter2025nonlinear} demonstrated that unconstrained nonlinear IIA achieves near-perfect scores on randomly initialized models---but this is a property of the \emph{unconstrained} alignment map, not of nonlinear causal abstraction in general. Structured generative models that satisfy identifiability conditions \citep{khemakhem2020variational}---reconstruction objectives, label-conditional priors, sparsity constraints---provably avoid this degeneracy: intervention diversity ratios near 1.0 confirm that the encoder preserves natural variation rather than collapsing to a lookup table. The framework addresses the general problem through M2 (baseline separation): not ``IIA = 0.48'' but ``$\Delta_{\text{random}} = 0.10$, $\Delta_{\text{untrained}} = 0.15$.'' A modest absolute number with a large delta is a genuine finding; a large absolute number with a tiny delta is not. The SAEBench audit \citep{karvonen2025saebench} provides a complementary example: two of six standard SAE evaluation metrics fail baseline separation entirely, producing scores on shuffled or random baselines that are indistinguishable from scores on real features.
+
+
+\subsection{Causal Inference}
+\label{sec:causal}
+
+The internal validity criteria draw on causal inference methodology \citep{pearl2009causality, spirtes2000causation}. The necessity/sufficiency distinction maps to Woodward's interventionist causation \citep{woodward2003making}: necessity (I1) corresponds to ``would the behavior persist if the component were absent?'' and sufficiency (I2) to ``would the component alone produce the behavior?'' Pearl and Bareinboim's transportability theory \citep{pearl2011transportability} provides the formal conditions under which causal findings transfer across settings, grounding E4 (cross-model generalization). Rubin's potential outcomes framework grounds E5 (graded response) by formalizing heterogeneous treatment effects across input subpopulations---not all prompts may respond to ablation equally.
+
+A distinction that the MI literature routinely elides: ablation and activation patching are formally different do-operators. Ablation performs $\mathrm{do}(h := 0)$ or $\mathrm{do}(h := \mathbb{E}[h])$---it removes a component. Patching performs $\mathrm{do}(h := h')$ where $h'$ comes from a counterfactual input---it inserts a specific value. These correspond to different interventional distributions and can yield different causal conclusions. The method-conditionality finding (E1)---where mean ablation and resample ablation produce different faithfulness numbers---partly reflects this: they are not two implementations of the same intervention but formally different interventions that happen to share a name. Making this explicit sharpens E1: cross-method consistency requires agreement not only across ablation variants but across genuinely distinct do-operators.
+
+To illustrate how do-calculus formalizes a circuit claim, consider a minimal structural causal model for IOI. Let $S$ = subject name, $IO$ = indirect object, $H_{\text{SI}}$ = S-inhibition heads, $H_{\text{NM}}$ = name-mover heads, and $Y$ = output logit. The claimed mechanism is: $S \to H_{\text{SI}} \to H_{\text{NM}} \to Y$ and $IO \to H_{\text{NM}} \to Y$. The necessity claim (I1) is $P(Y \mid \mathrm{do}(H_{\text{NM}} := 0)) \neq P(Y)$; the sufficiency claim (I2) is $P(Y \mid \mathrm{do}(\text{all except circuit} := 0)) \approx P(Y)$; and the specificity claim (I3)---currently untested---is $P(Y_{\text{SVA}} \mid \mathrm{do}(H_{\text{NM}} := 0)) \approx P(Y_{\text{SVA}})$ for an unrelated task like subject-verb agreement. The SCM makes the untested link visible: I3 is a conditional independence claim that has never been checked.
+
+\begin{table}[H]
+\centering\small
+\caption{Causal inference foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.5cm}l>{\raggedright\arraybackslash}p{4.2cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+do-calculus / SCM & \citet{pearl2009causality} & I1, I2 & Formal language for ablation claims \\
+\midrule
+Interventionism & \citet{woodward2003making} & I1 & ``Would behavior persist if component absent?'' \\
+\midrule
+Transportability & \citet{pearl2011transportability} & E4 & Conditions for circuit generalization across models \\
+\midrule
+Causal discovery & \citet{spirtes2000causation} & --- & Learning circuit structure from data \\
+\midrule
+Potential outcomes & \citet{rubin1974estimating} & E5 & Heterogeneous effects across input subpopulations \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Neuroscience}
+\label{sec:neuro}
+
+The internal validity criteria (I1--I5) are adapted from neuroscience's toolkit for establishing that a neural circuit implements a computation. I1 (necessity) corresponds to lesion studies; I2 (sufficiency) to stimulation; I4 (double dissociation) is the gold standard for functional specificity \citep{woodward2003making}. The critical distinction between necessity and sufficiency---well-established in neuroscience but often elided in MI---is central to the framework and marks a qualitative transition between verdict tiers.
+
+A less appreciated requirement is Craver's \emph{mutual manipulability}: constitutive relevance requires not only that intervening on the component changes the behavior, but that intervening on the behavior changes the component's activity. We depart from Craver's standard account on one point. Mutual manipulability presupposes that mechanism \emph{identity} is settled before intervention---you already know what you are intervening on. But when methods disagree (activation patching says head 4.4 matters, weight geometry says it does not), mutual manipulability provides no adjudication procedure, because the identity criterion is ambiguous between description modes. Our framework resolves this by requiring the description mode to be declared \emph{before} intervention, making the identity criterion explicit rather than inherited silently. This is an extension, not a rejection: mutual manipulability remains the correct criterion once the description mode is fixed. The second direction---does fine-tuning away IOI capability cause name-mover heads to lose their OV copying structure?---is almost never tested in MI, yet it is what ``implementation'' actually requires. Additionally, the \emph{parcellation problem} is directly relevant: neuroscience learned that the right unit of analysis is defined by convergence across independent modalities, not by any single method. When EAP, weight classification, and ablation disagree on component membership, the ``circuit'' is probably method-dependent.
+
+\begin{table}[H]
+\centering\small
+\caption{Neuroscience foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2cm}l>{\raggedright\arraybackslash}p{4.5cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+Lesion studies & \citet{shallice1988neuropsychology} & I1 & Ablation degrades behavior \\
+\midrule
+Double dissociation & \citet{shallice1988neuropsychology} & I4 & Circuit A breaks task X not Y; circuit B breaks Y not X \\
+\midrule
+Mutual manipulability & \citet{craver2007explaining} & I3 & Fine-tuning away the task changes the component \\
+\midrule
+Multimodal parcellation & \citet{glasser2016multi} & C3 & Circuit boundaries should converge across methods \\
+\midrule
+Neural manifolds & \citet{gallego2017neural} & V2 & Representation geometry constrains algorithmic claims \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pharmacology}
+\label{sec:pharma}
+
+The external validity criteria draw on pharmacology's dose-response methodology \citep{rang2006drug}. A causally relevant component should produce graded effects: partial ablation should produce partial behavioral change, and the relationship should be monotonic or at least systematic (E5). The framework treats dose-response as a minimum bar for causal claims about magnitude---a requirement absent from most MI evaluations, which typically report binary ablation (all-or-nothing).
+
+The \emph{affinity vs.\ efficacy} distinction maps with surprising precision to MI. Activation patching measures affinity: is this component engaged during the task? Ablation measures efficacy: does removing it change the output? But even ablation conflates efficacy with the system's compensatory capacity---a load-bearing head can show small ablation effects if backup mechanisms compensate. The observed effect magnitude is a joint property of the component's role and the network's reserve, and a single ablation cannot separate them. The practical implication is the \emph{therapeutic window}: sweeping ablation strength from 0 to 1 reveals whether there is a range where on-task effects grow before off-target degradation begins. A circuit with no therapeutic window cannot be cleanly separated from the network's general processing.
+
+\begin{table}[H]
+\centering\small
+\caption{Pharmacology foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.2cm}l>{\raggedright\arraybackslash}p{4.5cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+Dose-response curve & \citet{hill1910possible} & E5 & Partial ablation $\to$ partial effect \\
+\midrule
+Affinity vs efficacy & \citet{stephenson1956modification} & I1 vs I2 & Participation $\neq$ causation \\
+\midrule
+System reserve & \citet{black1983operational} & I2 & Backup circuits compensate after ablation \\
+\midrule
+Functional selectivity & \citet{kenakin2004functional} & E1 & Ablation method determines the finding \\
+\midrule
+Phase I/II/III trials & --- & Verdict tiers & Calibrate $\to$ establish causality $\to$ generalize \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Mechanistic Interpretability}
+\label{sec:mi-lens}
+
+Interpretive validity (V1--V5) is the one validity type not imported from another field. Every MI result pairs a measurement with an interpretation---an IIA score with ``the model represents this variable here,'' a faithfulness percentage with ``this circuit implements IOI.'' Whether the interpretation is justified depends on whether the claim is stated at a level the evidence can actually support. Three distinctions, drawn from MI's own empirical track record, ground the interpretive criteria.
+
+First, \emph{description vs.\ explanation}: most published ``explanations'' are descriptions in explanatory language. ``The name-mover head copies the IO name to the output'' sounds like an explanation but is a description of observed behavior on specific inputs. An explanation would answer: what structural property of the $W_{OV}$ matrix forces name-copying? Under what conditions would this head fail? Descriptions are bound to the cases observed; explanations predict what happens in cases not yet tested.
+
+Second, \emph{faithfulness vs.\ understanding}: a circuit can be maximally faithful---100\% performance recovery when isolated, total degradation when ablated---without being understood at all. Faithfulness is a property of the circuit relative to the task; understanding is a property of the researcher relative to the circuit. They are independent axes.
+
+Third, \emph{component identity vs.\ component role}: ``Head 9.9 is in the IOI circuit'' (identity) and ``Head 9.9 is a name mover'' (role) are different claims requiring different evidence. Identity requires only causal evidence---ablating the component changes the output. Role requires mechanistic evidence---the weight structure matches the claimed function, the component does not perform this function on non-target inputs, and the role label makes predictions that can be tested independently. The slide from identity to role typically happens in one sentence and is a common overclaim \citep{wang2023interpretability}.
+
+These distinctions motivate the interpretive criteria: V1 (level declaration) requires stating the description mode before collecting evidence; V2 (level-evidence match) checks that the evidence supports claims at that level; V3 (alternative level) asks whether the evidence could be explained at a different level; V4 (anthropomorphism check) flags labels that project human concepts; and V5 (scope declaration) requires stating what the claim does not cover.
+
+\begin{table}[H]
+\centering\small
+\caption{Mechanistic interpretability foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.2cm}l>{\raggedright\arraybackslash}p{4.5cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+Description vs explanation & \citet{olsson2022context} & V2 & Most ``explanations'' are descriptions in explanatory language \\
+\midrule
+Faithfulness vs understanding & \citet{wang2023interpretability} & V1, V2 & Independent axes: a faithful circuit need not be understood \\
+\midrule
+Identity vs role & \citet{wang2023interpretability} & V4 & ``In the circuit'' (causal) vs ``is a name mover'' (mechanistic) \\
+\midrule
+Circuit non-uniqueness & \citet{meloux2025everything} & V3 & Activation patching returns \emph{a} circuit, not \emph{the} circuit \\
+\midrule
+Level drift & \citet{marr1982vision} & V1, V2 & Implementational evidence narrated in computational language \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Molecular Genetics}
+\label{sec:genetics}
+
+The six lenses above leave a gap in \emph{interaction structure}: neuroscience provides single-component interventions (lesion, stimulation), but does not ask whether circuit components interact non-additively. Molecular genetics fills this gap. Over a century of work from \emph{Drosophila} to human GWAS cohorts, genetics developed three techniques that map directly onto MI interventions and answer questions no other lens covers.
+
+First, \emph{epistasis mapping}. Fisher defined epistasis as the non-additive interaction between genetic loci: if knocking out gene $A$ reduces the phenotype by $a$ and gene $B$ by $b$, the epistasis score $\epsilon_{AB} = f(\text{ablate } A, B) - f(\text{ablate } A) - f(\text{ablate } B) + f(\emptyset)$ measures the deviation from additivity. Positive $\epsilon$ (synergy) means the components cooperate; negative $\epsilon$ (buffering) means they partially substitute for each other. In MI, pairwise ablation studies that compute $\epsilon$ for all component pairs reveal whether a circuit is a functional unit with internal coupling or merely a list of independently necessary components. This grounds criterion I6 (epistatic interaction).
+
+Second, \emph{rescue experiments}. In genetics, a rescue experiment re-introduces the wild-type gene into a knockout organism to verify that the phenotypic deficit was specifically caused by the gene's absence rather than by collateral damage. In MI, corrupting a circuit component (mean or resample ablation) and then restoring the clean activation at that site tests whether the deficit is specifically reversible---distinct from sufficiency (I2), which asks whether the circuit alone produces the behavior. A rescue that succeeds establishes that the ablation deficit reflected genuine loss of computation, not cascading distributional disruption. This grounds criterion I7 (rescue reversibility).
+
+Third, \emph{sensitivity analysis}. The E-value quantifies how strong an unmeasured confounder would need to be to explain away an observed causal effect. Every ablation study has potential unmeasured confounders---information in the residual stream that correlates with both the ablated component and the output. An E-value of 3.0 means a confounder would need to triple both associations to nullify the finding. This complements confound control (I5), which addresses \emph{known} confounders, by quantifying robustness to confounders the experimenter did not measure. This grounds criterion I10 (confounding sensitivity).
+
+\begin{table}[H]
+\centering\small
+\caption{Molecular genetics foundations.}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.2cm}l>{\raggedright\arraybackslash}p{4.5cm}@{}}
+\toprule
+\textbf{Concept} & \textbf{Source} & \textbf{Criterion} & \textbf{MI analog} \\
+\midrule
+Epistasis & \citet{fisher1918correlation} & I6 & Pairwise ablation reveals synergy or buffering \\
+\midrule
+Rescue / complementation & \citet{brenner1974genetics} & I7 & Restore corrupted component; does behavior recover? \\
+\midrule
+E-value / sensitivity & \citet{vanderweele2017sensitivity} & I10 & How strong must an unmeasured confounder be? \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A disanalogy is worth noting. In genetics, knockouts are permanent: the organism develops without the gene, and compensatory mechanisms may emerge over developmental time. In neural networks, ablation is instantaneous---the component was present during all of training. Network ``knockouts'' are closer to acute pharmacological blockade than to developmental gene deletion, which makes rescue experiments (I7) especially important for distinguishing genuine computational loss from distributional disruption.
+
+% ============================================================
+\section{Case Studies}
+\label{sec:case-studies}
+
+We apply the framework to 13 published MI results, evaluating each through all five validity lenses. The case studies are not intended to rank papers---they demonstrate what the framework looks like in practice and show that the tier system discriminates between well-validated and poorly-validated claims. Quantitative per-paper scoring is the subject of a companion paper; here we keep the analysis qualitative and trace each verdict to specific missing or present evidence.
+
+\subsection{Verdict Assignments}
+
+\Cref{tab:case-studies} presents the verdict assignments. The key finding is that the tier system produces meaningful discrimination: the 13 claims span the full range from Proposed to Triangulated, with verdict differences traceable to specific missing evidence rather than arbitrary scoring.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Verdict assignments for 13 published circuits, sorted by evidential status (see \Cref{tab:verdicts} for tier definitions).}
+\label{tab:case-studies}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{7cm}@{}}
+\toprule
+\textbf{Verdict} & \textbf{Circuit} & \textbf{Evidence characterization} \\
+\midrule
+Triangulated & Grokking \citep{nanda2023progress} & Mathematically complete within toy scope; every weight matrix entry predicted by closed-form Fourier formula \\
+\midrule
+Triangulated & Induction Heads \citep{olsson2022context} & Simple mechanism, broad replication, thick nomological network \\
+\midrule
+Mechanistically Supported & Greater-Than \citep{hanna2023greater} & Strong structural plausibility; limited prompt generalization \\
+\midrule
+Mechanistically Supported & Copy Suppression \citep{mcdougall2023copy} & Unusually clean specificity; sufficiency partially established \\
+\midrule
+Mechanistically Supported & IOI Circuit \citep{wang2023interpretability} & Method-conditional faithfulness (87\% mean ablation, $<$50\% other methods); specificity untested \\
+\midrule
+Mechanistically Supported & Superposition \citep{elhage2022superposition} & Toy-model-only evidence; criteria semi-confirmed rather than confirmed \\
+\midrule
+Causally Suggestive & Successor Heads \citep{gould2023successor} & Cross-domain generalization as convergent evidence; ablation method-conditional \\
+\midrule
+Causally Suggestive & Othello World Model \citep{li2023othello} & ``World model'' label exceeds evidence (``linearly decodable''); interpretive inflation \\
+\midrule
+Causally Suggestive & Docstring Circuit \citep{heimersheim2023docstring} & Label ambiguity: ``variable binding'' vs.\ simpler ``positional copying'' \\
+\midrule
+Causally Suggestive & Knowledge Neurons \citep{dai2022knowledge} & Strong intervention but weak specificity; editing corrupts related facts \\
+\midrule
+Causally Suggestive & SAE Features \citep{cunningham2023sparse, engels2025not} & Thin nomological network; features may be dictionary properties, not model properties \\
+\midrule
+Proposed & Probing Classifiers \citep{belinkov2022probing} & Decodability without intervention = no internal validity \\
+\midrule
+Disconfirmed & Gender Bias Circuits \citep{vig2020gender} & Construct incoherence: bias and knowledge share the same heads; discriminant validity (C4) fails---the construct itself is not well-posed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{Illustrative Examples}
+
+We describe three case studies in detail to illustrate how the framework produces its verdicts. These assessments hold claims against an idealized standard; a low verdict marks distance from that ideal, not a flawed study.
+
+\paragraph{Induction Heads (Triangulated).} \citet{olsson2022context} identify a two-head composition mechanism for in-context copying: previous-token heads attend to the token before a repeated sequence, and induction heads use this signal to predict the next token. The claim reaches Triangulated because it satisfies criteria across multiple independent evidence families. The mechanism has been replicated across model scales and architectures (E4), confirmed through both activation-level and weight-level analysis (C3 convergent validity from different families), and produces clean dose-response effects (E5). The nomological network is thick: the mechanism connects to in-context learning theory, training dynamics, and cross-model structural predictions. The relative simplicity of the mechanism (two functional roles, clear compositional structure) makes each criterion easier to satisfy.
+
+\paragraph{IOI Circuit (Mechanistically Supported).} \citet{wang2023interpretability} identify 26 attention heads forming a six-role circuit for indirect object identification. The circuit demonstrates strong necessity (I1) and sufficiency (I2): running the model with everything outside the circuit mean-ablated recovers 87\% of the full model's logit difference. However, \citet{miller2024transformer} show that this 87\% figure is specific to mean ablation; under other ablation methods, faithfulness drops below 50\%. This method-conditional result partially satisfies E1 (intervention reach) but reveals that the causal claim is weaker than the headline number suggests. Specificity (I3) is untested: the authors do not report whether ablating the IOI circuit degrades unrelated tasks. A formal double-dissociation has not been conducted. The circuit reaches Mechanistically Supported rather than Triangulated because the evidence comes primarily from one methodological family (ablation-based) and key criteria (I3, I4, I5, E4) remain unaddressed.
+
+\paragraph{Probing Classifiers (Proposed).} Linear probing \citep{belinkov2022probing} trains a classifier on activations to test whether a concept is linearly decodable. The core limitation is fundamental: \emph{a measurement without an intervention or observational causal method is a measurement without internal validity}. Probe success establishes that information is decodable from the activation space, but not that the model uses that information during inference. High probe accuracy is consistent with genuine encoding, incidental linear separability in high-dimensional space, and confound encoding (a correlated feature rather than the target). Without causal follow-up (DAS, intervention along the probe direction), the claim cannot advance beyond Proposed. Probing \emph{with} causal follow-up can reach Causally Suggestive; with additional control tasks and cross-method convergence, it can reach Mechanistically Supported. The framework does not dismiss probing---it precisely characterizes what probing alone does and does not establish.
+
+\paragraph{Gender Bias Circuits (Disconfirmed).} Gender bias circuits \citep{vig2020gender} are the only claim in our evaluation that reaches Disconfirmed---and the reason is not insufficient evidence but an incoherent construct. The claim requires that ``gender bias'' and ``legitimate gender knowledge'' be separable: that one could ablate the circuit responsible for biased predictions without degrading the model's ability to correctly resolve gendered pronouns. But the attention heads identified as mediating gender bias (via causal mediation analysis) are the same heads that encode grammatical gender agreement. Ablating these heads reduces biased completions, but it equally degrades correct pronoun resolution on unbiased inputs.
+
+The dose-response curve has no regime where bias decreases without knowledge also decreasing---there is no therapeutic window, in the pharmacological framing. Sweeping ablation strength from 0 to 1 produces a single monotonic curve for both ``biased output reduced'' and ``correct gendered output reduced,'' because the underlying representation does not distinguish between the two. This is not a case where more precise surgery would help: the construct ``gender bias circuit'' presupposes a separation that does not exist in the model's weight space.
+
+This is a discriminant validity (C4) failure: the measure cannot distinguish the target construct from its neighbor. One might argue that the construct needs refinement rather than rejection---perhaps ``bias'' should be defined relative to corpus frequency rather than as an absolute property. But any such refinement must first demonstrate that the refined construct is separable from gender knowledge in the model's representations, which is a testable prediction the current evidence does not support. Unlike the other case studies, where the path forward is more evidence, the path forward here is reformulation of the question. The framework surfaces this distinction: a claim can fail not because the experiments were poorly done but because the construct was not well-posed.
+
+\subsection{Recurring Validity Gaps}
+
+Several patterns emerge from evaluating these claims side by side.
+
+\paragraph{Sufficiency gap.} Most circuits demonstrate necessity (I1) but not sufficiency (I2). The I1$\rightarrow$I2 transition---from ``removing this breaks the behavior'' to ``this alone produces the behavior''---is the most common barrier between Causally Suggestive and Mechanistically Supported.
+
+\paragraph{Method-conditional results.} The IOI circuit's headline numbers are specific to mean ablation. Ablation type is part of the causal claim, not an implementation detail. The framework captures this through E1 (intervention reach), which requires agreement across ablation methods.
+
+\paragraph{Toy-model ceiling.} Grokking reaches Triangulated because the evidence is mathematically complete within its toy scope, with convergent support from three evidence families: activations (ablation and restricted training runs), weights (closed-form Fourier weight analysis), and training (grokking dynamics and phase transitions), while Superposition reaches Mechanistically Supported because its criteria are semi-confirmed rather than confirmed. Both illustrate how the framework handles scope: a claim validated within a declared scope is a legitimate result, not a failure (V5). The gap between toy-model proof-of-concept and real-model confirmation remains the field's central challenge.
+
+\paragraph{No circuit reaches Validated.} The Validated tier requires all five validity types to be addressed: construct, measurement, internal, external, and interpretive. No published circuit currently meets this bar. Induction heads come closest---they have strong construct, internal, and external validity---but lack systematic measurement calibration (M1--M6) and explicit interpretive auditing (V1--V5). The Validated tier is not an unreachable ideal; it is a concrete checklist. The gap between Triangulated and Validated is primarily measurement-validity infrastructure (bootstrap stability, seed variance, baseline separation for the metrics used to evaluate the circuit) and interpretive discipline (explicit level declaration, anthropomorphism checks). These are tractable additions to existing experimental practice, not philosophical impossibilities.
+
+To demonstrate reachability, consider what it would take for the grokking circuit---currently Triangulated---to reach Validated. The mechanism (modular addition via Fourier components) has a mathematically exact ground truth. The remaining gaps are: (1) M1--M6: report bootstrap stability of the weight-space Fourier decomposition, seed variance across training runs, and baseline separation against random-weight models; (2) V1--V5: explicitly declare the description mode as implementational-structural, audit whether ``Fourier circuit'' implies computational claims the weight analysis alone does not support, and declare the scope (modular arithmetic in toy transformers). Each of these is a straightforward addition to the existing analysis---no new experiments required, only systematic reporting of calibration checks and interpretive discipline. Alternatively, \citet{nanda2023progress}'s clock and pizza models have synthetic ground truth by construction: the circuit \emph{is} the mechanism because the model was built to implement it. Running the full M1--M6 suite and V1--V5 audit on such a model would produce the first Validated claim, proving the tier is achievable and calibrating the framework against a known answer.
+
+\paragraph{Interpretive inflation.} Labels like ``world model,'' ``knowledge neuron,'' and ``deception feature'' carry theoretical implications beyond what the evidence supports. The framework systematically identifies where labels exceed evidence through V4 (anthropomorphism check) and V5 (scope declaration).
+
+\paragraph{Construct incoherence.} Gender Bias Circuits are the only claim in our evaluation that reaches Disconfirmed---not because evidence is lacking but because the construct itself fails discriminant validity (C4). ``Gender bias'' and ``legitimate gender knowledge'' are implemented by the same attention heads; you cannot ablate one without ablating the other. No amount of additional evidence can fix a construct that is not separable from its neighbor. The framework surfaces this as a C4 failure, and the appropriate response is not more experiments but reformulation of the question.
+
+% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+
+The case studies reveal that the dominant validity gaps in published MI research are systematic, not idiosyncratic. Sufficiency is rarely established. Specificity is rarely tested. Faithfulness results are method-conditional. Labels routinely exceed what the evidence supports. These are structural features of a field that evaluates methods and artifacts without a common protocol for evaluating the claims built on them.
+
+The framework addresses this by providing a structured validity profile for each claim---making gaps visible and the path to strengthening them concrete. The evidence card format (Appendix A.2) operationalizes this as an atomic reporting unit: each card records which measurement bears on which criterion, whether the relevant calibration checks were performed, and what verdict the evidence supports. We propose that evidence cards serve as a standard reporting format for MI claims, analogous to CONSORT checklists for clinical trials. Organizations deploying MI-based monitors (deception probes, steering vectors, circuit-level classifiers) can evaluate the underlying features through the same criteria: Is the construct well-defined? Is the measurement reliable? Is the evidence causal? Does the finding generalize? A feature at Proposed should not be deployed as a monitor; a feature at Mechanistically Supported or above has the minimum evidential basis for cautious deployment with ongoing validation.
+
+Two safety-relevant applications illustrate how the framework extends beyond retrospective auditing of published circuits.
+
+\paragraph{Chain-of-thought faithfulness.}
+The claim ``chain-of-thought reasoning is faithful'' is not one claim but at least four, each requiring different evidence.  Does CoT predict the model's output (\emph{behavioral faithfulness}, testable with perturbation studies)?  Does it converge with other interpretability methods on the same internal structure (\emph{convergent faithfulness}, requiring multi-method evidence)?  Does it describe the functional roles actually implemented by internal components (\emph{role faithfulness}, requiring independent functional tests)?  Or does it map onto the model's computational graph (\emph{structural faithfulness}, requiring causal and structural evidence)?  \citet{lanham2023measuring} and \citet{turpin2024unfaithful} demonstrate that behavioral faithfulness often fails: models produce plausible reasoning chains that do not reflect their actual decision process.  Under \mechval{}, ``CoT is faithful'' at the behavioral level is a Proposed claim (behavioral evidence only, no causal intervention); at the structural level, it would require at minimum Mechanistically Supported status across internal and construct validity criteria.  The framework makes the gap between these levels explicit rather than leaving ``faithful'' as an ambiguous umbrella term.
+
+\paragraph{Deceptive alignment.}
+Detecting whether a model has learned to behave deceptively---strategically appearing aligned during evaluation while pursuing misaligned objectives during deployment---is among the hardest problems in AI safety \citep{hubinger2019risks}.  The \mechval{} framework clarifies why current approaches are structurally insufficient.  A deception probe or steering vector that achieves high accuracy on a test distribution establishes at most behavioral evidence: it passes construct validity (C1--C3) if the construct ``deception'' is well-operationalized, and partial internal validity (I1) if ablating the probe direction changes behavior.  But a competent deceptive model would, by definition, pass exactly these behavioral and partial internal validity tests---its deceptive behavior is designed to be indistinguishable from aligned behavior under evaluation conditions.  The critical criteria are external: E5 (robustness to adversarial distribution shift) and E6 (cross-distribution stability).  A deception detector that has not been tested against a model actively optimizing to evade it has not established external validity.  Under the tier system, such a detector lands at Causally Suggestive at best---insufficient for deployment as a safety monitor.  The framework does not solve the detection problem, but it makes the evidential gap between ``this probe works on our test set'' and ``this probe would catch a deceptive model'' precisely quantifiable.
+
+\paragraph{Safety evidence gaps at scale.}
+More broadly, the dominant pattern in safety-relevant MI findings is instrumental evidence supporting structural conclusions.  Refusal direction ablation \citep{turner2024activation}, representation engineering for truthfulness, and feature-level safety classifiers all establish that a direction or feature is a sufficient behavioral lever---not that it is the mechanism.  The gap is systematic: safety monitoring requires at minimum object-level evidence (necessity plus sufficiency, I1--I2) and ideally subspace-level evidence (stability across distributions, E1--E6).  Most published safety-relevant findings, when audited against \mechval{} criteria, land at Proposed or Causally Suggestive.  The framework provides a concrete upgrade path: which criteria are unmet, what evidence would meet them, and what tier the claim would reach with that evidence.
+
+\paragraph{Minimum deployment standards.}
+The safety applications above share a concrete implication: before a safety-relevant interpretability result is used in a deployment decision, what tier must it reach? We propose that the minimum standard is \emph{Mechanistically Supported} with the following criteria confirmed: I1 (necessity), I2 (sufficiency), I3 (specificity), E1 (intervention reach across at least two methods), and M2 (baseline separation against random and untrained controls). A result at Proposed or Causally Suggestive has not demonstrated that the measurement is trustworthy or that the effect is specific---deploying it as a monitor is the MI equivalent of prescribing a drug that passed Phase~I but not Phase~III. For adversarial settings (deception detection, jailbreak monitoring), the bar should be higher: E5 (robustness to adversarial distribution shift) is necessary because the threat model includes an agent optimizing to evade the monitor. These standards are not arbitrary---they follow from the dependency structure of the validity types: you cannot trust an external validity claim (``this generalizes'') without first establishing internal validity (``this is causal''), and you cannot trust a causal claim without first establishing measurement validity (``this metric works'').
+
+\paragraph{The emergent abilities case and M4.}
+The \citet{schaeffer2024emergent} emergent abilities mirage is the cleanest illustration of why M4 (calibration) belongs in the framework's measurement layer. The ``emergence'' of sudden capability jumps in LLMs was not a property of the models but of the evaluation metric: exact-match accuracy creates a sharp threshold where continuous improvement appears as a phase transition. Switching to a linear metric (token edit distance) dissolved the phenomenon entirely. M4 would have caught this: it requires that reported numbers correspond to meaningful quantities, and that the metric's response function be monotone and approximately linear in the range of interest. Had M4 been applied before the ``emergence'' literature took off, the question would have been ``does this metric create the pattern?'' rather than ``what explains this striking pattern?''---and the answer would have been immediate. The same diagnostic applies to any MI metric that produces sharp thresholds: if IIA jumps from 0.1 to 0.95 when a hyperparameter is tuned past a threshold, the first question should be whether the metric's response function is creating the jump, not whether the model's computation has a phase transition at that point.
+
+\paragraph{From framework to practice.}
+Validity frameworks gain traction when they are socially enforced, not merely logically correct. We propose three adoption mechanisms, each modeled on a precedent from another field. First, \emph{validity statements}: authors declare which \mechval{} tier their claims reach and why, analogous to the limitations sections that journals already require. Second, \emph{reviewer checklists}: conferences adopt a short \mechval{} checklist (What description mode is declared? What tier does the evidence support? Is the claimed tier consistent with the evidence tier?), modeled on the CONSORT checklist in clinical trials. Third, \emph{evidence cards} (Appendix~\ref{appendix:evidence-cards}): a standardized reporting format recording which measurement bears on which criterion, whether calibration checks were performed, and what verdict the evidence supports. These are tractable additions to existing practice, not new burdens. Why would individual researchers adopt them voluntarily? Because the framework converts an implicit weakness (``we didn't test X'') into an explicit strength (``our claim reaches Mechanistically Supported; here is the concrete evidence that would advance it to Triangulated''). Papers that use this framing give reviewers less to argue about and give follow-up studies a clear target.
+
+\paragraph{What the field should do differently.}
+The case studies converge on five concrete changes to MI research practice that would have the highest impact on claim quality:
+\begin{enumerate}[nosep]
+\item \emph{Test specificity by default.} Every circuit ablation study should report performance on at least two unrelated tasks alongside the target task. This is cheap, takes one additional forward pass per task, and addresses the single most common gap (I3) across all 13 case studies.
+\item \emph{Report multiple ablation methods.} A faithfulness number from one ablation method is a lower bound on the causal claim, not the claim itself. At minimum, report mean ablation and resample ablation; ideally add zero ablation and activation patching.
+\item \emph{Calibrate metrics against baselines.} Report the metric score on a random circuit of the same size, an untrained model, and a shuffled-label baseline. If the delta between the real score and the baseline is small, the metric is not measuring what it claims.
+\item \emph{Declare description mode and scope.} State explicitly whether the claim is computational, algorithmic, or implementational, and what input distribution it is validated on. This costs zero experiments and prevents the most common interpretive inflation.
+\item \emph{Report non-uniqueness.} If alternative circuits achieve comparable faithfulness, report this as a finding rather than suppressing it. Non-uniqueness is scientific information; a single reported circuit is a selection from a space the reader cannot see.
+\end{enumerate}
+
+Several directions for future work follow naturally. Extending the case studies to larger models may reveal that criteria such as E4 (cross-model generalization) are harder to satisfy than the GPT-2 Small evaluations suggest. Automating the verdict assignment process---currently requiring human judgment in aggregating criterion-level results---is future work. And developing standardized prompt suites for specificity testing (I3) and double dissociation (I4) would address the two most common gaps identified across the 13 case studies.
+
+\section{Limitations}
+\label{sec:limitations}
+
+This work is a theoretical contribution. The case study verdicts are based on published evidence, not new experiments; running the framework's full metric suite with actual model interventions is future work. The current case studies evaluate the most widely-studied published circuits, which predominantly target GPT-2 Small. Extension to claims about larger models may reveal that some criteria are harder to satisfy.
+
+\paragraph{Inter-rater reliability.} While the 30 criteria are operationally defined, the aggregation from criterion-level results to verdict tiers involves judgment. Two evaluators could assign different tiers to the same circuit if they weight partial evidence differently. The framework mitigates this by design: the structured validity profile---not the tier---is the primary output. Disagreement is isolated to individual criterion judgments, each of which is independently falsifiable, rather than to a holistic gestalt. We have not yet conducted a formal inter-rater reliability study for the 13 case-study verdicts presented here. A companion paper addresses this gap through both human inter-annotator agreement (planned: three independent raters on a subset of cases) and automated verdict assignment via structured LLM extraction, where the automation serves as a reproducibility check rather than a replacement for expert judgment.
+
+\paragraph{Case studies are illustrative, not pre-registered.} The 13 verdicts were assigned after the framework was designed, creating a risk of retrofitting---the same failure mode \mechval{} is designed to detect. We acknowledge this explicitly: the case studies demonstrate how the framework operates and show that it produces discriminating verdicts, but they are not independent tests of the framework's calibration. Pre-registered application to new circuits as they are published---where the verdict is committed before the evidence is fully reviewed---would provide stronger validation and is planned as future work.
+
+\paragraph{Tier thresholds are provisional.} The minimum evidence requirements for tier promotion (\Cref{tab:tier-promotion})---such as ``$\geq 3$ evidence families'' for Triangulated or ``at least 2 ablation variants'' for Mechanistically Supported---are not derived from first principles. They are calibrated against the authors' judgment on the 13 case studies and against established precedents in the source disciplines (clinical trials require multiple endpoints; genetics requires genome-wide replication). The synthesis methods in \Cref{sec:methodology}---Robust Rank Aggregation for cross-method convergence, Dawid-Skene consensus for reliability-weighted voting, and distributional stability via Wasserstein distance---partially alleviate this concern by replacing fixed count thresholds with principled statistical aggregation: a ``$\geq 3$ evidence families'' requirement becomes ``statistically significant convergence across independent methods'' when operationalized through RRA. Nonetheless, the mapping from continuous synthesis scores to discrete tier boundaries involves judgment, and a formal sensitivity analysis showing how verdicts change under threshold perturbation would strengthen the framework.
+
+\paragraph{Falsifiability of the framework itself.} A meta-level concern: what evidence would refute \mechval{}? If a circuit passes all 30 criteria and is subsequently shown to be wrong, is that a failure of the framework or of the experiment? We commit to the following: if a claim reaches Validated under the framework and is later demonstrably incorrect (the claimed mechanism is not the actual mechanism, as verified by synthetic ground truth or formal proof), this constitutes a framework failure---either a criterion is missing or the tier thresholds are miscalibrated. A framework that can always accommodate failures by saying ``you needed more evidence'' is not a scientific framework. The Validated tier carries genuine epistemic risk: it says the evidence is sufficient, and that claim is falsifiable.
+
+\paragraph{Scope of ``method-agnostic.''}  The framework is applied almost entirely to attention-head-level circuit claims in GPT-2-scale models. Extending it to SAE features, steering vectors, or crosscoders may require adapting how specific criteria are operationalized---the necessity/sufficiency tests look different for a distributed feature than for a localized head. The criteria themselves (``is specificity tested?'', ``does it generalize?'') are method-agnostic; their concrete instantiation is not. We have gestured at this adaptation in the metrics inventory (\Cref{appendix:metrics}) but have not demonstrated a full end-to-end application to a non-circuit MI result.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The \mechval{} framework provides a protocol for evaluating mechanistic interpretability claims. Its 30 criteria, organized across five validity types in dependency order, give each claim a structured validity profile that makes gaps visible and the path to strengthening them concrete. The framework does not rank papers or methods. It characterizes the evidential status of claims---and in doing so, it distinguishes what has been established from what has merely been asserted.
+
+The framework is open-source and method-agnostic. It applies the same criteria to circuits, SAE features, probing classifiers, steering vectors, transcoders, and crosscoders---because the questions ``Is the construct well-defined?'' and ``Is the evidence causal?'' do not depend on how the evidence was produced.
+
+% ============================================================
+% \section*{Acknowledgments}
+%
+% The theoretical framework draws on insights from the mechanistic interpretability community, particularly the open problems identified by \citet{sharkey2025open} and the actionability framework proposed by \citet{orgad2026actionable}. The cross-field methodology benefits from established validation frameworks in philosophy of science \citep{mayo2018statistical}, neuroscience, psychometrics, pharmacology, and causal inference \citep{pearl2009causality, spirtes2000causation}.
+%
+% ============================================================
+
+\bibliographystyle{tmlr}
+
+\nocite{campbell1963experimental,loevinger1957objective}
+\bibliography{references}
+
+
+\clearpage
+\appendix
+\section{Appendix}
+
+This appendix provides supporting material: a full 30-criteria audit of the IOI circuit
+(Appendix~\ref{appendix:ioi-audit}), an example circuit specification
+(Appendix~\ref{appendix:ioi-detail}), the evidence card reporting format
+(Appendix~\ref{appendix:evidence-cards}), and the full metric inventory grouped by
+evidence family (Appendix~\ref{appendix:metrics}).
+
+\subsection{Full 30-Criteria Audit: IOI Circuit}
+\label{appendix:ioi-audit}
+
+We audit the IOI circuit claim \citep{wang2023interpretability} against all 30 criteria to demonstrate what the framework produces in practice. The claim: ``The IOI circuit uses 26 attention heads in 6 functional roles to identify and output the indirect object in sentences of the form `When Mary and John went to the store, John gave a drink to \underline{\hspace{1cm}}'\,.'' Description mode: implementational-functional.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Full 30-criteria audit of the IOI circuit. Status: \textbf{C} = Confirmed, \textbf{PC} = Partially confirmed, \textbf{U} = Untested, \textbf{I} = Inconclusive, \textbf{D} = Disconfirmed.}
+\label{tab:ioi-audit}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}llll>{\raggedright\arraybackslash}p{6.5cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Criterion} & \textbf{Status} & \textbf{Evidence} \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Construct Validity}} \\
+C1 & Falsifiability & C & Specific heads named; ablation predictions testable \\
+C2 & Structural plausibility & C & OV/QK circuits analyzed; weight structure matches roles \\
+C3 & Convergent validity & PC & Primarily ablation-based; limited cross-family evidence. RRA (\S\ref{sec:methodology-synthesis}) would quantify whether agreement exceeds chance \\
+C4 & Discriminant validity & U & IOI circuit vs.\ neighboring tasks never tested \\
+C5 & Nomological validity & PC & Fits induction head theory loosely; no formal connection \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Measurement Validity}} \\
+M1 & Reliability & U & No bootstrap stability or seed variance reported \\
+M2 & Baseline separation & U & Faithfulness not compared to random circuit baselines \\
+M3 & Stability & U & Robustness to perturbation of circuit boundary not tested \\
+M4 & Calibration & PC & Logit difference is meaningful; faithfulness \% less clear \\
+M5 & Sensitivity & U & No known-positive control tested \\
+M6 & Invariance & U & No cross-condition consistency check \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Internal Validity}} \\
+I1 & Necessity & C & Ablation degrades IOI performance substantially \\
+I2 & Sufficiency & C & Circuit alone recovers 87\% logit diff (mean ablation) \\
+I3 & Specificity & U & Effect on non-IOI tasks never measured \\
+I4 & Double dissociation & U & No converse test (ablate non-IOI circuit, check IOI) \\
+I5 & Confound control & U & Residual stream confounds not addressed; I5a (\S\ref{sec:methodology-protocols}) specifies confound battery for IOI (positional, frequency, syntactic, length) \\
+I6 & Epistatic interaction & U & No pairwise ablation or synergy analysis \\
+I7 & Rescue reversibility & U & No corruption-then-restore experiment \\
+I10 & Confounding sensitivity & U & No E-value or sensitivity analysis \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{External Validity}} \\
+E1 & Intervention reach & I & 87\% mean ablation; $<$50\% resample ablation \citep{miller2024transformer}; E1a (\S\ref{sec:methodology-protocols}) would test steering reach in the positive direction \\
+E2 & Prompt generalization & PC & Template variations tested; distributional diversity limited \\
+E3 & Cross-task generalization & U & Transfer to related tasks (e.g., DOI) not tested \\
+E4 & Cross-model generalization & U & Only GPT-2 Small; no replication in other models \\
+E5 & Graded response & U & No dose-response (partial ablation) reported \\
+E6 & Novel prediction & PC & Negative name movers were a novel structural prediction \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Interpretive Validity}} \\
+V1 & Level declaration & PC & Impl.-functional implied but not explicitly declared \\
+V2 & Level-evidence match & PC & Evidence supports topographic + partial functional \\
+V3 & Alternative level & U & Whether evidence fits a simpler description not tested \\
+V4 & Anthropomorphism check & PC & ``Name mover'' is descriptive; ``S-inhibition'' implies intent; V4b (\S\ref{sec:methodology-protocols}) specifies contrastive test to validate labels \\
+V5 & Scope declaration & PC & IOI task defined; generalization scope unstated \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Summary.} Of 30 criteria: 4 Confirmed, 10 Partially confirmed, 1 Inconclusive, 15 Untested, 0 Disconfirmed. The IOI circuit reaches \textbf{Mechanistically Supported} (necessity and sufficiency established via one method family). The bottleneck to Triangulated is the absence of convergent evidence from $\geq 3$ evidence families (C3), untested specificity (I3), and no cross-model replication (E4). The bottleneck to Validated is the entirely unaddressed measurement validity block (M1--M6).
+
+The protocols in \S\ref{sec:methodology-protocols} provide concrete next steps for the highest-value untested criteria: (1) \textbf{I5 confound control}---run the I5a confound battery (positional, frequency, syntactic, length confounds) to determine whether the circuit is doing ``indirect object identification'' or ``copy the second proper noun''; (2) \textbf{V4 label validation}---run V4b contrastive label tests on ``name mover'' (equalize IO and S salience) and ``S-inhibition'' (test whether suppression is position- or identity-based); (3) \textbf{E1 intervention reach}---run E1a steering reach to test whether amplifying the circuit's activation direction \emph{increases} IOI performance proportionally, not just whether ablation decreases it; (4) \textbf{C3 convergent validity}---apply Dawid-Skene consensus (\S\ref{sec:methodology-synthesis}) across activation patching, weight analysis, and information-theoretic methods to determine which heads survive reliability-weighted voting. Additionally: (5) cross-method convergence---replicate the circuit via weight-space analysis; (6) cross-model replication---test whether the same circuit appears in GPT-2 Medium or Pythia.
+
+\subsection{Example Circuit Specification: IOI}
+
+\label{appendix:ioi-detail}
+
+We begin with a worked example to ground the abstract machinery: the IOI circuit,
+the most widely studied circuit in the field.
+Encoding it as a formal specification  shows how a mechanistic claim becomes a set of concrete, falsifiable predictions that the verification pipeline can test automatically.
+
+The IOI circuit specification defines a 6-step computational DAG:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Duplicate Token Detection} (DTH: heads 0.1, 3.0) --- detects that a name appears twice.
+    \item \textbf{Previous Token Tracking} (PTH: heads 2.2, 4.11) --- attends to the token before a name.
+    \item \textbf{Induction} (IND: heads 5.5, 6.9) --- uses DTH and PTH signals to identify the repeated name.
+    \item \textbf{S-Inhibition} (S-Inh: heads 7.3, 7.9, 8.6, 8.10) --- suppresses the repeated subject name.
+    \item \textbf{Name Mover} (NM: heads 9.9, 9.6, 10.0) --- copies the non-repeated (indirect object) name to the output.
+    \item \textbf{Negative Name Mover} (NegNM: heads 10.7, 11.10) --- provides opposing signal.
+\end{enumerate}
+
+\paragraph{Positive predictions (7).}
+\begin{itemize}[nosep]
+    \item Ablating DTH reduces output ($\geq 0.2$ decrease in logit difference).
+    \item Ablating induction heads substantially reduces logit difference ($\geq 0.5$).
+    \item Ablating S-Inh kills output ($\geq 0.8$ decrease).
+    \item Ablating S-Inh reduces name mover activation ($\geq 0.2$).
+    \item Ablating NegNM increases logit difference (removes opposing signal).
+    \item Ablating DTH reduces induction head activation (tests DTH$\rightarrow$IND edge).
+    \item Ablating PTH reduces induction head activation (tests PTH$\rightarrow$IND edge).
+\end{itemize}
+
+\paragraph{Negative controls (5).}
+\begin{itemize}[nosep]
+    \item Ablating NM does not affect upstream S-Inh.
+    \item Ablating NegNM does not affect upstream S-Inh.
+    \item Ablating PTH alone does not destroy circuit output ($< 0.3$ decrease).
+    \item Ablating S-Inh does not affect upstream DTH.
+    \item Ablating NM does not affect NegNM (parallel roles, not connected).
+\end{itemize}
+
+This specification encodes the directed causal structure of the proposed mechanism and provides concrete, falsifiable predictions that can be tested automatically by the verification pipeline.
+
+\subsection{Evidence Cards}
+
+\label{appendix:evidence-cards}
+
+
+An evidence card is the minimal reporting unit for a claim-level validity judgment.
+It records which measurement bears on which criterion, whether the relevant
+calibration checks were performed, and what verdict implication follows.
+This prevents verdicts from becoming aggregate impressions: each assignment must
+be traceable to specific present or missing evidence.
+
+As an example, we show the IOI circuit, using supplementary information from follow-up studies.
+\citep{miller2024transformer} find the faithfulness numbers to be method-conditional, and \citep{meloux2025everything} find alternative head sets achieving comparable faithfulness.
+
+
+\begin{table}[H]
+\centering
+\small
+\caption{Evidence card template: the atomic reporting unit linking measurements to criteria and verdicts.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Field} & \textbf{Contents} \\
+\midrule
+Claim & The exact mechanistic claim being evaluated \\
+\midrule
+Description Mode & The strongest description mode implicated by the claim \\
+\midrule
+Evidence Family & The family of the primary evidence: weights, activations, behavior, or training \\
+\midrule
+Primary Metric & The concrete runnable test producing the measurement \\
+\midrule
+Calibration Checks & Calibration checks on the primary metric: reliability, baseline separation, stability, sensitivity, uncertainty, or invariance \\
+\midrule
+Criterion Tested & The criterion the evidence bears on, such as I1 necessity, I2 sufficiency, E1 intervention reach, or M2 baseline separation \\
+\midrule
+Result & The reported numerical result, qualitative finding, or structured observation \\
+\midrule
+Status & Pass, partial pass, fail, or untested \\
+\midrule
+Failure Mode Addressed & The validity failure this card helps detect, such as no baseline control, method-conditional evidence, off-target effects, or scope creep \\
+\midrule
+Verdict Implication & What verdict tier this evidence can support, and what higher tier it fails to support without additional evidence \\
+\bottomrule
+\end{tabular}
+\label{tabevidencecardtemplate}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Evidence card for the IOI circuit faithfulness result.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Field} & \textbf{IOI example} \\
+\midrule
+Claim & The IOI circuit uses name-mover heads to copy the indirect object to the output position \\
+\midrule
+Description Mode & Implementational-functional: the claim identifies components and assigns them functional roles \\
+\midrule
+Evidence Family & Activations and behavior \\
+\midrule
+Primary Metric & Faithfulness / logit-difference recovery under circuit ablation \\
+\midrule
+Calibration Checks & Intervention robustness: the headline faithfulness value is method-conditional \\
+\midrule
+Criterion Tested & I1 necessity, I2 sufficiency, and E1 intervention reach \\
+\midrule
+Result & The circuit recovers 87\% of the full-model logit difference under mean ablation, but substantially less under other ablation methods \\
+\midrule
+Status & I1 pass; I2 partial/pass depending on intervention definition; E1 partial because intervention variants disagree \\
+\midrule
+Failure Mode Addressed & Cherry-picking metrics and method-conditional evidence \\
+\midrule
+Verdict Implication & Supports Mechanistically Supported, but blocks Triangulated until specificity, double dissociation, cross-model generalization, and stronger measurement calibration are addressed \\
+\bottomrule
+\end{tabular}
+\label{tabevidencecardioi}
+\end{table}
+
+
+
+
+\subsection{Metrics Inventory}
+\label{appendix:metrics}
+The full inventory of metrics is listed below. For historical continuity with the original metric catalog, the appendix retains the fine-grained grouping (causal, structural, information-theoretic, behavioral, representational, measurement) used during development; each group maps onto one or more of the four source-based evidence families defined in \Cref{sec:evidence-families}. \\
+\\
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+
+% --- A. Causal ---
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\noindent\textbf{A. Causal}\par
+\vspace{4pt}\noindent\captionof{table}{Causal metrics: the effect of interventions on the model's computation.}
+\nopagebreak
+
+\centering
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+A01 SCM / Pearl & Structural causal models and do-calculus as the formal language for circuit claims \\
+\midrule
+A02 Counterfactual DAS & Distributed Alignment Search and IIA for testing causal abstraction hypotheses \\
+\midrule
+A03 Rubin CATE & Conditional average treatment effects across input subpopulations \\
+\midrule
+A04 Woodward & Interventionist theory of causation applied to circuit ablation \\
+\midrule
+A05 MDC / Glennan & New mechanical philosophy --- components organized to produce phenomena \\
+\midrule
+A06 Mediation & Natural direct and indirect effects decomposition for circuit paths \\
+\midrule
+A07 Granger / TE & Observational causal discovery via conditional MI and temporal precedence \\
+\midrule
+A08 PID & Decomposing MI into redundant, unique, and synergistic contributions \\
+\midrule
+A09 MDL / SLT & Minimum description length and singular learning theory for circuit complexity \\
+\midrule
+A10 Regularity / INUS & INUS conditions --- insufficient but necessary parts of sufficient sets \\
+\midrule
+A11 Actual Cause & Halpern-Pearl actual causation on specific inputs, not just potential causes \\
+\midrule
+A12 Transportability & Formal conditions for circuit generalization across models and distributions \\
+\midrule
+A13 Causal Discovery & NOTEARS / PC algorithms for learning DAGs over circuit components \\
+\bottomrule
+\end{tabular}
+\medskip
+
+
+
+\begin{minipage}{\linewidth}
+\noindent{\textbf{B. Structural}}\par
+
+\begin{center}
+\captionof{table}{Structural metrics: weight-space properties requiring no forward pass.}
+
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+B01 SVD / Spectral & Singular value decomposition to identify dominant computational directions \\
+\midrule
+B02 Effective Rank & Entropy-based dimensionality as a scalar summary of spectral concentration \\
+\midrule
+B03 OV / QK Decomp. & Decomposing attention heads into OV (what to write) and QK (where to attend) \\
+\midrule
+B04 Weight Alignment & Cosine similarity between principal weight directions across heads \\
+\midrule
+B05 Norm Trajectory & Spectral norm ratios tracking signal amplification through components \\
+\midrule
+B06 Template Distance & Graph-edit and metric distances between circuits discovered for different tasks \\
+\midrule
+B07 Polysemanticity & Measuring whether components encode multiple unrelated features in superposition \\
+\midrule
+B08 ICA / NMF & Independent component analysis for decomposing weights into interpretable parts \\
+\midrule
+B09 Weight Classifier & Training classifiers on weight matrices to predict circuit membership \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\smallskip
+
+% --- information flow and dependencies.
+\begin{minipage}{\linewidth}
+\noindent{\textbf{C. Information-theoretic}}\par
+\begin{center}
+\captionof{table}{Information-theoretic metrics: information flow and dependencies.}
+
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+C01 Mutual Info. & Total shared information between circuit components and task performance \\
+\midrule
+C02 Conditional MI & Information shared after conditioning on other parts of the circuit \\
+\midrule
+C03 Transfer Entropy & Directed information flow between components across layers \\
+\midrule
+C04 PID & Decomposing shared information into unique, redundant, and synergistic atoms \\
+\midrule
+C05 Info. Bottleneck & How efficiently circuits compress input while preserving task-relevant signal \\
+\midrule
+C06 O-Information & Whether a group of components interacts redundantly or synergistically \\
+\midrule
+C07 Granger Causality & Whether one component's past activations improve prediction of another's future \\
+\midrule
+C08 OCSE & Estimating causal influence between components using only observational data \\
+\midrule
+C09 NOTEARS & Learning directed acyclic graph structure from observational activation data \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+% --- input-output behavior under manipulation.
+\begin{minipage}{\linewidth}
+\noindent{\textbf{D. Behavioral}}\par
+\begin{center}
+\captionof{table}{Behavioral metrics: input-output behavior under manipulation.}
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+D01 Faithfulness & Whether an identified circuit faithfully reproduces the full model's behavior \\
+\midrule
+D02 Logit Diff & How much of the model's logit difference the circuit recovers \\
+\midrule
+D03 KL Divergence & Information-theoretic distance between circuit and full model distributions \\
+\midrule
+D04 CE Delta & Change in cross-entropy loss when the circuit is ablated \\
+\midrule
+D05 Top-K Accuracy & Whether the circuit preserves the model's top-K predicted tokens \\
+\midrule
+D06 Cross-Task & Whether a circuit discovered on one task transfers to a different task \\
+\midrule
+D07 Cross-Scale & Whether circuit structure replicates in larger or smaller models \\
+\midrule
+D08 Prompt Paraphrase & Circuit consistency across semantically equivalent prompt templates \\
+\midrule
+D09 Generalization Gap & Sensitivity of circuit discovery to hyperparameters and methodological choices \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\smallskip
+
+% --- geometry and content of internal representations
+\begin{minipage}{\linewidth}
+\noindent{\textbf{E. Representational}}\par
+\begin{center}
+\captionof{table}{Representational metrics: geometry and content of internal representations.}
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+E01 DAS-IIA & Whether a learned linear subspace causally encodes a target variable \\
+\midrule
+E02 Linear Probe & Whether a target variable is linearly decodable from intermediate representations \\
+\midrule
+E03 RSA & Comparing representation geometry by correlating pairwise distance matrices \\
+\midrule
+E04 CKA & Kernel alignment for cross-layer and cross-model representation comparison \\
+\midrule
+E05 Subspace Align. & Cosine alignment between SVD-derived principal directions of weight matrices \\
+\midrule
+E06 PCA Dim. & Effective dimensionality of circuit subspaces via activation covariance spectrum \\
+\midrule
+E07 Intrinsic Dim. & True manifold dimensionality, connecting to geometric complexity \\
+\midrule
+E08 Participation Ratio & How many dimensions are effectively active in a representation \\
+\midrule
+E09 Persistent Homology & Topological data analysis detecting loops and voids in activation manifolds \\
+\midrule
+E10 Cross-Task Overlap & Representational structure shared between tasks via IIA transfer \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+% --- calibration checks for the trustworthiness of other metrics.
+
+\begin{minipage}{\linewidth}
+\noindent{\textbf{F. Measurement}}\par
+\begin{center}
+\captionof{table}{Measurement metrics: calibration checks for the trustworthiness of other metrics.}
+\begin{tabular}{@{}lp{10cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+F01 Test--Retest & Whether rerunning the same metric on the same model, task, and intervention gives the same answer \\
+\midrule
+F02 Bootstrap Stability & Whether the metric remains stable under bootstrap resampling of prompts, examples, or activation samples \\
+\midrule
+F03 Seed Variance & How much the metric changes across random seeds for probes, SAEs, optimization, or sampling-based estimators \\
+\midrule
+F04 Checkpoint Variance & Whether the metric is stable across nearby checkpoints or depends on one training snapshot \\
+\midrule
+F05 Prompt Variance & How much the metric changes across prompt templates, paraphrases, lexical choices, or dataset slices \\
+\midrule
+F06 Baseline Separation & Whether the score is distinguishable from random, untrained, shuffled-label, or permuted-circuit baselines \\
+\midrule
+F07 Negative Controls & Whether the metric stays low where the claimed effect should be absent \\
+\midrule
+F08 Positive Controls & Whether the metric detects known-true or synthetic effects of the relevant size \\
+\midrule
+F09 Intervention Robustness & Whether the conclusion survives reasonable intervention variants such as mean ablation, zero ablation, resample ablation, patching, or causal scrubbing \\
+\midrule
+F10 Hyperparam. Sensitivity & Whether the metric changes under reasonable choices of sparsity, probe regularization, thresholds, localization cutoffs, or discovery hyperparameters \\
+\midrule
+F11 Estimator Uncertainty & Confidence intervals, standard errors, permutation tests, or posterior intervals for the reported metric value \\
+\midrule
+F12 Calibration Curve & Whether larger reported scores correspond to larger empirical effects or higher probability of success \\
+\midrule
+F13 Cross-Metric Convergence & Whether independent metrics intended to test the same criterion agree despite different failure modes \\
+\midrule
+F14 Measurement Invariance & Whether the metric behaves consistently across model sizes, tasks, prompt distributions, and intervention contexts \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+\endgroup
+\end{document}

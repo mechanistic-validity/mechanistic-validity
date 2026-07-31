@@ -1,0 +1,81 @@
+% Mechanistic Validity — Supplementary Reference (frozen canonical spec)
+% =====================================================================
+% This is the full apparatus, moved out of the main paper so the main paper can be
+% a digestible teaser. This file is the CITABLE, FREEZE-ABLE reference (give it a SHA;
+% mirror it on the website). The main paper points here for all pass conditions and metrics.
+% \PORT = lift from v5; \TODO = new writing / reconciliation needed.
+% =====================================================================
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{caption}
+\newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\PORT}[1]{\textcolor{blue}{[PORT v5: #1]}}
+
+\title{Mechanistic Validity: Supplementary Reference}
+\author{Elliot Tower}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% =====================================================================
+\section{The Thirty Criteria (full pass conditions)}
+\PORT{tab:criteria (C1--C5, M1--M6, I1--I10, E1--E6, V1--V5) EXPANDED: each criterion with
+its concrete, falsifiable pass condition (not the one-line summary). Include tab:criterion-status
+(Confirmed / Partially confirmed / Inconclusive / Disconfirmed / Untested) and the Mayo/Achinstein
+severity grounding paragraph.}
+\TODO{Fix I-criteria numbering (v5 jumps I7 -> I10). Either renumber contiguously or document
+why I8/I9 are reserved.}
+
+% =====================================================================
+\section{Metric Inventory (65 metrics)}
+\PORT{Appendix A--F metric tables: A Causal (A01--A13), B Structural (B01--B09),
+C Information-theoretic (C01--C09), D Behavioral (D01--D09), E Representational (E01--E10),
+F Measurement/calibration (F01--F..).}
+\TODO{Reconcile the count: main text variously says 65 metrics / 15 calibrations vs 14. State
+the true totals here and have the main paper cite this number.}
+
+% =====================================================================
+\section{Protocols}
+\PORT{The multi-step designed experiments (V4 interpretive-inflation control, I5 confound
+control, I6 epistatic interaction, E1 intervention reach).}
+\TODO{Reconcile: v5 says "9 protocols" in one place and "currently defines four" in another.
+List exactly what exists.}
+
+% =====================================================================
+\section{Synthesis Protocols}
+\PORT{The nine aggregation methods: Jaccard, Robust Rank Aggregation, Dawid-Skene,
+parallel/sequential ensembles, Wasserstein stability, functional parcellation,
+meta-learner, Granger graphs, circuit component reuse.}
+\TODO{These are asserted, not demonstrated, in v5. Either (a) demonstrate at least one on the
+audit data and report it in the MAIN paper's Sec 6, or (b) clearly label all nine as
+"proposed operationalizations, not yet validated" here.}
+
+% =====================================================================
+\section{Theoretical Foundations (seven disciplines)}
+\PORT{Full \S7: philosophy of science, psychometrics, causal inference, neuroscience,
+genetics, pharmacology, MI-lens --- with each per-discipline concept/source/criterion/MI-analog
+table. This is good scholarship but it is justification, not story, so it lives here.}
+\TODO{Keep the decorative IOI SCM here (the main paper keeps only the load-bearing
+ablation-vs-patching do-operator point).}
+
+% =====================================================================
+\section{Evidence Card Template}
+\PORT{The evidence-card format (atomic reporting unit: which measurement bears on which
+criterion, which calibrations were run, what verdict the evidence supports).}
+\TODO{Provide a blank template + one filled example (e.g., the IOI card).}
+
+% =====================================================================
+\section{Per-Claim Detailed Scoring (13 audits)}
+\TODO{The full criterion-by-criterion scoring trace for all 13 claims (the main paper shows
+only 3--4 illustrative traces). Each is a mini-lit-review of the claim aggregating follow-up
+evidence --- populate from the Perplexity deep-research pass.}
+
+\end{document}

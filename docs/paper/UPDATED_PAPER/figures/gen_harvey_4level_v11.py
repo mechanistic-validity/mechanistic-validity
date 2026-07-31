@@ -1,0 +1,294 @@
+"""Harvey 4-level v11: gray-boxed legend with Verdicts + Criteria sections.
+Generates two variants: v11_left.png (legend top-left) and v11_right.png (legend top-right).
+Triangle wedge shapes for criteria legend. Sorted by CVS descending.
+"""
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import numpy as np
+from pathlib import Path
+
+OUTDIR = Path(__file__).parent
+
+C, S, M, D, U = 1.0, 0.7, 0.3, -1.0, 0.0
+
+criteria_4level = {
+    "Induction Heads": {
+        "C1":C,"C2":C,"C3":C,"C4":C,"C5":C,
+        "I1":C,"I2":C,"I3":C,"I4":C,"I5":U,
+        "M1":C,"M2":C,"M3":C,"M4":C,"M5":S,"M6":C,
+        "E1":C,"E2":C,"E3":C,"E4":C,"E5":C,"E6":C,
+        "V1":C,"V2":C,"V3":C,"V4":C,"V5":C,
+    },
+    "Grokking": {
+        "C1":C,"C2":C,"C3":C,"C4":C,"C5":C,
+        "I1":C,"I2":C,"I3":C,"I4":C,"I5":C,
+        "M1":C,"M2":C,"M3":C,"M4":C,"M5":C,"M6":C,
+        "E1":C,"E2":C,"E3":C,"E4":C,"E5":C,"E6":S,
+        "V1":C,"V2":C,"V3":C,"V4":C,"V5":C,
+    },
+    "Superposition": {
+        "C1":C,"C2":S,"C3":C,"C4":C,"C5":S,
+        "I1":S,"I2":S,"I3":S,"I4":C,"I5":S,
+        "M1":S,"M2":S,"M3":C,"M4":S,"M5":S,"M6":S,
+        "E1":S,"E2":S,"E3":S,"E4":S,"E5":S,"E6":U,
+        "V1":C,"V2":C,"V3":C,"V4":S,"V5":S,
+    },
+    "IOI Circuit": {
+        "C1":C,"C2":C,"C3":U,"C4":S,"C5":S,
+        "I1":C,"I2":C,"I3":U,"I4":S,"I5":U,
+        "M1":U,"M2":S,"M3":C,"M4":U,"M5":U,"M6":S,
+        "E1":U,"E2":S,"E3":U,"E4":C,"E5":S,"E6":U,
+        "V1":C,"V2":C,"V3":C,"V4":M,"V5":S,
+    },
+    "Greater-Than": {
+        "C1":C,"C2":C,"C3":S,"C4":C,"C5":S,
+        "I1":C,"I2":S,"I3":S,"I4":S,"I5":U,
+        "M1":U,"M2":S,"M3":C,"M4":C,"M5":U,"M6":C,
+        "E1":U,"E2":S,"E3":S,"E4":C,"E5":S,"E6":U,
+        "V1":C,"V2":C,"V3":C,"V4":S,"V5":C,
+    },
+    "Copy Suppression": {
+        "C1":C,"C2":C,"C3":S,"C4":C,"C5":S,
+        "I1":C,"I2":S,"I3":C,"I4":S,"I5":U,
+        "M1":U,"M2":S,"M3":C,"M4":C,"M5":U,"M6":C,
+        "E1":S,"E2":U,"E3":C,"E4":S,"E5":S,"E6":U,
+        "V1":C,"V2":C,"V3":C,"V4":S,"V5":C,
+    },
+    "Successor Heads": {
+        "C1":C,"C2":C,"C3":C,"C4":C,"C5":S,
+        "I1":C,"I2":S,"I3":S,"I4":S,"I5":U,
+        "M1":U,"M2":C,"M3":C,"M4":C,"M5":U,"M6":C,
+        "E1":U,"E2":S,"E3":S,"E4":S,"E5":C,"E6":U,
+        "V1":C,"V2":C,"V3":C,"V4":S,"V5":C,
+    },
+    "Docstring Circuit": {
+        "C1":C,"C2":S,"C3":U,"C4":S,"C5":S,
+        "I1":C,"I2":S,"I3":U,"I4":S,"I5":U,
+        "M1":U,"M2":S,"M3":C,"M4":U,"M5":U,"M6":S,
+        "E1":U,"E2":U,"E3":U,"E4":S,"E5":S,"E6":U,
+        "V1":C,"V2":S,"V3":S,"V4":M,"V5":S,
+    },
+    "SAE Features": {
+        "C1":M,"C2":S,"C3":U,"C4":M,"C5":M,
+        "I1":S,"I2":S,"I3":U,"I4":M,"I5":U,
+        "M1":M,"M2":U,"M3":S,"M4":U,"M5":U,"M6":M,
+        "E1":S,"E2":S,"E3":U,"E4":M,"E5":U,"E6":U,
+        "V1":C,"V2":M,"V3":M,"V4":U,"V5":D,
+    },
+    "Othello World Model": {
+        "C1":C,"C2":S,"C3":C,"C4":U,"C5":S,
+        "I1":S,"I2":S,"I3":S,"I4":S,"I5":M,
+        "M1":U,"M2":S,"M3":S,"M4":U,"M5":U,"M6":S,
+        "E1":C,"E2":U,"E3":U,"E4":S,"E5":S,"E6":U,
+        "V1":C,"V2":C,"V3":S,"V4":M,"V5":S,
+    },
+    "Knowledge Neurons": {
+        "C1":C,"C2":S,"C3":S,"C4":M,"C5":S,
+        "I1":C,"I2":C,"I3":M,"I4":S,"I5":M,
+        "M1":S,"M2":M,"M3":S,"M4":U,"M5":U,"M6":S,
+        "E1":S,"E2":U,"E3":S,"E4":C,"E5":S,"E6":S,
+        "V1":C,"V2":S,"V3":S,"V4":M,"V5":S,
+    },
+    "Probing Classifiers": {
+        "C1":S,"C2":M,"C3":M,"C4":C,"C5":M,
+        "I1":U,"I2":U,"I3":U,"I4":S,"I5":M,
+        "M1":S,"M2":M,"M3":M,"M4":M,"M5":U,"M6":S,
+        "E1":U,"E2":C,"E3":C,"E4":C,"E5":M,"E6":S,
+        "V1":C,"V2":S,"V3":S,"V4":M,"V5":D,
+    },
+    "Gender Bias Circuits": {
+        "C1":S,"C2":S,"C3":M,"C4":M,"C5":M,
+        "I1":S,"I2":D,"I3":M,"I4":M,"I5":M,
+        "M1":M,"M2":M,"M3":S,"M4":U,"M5":U,"M6":M,
+        "E1":S,"E2":M,"E3":M,"E4":M,"E5":M,"E6":S,
+        "V1":S,"V2":S,"V3":M,"V4":M,"V5":D,
+    },
+}
+
+cvs_scores = {
+    "Induction Heads": 8.9, "Grokking": 9.4, "Superposition": 6.1,
+    "IOI Circuit": 6.7, "Greater-Than": 6.9, "Copy Suppression": 6.9,
+    "Successor Heads": 5.6, "Docstring Circuit": 4.2, "SAE Features": 3.3,
+    "Othello World Model": 4.4, "Knowledge Neurons": 4.2,
+    "Probing Classifiers": 1.9, "Gender Bias Circuits": 1.4,
+}
+
+tier_map = {
+    "Induction Heads": "Triangulated", "Grokking": "Triangulated",
+    "IOI Circuit": "Mech. Supported", "Greater-Than": "Mech. Supported",
+    "Copy Suppression": "Mech. Supported", "Superposition": "Mech. Supported",
+    "Successor Heads": "Caus. Suggestive", "Docstring Circuit": "Caus. Suggestive",
+    "SAE Features": "Caus. Suggestive", "Othello World Model": "Caus. Suggestive",
+    "Knowledge Neurons": "Caus. Suggestive", "Probing Classifiers": "Proposed",
+    "Gender Bias Circuits": "Proposed",
+}
+tier_colors = {
+    "Proposed": "#ef4444", "Caus. Suggestive": "#f59e0b",
+    "Mech. Supported": "#10b981", "Triangulated": "#3b82f6",
+}
+
+status_colors = {
+    1.0:  "#16a34a",  # Confirmed
+    0.7:  "#86efac",  # Semi-confirmed
+    0.3:  "#fecaca",  # Mixed — light pink
+    -1.0: "#ef4444",  # Disconfirmed
+    0.0:  "white",    # Untested
+}
+status_alpha = {1.0: 0.9, 0.7: 0.75, 0.3: 0.75, -1.0: 0.85, 0.0: 1.0}
+
+dim_criteria = [
+    ["C1","C2","C3","C4","C5"], ["I1","I2","I3","I4","I5"],
+    ["M1","M2","M3","M4","M5","M6"], ["E1","E2","E3","E4","E5","E6"],
+    ["V1","V2","V3","V4","V5"],
+]
+dim_names = ["Construct", "Internal", "Measurement", "External", "Interpretive"]
+circuit_order = sorted(criteria_4level.keys(), key=lambda c: -cvs_scores[c])
+
+n_rows = len(circuit_order)
+col_spacing = 1.4
+row_spacing = 1.2
+radius = 0.42
+
+
+def draw_legend_box(ax, box_x, box_top_y):
+    """Draw gray-boxed legend with Verdicts + Criteria sections."""
+    box_w = 3.2
+    box_h = 6.2
+    box_y = box_top_y - box_h
+
+    # Gray background box
+    ax.add_patch(mpatches.FancyBboxPatch(
+        (box_x, box_y), box_w, box_h,
+        boxstyle='round,pad=0.15', facecolor='#f8fafc',
+        edgecolor='#cbd5e1', linewidth=1.2))
+
+    # --- Verdicts section ---
+    vy = box_top_y - 0.35
+    ax.text(box_x + 0.3, vy, "Verdicts", fontsize=11, fontweight='bold',
+            color='#1e293b', va='center')
+
+    tier_items = [
+        ("Triangulated", "#3b82f6"),
+        ("Mech. Supported", "#10b981"),
+        ("Caus. Suggestive", "#f59e0b"),
+        ("Proposed", "#ef4444"),
+    ]
+    for idx, (tname, tcol) in enumerate(tier_items):
+        ty = vy - 0.55 - idx * 0.55
+        sq = 0.25
+        ax.add_patch(mpatches.FancyBboxPatch(
+            (box_x + 0.3, ty - sq/2), sq, sq,
+            boxstyle='round,pad=0.02', facecolor=tcol, edgecolor='none'))
+        ax.text(box_x + 0.3 + sq + 0.15, ty, tname, fontsize=10,
+                va='center', fontweight='bold', color=tcol)
+
+    # --- Criteria section ---
+    cy = vy - 0.55 - 4 * 0.55 - 0.3
+    ax.text(box_x + 0.3, cy, "Criteria", fontsize=11, fontweight='bold',
+            color='#1e293b', va='center')
+
+    crit_items = [
+        (1.0, "Confirmed"), (0.7, "Semi-confirmed"), (0.3, "Mixed"),
+        (-1.0, "Disconfirmed"), (0.0, "Untested"),
+    ]
+    wedge_r = 0.2
+    for idx, (val, label) in enumerate(crit_items):
+        iy = cy - 0.5 - idx * 0.5
+        fc = status_colors[val]
+        al = status_alpha[val]
+        wx = box_x + 0.45
+        # 1/6th triangle wedge (60° slice)
+        w = mpatches.Wedge((wx, iy), wedge_r, 60, 120,
+                            facecolor=fc, alpha=al,
+                            edgecolor='#94a3b8', linewidth=0.8)
+        ax.add_patch(w)
+        ax.text(wx + wedge_r + 0.15, iy, label, fontsize=10,
+                va='center', color='#475569', fontweight='bold')
+
+
+def draw_figure(legend_side, legend_valign='top'):
+    fig_w = 14
+    fig_h = n_rows * row_spacing + 2.5
+    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
+
+    circles_right = (5 - 1) * col_spacing + radius + 0.5
+    ax.set_xlim(-10.0, circles_right + (4.0 if legend_side == 'right' else 0.5))
+    ax.set_ylim(-1.0, n_rows * row_spacing + 1.2)
+    ax.set_aspect('equal')
+    ax.axis('off')
+
+    # Legend box position
+    box_h = 6.2
+    if legend_valign == 'top':
+        legend_top = (n_rows - 1) * row_spacing + 0.6
+    elif legend_valign == 'middle':
+        mid = (n_rows - 1) * row_spacing / 2
+        legend_top = mid + box_h / 2
+    else:  # bottom
+        legend_top = box_h - 0.5
+
+    if legend_side == 'left':
+        draw_legend_box(ax, -9.5, legend_top)
+    else:
+        draw_legend_box(ax, circles_right + 0.5, legend_top)
+
+    # Column headers
+    for j, dim in enumerate(dim_names):
+        cx = j * col_spacing
+        header_y = n_rows * row_spacing - 0.35
+        ax.text(cx, header_y, dim, fontsize=12, fontweight='bold', color='#1e293b',
+                ha='left', va='bottom', rotation=45)
+
+    # Rows
+    for i, name in enumerate(circuit_order):
+        tier = tier_map[name]
+        y = (n_rows - 1 - i) * row_spacing
+        cdata = criteria_4level[name]
+        cvs = cvs_scores[name]
+        tc = tier_colors[tier]
+
+        # Tier-colored square + score, shifted left
+        score_x = -1.4
+        sq_size = 0.25
+        ax.add_patch(mpatches.FancyBboxPatch(
+            (score_x - sq_size/2, y - sq_size/2), sq_size, sq_size,
+            boxstyle='round,pad=0.02', facecolor=tc, edgecolor='none'))
+        ax.text(score_x + sq_size/2 + 0.12, y, f"{cvs:.1f}",
+                fontsize=12, ha='left', va='center',
+                fontweight='bold', fontstyle='italic', color=tc)
+        ax.text(score_x - sq_size/2 - 0.15, y, name,
+                fontsize=12, ha='right', va='center',
+                fontweight='bold', fontstyle='italic', color=tc)
+
+        # Harvey balls
+        for dim in range(5):
+            cx = dim * col_spacing
+            keys = dim_criteria[dim]
+            n_crit = len(keys)
+            angle_span = 360 / n_crit
+            for seg, ckey in enumerate(keys):
+                theta1 = 90 - (seg + 1) * angle_span
+                theta2 = 90 - seg * angle_span
+                val = cdata[ckey]
+                fc = status_colors[val]
+                alpha = status_alpha[val]
+                wedge = mpatches.Wedge((cx, y), radius, theta1, theta2,
+                                        facecolor=fc, edgecolor='white',
+                                        linewidth=1.8, alpha=alpha)
+                ax.add_patch(wedge)
+            circle = plt.Circle((cx, y), radius, facecolor='none',
+                                  edgecolor='#cbd5e1', linewidth=1.0)
+            ax.add_patch(circle)
+
+    plt.tight_layout(pad=0.5)
+    out = OUTDIR / f"fig_harvey_4level_v11_{legend_side}_{legend_valign}.png"
+    plt.savefig(str(out), dpi=200, bbox_inches='tight', facecolor='white')
+    plt.close()
+    print(f"Saved → {out}")
+
+
+draw_figure('right', legend_valign='top')
+draw_figure('right', legend_valign='middle')
+draw_figure('right', legend_valign='bottom')

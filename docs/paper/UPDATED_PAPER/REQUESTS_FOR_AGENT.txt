@@ -1,0 +1,67 @@
+Timestamp: 2026-05-25T19:52:11-04:00
+Saved by: Copilot
+
+Goal: Finish PERPLEXITY paper build and visuals exactly per user requests. Provide this file for another agent to execute.
+
+Priority tasks (execute in order):
+1) Snapshot current state
+   - Run: ./save_snapshot.sh (created in UPDATED_PAPER/) to copy .tex and current PDF to snapshots/
+
+2) Generate v12 radar image (required for final figures)
+   - CD: docs/paper/UPDATED_PAPER/figures
+   - Run: python3 gen_radar_wrapped_v12.py
+   - Output: fig_radar_wrapped_v12.png
+   - Note: Environment may need working matplotlib + build toolchain (kiwisolver). If generation fails, run in a Linux/Mac local env with pip install -U matplotlib numpy
+
+3) Generate Table 5 image (alternative visual)
+   - CD: docs/paper/UPDATED_PAPER/figures
+   - Run: python3 gen_table5_image.py
+   - Output: fig_table5_matplotlib.png
+   - If text differs, update rows list in gen_table5_image.py to match the LaTeX Table 5 contents.
+
+4) Insert images into paper
+   - File: docs/paper/UPDATED_PAPER/mechval_framework_v2_PERPLEXITY.tex
+   - Ensure these includes exist: \IfFileExists{figures/fig_radar_wrapped_v12.png}{\includegraphics...}{\fbox{Missing fig_radar_wrapped_v12.png}}
+   - Add fig_table5_matplotlib.png where Table 5 is referenced (if desired). Use \clearpage before full-page figure if needed.
+
+5) Tables edits (LaTeX changes)
+   - Table 1 (criteria): Add \hline between every row; set \renewcommand{\arraystretch}{1.12} for spacing; remove hyphenation for cells with \raggedright.
+   - Table 2: Provide transposed version (cols<->rows) and alternative with views-as-rows; add faint vertical rules and row separators.
+   - Table 3 (cross-field): Make first field label "Causal Inf."; remove Counterfactual/V3 column if requested; increase p{...} column widths to avoid line breaks. Add \hline between rows and slightly larger \arraystretch.
+   - Table 5: Either replace with fig_table5_matplotlib.png or keep LaTeX table but apply \small and wraptext via p{width} and use \raggedright in cells. Add borders for each row.
+
+6) Prose / labels
+   - Keep PERPLEXITY prose as original. Revert any accidental replacements of V1..V4 in the prose.
+   - Diagrams/tables: ensure diagrams do NOT show V1/V4 labels; keep diagram legends and figure text as requested (raise legend already done for v12 script).
+   - Acknowledgments: comment out (already done).
+   - Do NOT perform TODOs for renaming Track 3 or removing linguistic/ADRs unless explicitly instructed.
+
+7) Build PDF with versioning
+   - CD: docs/paper/UPDATED_PAPER
+   - Run: ./build_with_version.sh
+   - This will run latexmk and save a timestamped PDF copy.
+
+8) Verify output
+   - Open produced PDF: mechval_framework_v2_PERPLEXITY.pdf and snapshots/*.pdf for previous state
+   - Confirm: v11 and v12 images present (on separate pages as requested), Table 3 uses "Causal Inf.", Table 1/2/3/5 have row separators and spacing improved, acknowledgments commented.
+
+9) If further tweaks needed (layout/spacings):
+   - Edit mechval_framework_v2_PERPLEXITY.tex; use save_snapshot.sh before edits; then rebuild.
+
+Files to edit (paths):
+- docs/paper/UPDATED_PAPER/mechval_framework_v2_PERPLEXITY.tex
+- docs/paper/UPDATED_PAPER/build_with_version.sh (exists)
+- docs/paper/UPDATED_PAPER/save_snapshot.sh (exists)
+- docs/paper/UPDATED_PAPER/figures/gen_radar_wrapped_v12.py
+- docs/paper/UPDATED_PAPER/figures/gen_table5_image.py (created)
+- docs/paper/UPDATED_PAPER/figures/fig_radar_wrapped_v11.png (present)
+- docs/paper/UPDATED_PAPER/figures/fig_radar_wrapped_v12.png (to be generated)
+
+Extra notes for implementer agent:
+- This repo's environment here previously failed to compile matplotlib's native dependencies. Prefer running image generation on local machine with pip-installed matplotlib.
+- Use git branch to isolate changes: git checkout -b perf/paper-figures-YYYYMMDD
+- Keep backup snapshots (save_snapshot.sh) before any edit.
+
+Contact back to user when done and attach the final timestamped PDF path and any errors encountered during figure generation.
+
+End of requests.

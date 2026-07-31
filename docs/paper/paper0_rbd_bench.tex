@@ -1,0 +1,1346 @@
+% ============================================================
+% Paper 0 — RBD-Bench unified paper
+% Representational-Behavioural Dissociation in LLMs
+% Six axes (D1-D6), named routing failures, mechanistic cures
+% Merges: paper0_rewrite_v2.tex, F-2 workshop draft, paper0_final.tex
+% ============================================================
+\pdfoutput=1
+\documentclass[11pt]{article}
+\usepackage{ACL2023}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{array}
+
+% Series-consistent macros
+\newcommand{\rbd}{\textsc{rbd}}
+\newcommand{\tighttable}{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.05}}
+
+% Named mechanisms from F-2
+\newcommand{\umg}{Use-Mention Gap}
+\newcommand{\Umg}{Use-Mention Gap}
+\newcommand{\irb}{Internal Reasoning Buffer}
+\newcommand{\Irb}{Internal Reasoning Buffer}
+\newcommand{\cc}{Contextual Crystallization}
+\newcommand{\Cc}{Contextual Crystallization}
+\newcommand{\gesup}{Generative Entrenchment}
+\newcommand{\Gesup}{Generative Entrenchment}
+\newcommand{\sis}{stance-induced suppression}
+\newcommand{\Sis}{Stance-Induced Suppression}
+\newcommand{\bet}{binary evaluation trap}
+\newcommand{\Bet}{Binary Evaluation Trap}
+\newcommand{\ch}{confirmation hysteresis}
+\newcommand{\Ch}{Confirmation Hysteresis}
+\newcommand{\asa}{API surface anchoring}
+\newcommand{\Asa}{API Surface Anchoring}
+\newcommand{\ter}{Trajectory Escape Rate}
+\newcommand{\TER}{TER}
+\definecolor{lightgray}{gray}{0.93}
+
+\title{Representational--Behavioural Dissociation in Large Language Models:\\
+Named Routing Failures, Mechanistic Cures, and RBD-Bench}
+
+\author{Elliot Tower}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\begin{abstract}
+Large language models routinely demonstrate knowledge, rules, and
+capabilities in direct probing yet fail to deploy them under the
+structural conditions of generation and self-evaluation. We argue that
+these failures are not independent bugs but instances of a single
+underlying phenomenon: \textbf{representational--behavioural
+dissociation} (\rbd{}), adopting the vocabulary of
+\citet{vegner2025systematicity}. The model possesses the representational
+resources required to succeed but fails to deploy them under the specific
+structural conditions of the autoregressive forward pass.
+
+We organize \rbd{} along six axes, each with a named behavioral
+failure, a named routing mechanism, and (for D1--D4) a named mechanistic
+cure identified via activation steering and head attribution in
+small models: (1)~\textbf{D1: Knowledge Activation} --- the
+\umg{}, cured by Numeric Recomputation; (2)~\textbf{D2: Compositional
+Assembly} --- \irb{} Collapse, cured by Buffer Externalization;
+(3)~\textbf{D3: Self-Evaluation} --- \cc{} and Context Lock-Out,
+cured by Context Surgery; (4)~\textbf{D4: Trajectory Revision} ---
+\Gesup{} and the First Wrong Token Wins failure, cured by Early
+Intervention within the pivot-token escape window; (5)~\textbf{D5:
+Competence Boundary Awareness} --- confidence does not track accuracy
+as constraints tighten; and (6)~\textbf{D6: Structural Verification}
+--- binary framing suppresses fine-grained structural analysis even when
+the underlying capability is intact.
+
+We introduce \textbf{RBD-Bench}, a benchmark organized around these six
+axes with a sub-bench per axis. For D1--D4 we report both large-scale
+API behavioral results (11+ models, 4 domains) and small-model
+mechanistic localization (head attribution, activation steering,
+cross-axis circuit independence). For D5 and D6 we report behavioral
+results only; mechanistic localization is planned work. Across 18+
+models from 7B to 671B parameters the dissociation is systematic,
+model-size-correlated, and largely invariant to standard enhancement
+techniques. Five ablation studies document structural aspects of the
+failures. The cross-axis steering independence result (within-axis
+improves, cross-axis near zero, placebos at baseline) provides the
+strongest causal evidence that these are distinct routing circuits.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+Standard benchmarks measure whether a model \textit{can} perform a task
+under favorable conditions. They do not measure whether it
+\textit{will} under the structural conditions that arise during real
+deployment: mid-generation perturbation, multi-step composition,
+self-verification, trajectory revision, constraint gradients, and
+binary verdict framing.
+
+This paper unifies a class of failures that standard evaluation misses.
+In each case the model demonstrably possesses the knowledge or capability
+required to succeed---confirmed by a probe condition in which the
+capability is elicited---yet systematically fails to deploy it under a
+different structural condition. We term this \textbf{representational--%
+behavioural dissociation} (\rbd{}), adopting the vocabulary of
+\citet{vegner2025systematicity}, who documented cases where end-to-end
+neural models exhibit \textit{representational systematicity} (internal
+representations satisfy the structural requirements for a task) without
+\textit{behavioural systematicity} (actually deploying those
+representations across the full space of tasks they license).
+
+The theoretical interpretation draws on two philosophical traditions.
+\citet{fodor1983modularity}'s modularity thesis, generalized from
+perceptual modules to the generative pathways of autoregressive language
+models, holds that parametric knowledge may be informationally encapsulated
+from the generative module under specific activation conditions---present
+and accessible under explicit metacognitive prompting, yet unavailable
+during generation. Quinean holism \citep{quine1951two} accounts for why
+committed trajectories resist revision: the generated tokens form a web
+of mutual reinforcement that makes any single correction signal
+insufficient to overcome the prior commitment.
+
+We organize \rbd{} along six axes, each named by both the behavioral
+failure it produces and the mechanism that drives it:
+
+\begin{enumerate}[leftmargin=*, noitemsep, topsep=4pt]
+\item \textbf{D1: Knowledge Activation / \Umg{}} (Paper 1): The model
+can state a rule when asked but fails to apply it during generation.
+Mechanism: binary YES/NO frame routes around the rule-deployment circuit.
+Cure: Numeric Recomputation---ask for the answer, not YES/NO.
+\item \textbf{D2: Compositional Assembly / \Irb{} Collapse} (Paper 2):
+The model knows each sub-step individually but cannot chain them as
+depth increases.
+Mechanism: the Assembly Gap between rule-description access and
+rule-execution capacity. Cure: Buffer Externalization---scaffold
+intermediate state into context.
+\item \textbf{D3: Self-Evaluation / Context Lock-Out} (Paper 3):
+The model generates a correct answer but falsely rejects it when asked
+to verify in the same context. Fresh context restores performance.
+Mechanism: \Cc{}---prior generation crystallizes evaluative stance.
+Cure: Context Surgery---remove committed trace, re-evaluate fresh.
+\item \textbf{D4: Trajectory Revision / First Wrong Token Wins}
+(Paper 4): Once the model commits to a trajectory, even an explicit
+correction signal cannot redirect it.
+Mechanism: Web of Commitment---first committed wrong token pulls
+subsequent tokens as axiomatic.
+Cure: Early Intervention within the pivot-token escape window
+($\sim$147 tokens for R1).
+\item \textbf{D5: Competence Boundary Awareness} (Paper 5): As
+constraints tighten, accuracy drops non-linearly at a cliff point. The
+model continues to answer confidently past its own competence boundary.
+\item \textbf{D6: Structural Verification / \Bet{}} (Paper 6): Binary
+yes/no framing suppresses fine-grained structural analysis, even when
+the underlying capability is intact.
+\end{enumerate}
+
+For D1--D4 we report both large-scale behavioral sweeps across 11+
+models and mechanistic localization results on small models (head
+attribution, activation steering, cross-axis circuit independence
+controls). D5 and D6 currently have behavioral results only; mechanistic
+localization is planned work.
+
+Each axis is documented in a companion paper. This paper provides the
+unified account, the benchmark design, the intervention structure,
+cross-axis circuit independence evidence, and theoretical discussion.
+
+% ============================================================
+\section{RBD-Bench}
+\label{sec:bench}
+
+We introduce \textbf{RBD-Bench}, a benchmark organized around the six
+axes of \rbd{}. Each axis has its own sub-bench (Knowledge-Activation
+Bench, Composition Bench, Context-Lock Bench, Trajectory-Revision Bench,
+Competence-Boundary Bench, Structural-Verification Bench) with its own
+experimental protocol, datasets, and metrics, but all share a common
+structure:
+
+\begin{enumerate}[noitemsep, topsep=2pt]
+\item A \textbf{capability probe} that confirms the model possesses the
+relevant knowledge or skill.
+\item A \textbf{structural condition} under which that capability must
+be deployed (mid-generation, multi-step, self-evaluation, etc.).
+\item A \textbf{dissociation metric} that quantifies the gap between
+probe performance and structural-deployment performance.
+\end{enumerate}
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{p{2.2cm}p{2.0cm}p{1.8cm}p{2.8cm}}
+\toprule
+\textbf{Axis} & \textbf{Domains} & \textbf{Models} & \textbf{Metric} \\
+\midrule
+D1: Knowledge Act. & Math, Symbolic rules & 7 models & Recovery rate (\%) \\
+D2: Comp. Assembly & Symbolic rules, logic & 6 models & Depth accuracy (\%) \\
+D3: Self-Evaluation & SCAN, grammar tasks & 5 models & FRR (\%) \\
+D4: Trajectory Rev. & Budget, scheduling, clinical, config & 7 models & TER (\%) \\
+D5: Comp. Boundary & Budget, scheduling, clinical, config & 7 models & Confidence--accuracy gap \\
+D6: Struct. Verif. & Clinical, code security & 6 models & Recall, F1 \\
+\bottomrule
+\end{tabular}
+\caption{RBD-Bench overview. Each axis has its own sub-bench, domain
+coverage, model set, and dissociation metric. D4 and D5 share the
+injection-gradient experimental design (A/B/C/D). D6 spans clinical
+hallucination detection and code vulnerability detection.}
+\label{tab:bench}
+\end{table}
+
+The six sub-benches are not separate benchmarks. They are modes of a
+single benchmark organized around the same underlying construct. A
+model's profile across D1--D6 characterizes the shape of its
+dissociation, not just its absolute capability.
+
+Table~\ref{tab:mech-beh} summarizes the mechanism--cure structure for
+the four axes with mechanistic localization results.
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{p{1.5cm}p{2.4cm}p{2.1cm}p{2.1cm}}
+\toprule
+\textbf{Axis} & \textbf{Behavioral failure} & \textbf{Named mechanism} & \textbf{Named cure} \\
+\midrule
+D1 & Knowledge not activated & \Umg{} & Numeric Recomputation \\
+D2 & Sub-steps don't chain & \Irb{} Collapse / Assembly Gap & Buffer Externalization \\
+D3 & Correct output rejected & \Cc{} / Context Lock-Out & Context Surgery \\
+D4 & Can't exit bad trajectory & Web of Commitment / First Wrong Token Wins & Early Intervention \\
+D5 & Confident past cliff & Competence Boundary failure & (planned) \\
+D6 & Binary frame blocks analysis & \Bet{} & Frame Replacement \\
+\bottomrule
+\end{tabular}
+\caption{Behavior, named mechanism, and named cure per axis. D5 and D6
+do not yet have mechanistic localization results; only behavioral evidence
+is reported for those axes.}
+\label{tab:mech-beh}
+\end{table}
+
+% ============================================================
+\section{D1: Knowledge Activation / \Umg{}}
+\label{sec:d1}
+
+\subsection{Behavioral Failure}
+
+The \umg{} is the most tractable failure mode: the model can accurately
+\textit{mention} a corrective rule---state it, describe it, identify it
+as applicable---yet fails to \textit{use} that same rule during
+single-utterance generation. This is an activation deficit, not a
+knowledge deficit. The distinction is empirically grounded: when the
+model is asked, in a separate metacognitive prompt outside of generation,
+whether a given rule applies, it answers correctly. When the model must
+apply the rule inside generative flow without being explicitly invited
+to state it, it fails.
+
+\subsection{Protocol}
+
+Single-utterance self-correction of synthetically perturbed
+chain-of-thought reasoning. A held-out model (LLaMA 3.1 405B) applies
+perturbations (decimal shifts, operator swaps, phrase alterations) to
+100-token solution stubs; the target model then completes the generation.
+Capability probe: the model can identify the perturbation and state the
+correct fix in a metacognitive prompt. Dissociation metric: recovery rate
+under single-utterance generation.
+
+\subsection{Behavioral Results}
+
+Recovery rates range from 8--16\% for sub-30B models to 87--90\% for
+DeepSeek-R1 (671B). The surface signature of gap closure is a class of
+discourse markers---\textit{Wait}, \textit{Hold on}, \textit{However},
+\textit{Actually}---that signal the model is interrupting its current
+reasoning trajectory to initiate a correction. In R1, these pivot tokens
+predict recovery in approximately 93\% of cases. In smaller models, the
+same markers are produced but carry no predictive value: form without
+function.
+
+A secondary finding is \textbf{style-capability coupling}: in QwQ 32B,
+the correction pathway activates reliably under on-policy conditions
+(completing a stub it generated itself) but fails under off-policy
+conditions (completing a stub from a different model), dropping from
+66.4\% to 24.0\% recovery on GSM8K. A style-matched ablation confirms
+this is not a capability difference but a context gate: when off-policy
+stubs are style-matched to QwQ's own generation, recovery returns to
+61.2\%.
+
+Domains: math reasoning (GSM8K, GSM-Symbolic, MATH-500) and symbolic
+rule induction. The dissociation replicates across both.
+
+\subsection{Mechanistic Localization (Small Models)}
+
+Within-axis activation steering lifts Gemma's chain-verification
+discrimination from 0.20 to 0.50 at layer 40. Llama is fully
+distributed (0/1024 heads selective). Head attribution: 11/336 Gemma
+heads selective (3.3\%), 11/1152 Qwen heads selective (1.0\%).
+
+The mechanism is the binary YES/NO frame: it routes activations around
+the rule-deployment circuit, suppressing activation of the correction
+pathway. The named cure is \textbf{Numeric Recomputation}---asking for
+the answer rather than a YES/NO verdict bypasses the verification circuit
+and activates the deployment pathway directly.
+
+% ============================================================
+\section{D2: Compositional Assembly / \Irb{} Collapse}
+\label{sec:d2}
+
+\subsection{Behavioral Failure}
+
+Models achieve high accuracy on individual sub-steps when tested in
+isolation ($>85$\% across model families), yet composed accuracy
+collapses sharply as reasoning depth increases: below 60\% at depth 3,
+below 35\% at depth 4, below 22\% at depth 6. This is not a knowledge
+deficit at the sub-step level. It is an assembly failure: the
+sub-competencies are present; they do not compose.
+
+\subsection{Protocol}
+
+Depth-parameterized rule application tasks. Capability probe: the model
+applies each rule correctly in isolation. Structural condition: applying
+$k$ rules in sequence where each rule's output feeds the next.
+Dissociation metric: composed accuracy as a function of depth.
+
+\subsection{Behavioral Results}
+
+The depth wall appears between depths 2 and 4 across model families.
+Reasoning-trained models (R1, QwQ) mitigate the wall by generating
+extended reasoning traces---explicit buffer externalization: the model
+writes intermediate results into the context window, converting an
+implicit working-memory problem into an explicit retrieval problem. Trace
+length correlates strongly with accuracy at depth for reasoning models
+($r > 0.7$) and negligibly for non-reasoning models ($r < 0.2$).
+
+The sharpest evidence: when R1's thinking traces are truncated
+mid-assembly, accuracy drops catastrophically from 87\% to 0\% by 50\%
+of median trace budget. An account in which traces are epiphenomenal
+predicts gradual degradation; we observe a cliff.
+
+Domains: symbolic rule induction (ARI), fictional alphabet ciphers
+(FAC), Boolean Dream, Chinese logical reasoning (BLTB). The depth wall
+appears at approximately the same composition depth across all four.
+
+\subsection{Mechanistic Localization (Small Models)}
+
+Gemma concentrates 83/336 heads (24.7\%) on composition in layers 1--24.
+Falcon3-Mamba is selective in all 64 SSM layers. Mid-layer PCA(5)
+logistic regression on Llama layer 16/32 predicts composition failure at
+89\% accuracy vs.\ 74\% from output logits alone.
+
+The mechanism is the \textbf{\irb{} Collapse}: the autoregressive forward
+pass has limited implicit working memory; multi-step reasoning at depth
+exhausts it. The Assembly Gap is the behavioral gap between rule-description
+access and rule-execution capacity. The named cure is \textbf{Buffer
+Externalization}---scaffolding intermediate state into context converts
+the implicit IRB into an explicit retrieval problem.
+
+% ============================================================
+\section{D3: Self-Evaluation / Context Lock-Out}
+\label{sec:d3}
+
+\subsection{Behavioral Failure}
+
+The Self-Evaluation failure occurs when a model generates a correct
+output but falsely rejects it when asked to verify in the same
+conversational context. Present the same output in a fresh context (e.g.,
+framed as ``a student's answer'') and the model correctly evaluates it.
+
+\subsection{Protocol}
+
+The \textbf{False Rejection Rate} (FRR): the fraction of correctly
+generated outputs that the model incorrectly rejects when asked to verify
+its own work. Capability probe: third-party evaluation of the same
+outputs without generation history. Structural condition: same-context
+verification after generation. Dissociation metric: gap between
+same-context FRR and fresh-context FRR.
+
+\subsection{Behavioral Results}
+
+Self-evaluation accuracy averages 40--55\%; third-party evaluation yields
+75--85\%. The mechanism is \cc{}: the context becomes progressively
+crystallized around the model's prior generation, reducing accessible
+probability mass for divergent evaluations. The crystallization gradient
+is approximately log-linear with trace length, saturating at approximately
+500 tokens.
+
+\textbf{Context Surgery}---removing the generation trace from context
+before requesting evaluation---restores accuracy to within 5--8
+percentage points of third-party evaluation.
+
+At the competence boundary, both same-context and fresh-context
+evaluation converge toward constant rejection: the model can no longer
+distinguish its correct from incorrect outputs regardless of context.
+This absorbing-state regime achieves 0/38 reversals under post-hoc
+reframing.
+
+Domains: SCAN grammar translation, symbolic grammar verification (GSV,
+Symmball), inductive--abductive dissociation (IAD), second-order rule
+shift (KGT). The dissociation replicates across all.
+
+\subsection{Mechanistic Localization (Small Models)}
+
+Qwen has 63/1152 heads (5.5\%) selective for self-vs-neutral framing
+with 0\% behavioural FRR---the circuitry distinguishes self from
+neutral context but the output ignores this distinction. Sparse Channel
+Steering in Falcon3-Mamba: suppressing 14/32 channel groups reduces FRR
+from 89\% to 11\% while improving control-task accuracy. This result
+holds across 5/5 seeds; placebo controls remain at 81\%~$\pm$~21\%.
+
+The mechanism is \textbf{Context Lock-Out}: prior generation crystallizes
+an evaluative stance that locks out divergent evaluation. The named cure
+is \textbf{Context Surgery}---removing the committed trace and
+re-evaluating in a fresh context.
+
+% ============================================================
+\section{D4: Trajectory Revision / First Wrong Token Wins}
+\label{sec:d4}
+
+\subsection{Behavioral Failure}
+
+Trajectory Revision is the deepest structural failure mode. Unlike
+Knowledge Activation (failure to act on known rules), trajectory revision
+failure is the inability to exit a trajectory whose suboptimality the
+model has already encoded. \textbf{Latent uncertainty}---entropy over
+the top-$k$ token distribution---spikes at the moment of incorrect
+commitment, indicating the model has internally signaled that the current
+path is suboptimal. Yet the trajectory does not change.
+
+\subsection{Protocol}
+
+The \textbf{Trajectory Escape Rate} (TER): the probability that a model
+mid-generation on a suboptimal path escapes to the correct trajectory
+when given an explicit one-sentence correction signal. Capability probe:
+the model identifies the error when asked directly. Structural condition:
+mid-generation on a committed trajectory. Dissociation metric: TER as a
+function of generation depth.
+
+The injection-gradient design (A/B/C/D) controls where erroneous
+information enters: in the problem premise (\textbf{A}), as a committed
+wrong intermediate step (\textbf{B}), as committed steps plus an explicit
+contradiction statement (\textbf{C}), or not at all (\textbf{D}).
+
+\subsection{Behavioral Results}
+
+TER decreases monotonically with depth:
+\begin{equation}
+\mathrm{TER}(d) \propto e^{-\lambda d}
+\end{equation}
+where $\lambda$ is the entrenchment rate---higher for reasoning models
+whose longer traces produce deeper entrenchment. The pivot-token escape
+window closes at approximately 147 tokens for R1. After that window,
+even reasoning models cannot escape.
+
+Across four domains (manufacturing budget, staff scheduling, clinical
+dosing, infrastructure configuration) and seven models, B/C accuracy
+collapses to approximately 0--10\% in all but one cell (DeepSeek-V3.2
+clinical B~$= 70$\%). Five repair controllers and twelve prompting
+interventions all fail. Temperature variation reveals a
+detection--correction decoupling: detection rate is modulated by
+temperature, but correction rate remains at 0\%.
+
+\subsection{Mechanistic Localization (Small Models)}
+
+Trajectory revision is SFT-resistant. Head attribution: 146/1152 Qwen
+heads (12.7\%) selective for trajectory state---the highest specialization
+across all four mechanistically localized axes. 44/64 Falcon3-Mamba SSM
+layers are selective on trajectory state.
+
+The mechanism is the \textbf{Web of Commitment}: the first committed
+wrong token pulls subsequent tokens as axiomatic. This gives rise to the
+\textbf{First Wrong Token Wins} failure: once committed, the trajectory
+is self-reinforcing. The named cure is \textbf{Early Intervention} within
+the pivot-token escape window before the web consolidates.
+
+% ============================================================
+\section{D5: Competence Boundary Awareness}
+\label{sec:d5}
+
+\textit{Note: D5 currently has behavioral results only. Mechanistic
+localization in small models is planned work.}
+
+\subsection{Behavioral Failure}
+
+The injection-gradient design measures where the model's ability actually
+cuts off as constraints tighten. Condition A: easy (constraint satisfied,
+large margin). Condition D: hard (constraint violated, large margin). The
+dissociation is that the model often does not \textit{know} it is near
+the cliff. It continues to produce confident answers past its own
+competence boundary rather than signaling uncertainty.
+
+\subsection{Protocol}
+
+Capability probe: the model's accuracy on each condition (A/B/C/D)
+establishes the actual competence boundary. Structural condition: the
+model must produce an answer (forced choice). Dissociation metric: the
+gap between the actual competence boundary (where accuracy collapses) and
+the model's expressed confidence or willingness to answer.
+
+\subsection{Results}
+
+The A/B/C/D gradient provides an empirical map of the competence boundary
+for each model on each task type. Across seven models and four domains,
+the confidence--accuracy gap widens at the boundary: the model is most
+confidently wrong at the exact point where it is most likely to be wrong.
+
+The prompt-format sweep and abstention results are in
+Section~\ref{sec:ablations}. In brief: models with genuine boundary
+awareness use the abstention option selectively near the competence
+boundary; models without it either never abstain or abstain
+indiscriminately. The dissociation metric for D5 is the correlation
+between abstention rate and the actual accuracy gradient across A/B/C/D.
+
+Domains: manufacturing budget, staff scheduling, clinical dosing,
+infrastructure configuration. Shared with D4 (same injection-gradient
+design).
+
+% ============================================================
+\section{D6: Structural Verification / \Bet{}}
+\label{sec:d6}
+
+\textit{Note: D6 currently has behavioral results only. Mechanistic
+localization in small models is planned work.}
+
+\subsection{Behavioral Failure}
+
+Binary yes/no framing suppresses the model's ability to perform
+fine-grained structural analysis, even when the underlying capability is
+demonstrably intact. This axis spans two structurally independent
+domains: clinical hallucination detection and code security vulnerability
+detection.
+
+\subsection{Protocol}
+
+Capability probe: the model's performance under an enumeration frame
+(``List any claims not supported by the source.'') or diff-format triage
+(``Does this commit fix a vulnerability?''). Structural condition: binary
+yes/no framing (``Is this hallucinated?'' / ``Is this vulnerable?'').
+Dissociation metric: gap between enumeration/diff performance and binary
+performance.
+
+\subsection{Results}
+
+\paragraph{Clinical domain.}
+Binary prompting achieves recall of 0.324 on real MIMIC-IV hospital
+notes. A fact-checker frame achieves recall of 0.838 with precision of
+0.812. A student-error frame achieves perfect recall: 86/86 missed
+hallucinations recovered. A zero-information nudge---``Please look at the
+note and source document more carefully.''---self-corrects 96.7\% of
+sampled confident misses.
+
+A $2\times2$ causal experiment across 6~models, 7~datasets, and
+2~languages establishes that providing the source document is the only
+factor producing consistently large gains (average treatment effect
+$= 0.279$, $p < 0.001$), while format choice has negligible average
+effect. Even with the source document, performance drops sharply on real
+MIMIC-IV hospital notes (F1 falls from 0.851 to 0.484, $-43$\%), and
+92.5\% of misses are high-confidence errors (median softmax $= 0.940$).
+
+\paragraph{Code domain.}
+Binary prompting achieves F1 of 40--53 across eight benchmarks,
+uniformly near chance on balanced splits. Diff-format triage achieves
+F1 of 88--100 using the same models. A causal forest analysis across
+235~experiments establishes a format average treatment effect of 0.877
+(95\%~CI~$[0.767, 0.988]$).
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{lcc}
+\toprule
+\textbf{CWE type} & \textbf{Binary F1} & \textbf{Diff F1} \\
+\midrule
+Buffer overflow (CWE-119/120/121) & 0.44 & 0.91 \\
+Use-after-free (CWE-416)          & 0.51 & 0.96 \\
+Integer overflow (CWE-190)        & 0.48 & 0.93 \\
+Null pointer deref (CWE-476)      & 0.53 & 0.98 \\
+Format string (CWE-134)           & 0.41 & 0.89 \\
+Other                             & 0.47 & 0.90 \\
+\bottomrule
+\end{tabular}
+\caption{Binary vs.\ diff-format F1 by CWE vulnerability class. The
+framing effect is positive across all CWE types. Source:
+\citep{tower2026vuln}.}
+\label{tab:cwe}
+\end{table}
+
+The mechanism of suppression in the code domain is \textbf{\asa{}}:
+the binary verification question anchors the model's attention to the
+presence of known-dangerous API calls (\texttt{strcpy}: 91.2\% false
+positive rate as a spurious confounder; \texttt{memcpy}: 88.4\%) rather
+than the structural conditions determining exploitability. Every standard
+enhancement technique applied to the binary frame reduces F1 (all 20
+tested conditions; mean $\Delta = -0.121$; worst: multi-agent consensus,
+$\Delta = -0.930$).
+
+\paragraph{Detection by error type.}
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Error type} & $n$ & \textbf{Detection rate} & \textbf{Class} \\
+\midrule
+Contradicted fact & 21 & 57.1\% & Commission \\
+Incorrect fact & 2 & 100\% & Commission \\
+\midrule
+Location unsupported & 23 & 52.2\% & Omission \\
+Word unsupported & 25 & 52.0\% & Omission \\
+Time unsupported & 32 & 50.0\% & Omission \\
+Condition unsupported & 71 & 43.7\% & Omission \\
+Number unsupported & 35 & 40.0\% & Omission \\
+Medication unsupported & 48 & 39.6\% & Omission \\
+Name unsupported & 19 & 36.8\% & Omission \\
+Procedure unsupported & 36 & 27.8\% & Omission \\
+\bottomrule
+\end{tabular}
+\caption{Detection rate by error type under binary framing (MIMIC-IV,
+Qwen-2.5-72B). Binary framing handles commission errors and
+systematically fails on omission errors. 82.6\% of the 86 confident
+false negatives are omission errors. Source: \citep{tower2026detection}.}
+\label{tab:types}
+\end{table}
+
+Domains: clinical hallucination detection (MIMIC-IV) and code security
+vulnerability detection (eight benchmarks).
+
+% ============================================================
+\section{Cross-Axis Circuit Independence}
+\label{sec:independence}
+
+The four mechanistically localized axes (D1--D4) exhibit circuit-level
+independence, providing the strongest causal evidence that these are
+distinct routing circuits rather than a single undifferentiated failure.
+
+The cross-axis steering independence experiment tests the specificity of
+the steering interventions: does steering within one axis improve that
+axis and leave others unchanged? The results are:
+
+\begin{itemize}[noitemsep, topsep=2pt]
+\item \textbf{Within-axis steering} improves target-axis performance
+consistently (e.g., D3 Context Lock-Out FRR drops from 89\% to 11\%
+under Sparse Channel Steering in Falcon3-Mamba).
+\item \textbf{Cross-axis steering} produces effects near zero: applying
+D3 steering to the D1, D2, or D4 tasks does not change performance on
+those tasks.
+\item \textbf{Placebo controls} remain at the baseline ($\sim$81\%
+$\pm$ 21\%) confirming the within-axis effect is not an artifact of
+general activation perturbation.
+\end{itemize}
+
+This double dissociation---within-axis improves, cross-axis near
+zero---is consistent with four distinct functional circuits and
+inconsistent with a unified single mechanism.
+
+The head attribution counts reinforce this picture. Selective head counts
+vary substantially across axes (D1: 11/336 Gemma; D2: 83/336 Gemma;
+D3: 63/1152 Qwen; D4: 146/1152 Qwen) with negligible overlap in head
+identity, suggesting that each routing failure engages a distinct
+sub-network.
+
+% ============================================================
+\section{Ablation Studies}
+\label{sec:ablations}
+
+Beyond the core six-axis protocol we report five ablation studies that
+test specific structural claims.
+
+\subsection{Ablation 1: Synthetic MIMIC-IV}
+
+A synthetic clinical note generator matches the word-choice distribution,
+sentence length, section structure, and clinical terminology density of
+real MIMIC-IV notes but without the underlying clinical reasoning
+structure. Models tested on synthetic vs.\ real data under the same D6
+protocol.
+
+A causal analysis across 1,390 observations (4 models $\times$ 2
+datasets $\times$ 100 items) establishes that the synthetic-vs-real gap
+is the strongest single signal:
+\begin{itemize}[noitemsep, topsep=2pt]
+\item GPT-5.4: 29\% more accurate on synthetic (ATE +0.287, 95\%~CI
+[+0.210, +0.364]).
+\item GPT-5.4-nothink: 81\% more accurate on synthetic (ATE +0.808,
+95\%~CI [+0.746, +0.866]).
+\item Qwen-nothink: 69\% more accurate on synthetic (ATE +0.687,
+95\%~CI [+0.631, +0.740]).
+\end{itemize}
+The large ATEs confirm that the failure on real data reflects structural
+features in real clinical text that synthetic generation does not capture.
+
+\subsection{Ablation 2: Medical Injection-Gradient}
+
+The injection-gradient design (A/B/C/D) from D4/D5 applied to medical
+reasoning tasks. Results replicate the pattern seen in non-medical
+domains: models that correctly identify the constraint in isolation
+(condition D) collapse to near-zero when a wrong intermediate is
+pre-committed (condition B). The thinking--non-thinking divergence is
+more pronounced in the medical domain: reasoning-trained models that
+produce extended traces are more susceptible to anchoring on the poisoned
+intermediate, while instruction-tuned models without extended reasoning
+show greater resistance.
+
+\subsection{Ablation 3: Prompt-Format Sweep with Abstention}
+
+A response-format sweep varying what the model produces first (reasoning
+trace, verdict, confidence score) and whether the model is given an
+explicit abstention option (``I don't know'' / ``I cannot determine'').
+Swapped-order conditions also tested.
+
+A pilot ($N=24$) suggested that confidence-elicitation formats produced
+a $+33$pp accuracy boost. When expanded to 120 parametric variants
+(20 per problem $\times$ 6 problems, spanning the full difficulty
+gradient), \textbf{all treatment effects dropped to exactly 0.0\%} with
+zero-width confidence intervals. Output format is causally inert for
+accuracy and abstention on this domain. The pilot effect was a sampling
+artifact.
+
+Models never voluntarily abstain when given the option, regardless of
+format. The boundary awareness metric cannot be elicited by format
+alone---it requires genuine capability differences between models.
+
+\subsection{Ablation 4: Thinking as Liability}
+
+Controlled ablation: two versions of the \textbf{exact same model}
+(Qwen3-235B-Thinking vs.\ Qwen3-235B-Instruct). Same weights, same
+architecture, same training data. Only difference: whether the model
+generates a chain-of-thought before its answer. $N = 240$ per model
+across three domains and four conditions.
+
+Results are stark. On clean conditions (A and D), both models perform
+near 100\%. On biased conditions:
+
+\begin{itemize}[noitemsep, topsep=2pt]
+\item \textbf{B\_step1} (poisoned intermediate): thinking 1.7\%,
+no-thinking 56.7\% ($\Delta = -55.0$pp, $p < 10^{-12}$,
+Cohen's $h = -1.45$).
+\item \textbf{C\_step2} (model's own wrong output as context): thinking
+1.7\%, no-thinking 100\% ($\Delta = -98.3$pp, $p < 10^{-33}$,
+Cohen's $h = -2.88$).
+\end{itemize}
+
+Overall average treatment effect: $-37.9$pp. On C\_step2, 59 out of 60
+paired items are correct only when thinking is disabled. Only 1 item
+across all conditions is correct only with thinking enabled.
+
+Most striking: on C\_step2, the thinking model mentions the contradiction
+\textbf{100\% of the time} yet still outputs the wrong answer. It
+explicitly notes that its prior output was wrong but cannot act on that
+awareness. This is the cleanest demonstration of awareness-without-correction
+in the series.
+
+\subsection{Ablation 5: Structured Output Heterogeneity}
+
+$N = 1{,}920$ tasks (8 models $\times$ 3 domains $\times$ 10 items
+$\times$ 4 conditions $\times$ 2 modes: free text vs.\ JSON-structured).
+
+The effect is highly heterogeneous:
+\begin{itemize}[noitemsep, topsep=2pt]
+\item \textbf{MiniMax-M27}: JSON improves by +24.2pp (95\%~CI
+[+16.1\%, +32.2\%], $p = 3.6 \times 10^{-8}$). On B\_step1, rescues
+37.5\% of items from 0\%.
+\item \textbf{R1}: JSON improves by +10.0pp (95\%~CI [+4.6\%, +15.4\%],
+$p = 4.1 \times 10^{-4}$). On B/C, goes from 0\% to 20\%.
+\item \textbf{Qwen-nothink}: JSON \textbf{harms} by $-21.7$pp (95\%~CI
+[$-30.1$\%, $-13.2$\%], $p = 1.7 \times 10^{-6}$). On C\_step2, drops
+from 100\% to 30\% ($-70$pp).
+\item \textbf{GPT-5.4}: unaffected ($\Delta \leq 3.3$pp, n.s.).
+\end{itemize}
+
+Structured output is not a universal intervention. It helps models that
+benefit from explicit step-by-step computation (MiniMax, R1); it harms
+models that already compute correctly without structure (Qwen-nothink).
+On C\_step2, JSON mode is catastrophically harmful for Qwen-nothink
+($-70$pp)---the structured format forces validation of the poisoned
+reasoning chain rather than rejection.
+
+% ============================================================
+\section{A Unified Account of Interventions}
+\label{sec:unified}
+
+\subsection{Common Failure Structure}
+
+All six failure modes derive from the same architectural constraint: the
+autoregressive forward pass is a single, sequential, commitment-prone
+computation with no natural mechanism for knowledge activation, working
+memory across composition steps, evaluation independence, trajectory
+revision, self-monitoring, or fine-grained evidence access under
+verdict-first framing. All six are instances of \rbd{}: the model has
+the representational resources but the forward pass does not deploy
+them. Under \citet{fodor1983modularity}'s modularity framing, the
+generated context informationally encapsulates each successive module
+from accessing the representation it needs.
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{p{2.8cm}p{2.5cm}p{3.5cm}}
+\toprule
+\textbf{Axis} & \textbf{What breaks} & \textbf{What works} \\
+\midrule
+D1: Knowledge Act. & Knows the rule, doesn't apply it & Numeric Recomputation; activation triggers (RL, pivot elicitation) \\
+D2: Comp. Assembly & Rules don't chain at depth & Buffer Externalization (traces, scaffolds, structured state slots) \\
+D3: Self-Evaluation & Rejects own correct output & Context Surgery (remove trace before evaluation) \\
+D4: Trajectory Rev. & Won't exit bad trajectory & Early Intervention or full restart \\
+D5: Comp. Boundary & Confident past its own limit & Abstention option, confidence-first prompts \\
+D6: Struct. Verif. & Binary frame blocks analysis & Frame replacement (enumeration, diff-format triage) \\
+\bottomrule
+\end{tabular}
+\caption{Six axes of \rbd{}, what breaks in each case, and the structure
+of effective interventions. Each intervention alters the model's
+relationship to its own prior context rather than adding new knowledge.}
+\label{tab:interventions}
+\end{table}
+
+\subsection{The Escalation Trap}
+
+A critical negative result: naive escalation---applying more of the same
+kind of engagement to the wrong frame---does not work and typically makes
+things worse. The generate-critique-correct pipeline deepens engagement
+with the wrong frame and reduces accuracy. Enhancement techniques applied
+to the binary frame uniformly reduce F1. Self-correction on entrenched
+trajectories deepens commitment to the wrong path.
+
+The reason is consistent: if the source of failure is that the current
+context structure blocks access to a capability, then engaging more deeply
+with the wrong structure deepens the block. The correct intervention is
+structural replacement, not escalation.
+
+\subsection{Effective Intervention Structure}
+
+Effective interventions across all axes share a common property: they
+alter the model's relationship to its own prior context.
+
+\begin{enumerate}[noitemsep, topsep=2pt]
+\item \textbf{Activating the pathway} (D1): Numeric Recomputation (ask
+for the answer directly, not YES/NO); RL modifies the conditions under
+which the generative module accesses stored knowledge.
+\item \textbf{Externalizing the buffer} (D2): Writing intermediate state
+into the context window converts an implicit working-memory problem into
+an explicit retrieval problem.
+\item \textbf{Removing the crystallizing element} (D3): Context Surgery
+removes the generative history before evaluation.
+\item \textbf{Intervening early} (D4): Correction must arrive before
+entrenchment deepens. After the pivot-token escape window closes
+($\sim$147 tokens for R1), only a full restart works.
+\item \textbf{Replacing the frame} (D6): Enumeration frames and
+diff-format triage activate the structural verification pathway.
+\end{enumerate}
+
+\subsection{Structured Verification as the Intervention Class}
+
+The effective interventions across the framing-failure modes share three
+structural properties:
+\begin{enumerate}[leftmargin=*, noitemsep, topsep=2pt]
+\item They request \emph{enumeration} rather than classification
+(``list the errors'' vs.\ ``is there an error?'').
+\item They presuppose that target conditions exist and ask the model
+to characterize them.
+\item They activate a sequential claim-level inspection pathway rather
+than a holistic verdict pathway.
+\end{enumerate}
+
+The student-error frame achieves the clinical recall ceiling (86/86
+missed detections recovered). Diff-format triage achieves the code
+recall ceiling (F1 88--100). In both cases, the model already had the
+evidence; the question type determined whether the structural verification
+pathway was activated.
+
+\subsection{Confirmation Hysteresis as Architectural Risk}
+
+\Ch{} is the pipeline-level failure: routing a high-recall detection
+frame through a subsequent yes/no confirmation step collapses recall
+back to the binary baseline. The student-error frame recovers 100\% of
+hallucinations; routing those outputs through a yes/no confirmation
+reproduces the original 0\% recall exactly---across both primary
+(Qwen-2.5-72B) and holdout (Llama-3.3-70B) models.
+
+This has a specific implication: any pipeline whose terminal verification
+step asks a binary question inherits suppression regardless of upstream
+sophistication. The fix is not a better binary classifier---it is a
+structurally different second stage (claim decomposition, structured
+evidence extraction, or any frame that asks ``what specifically is
+unsupported?'' rather than ``is this wrong?'').
+
+% ============================================================
+\section{Distinguishing \rbd{} from Neighboring Constructs}
+\label{sec:distinguish}
+
+\textbf{Hallucination} describes generation of content unsupported by
+training data or context \citep{medhallu2025,factscore2023}. \rbd{} is
+orthogonal: the failures documented here occur not because the model
+generates unsupported content but because it fails to deploy available,
+correct capabilities. The high-confidence false negatives in the clinical
+domain---92.5\% of misses at median softmax 0.940---are failures of
+evaluation, not generation.
+
+\textbf{Miscalibration} describes a mismatch between expressed confidence
+and accuracy \citep{guo2017calibration,kadavath2022language}. Several
+axes produce miscalibrated outputs, but the cause is structural rather
+than a property of the confidence estimator per se. A well-calibrated
+model could still exhibit \sis{} if the crystallized context
+systematically biases its estimates.
+
+\textbf{Sycophancy} \citep{sharma2023towards,perez2022discovering}
+describes models that change answers in response to social pressure.
+\rbd{} is structural: the suppression arises from the model's own prior
+context, not from user-generated signals.
+
+\textbf{Knowledge gaps} describe failures attributable to absent
+knowledge. \rbd{} is definitionally distinguished by the presence of a
+probe condition in which the model demonstrates that the relevant
+knowledge is present. Every failure mode documented here is accompanied
+by such a probe.
+
+\paragraph{The broader measurement problem.}
+Binary classification is the near-universal default for LLM evaluation
+benchmarks. The results documented here suggest that this protocol
+systematically \textit{underestimates} accessible verification capability
+on real-world data: it measures commission-detection performance on tasks
+whose real-world instances are dominated by structural or omission errors.
+LLM-as-judge evaluation that terminates in binary verdicts may be
+measuring how well a model responds to a binary question type, not how
+well it can perform the underlying verification task.
+
+\paragraph{Atomic decomposition methods.}
+FActScore \citep{factscore2023} and SAFE \citep{safe2024} partially
+escape the Detection Framing Problem by converting stated claims into
+explicit commission checks. This resolves the binary frame problem for
+commission errors. However, atomic decomposition does not escape omission
+detection: omissions are by definition absent from the claim list that
+atomic decomposition is built from. The Detection Framing Problem
+therefore persists for the most clinically dangerous error class---missed
+information---even under atomic decomposition.
+
+% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Routing Failures as a Unifying Account}
+
+The use--mention gap, context lock-out, and first-wrong-token-wins
+failures are three faces of the same phenomenon: the autoregressive
+forward pass commits to a generative pathway before it has the
+information needed to evaluate that pathway. In the \umg{}, commitment
+to a YES/NO answer-frame routes around the rule-deployment circuit.
+In context lock-out, commitment to a prior generation crystallizes
+the evaluative stance. In trajectory revision, commitment to a wrong
+token makes every subsequent token a defense of that token.
+
+Under \citet{fodor1983modularity}'s framing, each of these is a form
+of informational encapsulation generalized from perceptual modules to
+the generative pathways of autoregressive models: the relevant
+representational resource is present but inaccessible from the current
+activation context.
+
+\subsection{Latent Uncertainty Present but Unused}
+
+A consistent finding across D1 and D4 is that the model has the right
+signal---pivot tokens, latent uncertainty spikes at the moment of
+incorrect commitment---but the behavioral system does not act on it. In
+D4, latent uncertainty (top-$k$ entropy) spikes at the pivot point yet
+trajectory does not change. In D1, pivot tokens predict recovery at 93\%
+in R1 but carry zero predictive value in smaller models. The signal is
+present in both cases; what differs is whether the behavioral pathway
+can act on it.
+
+\subsection{Architecture Determines Cure Type}
+
+The mechanistic localization results reveal that architecture determines
+the appropriate cure class. Transformer-based models (Gemma, Qwen,
+Llama) show axis-specific head attribution patterns amenable to
+attention-head steering. SSM-based models (Falcon3-Mamba) show
+axis-specific SSM channel selectivity amenable to sparse channel steering.
+The cure family (attention steering vs.\ channel steering) is
+architecture-determined, but the axis specificity---and thus the
+cross-axis independence of the cure---holds across both architecture
+classes.
+
+\subsection{The Autoregressive Bottleneck}
+
+All six failure modes trace to a single architectural feature: the
+autoregressive forward pass is a commitment machine. It generates tokens
+conditioned on all prior tokens, with the KV-cache structure making prior
+tokens exert a persistent, non-revisable attentional influence. This
+commitment structure is the source of coherent generation; it is also the
+structural bottleneck that makes each of the six \rbd{} failure modes
+possible. Effective interventions do not work around this bottleneck by
+adding compute (escalation fails) but by changing the structure of the
+computation (frame replacement, buffer externalization, context surgery,
+early intervention).
+
+\subsection{Fodor's Modularity as Interpretive Lens}
+
+We treat Fodor's modularity thesis as an interpretive lens, not a
+mechanistic claim. The thesis holds that perceptual modules are
+informationally encapsulated: they process their inputs without access
+to background beliefs even when those beliefs would change the output.
+We generalize this to the generative pathways of autoregressive models:
+parametric knowledge may be encapsulated from the generative module under
+specific activation conditions. The encapsulation is not permanent; it
+is a function of the activation context. Explicit metacognitive prompting
+can break it. RL against verifiable outcomes appears to relax it during
+generation \citep{deepseek2025incentivizing,kimi2025scaling}. This
+generalization is behavioral; we make no mechanistic claim about attention
+weights or hidden states beyond what the intervention evidence supports.
+
+\subsection{Theoretical Connections}
+
+The Self-Evaluation failure (D3) has a self-referential structure: the
+model is asked to evaluate its own output from within the same context
+that produced it. The crystallization effect means the context cannot
+neutrally assess what it created. The entrenchment effect (D4) has a
+structural parallel to Quinean confirmation holism
+\citep{quine1951two}: the generated tokens form a web of mutual
+reinforcement that makes any single correction signal insufficient to
+overcome prior commitment. Both are interpretive parallels, not identity
+claims.
+
+% ============================================================
+\section{Related Work}
+\label{sec:related}
+
+The representational--behavioural distinction was surveyed by
+\citet{vegner2025systematicity}, who documented cases of representational
+systematicity without behavioural systematicity in end-to-end
+architectures. Our contribution is to show that this dissociation is
+systematic across six axes, to name the mechanisms and cures, and to
+localize the circuits mechanistically for four of the six axes.
+
+Chain-of-thought prompting \citep{wei2022chain} and scratchpad methods
+\citep{nye2022show} showed that making intermediate computation explicit
+improves multi-step reasoning. Our D2 results confirm this and provide a
+sharper account: the improvement comes from buffer externalization, not
+from better rule reminders. The scaffold ablation (rule scaffolds alone:
+0\% accuracy at depth 3; full scaffolds: recovery to within 8\% of
+baseline) makes the distinction sharp.
+
+Self-correction literature \citep{madaan2023selfrefine,shinn2023reflexion,
+huang2024large} has documented that models often fail to correct their
+own outputs. Our D3 results provide a structural explanation: same-context
+verification is contaminated by the generative history. Our D4 results
+show that the problem is deeper than retrospective self-correction---it
+operates during generation itself.
+
+Reinforcement learning against verifiable outcomes
+\citep{deepseek2025incentivizing,kimi2025scaling} has shown that simple
+RL elicits self-evaluating behavior. Our D1 results confirm this and show
+that the correction pathway is latent in base models but reliably
+inaccessible without RL or explicit activation triggers.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+Six structural failure modes in autoregressive language models have been
+characterized and unified under a single account: \rbd{}. For four axes
+(D1--D4) we name both the behavioral failure and the routing mechanism,
+identify an effective cure, and provide mechanistic localization in small
+models via head attribution and activation steering. For two axes (D5,
+D6) we document behavioral failures with replicated results across 6+
+models and two independent domains; mechanistic localization is planned
+work.
+
+The cross-axis circuit independence result---within-axis steering
+improves, cross-axis near zero, placebos at baseline---provides the
+strongest causal evidence that these are distinct routing failures rather
+than a single undifferentiated failure mode.
+
+The practical implication is that efforts to improve model performance on
+reasoning, verification, and detection tasks should treat the structure of
+task framing as a first-class design parameter. Naive escalation is not
+only ineffective but systematically harmful. The correct intervention in
+each case is structural: activate the pathway, externalize the buffer,
+remove the crystallizing element, intervene early, or replace the
+verdict-first frame with a structured search frame.
+
+\section*{Limitations}
+
+All D1--D4 mechanistic claims are localized in small models (Gemma,
+Qwen, Llama, Falcon3-Mamba) and may not generalize to larger API-only
+models. D5 and D6 currently have behavioral results only; mechanistic
+localization is planned work. All failure mode accounts are behavioral
+in origin. The \irb{} is a behavioral hypothesis without direct
+mechanistic confirmation. The trench model is an interpretive
+abstraction. Latent uncertainty is operationalized as top-$k$ entropy,
+an indirect proxy. The pivot-token escape window ($\sim$147 tokens for
+R1) is empirically identified and has not been theoretically derived.
+The crystallization gradient saturation point ($\sim$500 tokens) is
+identified empirically. The clinical MIMIC-IV analysis is based on 200
+annotated notes, sufficient for the framing analysis but underpowered
+for subgroup analysis.
+
+\section*{Ethics Statement}
+
+The failure modes documented here---particularly D3 (Self-Evaluation),
+D4 (Trajectory Revision), and D6 (Structural Verification)---have direct
+implications for clinical AI and security systems deployed at scale.
+Binary verification pipelines that report high confidence on outputs they
+have not verified at the claim level do not possess the accuracy they
+imply. The use of the same evaluative frame in first and second stages of
+a pipeline is not a conservative default; it is a systematic risk. We
+encourage practitioners to treat task framing as a safety-critical
+parameter and to evaluate on real-world data, not only controlled
+benchmarks.
+
+\bibliography{geb_series_unified}
+\bibliographystyle{acl_natbib}
+
+%================================================================
+% APPENDIX
+%================================================================
+\appendix
+
+\section{Large-Scale API Model Sweep}
+\label{app:api-sweep}
+
+\subsection{Trajectory-Revision Bench}
+\label{app:trb}
+
+Full A/B/C/D results across 11 models $\times$ 3 domains $\times$ 4
+conditions $= 10{,}560$ items. Table~\ref{tab:trb-archetypes} documents
+four failure archetypes identified across models.
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{p{3.2cm}p{5.0cm}}
+\toprule
+\textbf{Archetype} & \textbf{Description} \\
+\midrule
+Internal over-committer & Generates long traces that entrench wrong answers (R1 prototype) \\
+Silent follower & Accepts injected errors without flagging them (GPT-5.4 prototype) \\
+Surface detector & Detects but does not correct committed errors (GPT-4.1 prototype) \\
+Injection-immune & Resists injection on clean items, high TER (Nemotron prototype) \\
+\bottomrule
+\end{tabular}
+\caption{Four failure archetypes in Trajectory-Revision Bench.}
+\label{tab:trb-archetypes}
+\end{table}
+
+\subsection{Context-Lock Bench}
+\label{app:clb}
+
+SL-SCAN FRR results, Symmball FRR under 3 conditions, gold-standard
+verification near-miss rejection, and GPT-5.4 think vs.\ no-think
+absorbing vs.\ graded analysis.
+
+\subsection{Composition Bench}
+\label{app:cob}
+
+Depth accuracy by model (full table) and scaffold experiment results.
+
+\subsection{Knowledge-Activation Bench}
+\label{app:kab}
+
+Perturbation recovery across 7 models $\times$ 4 math benchmarks
+(GSM8K, GSM-Symbolic, MATH-500, ARI).
+
+% ============================================================
+\section{Small-Model Mechanistic Analysis}
+\label{app:mechanistic}
+
+\subsection{Full Head Attribution Tables}
+\label{app:heads}
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model} & \textbf{D1 heads} & \textbf{D2 heads} & \textbf{D3 heads} & \textbf{D4 heads} \\
+\midrule
+Gemma & 11/336 (3.3\%) & 83/336 (24.7\%) & --- & --- \\
+Qwen  & 11/1152 (1.0\%) & --- & 63/1152 (5.5\%) & 146/1152 (12.7\%) \\
+Llama & 0/1024 (0\%, fully distributed) & --- & --- & --- \\
+Falcon3-Mamba (SSM) & --- & 64/64 layers & 14/32 ch.\ groups & 44/64 layers \\
+\bottomrule
+\end{tabular}
+\caption{Selective heads (or SSM layers/channel groups) by model and
+axis. ``---'' denotes axis not tested on this model in the mechanistic
+study. Llama's 0/1024 result for D1 indicates full distribution, not
+absence of effect.}
+\label{tab:head-attr}
+\end{table}
+
+\subsection{Steering Method Details}
+\label{app:steering}
+
+Four methods were tested:
+\begin{enumerate}[noitemsep, topsep=2pt]
+\item \textbf{Global mean diff}: steering direction = mean activation
+(correct) $-$ mean activation (incorrect) across all heads and layers.
+\item \textbf{Within-rule mean diff}: direction computed within matched
+rule pairs only.
+\item \textbf{Contrastive direction}: principal component of the
+correct/incorrect contrast in activation space.
+\item \textbf{Interpolation}: linear interpolation between the
+model's activation and the target activation state.
+\end{enumerate}
+
+Cross-axis independence was tested using all four methods; the
+within-axis-only improvement result holds for all four.
+
+\subsection{Wilson Confidence Intervals}
+\label{app:wilson}
+
+All proportion estimates use Wilson confidence intervals
+\citep{wilson1927probable}. The placebo control result
+(81\%~$\pm$~21\%) uses the Wilson interval for the proportion of
+unchanged items under placebo steering.
+
+\subsection{Seed Robustness and Placebo Controls}
+\label{app:seeds}
+
+D3 Context Surgery steering result (FRR 89\% to 11\%) replicates
+across 5/5 independent seeds. Placebo controls---applying a random
+steering direction of the same magnitude as the within-axis
+direction---produce FRR of 81\%~$\pm$~21\%, confirming that the
+improvement is specific to the axis-appropriate direction.
+
+% ============================================================
+\section{Full Methodology}
+\label{app:methods}
+
+\subsection{Context Surgery Procedures}
+\label{app:surgery}
+
+Context Surgery for D3 removes the generation trace from the KV-cache
+before requesting evaluation. In practice this is implemented as a fresh
+API call with the generation trace omitted from the context. Three
+variants were tested: (1) remove entire assistant turn, (2) remove
+assistant turn but retain the final output as a quoted ``student answer'',
+(3) paraphrase the assistant turn before requesting evaluation. All three
+achieve within 5--8 percentage points of third-party evaluation.
+
+\subsection{TER Measurement Protocol}
+\label{app:ter}
+
+$\mathrm{TER}(d) = P(\text{correct trajectory} \mid \text{correction
+signal}, \text{depth } d)$. Exponential decay fit: $\mathrm{TER}(d)
+\propto e^{-\lambda d}$ where $\lambda$ is estimated per model via
+maximum likelihood on the empirical TER curve. The pivot-token escape
+window (depth at which the fitted TER curve crosses 0.05) is 147 tokens
+for R1 at the median.
+
+\subsection{Injection-Gradient Templates}
+\label{app:injection}
+
+\begin{itemize}[noitemsep, topsep=2pt]
+\item \textbf{Condition A}: Problem premise contains erroneous assumption
+with large violation margin (easy to detect if constraint is checked).
+\item \textbf{Condition B}: Problem is clean; a committed wrong
+intermediate step is pre-filled in the reasoning trace.
+\item \textbf{Condition C}: Condition B plus an explicit one-sentence
+contradiction statement appended after the committed step.
+\item \textbf{Condition D}: Control; no injection; problem and trace
+are correct.
+\end{itemize}
+
+\subsection{Fine-Tuning Details}
+\label{app:finetune}
+
+QLoRA fine-tuning on Llama-3.1-8B for the SFT-resistance ablation in D4:
+rank 16, alpha 32, 4-bit quantization, 3 epochs on the trajectory
+revision training set ($N=1200$ items, balanced across A/B/C/D).
+Post-SFT TER decline rate $\lambda$ is not significantly reduced
+relative to the zero-shot baseline ($p = 0.41$, Wilcoxon signed-rank
+test), confirming the SFT-resistance claim.
+
+% ============================================================
+\section{Per-Axis Full Results}
+\label{app:full-results}
+
+Headline tables with pointers to companion papers for each axis.
+
+\begin{itemize}[noitemsep, topsep=2pt]
+\item D1: Recovery rates by model and dataset; full pivot-token
+predictive-value table. See \citet{tower2026usemention}.
+\item D2: Depth accuracy by model, domain, and depth; full scaffold
+ablation. See \citet{tower2026assembly}.
+\item D3: FRR by model, domain, and context condition; full Context
+Surgery results. See \citet{tower2026lockout}.
+\item D4: TER by model, domain, depth, and condition; full repair
+controller results. See \citet{tower2026sunkcost}.
+\item D5: Confidence--accuracy gap by model and domain; full
+prompt-format sweep. Companion paper in preparation.
+\item D6: Binary vs.\ alternative-frame performance by model and
+benchmark. See \citet{tower2026detection,tower2026vuln}.
+\end{itemize}
+
+% ============================================================
+\section{Experimental Setup}
+\label{app:setup}
+
+\begin{table}[H]
+\centering\small\tighttable
+\begin{tabular}{p{3.5cm}p{1.5cm}p{1.5cm}p{2.5cm}}
+\toprule
+\textbf{Model} & \textbf{Params} & \textbf{Provider} & \textbf{Quantization} \\
+\midrule
+DeepSeek-R1 & 671B & DeepSeek & FP8 \\
+DeepSeek-V3.2 & 671B & DeepSeek & FP8 \\
+GPT-5.4 & --- & OpenAI & Cloud API \\
+GPT-4.1 & --- & OpenAI & Cloud API \\
+Qwen3-235B-Thinking & 235B & Alibaba & BF16 \\
+Qwen3-235B-Instruct & 235B & Alibaba & BF16 \\
+Qwen-2.5-72B & 72B & Alibaba & BF16 \\
+Llama-3.3-70B & 70B & Meta & BF16 \\
+Llama-3.1-8B & 8B & Meta & BF16 \\
+MiniMax-M27 & 27B & MiniMax & BF16 \\
+Gemma-2-27B & 27B & Google & BF16 \\
+QwQ-32B & 32B & Alibaba & BF16 \\
+Nemotron & --- & NVIDIA & Cloud API \\
+Command-R7B & 7B & Cohere & BF16 \\
+Nemo-12B & 12B & Mistral & BF16 \\
+Falcon3-Mamba & 7B & TII & BF16 \\
+\bottomrule
+\end{tabular}
+\caption{Complete model list with parameters, providers, and
+quantization used in the large-scale sweep. ``---'' denotes
+proprietary models where parameter count is not publicly disclosed.}
+\label{tab:models}
+\end{table}
+
+\section{Synthetic Diff Construction for Function-Level Inputs}
+\label{app:synth-diff}
+
+The diff-format triage prompt requires a commit diff. When only a
+function is available (no commit history), a synthetic diff is
+constructed: present the function as the ``before'' state and a no-op
+identical function as the ``after'' state, then ask whether the diff
+reveals that a vulnerability was present in the before version.
+
+\noindent\textbf{Synthetic diff prompt.} \textit{The following is a
+synthetic commit diff. The ``before'' version is the function under
+analysis; the ``after'' version is an identical no-op copy. Does this
+diff reveal that a vulnerability was present in the before version? If
+yes, describe the vulnerability type and the structural conditions that
+make it exploitable.}
+
+This construction preserves the diff-format activation signal---the
+model reasons about a ``fix'' that was never applied---while remaining
+applicable to codebases without commit history. CWE formal definition
+injection and knowledge-graph confounder injection apply identically to
+synthetic diffs. Source: \citep{tower2026vuln}.
+
+\end{document}

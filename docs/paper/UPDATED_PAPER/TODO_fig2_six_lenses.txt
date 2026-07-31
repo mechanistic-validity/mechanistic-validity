@@ -1,0 +1,29 @@
+TODO: Alternative Figure 2 — Validity Type Dependency Flow with Lens Inputs
+====================================================================
+
+Current Figure 2 is a horizontal hierarchy of 6 lenses.
+
+Alternative idea: vertical flow diagram showing:
+- The 5 validity types stacked vertically with downward arrows (dependency chain)
+- Each lens feeding in from the side with a horizontal arrow to the type it grounds
+- Shows both the dependency order AND which lens grounds which type
+
+Something like:
+
+    Phil of Sci →  [Construct Validity]
+                          ↓
+    Psychometrics →  [Measurement Validity]
+                          ↓
+    Causal Inf. }
+                →  [Internal Validity]
+    Neuroscience }
+                          ↓
+    Pharmacology →  [External Validity]
+                          ↓
+    Mech Interp →  [Interpretive Validity]
+
+This would replace or complement the current horizontal hierarchy.
+Advantage: shows dependency chain AND lens mapping in one figure.
+Disadvantage: more complex, might be too busy.
+
+Could also try: keep current Figure 2 (horizontal lenses) and add this as Figure 3.

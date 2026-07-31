@@ -1,0 +1,51 @@
+ClaimSpec Figure TODOs
+=====================
+
+1. IOI ClaimSpec graph (fig_claimspec_ioi_v3.png)
+   - Layout is close but arrows still overlap
+   - NM→S-Inh non-edge crosses the S-Inh→NM positive edge
+   - Need to curve non-edges AWAY from positive edges, not through them
+   - Maybe put non-edges on the outside (left/right) and positive edges on the inside
+   - Script: gen_claimspec_ioi_v3.py
+   - Previous versions: v1, v2 also in figures/
+
+2. Knowledge Neurons ClaimSpec graph (fig_claimspec_knowledge_v2.png)
+   - Current version is OK but arrows between boxes could be cleaner
+   - "Ablate → recall degraded" label position was adjusted
+   - Lives in companion paper draft but could go in this paper's appendix
+   - Script: gen_claimspec_graphs.py
+
+3. Gender Bias ClaimSpec graph (fig_claimspec_gender_v2.png)
+   - Shows construct incoherence (bias and knowledge = same heads)
+   - Solid dark arrows down to "Same heads", red failed non-edge between constructs
+   - Lives in companion paper draft but could go in this paper's appendix
+   - Script: gen_claimspec_graphs.py
+
+4. Anatomy of a ClaimSpec graph (fig_claimspec_anatomy_v3.png)
+   - Generic example with Role A (detector), Role B (copier), output, unrelated task
+   - Shows all 4 edge types: positive passed, negative passed, untested, failed
+   - Greater-Than as the concrete example
+   - Could go in appendix as "how to read a ClaimSpec graph"
+   - Script: gen_claimspec_anatomy_v3.py
+
+5. Post-hoc vs ClaimSpec comparison (fig_posthoc_vs_claimspec_v3.png)
+   - Side-by-side: same 3 ablation numbers, cherry-picking vs pre-committed
+   - Script: gen_posthoc_vs_claimspec_v3.py
+
+6. Post-hoc labeling comparison (fig_posthoc_labeling_v1.png)
+   - "Name mover" label: unfalsifiable vs testable prediction
+   - Script: gen_posthoc_labeling_v1.py
+
+7. Post-hoc redefinition comparison (fig_posthoc_redefinition_v1.png)
+   - 26 heads → drop 4 → 22 heads: metric optimization vs committed membership
+   - Script: gen_posthoc_labeling_v1.py
+
+WHERE TO PUT THEM:
+- Appendix of this paper: IOI graph, Knowledge Neurons graph, Gender Bias graph
+- Companion paper (claimspec_draft.tex): all of them, plus the comparison figures
+- The anatomy figure could go in either paper as a "how to read" guide
+
+DECISION NEEDED:
+- Do we want ANY of these in the main paper or all in appendix/companion?
+- The IOI graph is the most useful for the appendix IOI spec section
+- Knowledge Neurons and Gender Bias illustrate specific failure modes referenced in case studies

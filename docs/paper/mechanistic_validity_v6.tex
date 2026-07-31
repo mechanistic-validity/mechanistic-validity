@@ -1,0 +1,346 @@
+% Mechanistic Validity — v6 (TMLR restructure skeleton)
+% =====================================================================
+% v5 (mechanistic_validity_v5.tex) is preserved intact as the SOURCE to port from.
+% This v6 is the reorganized shell designed against the 10-reviewer gauntlet:
+%   - theory-forward, taxonomy compressed, apparatus moved to supplement_reference.tex
+%   - audit reframed as CLAIM-level (not paper-level)
+%   - NEW Section 6 "Validating the Framework Itself" (fixes the #1 reject-driver:
+%     nothing executed / retrofitting) via preregistration + one ground-truth Validated claim + IRR
+% Fill in section by section. \PORT = lift from v5; \TODO = new writing needed.
+% =====================================================================
+\pdfoutput=1
+\documentclass{article}
+\usepackage[preprint]{tmlr}
+
+\newcommand{\openreview}{\url{https://openreview.net/forum?id=XXXX}}
+\def\month{06}
+\def\year{2026}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{array}
+
+\newcommand{\ie}{i.e.}
+\newcommand{\eg}{e.g.}
+\newcommand{\cf}{cf.}
+\newcommand{\tighttable}{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.05}}
+
+% author-facing skeleton markers — delete before submission.
+% Render as clearly-delimited, READABLE notes so a compiled draft shows at a glance
+% what is written prose vs. scaffolding (content muted, red/blue brackets around it).
+\newcommand{\TODO}[1]{\par\smallskip\noindent\textcolor{red}{\textbf{[\,TODO}}\ \textit{\textcolor{black!65}{#1}}\ \textcolor{red}{\textbf{TODO\,]}}\par\smallskip}
+\newcommand{\PORT}[1]{\par\smallskip\noindent\textcolor{blue!65!black}{\textbf{[\,PORT from v5}}\ \textit{\textcolor{black!65}{#1}}\ \textcolor{blue!65!black}{\textbf{PORT\,]}}\par\smallskip}
+
+\usepackage{caption}
+\captionsetup[table]{skip=8pt}
+
+\title{Mechanistic Validity: A Theory of Validity for Mechanistic Claims}
+
+\author{\name Elliot Tower \\
+      \email elliot@elliottower.ai}
+
+\begin{document}
+\maketitle
+
+% =====================================================================
+\begin{abstract}
+Mechanistic claims are ubiquitous in empirical science---\emph{this circuit implements this computation}, \emph{this gene causes this disease}, \emph{this pathway mediates this outcome}. What makes such a claim valid?
+
+We argue that a mechanistic claim is only as strong as its weakest validity dimension. Five validity types---construct, measurement, internal, external, and interpretive---form a dependency chain: construct validity is a ceiling on all others, so no amount of causal evidence rescues a claim whose target concept is incoherent. This is a theory of validity, not a taxonomy: it predicts that claims cap at the tier corresponding to their weakest dimension, and that single high-scoring metrics cannot compensate for untested dimensions.
+
+We operationalize this theory as Mechanistic Validity, drawing on philosophy of science, measurement theory, and validation methodology from neuroscience, pharmacology, and genetics. We audit sixteen mechanistic claims---thirteen published circuits plus an SAE feature, a steering vector, and Anthropic's J-space ``global workspace'' claim---auditing each \emph{claim} and its evidence base as it now stands, not indicting any single paper, and show the framework discriminates: the IOI circuit reaches Mechanistically Supported but caps there because cross-task specificity remains untested; induction heads reach Triangulated; the gender bias circuit is Disconfirmed on an incoherent construct. We then test the framework against itself: a preregistered prospective audit and a ground-truth toy circuit calibrate its verdicts.
+% \TODO{tighten abstract to lead with the 2-sentence contribution delta (R2): unit = causal mechanistic claim (not a benchmark score); description mode sets the evidence bar. Cut the apparatus counts from the abstract.}
+\end{abstract}
+
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+% GOAL: state the nugget in sentence 1--2, then the DELTA over validity-for-ML work (R2),
+% then the two falsifiable predictions, then promise the audit + the self-validation.
+\PORT{\S1 opening catalog (induction heads, IOI, greater-than, SAE features) and the
+"strong on one dimension, untested on others" paragraph.}
+\TODO{Rewrite the opening so the first two sentences are the contribution delta:
+(1) the unit of analysis is a causal mechanistic claim, not a benchmark score;
+(2) the declared description mode determines which evidence is required.
+Then: the weakest-link thesis + two testable predictions. End by promising Sec 4 (audit)
+and Sec 6 (self-validation). Keep short; no apparatus dump here.}
+\TODO{DELTA / COMPETITOR CHECK (R2): "Causally Grounded Mechanistic Interpretability for LLMs"
+(2026) may propose evaluation criteria ADJACENT to the validity tiers --- READ IT and add an
+explicit distinction in related work, or it becomes an "already done" reject vector. Bean
+(NeurIPS 2025) + MIB (ICML 2026) are already in v5 as capability/method-performance foils; the
+causal-mechanistic-claim UNIT stays the delta --- just make sure the 2026 causal-MI paper
+doesn't scoop the framing.}
+
+% =====================================================================
+\section{The Pattern Across Sciences}
+\label{sec:motivation}
+% KEEPER — this is the motivation reviewers praised. Port nearly verbatim.
+\PORT{Entire \S2 Motivation: dead salmon, cold fusion, BOLD, candidate genes, cardiac
+stents, COVID-ML, shortcut learning, emergent abilities, + the MI failure catalog
+(\S2.3) and the cross-science table (tab:cross-science) and "The Common Structure".}
+\TODO{Trim only for length; keep the cross-field table. End on: MI evaluates methods and
+artifacts but has no shared protocol for the CLAIMS built on them --- this paper is that protocol.}
+\TODO{ELEVATE the COVID-ML example (DeGrave, Janizek \& Lee 2020): external validation on new
+hospital data PASSES while the causal claim ("detects COVID pathology") is FALSE --- shortcuts
+don't hurt held-out performance, they just aren't detecting disease. The cleanest single
+demonstration that external validity can pass while internal validity fails = the dependency-chain
+thesis in one example. Cold-fusion primary: Fleischmann-Pons 1989 (bypassed peer review) ->
+Coulomb barrier + missing neutrons/gammas + replication failure (MIT/Caltech/Harwell); Google 2019
+still null.}
+
+% =====================================================================
+\section{The Framework in Brief}
+\label{sec:framework}
+% COMPRESSED SPINE. This one section replaces v5's Framework + Methodology + Foundations.
+% Contains ONLY what the audit and the "why it matters" sections actually invoke.
+% Everything else -> supplement_reference.tex.
+
+\PORT{Dependency-chain equation and the 5 validity-type paragraphs (construct, measurement,
+internal, external, interpretive) --- but tightened to ~1 short paragraph each.}
+\begin{equation}
+\text{Construct} \rightarrow \text{Measurement} \rightarrow \text{Internal} \rightarrow \text{External} \rightarrow \text{Interpretive}
+\label{eq:dependency}
+\end{equation}
+\TODO{One tight paragraph per type. The chain is a CEILING, not a gate sequence.}
+
+\subsection{Description Modes}
+\PORT{Compressed description-modes paragraph + tab:modes (the 7-mode table stays --- V1/V4
+depend on it). Cut the long prose; keep the table + 3 sentences.}
+
+\subsection{Evidence Families}
+\PORT{One paragraph + the 4x2 tab:families ("most published MI lives in one cell").}
+
+\subsection{Criteria and Verdict Tiers}
+\PORT{tab:criteria as a COMPACT one-line-each table (grouped by type), and tab:verdicts.
+Fix the numbering: I-criteria currently jump I7->I10 (I8, I9 missing) --- renumber or explain.}
+\TODO{Add pointer sentence: "Full pass conditions, the 65-metric inventory, protocols, and
+synthesis methods are in the Supplementary Reference (also browsable at [website])."}
+\TODO{Reconcile all apparatus counts before submission: v5 says 9 vs 4 protocols and
+14 vs 15 calibrations in different places. Pick the true numbers.}
+
+\subsection{Severity: Preregistration and Corroboration}
+\label{sec:severity}
+% Elliot's design decision: exploratory work must not silently reach the top tiers.
+% RECOMMENDED FORMULATION (pending final sign-off):
+%  - Triangulated and Validated require the KEY criteria to be established by SEVERE tests (Mayo).
+%  - Severity is achieved by EITHER (a) preregistration of the prediction, OR (b) risky
+%    corroboration: confirmation via a method / distribution / model the claim was NOT built or
+%    optimized to pass (independent evidence family, held-out prompts, cross-model).
+% REFINED RESOLUTION (the cap is not a NEW penalty --- it FALLS OUT of the existing structure):
+%  - Triangulated is DEFINED by convergence across >=3 independent evidence families (C3): it
+%    already REQUIRES corroboration. Single-method confirmation-only work already fails E1
+%    (>=2 methods) -> caps at Causally Suggestive. So "within-family / confirmation-only evidence
+%    caps at Mechanistically Supported" is IMPLIED by the tiers, not bolted on.
+%  - Preregistration therefore is NOT a separate tier gate and does NOT let a claim skip
+%    cross-family triangulation. It enters two ways: (i) discussed IN PROSE only --- the verdict
+%    LABEL stays a clean word ("Triangulated", NOT "Triangulated (preregistered)"; no asterisk ---
+%    Elliot's call); each per-claim writeup states in text whether the tier was earned by
+%    corroboration and/or preregistration --- and (ii) a severity BOOSTER on individual criterion
+%    statuses (Mayo) --- a preregistered specificity test earns "Confirmed" where a post-hoc one
+%    earns "Partially confirmed".
+%  - Net = Elliot's goal (exploratory work can't silently be Triangulated) WITHOUT a crude gate,
+%    fully derived from the framework's own evidence-family + tier structure.
+% CAP PROS/CONS (for the writeup + Jensen):
+%   moderate cap @ Mechanistically Supported -> principled (Triangulated = cross-family by defn),
+%     preserves tier resolution, adoptable. RECOMMENDED.
+%   strict cap @ Causally Suggestive -> louder normative statement but reviewers (esp. MI
+%     empiricists, R1) read it as rigged to produce low verdicts; collapses tier resolution
+%     (everything piles at Causally Suggestive). NOT recommended.
+% OPEN QUESTION FOR JENSEN: can preregistration ever SUBSTITUTE for a missing evidence family,
+% or only BOOST within-family severity? (design call for a causal-methodology expert.)
+\TODO{Write up ~1 paragraph after Jensen weighs in. Keep verdict LABELS clean (no provenance
+suffix); discuss corroboration/preregistration status in the per-claim PROSE and in this
+subsection. Keep a 2-sentence confirmation/corroboration grounding here (full version in supplement).}
+
+\subsection{Ablation and Patching Are Different Interventions}
+% R3: make one piece of the causal apparatus actually load-bearing.
+\PORT{The do-operator distinction from v5 \S7.3 (ablation = do(h:=0/E[h]); patching =
+do(h:=h')) and use it to REINTERPRET the method-conditional faithfulness finding (E1).}
+\TODO{This is the only formal causal content that stays in the main paper. Make it derive
+something the prose didn't already say. Move the decorative IOI SCM to the supplement.}
+
+% =====================================================================
+\section{Audit: Sixteen Mechanistic Claims}
+\label{sec:case-studies}
+% THE PAYOFF. Reframed as claim-level.
+\TODO{Open with the framing paragraph: "We audit CLAIMS, not papers. A verdict characterizes
+the current evidential status of a claim, aggregating all published evidence to date, and is
+not an assessment of any single paper's quality. Verdicts are graded against an idealized
+standard; a low tier marks distance from that ideal, not a flawed study." (fixes R1)}
+\PORT{tab:case-studies (13-circuit verdict table) + the 3--4 illustrative case studies
+(Induction Heads=Triangulated, IOI=Mechanistically Supported, Probing=Proposed,
+Gender Bias=Disconfirmed) + the "Recurring Validity Gaps" subsection.}
+\TODO{For each illustrative case, show a short SCORING TRACE (which criteria pass/partial/
+untested and why) so verdicts are visibly falsifiable, not asserted (R1). Cite follow-up
+evidence per claim (this is the per-claim mini-lit-review) --- see lit_review_findings.md.}
+\TODO{IOI enrichment: Miller/Chughtai 2024 (faithfulness not robust, node-vs-edge -> E1), ACDC +
+"Demystifying Variance" (non-uniqueness), Adaptive Circuit Behavior (E2), Adversarial Circuit Eval
+ICLR 2024, Adhikari 2026 (minimal circuits -> non-uniqueness/minimality).
+CROSS-SCALE/CROSS-TASK (new E-evidence): Merullo 2024 (ALREADY in bib as a synthesis method) shows
+IOI reproduces on a LARGER GPT-2 (E4 untested -> PARTIAL) and ~78% head reuse on Colored Objects
+(E3) --- nudges the IOI trace but likely stays Mechanistically Supported.
+SELF-REPAIR caveat (pushes the OTHER way): Conditional Co-Ablation 2026 + Self-Repair survey 2026
+= MI-NATIVE evidence that backup name-mover claims can be ablation-protocol ARTIFACTS. Grounds v5's
+EXISTING system-reserve/backup theme (pharma lens, "Backup circuits compensate after ablation") in
+MI evidence, not just analogy; reinforces E1. Consider a short field-wide-ablation-confound paragraph.
+Induction heads: "Induction Head Implementation Across Diverse Architectures" = E4 corroboration.
+Probing: "Dissociating Decodability and Causal Use" = cleanest "decodable != used" cite.}
+\TODO{GENDER BIAS = Disconfirmed --- handle carefully (thinnest evidence, most provocative verdict).
+No 2024-2026 work re-tests separability of "bias" from grammatical-gender knowledge; 5 years on it
+is STILL framed as open (2025 "Universal Patterns of Grammatical Gender"; 2026 disentanglement
+preprint). Reframe: Disconfirmed on C4 --- the construct PRESUPPOSES a separation Vig et al.'s own
+mediation contradicts (shared heads) and NO work has established. Do NOT claim to have proven
+non-separability. OPTION: make the separability test a NEW Sec 6 experiment (thinnest verdict ->
+empirical; shows the framework generating a novel test). Decide with Jensen.}
+
+\subsection{Non-Circuit Claims}
+\label{sec:noncircuit}
+% R9/R2 method-agnosticism: two FULL non-circuit audits (Elliot's decision: do both, not a
+% comparative paragraph). Together they show the framework produces DIFFERENT structured
+% profiles for different method types --- the strong generality claim: observational SAE
+% features cap on the CAUSAL axis; interventional steering vectors clear the causal bar but
+% cap on the INTERPRETIVE (mode-match) axis.
+
+\subsubsection{SAE Feature}
+% Evidence base found (lit_review_findings.md). Pivot to the CANONICAL-UNITS claim.
+\TODO{Audit "SAE features are canonical, monosemantic units corresponding to concepts." Evidence:
+(1) NOT atomic / NOT canonical -> C4 discriminant failure: Leask et al. ICLR 2025 (stitching /
+meta-SAEs) --- an "Einstein" latent decomposes into "scientist"+"Germany"+"famous person" (the
+centerpiece example);
+(2) NOT reliable/stable -> M1/M3: latent identity varies by training SEED (seed-dependence paper);
+(3) decodable != used -> Braun et al. 2024 (end-to-end dict learning targets FUNCTIONALLY
+important features, conceding standard training doesn't guarantee use);
+(4) MIB (ICML 2026): SAE features perform NO BETTER than raw neurons on causal variable
+localization (supervised DAS wins) --- direct causal-use ammunition.
+Predicted verdict: Proposed / Causally Suggestive, capped by C4 + M1/M3.}
+
+\subsubsection{Steering Vector}
+% Evidence base found (lit_review_findings.md). Target: the refusal direction.
+\TODO{Audit "adding the refusal direction v steers refusal" (Arditi et al. 2024, "Refusal is
+mediated by a single direction"). Evidence:
+(1) interventional (do(h += v)) -> clears sufficiency-to-steer that probing/SAEs cannot; strong
+necessity+sufficiency in the original;
+(2) dose-response (E5) by scaling v --- but "Inverse Scaling in Activation Steering" shows
+effectiveness degrades with scale (E5 boundary condition);
+(3) mode-match FAILURE (V2), confirmed by the literature's OWN drift: "Beyond a Single Direction:
+CoT Disrupts Simple Steering of Refusal" (2026), adversarial-robustness + "Predicting Where
+Steering Vectors Succeed" (E5/E6 fragility), COSMIC 2025 (original not fully general -> E4). The
+field increasingly narrates refusal as a behavioral LEVER, not a representation --- exactly V2.
+Predicted verdict: Mechanistically Supported (behavioral axis), capped by V2 + E5/E6 fragility.}
+
+\subsubsection{J-space / "Global Workspace" (Anthropic 2026) --- flagship mode-conflation case}
+% Full detail: jspace_case_notes.md. MechVal SLICE only here; cross-framework (invariance-depth,
+% unification, MechViews) is routed to the OTHER papers.
+\TODO{Audit Anthropic's J-space claim (verbalizable "global workspace" subspace via the Jacobian
+lens; transformer-circuits.pub/2026/workspace). Predicted verdict: MECHANISTICALLY SUPPORTED (same
+tier as IOI) --- necessity + sufficiency via three converging interventions (swap/ablate/inject);
+caps below Triangulated on (a) single evidence family [C3: Nanda's Qwen replication adds a MODEL,
+not a FAMILY], (b) I3 specificity UNTESTED (does ablation hurt only deliberate tasks or every
+high-coordination task? = cardiac-stent problem), (c) I4 untested, (d) V4 interpretive inflation.
+THE flagship description-mode conflation (implementational-statistical -> representational ->
+computational "workspace") --- better than Othello: timely, high-profile, safety-relevant. Sharp
+extra point: the measurement OPERATIONALIZES the construct (J-space = defined-as-reportable), so the
+deliberate-reasoning correlation is guaranteed by construction (C4/C1 circularity). C5 weak: GWT
+contested (COGITATE 2025 GNW prediction failed).
+TWO-TIER SPLIT (one paper, multiple claims --- the showcase for "audit claims, not papers"): the
+PARENT "global workspace" claim = Mechanistically Supported (capped by V4 + I3). The NARROWER claim
+"the J-space carries deception-relevant signal detectable before output" sits CLOSER TO TRIANGULATED
+--- explicit contrastive foil (aligned vs deceptive internal state) = more direct interventional
+logic, AND it needs NO GWT narrative, so it dodges the V4 inflation and untested specificity that cap
+the parent. Feed the deception SUB-claim into Sec 5 (safety monitor / minimum deployment; Nanda: needs
+replication before trusted). CONSIDER promoting J-space to the running example in the Description-Modes
+section (3.1) and/or the V4 flagship alongside/instead of Othello.}
+
+\TODO{Update all "thirteen"/"13"/"fifteen"/"15" counts to SIXTEEN/16 (abstract, section title,
+tab:case-studies caption, recurring-gaps prose).}
+
+% =====================================================================
+\section{Why It Matters}
+\label{sec:implications}
+% The "so what". Keep tight. Mark safety claims explicitly as PROPOSALS (R5).
+\PORT{Safety applications from v5 discussion: chain-of-thought faithfulness (4 claims not 1),
+deception detection, safety-evidence-gaps-at-scale, minimum deployment standards.}
+\TODO{Frame deployment tiers as PROPOSALS derived from the dependency structure, not empirical
+results (R5). If possible, one worked example where the tier predicts a monitor's failure.}
+\PORT{Adoption mechanisms (validity statements, reviewer checklists, evidence cards) and the
+five concrete recommendations (test specificity by default, etc.).}
+
+\subsection{Standards for the Field}
+% Elliot's decision: make the paper PRESCRIPTIVE (how mechanistic science SHOULD be conducted),
+% not only diagnostic. GUARDRAIL: derive every "should" from (a) the dependency chain (logical
+% necessity --- you cannot trust external validity without internal validity) and (b) PRECEDENT
+% in sciences that already crossed this bridge (CONSORT for trials, registered reports in
+% psychology, genome-wide significance + replication in GWAS). NEVER prescribe from authority/
+% taste --- a solo unknown prescribing to the field triggers status-defense (R1/R2). Derived
+% prescription reads as "the field's own standards made explicit," which is earned.
+\TODO{Frame MI as where neuroscience/genetics/medicine were BEFORE they adopted these standards;
+propose preregistration + corroboration + cross-family evidence as the concrete standard, each
+traced to logic or precedent. Positioning shift: diagnostic tool -> call for standards (stronger,
+more citable nugget; fits the org identity). Confirm the shift is what you want before finalizing.}
+\TODO{Surface the practitioner 3-question path prominently here (R8): Is the description mode
+declared? Is the claimed tier supported? Does evidence tier match claim tier?}
+
+% =====================================================================
+\section{Validating the Framework Itself}
+\label{sec:self-validation}
+% NEW SECTION. This is what flips "plausible rubric" -> "tested instrument" and is the
+% single most important addition (R4, R1, R8, R10). Solo-authored, preregistered.
+% CONFIRMED (Elliot, decisions 1 & 2): do BOTH the ground-truth Validated case AND the
+% preregistered prospective audit --- not a fallback protocol. Advisor may give feedback
+% (feedback only; authorship stays solo).
+
+\subsection{A Ground-Truth Validated Claim}
+% Elliot ran the C8 search. Clock/Pizza beats Tracr as a calibration design (see lit_review_findings.md).
+\TODO{PRIMARY calibration case: grokking modular addition with the Clock vs Pizza dual mechanism
+(Nanda 2023; "Clock and the Pizza," NeurIPS 2023). Two DISTINCT fully-known ground-truth
+mechanisms + a Fourier diagnostic (mode at 2k mod p = Pizza, k = Clock) let us test not just
+"can a claim reach Validated" but whether the tiers DISCRIMINATE: claim matches ground truth A
+vs B vs neither. Produce the first Validated-tier verdict AND show a wrong-mechanism claim is
+correctly denied it. SECONDARY: Tracr (Lindner 2023, RASP->weights) + Neural Decompiling of Tracr
+(2024). (fixes R4 "nothing executed")}
+
+\subsection{Preregistered Prospective Audit}
+\TODO{Preregister verdicts on N newly published circuits BEFORE reviewing their evidence
+(commit SHA, frozen). Report how the prospective verdicts land. This removes the retrofitting
+circularity you already flagged in v5 limitations (R1/R4) and is your signature discipline.}
+
+\subsection{Inter-Rater Reliability}
+\TODO{Report agreement between >=2 independent raters on the 13 case-study verdicts (and/or
+criterion-level agreement). Emphasize the structured profile --- not the tier --- as the
+primary output, so disagreement localizes to individual falsifiable criteria (R8).}
+
+\TODO{Optional: operationalize preregistration as a SEVERITY modulator (Mayo) inside criterion
+status --- a preregistered specificity test is more severe than a post-hoc one, so it can raise
+a criterion's status. This is where preregistration earns a place INSIDE the framework (R7).}
+
+% =====================================================================
+\section{Scope, Limitations, and Conclusion}
+\label{sec:limitations}
+\PORT{v5 limitations KEEPERS: inter-rater reliability, "case studies are illustrative not
+preregistered" (now partly resolved by Sec 6), tier thresholds provisional, falsifiability
+of the framework itself.}
+\TODO{Scope statement (R9/R2): demonstrated claims now span attention-head circuits, an SAE
+feature, and a steering vector (Sec 4.x) --- so method-agnosticism is SHOWN, not conjectured.
+Transcoders / crosscoders remain conjecture with a stated adaptation path (supplement).}
+\TODO{Beyond-MI generality: use a DESIGN-generality sentence (no cite, no commitment, cannot be
+challenged) --- "Nothing in these criteria is specific to interpretability; 'is the construct
+well-defined?' and 'is the evidence causal?' are domain-general, so the framework extends
+naturally to mechanistic claims in other empirical sciences." Do NOT say "in prep" or cite the
+chemistry audit (deanonymization + invites "can we see it?"). Save chemistry for the Perspective.}
+\PORT{Conclusion paragraph.}
+
+% =====================================================================
+\bibliographystyle{tmlr}
+\nocite{campbell1963experimental,loevinger1957objective}
+\bibliography{references}
+
+\end{document}
