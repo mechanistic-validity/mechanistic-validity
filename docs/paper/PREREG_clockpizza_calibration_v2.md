@@ -1,7 +1,10 @@
 # Preregistration: Ground-Truth Calibration of Mechanistic Validity
 
-**Status:** DRAFT — freeze and compute SHA-256 before running.
-**Timestamp:** ____________ (fill on freeze)
+**Status:** FROZEN. No model had been trained when this was sealed.
+**Timestamp:** 2026-08-01T02:12:56Z
+**SHA-256 of this document at freeze** (computed with this line and the
+two above absent, so it is reproducible by stripping them): `f43505a34b02012fd1af5fd0596c6066ee2d07c0ab2f54ac450acc60f3a2d1a1`
+**Freeze commit:** recorded in the commit that sets this status.
 
 **Terminology note.** This is a genuine preregistration rather than a held-out
 analysis pre-specification. No model has been trained, no claim has been audited,
@@ -24,8 +27,10 @@ unfalsifiable. That gap is the reason this study exists.
 
 It is also known that one-layer transformers trained to generalization on modular
 addition implement the task through a Fourier construction, and that such models
-learn one of two mechanisms, conventionally called Clock and Pizza, which are
-distinguishable by a Fourier-domain signature in the pre-unembedding activations.
+learn one of two mechanisms, conventionally called Clock and Pizza. Both use
+circular embeddings, so the Fourier structure they share does not separate them;
+they are distinguished by gradient symmetricity and distance irrelevance
+(\S2).
 The two mechanisms are behaviourally equivalent: both compute modular addition
 correctly, and no measurement of task performance separates them.
 
@@ -55,13 +60,52 @@ reference against which to calibrate.
 ## 2. Models and ground-truth labelling
 
 Between twelve and sixteen one-layer transformers are trained on addition modulo
-113, varying the training conditions reported to select between Clock and Pizza
-solutions. Each trained model is assigned a ground-truth label by the
-Fourier-domain diagnostic before any claim about it is audited.
+113, varying the training condition reported to select between Clock and Pizza
+solutions. Each trained model is assigned a ground-truth label before any claim
+about it is audited.
 
-A model enters the study if and only if its Fourier signature assigns it
-unambiguously to Clock or to Pizza. Models with ambiguous signatures are
-excluded, and the number excluded is reported. The study requires at least four
+**The selection lever, specified.** An earlier draft of this section left the
+"training conditions" unnamed and stated that labelling would use "the
+Fourier-domain diagnostic." Both are corrected here against
+\citet{zhong2024clock}, read directly.
+
+The lever is the **attention rate** $\alpha$. The post-softmax attention matrix
+$M$ is replaced by
+
+$$M' = M\alpha + J(1-\alpha)$$
+
+with $J$ the all-ones matrix, so $\alpha = 1$ retains attention and $\alpha = 0$
+gives a constant attention matrix. The paper reports a phase transition in
+$\alpha$: *"The Clock algorithm dominates when the attention rate is higher than
+the phase change point, and the Pizza algorithm dominates when the attention
+rate is lower than the point."* The transition point rises with model width, so
+width is held fixed at 128 and $\alpha$ is swept.
+
+**The labelling diagnostic, corrected.** Fourier-domain structure does **not**
+separate Clock from Pizza — both are circular-embedding algorithms, and
+circularity is the precondition for entering the study rather than the
+discriminator. Labelling instead uses the paper's two metrics:
+
+- **Gradient symmetricity** $s_g \in [-1,1]$: the mean cosine similarity between
+  $\partial Q_{abc}/\partial E_a$ and $\partial Q_{abc}/\partial E_b$ over
+  input-output triples. Pizza has symmetric gradients, Clock asymmetric.
+  Reference values from the paper's own Model A (no attention, Pizza) and
+  Model B (attention, Clock): **99.37% and 33.36%**.
+- **Distance irrelevance** $q \in [0,1]$: the ratio of the mean within-diagonal
+  standard deviation of the correct-logit matrix $L_{ij} = Q_{ij,i+j}$ to its
+  overall standard deviation. Paper's reported ranges: **Pizza 0–0.4, Clock
+  0.4–1**; its Model A and Model B give **0.17 and 0.85**.
+
+A model is labelled **Pizza** if $s_g$ is high and $q < 0.4$, **Clock** if $s_g$
+is low and $q > 0.4$, and **ambiguous** if the two metrics disagree or $q$ falls
+near the 0.4 boundary. Ambiguous models are excluded and counted, per the rule
+below. Circularity of the embeddings is checked first as an entry condition; a
+model without circular embeddings implements neither algorithm and is excluded
+separately.
+
+A model enters the study if and only if the two diagnostics above assign it
+unambiguously to Clock or to Pizza. Models labelled ambiguous are excluded, and
+the number excluded is reported. The study requires at least four
 confirmed models of each type; if the training sweep does not produce this,
 additional models are trained under the same procedure until it does, and the
 total number trained is reported.
