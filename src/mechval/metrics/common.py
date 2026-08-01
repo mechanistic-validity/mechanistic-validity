@@ -49,7 +49,12 @@ def get_all_edges(circuit: dict) -> set[tuple[int, int, int, int]]:
                     edges.add((s[0], s[1], r[0], r[1]))
     return edges
 
-CIRCUIT_TASKS = list_tasks(source="published")
+# `source="published"` filters by provenance, not by whether a usable circuit
+# exists for the model under test. DocstringTask is a published circuit -- for
+# an attn-only 4L model, not GPT-2 -- so it carries circuit_status="planned" and
+# raises on get_circuit()/get_prompts(). Callers treat this list as "tasks I can
+# evaluate", so intersect with has_circuit.
+CIRCUIT_TASKS = list_tasks(source="published", has_circuit=True)
 EXPERIMENTAL_TASKS = list_tasks(source="experimental")
 ALIAS_TASKS = list_tasks(source="ours")
 ALL_TASKS = sorted(list_tasks())
