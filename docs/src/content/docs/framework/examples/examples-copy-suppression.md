@@ -19,7 +19,7 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 | Measurement | M3 Baseline separation | M1 Reliability | Partial |
 | Interpretive | V3 Narrative coherence | V4 Alternative exclusion | Strong |
 
-**Overall verdict: Causally suggestive, approaching Mechanistically supported.** Copy suppression is notable for its unusually clean specificity result (I3) — ablation produces a specific error type rather than general degradation. This is rare in MI and provides stronger evidence than typical necessity results. The mechanism is a good example of how negative-effect components (inhibitory mechanisms) can be as well-characterized as positive-effect ones.
+**Overall verdict: Mechanistically Supported.** Copy suppression is notable for its unusually clean specificity result (I3) — ablation produces a specific error type rather than general degradation. This is rare in MI and provides stronger evidence than typical necessity results. The capping criterion is I6 (double dissociation): no crossed design has been attempted. The mechanism is a good example of how negative-effect components (inhibitory mechanisms) can be as well-characterized as positive-effect ones.
 
 ## Metrics used in original work
 

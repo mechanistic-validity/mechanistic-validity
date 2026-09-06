@@ -35,7 +35,7 @@ The claim reaches Mechanistically Supported because both necessity and sufficien
 
 **Unlicensed labeling (V4).** "Global workspace" in cognitive neuroscience entails conscious access, broadcast, and competition among specialized processors. The evidence in transformers supports a shared communication subspace but does not establish the richer cognitive-science interpretation. "Shared communication subspace" would be a more conservative label.
 
-**Cross-model recurrence (E4).** The evidence for J-space structure across different model families is preliminary. Whether the same structure appears in architectures trained on different data or with different objectives remains an open question.
+**Cross-model generalization (E4).** The evidence for J-space structure across different model families is preliminary. Whether the same structure appears in architectures trained on different data or with different objectives remains an open question.
 
 **Confound control (I5).** The subspace could reflect training data statistics rather than a functional architectural property. Distinguishing "the model routes information through this subspace because it is computationally useful" from "this subspace captures the principal variance of the training distribution" requires additional controls.
 

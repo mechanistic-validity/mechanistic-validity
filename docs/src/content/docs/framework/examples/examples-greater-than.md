@@ -19,7 +19,7 @@ This is a structural-level claim with algorithmic aspects: it names specific wei
 | Measurement (Measurement Theory) | M3/M4 Separation + Sensitivity | M1/M5 Reliability + Calibration | Partial |
 | Interpretive (MI) | V2 Level-evidence match | V4 Alternative exclusion | Strong |
 
-**Overall verdict: Causally suggestive, approaching Mechanistically supported.** The Greater-Than circuit's distinguishing strength is structural plausibility (C2) — the $W_{OV}$ ordering evidence is among the most precise weight-space characterizations published. This makes it a model case for how structural evidence can support an algorithmic claim. Its primary gaps are the same as most circuits: single model, single ablation method, no formal double dissociation. The honest scope investigation (generalization to other ordinal tasks) is a genuine strength that most papers lack.
+**Overall verdict: Mechanistically Supported.** The Greater-Than circuit's distinguishing strength is structural plausibility (C2) — the $W_{OV}$ ordering evidence is among the most precise weight-space characterizations published. This makes it a model case for how structural evidence can support an algorithmic claim. The capping criteria are I5 (rival mechanism exclusion) and I6 (double dissociation): no crossed design has been attempted and no rival mechanism has been formally excluded. The honest scope investigation (generalization to other ordinal tasks) is a genuine strength that most papers lack.
 
 ## Metrics used in original work
 

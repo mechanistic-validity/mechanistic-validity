@@ -52,7 +52,7 @@ The twelve internal criteria fall into four blocks:
 | I6 | Double dissociation | Do two interventions cross, each breaking what the other spares? | [double-dissociation](internal/double-dissociation/) |
 | I7 | Confound control | Are alternative explanations ruled out? | [confound-control](internal/confound-control/) |
 | I8 | Confounding sensitivity | How strong must an unmeasured confounder be to explain the result? | [confounding-sensitivity](internal/confounding-sensitivity/) |
-| I9 | Epistatic interaction | Do circuit components interact non-additively? | [epistatic-interaction](internal/epistatic-interaction/) |
+| I9 | Epistatic interaction | Do circuit components interact non-additively, and does the direction of interaction distinguish shared pathways from mutual compensation? | [epistatic-interaction](internal/epistatic-interaction/) |
 | I10 | Rescue reversibility | Does restoring a corrupted component recover behavior? | [rescue-reversibility](internal/rescue-reversibility/) |
 | I11 | Onset coupling | Does the mechanism appear when the capability appears? | [onset-coupling](internal/onset-coupling/) |
 | I12 | Offset coupling | Does the mechanism go when the capability is removed? | [offset-coupling](internal/offset-coupling/) |
@@ -66,7 +66,7 @@ I6 (double dissociation) caps every claim that reaches Mechanistically Supported
 | E1 | Intervention reach | Has the result been reproduced under at least two intervention families, and do they agree? | [intervention-reach](external/intervention-reach/) |
 | E2 | Prompt generalization | Does it work on diverse prompts? | [prompt-generalization](external/prompt-generalization/) |
 | E3 | Cross-task generalization | Does the mechanism transfer to related tasks? | [cross-task-generalization](external/cross-task-generalization/) |
-| E4 | Cross-model recurrence | Does the corresponding causal organization recur across independently trained models? | [cross-model-recurrence](external/cross-model-recurrence/) |
+| E4 | Cross-model generalization | Does the mechanism appear in other models? | [cross-model-recurrence](external/cross-model-recurrence/) |
 | E5 | Graded response | Does partial ablation produce partial effects? | [graded-response](external/graded-response/) |
 | E6 | Novel prediction | Does the mechanism predict new, untested behaviors? | [novel-prediction](external/novel-prediction/) |
 

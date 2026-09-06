@@ -7,7 +7,7 @@ description: "The modular addition circuit with Fourier features (Nanda et al. 2
 
 [Nanda et al. (2023)](https://arxiv.org/abs/2301.05217) analyze a small transformer trained on **modular addition** ($a + b \mod p$) that undergoes "grokking" — sudden generalization long after memorizing the training set. They claim the model learns a **Fourier-based algorithm**: inputs are embedded into Fourier components (sinusoidal representations of position mod $p$), attention computes trigonometric identities to combine them, and the output reads off the result from the Fourier representation.
 
-This is the strongest structural evidence in published MI — the weight matrices are fully reverse-engineered and the algorithm is mathematically specified. The catch: it is a toy model (1-layer, 113 parameters of interest, mod-113 arithmetic). The construct validity question is whether this tells us anything about real models.
+This is the strongest structural evidence in published MI — the weight matrices are fully reverse-engineered and the algorithm is mathematically specified. The catch: it is a toy model (1-layer transformer, mod-113 arithmetic). The construct validity question is whether this tells us anything about real models.
 
 ## Composite Verdict
 
