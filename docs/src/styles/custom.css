@@ -33,8 +33,14 @@ details.worked-example > summary::marker {
 }
 
 :root {
+  --sl-content-width: 50rem;
   --sl-font: 'Inter', system-ui, sans-serif;
   --sl-font-system-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Hide dark/light mode toggle */
+starlight-theme-select {
+  display: none !important;
 }
 
 /* Tighter heading spacing */
