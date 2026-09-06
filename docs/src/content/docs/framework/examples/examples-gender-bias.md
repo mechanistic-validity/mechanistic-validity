@@ -19,7 +19,7 @@ This case study is important because it connects mechanistic claims to real-worl
 | Measurement | M3 Baseline separation | M1/M2/M6 | Weak |
 | Interpretive | V1 Level declaration | V3/V4/V5 | Weak |
 
-**Overall verdict: Proposed to Causally suggestive — with fundamental construct problems.** Gender bias circuits score weakly across all five lenses. The core issue is not lack of evidence but **construct incoherence** (C3): "gender bias" and "gender knowledge" are not separable at the mechanistic level, which means the construct itself may not be well-defined enough to have a circuit. This is not a measurement problem or an evidence problem — it is a *theory* problem.
+**Overall verdict: Causally Suggestive — with fundamental construct problems.** Gender bias circuits score weakly across all five lenses. The core issue is not lack of evidence but **construct incoherence** (C3): "gender bias" and "gender knowledge" are not separable at the mechanistic level, which means the construct itself may not be well-defined enough to have a circuit. This is not a measurement problem or an evidence problem — it is a *theory* problem.
 
 This case study illustrates the framework's most important function: sometimes the right verdict is not "the evidence is insufficient" but "the construct is not coherent enough to evaluate." When task specificity (C3) fails fundamentally — when the phenomenon cannot be separated from a related phenomenon that uses the same components — the mechanistic claim cannot be established regardless of how much evidence is collected. The framework names this problem rather than hiding it behind aggregate scores.
 

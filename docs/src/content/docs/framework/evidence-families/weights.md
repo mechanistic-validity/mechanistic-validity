@@ -46,4 +46,4 @@ Weight evidence is most directly relevant to:
 | [C3 Convergent validity](/mechanistic-validity/framework/criteria/construct/convergent-validity/) | Weight-based and activation-based evidence are structurally independent |
 | [I1 Necessity](/mechanistic-validity/framework/criteria/internal/necessity/) | Weight knockout establishes necessity at the parameter level |
 | [I3 Minimality](/mechanistic-validity/framework/criteria/internal/minimality/) | Weight analysis can identify redundant components |
-| [E4 Cross-model recurrence](/mechanistic-validity/framework/criteria/external/cross-model-recurrence/) | Weight-space similarity metrics enable cross-model comparison |
+| [E4 Cross-model generalization](/mechanistic-validity/framework/criteria/external/cross-model-recurrence/) | Weight-space similarity metrics enable cross-model comparison |

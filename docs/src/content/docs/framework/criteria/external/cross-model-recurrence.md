@@ -1,10 +1,10 @@
 ---
-title: "Cross-Model Recurrence"
+title: "Cross-Model Generalization"
 validity_type: "External"
 criterion_id: "E4"
 ---
 
-# Criterion E4 — Cross-Model Recurrence
+# Criterion E4 — Cross-Model Generalization
 
 | | |
 |---|---|
@@ -16,7 +16,7 @@ criterion_id: "E4"
 
 ## What this criterion requires
 
-Cross-model recurrence asks whether the mechanism appears in other models — not just the behavior, but the causal organization behind it. Different models can produce the same input-output relation through different internal mechanisms, so behavioral agreement alone does not establish recurrence.
+Cross-model generalization asks whether the mechanism appears in other models — not just the behavior, but the causal organization behind it. Different models can produce the same input-output relation through different internal mechanisms, so behavioral agreement alone does not establish generalization.
 
 Satisfied when:
 
@@ -26,8 +26,8 @@ Satisfied when:
 
 ## MI example
 
-Knowledge neurons claims "can be easily generalized" to other models, but the study examines only one model. Cross-model recurrence is untested. This is a scope-creep failure (V5) compounded by the absence of E4 evidence.
+Knowledge neurons claims "can be easily generalized" to other models, but the study examines only one model. Cross-model generalization is untested. This is a scope-creep failure (V5) compounded by the absence of E4 evidence.
 
 ## Connection to the chain
 
-Required for Validated tier. Without cross-model recurrence, the mechanism may be an idiosyncrasy of one training run rather than a general computational strategy. Steel (2008): recurrence alone supports limited induction; stronger extrapolation requires evidence that the causally relevant process is preserved.
+Required for Validated tier. Without cross-model generalization, the mechanism may be an idiosyncrasy of one training run rather than a general computational strategy. Steel (2008): recurrence alone supports limited induction; stronger extrapolation requires evidence that the causally relevant process is preserved.

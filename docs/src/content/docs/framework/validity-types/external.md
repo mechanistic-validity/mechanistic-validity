@@ -33,13 +33,13 @@ The intellectual foundations of external validity come from pharmacology, causal
 | E1 | Intervention reach | Has the result been reproduced under at least two intervention families, and do they agree? |
 | E2 | Prompt generalization | Does the mechanism hold on diverse prompts beyond the discovery distribution? |
 | E3 | Cross-task generalization | Does the mechanism transfer to related tasks? |
-| E4 | Cross-model recurrence | Does the corresponding causal organization recur across independently trained models under a declared correspondence criterion? |
+| E4 | Cross-model generalization | Does the mechanism appear in other models? |
 | E5 | Graded response | Does partial ablation produce partial effects? |
 | E6 | Novel prediction | Does the mechanism predict new, untested behaviors? |
 
 E1–E3 test the breadth of the finding across methods, inputs, and tasks. E4 tests whether the mechanism is a property of the computational problem rather than of a single trained instance. E5 tests the quantitative structure of the causal relationship. E6 tests whether the mechanism has predictive content beyond the observations it was built to explain.
 
-**On E4:** Cross-model recurrence requires more than observing the same behavior in a second model. Different causal organizations can produce the same input–output relation, so E4 asks whether a *corresponding causal organization* recurs under a declared criterion of correspondence. A criterion might be Jaccard overlap of circuit components under a stated alignment, cosine similarity of weight-space signatures, or IIA of the same causal abstraction. The criterion must be stated before the comparison is attempted.
+**On E4:** Cross-model generalization requires more than observing the same behavior in a second model. Different causal organizations can produce the same input–output relation, so E4 asks whether a *corresponding causal organization* recurs under a declared criterion of correspondence. A criterion might be Jaccard overlap of circuit components under a stated alignment, cosine similarity of weight-space signatures, or IIA of the same causal abstraction. The criterion must be stated before the comparison is attempted.
 
 ## Failure Examples
 

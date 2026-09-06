@@ -19,7 +19,7 @@ This extends the Greater-Than claim from a task-specific circuit to a *general c
 | Measurement | M2/M3 Invariance + Separation | M1 Reliability | Strong |
 | Interpretive | V2/V3 Match + Coherence | V4 Alternative exclusion | Strong |
 
-**Overall verdict: Causally suggestive, approaching Mechanistically supported.** Successor heads benefit from the same structural clarity as the Greater-Than circuit, with the additional strength of cross-domain generalization. The multi-domain pattern makes the "general computational primitive" claim more convincing than a single-task circuit claim. The case for successor heads as a natural kind is stronger than for most circuits because the same structural signature appears across unrelated domains — this is convergent evidence from the phenomenon itself, even without formal C5 convergent validity from multiple discovery methods.
+**Overall verdict: Mechanistically Supported.** Successor heads benefit from the same structural clarity as the Greater-Than circuit, with the additional strength of cross-domain generalization. The capping criterion is I6 (double dissociation): no crossed design has been attempted. The multi-domain pattern makes the "general computational primitive" claim more convincing than a single-task circuit claim. The case for successor heads as a natural kind is stronger than for most circuits because the same structural signature appears across unrelated domains — this is convergent evidence from the phenomenon itself, even without formal C5 convergent validity from multiple discovery methods.
 
 ## Metrics used in original work
 

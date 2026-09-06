@@ -7,6 +7,8 @@ description: "A five-tier evidential grading system for mechanistic claims — w
 
 A verdict is a **composite assessment of evidential status** — it answers the question "how well-established is this mechanistic claim, given all available evidence across all five validity types?" The verdict is not a quality judgment on the paper. It is a characterization of where the claim stands on the path from initial proposal to full validation, with specific gaps named.
 
+Each tier subsumes all requirements of lower tiers.
+
 ## Why tiers, not scores
 
 A continuous score (e.g., "this claim has validity 0.73") implies a precision the evidence does not support and obscures qualitative transitions. The difference between a claim with one causal experiment and a claim with five convergent lines of evidence is not well-captured by assigning them 0.4 and 0.8 on a scale — the second has crossed a qualitative threshold (convergence) that changes what the claim means.
@@ -26,160 +28,115 @@ The tier system makes these thresholds explicit. Each tier has a *minimum eviden
 
 ### Tier 1: Proposed
 
-**What it means:** A mechanistic claim has been stated with enough precision to be evaluated, but the evidence does not yet establish causal relevance. The claim is on the table — it is falsifiable and interesting — but it has not been causally tested.
+**Meaning:** Structural or representational evidence only.
 
-**Minimum evidence package:**
-- A defined construct (the entity is named and its boundaries are stated)
-- A falsifiable prediction (at least one testable consequence of the claim)
-- A measurement (at least one number has been produced, with metric stated)
+**Minimum evidence requirements:**
+- Construct defined under a declared [description mode](/mechanistic-validity/framework/description-modes/) (C1–C2)
+- At least one admissible measurement conducted
 
-**What is NOT required:** Causal evidence. A claim can be Proposed based purely on correlational, structural, or statistical evidence — e.g., "this probe achieves 90% accuracy on syntactic number at layer 8" or "these SAE features have cosine similarity > 0.7 with known direction $\hat{v}$."
-
-**Characteristic occupants:** Probing results without intervention. SAE feature descriptions without causal testing. Weight-space structural analyses without behavioral confirmation. Linear decodability claims (Othello board state, syntactic features) prior to interchange intervention.
-
-**What holds claims here:** The absence of causal evidence (I1–I2) is the primary barrier. A claim cannot exit Proposed without at least necessity evidence.
-
-<details class="worked-example">
-<summary>Worked example: SAE features at Tier 1</summary>
-
-A sparse autoencoder trained on GPT-2 Small residual stream activations produces a feature $f_{42}$ whose decoder direction has high cosine similarity with the "is_noun" probing direction, whose top-activating contexts are predominantly nouns, and whose activation magnitude correlates with the model's confidence on syntactic tasks.
-
-This is a Proposed claim. The evidence is correlational and structural: the feature *looks like* it represents noun-hood. But no intervention has been performed. We do not know whether the feature is *causally relevant* to noun-related computation (I1), whether it is *sufficient* (I2), or whether it is *specific* to noun-hood rather than a correlated property like word frequency (I3).
-
-The claim is well-posed (falsifiable, with a defined construct and quantitative measurements). It simply hasn't been causally tested. Moving to Tier 2 requires ablating or patching the feature and demonstrating a noun-specific behavioral change.
-</details>
+**Characteristic occupants:** Probing classifiers (capped by I1); sparse autoencoder features (capped by M2).
 
 ---
 
-### Tier 2: Causally suggestive
+### Tier 2: Causally Suggestive
 
-**What it means:** There is causal evidence that the claimed mechanism is involved in the behavior — removing or disrupting it changes the output. The evidence establishes *necessity* but not yet sufficiency, specificity, or convergence.
+**Meaning:** Necessity shown, sufficiency not established.
 
-**Minimum evidence package (in addition to Tier 1):**
-- Necessity (I1): Ablating or disrupting the claimed mechanism changes the target behavior by more than a size-matched random control
-- Effect magnitude (E4): The absolute effect size is large enough that the computational story is coherent (not a large fraction of a tiny signal)
-- Level declaration (V1): The claim is stated at a level consistent with the evidence type
+**Minimum evidence requirements (in addition to Tier 1):**
+- Necessity via causal intervention ([I1](/mechanistic-validity/framework/criteria/internal/necessity/) confirmed)
+- At least one measurement passes baseline separation ([M2](/mechanistic-validity/framework/criteria/measurement/baseline-separation/))
 
-**Upgrade condition from Proposed:** At least one well-controlled causal experiment demonstrating that the claimed mechanism is necessary for the behavior. "Well-controlled" means: (a) the behavioral change is measured against a baseline, (b) a random-component control establishes that the effect is specific to the claimed components, and (c) the ablation method is named as part of the claim.
-
-**What holds claims here:** Sufficiency (I2) is the most common missing piece. Most circuits demonstrate necessity without sufficiency — ablating them hurts, but the circuit alone does not reproduce the behavior. Additionally, specificity (I3) is often untested: the ablation hurts the target behavior, but does it also hurt everything else? If so, the component is a general bottleneck, not a specific mechanism.
-
-**Characteristic occupants:** Most published circuit findings in MI. The IOI circuit (Wang et al. 2022) under its original evaluation. Individual head ablation studies. Knowledge neuron editing (Meng et al. 2022). Most activation-patching-based claims.
+**Characteristic occupants:** Docstring circuit (capped by I4); gender bias circuits (capped by E1, I4); IOI circuit (capped by E1, I4); Othello world model (capped by E1).
 
 ---
 
-### Tier 3: Mechanistically supported
+### Tier 3: Mechanistically Supported
 
-**What it means:** The mechanism is established as both necessary and sufficient for the behavior under at least one well-characterized ablation method, with specificity evidence demonstrating that the effect is mechanism-specific rather than reflecting general model degradation. The claim has moved from "this is involved" to "this is specifically and sufficiently responsible."
+**Meaning:** Necessity + sufficiency with consistent methods.
 
-**Minimum evidence package (in addition to Tier 2):**
-- Sufficiency (I2): The claimed mechanism, operating alone or with minimal support, reproduces the target behavior to within a stated tolerance
-- Specificity (I3): The effect is selective — the ablation changes the target behavior substantially more than unrelated behaviors (selectivity index $SI > 10$, or the related-task comparison demonstrates meaningful separation)
-- Consistency (I4): The result replicates across at least two of: prompt templates, ablation methods, or random seeds
-- Measurement reliability (M1): Bootstrap CI on the principal metric demonstrates $\rho_{XX'} \geq 0.7$
-- Calibration (M5): The reported metric is located against at least one published reference point on the same task and model
+**Minimum evidence requirements (in addition to Tier 2):**
+- Sufficiency established ([I2](/mechanistic-validity/framework/criteria/internal/sufficiency/))
+- Intervention reach across ≥2 ablation methods ([E1](/mechanistic-validity/framework/criteria/external/intervention-reach/))
+- Specificity test conducted ([I4](/mechanistic-validity/framework/criteria/internal/specificity/) at least partially confirmed)
 
-**Upgrade condition from Causally suggestive:** Sufficiency + specificity. The claim must demonstrate both that the mechanism is enough (sufficiency) and that it is the right thing (specificity). Either alone is insufficient: a mechanism can be sufficient but non-specific (a large chunk of the model reproduces any behavior), or specific but not sufficient (the component does exactly one thing, but removing it doesn't fully explain the behavior because other components also contribute).
+**Characteristic occupants:** Copy suppression (capped by I6); greater-than circuit (capped by I5, I6); modular addition (capped by I6); refusal direction (capped by I6); successor heads (capped by I6); superposition (capped by I6); global workspace (capped by I6).
 
-**Formal characterization of sufficiency:**
-
-Let $B$ be the target behavior measured by metric $M$. Let $C$ be the claimed circuit. Let $\bar{C}$ denote the complement (all components not in $C$). Sufficiency requires:
-
-$$R = \frac{M(C)}{M(\text{full})} \geq \tau$$
-
-where $M(C)$ is the metric with only $C$ active (complement ablated) and $\tau$ is a stated threshold. Wang et al. use $\tau = 0.8$ for the IOI circuit; we recommend stating $\tau$ rather than using an implicit standard.
-
-Note that sufficiency is *method-dependent*: the complement ablation method (zero, mean, resample) is part of the claim. Miller et al. (2024) demonstrated that IOI's $R \approx 0.87$ under mean ablation drops below 0.50 under resample ablation, changing the verdict.
-
-**Characteristic occupants:** Induction heads (Olsson et al. 2022) — necessity, sufficiency, and specificity all demonstrated. Greater-Than circuit (Hanna et al. 2023) — strong structural plausibility and specificity evidence. Copy suppression (McDougall et al. 2023) — unusually clean specificity.
+Double dissociation (I6) caps every one of the seven claims that reach this tier.
 
 ---
 
 ### Tier 4: Triangulated
 
-**What it means:** Multiple independent lines of evidence converge on the same mechanistic account. The mechanism has been confirmed by methods with non-overlapping assumptions — weight-space analysis, activation-based patching, behavioral intervention, and/or cross-model comparison. No single method's failure would collapse the claim.
+**Meaning:** Multiple converging lines of independent evidence.
 
-**Minimum evidence package (in addition to Tier 3):**
-- Multi-method convergence (C5): At least two methods with genuinely different assumptions (not just two variants of patching) confirm the same mechanism. The Jaccard similarity between their identified components is reported.
-- External robustness (E5): The mechanism appears across at least two prompt distributions not used during discovery, or across two model sizes within the same family.
-- Cross-procedure agreement (V2): Different discovery procedures return overlapping circuits, and the overlap is characterized quantitatively.
-- Nomological network density: The construct makes at least three independently testable predictions, of which at least two have been confirmed by different methods.
+**Minimum evidence requirements (in addition to Tier 3):**
+- Convergent evidence from ≥3 evidence families ([C3](/mechanistic-validity/framework/criteria/construct/convergent-validity/)), where families count as independent when the failure of one's core assumption would not automatically invalidate the other
+- Discriminant validity ([C4](/mechanistic-validity/framework/criteria/construct/discriminant-validity/))
+- Rival mechanism exclusion ([I5](/mechanistic-validity/framework/criteria/internal/rival-mechanism-exclusion/))
+- Confound control ([I7](/mechanistic-validity/framework/criteria/internal/confound-control/))
+- Cross-distribution replication — [E4](/mechanistic-validity/framework/criteria/external/cross-model-generalization/) where the claim asserts reach beyond the systems tested, [E2](/mechanistic-validity/framework/criteria/external/prompt-generalization/) where it does not
+- Double dissociation attempted ([I6](/mechanistic-validity/framework/criteria/internal/double-dissociation/))
 
-**Upgrade condition from Mechanistically supported:** Convergence. A single methodology, no matter how well-executed, produces a finding that is *conditional on that methodology's assumptions*. Triangulation means the finding survives the failure of any single method's assumptions.
-
-**Formal characterization of convergence:**
-
-Let $C_1, C_2, \ldots, C_k$ be circuits identified by $k$ different procedures $P_1, \ldots, P_k$ (where the $P_i$ differ in their core assumptions — e.g., weight-based vs. activation-based vs. behavioral). Convergence is:
-
-$$J_{\text{all}} = \frac{|C_1 \cap C_2 \cap \ldots \cap C_k|}{|C_1 \cup C_2 \cup \ldots \cup C_k|} \geq \tau_J$$
-
-The *robust core* $C_1 \cap \ldots \cap C_k$ contains the components that every method agrees on. Claims about the robust core are more strongly supported than claims about the full union.
-
-**What convergence is NOT:** Running the same method twice (e.g., activation patching with different hyperparameters) is replication, not triangulation. The methods must have *genuinely non-overlapping failure modes* — if one method fails due to a distributional assumption, the other must not share that assumption.
-
-**Characteristic occupants:** Induction heads are the strongest candidate — confirmed by attention pattern analysis, QK composition analysis, training dynamics (phase transition), cross-model search, and behavioral ablation. Each of these methods has a different failure mode, and they all converge.
+**Characteristic occupants:** Induction heads, token copying (capped by C6, I3, I10, I12).
 
 ---
 
 ### Tier 5: Validated (within scope)
 
-**What it means:** The mechanism is fully characterized within a stated scope. All five validity types pass at their respective criteria. The mechanistic account is complete: every component's function is known, the information flow is demonstrated, the account makes quantitative predictions that have been tested, and the scope of the claim is explicitly bounded. This is what "fully understood" looks like.
+**Meaning:** All five validity types addressed.
 
-**Minimum evidence package (in addition to Tier 4):**
-- All five validity types pass at their primary criteria
-- Component-level function (mode $I_{\text{fun}}$): The input-output function of each component in the circuit is characterized
-- Quantitative prediction: The mechanistic account generates at least one novel quantitative prediction that was confirmed after the prediction was stated
-- Scope declaration: The domain over which the mechanism operates is explicitly bounded, and the boundary is tested (cases just outside scope should show the mechanism failing)
-- Coverage $\kappa > 0.9$ on a representative distribution
+**Minimum evidence requirements (in addition to Tier 4):**
+- Measurement calibration ([M1](/mechanistic-validity/framework/criteria/measurement/reliability/)–[M6](/mechanistic-validity/framework/criteria/measurement/invariance/)) explicitly addressed
+- Interpretive validity ([V1](/mechanistic-validity/framework/criteria/interpretive/level-declaration/)–[V5](/mechanistic-validity/framework/criteria/interpretive/scope-declaration/)) audited
+- Nomological and complementation validity ([C5](/mechanistic-validity/framework/criteria/construct/nomological-validity/)–[C6](/mechanistic-validity/framework/criteria/construct/complementation-validity/))
+- Minimality, rescue reversibility and onset–offset coupling (I3, I10–I12)
+- External validity across models, prompts, tasks, dose and novel prediction ([E2](/mechanistic-validity/framework/criteria/external/prompt-generalization/)–[E6](/mechanistic-validity/framework/criteria/external/novel-prediction/))
 
-**Upgrade condition from Triangulated:** Completeness. The account must be *closed* — there are no uncharacterized components, no gaps in the information flow, no untested predictions. This does not mean omniscient — it means the scope is stated and within that scope, the account is complete.
-
-**Why "within scope":** Validated is not "true of all language models" or even "true of this model on all inputs." It is "true of this model, on this class of inputs, within this explanatory scope." The scope restriction is not a weakness — it is honesty about what has actually been established.
-
-**Characteristic occupants:** Grokking / modular addition (Nanda et al. 2023) — a toy transformer trained on modular addition, where every weight matrix is explained by the Fourier algorithm, quantitative predictions are confirmed, and the scope (one-layer toy model, single arithmetic task) is explicit. Superposition theory (Elhage et al. 2022) in toy models — validated as a mathematical framework within the scope of toy models with known feature statistics.
-
-**Why so few claims reach this tier:** Validated requires *completeness*, not just *correctness*. A circuit can be correctly identified (every component it names is genuinely involved) without being completely characterized (every component's function is known and the information flow is fully traced). Completeness is expensive — it requires explaining not just what the circuit does but how each part contributes. For real-model circuits with dozens of components, this remains difficult. That difficulty is real, not an artifact of high standards.
+**Characteristic occupants:** No claim in the sixteen audited reaches Validated.
 
 ---
 
+## When criteria cannot be tested
+
+Some criteria cannot be tested for some claims, and the tier system treats that as information. Specificity (I4) asks whether a mechanism does this task and not everything, which a model trained on a single task cannot answer: there is no second task to fail on. Onset–offset coupling (I11) asks whether a mechanism appears when the capability appears, which no claim about a released model without training checkpoints can answer. In each case the claim caps at the tier below, and the cap is a statement about the setting. A result on a single-task toy model licenses less than one on a model doing many things, and a field that cannot observe a system's history establishes less than one that can.
+
 ## Diagnostic labels
 
-Three labels sit outside the tier progression. They replace the tier rather than occupying a position within it — they are *different kinds of conclusions*.
+Three labels sit outside the tier progression. They replace the tier rather than occupying a position within it — a claim carrying one of them does not also hold a position in the hierarchy.
 
 ### Underdetermined
 
-**What it means:** The evidence is consistent with multiple mechanistic accounts and does not distinguish between them. The claim is not wrong — it is *underdetermined*. Multiple explanations survive the available evidence.
+**What it means:** The evidence is consistent with multiple mechanisms. The claim cannot resolve between rival specifications.
 
-**When to assign:** When two or more mechanistic accounts have comparable evidential support and no available experiment distinguishes them. This is not a failure of the research — it is a characterization of the current state. The informative response is to name the competing accounts and identify what experiment would distinguish them.
-
-**Formal characterization:** Let $H_1, H_2, \ldots, H_n$ be competing mechanistic hypotheses for behavior $B$. Underdetermination holds when:
-
-$$\forall i, j: \quad P(\mathcal{E} | H_i) \approx P(\mathcal{E} | H_j)$$
-
-That is, the available evidence $\mathcal{E}$ is approximately equally likely under all competing hypotheses. The posterior ratio $P(H_i | \mathcal{E}) / P(H_j | \mathcal{E})$ is determined primarily by priors, not evidence.
-
-**Example:** The Docstring Circuit (Heimersheim & Janiak 2023) — is the mechanism "variable binding" (tracking which variable name corresponds to which argument position) or "positional copying" (copying from a fixed offset regardless of variable identity)? Both accounts are consistent with the observed activation patching results. The experiment that would distinguish them (testing on prompts where the two accounts predict different outputs) has not been performed.
+**When to assign:** When two or more mechanistic accounts have comparable evidential support and no available experiment distinguishes them. The informative response is to name the competing accounts and identify what experiment would distinguish them.
 
 ### Insufficient
 
-**What it means:** The construct is not defined well enough, or no admissible measurement exists, to score the claim at all. Unlike Proposed (which has a defined construct and at least one measurement), Insufficient means the claim cannot enter the evaluation pipeline in its current form.
-
-**When to assign:** When the claim does not satisfy even the entry conditions for Proposed — no falsifiable prediction, no defined construct boundaries, or no metric that could in principle support or refute the claim. Also when the only available measurements fail baseline separation (M2) so thoroughly that the numbers carry no information.
-
-**Example:** A claim that a particular set of neurons "understands sarcasm" without specifying what behavioral difference would distinguish sarcasm-understanding from surface-pattern matching, and without any metric that could separate the two. The construct is not defined; the claim cannot be scored.
+**What it means:** The construct is not defined well enough, or no admissible measurement exists, to score the claim. Unlike Proposed (which has a defined construct and at least one measurement), Insufficient means the claim cannot enter the evaluation pipeline in its current form. Following the US Preventive Services Task Force's *I statement*, Insufficient marks a claim whose construct is not defined well enough to score rather than one that scores badly.
 
 ### Disconfirmed
 
-**What it means:** The evidence actively contradicts the mechanistic claim. Not "insufficient evidence" but "evidence against."
-
-**When to assign:** When a specific prediction of the claimed mechanism has been tested and failed, OR when the mechanism has been shown to be an artifact of the measurement procedure.
+**What it means:** The claim fails decisively on a key criterion. A negative result on a required criterion.
 
 **Types of disconfirmation:**
-- **Prediction failure**: The mechanism predicts behavior $X$ and the model produces behavior $\neg X$ in the relevant conditions.
-- **Artifact demonstration**: The claimed mechanism is shown to be an artifact of the measurement (e.g., the patching result disappears when the distributional assumption of mean ablation is corrected).
-- **Construct dissolution**: The entity named by the claim is shown not to be a coherent construct (e.g., "the bias circuit" is indistinguishable from "the gender knowledge circuit" — the construct cannot be separated from legitimate processing).
+- **Prediction failure**: The mechanism predicts behavior $X$ and the model produces $\neg X$ in the relevant conditions.
+- **Artifact demonstration**: The claimed mechanism is shown to be an artifact of the measurement procedure.
 
 **Disconfirmation is not failure.** A disconfirmed claim is informative — it narrows the space of possible mechanisms. A field that never disconfirms is not doing science. The lateral position of Disconfirmed (rather than placing it below Proposed) reflects this: disconfirmation is a *different kind of conclusion*, not a worse one.
+
+**Characteristic occupants:** Induction heads, general in-context learning (fails I1); knowledge neurons (fails I4).
+
+## Verdicts on sixteen claims
+
+| Verdict | Claim (criteria that cap it) |
+|---|---|
+| **Triangulated** | Induction heads, token copying (C6, I3, I10, I12) |
+| **Mechanistically Supported** | Copy suppression (I6); greater-than circuit (I5, I6); modular addition (I6); refusal direction (I6); successor heads (I6); superposition (I6); global workspace (I6) |
+| **Causally Suggestive** | Docstring circuit (I4); gender bias circuits (E1, I4); IOI circuit (E1, I4); Othello world model (E1) |
+| **Proposed** | Probing classifiers (I1); sparse autoencoder features (M2) |
+| **Disconfirmed** | Induction heads, general in-context learning (I1); knowledge neurons (I4) |
+
+Two patterns run across the set rather than within any claim. Double dissociation caps every one of the seven claims that reach Mechanistically Supported, so the tier above is held by a single criterion the field rarely attempts. And confounding sensitivity is Untested in all sixteen: no claim in the set bounds how strong an unmeasured confounder would have to be to explain its result.
 
 ## Upgrade mechanics
 
@@ -194,26 +151,3 @@ New evidence can move a claim to a lower tier. Miller et al. (2024) effectively 
 ### The weakest-link principle
 
 The tier is determined by the *weakest gating validity type*, not the average. A claim with excellent internal, external, and interpretive validity but unreliable measurement is bounded at Proposed (measurement failure blocks all upgrades). This prevents impressive evidence in one dimension from masking fundamental problems in another.
-
-Formally: let $V_C, V_I, V_E, V_M, V_V$ be the per-type assessments. The maximum achievable tier is:
-
-$$\text{Tier}_{\max} = \min(\text{tier allowed by } V_C, \text{tier allowed by } V_I, \ldots, \text{tier allowed by } V_V)$$
-
-where each $V_x$ imposes a ceiling based on its assessment level.
-
-## Verdict statement format
-
-A verdict is not just a tier label — it is a structured statement:
-
-```
-Verdict: [Tier] — [Mode tag]
-
-Strongest evidence: [Validity type]: [Specific criterion]
-Weakest evidence: [Validity type]: [Specific criterion]
-Primary gap: [What would be needed for the next tier]
-Scope: [Explicit bounds of the claim]
-```
-
-The mode tag (from the [Description Modes](/mechanistic-validity/framework/description-modes/)) identifies the level at which the claim is stated. The strongest/weakest pairing identifies where the claim is most and least secure. The primary gap names a specific next experiment. The scope bounds the claim.
-
-This format ensures that a verdict is actionable — it tells the reader not just where the claim stands but what would change its standing.
