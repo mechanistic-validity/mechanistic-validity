@@ -142,9 +142,9 @@ The *robust core* $C_1 \cap \ldots \cap C_k$ contains the components that every 
 
 ---
 
-## Lateral verdicts
+## Diagnostic labels
 
-Two verdicts sit outside the progression. They are not lower or higher — they are *different kinds of conclusions*.
+Three labels sit outside the tier progression. They replace the tier rather than occupying a position within it — they are *different kinds of conclusions*.
 
 ### Underdetermined
 
@@ -159,6 +159,14 @@ $$\forall i, j: \quad P(\mathcal{E} | H_i) \approx P(\mathcal{E} | H_j)$$
 That is, the available evidence $\mathcal{E}$ is approximately equally likely under all competing hypotheses. The posterior ratio $P(H_i | \mathcal{E}) / P(H_j | \mathcal{E})$ is determined primarily by priors, not evidence.
 
 **Example:** The Docstring Circuit (Heimersheim & Janiak 2023) — is the mechanism "variable binding" (tracking which variable name corresponds to which argument position) or "positional copying" (copying from a fixed offset regardless of variable identity)? Both accounts are consistent with the observed activation patching results. The experiment that would distinguish them (testing on prompts where the two accounts predict different outputs) has not been performed.
+
+### Insufficient
+
+**What it means:** The construct is not defined well enough, or no admissible measurement exists, to score the claim at all. Unlike Proposed (which has a defined construct and at least one measurement), Insufficient means the claim cannot enter the evaluation pipeline in its current form.
+
+**When to assign:** When the claim does not satisfy even the entry conditions for Proposed — no falsifiable prediction, no defined construct boundaries, or no metric that could in principle support or refute the claim. Also when the only available measurements fail baseline separation (M2) so thoroughly that the numbers carry no information.
+
+**Example:** A claim that a particular set of neurons "understands sarcasm" without specifying what behavioral difference would distinguish sarcasm-understanding from surface-pattern matching, and without any metric that could separate the two. The construct is not defined; the claim cannot be scored.
 
 ### Disconfirmed
 
@@ -206,6 +214,6 @@ Primary gap: [What would be needed for the next tier]
 Scope: [Explicit bounds of the claim]
 ```
 
-The mode tag (from the [Description Modes](/framework/description-modes/)) identifies the level at which the claim is stated. The strongest/weakest pairing identifies where the claim is most and least secure. The primary gap names a specific next experiment. The scope bounds the claim.
+The mode tag (from the [Description Modes](/mechanistic-validity/framework/description-modes/)) identifies the level at which the claim is stated. The strongest/weakest pairing identifies where the claim is most and least secure. The primary gap names a specific next experiment. The scope bounds the claim.
 
 This format ensures that a verdict is actionable — it tells the reader not just where the claim stands but what would change its standing.

@@ -1,148 +1,60 @@
 ---
 title: "External Validity"
-description: "Does the effect generalize beyond the specific conditions of discovery? — evaluating reach, scaling, and cross-architecture transfer."
 ---
 
-# External Validity — Formal Specification
+# External Validity
 
-| | |
+Does the mechanism generalize? Causal evidence on one prompt set, with one ablation method, in one model, establishes internal validity at best. External validity asks whether the mechanism generalizes across prompts, ablation methods, related tasks, and ideally across models. A result that survives rigorous causal testing under one set of conditions is a local result. External validity is what separates a local result from a finding about the model.
+
+## Position in the Dependency Chain
+
+External validity occupies the fourth position in the chain: **Construct → Measurement → Internal → External → Interpretive**.
+
+We place external validity after internal validity because a finding that has not been established causally within its discovery conditions cannot be said to generalize. Internal validity asks whether the evidence supports the causal claim in the tested setting. External validity asks whether that causal claim extends to new settings — different prompts, different intervention methods, different tasks, different models. A claim that fails internal validity has nothing to generalize. A claim that passes internal validity but fails external validity is real but local: it holds under the conditions tested and we do not know whether it holds elsewhere.
+
+Interpretive validity comes after external validity because the scope of a mechanistic narrative depends on knowing where the mechanism does and does not hold. A mechanism that generalizes across models licenses broader interpretive claims than one confined to a single architecture.
+
+## Theoretical Lineage
+
+The intellectual foundations of external validity come from pharmacology, causal inference, and philosophy of science.
+
+**Pharmacology** provides the most developed framework for generalization testing. The Phase III clinical trial (Rang et al. 2006) exists to answer the external validity question: a drug that works under controlled conditions in Phase II must be shown to work across diverse patient populations, dosing regimens, and clinical sites before it counts as effective. We draw three specific transfers from this tradition. Dose-response curves (E5) formalize graded response — the requirement that partial intervention produce partial effects. Therapeutic windows formalize the distinction between an intervention strength that produces the target effect and one that produces general degradation. Cross-population generalization maps to cross-model recurrence (E4).
+
+**Pearl (2011)** provides the formal language for cross-model transfer through transportability theory. Transportability asks under what conditions a causal effect estimated in one population (model) can be transported to another. The key insight is that recurrence of a behavioral pattern across models does not establish that the same causal organization produces it. Different causal structures can generate identical input–output relations. E4 requires a declared correspondence criterion — a stated basis for claiming that the causal organization, not just the behavior, recurs.
+
+**Steel (2008)** articulates the limits of extrapolation from recurrence alone. Steel argues that recurrence supports only limited induction: stronger extrapolation requires evidence that the causally relevant process and its supporting conditions are preserved in the target. We use this to distinguish E4 (cross-model recurrence with a correspondence criterion) from the weaker claim that the same behavior appears in a second model.
+
+**Hill (1965)** contributes two of his nine viewpoints for causal inference that bear directly on external validity. Graded response — the expectation that stronger exposure produces stronger effect — becomes E5. Specificity — the expectation that the cause is preferentially associated with the effect rather than with unrelated outcomes — informs E3 (cross-task generalization) and E1 (intervention reach).
+
+## Criteria
+
+| ID | Name | Question |
+|---|---|---|
+| E1 | Intervention reach | Has the result been reproduced under at least two intervention families, and do they agree? |
+| E2 | Prompt generalization | Does the mechanism hold on diverse prompts beyond the discovery distribution? |
+| E3 | Cross-task generalization | Does the mechanism transfer to related tasks? |
+| E4 | Cross-model recurrence | Does the corresponding causal organization recur across independently trained models under a declared correspondence criterion? |
+| E5 | Graded response | Does partial ablation produce partial effects? |
+| E6 | Novel prediction | Does the mechanism predict new, untested behaviors? |
+
+E1–E3 test the breadth of the finding across methods, inputs, and tasks. E4 tests whether the mechanism is a property of the computational problem rather than of a single trained instance. E5 tests the quantitative structure of the causal relationship. E6 tests whether the mechanism has predictive content beyond the observations it was built to explain.
+
+**On E4:** Cross-model recurrence requires more than observing the same behavior in a second model. Different causal organizations can produce the same input–output relation, so E4 asks whether a *corresponding causal organization* recurs under a declared criterion of correspondence. A criterion might be Jaccard overlap of circuit components under a stated alignment, cosine similarity of weight-space signatures, or IIA of the same causal abstraction. The criterion must be stated before the comparison is attempted.
+
+## Failure Examples
+
+**IOI faithfulness across methods (E1).** Miller, Chughtai & Saunders showed that the faithfulness of the IOI circuit — the same circuit, the same model, the same prompts — spans below 0% to over 100% across six methodological choices (ablation type, metric, complement definition). A result that changes sign depending on methodological choices that the original paper did not vary has not been reproduced across intervention families. This is an E1 failure: the finding is conditional on a specific methodological configuration that was not identified as load-bearing at the time of publication.
+
+**Shortcut learning in CNNs (E2/C4).** Geirhos et al. demonstrated that CNNs trained on ImageNet classify images by texture rather than shape, contrary to the assumed construct. Models that appeared to generalize on the training distribution failed on texture-shape conflict stimuli. The mechanism that drove accuracy on standard benchmarks did not transfer to inputs where texture and shape disagreed. This is both an external validity failure (the mechanism does not generalize to the broader task the benchmark was meant to sample) and a construct validity failure (the construct "object recognition" was not distinguished from "texture matching").
+
+## Cross-Disciplinary Foundations
+
+The table below shows which of the eight theoretical foundations contribute to external validity and what they contribute.
+
+| Discipline | Transfer to external validity |
 |---|---|
-| Question | Does the claim generalize beyond the conditions in which it was tested? |
-| Lens | [Pharmacology](/framework/lenses/core/pharmacology) |
-| Criteria | E1–E6 |
-| Dependency | External validity converts an internally valid result into a property of the model rather than a property of the experiment |
-| Status in MI | Improving with recent benchmarks; still routinely overstated |
-
-External validity asks whether the claim made on the conditions tested generalizes to other prompt distributions, other model sizes, other model families, and other intervention strengths. A result that passes all internal-validity tests on one prompt distribution at one intervention strength is a *local result*. External validity is what makes it a *finding*.
-
-The [Pharmacology lens](/framework/lenses/core/pharmacology) operationalizes external validity because pharmacology has developed the most rigorous standards for exactly this set of questions: dose-response curves, therapeutic windows, selectivity ratios, and cross-population generalization. The MI analogs map cleanly onto this framework.
-
-## Why external validity is distinct from internal consistency
-
-External validity overlaps with the I4 (Consistency) criterion of internal validity, but they are not the same. Consistency is the internal-validity criterion that asks whether the causal pattern replicates across contexts *within the same experimental setup*. External validity is broader: it includes the quantitative shape of the effect across intervention strengths (the dose-response curve), the selectivity ratio between on-task and off-task effects, the absolute magnitude of the effect, and the transfer of the effect across model architectures. Consistency answers whether the result replicates; external validity answers whether the mechanism generalizes.
-
-## E1 — Intervention Reach
-
-> [Full criterion page →](/framework/criteria/external/intervention-reach)
-
-The intervention must demonstrably modify the proposed target component, separately from whether the behavioral outcome changed.
-
-**Pass condition:** Direct measurement of the target activation (or weight-based proxy) confirms the intervention reached the intended component with specificity above baseline collateral disruption.
-
-**Formal requirement:**
-
-$$\text{Reach}(C) = \frac{\Delta \text{activation}(C)}{\Delta \text{activation}(C_{\text{adjacent}})} > 5.0$$
-
-where $C_{\text{adjacent}}$ is a same-layer adjacent component not in the circuit.
-
-**Calibration:** Activation patching has high reach (intervention is localized by construction). Zero and mean ablation have lower reach (distributional shift propagates through layer norm). Weight-based interventions have perfect reach in principle but require verification that the modified weights are the ones driving the behavior.
-
-## E2 — Graded Response
-
-> [Full criterion page →](/framework/criteria/external/graded-response)
-
-The effect must scale monotonically with intervention strength, with a measurable threshold and plateau.
-
-**Pass condition:** At least 5 intervention strengths tested, spanning subthreshold to saturating. The dose-response curve is monotonic with $R^2 > 0.8$.
-
-**Formal requirement:** Let $\lambda$ be intervention strength (0 = no intervention, 1 = full ablation). The graded response is:
-
-$$\text{Effect}(\lambda) = f_\lambda(x) - f_0(x)$$
-
-A graded response requires $\frac{d}{d\lambda}\text{Effect}(\lambda) \geq 0$ for all $\lambda$, with a defined threshold $\lambda^*$ below which effect is negligible and a plateau $\lambda^{**}$ above which additional strength produces no additional effect.
-
-**MI-specific threats:**
-- *Single-dose reporting.* Most MI papers report one ablation strength (usually $\lambda = 1$, full ablation). A mechanism that only appears at extreme intervention strengths — where the model is generally degraded — is less specific than one that appears at low strengths with a wide therapeutic window.
-- *Non-monotonic responses.* Some circuits are suppressed by over-intervention (backup mechanisms activate). This would appear as a non-monotonic curve and must be reported rather than hidden.
-
-## E3 — Selectivity
-
-> [Full criterion page →](/framework/criteria/external/selectivity)
-
-The ratio of on-task to off-task effect at matched intervention strength must be substantial.
-
-**Pass condition:** $\text{Selectivity}(C) > 3.0$ at the threshold intervention strength $\lambda^*$.
-
-$$\text{Selectivity}(C, \lambda) = \frac{\text{Effect}(C, T_{\text{disc}}, \lambda)}{\text{Effect}(C, T_{\text{off}}, \lambda)}$$
-
-| Selectivity value | Interpretation |
-|---|---|
-| $> 5.0$ | High selectivity — circuit is primarily task-specific |
-| $3.0 - 5.0$ | Moderate selectivity — acceptable for most MI claims |
-| $1.5 - 3.0$ | Low selectivity — circuit has substantial off-task effects |
-| $< 1.5$ | Insufficient — effect is not task-selective |
-
-**Selectivity-by-default failure:** On-target measurements are reported without off-target measurements, and the absence of a reported off-target effect is treated as evidence of selectivity. This is the most common external-validity failure in current MI.
-
-## E4 — Effect Magnitude
-
-> [Full criterion page →](/framework/criteria/external/effect-magnitude)
-
-The absolute effect must be large enough to support the computational story being told.
-
-**Pass condition:** Recovery fraction $R \geq 0.70$ on held-out prompts (from I2); logit difference or behavioral metric at least 1 SD above the population mean effect of random same-size ablations.
-
-**Magnitude underspecification failure:** A statistically reliable but small effect is reported as evidence of the mechanism without the absolute recovery fraction. Statistical significance does not establish computational relevance.
-
-## E5 — Robustness
-
-> [Full criterion page →](/framework/criteria/external/robustness)
-
-The result must survive paraphrase, alternative templates, and within-family scale transfer.
-
-**Pass condition:** The effect magnitude degrades by no more than 30% across at least two prompt variants, and is identifiable (possibly at reduced magnitude) in at least one other model in the same family (e.g., GPT-2 Small → GPT-2 Medium).
-
-**MI-specific threats:**
-- *Template overfitting.* A circuit discovered on "When Mary and John went to the store, John gave a drink to ___" may not transfer to paraphrased versions. The circuit may be a template-specific shortcut rather than a general IOI mechanism.
-- *Within-family overreach.* A mechanism identified in GPT-2 Small is treated as a transformer-wide property without explicit cross-family testing.
-
-**Calibration:**
-
-| Circuit | Template variants | Cross-scale | Assessment |
-|---|---|---|---|
-| IOI ([Wang et al. 2022](https://arxiv.org/abs/2211.00593)) | ABBA/BABA, name substitutions | Not tested | Partial — template robustness only |
-| Induction heads ([Olsson et al. 2022](https://arxiv.org/abs/2209.11895)) | Any repeated sequence | Across GPT families, Pythia | Strong — most externally robust MI result |
-
-## E6 — Cross-Architecture Generalization
-
-> [Full criterion page →](/framework/criteria/external/cross-architecture)
-
-The mechanism should be identifiable in at least one other model family, against a stated matching criterion.
-
-**Pass condition:** A quantitative matching criterion is stated before the match is attempted (e.g., Jaccard similarity of component sets $J \geq 0.4$, or cosine similarity of weight-space signatures $\geq 0.6$). The match is reported as a score, not a binary yes/no.
-
-**MI-specific gap:** There is no agreed criterion by which a circuit match across architectures counts. The project's recommendation is that the matching criterion be stated before the match is attempted. Cross-model matches reported without a pre-stated criterion are analogous to underpowered clinical trials reporting significance without pre-specified endpoints.
-
-**Calibration:**
-
-| Circuit | Matched in | Matching criterion | Assessment |
-|---|---|---|---|
-| Induction heads | Multiple GPT families, Pythia, LLaMA | Behavioral (prefix matching score) | Strong — criterion is pre-specified and cross-family |
-| IOI | Not yet matched cross-family | None stated | No cross-architecture evidence |
-| Weight-space circuit signatures | Gemma, Qwen (initial exploration) | Cosine similarity of weight directions | Preliminary — criterion partially specified |
-
-## Partial-pass interpretation
-
-| Evidence pattern | Criteria met | Interpretation | Recommended language |
-|---|---|---|---|
-| Robust, no cross-architecture test | E1–E5 | Robust within one family | "Robust in GPT-2; cross-family transfer not tested" |
-| Strong graded response, low selectivity | E2, E4 | Effect is real but not task-specific | "Dose-responsive but non-selective" |
-| High selectivity, single template | E3 | Template-specific selectivity | "Selective on discovery template; paraphrase robustness needed" |
-| Cross-architecture match, no graded response | E6 | Cross-family presence established, mechanism unclear | "Present across architectures; dose-response not characterized" |
-
-## Gaps in current practice
-
-- *No standard for the dose-response curve.* The project recommends at least five intervention strengths spanning threshold and plateau, with off-task degradation reported on the same axes.
-- *No standard for cross-architecture matching.* The project recommends stating the matching criterion before the match is attempted.
-- *Underreporting of within-family scale transfer.* Cross-scale transfer is a relatively cheap test that is routinely omitted. The project recommends treating within-family scale transfer as the minimum external-validity test.
-
-## Protocol
-
-For circuit $C$ and behavior $B$:
-
-1. **E1.** Verify that the intervention reaches the target (measure $\Delta$ activation at the target vs. adjacent components).
-2. **E2.** Test at least five intervention strengths. Plot and fit a dose-response curve. Identify threshold and plateau.
-3. **E3.** Compute $\text{Selectivity}(C, \lambda^*)$ against one related off-task behavior.
-4. **E4.** Report the absolute recovery fraction $R$ from I2. Report the effect in SD units relative to random same-size ablations.
-5. **E5.** Test at least two prompt variants. Test at least one other model in the same family.
-6. **E6.** State the matching criterion in advance. Attempt the match in at least one other architecture. Report the match as a quantitative score.
+| Pharmacology | Dose-response curves (E5), therapeutic windows, cross-population generalization (E4), affinity vs efficacy distinction |
+| Causal inference | Transportability theory for cross-model transfer (E4); formal conditions under which causal conclusions transport across settings |
+| Philosophy of science | Severe testing — a result that has survived tests it could have failed across diverse conditions carries more evidential weight than one tested in a single configuration |
+| Medical microbiology | Graded presence as evidence for causal involvement (E5); Koch's postulates require the agent to produce the disease in a new host, not just be found in the original |
+| Genetics | Cross-species conservation as evidence for functional importance; the distinction between sequence conservation (recurrence) and functional conservation (preserved causal role) parallels E4 |

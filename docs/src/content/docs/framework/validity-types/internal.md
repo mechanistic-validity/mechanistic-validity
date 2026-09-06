@@ -1,173 +1,75 @@
 ---
 title: "Internal Validity"
-description: "Formal specification: quantitative thresholds, pass conditions, and calibration data for internal validity criteria I1–I5."
 ---
 
-# Internal Validity — Formal Specification
+# Internal Validity
 
-| | |
-|---|---|
-| Question | Does the evidence establish that the component implements the computation, not merely participates in it? |
-| Lens | [Neuroscience](/framework/lenses/core/neuroscience) |
-| Criteria | I1–I6 |
-| Dependency | Internal validity is the workhorse — most MI evidence is internal-validity evidence. But it says nothing about whether the finding generalizes ([external](/framework/validity-types/external)), whether the metric is reliable ([measurement](/framework/validity-types/measurement)), whether the construct is coherent ([construct](/framework/validity-types/construct)), or whether the narrative is correct ([interpretive](/framework/validity-types/interpretive)). |
-| Status in MI | Best-addressed by existing methods; still routinely method-conditional |
+Does the evidence support the causal claim? Given a well-defined construct and trustworthy instruments, the evidence must establish that the identified component is causally involved in the behavior — not merely correlated with it. Ablation shows that removing a head degrades performance; patching shows that restoring a head's activation from a clean run recovers performance. These are formally distinct interventions, and the distinction matters: a component can be necessary without being sufficient, sufficient without being specific, and specific without being the only mechanism that fits the data.
 
-Internal validity asks whether the causal inference from intervention to behavior is licensed within the experimental setup. The [Neuroscience lens](/framework/lenses/core/neuroscience) explains the intellectual background. This page gives the formal definitions, quantitative thresholds, and calibration data.
+## Position in the Dependency Chain
 
-## I1 — Necessity
+```
+Construct → Measurement → Internal → External → Interpretive
+                            ▲
+                          you are here
+```
 
-> [Full criterion page →](/framework/criteria/internal/necessity)
+Internal validity occupies the third position in the chain. It depends on both construct validity and measurement validity. A causal claim about a component that corresponds to no coherent construct (construct failure) cannot be evaluated — there is nothing for the component to be causally involved *in*. A causal claim supported by an unreliable metric (measurement failure) cannot be trusted — Spearman's attenuation formula bounds the correlation between an unreliable measure and any true effect at the geometric mean of their reliabilities, so noise in the instrument caps the strength of the causal inference.
 
-Removing the component should degrade the behavior. For circuit $C$, model $f$, input $x$, and counterfactual value $\bar{C}$:
+Internal validity is what most MI evidence addresses. Ablation, activation patching, path patching, and causal scrubbing are all internal-validity methods. They ask whether the identified components are causally involved in the behavior within the experimental setup. What they do not ask — and what depends on internal validity being established first — is whether the result generalizes (external validity) or whether the narrative about the mechanism is correct (interpretive validity).
 
-$$\text{Necessity}(C) = \frac{f(x) - f(x \mid \text{do}(C := \bar{C}))}{f(x)}$$
+## Theoretical Lineage
 
-**Pass condition:** $\text{Necessity}(C) > 0.10$ with an equal-size random-component baseline producing $\text{Necessity}(C_{\text{random}}) < 0.05$.
+The concept of internal validity originates with Campbell and Stanley (1963), who developed a taxonomy of threats to causal inference in experimental design. Their object of analysis is a study; their question is whether the study's design licenses the conclusion drawn. Shadish, Cook, and Campbell (2002) extended this framework with a fuller catalogue of threats and a distinction between statistical conclusion validity and internal validity proper. We adopt their vocabulary throughout.
 
-| $\text{Necessity}$ value | Interpretation |
-|---|---|
-| $> 0.80$ | Strong necessity — component is critical for the behavior |
-| $0.30 - 0.80$ | Moderate — component contributes but is not the sole driver |
-| $0.10 - 0.30$ | Weak — component participates but may be one of many |
-| $< 0.10$ | Not necessary — indistinguishable from random components |
+Pearl (2009) provides the formal language in which ablation claims can be stated. The *do*-calculus distinguishes observational association from interventional effect: $P(Y \mid X)$ is not $P(Y \mid \text{do}(X))$. In MI terms, observing that a head's activation correlates with task performance is not the same as showing that setting that activation to a counterfactual value changes task performance. Ablation and activation patching are formally distinct interventions — ablation sets a value to a default (zero, mean, resample), while patching transplants a value from a different input. Woodward (2003) complements Pearl with an interventionist account of causation that makes the connection between counterfactual dependence and causal claims explicit: a variable $X$ is a cause of $Y$ if and only if there exists an intervention on $X$ that changes $Y$, holding fixed all other variables on paths that do not go through $X$.
 
-**Ablation method is part of the claim.** Necessity scores are a joint property of the component and the ablation type. [Miller, Chughtai & Saunders (2024)](https://arxiv.org/abs/2404.01945) show that the same circuit's faithfulness varies from 87% under mean ablation to below 50% under other methods. The full claim must state the ablation method.
+Craver (2007) contributes the framework of mutual manipulability from neuroscience. A component is part of a mechanism if intervening on the component changes the system's behavior (bottom-up, corresponding to I1 necessity) *and* intervening on the system's input-output relation changes the component's activity (top-down, corresponding to I12 offset coupling). Shallice (1988) contributes the double dissociation from neuropsychology: two interventions cross, each impairing the function the other spares. This is the strongest form of specificity evidence and maps directly to I6.
 
-**Common confounds:**
-- **Bottleneck confound.** A component that many computations route through is necessary for all of them, but implements none in particular.
-- **Off-manifold confound.** Zero and mean ablation push activations to values the model never encounters during training.
+Four of Hill's (1965) nine viewpoints for causal inference in epidemiology reappear as criteria: specificity (I4), convergence (addressed at construct level as C3), graded response (addressed at external level as E5), and intervention consistency. Mayo (1996, 2018) contributes the error-statistical tradition and the concept of severe testing — a test that a hypothesis was not built to pass. From genetics, we take epistasis for non-additive component interactions (I9), rescue experiments for reversibility (I10), and sensitivity analysis for unmeasured confounders (I8). From medical microbiology, Koch's postulates provide the template for graded causal evidence: a pathogen must be found in all cases of the disease, isolated and grown in pure culture, and reproduce the disease when introduced into a healthy host. The parallel to circuit claims is direct — necessity, isolation sufficiency, and rescue — though the analogy is partial because circuits, unlike pathogens, are not discrete entities with sharp boundaries.
 
-**Calibration:**
+## Criteria
 
-| Circuit | Method | $\text{Necessity}$ | Notes |
-|---|---|---|---|
-| IOI name-movers ([Wang et al. 2022](https://arxiv.org/abs/2211.00593)) | Mean ablation | $\approx 0.87$ | Drops logit diff from 3.56 to 0.46 |
-| IOI name-movers | Resample ablation | $< 0.50$ | Method-dependent; same circuit, weaker score |
-| Induction heads ([Olsson et al. 2022](https://arxiv.org/abs/2209.11895)) | Mean ablation | High (qualitative) | Stronger on repeated sequences, weaker on non-repeated |
-
-## I2 — Sufficiency
-
-> [Full criterion page →](/framework/criteria/internal/sufficiency)
-
-Isolating or restoring the component should reproduce the behavior. The recovery fraction is:
-
-$$R = \frac{f_{\text{circuit}}(x)}{f_{\text{full}}(x)}$$
-
-**Pass condition:** $R \geq 0.70$ on held-out prompts, with the complement ablation method stated.
-
-| $R$ value | Interpretation |
-|---|---|
-| $R > 0.90$ | Strong sufficiency — circuit reproduces nearly all of the behavior in isolation |
-| $0.70 \leq R \leq 0.90$ | Moderate — circuit captures most of the behavior |
-| $0.50 \leq R < 0.70$ | Weak — circuit contributes substantially but something is missing |
-| $R < 0.50$ | Not sufficient — circuit alone does not drive the behavior |
-
-**The asymmetry with necessity.** Necessity requires ablating the circuit. Sufficiency requires ablating everything *outside* the circuit. Resample ablation of the complement is a stricter test than mean ablation, since mean ablation leaves systematic residual signal.
-
-**Two forms of sufficiency:**
-- *Isolation sufficiency:* Run only the circuit; ablate the complement. This is what $R$ measures.
-- *Restoration sufficiency:* In a corrupted prompt where the behavior fails, restoring only the circuit restores the behavior. This is the activation-patching form and typically yields higher $R$ because the rest of the model remains intact.
-
-**Calibration:**
-
-| Circuit | Method | $R$ | Notes |
-|---|---|---|---|
-| IOI ([Wang et al. 2022](https://arxiv.org/abs/2211.00593)) | Mean ablation of complement | $\approx 0.87$ | 87% of logit diff recovered |
-| Greater-Than ([Hanna et al. 2023](https://arxiv.org/abs/2305.00586)) | Mean ablation of complement | $\approx 0.895$ | 89.5% of probability diff recovered |
-
-## I3 — Specificity
-
-> [Full criterion page →](/framework/criteria/internal/specificity)
-
-The component should be more necessary for the target behavior than for unrelated behaviors.
-
-**Pass condition:** $\text{Specificity}(C) > 1.0$ against at least one related off-task behavior.
-
-$$\text{Specificity}(C, B, B') = \frac{\text{Necessity}(C, B)}{\text{Necessity}(C, B')}$$
-
-| Specificity value | Interpretation |
-|---|---|
-| $> 3.0$ | Strong specificity — component is much more necessary for $B$ than $B'$ |
-| $1.5 - 3.0$ | Moderate specificity |
-| $1.0 - 1.5$ | Weak specificity |
-| $< 1.0$ | Inverted — component is *more* necessary for the control behavior (red flag) |
-
-**Off-task selection matters.** The control behavior $B'$ must be *related*, not trivially distinct.
-
-| Target task | Informative off-task | Trivial off-task |
+| ID | Name | Question |
 |---|---|---|
-| IOI | Subject-verb agreement | Modular arithmetic |
-| Greater-Than | Successor | Translation |
-| Gendered pronouns | IOI | Factual recall |
+| I1 | Necessity | Is the circuit required for the behavior? |
+| I2 | Sufficiency | Is the circuit enough to produce the behavior? |
+| I3 | Minimality | Does every component earn its place? |
+| I4 | Specificity | Does intervening on the circuit affect this task more than matched control tasks? |
+| I5 | Rival mechanism exclusion | Is this THE mechanism, or A mechanism? |
+| I6 | Double dissociation | Do two interventions cross, each breaking what the other spares? |
+| I7 | Confound control | Are alternative explanations ruled out? |
+| I8 | Confounding sensitivity | How strong must an unmeasured confounder be to explain the result? |
+| I9 | Epistatic interaction | Do circuit components interact non-additively? |
+| I10 | Rescue reversibility | Does restoring a corrupted component recover behavior? |
+| I11 | Onset coupling | Does the mechanism appear when the capability appears? |
+| I12 | Offset coupling | Does the mechanism go when the capability is removed? |
 
-**The double dissociation test.** The strongest specificity evidence is a double dissociation: ablating circuit $A$ impairs behavior $X$ but not $Y$, and ablating circuit $B$ impairs $Y$ but not $X$.
+The twelve criteria fall into five blocks:
 
-**Calibration:** No published circuit paper reports a formal specificity ratio against a related task. Induction heads have implicit specificity (stronger on repeated sequences than non-repeated), but this is not quantified as a ratio.
+- **I1–I3 (set-level properties):** Necessity, sufficiency, and minimality characterize the circuit as a whole. A circuit that is necessary but not sufficient is incomplete. A circuit that is sufficient but not minimal contains passengers.
+- **I4–I6 (discrimination):** Specificity discriminates across tasks, rival mechanism exclusion discriminates across alternative circuits, and double dissociation discriminates across both simultaneously. I6 is scored as met or unmet with no partial credit, because each half is already scored elsewhere (I1 for the necessity arm, M2 for the baseline arm). Across sixteen audited claims, I6 was met once — by Feucht et al. (2025), three years after the origin paper.
+- **I7–I8 (confounders):** I7 addresses measured confounds (off-manifold ablation, backup suppression, layer-norm redistribution). I8 asks how strong an unmeasured confounder would need to be to explain the result — the analog of Rosenbaum's sensitivity analysis in observational studies.
+- **I9–I10 (internal structure):** Epistatic interaction (I9) asks whether circuit components interact non-additively — whether the joint effect of ablating two components differs from the sum of their individual effects. Rescue reversibility (I10) asks whether restoring a corrupted component recovers the behavior, the circuit analog of a genetic rescue experiment.
+- **I11–I12 (developmental coupling):** Onset coupling (I11) asks whether the mechanism appears during training when the capability appears. Offset coupling (I12) asks whether the mechanism disappears when the capability is removed — Craver's top-down leg of mutual manipulability.
 
-## I4 — Consistency
+## Failure Examples
 
-> [Full criterion page →](/framework/criteria/internal/consistency)
+**Cardiac stents and specificity (I4).** The ORBITA trial randomized patients with stable angina to percutaneous coronary intervention or a sham procedure. The sham group showed zero benefit difference. The stent was necessary for opening the artery (the intervention reached its target) but not specific to the symptom — the symptom improvement was a placebo effect. The MI parallel: a component can be necessary for a behavior (ablating it degrades performance) without being specific to the behavior (ablating it degrades many behaviors equally, because it is a bottleneck).
 
-The effect should replicate across contexts sufficient to rule out an artifact of the discovery distribution.
+**Candidate gene psychiatry and confound control (I7).** Border et al. (2019) tested 18 candidate genes for depression in a sample of 620,000 individuals. None was associated with depression more than a randomly selected gene. Two decades of candidate gene studies had reported positive results from samples of hundreds to low thousands, where confounding by population stratification, publication bias, and flexible analysis produced consistent false positives. The MI parallel: a circuit component reported as causally involved in a behavior on a small prompt set, without controlling for the confound that ablating *any* component of similar size degrades performance by a similar amount.
 
-**Pass condition:** Replication across at least two of three axes, with bootstrap confidence intervals on the principal metrics.
+**IOI circuit specificity (I4).** Wang et al. (2022) discovered the IOI circuit on a specific set of prompts. When we examine circuits discovered on different prompt samples for the same task, the Jaccard similarity between sample-specific circuits is 0.126. Transferring one sample's circuit to another sample drives the behavioral metric in the opposite direction. The circuit is specific to the prompt sample, not to the task.
 
-| Axis | What it tests | Example |
-|---|---|---|
-| Cross-prompt | Template or paraphrase robustness | IOI with varied syntactic structures |
-| Cross-seed | Independence from random initialization | Same circuit found in independently trained copies |
-| Cross-checkpoint | Stability across training | Circuit present at step 50k, 100k, and 200k |
+**Circuit non-uniqueness (I5).** Chen et al. (2024) found two circuits for IOI in GPT-2 Small, both achieving 100% faithfulness, sharing 4.1% of edges. The existence of multiple high-faithfulness circuits for the same behavior means that presenting one circuit as *the* mechanism for the behavior fails rival mechanism exclusion. The appropriate claim is "a sufficient mechanism," not "the mechanism."
 
-**Calibration:**
+## Cross-Disciplinary Foundations
 
-| Circuit | Cross-prompt | Cross-seed | Cross-checkpoint | Assessment |
-|---|---|---|---|---|
-| IOI ([Wang et al. 2022](https://arxiv.org/abs/2211.00593)) | Partial (name substitutions, ABBA/BABA) | Not tested | Not tested | One axis, partially |
-| Induction heads ([Olsson et al. 2022](https://arxiv.org/abs/2209.11895)) | Yes (any repeated sequence) | Yes (multiple model families) | Yes (training dynamics) | All three axes — unusually strong |
-| Greater-Than ([Hanna et al. 2023](https://arxiv.org/abs/2305.00586)) | Partial (year ranges) | Not tested | Not tested | One axis, partially |
+Internal validity draws on more source disciplines than any other validity type — four of the eight theoretical foundations contribute directly.
 
-## I5 — Confound Control
-
-> [Full criterion page →](/framework/criteria/internal/confound-control)
-
-The observed effect should not be explained by collateral disruption to non-circuit components.
-
-**Pass condition:** At least two ablation methods compared, with consistent results.
-
-| Confound | Mechanism | Mitigation |
-|---|---|---|
-| **Off-manifold ablation** | Zero and mean ablation push activations to out-of-distribution values | Use resample ablation against a counterfactual distribution |
-| **Backup suppression** | Ablating one component can suppress or activate backup mechanisms | Test individual and joint ablation; report backup activation |
-| **Layer-norm redistribution** | Ablating a component changes layer-norm statistics for all subsequent components | Compare effects with and without freezing layer-norm parameters |
-
-**Method comparison protocol:** Report the same metric under at least two ablation methods. If the results diverge substantially, the finding is method-conditional — flag it as such.
-
-**Calibration:**
-
-| Circuit | Methods compared | Consistent? | Notes |
-|---|---|---|---|
-| IOI ([Wang et al. 2022](https://arxiv.org/abs/2211.00593)) | Mean ablation only | N/A — single method | [Miller et al. (2024)](https://arxiv.org/abs/2404.01945) later showed method-dependence |
-| IOI ([Miller et al. 2024](https://arxiv.org/abs/2404.01945)) | Mean vs. resample vs. others | No — substantial divergence | Faithfulness ranges 87% to below 50% depending on method |
-
-## Partial-pass interpretation
-
-| Evidence pattern | Criteria met | Interpretation | Recommended language |
-|---|---|---|---|
-| Necessary but not sufficient | I1 | Distributed or incomplete circuit | "Causally implicated, not localized" |
-| Sufficient but not necessary | I2 | Redundancy or forced route | "A capable route, not shown necessary" |
-| Necessary + sufficient, not specific | I1, I2 | General-capability component | "Real mechanism, not task-specific" |
-| Necessary + sufficient + specific, not consistent | I1, I2, I3 | Benchmark artifact possible | "Locally established, not yet robust" |
-| Strong I1 + I2, single ablation method | I1, I2 (conditional) | Method-conditional claim | "Sufficient under [method]; not tested under alternatives" |
-| All six met | I1–I6 | Full internal validity | Upgrade to external validity testing |
-
-## Protocol
-
-For circuit $C$ and behavior $B$:
-
-1. **I1.** Ablate $C$; record $\text{Necessity}(C)$ under at least two methods. Compare to equal-size random baseline.
-2. **I2.** Ablate complement; record $R$. Use held-out prompts not used for discovery.
-3. **I3.** Compute $\text{Necessity}(C, B')$ for one related off-task $B'$. Report specificity ratio.
-4. **I4.** Replicate across at least two of: cross-prompt, cross-seed, cross-checkpoint.
-5. **I5.** Compare results across ablation methods. If inconsistent, report the range and flag as method-conditional.
-6. **I6.** Test at least one rival component set of comparable size. Report faithfulness gap. If rivals achieve comparable faithfulness, scope claim to "a sufficient mechanism."
+| Discipline | Transfer to internal validity |
+|---|---|
+| Causal inference | *do*-calculus provides the formal language for ablation and patching claims; distinguishes observational correlation from interventional effect |
+| Neuroscience | Lesion and stimulation experiments map to necessity and sufficiency; double dissociation (Shallice 1988) maps to I6; mutual manipulability (Craver 2007) maps to I11–I12 |
+| Genetics | Epistasis for non-additive interactions (I9); rescue experiments for reversibility (I10); sensitivity analysis for unmeasured confounders (I8); complementation test (Benzer 1955) for C6 |
+| Medical microbiology | Koch's postulates provide the template for graded causal evidence — necessity, isolation, and rescue — with partial satisfaction as the norm rather than the exception |
