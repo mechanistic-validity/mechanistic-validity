@@ -1,71 +1,83 @@
 ---
 title: "Criteria"
-description: "All ~27 Layer C criteria, grouped by validity type, with pass conditions and minimum-reporting rules."
+description: "All 36 criteria, grouped by validity type, with pass conditions."
 ---
 
-# Criteria — Layer C
+# Criteria
 
-Layer C is where the framework becomes operational. Each criterion is a specific, falsifiable condition that must be met for a validity type to be satisfied. A validity type is satisfied only when *all* its criteria are met. Partial satisfaction is reported explicitly.
+Each criterion is a specific, falsifiable condition that must be met for a validity type to be satisfied. The 36 criteria are grouped into five validity types following a dependency chain: Construct → Measurement → Internal → External → Interpretive. A failure early in the chain limits what later evidence can establish.
 
-## Criteria by validity type
+Each criterion receives one of six statuses: **Confirmed**, **Partially confirmed**, **Inconclusive**, **Disconfirmed**, **Untested**, or **Not applicable**.
 
-### Construct validity — Is the theoretical entity coherent and well-defined?
+## Construct validity (C1–C6) — Is the target concept well-defined?
 
-| # | Criterion | One-line pass condition | Page |
+| # | Criterion | One-line description | Page |
 |---|---|---|---|
-| C1 | Falsifiability | A named result stated in advance would disconfirm the claim | [falsifiability](construct/falsifiability/) |
-| C2 | Structural plausibility | Components at predicted layers/positions with consistent weight-space signatures | [structural-plausibility](construct/structural-plausibility/) |
-| C3 | Task specificity | Circuit does not score highly on unrelated tasks under same metric | [task-specificity](construct/task-specificity/) |
-| C4 | Minimality | No redundant members; removing any member degrades performance | [minimality](construct/minimality/) |
-| C5 | Convergent validity | Multiple independent metrics nominate the same components | [convergent-validity](construct/convergent-validity/) |
+| C1 | Falsifiability | Can the claim be refuted? | [falsifiability](construct/falsifiability/) |
+| C2 | Structural plausibility | Is the mechanism physically possible in the architecture? | [structural-plausibility](construct/structural-plausibility/) |
+| C3 | Convergent validity | Do multiple independent methods agree? | [convergent-validity](construct/convergent-validity/) |
+| C4 | Discriminant validity | Does the measure distinguish this from neighboring constructs? | [discriminant-validity](construct/discriminant-validity/) |
+| C5 | Nomological validity | Does the claim fit into a broader theory? | [nomological-validity](construct/nomological-validity/) |
+| C6 | Complementation validity | Are the construct's labeled subdivisions functionally distinct? | [complementation-validity](construct/complementation-validity/) |
 
-### Internal validity — Did the manipulation cause the effect?
+## Measurement validity (M1–M7) — Are the instruments trustworthy?
 
-| # | Criterion | One-line pass condition | Page |
+| # | Criterion | One-line description | Page |
 |---|---|---|---|
-| I1 | Necessity | Ablating the component reliably degrades the behavior across ≥2 methods | [necessity](internal/necessity/) |
-| I2 | Sufficiency | Isolating/restoring the component reproduces the behavior | [sufficiency](internal/sufficiency/) |
-| I3 | Specificity | Effect is selective; control-axis IIA ≈ 0 while causal-axis IIA is high | [specificity](internal/specificity/) |
-| I4 | Consistency | Finding holds across prompt samples, ablation methods, and random seeds | [consistency](internal/consistency/) |
-| I5 | Confound control | Effect not explained by collateral disruption to non-circuit components | [confound-control](internal/confound-control/) |
-| I6 | Rival mechanism exclusion | No alternative component set achieves comparable faithfulness, or rivals declared and claim scoped | [rival-mechanism-exclusion](internal/rival-mechanism-exclusion/) |
+| M1 | Reliability | Do repeated measurements give the same answer? | [reliability](measurement/reliability/) |
+| M2 | Baseline separation | Is the score distinguishable from random/untrained baselines? | [baseline-separation](measurement/baseline-separation/) |
+| M3 | Stability | Is the classification robust to perturbation? | [stability](measurement/stability/) |
+| M4 | Calibration | Are the numbers meaningful? | [calibration](measurement/calibration/) |
+| M5 | Sensitivity | Can the instrument detect known-true effects? | [sensitivity](measurement/sensitivity/) |
+| M6 | Invariance | Does the metric behave consistently across conditions? | [invariance](measurement/invariance/) |
+| M7 | Selection correction | When k findings are selected from N candidates, is N reported and multiplicity controlled? | [selection-correction](measurement/selection-correction/) |
 
-### External validity — Does the claim generalize?
+## Internal validity (I1–I12) — Does the evidence support the causal claim?
 
-| # | Criterion | One-line pass condition | Page |
+The twelve internal criteria fall into four blocks:
+
+- **I1–I3**: Properties of the set as a whole (necessity, sufficiency, minimality)
+- **I4–I6**: Discrimination across tasks, rival circuits, and both (specificity, rival exclusion, double dissociation)
+- **I7–I8**: Measured and unmeasured confounders
+- **I9–I10**: Internal structure probes (epistatic interaction, rescue reversibility)
+- **I11–I12**: Developmental coupling (onset, offset)
+
+| # | Criterion | One-line description | Page |
 |---|---|---|---|
-| E1 | Intervention reach | Activation delta at hook point is in predicted direction and non-trivial | [intervention-reach](external/intervention-reach/) |
-| E2 | Graded response | Effect scales monotonically with intervention strength; threshold and plateau visible | [graded-response](external/graded-response/) |
-| E3 | Selectivity | On-task effect exceeds off-task effect at the same intervention strength | [selectivity](external/selectivity/) |
-| E4 | Effect magnitude | Absolute effect large enough to support the computational story | [effect-magnitude](external/effect-magnitude/) |
-| E5 | Robustness | Claim survives prompt paraphrase, cross-scale transfer, held-out generalization | [robustness](external/robustness/) |
-| E6 | Cross-architecture generalization | Mechanism appears in at least one other model family | [cross-architecture](external/cross-architecture/) |
+| I1 | Necessity | Is the circuit required for the behavior? | [necessity](internal/necessity/) |
+| I2 | Sufficiency | Is the circuit enough to produce the behavior? | [sufficiency](internal/sufficiency/) |
+| I3 | Minimality | Does every component earn its place? | [minimality](internal/minimality/) |
+| I4 | Specificity | Does intervening on the circuit affect this task more than matched control tasks? | [specificity](internal/specificity/) |
+| I5 | Rival mechanism exclusion | Is this *the* mechanism, or *a* mechanism? | [rival-mechanism-exclusion](internal/rival-mechanism-exclusion/) |
+| I6 | Double dissociation | Do two interventions cross, each breaking what the other spares? | [double-dissociation](internal/double-dissociation/) |
+| I7 | Confound control | Are alternative explanations ruled out? | [confound-control](internal/confound-control/) |
+| I8 | Confounding sensitivity | How strong must an unmeasured confounder be to explain the result? | [confounding-sensitivity](internal/confounding-sensitivity/) |
+| I9 | Epistatic interaction | Do circuit components interact non-additively? | [epistatic-interaction](internal/epistatic-interaction/) |
+| I10 | Rescue reversibility | Does restoring a corrupted component recover behavior? | [rescue-reversibility](internal/rescue-reversibility/) |
+| I11 | Onset coupling | Does the mechanism appear when the capability appears? | [onset-coupling](internal/onset-coupling/) |
+| I12 | Offset coupling | Does the mechanism go when the capability is removed? | [offset-coupling](internal/offset-coupling/) |
 
-### Measurement validity — Is the metric trustworthy?
+I6 (double dissociation) caps every claim that reaches Mechanistically Supported in the sixteen audited case studies. I8 (confounding sensitivity) is untested in all sixteen. No claim reaches Validated.
 
-| # | Criterion | One-line pass condition | Page |
+## External validity (E1–E6) — Does the mechanism generalize?
+
+| # | Criterion | One-line description | Page |
 |---|---|---|---|
-| M1 | Reliability | Scores stable across prompt splits, seeds, and checkpoints | [reliability](measurement/reliability/) |
-| M2 | Invariance | Metric gives comparable results across model sizes and families | [invariance](measurement/invariance/) |
-| M3 | Baseline separation | Score exceeds random-vector AND untrained-model baselines by meaningful margin | [baseline-separation](measurement/baseline-separation/) |
-| M4 | Sensitivity | Detects real circuits at acceptable hit rates (AUROC ≥ 0.85) without excess false positives | [sensitivity](measurement/sensitivity/) |
-| M5 | Calibration | Raw scores interpretable relative to known reference points | [calibration](measurement/calibration/) |
-| M6 | Construct coverage | Metric measures its nominal target, not a correlated proxy | [construct-coverage](measurement/construct-coverage/) |
+| E1 | Intervention reach | Has the result been reproduced under at least two intervention families, and do they agree? | [intervention-reach](external/intervention-reach/) |
+| E2 | Prompt generalization | Does it work on diverse prompts? | [prompt-generalization](external/prompt-generalization/) |
+| E3 | Cross-task generalization | Does the mechanism transfer to related tasks? | [cross-task-generalization](external/cross-task-generalization/) |
+| E4 | Cross-model recurrence | Does the corresponding causal organization recur across independently trained models? | [cross-model-recurrence](external/cross-model-recurrence/) |
+| E5 | Graded response | Does partial ablation produce partial effects? | [graded-response](external/graded-response/) |
+| E6 | Novel prediction | Does the mechanism predict new, untested behaviors? | [novel-prediction](external/novel-prediction/) |
 
-### Interpretive validity — Does the verdict match the evidence?
+## Interpretive validity (V1–V5) — Is the interpretation correct?
 
-| # | Criterion | One-line pass condition | Page |
+| # | Criterion | One-line description | Page |
 |---|---|---|---|
-| V1 | Level declaration | A specific description-mode tag is stated explicitly in the verdict | [level-declaration](interpretive/level-declaration/) |
-| V2 | Level–evidence match | Evidence collected is sufficient to license the declared mode tag | [level-evidence-match](interpretive/level-evidence-match/) |
-| V3 | Narrative coherence | Prose description is consistent with and entailed by the mode-tagged claim | [narrative-coherence](interpretive/narrative-coherence/) |
-| V4 | Alternative exclusion | Competing mechanism descriptions have been considered and addressed | [alternative-exclusion](interpretive/alternative-exclusion/) |
-| V5 | Scope honesty | Verdict does not silently generalize beyond the evidence scope | [scope-honesty](interpretive/scope-honesty/) |
+| V1 | Level declaration | At what description mode is the claim made? | [level-declaration](interpretive/level-declaration/) |
+| V2 | Level-evidence match | Does the evidence support claims at that level? | [level-evidence-match](interpretive/level-evidence-match/) |
+| V3 | Alternative level | Could the evidence be explained at a different level? | [alternative-level](interpretive/alternative-level/) |
+| V4 | Unlicensed labeling | Does a name import a property that was not measured? | [unlicensed-labeling](interpretive/unlicensed-labeling/) |
+| V5 | Scope declaration | What does the claim explicitly not cover? | [scope-declaration](interpretive/scope-declaration/) |
 
-## How to use this index
-
-**Building a claim (bottom-up):** Identify metrics run (Layer A). For each, locate the criteria it addresses from the mapping table in [../taxonomy/](../taxonomy/). Check each criterion's pass condition. Assemble the verdict from satisfied and unsatisfied criteria.
-
-**Auditing a claim (top-down):** Start with the verdict tier. All criteria in the required validity types must be satisfied. Check each criterion page against reported evidence. Note gaps.
-
-**Minimum-reporting rule:** Every published claim must report, for each satisfied criterion, which metric satisfied it and what value was obtained.
+V3, V4, and V5 have no counterpart in the validity frameworks surveyed from other fields. They address failure modes specific to mechanistic interpretability: claiming an algorithm when only an implementation was shown (V3), calling a representation a "world model" when only a state summary was demonstrated (V4), and silently generalizing beyond the tested system (V5).

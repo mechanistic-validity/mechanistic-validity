@@ -14,12 +14,12 @@ This is among the most commercially impactful MI claims — it led to model edit
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1 Falsifiability | C3 Task specificity | Partial |
-| Internal | I1/I2 Necessity + Sufficiency | I3 Specificity | Causally suggestive |
-| External | E4 Effect magnitude | E3 Selectivity | Partial |
+| Internal | I1 Necessity | I4 Specificity | Disconfirmed |
+| External | E4 Effect magnitude | E3 Selectivity | Weak |
 | Measurement | M1 Reliability | M2/M4 Invariance + Sensitivity | Weak |
 | Interpretive | V1 Level declaration | V4 Alternative exclusion | Weak |
 
-**Overall verdict: Causally suggestive, with significant interpretive challenges.** ROME/knowledge neurons have strong necessity (I1) and narrow sufficiency (I2) — causal tracing works and edits succeed on target. But the specificity failure (I3) and the alternative-exclusion failure (V4) together suggest that the interpretive framing ("knowledge is localized in MLPs") may be wrong even though the practical tool (ROME edits) works. This is an instructive case: a tool can work for the wrong reasons. The framework helps distinguish "the edit works" (external validity for the intervention) from "the mechanistic story is correct" (interpretive validity for the localization claim).
+**Overall verdict: Disconfirmed.** The knowledge neurons localization claim fails decisively on specificity (I4). Subsequent work shows that fact editing raises inter-relation perplexity — the edits are not specific to the target fact but corrupt related knowledge. The off-target effects are measured and reported in the original work but not interpreted as a specificity failure. The framework identifies this as a disconfirming result: the mechanism claimed (localized factual storage) predicts that editing one fact should leave related facts intact, and it does not. The practical tool (ROME) can work for the wrong mechanistic reasons — the edit succeeds on the target while corrupting neighbors, which is consistent with distributed rather than localized storage.
 
 ## Metrics used in original work
 

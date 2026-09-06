@@ -13,15 +13,15 @@ This is the strongest structural evidence in published MI — the weight matrice
 
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C1/C2/C5 (all strong) | — | Validated |
-| Internal | I2/I5 (sufficiency + confound) | — | Validated |
-| External | E1–E5 (all pass) | E6 Cross-architecture | Strong (within scope) |
-| Measurement | All criteria pass | — | Validated |
-| Interpretive | V4 Alternative exclusion | — | Validated |
+| Construct | C1/C2/C5 (all strong) | — | Strong |
+| Internal | I2/I5 (sufficiency + confound) | I6 (double dissociation) | Mechanistically Supported |
+| External | E1–E5 (all pass) | E6 Cross-architecture | Partial |
+| Measurement | All criteria pass | — | Strong |
+| Interpretive | V4 Alternative exclusion | — | Strong |
 
-**Overall verdict: Validated (within scope).** The modular addition circuit reaches the highest verdict tier — *Validated* — within its toy-model scope. Every criterion across all five lenses is satisfied. This makes it the gold standard for what a complete mechanistic explanation looks like.
+**Overall verdict: Mechanistically Supported.** The modular addition circuit has strong structural and causal evidence — the algorithm is mathematically specified and every weight matrix is accounted for. The capping criterion is I6 (double dissociation): no study has tested a second behavior that the Fourier circuit spares while ablating a matched control circuit impairs. Despite the completeness of the reverse engineering, this crossed-design test has not been performed.
 
-The limitation is scope: E6 (cross-architecture) is the only weak point, and it is a fundamental one. A toy model with perfect internal validity but unknown external validity establishes a *proof of concept* rather than a *general finding*. The framework's contribution here is to name precisely what is achieved (complete explanation of one model) and what is not (evidence that real models work this way). The grokking result is the ceiling of MI — it shows what "fully understood" looks like. The gap between this and any real-model circuit is the gap the field is working to close.
+The scope limitation is also significant: E6 (cross-architecture) is untested. A toy model (1-layer, mod-113 arithmetic) with strong internal validity but no external validity across architectures or tasks establishes a proof of concept rather than a general finding.
 
 ## Metrics used in original work
 

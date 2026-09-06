@@ -14,14 +14,14 @@ This is a *theoretical claim about the representational strategy* of neural netw
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1/C2 | C5 (real models) | Strong (toy) |
-| Internal | All (toy) | All (real) | Validated (toy) / Proposed (real) |
-| External | E1–E5 (toy) | E6 Cross-architecture | Strong (toy) / Weak (real) |
-| Measurement | All (toy) | M6 (real) | Validated (toy) / Partial (real) |
-| Interpretive | V3 Narrative | V5 (community overstatement) | Strong |
+| Internal | I1/I2 (toy) | I6 (double dissociation) | Mechanistically Supported |
+| External | E1–E5 (toy) | E6 Cross-architecture | Partial |
+| Measurement | M2/M3 (toy) | M6 (real) | Partial |
+| Interpretive | V3 Narrative | V5 (community overstatement) | Partial |
 
-**Overall verdict: Validated in toy models; Proposed to Causally suggestive in real models.** Superposition is the second example (after grokking) of a toy-model result that reaches *Validated* within its scope. The theory is mathematically precise, empirically confirmed, and mechanistically complete — in the toy setting.
+**Overall verdict: Mechanistically Supported.** The superposition hypothesis has strong structural and causal evidence in toy models — the theory is mathematically precise and empirically confirmed in that setting. The capping criterion is I6 (double dissociation): no study has performed a crossed design testing a second representational property that superposition spares while a matched control feature-packing scheme impairs.
 
-The gap to real models is the central open question of the superposition research program. SAE success is *consistent with* superposition but does not *confirm* it — SAEs could work for other reasons, and the geometric structure of superposition in real models has not been directly measured with the same precision as in toy models. The framework's verdict: superposition is a validated theory looking for a confirmed instance in a real model. Until that instance is found, the real-model claims remain at *Proposed*.
+The gap to real models remains the central open question. SAE success is consistent with superposition but does not confirm it — SAEs could work for other reasons, and the geometric structure of superposition in real models has not been measured with the precision achieved in toy models.
 
 ## Metrics used in original work
 

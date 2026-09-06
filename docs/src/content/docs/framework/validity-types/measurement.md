@@ -1,153 +1,64 @@
 ---
 title: "Measurement Validity"
-description: "Are the metrics that produced the evidence reliable, calibrated, and selective? — formal specification of M1–M6."
 ---
 
-# Measurement Validity — Formal Specification
+# Measurement Validity
 
-| | |
+Are the instruments trustworthy? Once the construct is defined, the measurement tools used to detect it must be reliable (stable across repetitions), calibrated (separable from random baselines), and invariant (consistent across conditions). A metric that gives different answers when run with different random seeds is not evidence. Measurement validity evaluates the metric, not the claim — a distinction that matters because the two have different remedies. A construct-validity failure calls for a clearer construct; a measurement-validity failure calls for a better-characterized instrument.
+
+## Position in the Dependency Chain
+
+```
+Construct → **Measurement** → Internal → External → Interpretive
+```
+
+Measurement validity occupies the second position. It depends on construct validity because a metric can only be assessed against a well-defined target — we cannot ask whether IIA reliably measures a construct that has not been specified. Every downstream validity type depends on measurement validity in turn, though the dependence takes two forms.
+
+The strict form operates through Spearman's (1904) attenuation formula: reliability caps the correlation between any two measures at the geometric mean of their reliabilities. An unreliable metric cannot support a causal claim, regardless of how well the internal-validity design is executed. A faithfulness score with test-retest reliability of 0.5 attenuates any correlation it enters by a factor of √0.5 ≈ 0.71, placing a hard ceiling on what internal-validity evidence built from that score can establish.
+
+The weak form operates through stability (M3) and invariance (M6). These criteria do not impose a mathematical ceiling on effect size estimates. They record that a reported quantity moves with analysis choices — seed, prompt sample, ablation method — which impugns the number that was published without bounding the effect it estimates.
+
+## Theoretical Lineage
+
+The measurement tradition in psychometrics predates construct validity by half a century. Spearman (1904) introduced the attenuation formula while developing the theory of test reliability, establishing that the observed correlation between two measures is the product of their true correlation and the geometric mean of their reliabilities. The formula provides the mathematical foundation for M1: a metric whose reliability has not been characterized cannot be interpreted, because its observed values confound signal with measurement error.
+
+Borsboom, Mellenbergh, and van Heerden (2004) proposed that "a measure is valid if and only if the attribute exists and variation in it causally produces variation in the measurement outcome." This causal account of measurement validity reframes the question: we do not ask whether IIA "correlates with" circuit quality, but whether variation in circuit quality causally produces variation in IIA. The distinction matters because a metric can correlate with circuit quality for reasons that have nothing to do with the circuit — alignment map capacity, prompt distribution, or model scale.
+
+Classical test theory (Lord & Novick, 1968) provides the formal framework: an observed score X = T + E, where T is the true score and E is measurement error. Reliability is the ratio of true-score variance to total variance. This decomposition applies directly to MI metrics. A faithfulness score computed on a single prompt split confounds the circuit's true faithfulness with the specific prompt sample. Bootstrap resampling or split-half reliability estimation separates the two.
+
+The pharmacological analogy is assay validation. Before drawing conclusions about a drug's efficacy, pharmacologists validate the assay — characterizing its precision, selectivity, and dynamic range. An assay whose properties have not been established cannot support an efficacy conclusion regardless of how large the measured effect appears. MI metrics occupy the same position: they are assays whose validation is typically omitted.
+
+## Criteria
+
+| ID | Name | Question |
+|---|---|---|
+| M1 | Reliability | Do repeated measurements give the same answer? |
+| M2 | Baseline separation | Is the score distinguishable from random or untrained baselines? |
+| M3 | Stability | Is the classification robust to perturbation of analysis choices? |
+| M4 | Calibration | Are the numbers meaningful — do they map onto a known scale? |
+| M5 | Sensitivity | Can the instrument detect known-true effects? |
+| M6 | Invariance | Does the metric behave consistently across conditions (model size, prompt distribution, ablation method)? |
+| M7 | Selection correction | When k findings are selected from N candidates, is N reported and multiplicity controlled? |
+
+M1–M3 address whether the metric produces stable outputs. M4–M5 address whether those outputs are interpretable. M6 addresses whether they generalize across conditions. M7 addresses whether they survive correction for the search that produced them.
+
+The framework also defines 15 calibration meta-metrics (F01–F15) that map onto M1–M7. These are metrics of metrics: they take another metric's output as input and assess whether it is stable, reproducible, or distinguishable from baselines.
+
+## Failure Examples
+
+**Dead salmon fMRI (M2).** Bennett et al. scanned a dead Atlantic salmon with fMRI and found 16 voxels showing statistically significant activation. The study was a demonstration of false-positive rates in neuroimaging — up to 70% in some analysis pipelines — when baseline separation and multiple-comparison correction are omitted. The salmon had no neural activity to detect. The "significant" voxels were measurement artifacts indistinguishable from the baseline because no baseline separation criterion was applied.
+
+**Vacuous nonlinear IIA (M2).** Sutter et al. demonstrated that unconstrained nonlinear interchange intervention accuracy (IIA) achieves near-perfect scores — approaching 100% — on randomly initialized, untrained models. The high IIA reflects the alignment map's degrees of freedom, not the model's learned representations. Without an untrained-model baseline, a high IIA score is uninterpretable: it may measure map flexibility rather than representational structure.
+
+**SAEBench metrics (M2).** In the SAEBench evaluation suite, one metric scored higher on a randomly initialized model than on the trained model. A metric that assigns better scores to random weights than to learned weights fails baseline separation — it is measuring something other than what it claims.
+
+**Emergent abilities (M4).** Schaeffer et al. showed that the apparent phase transitions in large language model "emergent abilities" were artifacts of the metric. When accuracy (a discontinuous metric) was replaced with a continuous metric measuring the same underlying quantity, the sharp transitions disappeared. The phase transition was a property of the measurement instrument, not the model. This is a calibration failure: the metric created the phenomenon it appeared to detect.
+
+## Cross-Disciplinary Foundations
+
+| Discipline | Transfer to measurement validity |
 |---|---|
-| Question | Are the metrics that produced the evidence reliable, calibrated, and selective? |
-| Lens | [Measurement Theory](/framework/lenses/core/measurement-theory) |
-| Criteria | M1–M6 |
-| Source theory | Classical test theory ([Lord & Novick 1968](https://psycnet.apa.org/record/1969-02031-000)); multi-trait multi-method ([Campbell & Fiske 1959](https://doi.org/10.1037/h0046016)); signal detection theory ([Green & Swets 1966](https://doi.org/10.1901/jeab.1966.9-649)) |
-| Dependency | Measurement validity evaluates the *metric*, not the *claim*; it is prior to interpreting what the metric measures |
-| Status in MI | Most easily corrected failures; baselines often omitted |
-
-Measurement validity asks whether the metrics used to produce evidence for a circuit claim are themselves valid measurements. It is the type whose failures are most correctable — typically because the remedy is a baseline that was always feasible to compute but was not reported.
-
-## Why measurement validity is independent of the claim's validity
-
-The other validity types evaluate the claim being made. Measurement validity evaluates the metrics that produced the evidence. The distinction matters because failures in the two have different remedies. A failure of construct validity is remedied by clarifying the construct. A failure of internal validity is remedied by adding interventions. A failure of measurement validity is remedied by validating the metric — typically by adding controls or baselines — without changing the claim itself.
-
-The pharmacology analogy is the distinction between assay validation and drug efficacy. A pharmacologist validates the assay (metric) before drawing conclusions about the drug (claim). An assay whose precision and selectivity have not been characterized cannot support a drug-efficacy conclusion regardless of how strong the measured effect appears.
-
-## M1 — Reliability
-
-> [Full criterion page →](/framework/criteria/measurement/reliability)
-
-Scores from the metric should be stable across prompt subsamples, random seeds, and checkpoints.
-
-**Formal requirement ([Lord & Novick 1968](https://psycnet.apa.org/record/1969-02031-000)):** An observed score $X = T + E$ where $T$ is the true score and $E$ is measurement error. Reliability is:
-
-$$\rho_{XX'} = \frac{\sigma^2_T}{\sigma^2_T + \sigma^2_E}$$
-
-A metric with $\rho_{XX'} < 0.7$ contributes more noise than signal; any validity claim built on it is attenuated.
-
-**Pass condition:** Test-retest reliability $\rho_{XX'} \geq 0.7$ across two independent prompt subsamples of equal size, or bootstrap 95% CI on the principal metric spans $\leq 0.10$.
-
-**MI-specific threat:** *Single-split reliability.* Scores reported from a single prompt split without bootstrap or test-retest evaluation hide instability. A faithfulness score of 0.87 computed on 50 prompts may have a bootstrap 95% CI of $\pm 0.15$, making it a property of the specific sample rather than the circuit.
-
-## M2 — Invariance
-
-> [Full criterion page →](/framework/criteria/measurement/invariance)
-
-The metric should produce comparable scores across model sizes within a family, or the score difference should be attributable to a measurable difference in the model rather than to a property of the metric.
-
-**Pass condition:** Metric scores on matched circuits from the same model family differ by no more than the empirical standard deviation across seeds. If scores differ substantially across sizes, the metric must be recalibrated per model size.
-
-**MI-specific threat:** *Scale contamination.* A metric calibrated on GPT-2 Small may systematically over- or under-estimate faithfulness in GPT-2 Medium because absolute logit differences scale with model size. Reports should always state the model on which the metric is calibrated.
-
-## M3 — Baseline Separation
-
-> [Full criterion page →](/framework/criteria/measurement/baseline-separation)
-
-The metric's output on a real construct must be substantially above its output on a random or untrained control.
-
-**This is the measurement criterion MI most consistently fails.** Three baselines are required:
-
-**Random-vector baseline:** Replace the circuit's component activations with random unit vectors of the same dimensionality. The IIA or faithfulness score under this substitution is the floor.
-
-$$\text{BaselineGap} = \text{Score}(C_\text{real}) - \text{Score}(C_\text{random})$$
-
-**Pass condition:** $\text{BaselineGap} > 0.10$. Without this gap, the score is dominated by the alignment map's capacity rather than the circuit's structure.
-
-**Untrained-model baseline:** Compute the same metric on an identically architected but randomly initialized (untrained) model. [Sutter et al. (2025)](https://arxiv.org/abs/2412.09659) proved that unconstrained nonlinear IIA achieves near-perfect scores on random-initialization models. Without this baseline, a high IIA score says nothing about the trained model's representations — it measures the map's degrees of freedom.
-
-**Published reference baseline:** Report the metric's output on published reference circuits (IOI, Greater-Than, induction heads) to establish where the claimed result sits on a common scale.
-
-**The canonical example:**
-
-> An IIA of 0.48 at layer 8 MLP is right in the published SAE/transcoder baseline range of 0.40–0.60 for GPT-2 Small SVA ([Lazo et al. 2025](https://arxiv.org/abs/2502.xxxxx)). Without the random-vector baseline and the published reference range, 0.48 is an uninterpretable number. With both baselines, it is a competitive and publishable result.
-
-**Three required baselines for IIA:**
-
-| Baseline | What it controls | Required? |
-|---|---|---|
-| Random-vector baseline | Alignment map capacity | Yes |
-| Untrained-model baseline | Architecture-induced correlation | Yes |
-| Published reference range | Calibration to literature | Strongly recommended |
-
-## M4 — Sensitivity
-
-> [Full criterion page →](/framework/criteria/measurement/sensitivity)
-
-The metric should detect real circuits at acceptable hit rates without excessive false positives.
-
-**Pass condition:** $\text{AUROC} \geq 0.80$ and $\text{AUPRC} \geq 0.50$ when the metric is applied to a held-out set containing known circuits and known non-circuits.
-
-**AUROC vs AUPRC for small circuits:** For circuits with few components in models with many components, AUROC can be high while precision is low. The precision-recall distinction is rarely reported but is essential for sparse discovery tasks.
-
-**Formal requirement using signal detection theory ([Green & Swets 1966](https://doi.org/10.1901/jeab.1966.9-649)):**
-
-$$d' = z(\text{hit rate}) - z(\text{false alarm rate})$$
-
-A discriminating metric has $d' > 1.5$ (roughly equivalent to AUROC $\approx 0.85$).
-
-## M5 — Calibration
-
-> [Full criterion page →](/framework/criteria/measurement/calibration)
-
-The metric's score should be interpretable against published reference values for the same metric on matched tasks.
-
-**Pass condition:** At least one published reference value for the same metric on a comparable task is cited, and the claimed result is positioned relative to it.
-
-**Reference calibration table for GPT-2 Small:**
-
-| Task | Metric | Full model | Best circuit | Source |
-|---|---|---|---|
-| IOI | Logit diff | 3.56 | 3.10 (87% recovery) | [Wang et al. 2022](https://arxiv.org/abs/2211.00593) |
-| Greater-Than | Prob diff | 81.7% | 72.7% (89.5% recovery) | [Hanna et al. 2023](https://arxiv.org/abs/2305.00586) |
-| SVA | Logit diff | 0.70 | 0.65 (93% recovery) | [Lazo et al. 2025](https://arxiv.org/abs/2502.xxxxx) |
-| SVA (BLiMP behavioral) | Accuracy | 95–97% | — | [Warstadt et al. 2020](https://doi.org/10.1162/tacl_a_00321) |
-| Gendered pronoun (BLiMP) | Accuracy | ~99% | $\geq$ full model | [Mathwin 2023](https://arxiv.org/abs/2308.xxxxx) |
-
-**MIB Causal Variable IIA reference:**
-
-| Method | IIA range | Notes |
-|---|---|---|
-| DAS (best) | 86–95% | Dominates on MIB |
-| SAE features | < DAS | MIB's headline finding: SAE features worse than raw neurons |
-| Random baseline | ~10–15% | Metric floor |
-
-## M6 — Construct Coverage
-
-> [Full criterion page →](/framework/criteria/measurement/construct-coverage)
-
-The metric should measure what it claims to measure rather than a property of the metric's own degrees of freedom.
-
-**Pass condition:** The metric produces different scores on constructs that are theoretically distinguishable. If two circuits that should be distinct produce indistinguishable metric scores, the metric lacks construct coverage.
-
-**Discovery-evaluation overlap failure:** Using the same prompts for circuit discovery and evaluation inflates apparent reliability because the circuit was optimized on those prompts. Discovery and evaluation sets must be disjoint.
-
-**Alignment map capacity failure:** If IIA is high only with unconstrained nonlinear maps (MLP, large linear subspace), the finding is about map flexibility, not the circuit's geometry. The alignment architecture must be specified and the score must be reported as a function of alignment capacity — showing how IIA degrades as alignment is constrained toward a single linear direction.
-
-## Partial-pass interpretation
-
-| Pattern | Criteria met | Interpretation | Recommended language |
-|---|---|---|---|
-| Reliable but no baseline | M1 | Score is stable but uninterpretable | "Reliable; baseline gap not established" |
-| Baseline gap established, not calibrated | M1, M3 | Score interpretable as above floor; not positioned in literature | "Above random; reference calibration needed" |
-| Calibrated, no sensitivity test | M1, M3, M5 | Positioned in literature; false-positive rate unknown | "Calibrated; sensitivity not characterized" |
-| All six met | M1–M6 | Full measurement validity | Proceed to interpret internal validity results |
-
-## Protocol
-
-For metric $I$ and circuit $C$:
-
-1. **M1.** Bootstrap the principal metric over at least 5 resampled prompt splits. Report 95% CI.
-2. **M2.** If comparing across model sizes, verify scale comparability or recalibrate.
-3. **M3.** Compute random-vector baseline and untrained-model baseline. Report $\text{BaselineGap}$.
-4. **M4.** If using the metric for discovery, compute AUROC and AUPRC on held-out known/unknown circuit sets.
-5. **M5.** Cite at least one published reference value. Position the result on the calibration scale.
-6. **M6.** Ensure discovery and evaluation sets are disjoint. Report IIA as a function of alignment capacity.
+| Psychometrics | Test-retest reliability, split-half reliability, measurement invariance, the attenuation formula. Provides the formal apparatus for M1, M2, and M6. |
+| Pharmacology | Assay validation protocols — characterize precision, selectivity, and dynamic range before interpreting results. The analogy to M1–M5 is direct: an unvalidated assay cannot support an efficacy claim. |
+| Signal detection theory | Sensitivity (d′), receiver operating characteristic curves, the distinction between hit rate and false-alarm rate. Provides the formal apparatus for M5. |
+| Philosophy of science | Severe testing (Mayo, 1996) — a test that a hypothesis was built to pass is not evidence for it. Applies to M2: a metric evaluated on its own discovery set has not been severely tested. |

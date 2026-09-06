@@ -1,193 +1,62 @@
 ---
 title: "Construct Validity"
-description: "Formal specification: quantitative thresholds, pass conditions, and calibration data for construct validity criteria C1–C5."
+description: "Is the thing being claimed a coherent theoretical entity? Construct validity asks whether the target concept is well-defined before any measurement is taken."
 ---
 
-# Construct Validity — Formal Specification
+# Construct Validity
 
-| | |
-|---|---|
-| Question | Is the thing being claimed a coherent theoretical entity? |
-| Lens | [Philosophy of Science](/framework/lenses/core/philosophy-of-science) |
-| Criteria | C1–C5 |
-| Dependency | Construct validity is prior to all other validity types — ambiguity here propagates downstream |
-| Status in MI | Most neglected type; most circuit papers name the construct without specifying it |
+Construct validity asks whether the thing being measured is well-defined. Before any measurement is taken, the construct must be specified precisely enough that the claim is falsifiable, structurally plausible, and distinguishable from neighboring constructs. A circuit claim whose target concept is incoherent — where "induction head" could mean token-copying, prefix-matching, or in-context learning depending on which paragraph the reader is in — cannot be rescued by any amount of causal evidence.
 
-Construct validity asks whether the entity being claimed exists as a well-defined theoretical object. The [Philosophy of Science lens](/framework/lenses/core/philosophy-of-science) explains the intellectual background and shows the criteria applied to real cases. This page gives the formal definitions, quantitative thresholds, and calibration data.
+## Position in the Dependency Chain
 
-## C1 — Falsifiability
+```
+Construct → Measurement → Internal → External → Interpretive
+    ▲
+  you are here
+```
 
-> [Full criterion page →](/framework/criteria/construct/falsifiability)
+Construct validity comes first in the dependency chain. The ordering follows Messick (1995), who argued that construct validity "undergirds all score-based interpretations" and is "the essence of a unitary validity conception." A construct that is not well-defined cannot be reliably measured (Measurement depends on Construct), an unreliable measurement cannot support a causal claim (Internal depends on Measurement), a causal claim in one setting cannot be generalized (External depends on Internal), and an interpretation cannot be evaluated until the underlying evidence is characterized (Interpretive depends on External).
 
-A claim is falsifiable when a disconfirming observation is specified before evidence collection. The specification must name three things:
+The standard Shadish, Cook & Campbell ordering places construct validity third, paired with external validity. We place it first because a claim whose target concept is incoherent cannot be rescued by any amount of causal evidence, so construct has to come first for the same reason Messick gives.
 
-$$\text{Falsifiability condition} = (\text{metric } m, \; \text{threshold } \tau, \; \text{dataset } D)$$
+All four downstream validity types inherit construct validity failures. If the construct is ambiguous, measurement validity evaluates instruments against an ambiguous target. Internal validity establishes causal involvement in an ambiguous behavior. External validity generalizes an ambiguous finding. Interpretive validity narrates an ambiguous mechanism. Fixing any of those cannot fix the ambiguity at the source.
 
-**Pass condition:** All three components stated in advance. If retrospective, this is disclosed.
+## Theoretical Lineage
 
-**Formal requirement:** There exists a measurement $m(C, D)$ of circuit $C$ on dataset $D$ such that:
+Cronbach and Meehl (1955) developed construct validity for measurement instruments in psychology. The object was a test score, and the question was whether the score means what its user takes it to mean. Their framework required that a construct be embedded in a nomological network — a set of lawful relationships linking the construct to other constructs and to observable indicators. A construct that participates in no such network is, in their formulation, scientifically empty. We transfer this requirement directly: a circuit claim must specify what the circuit does, what it does not do, and how those two relate to other known circuits and behaviors.
 
-$$m(C, D) < \tau \implies \text{claim is disconfirmed}$$
+Messick (1995) unified construct validity with all other forms of validity, arguing that reliability, criterion validity, and content validity are facets of a single construct-validity question rather than independent properties. Under this unification, asking whether a metric is reliable (Measurement) or whether an intervention is specific (Internal) are both, ultimately, construct-validity questions asked at different stages of evidence accumulation. We adopt the unification but preserve the five-type decomposition because the remedies differ: a construct problem is fixed by redefining the target, not by adding baselines or interventions.
 
-**Examples of valid conditions:**
-- $\text{IIA}(C, D_{\text{held-out}}) < 0.10$
-- $\text{Faithfulness}(C, D_{\text{paraphrase}}) < 0.50$ under resample ablation
-- $\text{Logit diff recovery} < 0.30$ on template-varied prompts
+The falsifiability requirement (C1) draws on Popper's demarcation criterion and on Mayo's (1996, 2018) error-statistical refinement. Popper required that a scientific claim specify conditions under which it would be refuted. Mayo sharpened this into the notion of severe testing: a claim passes a severe test only when the test had a high probability of detecting the error, if the error were present. A circuit claim that specifies no falsification condition (no metric, no threshold, no held-out dataset) cannot be severely tested.
 
-**Examples of invalid conditions:**
-- "If the circuit doesn't work" (no metric, no threshold, no dataset)
-- "If faithfulness is low" (no threshold)
-- "If the ablation fails on the same prompts used for discovery" (discovery set, not held-out)
+The operationalism of Bridgman (1927) contributes a further constraint: a concept is defined by the operations used to measure it. In mechanistic interpretability, this means that "induction head" is defined by the behavioral and structural tests that identify it — prefix-matching attention pattern, high copying score, formation during training — not by an intuitive notion of what induction means. The psychometrics tradition contributes convergent and discriminant validity from the multitrait-multimethod matrix (Campbell & Fiske, 1959), which we transfer as C3 and C4: multiple independent methods should agree on the same construct (convergent), and the construct should be distinguishable from neighboring constructs measured by the same method (discriminant).
 
-**Calibration:** No published circuit paper we are aware of states a quantitative falsifiability condition in advance. This criterion is aspirational but enforceable going forward.
+## Criteria
 
-## C2 — Structural Plausibility
-
-> [Full criterion page →](/framework/criteria/construct/structural-plausibility)
-
-A component's weight-space signature must match its claimed computational role.
-
-**Pass condition:** For every named component role, the weight-space measurement is consistent with the claim.
-
-**Formal requirements by role type:**
-
-*Copying head (name-mover, induction head):* The $W_{OV}$ matrix should approximate a copying operation. We measure the copying score:
-
-$$\text{CopyScore}(h) = \frac{1}{|V|} \sum_{t \in V} \frac{(W_U \, W_{OV}^{(h)} \, W_E)_{t,t}}{\max_j (W_U \, W_{OV}^{(h)} \, W_E)_{t,j}}$$
-
-where $V$ is a relevant token vocabulary, $W_E$ is the embedding, and $W_U$ is the unembedding. A copying head should have $\text{CopyScore} > 0.5$.
-
-*Ordinal head (successor, Greater-Than):* The $W_{OV}$ should encode monotonic ordering:
-
-$$\text{effect}(y_1, y_2) = e_{y_2}^\top \, W_U \, W_{OV}^{(h)} \, W_E \, e_{y_1}$$
-
-Structural plausibility requires $\text{Corr}(\text{effect}(y_1, y_2), \; \text{sign}(y_2 - y_1)) > 0.7$ across relevant token pairs.
-
-*Inhibition head (S-inhibition):* Attention pattern should peak at the position of the repeated subject. Measured as:
-
-$$\text{AttnFrac}(h, \text{pos}_S) = \frac{A^{(h)}_{\text{final}, \text{pos}_S}}{\sum_j A^{(h)}_{\text{final}, j}}$$
-
-Structural plausibility requires $\text{AttnFrac} > 0.3$ on clean IOI prompts (above uniform attention $\approx 0.07$ for a 15-token sequence).
-
-**Failure threshold:** Any mismatch between role label and weight-space signature must be flagged. A "name-mover" with $\text{CopyScore} < 0.3$ fails C2.
-
-## C3 — Task Specificity
-
-> [Full criterion page →](/framework/criteria/construct/task-specificity)
-
-The circuit should not score highly on unrelated tasks under the same evaluation.
-
-**Pass condition:** The selectivity ratio is positive on at least one related off-task.
-
-**Selectivity ratio:** For circuit $C$ discovered on task $T_{\text{disc}}$ and evaluated on related task $T_{\text{off}}$:
-
-$$S(C) = \frac{F(C, T_{\text{disc}}) - F(C, T_{\text{off}})}{F(C, T_{\text{disc}})}$$
-
-| $S$ value | Interpretation |
-|---|---|
-| $S > 0.5$ | Strong task specificity — circuit is substantially more faithful on its discovery task |
-| $0 < S \leq 0.5$ | Moderate specificity — circuit has some off-task faithfulness but favors discovery task |
-| $S \approx 0$ | No specificity — circuit is equally faithful on both tasks (bottleneck or general-purpose) |
-| $S < 0$ | Inverted specificity — circuit is *more* faithful on the off-task (red flag) |
-
-**Off-task selection:** The off-task must be *related*, not trivially distinct.
-
-| Discovery task | Informative off-task | Trivial off-task (too easy) |
+| ID | Name | Question |
 |---|---|---|
-| IOI | Subject-verb agreement | Modular arithmetic |
-| Greater-Than | Successor | Translation |
-| Gendered pronouns | IOI | Factual recall |
+| C1 | Falsifiability | Can the claim be refuted by a specified observation? |
+| C2 | Structural plausibility | Is the mechanism physically possible in the architecture? |
+| C3 | Convergent validity | Do multiple independent methods agree on the same components? |
+| C4 | Discriminant validity | Does the measure distinguish this construct from neighboring constructs? |
+| C5 | Nomological validity | Does the claim fit into a broader network of established relationships? |
+| C6 | Complementation validity | Are the construct's labeled subdivisions functionally distinct? |
 
-**Calibration:** No published circuit paper reports a selectivity ratio. This is the gap C3 is designed to close.
+C1–C2 define the construct: C1 requires that it be falsifiable, C2 that it be structurally possible given the architecture. C3–C4 position the construct relative to other constructs and other methods, transferring the multitrait-multimethod logic of Campbell and Fiske (1959). C5 embeds the construct in a nomological network in Cronbach and Meehl's sense. C6 asks whether subdivisions within the construct (e.g., "name-mover heads" vs. "backup name-mover heads" within the IOI circuit) are functionally distinct, borrowing from the complementation test in genetics (Benzer, 1955).
 
-## C4 — Minimality
+## Failure Examples
 
-> [Full criterion page →](/framework/criteria/construct/minimality)
+**Google Flu Trends (C1, M3).** Google Flu Trends correlated search-query volume with CDC influenza surveillance data and was initially accurate. Over time, the system became "part flu detector, part winter detector" — the construct drifted from influenza incidence to seasonal search behavior without any falsification condition that could have detected the shift. The failure is a construct validity failure: the target concept was not specified precisely enough to distinguish flu-driven queries from winter-driven queries, and no threshold was stated in advance that would have flagged the divergence.
 
-Every component must be individually necessary given the others.
+**Gender bias circuits (C4).** Work on gender bias circuits in language models presupposes that bias separates from gender competence — that a circuit implementing gendered-pronoun prediction can be isolated from a circuit implementing grammatical agreement. This separation was assumed, not tested. Similarly, a reported "deception feature" in a sparse autoencoder cannot be distinguished from an "uncertainty feature" because the two constructs predict the same activation pattern on the tested inputs. Both failures are discriminant validity failures: the construct was not shown to be distinguishable from a neighboring construct that makes overlapping predictions.
 
-**Pass condition:** For every $c_i \in C$, ablating $c_i$ while leaving all other members intact produces a performance decrease exceeding threshold $\delta$.
+**Attribution method disagreement (C3).** Krishna et al. applied six attribution methods to the same models and found that they disagree substantially on which components are important. The field has no framework for reading this disagreement as information about the instruments rather than noise to be averaged away. The failure is a convergent validity failure: if multiple independent methods do not agree on the same construct, either the methods are measuring different things or the construct is not well-defined enough to produce agreement. Without construct validity as an organizing frame, the disagreement is uninterpretable.
 
-**Formal definition:** Circuit $C = \{c_1, \ldots, c_n\}$ is minimal if and only if:
+## Cross-Disciplinary Foundations
 
-$$\forall \, c_i \in C: \quad F(C) - F(C \setminus \{c_i\}) > \delta$$
-
-where $F$ is the faithfulness score and $\delta$ is the minimum meaningful effect. A reasonable default is $\delta = 0.02$ (2% faithfulness drop).
-
-**Joint vs individual necessity:** Two components $c_i, c_j$ are jointly redundant if:
-
-$$F(C \setminus \{c_i\}) \approx F(C) \quad \text{and} \quad F(C \setminus \{c_j\}) \approx F(C) \quad \text{but} \quad F(C \setminus \{c_i, c_j\}) \ll F(C)$$
-
-This pattern indicates backup mechanisms. [Wang et al. (2022)](https://arxiv.org/abs/2211.00593) found this with IOI backup name-movers. Both components and their relationship should be reported.
-
-**Calibration:**
-
-| Circuit | Components | After pruning | Redundant members found |
-|---|---|---|---|
-| IOI ([Wang et al. 2022](https://arxiv.org/abs/2211.00593)) | 26 heads | ~20 core + 6 backup | Yes — backup name-movers |
-| Greater-Than ([Hanna et al. 2023](https://arxiv.org/abs/2305.00586)) | ~12 heads | Not reported | Not tested |
-
-## C5 — Convergent Validity
-
-> [Full criterion page →](/framework/criteria/construct/convergent-validity)
-
-Multiple independent metrics should identify the same components.
-
-**Pass condition:** $J(C_A, C_B) \geq 0.5$ between metrics from different evidence families.
-
-**Jaccard similarity:**
-
-$$J(C_A, C_B) = \frac{|C_A \cap C_B|}{|C_A \cup C_B|}$$
-
-| $J$ value | Interpretation |
+| Discipline | Transfer to construct validity |
 |---|---|
-| $J > 0.6$ | Strong convergent validity — methods agree on most components |
-| $0.3 \leq J \leq 0.6$ | Moderate — partial agreement, investigate discrepancies |
-| $J < 0.3$ | Weak — circuit is method-dependent |
-| $J \approx 0$ | Failed — methods identify different components entirely |
+| Philosophy of science | Falsifiability (C1), severe testing, and the confirmation/corroboration distinction — separating a test a claim was built to pass from one it could have failed |
+| Psychometrics | Convergent and discriminant validity from the multitrait-multimethod matrix (C3, C4); the nomological network requirement (C5) |
 
-**Independence requirement:** The two metrics must come from different [evidence families](/framework/evidence-families/) with non-overlapping major assumptions.
-
-| Valid pair | Why independent |
-|---|---|
-| Activation patching + weight-space analysis | Causal (interventionist) vs structural (static weights) |
-| DAS-IIA + SVD spectral analysis | Representational (learned subspace) vs structural (spectral) |
-| EAP + linear probe | Causal (gradient-based) vs representational (supervised) |
-
-| Invalid pair | Why dependent |
-|---|---|
-| Zero ablation + mean ablation | Both causal, both interventionist, share confound structure |
-| Activation patching + path patching | Same framework, one is a refinement of the other |
-
-**MTMM inequality ([Campbell & Fiske 1959](https://doi.org/10.1037/h0046016)):** For trait $i$ measured by methods $a$ and $b$, convergent validity requires:
-
-$$r_{ia, ib} > r_{ia, jb} \quad \text{for all } j \neq i$$
-
-Two methods should agree more about the same circuit than about different circuits measured by the same method. When this inequality fails, the method is driving the result more than the mechanism.
-
-**Calibration:**
-
-| Circuit pair | Methods | $J$ | Interpretation |
-|---|---|---|---|
-| IOI: patching vs structural analysis | Causal vs structural | ~0.67 | Strong convergent validity |
-| Induction heads: behavioral vs structural | Behavioral vs structural | High (qualitative) | Cross-model agreement supports convergent validity |
-
-## Partial-pass interpretation
-
-| Pattern | Criteria met | Interpretation | Recommended language |
-|---|---|---|---|
-| Pre-registered, structurally coherent, but single-method | C1, C2 | Well-defined construct, method-dependent identification | "Coherent construct, convergence not yet tested" |
-| Convergent, but not task-specific | C1, C5 | Real entity, but may be general-purpose | "Convergent but non-discriminant" |
-| Minimal and specific, but no convergence | C3, C4 | Task-specific finding from one method | "Task-specific by one metric, convergence needed" |
-| All met except falsifiability | C2–C5 | Strong post-hoc case, but not pre-registered | "Retrospectively well-supported, not prospectively falsifiable" |
-| None met | — | Label without construct backing | "Named but not validated as a construct" |
-
-## Protocol
-
-For a proposed circuit $C$ and behavior $B$:
-
-1. **C1.** State $(m, \tau, D)$ before collecting evidence.
-2. **C2.** For every named role, compute the relevant weight-space metric (CopyScore, attention fraction, or effect correlation). Flag mismatches.
-3. **C3.** Evaluate $F(C, T_{\text{off}})$ on at least one related task. Compute $S(C)$.
-4. **C4.** Per-component leave-one-out ablation. Report $F(C) - F(C \setminus \{c_i\})$ for each $c_i$.
-5. **C5.** Identify one method from a different evidence family. Compute $J(C_{\text{method 1}}, C_{\text{method 2}})$.
+The remaining six disciplines in the framework's theoretical foundations (causal inference, neuroscience, genetics, medical microbiology, pharmacology, mechanistic interpretability) ground other validity types. Construct validity draws primarily from philosophy of science and psychometrics because the question — is the concept well-defined? — is a question those two disciplines have addressed most directly.

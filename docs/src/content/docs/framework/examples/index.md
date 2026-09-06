@@ -1,92 +1,109 @@
 ---
 title: "Case Studies"
-description: "Thirteen published mechanistic claims evaluated through all five validity lenses."
+description: "Sixteen published mechanistic claims evaluated through all five validity types, with verdicts from Proposed through Triangulated."
 ---
 
 # Case Studies
 
-Each case study below takes a published mechanistic claim and evaluates it through all five validity lenses — construct, internal, external, measurement, and interpretive. The goal is not to rank papers but to show what the framework looks like in practice: where evidence is strong, where it is absent, and what the composite verdict means.
+Each case study takes a published mechanistic claim and evaluates it through all five validity types — construct, measurement, internal, external, and interpretive. The evaluation uses the framework's [36 criteria](/mechanistic-validity/framework/criteria/) and the [six-category status vocabulary](/mechanistic-validity/framework/criteria/) (Confirmed, Partially confirmed, Inconclusive, Disconfirmed, Untested, Not applicable). The verdict names what the claim has established and what caps it from advancing further.
 
-The case studies are ordered roughly by overall verdict strength, from the strongest claims to the weakest.
-
----
-
-## Validated (within scope)
-
-Claims with complete evidence across all lenses — limited only by scope.
-
-| Case Study | Claim | Key insight |
-|---|---|---|
-| [Grokking / Modular Addition](/framework/examples/examples/examples-grokking) | Fourier algorithm in toy transformer | The ceiling — what "fully understood" looks like. Every weight matrix explained. |
-| [Superposition](/framework/examples/examples/examples-superposition) | Features packed as near-orthogonal directions | Validated theory awaiting real-model confirmation. Toy → real gap is the open question. |
+Sixteen claims from fifteen papers are audited. No claim reaches [Validated](/mechanistic-validity/framework/verdicts/validated/). One reaches [Triangulated](/mechanistic-validity/framework/verdicts/triangulated/). Seven reach [Mechanistically Supported](/mechanistic-validity/framework/verdicts/mechanistically-supported/). Four are [Causally Suggestive](/mechanistic-validity/framework/verdicts/causally-suggestive/). Two are [Proposed](/mechanistic-validity/framework/verdicts/proposed/). Two are [Disconfirmed](/mechanistic-validity/framework/verdicts/disconfirmed/).
 
 ---
 
 ## Triangulated
 
-Evidence converges across multiple independent lenses.
+Evidence converges across multiple independent lines — no single method's failure collapses the claim.
 
-| Case Study | Claim | Key insight |
-|---|---|---|
-| [Induction Heads](/framework/examples/examples/examples-induction-heads) | Two-head composition for in-context copying | The gold standard in real models. Simple mechanism, broad replication, thick nomological network. |
+| Case Study | Claim | Verdict | Capping criteria |
+|---|---|---|---|
+| [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) | Two-head composition for in-context token copying | Triangulated | C6 (complementation), I3 (minimality), I10 (rescue), I12 (offset coupling) |
+
+Induction heads are the strongest claim in the corpus. The mechanism is confirmed across models, model sizes, and training checkpoints. Onset coupling (I11) is demonstrated via the phase transition in training loss. What caps it: complementation validity (C6) — the labeled subdivisions of the mechanism (previous-token heads, induction heads) have not been tested for functional distinctness — and three internal criteria that require training-history evidence the original work did not collect.
 
 ---
 
-## Causally suggestive
+## Mechanistically Supported
 
-Strong causal evidence with identifiable gaps preventing advancement.
+Necessity and sufficiency established with consistent methods; specificity at least partially confirmed.
 
-| Case Study | Claim | Key insight |
-|---|---|---|
-| [IOI Circuit](/framework/examples/examples/examples-ioi) | 26-head indirect object identification mechanism | Most thoroughly analyzed circuit. Strong I1/I2, but method-conditional and specificity untested. |
-| [Greater-Than](/framework/examples/examples/examples-greater-than) | Successor heads encoding ordinal year comparison | Best structural plausibility in MI. $W_{OV}$ ordering evidence is the model for C2. |
-| [Successor Heads](/framework/examples/examples/examples-successor-heads) | General-purpose ordinal mechanism across domains | Cross-domain generalization as convergent evidence. Stronger "natural kind" case than single-task circuits. |
-| [Copy Suppression](/framework/examples/examples/examples-copy-suppression) | Heads that actively suppress incorrect token copying | Unusually clean specificity — ablation produces a specific error type, not general degradation. |
-| [Docstring Circuit](/framework/examples/examples/examples-docstring) | Variable binding in Python docstrings | Illustrates label risk: "variable binding" vs. simpler "positional copying" not distinguished. |
-| [Knowledge Neurons / ROME](/framework/examples/examples/examples-knowledge-neurons) | Factual knowledge localized in MLP layers | A tool can work for the wrong reasons. Strong intervention, weak mechanistic story. |
-| [Othello World Model](/framework/examples/examples/examples-othello) | Linear board-state representation | Interpretive inflation: "world model" carries implications beyond "linearly decodable." |
+| Case Study | Claim | Verdict | Capping criteria |
+|---|---|---|---|
+| [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) | Heads that actively suppress incorrect token copying | Mech. Supported | I6 (double dissociation) |
+| [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) | Successor heads encoding ordinal year comparison | Mech. Supported | I5 (rival exclusion), I6 (double dissociation) |
+| [Modular Addition](/mechanistic-validity/framework/examples/examples-grokking) | Fourier multiplication algorithm in toy transformer | Mech. Supported | I6 (double dissociation) |
+| [Refusal Direction](/mechanistic-validity/framework/examples/examples-refusal-direction) | Single direction mediating safety refusal | Mech. Supported | I6 (double dissociation) |
+| [Successor Heads](/mechanistic-validity/framework/examples/examples-successor-heads) | General-purpose ordinal mechanism across domains | Mech. Supported | I6 (double dissociation) |
+| [Superposition](/mechanistic-validity/framework/examples/examples-superposition) | Features packed as near-orthogonal directions in toy models | Mech. Supported | I6 (double dissociation) |
+| [Global Workspace](/mechanistic-validity/framework/examples/examples-global-workspace) | Shared representational subspace (J-space) across tasks | Mech. Supported | I6 (double dissociation) |
+
+Double dissociation (I6) caps every claim at this tier. I6 requires a crossed design — two interventions, each breaking what the other spares — rather than an accumulation of evidence. It is scored as met or unmet with no partial credit, because each arm is already scored elsewhere (I1 for the necessity arm, M2 for the baseline arm). Across sixteen audited claims, I6 is met once: by the induction heads claim, via Feucht et al. (2025), three years after the origin paper.
+
+---
+
+## Causally Suggestive
+
+Necessity shown via causal intervention; sufficiency, specificity, or convergence not yet established.
+
+| Case Study | Claim | Verdict | Capping criteria |
+|---|---|---|---|
+| [Docstring Circuit](/mechanistic-validity/framework/examples/examples-docstring) | Variable binding in Python docstrings | Causally Suggestive | I4 (specificity) |
+| [Gender Bias Circuits](/mechanistic-validity/framework/examples/examples-gender-bias) | Bias localized in removable components | Causally Suggestive | E1 (intervention reach), I4 (specificity) |
+| [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) | 26-head indirect object identification mechanism | Causally Suggestive | E1 (intervention reach), I4 (specificity) |
+| [Othello Board State](/mechanistic-validity/framework/examples/examples-othello) | Linear board-state representation | Causally Suggestive | E1 (intervention reach) |
+
+The IOI circuit is the most thoroughly analyzed circuit in the literature. It demonstrates strong necessity (I1) and partial sufficiency (I2), but its headline faithfulness numbers are method-conditional: Miller et al. (2024) showed that 87% faithfulness under mean ablation drops below 50% under resample ablation. The ablation method is part of the claim.
 
 ---
 
 ## Proposed
 
-Claims where evidence has not yet established validity beyond initial identification.
+Structural or representational evidence only — no causal intervention establishes the mechanism.
 
-| Case Study | Claim | Key insight |
-|---|---|---|
-| [SAE Features](/framework/examples/examples/examples-sae-features) | Dictionary directions as computational units | Thin nomological network. Features may be properties of the dictionary, not the model. |
-| [Probing Classifiers](/framework/examples/examples/examples-probing) | Linear decodability implies representation | Measurement without intervention = no internal validity. Decodable ≠ encoded. |
-| [Gender Bias Circuits](/framework/examples/examples/examples-gender-bias) | Bias localized in removable components | Construct incoherence: bias and knowledge share circuits. The construct itself may not be separable. |
+| Case Study | Claim | Verdict | Capping criteria |
+|---|---|---|---|
+| [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) | Linear decodability implies representation | Proposed | I1 (necessity) |
+| [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) | Sparse autoencoder directions as computational units | Proposed | M2 (baseline separation) |
+
+Probing demonstrates that information is linearly accessible in the representation. It does not demonstrate that the model's own computation accesses it. SAE features face a measurement validity gap: SAEBench showed that some evaluation metrics score higher on random models than trained ones, undermining baseline separation (M2). Moving to Causally Suggestive requires establishing necessity via causal intervention and demonstrating that the measurement distinguishes learned structure from random baselines.
 
 ---
+
+## Disconfirmed
+
+A specific prediction of the claimed mechanism was tested and failed.
+
+| Case Study | Claim | Verdict | Capping criteria |
+|---|---|---|---|
+| [Induction Heads (General ICL)](/mechanistic-validity/framework/examples/examples-induction-heads-icl) | Induction heads implement general in-context learning | Disconfirmed | I1 (necessity) |
+| [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) | Factual knowledge localized in MLP neurons | Disconfirmed | I4 (specificity) |
+
+The induction heads claim has two readings. Token copying (the narrow claim) reaches Triangulated. General in-context learning (the broad claim) is Disconfirmed: induction heads are necessary for copying-based ICL but not for the broader capability. Knowledge neurons are Disconfirmed on specificity: the editing intervention that updates a fact also raises inter-relation perplexity, indicating that the "knowledge" is not localized in the way the name implies.
+
+---
+
+## Cross-cutting patterns
+
+### I6 caps the field
+
+Double dissociation (I6) is Untested in fifteen of sixteen claims and caps every claim that reaches Mechanistically Supported. The field rarely attempts the crossed design that I6 requires. The one claim that meets I6 — induction heads — advances to Triangulated.
+
+### I8 is universally Untested
+
+Confounding sensitivity (I8) asks how strong an unmeasured confounder would have to be to explain the observed result. No claim in the corpus reports this bound. The analogue in observational epidemiology is the E-value; in genetics, it is the sensitivity analysis for unmeasured confounding. The absence is not a verdict-capping failure (I8 is not gating for any tier), but it is a systematic gap.
+
+### The toy-model ceiling
+
+Modular addition and superposition reach Mechanistically Supported, not Validated, despite having complete mechanistic accounts within their toy-model scope. The gap is external validity: the account has not been confirmed in production-scale models. This is the field's central scaling challenge.
+
+### Interpretive inflation
+
+"World model" (Othello), "knowledge neuron" (Meng et al.), "deception feature" — labels that carry theoretical implications beyond what the evidence supports. The framework identifies these via [V4 Unlicensed labeling](/mechanistic-validity/framework/criteria/interpretive/unlicensed-labeling/): a name that imports a property the evidence did not measure.
 
 ## Reading the case studies
 
 Each case study follows the same structure:
 
 1. **Introduction** — what the claim is and why it matters
-2. **Five lens evaluations** — each with per-criterion verdicts (Pass / Partial / Not tested / Weak) and a summary table
-3. **Composite verdict** — a table showing the strongest and weakest criterion per lens, plus the overall verdict
-
-The per-criterion verdicts use consistent language:
-- **Pass** — evidence is present and sufficient
-- **Partial** — some evidence exists but with gaps
-- **Not tested** — this criterion was not evaluated in the published work
-- **Weak** — evidence exists but is inadequate or contradicted
-- **N/A** — the criterion does not apply to this type of claim
-
----
-
-## Patterns across case studies
-
-Several patterns emerge from evaluating these claims side by side:
-
-**The sufficiency gap.** Most circuits demonstrate necessity (I1) but not sufficiency (I2). Only induction heads and grokking demonstrate path-level or full sufficiency.
-
-**Method-conditional results.** IOI's headline numbers (87% faithfulness) are specific to mean ablation. [Miller et al. (2024)](https://arxiv.org/abs/2407.08734) show these drop below 50% under other methods. Ablation type is part of the claim.
-
-**The toy-model ceiling.** Grokking and superposition reach Validated — but only within toy scope. The gap between toy-model proof-of-concept and real-model confirmation is the field's central challenge.
-
-**Interpretive inflation.** "World model," "deception feature," "knowledge neuron" — labels that carry theoretical implications beyond what the evidence supports. The framework systematically identifies where labels exceed evidence (V5 scope honesty).
-
-**Construct incoherence.** Gender bias circuits fail not because evidence is lacking but because the construct itself cannot be separated from legitimate gender processing. Sometimes the right answer is "this question is not well-posed," not "we need more data."
+2. **Five validity-type evaluations** — each with per-criterion verdicts using the six-category status vocabulary (Confirmed, Partially confirmed, Inconclusive, Disconfirmed, Untested, Not applicable)
+3. **Composite verdict** — a table showing the verdict tier, capping criteria, and primary gap
