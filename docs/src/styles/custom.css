@@ -33,22 +33,8 @@ details.worked-example > summary::marker {
 }
 
 :root {
-  --sl-content-width: 50rem;
   --sl-font: 'Inter', system-ui, sans-serif;
   --sl-font-system-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --sl-color-accent-low: #2e1065;
-  --sl-color-accent: #7c3aed;
-  --sl-color-accent-high: #c4b5fd;
-}
-:root[data-theme='light'] {
-  --sl-color-accent-low: #ede9fe;
-  --sl-color-accent: #7c3aed;
-  --sl-color-accent-high: #4c1d95;
-}
-
-/* Hide dark/light mode toggle */
-starlight-theme-select {
-  display: none !important;
 }
 
 /* Tighter heading spacing */
