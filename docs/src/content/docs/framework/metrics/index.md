@@ -11,7 +11,7 @@ The 58 metrics are organized into six families, each producing a distinct kind o
 
 ## A. Causal (13 metrics)
 
-Metrics that intervene on the model's computation — ablation, patching, causal scrubbing — and measure the downstream effect. Causal metrics answer: **does this component matter for this behavior?**
+Metrics that intervene on the model's computation — [ablation](/mechanistic-validity/glossary/#ablation), [patching](/mechanistic-validity/glossary/#activation-patching), [causal scrubbing](/mechanistic-validity/glossary/#causal-scrubbing) — and measure the downstream effect. Causal metrics answer: **does this component matter for this behavior?**
 
 The family spans the full Pearl hierarchy: observational correlation (A10 Regularity/INUS), interventional effects (A01 SCM, A02 Counterfactual DAS, A03 Rubin CATE), and counterfactual reasoning (A11 Actual Cause). Information-theoretic causal measures (A07 Granger/TE, A08 PID) and structural discovery algorithms (A09 MDL/SLT, A13 Causal Discovery) provide complementary perspectives.
 
@@ -37,7 +37,7 @@ Faithfulness (D01), logit diff recovery (D02), and KL divergence (D03) measure h
 
 Metrics that characterize what information is encoded in the model's internal representations and how it is organized geometrically. Representational metrics answer: **what does this component represent, and how is that representation structured?**
 
-Distributed alignment search (E01 DAS-IIA) and linear probing (E02) test for specific features. Similarity measures (E03 RSA, E04 CKA, E05 Subspace Alignment) compare representational geometry across layers, models, or conditions. Dimensionality measures (E06 PCA, E07 Intrinsic Dimension, E08 Participation Ratio) and topological methods (E09 Persistent Homology) characterize the shape of representation space.
+[Distributed alignment search](/mechanistic-validity/glossary/#das) (E01 DAS-IIA) and [linear probing](/mechanistic-validity/glossary/#linear-probing) (E02) test for specific features. Similarity measures (E03 RSA, E04 CKA, E05 Subspace Alignment) compare representational geometry across layers, models, or conditions. Dimensionality measures (E06 PCA, E07 Intrinsic Dimension, E08 Participation Ratio) and topological methods (E09 Persistent Homology) characterize the shape of representation space.
 
 ## F. Measurement-Theoretic (8 metrics)
 

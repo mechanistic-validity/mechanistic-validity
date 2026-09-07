@@ -5,7 +5,7 @@ description: "Evidence from the model's internal state during a forward pass —
 
 # Activations
 
-Activation-based evidence comes from the model's internal state during computation: residual-stream vectors, attention patterns, MLP outputs, and any derived quantity (probes, SAE features, logit lens). This is the most heavily populated evidence family in current mechanistic interpretability — most published circuit-discovery and feature-analysis work lives here.
+Activation-based evidence comes from the model's internal state during computation: residual-stream vectors, attention patterns, MLP outputs, and any derived quantity (probes, [SAE](/mechanistic-validity/glossary/#sae) features, [logit lens](/mechanistic-validity/glossary/#logit-lens)). This is the most heavily populated evidence family in current mechanistic interpretability — most published circuit-discovery and feature-analysis work lives here.
 
 ## Observational
 
@@ -20,7 +20,7 @@ Methods that read internal state without modifying it:
 
 ### The probe wars
 
-The question "do probes find features the model actually uses?" is a construct-level question ([C4 Discriminant validity](/mechanistic-validity/framework/criteria/construct/discriminant-validity/)). A probe that achieves high accuracy on a classification task demonstrates that the information is *linearly accessible* in the representation. Whether the model's own computation *accesses* that information requires interventional evidence — typically activation patching or DAS-IIA. The observational finding motivates the interventional test; neither replaces the other.
+The question "do probes find features the model actually uses?" is a construct-level question ([C4 Discriminant validity](/mechanistic-validity/framework/criteria/construct/discriminant-validity/)). A probe that achieves high accuracy on a classification task demonstrates that the information is *linearly accessible* in the representation. Whether the model's own computation *accesses* that information requires interventional evidence — typically [activation patching](/mechanistic-validity/glossary/#activation-patching) or [DAS-IIA](/mechanistic-validity/glossary/#das). The observational finding motivates the interventional test; neither replaces the other.
 
 ## Interventional
 
@@ -34,7 +34,7 @@ Methods that modify internal state and observe consequences:
 
 ### The activation-patching ecosystem
 
-Most published causal evidence in mechanistic interpretability comes from variants of activation patching: path patching, causal tracing, causal scrubbing, ACDC, EAP, and attribution patching all belong to this cell. Different variants make different assumptions about what constitutes a "clean" counterfactual, how to handle indirect effects, and what granularity to patch at. Disagreements between methods ([E1 Intervention reach](/mechanistic-validity/framework/criteria/external/intervention-reach/)) are common and informative.
+Most published causal evidence in mechanistic interpretability comes from variants of activation patching: [path patching](/mechanistic-validity/glossary/#path-patching), causal tracing, [causal scrubbing](/mechanistic-validity/glossary/#causal-scrubbing), [ACDC](/mechanistic-validity/glossary/#attribution-patching), [EAP](/mechanistic-validity/glossary/#attribution-patching), and attribution patching all belong to this cell. Different variants make different assumptions about what constitutes a "clean" counterfactual, how to handle indirect effects, and what granularity to patch at. Disagreements between methods ([E1 Intervention reach](/mechanistic-validity/framework/criteria/external/intervention-reach/)) are common and informative.
 
 ## Relevant criteria
 
