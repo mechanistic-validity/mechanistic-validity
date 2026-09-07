@@ -61,7 +61,7 @@ To make the pipeline concrete, consider a typical claim: "Head L9H9 implements n
 
 2. **Evidence families.** Activation patching produces interventional evidence on *activations*. The original analysis also includes observational evidence on *weights* (QK/OV composition scores). No training-history or behavioral-profiling evidence is present.
 
-3. **Evidence.** Wang et al. (2022) run activation patching, path patching, and mean ablation. They do not run calibrations — no bootstrap stability, no random-vector baseline, no seed variance.
+3. **Evidence.** Wang et al. (2022) run [activation patching](/mechanistic-validity/glossary/#activation-patching), [path patching](/mechanistic-validity/glossary/#path-patching), and mean [ablation](/mechanistic-validity/glossary/#ablation). They do not run calibrations — no bootstrap stability, no random-vector baseline, no seed variance.
 
 4. **Criteria.** Necessity (I1) passes — ablating head L9H9 degrades logit difference. Sufficiency (I2) is partially addressed via circuit isolation. Specificity (I4) is weak — does ablating the IOI circuit also degrade unrelated tasks? This was not tested. Measurement reliability (M1) is unaddressed — the result is from a single random seed. Construct falsifiability (C1) is questionable — the circuit was defined by the same metrics used to evaluate it.
 
