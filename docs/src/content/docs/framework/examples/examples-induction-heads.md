@@ -23,11 +23,11 @@ description: "The induction head mechanism (Olsson et al. 2022) evaluated throug
 
 | Method | Our metric | Family |
 |---|---|---|
-| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Path patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| $W_{OV}$ CopyScore / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
-| $W_{QK}$ compositional analysis | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
-| Training dynamics (loss curve phase transition) | [D04 CE Delta](/framework/metrics/behavioral/d04-ce-delta) | Behavioral |
+| Ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Path patching | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| $W_{OV}$ CopyScore / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
+| $W_{QK}$ compositional analysis | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
+| Training dynamics (loss curve phase transition) | [D04 CE Delta](/framework/metrics/#d04) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

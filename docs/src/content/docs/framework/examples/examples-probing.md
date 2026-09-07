@@ -29,9 +29,9 @@ This case study illustrates a fundamental principle of the framework: **a measur
 
 | Method | Our metric | Family |
 |---|---|---|
-| Linear probing | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
-| Control tasks (Hewitt & Liang 2019) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
-| DAS / causal intervention along probe direction (Geiger et al.) | [E01 DAS-IIA](/framework/metrics/representational/e01-das-iia) | Representational |
+| Linear probing | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
+| Control tasks (Hewitt & Liang 2019) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
+| DAS / causal intervention along probe direction (Geiger et al.) | [E01 DAS-IIA](/framework/metrics/#e01) | Representational |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

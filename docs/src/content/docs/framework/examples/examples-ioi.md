@@ -25,12 +25,12 @@ Below, we evaluate this claim through each of the five validity lenses, applying
 
 | Method | Our metric | Family |
 |---|---|---|
-| Activation patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| Path patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| Mean ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
-| $W_{OV}$ / $W_{QK}$ decomposition | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
-| Logit difference | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
+| Activation patching | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Path patching | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Mean ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/#d02) | Behavioral |
+| $W_{OV}$ / $W_{QK}$ decomposition | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
+| Logit difference | [D02 Logit-Diff Recovery](/framework/metrics/#d02) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

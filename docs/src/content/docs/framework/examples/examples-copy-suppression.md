@@ -25,9 +25,9 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 | Method | Our metric | Family |
 |---|---|---|
-| Ablation (mean ablation) | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
-| $W_{OV}$ decomposition (anti-copying structure) | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| Ablation (mean ablation) | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/#d02) | Behavioral |
+| $W_{OV}$ decomposition (anti-copying structure) | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

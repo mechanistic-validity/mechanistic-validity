@@ -27,11 +27,11 @@ The gap to real models remains the central open question. SAE success is consist
 
 | Method | Our metric | Family |
 |---|---|---|
-| Weight geometry analysis (near-orthogonal feature directions) | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
-| Feature ablation (projection out of feature direction) | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Feature stimulation (activation addition) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| Phase diagram analysis (feature/dimension ratio) | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
-| Interference / crosstalk measurement | [C01 Mutual Information](/framework/metrics/information/c01-mutual-information) | Information |
+| Weight geometry analysis (near-orthogonal feature directions) | [B01 SVD/Spectral](/framework/metrics/#b01) | Structural |
+| Feature ablation (projection out of feature direction) | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Feature stimulation (activation addition) | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Phase diagram analysis (feature/dimension ratio) | [B01 SVD/Spectral](/framework/metrics/#b01) | Structural |
+| Interference / crosstalk measurement | [C01 Mutual Information](/framework/metrics/#c01) | Information |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

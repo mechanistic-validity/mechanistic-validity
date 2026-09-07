@@ -25,9 +25,9 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 | Method | Our metric | Family |
 |---|---|---|
-| Causal tracing (activation patching with noise) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| Rank-one model editing (ROME) | [A05 MDC/Glennan](/framework/metrics/causal/a05-mdc-glennan) | Causal |
-| MEMIT (multi-layer editing) | [A05 MDC/Glennan](/framework/metrics/causal/a05-mdc-glennan) | Causal |
+| Causal tracing (activation patching with noise) | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Rank-one model editing (ROME) | [A01 SCM](/framework/metrics/#a01) | Causal |
+| MEMIT (multi-layer editing) | [A01 SCM](/framework/metrics/#a01) | Causal |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

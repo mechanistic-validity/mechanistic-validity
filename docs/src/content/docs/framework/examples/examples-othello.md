@@ -27,8 +27,8 @@ This case study illustrates a pattern worth naming: **interpretive inflation** â
 
 | Method | Our metric | Family |
 |---|---|---|
-| Linear probing (board state recovery) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
-| Causal intervention / activation patching (board state) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Linear probing (board state recovery) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
+| Causal intervention / activation patching (board state) | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

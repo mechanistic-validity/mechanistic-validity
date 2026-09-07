@@ -25,9 +25,9 @@ This is interesting as a case study because it operates in a specific domain (co
 
 | Method | Our metric | Family |
 |---|---|---|
-| Activation patching | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Automated circuit discovery (ACDC) | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Activation patching | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Automated circuit discovery (ACDC) | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
