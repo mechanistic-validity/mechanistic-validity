@@ -21,7 +21,7 @@ Cross-task generalization asks whether the mechanism operates beyond the specifi
 Satisfied when:
 
 1. **Related tasks are identified and tested.** Tasks that share the hypothesized function but differ in surface form.
-2. **The mechanism operates on those tasks.** Ablation or patching shows the mechanism is causally involved in the related tasks.
+2. **The mechanism operates on those tasks.** [Ablation](/mechanistic-validity/glossary/#ablation) or patching shows the mechanism is causally involved in the related tasks.
 3. **The scope is bounded.** The claim states which tasks the mechanism covers and which it does not.
 
 ## MI example

@@ -20,7 +20,7 @@ Minimality asks whether the circuit is as small as it needs to be. A circuit whe
 
 Satisfied when:
 
-1. **Each component is individually ablated.** Every head, MLP, or feature in the proposed circuit is removed one at a time.
+1. **Each component is individually [ablated](/mechanistic-validity/glossary/#ablation).** Every head, MLP, or feature in the proposed circuit is removed one at a time.
 2. **Removing any component degrades behavior.** The target metric drops for each removal.
 3. **The threshold is stated.** What counts as "degrades" — a fixed delta, a percentage, a statistical test.
 

@@ -9,7 +9,7 @@ criterion_id: "I1"
 | | |
 |---|---|
 | Validity type | Internal |
-| Pass condition | Ablating the proposed component reliably degrades the target behavior, across ≥2 ablation methods |
+| Pass condition | [Ablating](/mechanistic-validity/glossary/#ablation) the proposed component reliably degrades the target behavior, across ≥2 ablation methods |
 | Evidence family | Causal |
 | Minimum reporting | Ablation method(s), metric, delta value(s), number of prompt samples |
 | Common failure mode | Reporting only one ablation method; not comparing zero, resample, and mean ablation |

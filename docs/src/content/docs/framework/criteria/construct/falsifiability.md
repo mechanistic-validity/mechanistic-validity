@@ -21,7 +21,7 @@ Falsifiability is the minimum condition for a claim to have determinate content.
 The criterion requires:
 
 1. **A stated disconfirmation condition** — a specific result that, if obtained, would lead the researcher to conclude the circuit claim is wrong. Must be stated *before* the disconfirmatory test is run.
-2. **A threshold** — quantitative or at minimum ordinal. "IIA < 0.10 above the random-vector baseline across three prompt splits" is acceptable; "IIA is not significantly different from baseline" is not.
+2. **A threshold** — quantitative or at minimum ordinal. "[IIA](/mechanistic-validity/glossary/#iia) < 0.10 above the random-vector baseline across three prompt splits" is acceptable; "IIA is not significantly different from baseline" is not.
 3. **Prior commitment** — the condition must be committed to before collecting the relevant data. A disconfirmation condition invented after a negative result is rationalization, not falsifiability.
 
 ## Why this is a construct criterion
@@ -30,11 +30,11 @@ Falsifiability lives under construct validity because the problem is about the *
 
 ## Worked example
 
-> **Falsification condition:** If DAS-IIA on a held-out prompt set (n ≥ 200 prompts, 3 random seeds) does not exceed the random-vector baseline by ≥ 0.10 in at least 2 of 3 seeds, the claim that the nominated component is a primary causal locus for the target task is disconfirmed.
+> **Falsification condition:** If [DAS-IIA](/mechanistic-validity/glossary/#das) on a held-out prompt set (n ≥ 200 prompts, 3 random seeds) does not exceed the random-vector baseline by ≥ 0.10 in at least 2 of 3 seeds, the claim that the nominated component is a primary causal locus for the target task is disconfirmed.
 
 ## Common failures
 
-**Too inclusive:** "The circuit is real unless ablation fails." A sufficiently large circuit almost never fails ablation — you can always add the ablated component back.
+**Too inclusive:** "The circuit is real unless [ablation](/mechanistic-validity/glossary/#ablation) fails." A sufficiently large circuit almost never fails ablation — you can always add the ablated component back.
 
 **Post-hoc:** The threshold was set after seeing the data.
 

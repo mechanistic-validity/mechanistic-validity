@@ -44,7 +44,7 @@ export default defineConfig({
             { label: 'Framework Overview', link: '/framework/' },
             { label: 'Using the Framework', link: '/using/' },
             { label: 'Glossary', link: '/glossary/' },
-            { label: 'About & Citation', link: '/about/' },
+            { label: 'About', link: '/about/' },
           ],
         },
         {
@@ -59,7 +59,9 @@ export default defineConfig({
                 { label: 'Psychometrics', link: '/framework/lenses/core/measurement-theory' },
                 { label: 'Neuroscience', link: '/framework/lenses/core/neuroscience' },
                 { label: 'Pharmacology', link: '/framework/lenses/core/pharmacology' },
+                { label: 'Causal Inference', link: '/framework/lenses/supporting/causal-inference' },
                 { label: 'Genetics', link: '/framework/lenses/supporting/genetics' },
+                { label: 'Medical Microbiology', link: '/framework/lenses/supporting/medical-microbiology' },
                 { label: 'Mechanistic Interpretability', link: '/framework/lenses/core/mechanistic-interpretability' },
               ],
             },

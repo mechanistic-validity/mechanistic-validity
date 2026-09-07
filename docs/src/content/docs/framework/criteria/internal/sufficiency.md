@@ -20,7 +20,7 @@ Sufficiency asks: does keeping *only* this component (ablating everything else) 
 
 Two operationalizations:
 
-**Circuit-only forward pass (complement ablation):** Ablate all components *not* in the proposed circuit. Measure whether the circuit alone produces the target behavior at ≥ 70% of the full-model level (threshold should be pre-stated per C1).
+**Circuit-only forward pass (complement [ablation](/mechanistic-validity/glossary/#ablation)):** Ablate all components *not* in the proposed circuit. Measure whether the circuit alone produces the target behavior at ≥ 70% of the full-model level (threshold should be pre-stated per C1).
 
 **Patching-in:** Start with a corrupted run. Patch the circuit's activations from a clean run into the corrupted run. Measure recovery. ≥ 70% of the clean-corrupted difference is a standard threshold.
 

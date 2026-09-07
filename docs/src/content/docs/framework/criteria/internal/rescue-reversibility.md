@@ -17,7 +17,7 @@ criterion_id: "I7"
 
 ## What this criterion requires
 
-Rescue reversibility tests whether corrupting the model broadly and then selectively restoring only the proposed circuit recovers the target behavior. This is a stronger test than sufficiency (I2): sufficiency isolates the circuit in an otherwise-ablated model, while rescue corrupts the model first and then asks whether restoring the circuit undoes the damage.
+Rescue reversibility tests whether corrupting the model broadly and then selectively restoring only the proposed circuit recovers the target behavior. This is a stronger test than sufficiency (I2): sufficiency isolates the circuit in an otherwise-[ablated](/mechanistic-validity/glossary/#ablation) model, while rescue corrupts the model first and then asks whether restoring the circuit undoes the damage.
 
 Satisfied when:
 

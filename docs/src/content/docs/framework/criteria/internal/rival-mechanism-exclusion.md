@@ -20,7 +20,7 @@ Causal intervention establishes that a component set is *a* sufficient mechanism
 
 Satisfied when either:
 
-1. **No rival achieves comparable faithfulness.** At least one alternative component set (of similar size) has been tested and achieves less than 80% of the target circuit's faithfulness under the same ablation regime. The gap is reported explicitly.
+1. **No rival achieves comparable faithfulness.** At least one alternative component set (of similar size) has been tested and achieves less than 80% of the target circuit's faithfulness under the same [ablation](/mechanistic-validity/glossary/#ablation) regime. The gap is reported explicitly.
 2. **Rivals exist and are declared.** Alternative component sets achieve comparable faithfulness, and the claim is explicitly scoped to "a sufficient mechanism" rather than "the mechanism." The rival circuits are named and their faithfulness reported.
 
 ## Why this is separate from V4 (Alternative Exclusion)
@@ -38,7 +38,7 @@ Without I6, a researcher who finds a faithful circuit has no obligation to test 
 ## How to test for rivals
 
 1. **Permutation test:** Randomly sample component sets of the same size as the proposed circuit. Measure faithfulness for each. If the proposed circuit is in the top 1% of random samples, it is meaningfully better than chance — but other high-performing sets may exist.
-2. **Greedy re-discovery:** Run the circuit discovery procedure (ACDC, EAP, attribution patching) with different random seeds or hyperparameters. If different runs return substantially different component sets with comparable faithfulness, the decomposition is non-unique.
+2. **Greedy re-discovery:** Run the circuit discovery procedure (ACDC, EAP, [attribution patching](/mechanistic-validity/glossary/#attribution-patching)) with different random seeds or hyperparameters. If different runs return substantially different component sets with comparable faithfulness, the decomposition is non-unique.
 3. **Complementary discovery:** Run a *different* discovery method on the same task. If method A and method B return different component sets (low Jaccard overlap) but both achieve high faithfulness, neither is "the" circuit.
 
 ## Relation to other criteria

@@ -20,7 +20,7 @@ Running one metric and claiming a circuit is not enough. Convergent validity req
 
 Satisfied when:
 
-1. **≥2 metrics from different evidence families** have been run. Two ablation variants (both causal) do not satisfy — they measure the same thing differently. Metrics must come from different epistemic traditions: e.g., causal + structural, or representational + behavioral.
+1. **≥2 metrics from different evidence families** have been run. Two [ablation](/mechanistic-validity/glossary/#ablation) variants (both causal) do not satisfy — they measure the same thing differently. Metrics must come from different epistemic traditions: e.g., causal + structural, or representational + behavioral.
 2. **The metrics agree on component membership.** Jaccard ≥ 0.5 is a reasonable pass threshold for circuits of ≤ 20 components.
 3. **Disagreement is treated as a finding.** Low Jaccard overlap must be reported as a primary result and investigated — not silently resolved by choosing the preferred metric.
 
@@ -38,9 +38,9 @@ All three interpretations are scientifically important. Convergent validity is f
 
 | Metric type | Evidence family |
 |---|---|
-| Attribution patching | Causal |
-| DAS-IIA | Representational |
-| Weight-space analysis (SVD, composition scores) | Structural |
+| [Attribution patching](/mechanistic-validity/glossary/#attribution-patching) | Causal |
+| [DAS-IIA](/mechanistic-validity/glossary/#das) | Representational |
+| Weight-space analysis (SVD, [composition scores](/mechanistic-validity/glossary/#composition-score)) | Structural |
 | Activation statistics (LLC, probe accuracy) | Structural / Representational |
 | Bootstrap stability | Measurement |
 

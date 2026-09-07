@@ -16,7 +16,7 @@ criterion_id: "I12"
 
 ## What this criterion requires
 
-Offset coupling is the converse of onset coupling (I11). It asks: if the capability is removed — by fine-tuning, by ablation, by catastrophic forgetting — does the mechanism go away too? A mechanism that persists after the capability is gone is not tightly coupled to it.
+Offset coupling is the converse of onset coupling (I11). It asks: if the capability is removed — by fine-tuning, by [ablation](/mechanistic-validity/glossary/#ablation), by catastrophic forgetting — does the mechanism go away too? A mechanism that persists after the capability is gone is not tightly coupled to it.
 
 Satisfied when:
 

@@ -9,7 +9,7 @@ criterion_id: "I3"
 | | |
 |---|---|
 | Validity type | Internal |
-| Pass condition | The effect is selective; control-axis IIA ≈ 0 while causal-axis IIA is high |
+| Pass condition | The effect is selective; control-axis [IIA](/mechanistic-validity/glossary/#iia) ≈ 0 while causal-axis IIA is high |
 | Evidence family | Representational (multi-axis IIA), Causal (cross-task ablation) |
 | Minimum reporting | Control-axis IIA value; comparison to causal-axis IIA; ideally both representational and behavioral specificity tests |
 | Common failure mode | Showing necessity without any control task or control axis test |
@@ -22,7 +22,7 @@ Two operationalizations:
 
 **Representational specificity (multi-axis IIA):** Define a causal axis (e.g., subject number) and a control axis (e.g., object number or verb number). Run IIA on each axis using the same subspace. Specificity requires: causal-axis IIA high (above baseline), control-axis IIA near zero.
 
-**Behavioral specificity (cross-task ablation):** Run the same ablation on an unrelated control task at equal intervention strength. Specificity requires: ablation degrades the target task substantially more than the control.
+**Behavioral specificity (cross-task [ablation](/mechanistic-validity/glossary/#ablation)):** Run the same ablation on an unrelated control task at equal intervention strength. Specificity requires: ablation degrades the target task substantially more than the control.
 
 ## The failure mode specificity catches
 

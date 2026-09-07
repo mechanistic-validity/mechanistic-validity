@@ -37,9 +37,9 @@ Required criteria: I1, I2, I3, M3
 
 | Criterion | Status | Evidence |
 |---|---|---|
-| I1 Necessity | **Partial** — one ablation method only | Zero ablation only; resample not run |
+| I1 Necessity | **Partial** — one [ablation](/mechanistic-validity/glossary/#ablation) method only | Zero ablation only; resample not run |
 | I2 Sufficiency | **Open** — circuit-only forward pass not run | — |
-| I3 Specificity | **Open** — control-axis IIA not computed | — |
+| I3 Specificity | **Open** — control-axis [IIA](/mechanistic-validity/glossary/#iia) not computed | — |
 | M3 Baseline separation | **Open** — random-vector baseline not computed | — |
 
 **Verdict:** Evidence does not yet license `[causal-mechanistic]`. Current justified tag: `[representational]` for L8.MLP as an SVA-associated subspace. Upgrade path: run I2 (complement ablation), I3 (control-axis IIA), M3 (random-vector baseline).

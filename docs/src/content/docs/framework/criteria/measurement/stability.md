@@ -16,7 +16,7 @@ criterion_id: "M3"
 
 ## What this criterion requires
 
-Stability asks whether the measurement outcome changes when the analyst makes different defensible choices — a different threshold, a different number of components, a different ablation method. A result that holds under one configuration but flips under another is not stable.
+Stability asks whether the measurement outcome changes when the analyst makes different defensible choices — a different threshold, a different number of components, a different [ablation](/mechanistic-validity/glossary/#ablation) method. A result that holds under one configuration but flips under another is not stable.
 
 Satisfied when:
 

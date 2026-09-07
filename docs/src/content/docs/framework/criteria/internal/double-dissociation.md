@@ -16,7 +16,7 @@ criterion_id: "I6"
 
 ## What this criterion requires
 
-A double dissociation is a crossed design from neuropsychology (Shallice, 1988). It requires two interventions and two tasks: intervention A breaks task 1 but spares task 2; intervention B breaks task 2 but spares task 1. This rules out the possibility that either intervention is simply damaging the system generally.
+A [double dissociation](/mechanistic-validity/glossary/#double-dissociation) is a crossed design from neuropsychology (Shallice, 1988). It requires two interventions and two tasks: intervention A breaks task 1 but spares task 2; intervention B breaks task 2 but spares task 1. This rules out the possibility that either intervention is simply damaging the system generally.
 
 Scored as met or unmet — no partial credit. Each half is already scored elsewhere (I1 for the necessity arm, M2 for the baseline arm).
 
@@ -24,7 +24,7 @@ Satisfied when:
 
 1. **Two interventions are identified.** Circuit A and circuit B, or component A and component B.
 2. **Two tasks are identified.** Task 1 and task 2, matched for difficulty.
-3. **The crossed pattern holds.** Ablating A breaks task 1 but not task 2; ablating B breaks task 2 but not task 1.
+3. **The crossed pattern holds.** [Ablating](/mechanistic-validity/glossary/#ablation) A breaks task 1 but not task 2; ablating B breaks task 2 but not task 1.
 
 ## MI example
 

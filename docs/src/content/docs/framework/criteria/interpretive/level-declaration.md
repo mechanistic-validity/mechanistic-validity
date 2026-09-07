@@ -23,7 +23,7 @@ The five description mode tags (from [../taxonomy/](../taxonomy/)):
 | Tag | Meaning | Minimum validity requirements |
 |---|---|---|
 | `[functional]` | Describes input-output behavior without mechanism | None beyond behavioral evidence |
-| `[representational]` | Claims a variable is encoded at a component | Baseline-separated IIA or equivalent |
+| `[representational]` | Claims a variable is encoded at a component | Baseline-separated [IIA](/mechanistic-validity/glossary/#iia) or equivalent |
 | `[causal-mechanistic]` | Claims a component causally implements a computation | Necessity + sufficiency established |
 | `[structural-mechanistic]` | Claims a component's weights implement a computation | Structural plausibility + causal support |
 | `[transportable]` | Claims the mechanism generalizes across contexts | At least one robustness result |

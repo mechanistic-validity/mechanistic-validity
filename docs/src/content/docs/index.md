@@ -49,4 +49,4 @@ Mechanistic Validity evaluates the evidence behind a mechanistic claim — wheth
 - [**Framework Overview**](/mechanistic-validity/framework/) — the pipeline, validity types, criteria, and verdict tiers
 - [**Using the Framework**](/mechanistic-validity/using/) — how to apply it to a claim, step by step
 - [**Case Studies**](/mechanistic-validity/framework/examples/) — sixteen audited claims from fifteen papers, with full scorecards
-- [**About & Citation**](/mechanistic-validity/about/) — how to cite this work
+- [**About**](/mechanistic-validity/about/) — about this project, how to cite it, disclaimers
