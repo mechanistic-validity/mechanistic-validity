@@ -1,19 +1,17 @@
 ---
 title: "Overview"
-description: "Mechanistic Validity: a framework for evaluating circuit claims in mechanistic interpretability."
+description: "Mechanistic Validity: a validity theory and evidence standard for mechanistic claims."
 ---
 
 # Mechanistic Validity
 
-Mechanistic Validity is a framework for evaluating claims about circuits in neural networks. It provides a six-layer evaluation pipeline, five validity types (each rooted in a distinct scientific tradition), 36 criteria, and a structured verdict system. Its purpose is to make explicit which part of a mechanistic claim a given measurement supports and which parts remain unaddressed.
+### What evidence licenses a mechanistic claim?
 
-The framework does not introduce new measurement methods. It organizes existing methods — ablation, activation patching, DAS-IIA, causal scrubbing, weight analysis, baseline calibration — under a common evaluative vocabulary drawn from the standard typology of validity in philosophy of science and adapted to the conditions of mechanistic interpretability.
+A circuit paper reports an activation-patching score and names a mechanism. What has that number established? The answer depends on what kind of claim is being made, what other evidence exists, and what the measurement itself is known to do — questions that fields from genetics to pharmacology have answered for their own claims, but that mechanistic interpretability has not yet answered for its own.
 
-## What the framework is for
+**Mechanistic Validity** is a validity theory and evidence standard for mechanistic claims. It adapts criteria from eight fields into 36 falsifiable conditions under five validity types — construct, measurement, internal, external, and interpretive — each dependent on the ones before it.
 
-The framework applies to claims of the form *component C implements computation T in model M*. Such claims are made routinely in circuit-discovery papers and are typically supported by a small number of metrics — most often activation patching plus one form of ablation. The framework specifies what additional evidence is required for the claim to be considered validated under each of five named dimensions, and what verdict is licensed when only a subset of that evidence is present.
-
-A single high score does not validate a circuit claim. Validation is a pattern of evidence across multiple dimensions, and a claim is only as strong as the dimension on which it has the weakest support.
+The framework works in two directions: **auditing** a published claim to identify what the evidence record warrants and what caps it, and planning new experiments to target the gap that would most change the verdict.
 
 ## The evaluation pipeline
 
@@ -28,18 +26,27 @@ The pipeline has six layers. Layers 1–2 scope the claim. Layer 3 produces evid
 | 5 | [Validity types](/mechanistic-validity/framework/validity-types/) | Which dimensions of validity does it address? |
 | 6 | [Verdicts](/mechanistic-validity/framework/verdicts/) | What has the claim established? |
 
-The five **validity types** form a dependency chain: Construct → Measurement → Internal → External → Interpretive. A failure early in the chain limits what later evidence can establish: an ambiguous construct cannot be reliably measured, an unreliable measurement cannot support a causal inference, and so on.
+<p align="center">
+  <img src="/mechanistic-validity/figures/v2/pipeline-horizontal.png" alt="Mechanistic Validity Pipeline — six layers from description mode through verdict" style="max-width: 900px; width: 100%;"/>
+</p>
 
-The 36 **criteria** — 6 construct, 7 measurement, 12 internal, 6 external, 5 interpretive — are the specific, falsifiable conditions within each validity type. Each draws from a distinct scientific tradition: philosophy of science and psychometrics for construct validity, causal inference and neuroscience for internal validity, pharmacology for external validity, and Marr's levels for interpretive validity.
+The five validity types form a dependency chain: Construct → Measurement → Internal → External → Interpretive. A failure early in the chain limits what later evidence can establish: an ambiguous construct cannot be reliably measured, an unreliable measurement cannot support a causal inference, and so on.
+
+The 36 criteria — 6 construct, 7 measurement, 12 internal, 6 external, 5 interpretive — are the specific, falsifiable conditions within each validity type. Each draws from a distinct scientific tradition: philosophy of science and psychometrics for construct validity, causal inference and neuroscience for internal validity, pharmacology for external validity, and interpretability itself for interpretive validity.
 
 ## Sixteen audited case studies
 
-We audit sixteen published mechanistic claims across fifteen papers. No claim reaches Validated. One claim — induction heads for token copying — reaches Triangulated. Seven reach Mechanistically Supported. The capping criterion for every Mechanistically Supported claim is I6 (double dissociation): the field rarely attempts crossed designs. I8 (confounding sensitivity) is untested in all sixteen.
+We audited sixteen published mechanistic claims across fifteen papers. No claim reaches Validated. One claim — induction heads for token copying — reaches Triangulated. Seven reach Mechanistically Supported. The capping criterion for every Mechanistically Supported claim is I6 (double dissociation): the field rarely attempts crossed designs. I8 (confounding sensitivity) is untested in all sixteen.
 
 See the [case studies](/mechanistic-validity/framework/examples/) for the full verdicts and per-criterion scoring.
 
-## What the framework is not
+## Relationship to Mechanistic Views
 
-The framework does not rank circuits. It produces a structured verdict — a pattern of which dimensions have evidence and which do not — rather than a scalar score. Two circuits with the same scalar faithfulness can have very different verdict structures.
+Mechanistic Validity evaluates the evidence behind a mechanistic claim — whether the measurement is reliable, the causal interpretation is justified, the result generalizes within its stated scope, and the description matches what was tested. [Mechanistic Views](https://mechanistic-views.github.io/mechanistic-views/) defines what a mechanism is — what kind of object is it, when two mechanisms are the same, and what formalism expresses the claim. The frameworks are independent, but when used together they complement each other: what kind of mechanism is being claimed, and how strong is the evidence supporting it.
 
-The framework does not assume any particular discovery method is correct. Activation patching, EAP, DAS-IIA, weight classifiers, and causal scrubbing all appear as metrics that produce evidence for one or more criteria. None is privileged; each metric establishes evidence for specific criteria.
+## Reading path
+
+- [**Framework Overview**](/mechanistic-validity/framework/) — the pipeline, validity types, criteria, and verdict tiers
+- [**Using the Framework**](/mechanistic-validity/using/) — how to apply it to a claim, step by step
+- [**Case Studies**](/mechanistic-validity/framework/examples/) — sixteen audited claims from fifteen papers, with full scorecards
+- [**About & Citation**](/mechanistic-validity/about/) — how to cite this work
