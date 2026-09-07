@@ -7,7 +7,7 @@ description: "A framework for evaluating whether mechanistic interpretability cl
 
 Most circuit claims in mechanistic interpretability rest on a single type of evidence: we ablated something and behavior changed. This is a causal observation — and it is real — but it is not enough to conclude that the component *implements* the computation, that the measurement is *trustworthy*, that the finding *generalizes*, or that the explanation is stated at the *right level of abstraction*. Each of these is a distinct way a claim can fail, and each requires its own evidence.
 
-The mechanistic validity framework makes these failure modes explicit. It provides a seven-layer pipeline for evaluating a circuit claim, from scoping the claim through issuing a verdict, and it names the five independent dimensions along which a claim can succeed or fail.
+The mechanistic validity framework makes these failure modes explicit. It provides a six-layer pipeline for evaluating a circuit claim, from scoping the claim through issuing a verdict, and it names the five independent dimensions along which a claim can succeed or fail.
 
 The framework applies to claims of the form *component C implements computation T in model M*. It does not rank circuits or privilege any particular discovery method. It produces a structured verdict — a pattern of which dimensions have evidence and which do not — rather than a scalar score.
 
@@ -17,37 +17,16 @@ The framework applies to claims of the form *component C implements computation 
   <img src="/mechanistic-validity/figures/v2/pipeline-horizontal.png" alt="Mechanistic Validity Pipeline — five steps from description mode through verdict" width="800"/>
 </p>
 
-The pipeline has seven layers. Layers 1–2 are **scoping** — you do them once to constrain what the claim is and what evidence is relevant. Layer 3 is the **work** — iteratively producing evidence. Layers 4–6 are **scoring** — deterministic given the evidence. Layer 7 is the **verdict**.
+The pipeline has six layers. Layers 1–2 scope the claim. Layer 3 produces evidence. Layers 4–5 score it. Layer 6 issues a verdict.
 
 | Layer | Name | Question |
 |---|---|---|
-| 1 | [Description mode](/mechanistic-validity/framework/description-modes/) | At what level is the claim stated — computational, algorithmic, or implementational? |
-| 2 | [Evidence families](/mechanistic-validity/framework/evidence-families/) | Which sources of signal support it — weights, activations, behavior, or training history? |
+| 1 | [Description modes](/mechanistic-validity/framework/description-modes/) | At what level is the claim stated? |
+| 2 | [Evidence families](/mechanistic-validity/framework/evidence-families/) | Which sources of signal support it? |
 | 3 | [Metrics](/mechanistic-validity/framework/metrics/) | What was concretely measured? |
-| 4 | [Criteria](/mechanistic-validity/framework/criteria/) | Does the evidence meet the stated conditions? 36 criteria across five validity types. |
+| 4 | [Criteria](/mechanistic-validity/framework/criteria/) | Does the evidence meet the stated conditions? |
 | 5 | [Validity types](/mechanistic-validity/framework/validity-types/) | Which dimensions of validity does it address? |
-| 6 | Synthesis | How is evidence aggregated across methods? |
-| 7 | [Verdict](/mechanistic-validity/framework/verdicts/) | What has the claim established — from *Proposed* through *Validated*? |
-
-The real structure is a two-phase loop:
-
-```
-Scoping (once)
-  1. Description Mode    ← what level is the claim at?
-  2. Evidence Families   ← which source × mode cells are relevant?
-
-Phase 1 — Evidence (iterate)
-  3. Run metrics, calibrations, protocols
-     → check which criteria are weak → gather more if needed
-
-Phase 2 — Scoring (deterministic)
-  4. Score 36 criteria against the evidence
-  5. Aggregate by validity type
-  6. Synthesize across methods
-  7. Issue verdict
-```
-
-You loop Phase 1 until you have enough evidence. Phase 2 is mechanical: the same evidence always produces the same verdict.
+| 6 | [Verdicts](/mechanistic-validity/framework/verdicts/) | What has the claim established? |
 
 ### Running example: activation patching on the IOI circuit
 
