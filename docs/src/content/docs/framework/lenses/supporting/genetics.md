@@ -14,7 +14,7 @@ These techniques map directly onto mechanistic interpretability interventions. A
 There is a disanalogy worth naming. In genetics, a knockout is permanent: the organism develops without the gene from the start, and compensatory mechanisms may or may not emerge over developmental time. In neural networks, ablation is instantaneous: the component is present during all of training and is removed only at inference. This means that neural network "knockouts" are closer to acute pharmacological blockade than to developmental gene deletion. The network never had the chance to develop compensatory pathways around the missing component, so the observed effect may overstate the component's true irreplaceability. Rescue experiments partially address this — if restoring the component recovers behavior after corruption, the deficit was not merely distributional disruption but a genuine loss of computational capacity.
 
 :::note
-For the full metrics and protocols reference, see [Genetics -- Metrics & Protocols](/framework/lenses/supporting/genetics-metrics).
+For the full metrics and protocols reference, see [Genetics -- Metrics & Protocols](/mechanistic-validity/framework/metrics/).
 :::
 
 ## Key Distinctions
@@ -76,7 +76,7 @@ To construct the matrix: for each pair $(c_i, c_j)$ in the circuit, ablate $c_i$
 | [Costanzo et al., "The genetic landscape of a cell"](https://doi.org/10.1126/science.1180823) | 2010 | Systems Biology | **Systematic genetic interactions** — genome-wide pairwise knockout screen in yeast; interaction profiles cluster genes into functional modules; epistasis reveals pathway structure |
 | [Staiger & Stock, "Instrumental variables regression with weak instruments"](https://doi.org/10.2307/2171753) | 1997 | Econometrics | **Weak instrument diagnostics** — F-statistic $> 10$ rule for instrument relevance; weak instruments produce biased IV estimates |
 
-## Validity type: [Internal validity](/framework/validity-types/internal)
+## Validity type: [Internal validity](/mechanistic-validity/framework/validity-types/internal)
 
 > **Genetic pathway as mechanism ([Hartwell et al. 1999](https://doi.org/10.1038/35011540)):** A genetic pathway is a module — a set of genes whose products interact to perform a discrete biological function. The pathway is identified not by individual gene knockouts alone, but by the *pattern* of epistatic interactions among its members and the *reversibility* of its disruption. A circuit in MI that passes knockout (necessity), rescue (reversibility), and epistasis (non-additive interaction) has the causal structure of a genetic pathway.
 
@@ -248,4 +248,4 @@ A skipped step must be named in the verdict.
 
 ## Case Studies
 
-- [IOI Circuit](/framework/examples/examples/examples-ioi) -- epistasis between name-mover and S-inhibition heads; rescue via activation patching; partial knockout ordering from the Wang et al. circuit graph
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) -- epistasis between name-mover and S-inhibition heads; rescue via activation patching; partial knockout ordering from the Wang et al. circuit graph

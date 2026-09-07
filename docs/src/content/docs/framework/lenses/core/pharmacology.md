@@ -9,12 +9,12 @@ This lens asks one question: **how much effect, at what strength, on what target
 
 When we ablate a circuit component and report a behavioral change, we are making a claim with a structure pharmacology recognized over a century ago: *this intervention, at this site, through this mechanism, produces this effect.* The entire history of drug development is a history of learning what goes wrong when we report that claim incompletely — when we skip the step of confirming the drug reaches its target, when we report one dose instead of a curve, when we measure on-target effects without measuring off-target ones.
 
-[External validity](/framework/validity-types/external) is the pharmacological question: not whether the effect is real (that is [internal validity](/framework/validity-types/internal)), but how much effect, at what strength, on what target, with what margin. A circuit that satisfies every internal-validity criterion at a single intervention strength can still fail here. The effect may not scale. It may disappear in a different model. Its absolute magnitude may be too small to support the computational story.
+[External validity](/mechanistic-validity/framework/validity-types/external) is the pharmacological question: not whether the effect is real (that is [internal validity](/mechanistic-validity/framework/validity-types/internal)), but how much effect, at what strength, on what target, with what margin. A circuit that satisfies every internal-validity criterion at a single intervention strength can still fail here. The effect may not scale. It may disappear in a different model. Its absolute magnitude may be too small to support the computational story.
 
 There is also a disanalogy worth naming. A drug in a living organism faces degradation, metabolism, plasma protein binding, and blood-brain barrier transport. A steering vector or ablation in a language model does not — the intervention reaches its target instantaneously and completely (by construction), so target engagement is trivially satisfied at the level of the ablation. What is not trivially satisfied is *selective* engagement: ablating a head removes everything it does, not just the computation we are interested in. In MI, the target is a specific subspace or computation — not the component as a whole. Ablating an entire head removes everything it does, not just the one computation we care about. Confirming that an intervention engages the specific target subspace (rather than the full component) is the MI analog of confirming target selectivity in pharmacology.
 
 :::note
-For the full metrics and protocols reference, see [Pharmacology -- Metrics & Protocols](/framework/lenses/core/pharmacology-metrics).
+For the full metrics and protocols reference, see [Pharmacology -- Metrics & Protocols](/mechanistic-validity/framework/metrics/).
 :::
 
 ## Key Distinctions
@@ -74,7 +74,7 @@ To construct the curve: sweep α from 0 to 1 in increments (e.g., 0.05), measuri
 | [Rang, "The receptor concept: pharmacology's big idea"](https://doi.org/10.1038/nrd2009) | 2006 | Pharmacology | **Target classification criteria** — naming a new drug target requires standardized evidence (selective ligand, functional assay, genetic validation); naming without criteria is labeling without content |
 | [Miller, Chughtai & Saunders, "Transformers are uninterpretable with myopic methods"](https://arxiv.org/abs/2407.08734) | 2024 | Mechanistic Interpretability | **Faithfulness as a joint property** — circuit faithfulness is a function of circuit $\times$ ablation method; absolute magnitude must be reported with the method named |
 
-## Validity type: [External validity](/framework/validity-types/external)
+## Validity type: [External validity](/mechanistic-validity/framework/validity-types/external)
 
 > **The Hill equation:** $E = E_{\max} \cdot C^n / (C^n + \text{EC}_{50}^n)$, where $E$ is the effect, $C$ is the intervention strength, $E_{\max}$ is the maximal response, $\text{EC}_{50}$ is the strength producing half-maximal effect, and $n$ controls the curve's steepness. In MI: $C$ is the ablation fraction, steering multiplier, or patching proportion; $E$ is the behavioral metric.
 
@@ -222,10 +222,10 @@ A skipped step must be named in the verdict.
 
 For full worked examples applying all five lenses (including external validity) to published claims:
 
-- [IOI Circuit](/framework/examples/examples/examples-ioi) — method-conditional faithfulness; single-dose reporting
-- [Induction Heads](/framework/examples/examples/examples-induction-heads) — cross-architecture generalization demonstrated
-- [Greater-Than](/framework/examples/examples/examples-greater-than) — effect magnitude well-characterized
-- [Successor Heads](/framework/examples/examples/examples-successor-heads) — cross-domain generalization as convergent evidence
-- [Copy Suppression](/framework/examples/examples/examples-copy-suppression) — unusually clean selectivity
-- [Grokking](/framework/examples/examples/examples-grokking) — full dose-response in toy scope
-- [Knowledge Neurons](/framework/examples/examples/examples-knowledge-neurons) — strong intervention, weak selectivity
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — method-conditional faithfulness; single-dose reporting
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — cross-architecture generalization demonstrated
+- [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) — effect magnitude well-characterized
+- [Successor Heads](/mechanistic-validity/framework/examples/examples-successor-heads) — cross-domain generalization as convergent evidence
+- [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — unusually clean selectivity
+- [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — full dose-response in toy scope
+- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — strong intervention, weak selectivity

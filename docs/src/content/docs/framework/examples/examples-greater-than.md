@@ -13,22 +13,22 @@ This is a structural-level claim with algorithmic aspects: it names specific wei
 
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
-| Construct (Phil. Sci.) | C2 Structural plausibility | C5 Convergent validity | Strong |
-| Internal (Neuroscience) | I1 Necessity | I5 Confound control | Causally suggestive |
-| External (Pharmacology) | E4 Effect magnitude | E1/E6 Reach + Cross-arch | Partial |
-| Measurement (Measurement Theory) | M3/M4 Separation + Sensitivity | M1/M5 Reliability + Calibration | Partial |
-| Interpretive (MI) | V2 Level-evidence match | V4 Alternative exclusion | Strong |
+| Construct (Phil. Sci.) | C2 Structural plausibility | C3 Convergent validity | Strong |
+| Internal (Neuroscience) | I1 Necessity | I7 Confound control | Causally suggestive |
+| External (Pharmacology) | E5 Graded response | E1/E4 Reach + Cross-model | Partial |
+| Measurement (Measurement Theory) | M2/M5 Separation + Sensitivity | M1/M4 Reliability + Calibration | Partial |
+| Interpretive (MI) | V2 Level-evidence match | V3 Alternative level | Strong |
 
-**Overall verdict: Mechanistically Supported.** The Greater-Than circuit's distinguishing strength is structural plausibility (C2) — the $W_{OV}$ ordering evidence is among the most precise weight-space characterizations published. This makes it a model case for how structural evidence can support an algorithmic claim. The capping criteria are I5 (rival mechanism exclusion) and I6 (double dissociation): no crossed design has been attempted and no rival mechanism has been formally excluded. The honest scope investigation (generalization to other ordinal tasks) is a genuine strength that most papers lack.
+**Overall verdict: Mechanistically Supported.** The Greater-Than circuit's distinguishing strength is structural plausibility (C2) — the $W_{OV}$ ordering evidence is among the most precise weight-space characterizations published. This makes it a model case for how structural evidence can support an algorithmic claim. The capping criteria are I7 (rival mechanism exclusion) and I6 (double dissociation): no crossed design has been attempted and no rival mechanism has been formally excluded. The honest scope investigation (generalization to other ordinal tasks) is a genuine strength that most papers lack.
 
 ## Metrics used in original work
 
 | Method | Our metric | Family |
 |---|---|---|
-| $W_{OV}$ decomposition / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
-| Ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
-| Cross-task generalization (months, numbers) | [D06 Cross-Task Transfer](/framework/metrics/#d06) | Behavioral |
-| Logit prediction analysis | [D02 Logit-Diff Recovery](/framework/metrics/#d02) | Behavioral |
+| $W_{OV}$ decomposition / weight analysis | [B03 OV/QK Decomposition](/mechanistic-validity/framework/metrics/#b03) | Structural |
+| Ablation | [A01 Pearl SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
+| Cross-task generalization (months, numbers) | [D06 Cross-Task Transfer](/mechanistic-validity/framework/metrics/#d06) | Behavioral |
+| Logit prediction analysis | [D02 Logit-Diff Recovery](/mechanistic-validity/framework/metrics/#d02) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -40,19 +40,19 @@ This is a structural-level claim with algorithmic aspects: it names specific wei
 
 ### Criteria
 
-**[C1 — Falsifiability:](/framework/criteria/construct/falsifiability) Pass.** The claim makes a concrete structural prediction: the $W_{OV}$ matrices of successor heads should encode monotonic ordering over year suffixes. Specifically, for a proposed successor head $h$:
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Pass.** The claim makes a concrete structural prediction: the $W_{OV}$ matrices of successor heads should encode monotonic ordering over year suffixes. Specifically, for a proposed successor head $h$:
 
 $$\text{effect}(y_1, y_2) = e_{y_2}^\top \, W_U \, W_{OV}^{(h)} \, W_E \, e_{y_1}$$
 
 should be positive when $y_2 > y_1$ and negative when $y_2 < y_1$. A head labeled "successor" whose $W_{OV}$ shows no such ordering would be disconfirmed. This is unusually precise falsifiability — the prediction is quantitative and structural.
 
-**[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Strong pass.** This is the paper's primary contribution. Hanna et al. verify that the $W_{OV}$ matrices of their proposed heads encode a monotonic ordering over two-digit year suffixes. The structural signature directly matches the claimed computational role — this is among the strongest structural plausibility demonstrations in published MI.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Strong pass.** This is the paper's primary contribution. Hanna et al. verify that the $W_{OV}$ matrices of their proposed heads encode a monotonic ordering over two-digit year suffixes. The structural signature directly matches the claimed computational role — this is among the strongest structural plausibility demonstrations in published MI.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Partial.** The circuit is evaluated on the Greater-Than task specifically. Some cross-task evaluation exists — the authors test whether the circuit generalizes to other ordinal comparisons (months, numbers outside the year range). The circuit partially generalizes, suggesting it captures ordinal structure more broadly than just year comparison. This is an honest scope expansion, not a specificity failure.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Partial.** The circuit is evaluated on the Greater-Than task specifically. Some cross-task evaluation exists — the authors test whether the circuit generalizes to other ordinal comparisons (months, numbers outside the year range). The circuit partially generalizes, suggesting it captures ordinal structure more broadly than just year comparison. This is an honest scope expansion, not a specificity failure.
 
-**[C4 — Minimality:](/framework/criteria/construct/minimality) Pass.** The identified heads are few (a small subset of attention heads) and each contributes measurably. No systematic redundancy is reported.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** The identified heads are few (a small subset of attention heads) and each contributes measurably. No systematic redundancy is reported.
 
-**[C5 — Convergent validity:](/framework/criteria/construct/convergent-validity) Partial.** The claim is primarily established through weight-space analysis ($W_{OV}$ inspection) and behavioral evidence (ablation). These are somewhat independent methods (one is static structural analysis, the other is dynamic causal intervention). However, a third fully independent method (e.g., probing, or automated circuit discovery via EAP) has not been applied.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** The claim is primarily established through weight-space analysis ($W_{OV}$ inspection) and behavioral evidence (ablation). These are somewhat independent methods (one is static structural analysis, the other is dynamic causal intervention). However, a third fully independent method (e.g., probing, or automated circuit discovery via EAP) has not been applied.
 
 ### Key Distinctions
 
@@ -81,15 +81,15 @@ Four nodes confirmed, three unconnected. The confirmed nodes are stronger than a
 
 ### Criteria
 
-**[I1 — Necessity:](/framework/criteria/internal/necessity) Pass.** Ablating the identified successor heads degrades Greater-Than performance. The effect size is substantial — the model loses its ability to preferentially predict years greater than the reference. Random-component baselines are included.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating the identified successor heads degrades Greater-Than performance. The effect size is substantial — the model loses its ability to preferentially predict years greater than the reference. Random-component baselines are included.
 
-**[I2 — Sufficiency:](/framework/criteria/internal/sufficiency) Partial.** The paper demonstrates that the $W_{OV}$ structure is consistent with the claimed computation, but a full circuit isolation test (ablate everything outside the circuit, measure whether Greater-Than still works) is not the primary methodology. Sufficiency is partially established through the structural argument: if the $W_{OV}$ matrices encode the ordering, and the heads are active, the computation follows. But this is a structural sufficiency argument, not a causal one.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** The paper demonstrates that the $W_{OV}$ structure is consistent with the claimed computation, but a full circuit isolation test (ablate everything outside the circuit, measure whether Greater-Than still works) is not the primary methodology. Sufficiency is partially established through the structural argument: if the $W_{OV}$ matrices encode the ordering, and the heads are active, the computation follows. But this is a structural sufficiency argument, not a causal one.
 
-**[I3 — Specificity:](/framework/criteria/internal/specificity) Partial.** The generalization to other ordinal tasks (months, arbitrary numbers) is informative — it suggests the circuit is specific to *ordinal comparison* rather than just year tokens. But a formal double dissociation (ablate Greater-Than circuit → measure IOI; ablate IOI circuit → measure Greater-Than) is not reported.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** The generalization to other ordinal tasks (months, arbitrary numbers) is informative — it suggests the circuit is specific to *ordinal comparison* rather than just year tokens. But a formal double dissociation (ablate Greater-Than circuit → measure IOI; ablate IOI circuit → measure Greater-Than) is not reported.
 
-**[I4 — Consistency:](/framework/criteria/internal/consistency) Partial.** The mechanism is demonstrated on GPT-2 Small. Cross-model and cross-seed replication are not reported. The generalization across ordinal tasks (years, months, numbers) provides some within-model consistency.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** The mechanism is demonstrated on GPT-2 Small. Cross-model and cross-seed replication are not reported. The generalization across ordinal tasks (years, months, numbers) provides some within-model consistency.
 
-**[I5 — Confound control:](/framework/criteria/internal/confound-control) Not tested.** The ablation method is not varied. Multi-method comparison (mean vs. resample ablation) is not reported.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** The ablation method is not varied. Multi-method comparison (mean vs. resample ablation) is not reported.
 
 ### Key Distinctions
 
@@ -115,17 +115,17 @@ One cell filled. The on-diagonal entry is strong, but without off-diagonal measu
 
 ### Criteria
 
-**[E1 — Intervention reach:](/framework/criteria/external/intervention-reach) Not tested.** Can you steer the model toward predicting larger or smaller years by manipulating the successor heads' activations? This would test whether the circuit is genuinely manipulable beyond ablation.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Not tested.** Can you steer the model toward predicting larger or smaller years by manipulating the successor heads' activations? This would test whether the circuit is genuinely manipulable beyond ablation.
 
-**[E2 — Graded response:](/framework/criteria/external/graded-response) Implicit.** The $W_{OV}$ structure implies a graded response — years further from the reference should receive stronger suppression/boosting. This is structurally predicted but not directly measured as a parametric dose-response.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Implicit.** The $W_{OV}$ structure implies a graded response — years further from the reference should receive stronger suppression/boosting. This is structurally predicted but not directly measured as a parametric dose-response.
 
-**[E3 — Selectivity:](/framework/criteria/external/selectivity) Partial.** The cross-task generalization to other ordinal comparisons suggests the intervention would not be purely selective for year comparison. This is an honest scope description rather than a selectivity failure.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** The cross-task generalization to other ordinal comparisons suggests the intervention would not be purely selective for year comparison. This is an honest scope description rather than a selectivity failure.
 
-**[E4 — Effect magnitude:](/framework/criteria/external/effect-magnitude) Strong on-task.** The circuit accounts for a large portion of the model's ordinal comparison ability on the tested prompts.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Strong on-task.** The circuit accounts for a large portion of the model's ordinal comparison ability on the tested prompts.
 
-**[E5 — Robustness:](/framework/criteria/external/robustness) Partial.** Works across different year ranges and extends to other ordinal tasks. Not tested on naturalistic text (where Greater-Than appears in diverse syntactic contexts).
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Works across different year ranges and extends to other ordinal tasks. Not tested on naturalistic text (where Greater-Than appears in diverse syntactic contexts).
 
-**[E6 — Cross-architecture:](/framework/criteria/external/cross-architecture) Not tested.** GPT-2 Small only.
+**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** GPT-2 Small only.
 
 ### Key Distinctions
 
@@ -152,17 +152,17 @@ The structural evidence *predicts* a smooth dose-response curve, but the empiric
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Not reported.** No bootstrap confidence intervals on effect sizes or structural measurements.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** No bootstrap confidence intervals on effect sizes or structural measurements.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Partial.** The measurement generalizes across year ranges (not just 1700s). This provides some invariance evidence. But invariance across different prompt formats or naturalistic contexts is not tested.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** The measurement generalizes across year ranges (not just 1700s). This provides some invariance evidence. But invariance across different prompt formats or naturalistic contexts is not tested.
 
-**[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Pass.** The $W_{OV}$ ordering structure is clearly present in successor heads and absent in non-successor heads. The signal-to-noise separation is clean.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** The $W_{OV}$ ordering structure is clearly present in successor heads and absent in non-successor heads. The signal-to-noise separation is clean.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Good.** The monotonic ordering metric provides a clear threshold for identifying successor heads — heads either show the pattern or they don't. The measurement is sensitive to the structural signature.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Good.** The monotonic ordering metric provides a clear threshold for identifying successor heads — heads either show the pattern or they don't. The measurement is sensitive to the structural signature.
 
-**[M5 — Calibration:](/framework/criteria/measurement/calibration) Not reported.** No gold-standard comparison.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.** No gold-standard comparison.
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Good.** The analysis covers both structural ($W_{OV}$ inspection) and behavioral (logit prediction) aspects of the claim, providing good construct coverage from multiple angles.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Good.** The analysis covers both structural ($W_{OV}$ inspection) and behavioral (logit prediction) aspects of the claim, providing good construct coverage from multiple angles.
 
 ### Key Distinctions
 
@@ -188,15 +188,15 @@ The convergent cells (two methods agree on the same heads) are strong — heads 
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/framework/modes/structural) level with algorithmic aspects — it names specific weight-space signatures and the computation they implement.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/mechanistic-validity/framework/modes/algorithmic) level with algorithmic aspects — it names specific weight-space signatures and the computation they implement.
 
-**[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Strong.** The evidence is primarily structural ($W_{OV}$ analysis), which directly supports a structural-level claim. The match between evidence type and claim level is unusually tight.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The evidence is primarily structural ($W_{OV}$ analysis), which directly supports a structural-level claim. The match between evidence type and claim level is unusually tight.
 
-**[V3 — Narrative coherence:](/framework/criteria/interpretive/narrative-coherence) Strong.** The story is mechanistically precise: successor heads encode year-token ordering in their $W_{OV}$ matrices; when the model processes "from 17XX to 17," these heads suppress years ≤ XX and boost years > XX. The narrative directly connects structure to behavior.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The story is mechanistically precise: successor heads encode year-token ordering in their $W_{OV}$ matrices; when the model processes "from 17XX to 17," these heads suppress years ≤ XX and boost years > XX. The narrative directly connects structure to behavior.
 
-**[V4 — Alternative exclusion:](/framework/criteria/interpretive/alternative-exclusion) Partial.** The structural evidence constrains alternatives — it is hard to explain why $W_{OV}$ encodes monotonic year ordering if not for ordinal comparison. But whether this is the *complete* mechanism (vs. one component of a larger distributed computation) is not fully addressed.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** The structural evidence constrains alternatives — it is hard to explain why $W_{OV}$ encodes monotonic year ordering if not for ordinal comparison. But whether this is the *complete* mechanism (vs. one component of a larger distributed computation) is not fully addressed.
 
-**[V5 — Scope honesty:](/framework/criteria/interpretive/scope-honesty) Good.** The paper tests scope boundaries (does it generalize to months? to arbitrary numbers?) and reports honestly where the mechanism extends and where it does not.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Good.** The paper tests scope boundaries (does it generalize to months? to arbitrary numbers?) and reports honestly where the mechanism extends and where it does not.
 
 ### Key Distinctions
 

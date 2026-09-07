@@ -13,11 +13,11 @@ This case study is important because it connects mechanistic claims to real-worl
 
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C1 Falsifiability | C3/C5 Specificity + Convergence | Weak |
-| Internal | I1 Necessity (partial) | I3/I4/I5 | Weak |
-| External | E1 Intervention reach | E3/E5 Selectivity + Robustness | Weak |
-| Measurement | M3 Baseline separation | M1/M2/M6 | Weak |
-| Interpretive | V1 Level declaration | V3/V4/V5 | Weak |
+| Construct | C1 Falsifiability | C4/C3 Discriminant + Convergence | Weak |
+| Internal | I1 Necessity (partial) | I4/M1/I7 | Weak |
+| External | E1 Intervention reach | I4/E2 Specificity + Prompt gen. | Weak |
+| Measurement | M2 Baseline separation | M1/M6/C3 | Weak |
+| Interpretive | V1 Level declaration | V2/V3/V5 | Weak |
 
 **Overall verdict: Causally Suggestive — with fundamental construct problems.** Gender bias circuits score weakly across all five lenses. The core issue is not lack of evidence but **construct incoherence** (C3): "gender bias" and "gender knowledge" are not separable at the mechanistic level, which means the construct itself may not be well-defined enough to have a circuit. This is not a measurement problem or an evidence problem — it is a *theory* problem.
 
@@ -27,10 +27,10 @@ This case study illustrates the framework's most important function: sometimes t
 
 | Method | Our metric | Family |
 |---|---|---|
-| Gender direction projection (embedding geometry) | [B01 SVD/Spectral](/framework/metrics/#b01) | Structural |
-| Causal mediation analysis (Vig et al.) | [A06 Mediation](/framework/metrics/#a06) | Causal |
-| Iterative nullspace projection / INLP (Ravfogel et al.) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
-| Activation steering along gender direction | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Gender direction projection (embedding geometry) | [B01 SVD/Spectral](/mechanistic-validity/framework/metrics/#b01) | Structural |
+| Causal mediation analysis (Vig et al.) | [A06 Mediation](/mechanistic-validity/framework/metrics/#a06) | Causal |
+| Iterative nullspace projection / INLP (Ravfogel et al.) | [E02 Linear Probe](/mechanistic-validity/framework/metrics/#e02) | Representational |
+| Activation steering along gender direction | [A02 Counterfactual DAS](/mechanistic-validity/framework/metrics/#a02) | Causal |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -42,23 +42,23 @@ This case study illustrates the framework's most important function: sometimes t
 
 ### Criteria
 
-**[C1 — Falsifiability:](/framework/criteria/construct/falsifiability) Partial.** Each approach makes testable predictions: removing the gender direction should reduce bias on benchmark tests; ablating mediating heads should reduce gendered predictions. These are testable. But "bias" itself is a contested construct — different benchmarks measure different things, and success on one does not guarantee success on others.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Partial.** Each approach makes testable predictions: removing the gender direction should reduce bias on benchmark tests; ablating mediating heads should reduce gendered predictions. These are testable. But "bias" itself is a contested construct — different benchmarks measure different things, and success on one does not guarantee success on others.
 
-**[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Partial.** A single "gender direction" is structurally plausible in embedding space (it exists and is measurable). Whether bias in a deep transformer is captured by a single direction per layer, rather than being distributed across many parameters, is a much stronger structural assumption. Vig et al.'s identification of mediating attention heads is more structurally detailed but still does not explain *how* the heads encode bias.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Partial.** A single "gender direction" is structurally plausible in embedding space (it exists and is measurable). Whether bias in a deep transformer is captured by a single direction per layer, rather than being distributed across many parameters, is a much stronger structural assumption. Vig et al.'s identification of mediating attention heads is more structurally detailed but still does not explain *how* the heads encode bias.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Weak — critical gap.** The core problem: "gender information" is not separable from "gender-related knowledge." Removing the model's ability to distinguish gender also removes its ability to correctly resolve gendered pronouns, understand gendered language, or perform tasks that require gender knowledge. The circuit for bias and the circuit for legitimate gender processing may be the same circuit. Task specificity cannot be established because the two "tasks" are not separable.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Weak — critical gap.** The core problem: "gender information" is not separable from "gender-related knowledge." Removing the model's ability to distinguish gender also removes its ability to correctly resolve gendered pronouns, understand gendered language, or perform tasks that require gender knowledge. The circuit for bias and the circuit for legitimate gender processing may be the same circuit. Task specificity cannot be established because the two "tasks" are not separable.
 
-**[C4 — Minimality:](/framework/criteria/construct/minimality) Unclear.** Is one direction minimal? INLP iteratively finds multiple directions, suggesting the first direction is not sufficient. Is one set of attention heads minimal? Vig et al. identify many heads, not a clean minimal set.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Unclear.** Is one direction minimal? INLP iteratively finds multiple directions, suggesting the first direction is not sufficient. Is one set of attention heads minimal? Vig et al. identify many heads, not a clean minimal set.
 
-**[C5 — Convergent validity:](/framework/criteria/construct/convergent-validity) Weak.** Different methods (direction removal, INLP, causal mediation, activation steering) identify different components as "where bias lives." They do not converge on the same locus. This may reflect genuine distribution of bias rather than method disagreement — but without convergence, the construct "gender bias circuit" is method-dependent.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Different methods (direction removal, INLP, causal mediation, activation steering) identify different components as "where bias lives." They do not converge on the same locus. This may reflect genuine distribution of bias rather than method disagreement — but without convergence, the construct "gender bias circuit" is method-dependent.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | C1 Falsifiability | Partial | Benchmark predictions testable; "bias" contested |
 | C2 Structural plausibility | Partial | Direction exists; deep localization unclear |
-| C3 Task specificity | Weak | Bias and gender knowledge inseparable |
-| C4 Minimality | Unclear | Multiple methods find multiple loci |
-| C5 Convergent validity | Weak | Methods disagree on localization |
+| C4 Discriminant validity | Weak | Bias and gender knowledge inseparable |
+| I3 Minimality | Unclear | Multiple methods find multiple loci |
+| C3 Convergent validity | Weak | Methods disagree on localization |
 
 ### Key Distinctions
 
@@ -87,23 +87,23 @@ Two nodes confirmed (direction exists, trained-benchmark scores improve), three 
 
 ### Criteria
 
-**[I1 — Necessity:](/framework/criteria/internal/necessity) Partial.** Removing the gender direction / ablating mediating heads reduces bias on tested benchmarks. But the reduction is often incomplete, and bias re-emerges on different benchmarks or in different contexts. Necessity is benchmark-specific.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Partial.** Removing the gender direction / ablating mediating heads reduces bias on tested benchmarks. But the reduction is often incomplete, and bias re-emerges on different benchmarks or in different contexts. Necessity is benchmark-specific.
 
-**[I2 — Sufficiency:](/framework/criteria/internal/sufficiency) Not demonstrated.** Can you *induce* gender bias by stimulating the identified components? Activation steering along gender directions does produce gendered outputs — but this is sufficiency for gender *information*, not specifically for *bias*. The distinction matters.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Not demonstrated.** Can you *induce* gender bias by stimulating the identified components? Activation steering along gender directions does produce gendered outputs — but this is sufficiency for gender *information*, not specifically for *bias*. The distinction matters.
 
-**[I3 — Specificity:](/framework/criteria/internal/specificity) Weak.** Removing the gender direction reduces bias *and* degrades gender-related task performance. The intervention is not specific to bias — it removes gender information broadly. This is the fundamental problem with the approach: bias and knowledge share components.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak.** Removing the gender direction reduces bias *and* degrades gender-related task performance. The intervention is not specific to bias — it removes gender information broadly. This is the fundamental problem with the approach: bias and knowledge share components.
 
-**[I4 — Consistency:](/framework/criteria/internal/consistency) Weak.** Debiasing interventions that work on one benchmark often fail on others (Gonen & Goldberg 2019). The effect does not replicate robustly across evaluation settings. Different prompt templates, different bias metrics, and different downstream tasks give different results.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Weak.** Debiasing interventions that work on one benchmark often fail on others (Gonen & Goldberg 2019). The effect does not replicate robustly across evaluation settings. Different prompt templates, different bias metrics, and different downstream tasks give different results.
 
-**[I5 — Confound control:](/framework/criteria/internal/confound-control) Weak.** The primary confound: removing gender information (debiasing) may simply make the model *worse at predicting* in gendered contexts, producing apparent debiasing as a side effect of degradation. Without controlling for overall quality loss, the debiasing effect is confounded.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Weak.** The primary confound: removing gender information (debiasing) may simply make the model *worse at predicting* in gendered contexts, producing apparent debiasing as a side effect of degradation. Without controlling for overall quality loss, the debiasing effect is confounded.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | I1 Necessity | Partial | Benchmark-specific reduction |
 | I2 Sufficiency | Not demonstrated | Gender information does not equal bias specifically |
-| I3 Specificity | Weak | Removes knowledge with bias |
-| I4 Consistency | Weak | Benchmark-specific; does not generalize |
-| I5 Confound control | Weak | Degradation confound |
+| I4 Specificity | Weak | Removes knowledge with bias |
+| M1 Reliability | Weak | Benchmark-specific; does not generalize |
+| I7 Confound control | Weak | Degradation confound |
 
 ### Key Distinctions
 
@@ -128,26 +128,26 @@ The critical finding: the "bias benchmark" column and the "gender knowledge" col
 
 ### Criteria
 
-**[E1 — Intervention reach:](/framework/criteria/external/intervention-reach) Partial.** Debiasing interventions change model outputs. But whether they change the *right* thing (bias without knowledge loss) is disputed.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** Debiasing interventions change model outputs. But whether they change the *right* thing (bias without knowledge loss) is disputed.
 
-**[E2 — Graded response:](/framework/criteria/external/graded-response) Sometimes.** Scaling the projection magnitude produces graded effects. But the useful range (enough to reduce bias, not enough to degrade performance) is narrow and context-dependent.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Sometimes.** Scaling the projection magnitude produces graded effects. But the useful range (enough to reduce bias, not enough to degrade performance) is narrow and context-dependent.
 
-**[E3 — Selectivity:](/framework/criteria/external/selectivity) Weak.** Interventions are not selective — they affect both bias and legitimate gender knowledge. This is the pharmacological equivalent of a drug with severe side effects that cannot be separated from the therapeutic effect.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak.** Interventions are not selective — they affect both bias and legitimate gender knowledge. This is the pharmacological equivalent of a drug with severe side effects that cannot be separated from the therapeutic effect.
 
-**[E4 — Effect magnitude:](/framework/criteria/external/effect-magnitude) Variable.** Large on the benchmarks used during development. Smaller or absent on held-out benchmarks.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Variable.** Large on the benchmarks used during development. Smaller or absent on held-out benchmarks.
 
-**[E5 — Robustness:](/framework/criteria/external/robustness) Weak.** The most robust finding is that debiasing is brittle — it works on tested settings and fails on untested ones (Gonen & Goldberg 2019).
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Weak.** The most robust finding is that debiasing is brittle — it works on tested settings and fails on untested ones (Gonen & Goldberg 2019).
 
-**[E6 — Cross-architecture:](/framework/criteria/external/cross-architecture) Partial.** Bias exists across architectures. Whether the same debiasing technique transfers is model-dependent.
+**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** Bias exists across architectures. Whether the same debiasing technique transfers is model-dependent.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | E1 Intervention reach | Partial | Changes outputs; not always correctly |
 | E2 Graded response | Sometimes | Narrow useful range |
-| E3 Selectivity | Weak | Bias + knowledge inseparable |
-| E4 Effect magnitude | Variable | Benchmark-specific |
-| E5 Robustness | Weak | Brittle across settings |
-| E6 Cross-architecture | Partial | Technique transfer variable |
+| I4 Specificity | Weak | Bias + knowledge inseparable |
+| E5 Graded response | Variable | Benchmark-specific |
+| E2 Prompt generalization | Weak | Brittle across settings |
+| E4 Cross-model recurrence | Partial | Technique transfer variable |
 
 ### Key Distinctions
 
@@ -177,26 +177,26 @@ What's missing:
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Weak.** Different bias benchmarks give different answers. The measurement of "bias" itself is unreliable across metrics.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Weak.** Different bias benchmarks give different answers. The measurement of "bias" itself is unreliable across metrics.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Weak.** A model that appears debiased on one benchmark appears biased on another. The measurement is not invariant across evaluation conditions.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Weak.** A model that appears debiased on one benchmark appears biased on another. The measurement is not invariant across evaluation conditions.
 
-**[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Partial.** Gender direction projections clearly separate male/female-associated words. But separating "bias" from "knowledge" in the measurement is the unsolved problem.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** Gender direction projections clearly separate male/female-associated words. But separating "bias" from "knowledge" in the measurement is the unsolved problem.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Unknown.** Can the metric distinguish between "the model is unbiased" and "the model has learned to hide bias from the benchmark"? Gonen & Goldberg's "lipstick on a pig" result suggests the latter is common.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can the metric distinguish between "the model is unbiased" and "the model has learned to hide bias from the benchmark"? Gonen & Goldberg's "lipstick on a pig" result suggests the latter is common.
 
-**[M5 — Calibration:](/framework/criteria/measurement/calibration) Poorly understood.** What level of bias-benchmark performance constitutes "debiased"? There is no agreed threshold.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Poorly understood.** What level of bias-benchmark performance constitutes "debiased"? There is no agreed threshold.
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Weak.** Each benchmark measures one facet of bias. No single metric captures the full construct. "Bias" is a multi-dimensional construct measured by one-dimensional metrics.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Each benchmark measures one facet of bias. No single metric captures the full construct. "Bias" is a multi-dimensional construct measured by one-dimensional metrics.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | M1 Reliability | Weak | Benchmark disagreement |
-| M2 Invariance | Weak | Results don't transfer across benchmarks |
-| M3 Baseline separation | Partial | Direction separates; bias/knowledge don't |
-| M4 Sensitivity | Unknown | Hiding vs. removing |
-| M5 Calibration | Poorly understood | No agreed threshold |
-| M6 Construct coverage | Weak | Multi-dimensional construct, 1D metrics |
+| M6 Invariance | Weak | Results don't transfer across benchmarks |
+| M2 Baseline separation | Partial | Direction separates; bias/knowledge don't |
+| M5 Sensitivity | Unknown | Hiding vs. removing |
+| M4 Calibration | Poorly understood | No agreed threshold |
+| C3 Convergent validity | Weak | Multi-dimensional construct, 1D metrics |
 
 ### Key Distinctions
 
@@ -223,23 +223,23 @@ Cross-benchmark convergence (the off-diagonal cells) is low to moderate — diff
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Partial.** The claims range from representational ("bias lives in a direction") to implementational ("these heads mediate bias") without always distinguishing the levels.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Partial.** The claims range from representational ("bias lives in a direction") to implementational ("these heads mediate bias") without always distinguishing the levels.
 
-**[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Partial.** Direction-based methods provide representational evidence. Causal mediation provides causal evidence. But the stronger claim ("bias can be surgically removed") requires implementational evidence that is not provided.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** Direction-based methods provide representational evidence. Causal mediation provides causal evidence. But the stronger claim ("bias can be surgically removed") requires implementational evidence that is not provided.
 
-**[V3 — Narrative coherence:](/framework/criteria/interpretive/narrative-coherence) Weak.** "Bias lives in one place and can be removed" is narratively simple but inconsistent with the evidence (bias re-emerges, removal causes side effects). The narrative coherence breaks down under scrutiny.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Weak.** "Bias lives in one place and can be removed" is narratively simple but inconsistent with the evidence (bias re-emerges, removal causes side effects). The narrative coherence breaks down under scrutiny.
 
-**[V4 — Alternative exclusion:](/framework/criteria/interpretive/alternative-exclusion) Weak.** The primary alternative: bias is not a localized property but an emergent property of the full model — a consequence of training data distribution reflected throughout all parameters. Under this alternative, surgical removal is fundamentally impossible, and apparent debiasing is actually degradation-masking. This alternative is not excluded.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The primary alternative: bias is not a localized property but an emergent property of the full model — a consequence of training data distribution reflected throughout all parameters. Under this alternative, surgical removal is fundamentally impossible, and apparent debiasing is actually degradation-masking. This alternative is not excluded.
 
-**[V5 — Scope honesty:](/framework/criteria/interpretive/scope-honesty) Often violated.** "We removed gender bias from the model" claims far more than "we reduced scores on bias benchmark X by projecting out direction Y." The scope inflation is particularly concerning given practical deployment.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Often violated.** "We removed gender bias from the model" claims far more than "we reduced scores on bias benchmark X by projecting out direction Y." The scope inflation is particularly concerning given practical deployment.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | V1 Level declaration | Partial | Mixed levels |
 | V2 Level-evidence match | Partial | Representational evidence for implementational claims |
-| V3 Narrative coherence | Weak | Narrative contradicted by replication failures |
-| V4 Alternative exclusion | Weak | Distributed bias alternative not excluded |
-| V5 Scope honesty | Often violated | "Debiased" exceeds evidence |
+| V2 Level-evidence match | Weak | Narrative contradicted by replication failures |
+| V3 Alternative level | Weak | Distributed bias alternative not excluded |
+| V5 Scope declaration | Often violated | "Debiased" exceeds evidence |
 
 ### Key Distinctions
 

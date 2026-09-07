@@ -12,7 +12,7 @@ Every mechanistic claim names a theoretical entity — "the IOI circuit," "an in
 The other four lenses evaluate evidence *about* a claim. This one evaluates *the claim itself*. A circuit with strong causal evidence and a poorly defined construct is a strong measurement attached to a weak theory.
 
 :::note
-For the full metrics and protocols reference, see [Philosophy of Science -- Metrics & Protocols](/framework/lenses/core/philosophy-of-science-metrics).
+For the full metrics and protocols reference, see [Philosophy of Science -- Metrics & Protocols](/mechanistic-validity/framework/metrics/).
 :::
 
 ## Key Distinctions
@@ -75,27 +75,27 @@ Two methods should agree more about the same circuit than about different circui
 | [Craver, *Explaining the Brain*](https://global.oup.com/academic/product/explaining-the-brain-9780199568222) | 2007 | Neuroscience / Philosophy | **Constitutive relevance** — mechanistic explanation requires that components make a difference, not merely be present |
 | [Méloux et al., "Not all circuits are the same"](https://arxiv.org/abs/2410.10186) | 2025 | Mechanistic Interpretability | **Construct non-uniqueness** — multiple equally faithful circuits exist for the same task; "the circuit" may not refer to a determinate entity |
 
-## Validity type: [Construct validity](/framework/validity-types/construct)
+## Validity type: [Construct validity](/mechanistic-validity/framework/validity-types/construct)
 
 > **Nomological network ([Cronbach & Meehl 1955](https://doi.org/10.1037/h0040957)):** A construct is valid only insofar as it occupies a determinate position in a web of lawful relations with other constructs and observables. A circuit that relates to no other theoretical construct except the specific behavior it was discovered on is not a construct — it is a re-description of the data.
 
 This lens applies to any mechanistic claim, not just circuits. An SAE feature, an MLP neuron, a residual-stream direction, a learned decomposition — anything given a name and a computational role is a construct that can be evaluated.
 
-The difficulty of the construct validity question depends on the [description mode](/framework/description-modes/). A structural claim ("$W_{OV}$ has rank-1 copying structure") is almost self-verifying — the construct is the measurement. An implementational claim ("these heads are name-movers") requires asking whether "name-mover" is a coherent category. An algorithmic claim ("the circuit implements token copying via OV composition") requires asking whether the named algorithm is the real one or just one of many consistent explanations. The higher the mode, the harder construct validity is to establish.
+The difficulty of the construct validity question depends on the [description mode](/mechanistic-validity/framework/description-modes/). A structural claim ("$W_{OV}$ has rank-1 copying structure") is almost self-verifying — the construct is the measurement. An implementational claim ("these heads are name-movers") requires asking whether "name-mover" is a coherent category. An algorithmic claim ("the circuit implements token copying via OV composition") requires asking whether the named algorithm is the real one or just one of many consistent explanations. The higher the mode, the harder construct validity is to establish.
 
-For formal definitions, quantitative thresholds, and calibration data, see [Construct Validity — Formal Specification](/framework/validity-types/construct).
+For formal definitions, quantitative thresholds, and calibration data, see [Construct Validity — Formal Specification](/mechanistic-validity/framework/validity-types/construct).
 
 ## Criteria
 
 | Code | Criterion | What it asks | Page |
 |---|---|---|---|
-| C1 | Falsifiability | Was a disconfirming condition stated before collecting evidence? | [C1](/framework/criteria/construct/falsifiability) |
-| C2 | Structural plausibility | Do weight-space signatures match the claimed computational role? | [C2](/framework/criteria/construct/structural-plausibility) |
-| C3 | Task specificity | Does the circuit score highly only on its discovery task, not unrelated ones? | [C3](/framework/criteria/construct/task-specificity) |
-| C4 | Minimality | Is it the smallest set that satisfies sufficiency, with no redundant members? | [C4](/framework/criteria/construct/minimality) |
-| C5 | Convergent validity | Do independent metrics identify the same components? | [C5](/framework/criteria/construct/convergent-validity) |
+| C1 | Falsifiability | Was a disconfirming condition stated before collecting evidence? | [C1](/mechanistic-validity/framework/criteria/construct/falsifiability) |
+| C2 | Structural plausibility | Do weight-space signatures match the claimed computational role? | [C2](/mechanistic-validity/framework/criteria/construct/structural-plausibility) |
+| C3 | Task specificity | Does the circuit score highly only on its discovery task, not unrelated ones? | [C3](/mechanistic-validity/framework/criteria/construct/discriminant-validity) |
+| C4 | Minimality | Is it the smallest set that satisfies sufficiency, with no redundant members? | [C4](/mechanistic-validity/framework/criteria/internal/minimality) |
+| C5 | Convergent validity | Do independent metrics identify the same components? | [C5](/mechanistic-validity/framework/criteria/construct/convergent-validity) |
 
-Falsifiability (C1) is a precondition — without it, a claim cannot advance beyond [Proposed](/framework/verdicts/proposed) regardless of other evidence. Convergent validity (C5) is the most powerful and the most frequently absent.
+Falsifiability (C1) is a precondition — without it, a claim cannot advance beyond [Proposed](/mechanistic-validity/framework/verdicts/proposed) regardless of other evidence. Convergent validity (C5) is the most powerful and the most frequently absent.
 
 ### Falsifiability
 
@@ -214,13 +214,13 @@ Reporting underdetermination explicitly is a stronger finding than suppressing i
 
 ## Verdicts
 
-Construct validity gates advancement through the [verdict tiers](/framework/verdicts/):
+Construct validity gates advancement through the [verdict tiers](/mechanistic-validity/framework/verdicts/):
 
 - **Proposed → Causally suggestive:** Requires C1 (falsifiability). Without a pre-registered disconfirming condition, no amount of ablation evidence upgrades the verdict.
 - **Mechanistically supported → Triangulated:** Requires at least one construct criterion beyond C1. Typically C2 (structural plausibility) or C5 (convergent validity).
 - **Triangulated → Validated:** Requires substantial construct validity coverage — C1 through C5.
 
-A claim can have perfect [internal validity](/framework/validity-types/internal) (all ablations, all patching, full consistency) and still stall at Mechanistically supported because the construct itself is poorly defined.
+A claim can have perfect [internal validity](/mechanistic-validity/framework/validity-types/internal) (all ablations, all patching, full consistency) and still stall at Mechanistically supported because the construct itself is poorly defined.
 
 ## Protocol
 
@@ -242,10 +242,10 @@ For a proposed circuit $C$ and behavior $B$, the following protocol operationali
 
 For full worked examples applying all five lenses (including construct validity) to published claims:
 
-- [IOI Circuit](/framework/examples/examples/examples-ioi) — the most thoroughly analyzed circuit; strong C2, weak C3/C5
-- [Induction Heads](/framework/examples/examples/examples-induction-heads) — the strongest mechanistic claim; passes C1–C5
-- [SAE Features](/framework/examples/examples/examples-sae-features) — weakest construct validity; thin nomological network
-- [Greater-Than](/framework/examples/examples/examples-greater-than) — best structural plausibility (C2)
-- [Grokking](/framework/examples/examples/examples-grokking) — the ceiling: Validated within toy scope
-- [Knowledge Neurons](/framework/examples/examples/examples-knowledge-neurons) — tool works, but construct may be wrong
-- [Gender Bias](/framework/examples/examples/examples-gender-bias) — construct incoherence (C3 fails fundamentally)
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — the most thoroughly analyzed circuit; strong C2, weak C3/C5
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — the strongest mechanistic claim; passes C1–C5
+- [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — weakest construct validity; thin nomological network
+- [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) — best structural plausibility (C2)
+- [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — the ceiling: Validated within toy scope
+- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — tool works, but construct may be wrong
+- [Gender Bias](/mechanistic-validity/framework/examples/examples-gender-bias) — construct incoherence (C3 fails fundamentally)

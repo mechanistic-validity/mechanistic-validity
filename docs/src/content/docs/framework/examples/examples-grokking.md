@@ -13,11 +13,11 @@ This is the strongest structural evidence in published MI — the weight matrice
 
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C1/C2/C5 (all strong) | — | Strong |
-| Internal | I2/I5 (sufficiency + confound) | I6 (double dissociation) | Mechanistically Supported |
-| External | E1–E5 (all pass) | E6 Cross-architecture | Partial |
+| Construct | C1/C2/C3 (all strong) | — | Strong |
+| Internal | I2/I7 (sufficiency + confound) | I6 (double dissociation) | Mechanistically Supported |
+| External | E1–E2, E4–E5 (all pass) | E4 Cross-model recurrence | Partial |
 | Measurement | All criteria pass | — | Strong |
-| Interpretive | V4 Alternative exclusion | — | Strong |
+| Interpretive | V3 Alternative level | — | Strong |
 
 **Overall verdict: Mechanistically Supported.** The modular addition circuit has strong structural and causal evidence — the algorithm is mathematically specified and every weight matrix is accounted for. The capping criterion is I6 (double dissociation): no study has tested a second behavior that the Fourier circuit spares while ablating a matched control circuit impairs. Despite the completeness of the reverse engineering, this crossed-design test has not been performed.
 
@@ -27,11 +27,11 @@ The scope limitation is also significant: E6 (cross-architecture) is untested. A
 
 | Method | Our metric | Family |
 |---|---|---|
-| Weight-space Fourier decomposition | [B01 SVD/Spectral](/framework/metrics/#b01) | Structural |
-| Per-frequency ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
-| Activation probing (Fourier components) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
-| Mechanistic prediction (exact output reproduction) | [D04 CE Delta](/framework/metrics/#d04) | Behavioral |
-| Training dynamics analysis (phase transition) | [D04 CE Delta](/framework/metrics/#d04) | Behavioral |
+| Weight-space Fourier decomposition | [B01 SVD/Spectral](/mechanistic-validity/framework/metrics/#b01) | Structural |
+| Per-frequency ablation | [A01 Pearl SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
+| Activation probing (Fourier components) | [E02 Linear Probe](/mechanistic-validity/framework/metrics/#e02) | Representational |
+| Mechanistic prediction (exact output reproduction) | [D04 CE Delta](/mechanistic-validity/framework/metrics/#d04) | Behavioral |
+| Training dynamics analysis (phase transition) | [D04 CE Delta](/mechanistic-validity/framework/metrics/#d04) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -43,15 +43,15 @@ The scope limitation is also significant: E6 (cross-architecture) is untested. A
 
 ### Criteria
 
-**[C1 — Falsifiability:](/framework/criteria/construct/falsifiability) Strong pass.** The claim specifies the exact algorithm: the model computes $\cos(2\pi k(a+b)/p)$ via trigonometric identities applied in the attention layer. This generates precise quantitative predictions about every weight matrix entry. Any deviation from the predicted Fourier structure would disconfirm the claim.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Strong pass.** The claim specifies the exact algorithm: the model computes $\cos(2\pi k(a+b)/p)$ via trigonometric identities applied in the attention layer. This generates precise quantitative predictions about every weight matrix entry. Any deviation from the predicted Fourier structure would disconfirm the claim.
 
-**[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Strong pass.** This is the paper's primary achievement. The embedding matrix entries are verified to approximate $\cos(2\pi k a/p)$ and $\sin(2\pi k a/p)$ for specific frequencies $k$. The attention pattern implements the trigonometric addition formula. The unembedding reads off the result. Every weight matrix is accounted for — not just "consistent with" but "mathematically predicted by" the Fourier algorithm.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Strong pass.** This is the paper's primary achievement. The embedding matrix entries are verified to approximate $\cos(2\pi k a/p)$ and $\sin(2\pi k a/p)$ for specific frequencies $k$. The attention pattern implements the trigonometric addition formula. The unembedding reads off the result. Every weight matrix is accounted for — not just "consistent with" but "mathematically predicted by" the Fourier algorithm.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Pass (single task).** The model is trained on one task. Specificity is trivially satisfied — there is no off-task to test.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Pass (single task).** The model is trained on one task. Specificity is trivially satisfied — there is no off-task to test.
 
-**[C4 — Minimality:](/framework/criteria/construct/minimality) Pass.** The circuit uses the full model (it is a 1-layer transformer). But every component is accounted for — no redundant parameters. The circuit is minimal in the sense that removing any Fourier frequency degrades performance on the corresponding input pairs.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** The circuit uses the full model (it is a 1-layer transformer). But every component is accounted for — no redundant parameters. The circuit is minimal in the sense that removing any Fourier frequency degrades performance on the corresponding input pairs.
 
-**[C5 — Convergent validity:](/framework/criteria/construct/convergent-validity) Strong pass.** The Fourier structure is identified through: (1) weight-space analysis (Fourier decomposition of $W_E$), (2) activation-space analysis (probing for Fourier components), (3) mechanistic prediction (computing exact predicted outputs from the algorithm and comparing to actual outputs), and (4) training dynamics analysis (watching Fourier components emerge during grokking). Four independent lines of evidence converge.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Strong pass.** The Fourier structure is identified through: (1) weight-space analysis (Fourier decomposition of $W_E$), (2) activation-space analysis (probing for Fourier components), (3) mechanistic prediction (computing exact predicted outputs from the algorithm and comparing to actual outputs), and (4) training dynamics analysis (watching Fourier components emerge during grokking). Four independent lines of evidence converge.
 
 ### Key Distinctions
 
@@ -80,15 +80,15 @@ Six nodes confirmed, one unconnected. The thickest nomological network of any MI
 
 ### Criteria
 
-**[I1 — Necessity:](/framework/criteria/internal/necessity) Pass.** Ablating specific Fourier frequencies (zeroing the corresponding components in the embedding) degrades performance on input pairs involving those frequencies. The ablation is at the *feature* level rather than the component level, which is more precise.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating specific Fourier frequencies (zeroing the corresponding components in the embedding) degrades performance on input pairs involving those frequencies. The ablation is at the *feature* level rather than the component level, which is more precise.
 
-**[I2 — Sufficiency:](/framework/criteria/internal/sufficiency) Pass.** The Fourier algorithm, when executed manually on the model's weights, reproduces the model's outputs to high precision. This is the strongest possible sufficiency: the algorithm *is* the model, not just a description of it.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass.** The Fourier algorithm, when executed manually on the model's weights, reproduces the model's outputs to high precision. This is the strongest possible sufficiency: the algorithm *is* the model, not just a description of it.
 
-**[I3 — Specificity:](/framework/criteria/internal/specificity) Pass (trivial).** Single-task model — no off-task to test.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass (trivial).** Single-task model — no off-task to test.
 
-**[I4 — Consistency:](/framework/criteria/internal/consistency) Pass.** The Fourier structure emerges consistently across different random seeds (the specific frequencies chosen may vary, but the algorithm class is the same). The grokking transition reliably produces the same kind of structure.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass.** The Fourier structure emerges consistently across different random seeds (the specific frequencies chosen may vary, but the algorithm class is the same). The grokking transition reliably produces the same kind of structure.
 
-**[I5 — Confound control:](/framework/criteria/internal/confound-control) Pass.** The mechanistic account is so complete that confounds are ruled out — the algorithm predicts outputs from weights alone, with no unexplained variance.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Pass.** The mechanistic account is so complete that confounds are ruled out — the algorithm predicts outputs from weights alone, with no unexplained variance.
 
 ### Key Distinctions
 
@@ -114,17 +114,17 @@ A clean diagonal matrix — each frequency is necessary and sufficient for its c
 
 ### Criteria
 
-**[E1 — Intervention reach:](/framework/criteria/external/intervention-reach) Pass.** You can manipulate specific Fourier components and predict the exact change in outputs. Complete intervention control.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Pass.** You can manipulate specific Fourier components and predict the exact change in outputs. Complete intervention control.
 
-**[E2 — Graded response:](/framework/criteria/external/graded-response) Pass.** Partially ablating a Fourier component (scaling it down) produces graded degradation proportional to the scaling factor. Perfect dose-response.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Pass.** Partially ablating a Fourier component (scaling it down) produces graded degradation proportional to the scaling factor. Perfect dose-response.
 
-**[E3 — Selectivity:](/framework/criteria/external/selectivity) Pass.** Intervening on one frequency affects only the input pairs that rely on that frequency. Clean selectivity.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** Intervening on one frequency affects only the input pairs that rely on that frequency. Clean selectivity.
 
-**[E4 — Effect magnitude:](/framework/criteria/external/effect-magnitude) Complete.** The algorithm accounts for 100% of the model's computation. No unexplained variance.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Complete.** The algorithm accounts for 100% of the model's computation. No unexplained variance.
 
-**[E5 — Robustness:](/framework/criteria/external/robustness) Pass (within scope).** The algorithm works for all inputs in the modular arithmetic domain.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Pass (within scope).** The algorithm works for all inputs in the modular arithmetic domain.
 
-**[E6 — Cross-architecture:](/framework/criteria/external/cross-architecture) Weak — the critical gap.** This is a 1-layer toy transformer. Whether real models (GPT-2, Pythia) use Fourier-like representations for arithmetic is unknown. The algorithmic insight may not transfer to models with multiple layers, larger vocabularies, and diverse training data.
+**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Weak — the critical gap.** This is a 1-layer toy transformer. Whether real models (GPT-2, Pythia) use Fourier-like representations for arithmetic is unknown. The algorithmic insight may not transfer to models with multiple layers, larger vocabularies, and diverse training data.
 
 ### Key Distinctions
 
@@ -152,17 +152,17 @@ This is the pharmacological ideal: a perfectly linear dose-response with perfect
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Pass.** The Fourier decomposition is deterministic — same model, same result every time. Replication across seeds confirms the finding.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass.** The Fourier decomposition is deterministic — same model, same result every time. Replication across seeds confirms the finding.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Pass.** The measurement works regardless of which specific frequencies the model chose — the *type* of algorithm is invariant across training runs.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Pass.** The measurement works regardless of which specific frequencies the model chose — the *type* of algorithm is invariant across training runs.
 
-**[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Pass.** Random models show no Fourier structure. The signal is clearly above noise.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Random models show no Fourier structure. The signal is clearly above noise.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Pass.** The Fourier decomposition precisely identifies which components contribute and which do not.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Pass.** The Fourier decomposition precisely identifies which components contribute and which do not.
 
-**[M5 — Calibration:](/framework/criteria/measurement/calibration) Pass.** The algorithm's output matches the model's output to numerical precision — perfect calibration.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Pass.** The algorithm's output matches the model's output to numerical precision — perfect calibration.
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Complete.** Every parameter is explained. Nothing is left unmeasured.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Complete.** Every parameter is explained. Nothing is left unmeasured.
 
 ### Key Distinctions
 
@@ -188,15 +188,15 @@ All convergent cells are high — four independent methods identify the same str
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/framework/modes/structural) level — it fully specifies the algorithm in terms of weight matrices.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/mechanistic-validity/framework/modes/algorithmic) level — it fully specifies the algorithm in terms of weight matrices.
 
-**[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Strong pass.** The evidence *is* the structure — weight matrices are directly decoded into the algorithm. Evidence and claim are at the same level.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong pass.** The evidence *is* the structure — weight matrices are directly decoded into the algorithm. Evidence and claim are at the same level.
 
-**[V3 — Narrative coherence:](/framework/criteria/interpretive/narrative-coherence) Strong.** The story (embed as Fourier → combine via trig identities → decode result) is mathematically precise and mechanistically complete.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The story (embed as Fourier → combine via trig identities → decode result) is mathematically precise and mechanistically complete.
 
-**[V4 — Alternative exclusion:](/framework/criteria/interpretive/alternative-exclusion) Pass.** The mechanistic account is so complete that alternative explanations are effectively excluded — you cannot explain why the weights have Fourier structure if the model is not computing via Fourier.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Pass.** The mechanistic account is so complete that alternative explanations are effectively excluded — you cannot explain why the weights have Fourier structure if the model is not computing via Fourier.
 
-**[V5 — Scope honesty:](/framework/criteria/interpretive/scope-honesty) Pass — with a caveat.** The claim is honest about scope (modular addition in a toy model). The caveat is that readers may over-generalize: "transformers learn Fourier algorithms" is not what the paper shows. The paper shows that *this* toy model learns *this* Fourier algorithm.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Pass — with a caveat.** The claim is honest about scope (modular addition in a toy model). The caveat is that readers may over-generalize: "transformers learn Fourier algorithms" is not what the paper shows. The paper shows that *this* toy model learns *this* Fourier algorithm.
 
 ### Key Distinctions
 

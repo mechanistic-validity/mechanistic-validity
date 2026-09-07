@@ -20,7 +20,7 @@ Alternative level asks whether a claim pitched at one description mode could be 
 
 Satisfied when:
 
-1. **The claimed mode is stated.** The study names the description mode the claim occupies (see the seven [description modes](/framework/modes/), which extend Marr's three levels).
+1. **The claimed mode is stated.** The study names the description mode the claim occupies (see the seven [description modes](/mechanistic-validity/framework/modes/), which extend Marr's three levels).
 2. **The next-simpler mode is considered.** The study asks whether the same evidence is equally consistent with a claim one mode down.
 3. **The simpler mode is ruled out, or the claim is downgraded.** If nothing in the evidence distinguishes the two, the stronger claim is unsupported and the verdict is stated at the lower mode.
 

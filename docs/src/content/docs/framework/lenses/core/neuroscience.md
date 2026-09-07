@@ -16,7 +16,7 @@ There is also a disanalogy worth naming. In biological systems, lesion studies o
 Neuroscience also offers a prior question that MI tends to skip: how do you define the units in the first place? Before testing whether a brain region implements a function, you need a parcellation — a principled decomposition of cortex into regions. [Glasser et al. (2016)](https://doi.org/10.1038/nature18933) define 180 cortical areas by convergence of architecture, function, connectivity, and topography across 210 subjects. An area boundary is placed where multiple independent signals agree. The analog in MI is circuit discovery: activation patching, EAP, weight-based methods, and probing each propose a set of components. When these methods agree, the circuit boundary is well-defined. When they disagree, the "circuit" may be an artifact of the discovery method — the same problem neuroscience solved with multimodal parcellation. Similarly, [Gallego et al. (2017)](https://doi.org/10.1146/annurev-neuro-092917-025811) argue that the right unit of analysis for motor cortex is the population-level neural mode, not the individual neuron. Most variance in neural activity is captured by a few latent dimensions. The analog in MI is the argument for circuits and features over individual weights or neurons: the computational unit is the pattern, not the parameter.
 
 :::note
-For the full metrics and protocols reference, see [Neuroscience -- Metrics & Protocols](/framework/lenses/core/neuroscience-metrics).
+For the full metrics and protocols reference, see [Neuroscience -- Metrics & Protocols](/mechanistic-validity/framework/metrics/).
 :::
 
 ## Key Distinctions
@@ -78,7 +78,7 @@ A perfect diagonal matrix (each circuit affects only its own task) is the ideali
 | [Gallego et al., "Neural manifolds for the control of movement"](https://doi.org/10.1016/j.neuron.2017.05.025) | 2017 | Neuroscience | **Neural manifolds** — population-level patterns (neural modes), not individual neurons, are the computational units; the right level of analysis determines what you can discover |
 | [Miller, Chughtai & Saunders, "Transformers are uninterpretable with myopic methods"](https://arxiv.org/abs/2407.08734) | 2024 | Mechanistic Interpretability | **Faithfulness as joint property** — faithfulness is a function of circuit × ablation method; ablation type is part of the claim |
 
-## Validity type: [Internal validity](/framework/validity-types/internal)
+## Validity type: [Internal validity](/mechanistic-validity/framework/validity-types/internal)
 
 > **Constitutive relevance ([Craver 2007](https://doi.org/10.1093/acprof:oso/9780199299317.001.0001)):** A component is constitutively relevant to a mechanism if and only if intervening on the component changes the behavior, *and* intervening on the behavior changes the component's activity. This is strictly stronger than mere causal relevance.
 
@@ -86,17 +86,17 @@ A power line is causally relevant to a factory (cutting power stops production),
 
 The gap between "causally implicated" and "implements" is the reason this lens has five criteria rather than one.
 
-For formal definitions, quantitative thresholds, and calibration data, see [Internal Validity — Formal Specification](/framework/validity-types/internal).
+For formal definitions, quantitative thresholds, and calibration data, see [Internal Validity — Formal Specification](/mechanistic-validity/framework/validity-types/internal).
 
 ## Criteria
 
 | Code | Criterion | What it asks | Page |
 |---|---|---|---|
-| I1 | Necessity | Does removing the component degrade the behavior? | [I1](/framework/criteria/internal/necessity) |
-| I2 | Sufficiency | Does restoring or isolating the component reproduce the behavior? | [I2](/framework/criteria/internal/sufficiency) |
-| I3 | Specificity | Is the effect selective for the claimed function, not generic disruption? | [I3](/framework/criteria/internal/specificity) |
-| I4 | Consistency | Does the effect replicate across prompts, seeds, and checkpoints? | [I4](/framework/criteria/internal/consistency) |
-| I5 | Confound control | Is the effect not explained by collateral disruption to non-circuit components? | [I5](/framework/criteria/internal/confound-control) |
+| I1 | Necessity | Does removing the component degrade the behavior? | [I1](/mechanistic-validity/framework/criteria/internal/necessity) |
+| I2 | Sufficiency | Does restoring or isolating the component reproduce the behavior? | [I2](/mechanistic-validity/framework/criteria/internal/sufficiency) |
+| I3 | Specificity | Is the effect selective for the claimed function, not generic disruption? | [I3](/mechanistic-validity/framework/criteria/internal/specificity) |
+| I4 | Consistency | Does the effect replicate across prompts, seeds, and checkpoints? | [I4](/mechanistic-validity/framework/criteria/measurement/reliability) |
+| I5 | Confound control | Is the effect not explained by collateral disruption to non-circuit components? | [I5](/mechanistic-validity/framework/criteria/internal/confound-control) |
 
 Necessity (I1) is the easiest to demonstrate and the easiest to overclaim. Sufficiency (I2) is the strongest and the most underreported. Specificity (I3) is what separates a circuit finding from a bottleneck finding.
 
@@ -239,7 +239,7 @@ The strongest confound control is multi-method comparison: if the same circuit s
 
 ## Verdicts
 
-Internal validity is the workhorse of the [verdict system](/framework/verdicts/):
+Internal validity is the workhorse of the [verdict system](/mechanistic-validity/framework/verdicts/):
 
 - **Proposed → Causally suggestive:** Requires I1 (necessity). A single ablation result with a random-component baseline.
 - **Causally suggestive → Mechanistically supported:** Requires I1 + I2 (necessity + sufficiency). The circuit must not only be necessary but capable of driving the behavior.
@@ -267,10 +267,10 @@ Partial evidence is informative; unreported gaps are not.
 
 For full worked examples applying all five lenses (including internal validity) to published claims:
 
-- [IOI Circuit](/framework/examples/examples/examples-ioi) — strong I1/I2, weak I3/I5; method-conditional results
-- [Induction Heads](/framework/examples/examples/examples-induction-heads) — reaches Mechanistically supported; path-level sufficiency
-- [SAE Features](/framework/examples/examples/examples-sae-features) — necessity/sufficiency sometimes; bulk untested
-- [Copy Suppression](/framework/examples/examples/examples-copy-suppression) — unusually clean specificity (I3)
-- [Grokking](/framework/examples/examples/examples-grokking) — all five criteria pass (toy model)
-- [Knowledge Neurons](/framework/examples/examples/examples-knowledge-neurons) — strong I1/I2, weak I3/I5
-- [Probing Classifiers](/framework/examples/examples/examples-probing) — measurement without intervention; I1–I3 all untested
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — strong I1/I2, weak I3/I5; method-conditional results
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — reaches Mechanistically supported; path-level sufficiency
+- [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — necessity/sufficiency sometimes; bulk untested
+- [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — unusually clean specificity (I3)
+- [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — all five criteria pass (toy model)
+- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — strong I1/I2, weak I3/I5
+- [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) — measurement without intervention; I1–I3 all untested

@@ -7,7 +7,7 @@ description: "The global workspace / J-space hypothesis (Todd et al. 2024) evalu
 
 [Todd et al. (2024)](https://arxiv.org/abs/2405.15071) provide evidence for a **global workspace** structure in transformer language models — a low-dimensional subspace of the residual stream (dubbed "J-space") through which information is routed between attention heads and MLP layers. The claim is that the residual stream is not used uniformly: a structured, shared subspace mediates inter-component communication, analogous to the global workspace theory in cognitive neuroscience (Baars, 1988; Dehaene et al., 2014).
 
-**Description mode:** `[implementational-functional]`. The claim specifies what the subspace does — carries the information that components read from and write to — without asserting an algorithmic account of the routing procedure itself. See [Description Modes](/framework/description-modes/).
+**Description mode:** `[implementational-functional]`. The claim specifies what the subspace does — carries the information that components read from and write to — without asserting an algorithmic account of the routing procedure itself. See [Description Modes](/mechanistic-validity/framework/description-modes/).
 
 ## Verdict: Mechanistically Supported
 
@@ -29,14 +29,14 @@ The claim reaches Mechanistically Supported because both necessity and sufficien
 
 **Sufficiency (I2).** Information routed through the J-space subspace is sufficient to support downstream computations. Restricting communication to this subspace preserves model behavior to a greater degree than restricting to random subspaces.
 
-**Baseline separation (M3).** The identified subspace is compared against random subspaces and PCA-identified subspaces from shuffled data. The J-space subspace shows significantly more structure than these baselines.
+**Baseline separation (M2).** The identified subspace is compared against random subspaces and PCA-identified subspaces from shuffled data. The J-space subspace shows significantly more structure than these baselines.
 
 ## Validity concerns
 
-**Unlicensed labeling (V4).** "Global workspace" in cognitive neuroscience entails conscious access, broadcast, and competition among specialized processors. The evidence in transformers supports a shared communication subspace but does not establish the richer cognitive-science interpretation. "Shared communication subspace" would be a more conservative label.
+**Unlicensed labeling (V3).** "Global workspace" in cognitive neuroscience entails conscious access, broadcast, and competition among specialized processors. The evidence in transformers supports a shared communication subspace but does not establish the richer cognitive-science interpretation. "Shared communication subspace" would be a more conservative label.
 
 **Cross-model generalization (E4).** The evidence for J-space structure across different model families is preliminary. Whether the same structure appears in architectures trained on different data or with different objectives remains an open question.
 
-**Confound control (I5).** The subspace could reflect training data statistics rather than a functional architectural property. Distinguishing "the model routes information through this subspace because it is computationally useful" from "this subspace captures the principal variance of the training distribution" requires additional controls.
+**Confound control (I7).** The subspace could reflect training data statistics rather than a functional architectural property. Distinguishing "the model routes information through this subspace because it is computationally useful" from "this subspace captures the principal variance of the training distribution" requires additional controls.
 
 **Double dissociation (I6).** No crossed design has been published: a demonstration that a second, dimension-matched subspace is necessary and sufficient for a different task while leaving J-space-dependent tasks unaffected (and vice versa) would establish that the two subspaces are functionally distinct communication channels rather than two views of the same variance.

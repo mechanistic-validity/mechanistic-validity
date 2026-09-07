@@ -5,11 +5,11 @@ description: "The claim that induction heads are the mechanism for general in-co
 
 # Case Study: Induction Heads (General ICL)
 
-[Olsson et al. (2022)](https://arxiv.org/abs/2209.11895) make two distinct claims about induction heads. The first — that induction heads implement token copying via a specific two-head circuit — is well-supported and receives a [Triangulated](/framework/examples/examples-induction-heads) verdict. The second claim is broader: that induction heads are **the mechanism for in-context learning** in general. This page evaluates the second claim.
+[Olsson et al. (2022)](https://arxiv.org/abs/2209.11895) make two distinct claims about induction heads. The first — that induction heads implement token copying via a specific two-head circuit — is well-supported and receives a [Triangulated](/mechanistic-validity/framework/examples/examples-induction-heads) verdict. The second claim is broader: that induction heads are **the mechanism for in-context learning** in general. This page evaluates the second claim.
 
 The general ICL claim asserts that the same induction-head circuit that copies tokens is responsible for the model's ability to learn new tasks from examples provided in the prompt. The evidence is a temporal coincidence: the phase transition in induction-head formation during training occurs at the same point as the phase transition in in-context learning performance.
 
-**Description mode:** `[computational]`. "In-context learning" is pitched at the level of what problem the model solves and why, not at a specific procedure — a computational-mode claim in the sense of [Description Modes](/framework/description-modes/). This is a stronger commitment than the algorithmic-mode token-copying claim, and it requires evidence the token-copying result does not provide.
+**Description mode:** `[computational]`. "In-context learning" is pitched at the level of what problem the model solves and why, not at a specific procedure — a computational-mode claim in the sense of [Description Modes](/mechanistic-validity/framework/description-modes/). This is a stronger commitment than the algorithmic-mode token-copying claim, and it requires evidence the token-copying result does not provide.
 
 ## Verdict: Disconfirmed
 
