@@ -74,7 +74,7 @@ Double dissociation (I6) caps every one of the seven claims that reach this tier
 - Discriminant validity ([C4](/mechanistic-validity/framework/criteria/construct/discriminant-validity/))
 - Rival mechanism exclusion ([I5](/mechanistic-validity/framework/criteria/internal/rival-mechanism-exclusion/))
 - Confound control ([I7](/mechanistic-validity/framework/criteria/internal/confound-control/))
-- Cross-distribution replication — [E4](/mechanistic-validity/framework/criteria/external/cross-model-generalization/) where the claim asserts reach beyond the systems tested, [E2](/mechanistic-validity/framework/criteria/external/prompt-generalization/) where it does not
+- Cross-distribution replication — [E4](/mechanistic-validity/framework/criteria/external/cross-model-recurrence/) where the claim asserts reach beyond the systems tested, [E2](/mechanistic-validity/framework/criteria/external/prompt-generalization/) where it does not
 - Double dissociation attempted ([I6](/mechanistic-validity/framework/criteria/internal/double-dissociation/))
 
 **Characteristic occupants:** Induction heads, token copying (capped by C6, I3, I10, I12).

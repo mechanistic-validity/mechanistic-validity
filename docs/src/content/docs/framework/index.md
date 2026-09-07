@@ -14,7 +14,7 @@ The framework applies to claims of the form *component C implements computation 
 ## The evaluation pipeline
 
 <p align="center">
-  <img src="/mechanistic-validity/figures/v2/pipeline-horizontal.png" alt="Mechanistic Validity Pipeline — five steps from description mode through verdict" width="800"/>
+  <img src="/mechanistic-validity/figures/v2/pipeline-horizontal.png" alt="Mechanistic Validity Pipeline — six layers from description mode through verdict" width="800"/>
 </p>
 
 The pipeline has six layers. Layers 1–2 scope the claim. Layer 3 produces evidence. Layers 4–5 score it. Layer 6 issues a verdict.
@@ -30,10 +30,10 @@ The pipeline has six layers. Layers 1–2 scope the claim. Layer 3 produces evid
 
 ### Running example: activation patching on the IOI circuit
 
-To make the pipeline concrete, consider a typical claim: "Head L9H9 implements name-moving in the IOI circuit (GPT-2 Small)." Walking through the five steps:
+To make the pipeline concrete, consider a typical claim: "Head L9H9 implements name-moving in the IOI circuit (GPT-2 Small)." Walking through the six layers:
 
 <p align="center">
-  <img src="/mechanistic-validity/figures/v2/pipeline-vert-ioi.png" alt="Five-step pipeline applied to IOI activation patching on L9H9" width="600"/>
+  <img src="/mechanistic-validity/figures/v2/pipeline-vert-ioi.png" alt="Six-layer pipeline applied to IOI activation patching on L9H9" width="600"/>
 </p>
 
 1. **Description mode.** The claim names a component and attributes a function ("name-moving"), so it is `[implementational–functional]`. This is stronger than just saying which heads are involved (topographic) — it commits to *what* the head does, which requires evidence beyond ablation.

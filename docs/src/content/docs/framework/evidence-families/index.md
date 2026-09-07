@@ -42,4 +42,4 @@ The primary function of the family classification is to structure convergent val
 
 ## Relationship to the evaluation pipeline
 
-Evidence families are step 2 of the [seven-step evaluation pipeline](/mechanistic-validity/framework/). After declaring the [description mode](/mechanistic-validity/framework/description-modes/) (step 1), you identify which evidence families are relevant to the claim. This determines which [metrics to run](/mechanistic-validity/framework/metrics/) in step 3, which in turn produces the measurements scored against the 36 [criteria](/mechanistic-validity/framework/criteria/) in steps 4–5.
+Evidence families are Layer 2 of the [six-layer evaluation pipeline](/mechanistic-validity/framework/). After declaring the [description mode](/mechanistic-validity/framework/description-modes/) (Layer 1), you identify which evidence families are relevant to the claim. This determines which [metrics to run](/mechanistic-validity/framework/metrics/) in Layer 3, which in turn produces the measurements scored against the 36 [criteria](/mechanistic-validity/framework/criteria/) in Layers 4–5.
