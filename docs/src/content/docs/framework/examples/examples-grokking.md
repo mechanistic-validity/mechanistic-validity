@@ -27,11 +27,11 @@ The scope limitation is also significant: E6 (cross-architecture) is untested. A
 
 | Method | Our metric | Family |
 |---|---|---|
-| Weight-space Fourier decomposition | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
-| Per-frequency ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Activation probing (Fourier components) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
-| Mechanistic prediction (exact output reproduction) | [D04 CE Delta](/framework/metrics/behavioral/d04-ce-delta) | Behavioral |
-| Training dynamics analysis (phase transition) | [D04 CE Delta](/framework/metrics/behavioral/d04-ce-delta) | Behavioral |
+| Weight-space Fourier decomposition | [B01 SVD/Spectral](/framework/metrics/#b01) | Structural |
+| Per-frequency ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Activation probing (Fourier components) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
+| Mechanistic prediction (exact output reproduction) | [D04 CE Delta](/framework/metrics/#d04) | Behavioral |
+| Training dynamics analysis (phase transition) | [D04 CE Delta](/framework/metrics/#d04) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

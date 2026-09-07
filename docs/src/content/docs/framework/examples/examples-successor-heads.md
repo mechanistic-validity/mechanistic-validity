@@ -25,9 +25,9 @@ This extends the Greater-Than claim from a task-specific circuit to a *general c
 
 | Method | Our metric | Family |
 |---|---|---|
-| $W_{OV}$ decomposition (multi-domain ordinal structure) | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
-| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Cross-task generalization (years, months, days, letters) | [D06 Cross-Task Transfer](/framework/metrics/behavioral/d06-cross-task-transfer) | Behavioral |
+| $W_{OV}$ decomposition (multi-domain ordinal structure) | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
+| Ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Cross-task generalization (years, months, days, letters) | [D06 Cross-Task Transfer](/framework/metrics/#d06) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

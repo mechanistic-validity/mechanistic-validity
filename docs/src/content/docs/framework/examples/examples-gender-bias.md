@@ -27,10 +27,10 @@ This case study illustrates the framework's most important function: sometimes t
 
 | Method | Our metric | Family |
 |---|---|---|
-| Gender direction projection (embedding geometry) | [B01 SVD/Spectral](/framework/metrics/structural/b01-svd-spectral) | Structural |
-| Causal mediation analysis (Vig et al.) | [A06 Mediation](/framework/metrics/causal/a06-mediation) | Causal |
-| Iterative nullspace projection / INLP (Ravfogel et al.) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
-| Activation steering along gender direction | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
+| Gender direction projection (embedding geometry) | [B01 SVD/Spectral](/framework/metrics/#b01) | Structural |
+| Causal mediation analysis (Vig et al.) | [A06 Mediation](/framework/metrics/#a06) | Causal |
+| Iterative nullspace projection / INLP (Ravfogel et al.) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
+| Activation steering along gender direction | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

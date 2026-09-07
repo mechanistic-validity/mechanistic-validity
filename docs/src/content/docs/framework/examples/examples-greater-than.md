@@ -25,10 +25,10 @@ This is a structural-level claim with algorithmic aspects: it names specific wei
 
 | Method | Our metric | Family |
 |---|---|---|
-| $W_{OV}$ decomposition / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
-| Ablation | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Cross-task generalization (months, numbers) | [D06 Cross-Task Transfer](/framework/metrics/behavioral/d06-cross-task-transfer) | Behavioral |
-| Logit prediction analysis | [D02 Logit-Diff Recovery](/framework/metrics/behavioral/d02-logit-diff-recovery) | Behavioral |
+| $W_{OV}$ decomposition / weight analysis | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
+| Ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Cross-task generalization (months, numbers) | [D06 Cross-Task Transfer](/framework/metrics/#d06) | Behavioral |
+| Logit prediction analysis | [D02 Logit-Diff Recovery](/framework/metrics/#d02) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 

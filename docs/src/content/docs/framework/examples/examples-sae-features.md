@@ -27,10 +27,10 @@ This is not a claim that SAE features are wrong — many may be real. It is a cl
 
 | Method | Our metric | Family |
 |---|---|---|
-| Max-activating examples (feature identification) | [E02 Linear Probe](/framework/metrics/representational/e02-linear-probe) | Representational |
-| Activation steering / feature clamping | [A02 Counterfactual DAS](/framework/metrics/causal/a02-counterfactual-das) | Causal |
-| Feature ablation (zeroing) | [A01 Pearl SCM](/framework/metrics/causal/a01-scm-pearl) | Causal |
-| Decoder vector projection through unembedding | [B03 OV/QK Decomposition](/framework/metrics/structural/b03-ov-qk-decomposition) | Structural |
+| Max-activating examples (feature identification) | [E02 Linear Probe](/framework/metrics/#e02) | Representational |
+| Activation steering / feature clamping | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
+| Feature ablation (zeroing) | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
+| Decoder vector projection through unembedding | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
