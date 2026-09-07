@@ -166,7 +166,7 @@ This distinction matters because the evidence required differs:
 |---|---|---|
 | **Distributional** | "This circuit handles IOI across the IOI distribution" | Standard activation patching, faithfulness metrics averaged over prompt samples |
 | **Input-class** | "This circuit handles IOI when the indirect object appears in position 4–6" | Faithfulness conditioned on input class; degradation outside the class |
-| **Token-level** | "On this specific forward pass, these heads were the actual causes" | Halpern-Pearl actual causation ([A11](/framework/metrics/#a11)), not averaged intervention effects |
+| **Token-level** | "On this specific forward pass, these heads were the actual causes" | Halpern-Pearl actual causation ([A11](/mechanistic-validity/framework/metrics/#a11)), not averaged intervention effects |
 
 Most published MI claims are distributional but written as if they were token-level ("the model uses this circuit to..."). When the claim is genuinely token-level — asserting that specific components were the actual causes on a specific input — standard activation patching is insufficient because it averages over counterfactuals. Token-level mechanistic claims require actual-causation evidence (A11).
 

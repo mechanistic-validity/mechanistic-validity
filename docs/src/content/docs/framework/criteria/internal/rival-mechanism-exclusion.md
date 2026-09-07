@@ -23,11 +23,11 @@ Satisfied when either:
 1. **No rival achieves comparable faithfulness.** At least one alternative component set (of similar size) has been tested and achieves less than 80% of the target circuit's faithfulness under the same [ablation](/mechanistic-validity/glossary/#ablation) regime. The gap is reported explicitly.
 2. **Rivals exist and are declared.** Alternative component sets achieve comparable faithfulness, and the claim is explicitly scoped to "a sufficient mechanism" rather than "the mechanism." The rival circuits are named and their faithfulness reported.
 
-## Why this is separate from V4 (Alternative Exclusion)
+## Why this is separate from V3 (Alternative Level)
 
-[V4 Alternative Exclusion](/framework/criteria/interpretive/alternative-exclusion/) addresses competing *interpretations* of the same evidence — different narrative accounts of what the circuit does. Rival mechanism exclusion addresses competing *circuits* — different component sets that produce the same behavior with comparable faithfulness. The first is an interpretive question (what does the evidence mean?). The second is an empirical question (is this the only component set that works?).
+[V3 Alternative Level](/mechanistic-validity/framework/criteria/interpretive/alternative-level/) addresses competing *interpretations* of the same evidence — different narrative accounts of what the circuit does. Rival mechanism exclusion addresses competing *circuits* — different component sets that produce the same behavior with comparable faithfulness. The first is an interpretive question (what does the evidence mean?). The second is an empirical question (is this the only component set that works?).
 
-A claim can pass V4 (no better interpretation of the evidence exists) while failing I6 (a different set of components produces the same behavior equally well). This is the "a circuit vs. the circuit" distinction.
+A claim can pass V3 (no better interpretation of the evidence exists) while failing I6 (a different set of components produces the same behavior equally well). This is the "a circuit vs. the circuit" distinction.
 
 ## The Méloux et al. problem
 
@@ -43,9 +43,9 @@ Without I6, a researcher who finds a faithful circuit has no obligation to test 
 
 ## Relation to other criteria
 
-- **[C4 Minimality](/framework/criteria/construct/minimality/):** A minimal circuit can still be non-unique — multiple minimal circuits may exist (backup mechanisms, distributed computation). Minimality ensures no redundant members within a circuit; I6 ensures no rival circuits across decompositions.
-- **[I5 Confound Control](/framework/criteria/internal/confound-control/):** Confound control asks whether the effect is due to the nominated component or collateral disruption. I6 asks whether *different* components could produce the same effect without collateral disruption.
-- **[I4 Consistency](/framework/criteria/internal/consistency/):** Consistency ensures the finding replicates across seeds and methods. I6 goes further: even if the finding replicates perfectly, is the discovered circuit the only one that would?
+- **[I3 Minimality](/mechanistic-validity/framework/criteria/internal/minimality/):** A minimal circuit can still be non-unique — multiple minimal circuits may exist (backup mechanisms, distributed computation). Minimality ensures no redundant members within a circuit; I6 ensures no rival circuits across decompositions.
+- **[I7 Confound Control](/mechanistic-validity/framework/criteria/internal/confound-control/):** Confound control asks whether the effect is due to the nominated component or collateral disruption. I6 asks whether *different* components could produce the same effect without collateral disruption.
+- **[M1 Reliability](/mechanistic-validity/framework/criteria/measurement/reliability/):** Consistency ensures the finding replicates across seeds and methods. I6 goes further: even if the finding replicates perfectly, is the discovered circuit the only one that would?
 
 ## Minimum reporting rule
 

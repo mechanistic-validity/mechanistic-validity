@@ -9,7 +9,7 @@ description: "The refusal direction mechanism (Arditi et al. 2024) evaluated thr
 
 The mechanism is defined contrastively: the direction is the difference in mean activations between harmful and harmless prompt sets. It transfers across prompt categories (not just the ones used to extract it) and across model scales within the same family.
 
-**Description mode:** `[implementational-functional]`. The claim specifies what the direction does to the residual stream — an additive or subtractive shift in refusal probability — without asserting an algorithmic account of how that shift propagates to the output. See [Description Modes](/framework/description-modes/).
+**Description mode:** `[implementational-functional]`. The claim specifies what the direction does to the residual stream — an additive or subtractive shift in refusal probability — without asserting an algorithmic account of how that shift propagates to the output. See [Description Modes](/mechanistic-validity/framework/description-modes/).
 
 ## Verdict: Mechanistically Supported
 
@@ -37,7 +37,7 @@ The claim reaches Mechanistically Supported because necessity and sufficiency ar
 
 ## Validity concerns
 
-**Unlicensed labeling (V4).** "Refusal direction" implies a unitary mechanism for refusal. The evidence shows a linear direction that separates harmful from harmless activations, but this is consistent with several interpretations: a refusal mechanism, a harm-detection feature, or a safety-training artifact. The label asserts more than the evidence establishes.
+**Unlicensed labeling (V3).** "Refusal direction" implies a unitary mechanism for refusal. The evidence shows a linear direction that separates harmful from harmless activations, but this is consistent with several interpretations: a refusal mechanism, a harm-detection feature, or a safety-training artifact. The label asserts more than the evidence establishes.
 
 **Rival mechanism exclusion.** The direction could encode general uncertainty or caution rather than refusal specifically. No experiment contrasts refusal with other forms of model hesitation.
 

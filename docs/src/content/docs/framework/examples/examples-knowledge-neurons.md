@@ -13,11 +13,11 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C1 Falsifiability | C3 Task specificity | Partial |
+| Construct | C1 Falsifiability | C4 Discriminant validity | Partial |
 | Internal | I1 Necessity | I4 Specificity | Disconfirmed |
-| External | E4 Effect magnitude | E3 Selectivity | Weak |
-| Measurement | M1 Reliability | M2/M4 Invariance + Sensitivity | Weak |
-| Interpretive | V1 Level declaration | V4 Alternative exclusion | Weak |
+| External | E5 Graded response | I4 Specificity | Weak |
+| Measurement | M1 Reliability | M6/M5 Invariance + Sensitivity | Weak |
+| Interpretive | V1 Level declaration | V3 Alternative level | Weak |
 
 **Overall verdict: Disconfirmed.** The knowledge neurons localization claim fails decisively on specificity (I4). Subsequent work shows that fact editing raises inter-relation perplexity — the edits are not specific to the target fact but corrupt related knowledge. The off-target effects are measured and reported in the original work but not interpreted as a specificity failure. The framework identifies this as a disconfirming result: the mechanism claimed (localized factual storage) predicts that editing one fact should leave related facts intact, and it does not. The practical tool (ROME) can work for the wrong mechanistic reasons — the edit succeeds on the target while corrupting neighbors, which is consistent with distributed rather than localized storage.
 
@@ -25,9 +25,9 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 | Method | Our metric | Family |
 |---|---|---|
-| Causal tracing (activation patching with noise) | [A02 Counterfactual DAS](/framework/metrics/#a02) | Causal |
-| Rank-one model editing (ROME) | [A01 SCM](/framework/metrics/#a01) | Causal |
-| MEMIT (multi-layer editing) | [A01 SCM](/framework/metrics/#a01) | Causal |
+| Causal tracing (activation patching with noise) | [A02 Counterfactual DAS](/mechanistic-validity/framework/metrics/#a02) | Causal |
+| Rank-one model editing (ROME) | [A01 SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
+| MEMIT (multi-layer editing) | [A01 SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -39,15 +39,15 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 ### Criteria
 
-**[C1 — Falsifiability:](/framework/criteria/construct/falsifiability) Pass.** The claim predicts: (1) causal tracing should show that early-site MLP layers are the critical path for factual recall, (2) rank-one edits to those layers should change the model's factual outputs. Both are testable and concrete.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Pass.** The claim predicts: (1) causal tracing should show that early-site MLP layers are the critical path for factual recall, (2) rank-one edits to those layers should change the model's factual outputs. Both are testable and concrete.
 
-**[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Partial.** The "knowledge is in MLP weights" claim is plausible — MLP layers have the capacity to store key-value associations. But whether a single fact corresponds to a localized rank-one update (vs. being distributed across many parameters) is a strong structural assumption that is not independently verified.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Partial.** The "knowledge is in MLP weights" claim is plausible — MLP layers have the capacity to store key-value associations. But whether a single fact corresponds to a localized rank-one update (vs. being distributed across many parameters) is a strong structural assumption that is not independently verified.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Weak.** The critical question: does editing "Eiffel Tower → Rome" affect *only* Eiffel Tower queries, or does it corrupt related knowledge (French landmarks, Paris facts, tower-related queries)? Subsequent work (Hoelscher-Obermaier et al. 2023, Hase et al. 2024) finds that edits often have unintended side effects — the intervention is not as specific as claimed.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Weak.** The critical question: does editing "Eiffel Tower → Rome" affect *only* Eiffel Tower queries, or does it corrupt related knowledge (French landmarks, Paris facts, tower-related queries)? Subsequent work (Hoelscher-Obermaier et al. 2023, Hase et al. 2024) finds that edits often have unintended side effects — the intervention is not as specific as claimed.
 
-**[C4 — Minimality:](/framework/criteria/construct/minimality) Unclear.** Is one MLP layer the minimal locus, or could the fact be edited at multiple locations? MEMIT (the multi-layer extension) suggests the latter — facts may be distributed, and ROME's single-layer assumption may be over-localizing.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Unclear.** Is one MLP layer the minimal locus, or could the fact be edited at multiple locations? MEMIT (the multi-layer extension) suggests the latter — facts may be distributed, and ROME's single-layer assumption may be over-localizing.
 
-**[C5 — Convergent validity:](/framework/criteria/construct/convergent-validity) Partial.** Causal tracing (activation patching) identifies the critical layers. ROME edits at those layers and works. But these two steps are not independent — ROME is designed to edit where causal tracing points. An independent method (probing, weight-space analysis) finding the same localization would be stronger.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Causal tracing (activation patching) identifies the critical layers. ROME edits at those layers and works. But these two steps are not independent — ROME is designed to edit where causal tracing points. An independent method (probing, weight-space analysis) finding the same localization would be stronger.
 
 ### Key Distinctions
 
@@ -76,15 +76,15 @@ Four nodes confirmed/observed, but two of them (ripple effects, multi-layer dist
 
 ### Criteria
 
-**[I1 — Necessity:](/framework/criteria/internal/necessity) Pass.** Causal tracing shows that corrupting the identified MLP layers degrades factual recall for the target fact. The effect is specific to the fact being tested.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Causal tracing shows that corrupting the identified MLP layers degrades factual recall for the target fact. The effect is specific to the fact being tested.
 
-**[I2 — Sufficiency:](/framework/criteria/internal/sufficiency) Pass (narrow).** ROME edits at the identified layer successfully change the model's output for the target query. This is a form of sufficiency — intervening at the identified locus is sufficient to change the behavior. But it is narrow sufficiency: the edit works for the specific query template tested, not necessarily for all ways of asking about the same fact.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass (narrow).** ROME edits at the identified layer successfully change the model's output for the target query. This is a form of sufficiency — intervening at the identified locus is sufficient to change the behavior. But it is narrow sufficiency: the edit works for the specific query template tested, not necessarily for all ways of asking about the same fact.
 
-**[I3 — Specificity:](/framework/criteria/internal/specificity) Weak — the critical gap.** This is where the claim breaks down. Editing "Eiffel Tower is in Paris" to "Eiffel Tower is in Rome" may also change answers to "What country is the Eiffel Tower in?" (should still be France) or corrupt knowledge about Rome. The edit is not specific to the target fact — it bleeds into related knowledge. This is the "ripple effect" problem documented by subsequent work.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak — the critical gap.** This is where the claim breaks down. Editing "Eiffel Tower is in Paris" to "Eiffel Tower is in Rome" may also change answers to "What country is the Eiffel Tower in?" (should still be France) or corrupt knowledge about Rome. The edit is not specific to the target fact — it bleeds into related knowledge. This is the "ripple effect" problem documented by subsequent work.
 
-**[I4 — Consistency:](/framework/criteria/internal/consistency) Partial.** Works across many facts (ROME is tested on thousands of subject-relation-object triples). But the *quality* of edits varies — some generalize, some don't, and the conditions for success are not fully characterized.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Works across many facts (ROME is tested on thousands of subject-relation-object triples). But the *quality* of edits varies — some generalize, some don't, and the conditions for success are not fully characterized.
 
-**[I5 — Confound control:](/framework/criteria/internal/confound-control) Weak.** Causal tracing uses a specific corruption method (noise injection). Whether the identified locus is specific to factual recall or is a general bottleneck for any query involving the subject entity is not controlled. A component could be "where the subject is processed" rather than "where the fact is stored."
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Weak.** Causal tracing uses a specific corruption method (noise injection). Whether the identified locus is specific to factual recall or is a general bottleneck for any query involving the subject entity is not controlled. A component could be "where the subject is processed" rather than "where the fact is stored."
 
 ### Key Distinctions
 
@@ -111,17 +111,17 @@ Four cells filled — but two of them (related fact recall column) document *fai
 
 ### Criteria
 
-**[E1 — Intervention reach:](/framework/criteria/external/intervention-reach) Partial.** ROME successfully changes model outputs — the intervention reaches downstream behavior. But the reach is often too broad (changes things it shouldn't).
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** ROME successfully changes model outputs — the intervention reaches downstream behavior. But the reach is often too broad (changes things it shouldn't).
 
-**[E2 — Graded response:](/framework/criteria/external/graded-response) Not tested.** Can you partially edit a fact (make the model less confident rather than fully switching)? Parametric dose-response is not standard in the ROME framework.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** Can you partially edit a fact (make the model less confident rather than fully switching)? Parametric dose-response is not standard in the ROME framework.
 
-**[E3 — Selectivity:](/framework/criteria/external/selectivity) Weak.** The key failure. Edits produce off-target effects on related knowledge. The intervention is not selective.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak.** The key failure. Edits produce off-target effects on related knowledge. The intervention is not selective.
 
-**[E4 — Effect magnitude:](/framework/criteria/external/effect-magnitude) Strong on target.** On the specific query template used, the edit success rate is high (>90% for ROME on the tested benchmark).
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Strong on target.** On the specific query template used, the edit success rate is high (>90% for ROME on the tested benchmark).
 
-**[E5 — Robustness:](/framework/criteria/external/robustness) Partial.** Edits work on the target template but may not generalize to paraphrases or related queries. "Robustness" of the edit (does it hold across phrasings?) is partially demonstrated.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Edits work on the target template but may not generalize to paraphrases or related queries. "Robustness" of the edit (does it hold across phrasings?) is partially demonstrated.
 
-**[E6 — Cross-architecture:](/framework/criteria/external/cross-architecture) Partial.** ROME/MEMIT have been applied to multiple model families (GPT-J, GPT-NeoX, LLaMA). The causal tracing localization varies somewhat across architectures.
+**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** ROME/MEMIT have been applied to multiple model families (GPT-J, GPT-NeoX, LLaMA). The causal tracing localization varies somewhat across architectures.
 
 ### Key Distinctions
 
@@ -149,17 +149,17 @@ This is the pharmacological core of the ROME critique: without a dose-response c
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Partial.** Causal tracing gives consistent results for a given fact. But the localization can differ between related facts, suggesting the measurement is reliable but the underlying phenomenon is complex.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Causal tracing gives consistent results for a given fact. But the localization can differ between related facts, suggesting the measurement is reliable but the underlying phenomenon is complex.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Weak.** The identified "knowledge location" varies by fact, by query phrasing, and by model. The measurement is not invariant across conditions — different prompts for the same fact may point to different layers.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Weak.** The identified "knowledge location" varies by fact, by query phrasing, and by model. The measurement is not invariant across conditions — different prompts for the same fact may point to different layers.
 
-**[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Partial.** Causal tracing shows clear peaks at specific layers. But whether the baseline (what random layers contribute) is well-characterized is unclear.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** Causal tracing shows clear peaks at specific layers. But whether the baseline (what random layers contribute) is well-characterized is unclear.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Unknown.** Can causal tracing distinguish "where the fact is stored" from "where the subject entity is processed"? This is the core sensitivity question and it is not resolved.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can causal tracing distinguish "where the fact is stored" from "where the subject entity is processed"? This is the core sensitivity question and it is not resolved.
 
-**[M5 — Calibration:](/framework/criteria/measurement/calibration) Not reported.** What constitutes a "successful" edit? Success is measured by whether the target answer changes, but whether the model's broader knowledge remains intact is not part of the standard calibration.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.** What constitutes a "successful" edit? Success is measured by whether the target answer changes, but whether the model's broader knowledge remains intact is not part of the standard calibration.
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Partial.** Measures whether the target answer changes. Does not measure: consistency of related knowledge, model confidence, or downstream reasoning quality.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Measures whether the target answer changes. Does not measure: consistency of related knowledge, model confidence, or downstream reasoning quality.
 
 ### Key Distinctions
 
@@ -185,15 +185,15 @@ The one filled convergent cell (causal tracing vs. ROME success) is high by desi
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** The claim is [implementational](/framework/modes/implementational) — it names where facts are stored and how they can be modified.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is [implementational](/mechanistic-validity/framework/modes/implementational-functional) — it names where facts are stored and how they can be modified.
 
-**[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Partial.** The evidence (causal tracing) is at the causal/behavioral level. The claim (facts are *stored* in MLPs) is a structural/implementational assertion. There is a gap — causal importance does not establish storage.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** The evidence (causal tracing) is at the causal/behavioral level. The claim (facts are *stored* in MLPs) is a structural/implementational assertion. There is a gap — causal importance does not establish storage.
 
-**[V3 — Narrative coherence:](/framework/criteria/interpretive/narrative-coherence) Moderate.** "MLPs store key-value associations; subjects are keys, facts are values; editing the value changes the fact." This is a coherent story but may be overly simplified. The narrative works for the edit success cases but not for the ripple-effect failures.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Moderate.** "MLPs store key-value associations; subjects are keys, facts are values; editing the value changes the fact." This is a coherent story but may be overly simplified. The narrative works for the edit success cases but not for the ripple-effect failures.
 
-**[V4 — Alternative exclusion:](/framework/criteria/interpretive/alternative-exclusion) Weak.** The key alternative: MLP layers are where *subject entity representations* are processed, not where *facts are stored*. Under this alternative, ROME edits work because they corrupt the entity representation at a processing bottleneck, not because they target fact storage. This alternative explains both the successes and the failures (ripple effects = corrupted entity representation affects all facts about that entity). It has not been excluded.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The key alternative: MLP layers are where *subject entity representations* are processed, not where *facts are stored*. Under this alternative, ROME edits work because they corrupt the entity representation at a processing bottleneck, not because they target fact storage. This alternative explains both the successes and the failures (ripple effects = corrupted entity representation affects all facts about that entity). It has not been excluded.
 
-**[V5 — Scope honesty:](/framework/criteria/interpretive/scope-honesty) Partial.** "Knowledge is localized" is a strong claim. "Causal tracing identifies MLP layers whose corruption disrupts factual recall on template queries" is what is demonstrated. The scope of the evidence is narrower than the scope of the claim.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Partial.** "Knowledge is localized" is a strong claim. "Causal tracing identifies MLP layers whose corruption disrupts factual recall on template queries" is what is demonstrated. The scope of the evidence is narrower than the scope of the claim.
 
 ### Key Distinctions
 

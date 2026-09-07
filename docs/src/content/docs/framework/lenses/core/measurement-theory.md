@@ -14,7 +14,7 @@ Measurement validity is a step MI often skips. We run the metric, get a number, 
 The distinction is the same one pharmacology makes between assay validation and drug efficacy. You validate the assay before interpreting what it measures. A failed assay produces numbers regardless — they just don't mean what you think.
 
 :::note
-For the full metrics and protocols reference, see [Measurement Theory -- Metrics & Protocols](/framework/lenses/core/measurement-theory-metrics).
+For the full metrics and protocols reference, see [Measurement Theory -- Metrics & Protocols](/mechanistic-validity/framework/metrics/).
 :::
 
 ## Key Distinctions
@@ -100,7 +100,7 @@ If instead the matrix looked like this — patching-IOI vs patching-GT = 0.85, b
 | [Hewitt & Liang, "A structural probe for finding syntax in word representations"](https://aclanthology.org/D19-1275/) | 2019 | Natural Language Processing | **Selectivity = linguistic accuracy $-$ control accuracy** — probe accuracy without a baseline measures metric capacity, not representation structure |
 | [Sutter et al., "How to evaluate satisfiability of interpretability claims"](https://arxiv.org/abs/2507.08802) | 2025 | Mechanistic Interpretability | **Baseline separation** — unconstrained nonlinear IIA achieves near-perfect scores on random-init models; the baseline is not optional |
 
-## Validity type: [Measurement validity](/framework/validity-types/measurement)
+## Validity type: [Measurement validity](/mechanistic-validity/framework/validity-types/measurement)
 
 > **Classical test theory (Lord & Novick 1968):** An observed score $X = T + E$, where $T$ is the true score and $E$ is measurement error. Reliability $\rho_{XX'} = \sigma^2_T / (\sigma^2_T + \sigma^2_E)$ is the proportion of observed variance attributable to the true score. A metric with $\rho_{XX'} = 0.5$ carries as much noise as signal.
 
@@ -253,9 +253,9 @@ A skipped step must be named in the verdict.
 
 For full worked examples applying all five lenses (including measurement validity) to published claims:
 
-- [IOI Circuit](/framework/examples/examples/examples-ioi) — reliability untested; single prompt template
-- [Induction Heads](/framework/examples/examples/examples-induction-heads) — multiple independent measurements converge
-- [SAE Features](/framework/examples/examples/examples-sae-features) — baseline separation is the central question
-- [Probing Classifiers](/framework/examples/examples/examples-probing) — measurement without construct coverage (Hewitt & Liang)
-- [Othello World Model](/framework/examples/examples/examples-othello) — calibration question: linear decodability vs. world model
-- [Grokking](/framework/examples/examples/examples-grokking) — full measurement validity (toy model, exact weights known)
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — reliability untested; single prompt template
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — multiple independent measurements converge
+- [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — baseline separation is the central question
+- [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) — measurement without construct coverage (Hewitt & Liang)
+- [Othello World Model](/mechanistic-validity/framework/examples/examples-othello) — calibration question: linear decodability vs. world model
+- [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — full measurement validity (toy model, exact weights known)

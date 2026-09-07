@@ -13,11 +13,11 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C2 Structural plausibility | C5 Convergent | Partial–Strong |
-| Internal | I3 Specificity | I5 Confound control | Causally suggestive |
-| External | E3 Selectivity | E6 Cross-architecture | Partial |
-| Measurement | M3 Baseline separation | M1 Reliability | Partial |
-| Interpretive | V3 Narrative coherence | V4 Alternative exclusion | Strong |
+| Construct | C2 Structural plausibility | C3 Convergent | Partial–Strong |
+| Internal | I4 Specificity | I7 Confound control | Causally suggestive |
+| External | I4 Specificity | E4 Cross-model recurrence | Partial |
+| Measurement | M2 Baseline separation | M1 Reliability | Partial |
+| Interpretive | V2 Level-evidence match | V3 Alternative level | Strong |
 
 **Overall verdict: Mechanistically Supported.** Copy suppression is notable for its unusually clean specificity result (I3) — ablation produces a specific error type rather than general degradation. This is rare in MI and provides stronger evidence than typical necessity results. The capping criterion is I6 (double dissociation): no crossed design has been attempted. The mechanism is a good example of how negative-effect components (inhibitory mechanisms) can be as well-characterized as positive-effect ones.
 
@@ -25,9 +25,9 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 | Method | Our metric | Family |
 |---|---|---|
-| Ablation (mean ablation) | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
-| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/framework/metrics/#d02) | Behavioral |
-| $W_{OV}$ decomposition (anti-copying structure) | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
+| Ablation (mean ablation) | [A01 Pearl SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
+| Direct logit attribution (DLA) | [D02 Logit-Diff Recovery](/mechanistic-validity/framework/metrics/#d02) | Behavioral |
+| $W_{OV}$ decomposition (anti-copying structure) | [B03 OV/QK Decomposition](/mechanistic-validity/framework/metrics/#b03) | Structural |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -39,15 +39,15 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 ### Criteria
 
-**[C1 — Falsifiability:](/framework/criteria/construct/falsifiability) Pass.** The claim predicts: (1) these heads should produce negative direct logit attribution on tokens that are about to be copied, (2) ablating them should *increase* the probability of incorrect token repetition. Both are testable and concrete.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Pass.** The claim predicts: (1) these heads should produce negative direct logit attribution on tokens that are about to be copied, (2) ablating them should *increase* the probability of incorrect token repetition. Both are testable and concrete.
 
-**[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Pass.** The $W_{OV}$ matrices of copy suppression heads show anti-copying structure — they project negatively onto the tokens they attend to, effectively subtracting those tokens from the output logits. This is the structural mirror of the positive copying structure in name-mover/induction heads.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Pass.** The $W_{OV}$ matrices of copy suppression heads show anti-copying structure — they project negatively onto the tokens they attend to, effectively subtracting those tokens from the output logits. This is the structural mirror of the positive copying structure in name-mover/induction heads.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) Partial.** Copy suppression is not task-specific — it operates across any context where token repetition is likely but incorrect. This is an honest scope claim (like induction heads), but the boundary of when suppression activates versus when copying is appropriate is not precisely characterized.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Partial.** Copy suppression is not task-specific — it operates across any context where token repetition is likely but incorrect. This is an honest scope claim (like induction heads), but the boundary of when suppression activates versus when copying is appropriate is not precisely characterized.
 
-**[C4 — Minimality:](/framework/criteria/construct/minimality) Pass.** A small number of heads are identified. Each contributes independently measurable negative DLA.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** A small number of heads are identified. Each contributes independently measurable negative DLA.
 
-**[C5 — Convergent validity:](/framework/criteria/construct/convergent-validity) Partial.** Identified through DLA (behavioral) and confirmed through $W_{OV}$ analysis (structural). Two method families, partially independent.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Identified through DLA (behavioral) and confirmed through $W_{OV}$ analysis (structural). Two method families, partially independent.
 
 ### Key Distinctions
 
@@ -76,15 +76,15 @@ Four nodes confirmed, three unconnected. The confirmed nodes establish a coheren
 
 ### Criteria
 
-**[I1 — Necessity:](/framework/criteria/internal/necessity) Pass.** Ablating copy suppression heads causes the model to *over-copy* — token repetition probability increases on prompts where copying would be incorrect. This is a specific and interpretable necessity result.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating copy suppression heads causes the model to *over-copy* — token repetition probability increases on prompts where copying would be incorrect. This is a specific and interpretable necessity result.
 
-**[I2 — Sufficiency:](/framework/criteria/internal/sufficiency) Partial.** The mechanism is demonstrated through its effect (suppressing logits), but a full isolation test (can these heads alone prevent copying when the rest of the model promotes it?) is not reported.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** The mechanism is demonstrated through its effect (suppressing logits), but a full isolation test (can these heads alone prevent copying when the rest of the model promotes it?) is not reported.
 
-**[I3 — Specificity:](/framework/criteria/internal/specificity) Pass.** The effect is specific to suppression of incorrect copying. Ablating these heads does not generally degrade model performance — it specifically increases token repetition errors. This is an unusually clean specificity result because the effect direction is distinctive (increase in a specific error type, not general degradation).
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** The effect is specific to suppression of incorrect copying. Ablating these heads does not generally degrade model performance — it specifically increases token repetition errors. This is an unusually clean specificity result because the effect direction is distinctive (increase in a specific error type, not general degradation).
 
-**[I4 — Consistency:](/framework/criteria/internal/consistency) Partial.** Demonstrated across varied prompts where copying is inappropriate. Cross-model consistency not reported.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Demonstrated across varied prompts where copying is inappropriate. Cross-model consistency not reported.
 
-**[I5 — Confound control:](/framework/criteria/internal/confound-control) Not tested.** Single ablation method.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** Single ablation method.
 
 ### Key Distinctions
 
@@ -110,17 +110,17 @@ The distinctive pattern: ablating copy suppression heads produces a *specific er
 
 ### Criteria
 
-**[E1 — Intervention reach:](/framework/criteria/external/intervention-reach) Partial.** The mechanism operates wherever the model encounters copy-tempting contexts. Its reach is defined by the breadth of such contexts in natural text.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** The mechanism operates wherever the model encounters copy-tempting contexts. Its reach is defined by the breadth of such contexts in natural text.
 
-**[E2 — Graded response:](/framework/criteria/external/graded-response) Not tested.** Does stronger copy signal produce stronger suppression? A parametric relationship is not measured.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** Does stronger copy signal produce stronger suppression? A parametric relationship is not measured.
 
-**[E3 — Selectivity:](/framework/criteria/external/selectivity) Pass.** The intervention (ablation) selectively produces over-copying without general performance degradation. This is clean selectivity.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** The intervention (ablation) selectively produces over-copying without general performance degradation. This is clean selectivity.
 
-**[E4 — Effect magnitude:](/framework/criteria/external/effect-magnitude) Moderate.** The effect is measurable and specific, but copy suppression is one of many mechanisms contributing to output quality. It is not the dominant mechanism for any single task.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Moderate.** The effect is measurable and specific, but copy suppression is one of many mechanisms contributing to output quality. It is not the dominant mechanism for any single task.
 
-**[E5 — Robustness:](/framework/criteria/external/robustness) Partial.** Works across varied copy-tempting prompts. Not tested on edge cases (when should the model copy vs. suppress?).
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Works across varied copy-tempting prompts. Not tested on edge cases (when should the model copy vs. suppress?).
 
-**[E6 — Cross-architecture:](/framework/criteria/external/cross-architecture) Not tested.** GPT-2 Small only.
+**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** GPT-2 Small only.
 
 ### Key Distinctions
 
@@ -147,17 +147,17 @@ The key insight from a pharmacological perspective: the selectivity of the full-
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Not reported.** No confidence intervals.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** No confidence intervals.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Partial.** Works across prompt types. Layer/position invariance not tested.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** Works across prompt types. Layer/position invariance not tested.
 
-**[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Pass.** Copy suppression heads show clearly negative DLA on copy-tempting tokens, while other heads do not. Clean separation.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Copy suppression heads show clearly negative DLA on copy-tempting tokens, while other heads do not. Clean separation.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Good.** The negative-DLA criterion cleanly identifies suppression heads.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Good.** The negative-DLA criterion cleanly identifies suppression heads.
 
-**[M5 — Calibration:](/framework/criteria/measurement/calibration) Not reported.**
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.**
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Good.** Both behavioral (ablation effect) and structural ($W_{OV}$) measurements used.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Good.** Both behavioral (ablation effect) and structural ($W_{OV}$) measurements used.
 
 ### Key Distinctions
 
@@ -183,15 +183,15 @@ The convergent diagonal is strong: heads identified by negative DLA are the same
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** Algorithmic — names what the heads do (suppress copying) and how ($W_{OV}$ anti-copying).
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** Algorithmic — names what the heads do (suppress copying) and how ($W_{OV}$ anti-copying).
 
-**[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Pass.** Structural + behavioral evidence matches algorithmic claim.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** Structural + behavioral evidence matches algorithmic claim.
 
-**[V3 — Narrative coherence:](/framework/criteria/interpretive/narrative-coherence) Strong.** The story is mechanistically precise: model is tempted to copy → copy suppression heads detect this → they subtract the copy signal from logits. The negative-effect framing is clean and testable.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The story is mechanistically precise: model is tempted to copy → copy suppression heads detect this → they subtract the copy signal from logits. The negative-effect framing is clean and testable.
 
-**[V4 — Alternative exclusion:](/framework/criteria/interpretive/alternative-exclusion) Partial.** Could these heads be doing something else that incidentally suppresses copying? The structural evidence (anti-copying $W_{OV}$) constrains alternatives, but the possibility that "suppression" is a side effect of a more general computation is not fully excluded.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** Could these heads be doing something else that incidentally suppresses copying? The structural evidence (anti-copying $W_{OV}$) constrains alternatives, but the possibility that "suppression" is a side effect of a more general computation is not fully excluded.
 
-**[V5 — Scope honesty:](/framework/criteria/interpretive/scope-honesty) Good.** Presented as general-purpose anti-copying, which matches the evidence scope.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Good.** Presented as general-purpose anti-copying, which matches the evidence scope.
 
 ### Key Distinctions
 

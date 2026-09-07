@@ -14,7 +14,7 @@ This is the only lens in the framework not imported from another field. The phar
 The positive formulation: these are standards to meet, not failures to avoid. Meeting them distinguishes a contribution ready for scrutiny from one that requires qualification. MI is a young field. Most published work does not yet meet all of them. That is expected and not a criticism — it is the specification of what would strengthen each claim.
 
 :::note
-For the extended MI metrics overview, see [MI Metrics Overview](/framework/evidence/mi-metrics-overview).
+For the extended MI metrics overview, see [MI Metrics Overview](/mechanistic-validity/framework/metrics/).
 :::
 
 ## Key Distinctions
@@ -111,7 +111,7 @@ A random-initialization model should produce an empty graph (no solid edges). If
 | [Wang et al.](https://arxiv.org/abs/2211.00593) | 2022 | **Circuit non-uniqueness** — activation patching returns "a" circuit, not "the" circuit; the circuit is relative to the procedure, the prompt distribution, and the ablation method |
 | [Conmy et al.](https://arxiv.org/abs/2304.14997) | NeurIPS 2023 | **Automated circuit discovery** — ACDC and EAP find circuits by a specific procedure; different procedures find different but comparably faithful circuits |
 
-## Validity type: [Interpretive validity](/framework/validity-types/interpretive)
+## Validity type: [Interpretive validity](/mechanistic-validity/framework/validity-types/interpretive)
 
 > **Level assignment:** For a claim $\mathcal{C}$, define $L(\mathcal{C}) \in \{I, A, C\}$ where $I$ = implementational (names components, weights, or activations), $A$ = algorithmic (names a procedure), $C$ = computational (names a problem and asserts a solution). Interpretive validity requires $L(\mathcal{E}) \geq L(\mathcal{C})$: evidence at a lower level does not license a claim at a higher level.
 
@@ -225,10 +225,10 @@ A skipped step must be named in the verdict.
 
 For full worked examples applying all five lenses (including interpretive validity) to published claims:
 
-- [IOI Circuit](/framework/examples/examples/examples-ioi) — "the circuit" language for a single-procedure result
-- [Induction Heads](/framework/examples/examples/examples-induction-heads) — level declarations match evidence; full nomological network
-- [Docstring Circuit](/framework/examples/examples/examples-docstring) — label risk: "variable binding" vs. simpler "positional copying"
-- [Othello World Model](/framework/examples/examples/examples-othello) — interpretive inflation: "world model" exceeds evidence
-- [Copy Suppression](/framework/examples/examples/examples-copy-suppression) — coverage quantification ($\kappa = 0.77$) done explicitly
-- [SAE Features](/framework/examples/examples/examples-sae-features) — level mismatch: implementational features, computational claims
-- [Gender Bias](/framework/examples/examples/examples-gender-bias) — scope honesty failure: "bias circuit" implies separability
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — "the circuit" language for a single-procedure result
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — level declarations match evidence; full nomological network
+- [Docstring Circuit](/mechanistic-validity/framework/examples/examples-docstring) — label risk: "variable binding" vs. simpler "positional copying"
+- [Othello World Model](/mechanistic-validity/framework/examples/examples-othello) — interpretive inflation: "world model" exceeds evidence
+- [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — coverage quantification ($\kappa = 0.77$) done explicitly
+- [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — level mismatch: implementational features, computational claims
+- [Gender Bias](/mechanistic-validity/framework/examples/examples-gender-bias) — scope honesty failure: "bias circuit" implies separability

@@ -13,11 +13,11 @@ This extends the Greater-Than claim from a task-specific circuit to a *general c
 
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C2 Structural plausibility | C5 Convergent | Strong |
-| Internal | I1 Necessity | I5 Confound control | Causally suggestive |
-| External | E5 Robustness | E1/E6 | Partial |
-| Measurement | M2/M3 Invariance + Separation | M1 Reliability | Strong |
-| Interpretive | V2/V3 Match + Coherence | V4 Alternative exclusion | Strong |
+| Construct | C2 Structural plausibility | C3 Convergent | Strong |
+| Internal | I1 Necessity | I7 Confound control | Causally suggestive |
+| External | E2 Prompt generalization | E1/E4 | Partial |
+| Measurement | M6/M2 Invariance + Separation | M1 Reliability | Strong |
+| Interpretive | V2 Level-evidence match | V3 Alternative level | Strong |
 
 **Overall verdict: Mechanistically Supported.** Successor heads benefit from the same structural clarity as the Greater-Than circuit, with the additional strength of cross-domain generalization. The capping criterion is I6 (double dissociation): no crossed design has been attempted. The multi-domain pattern makes the "general computational primitive" claim more convincing than a single-task circuit claim. The case for successor heads as a natural kind is stronger than for most circuits because the same structural signature appears across unrelated domains — this is convergent evidence from the phenomenon itself, even without formal C5 convergent validity from multiple discovery methods.
 
@@ -25,9 +25,9 @@ This extends the Greater-Than claim from a task-specific circuit to a *general c
 
 | Method | Our metric | Family |
 |---|---|---|
-| $W_{OV}$ decomposition (multi-domain ordinal structure) | [B03 OV/QK Decomposition](/framework/metrics/#b03) | Structural |
-| Ablation | [A01 Pearl SCM](/framework/metrics/#a01) | Causal |
-| Cross-task generalization (years, months, days, letters) | [D06 Cross-Task Transfer](/framework/metrics/#d06) | Behavioral |
+| $W_{OV}$ decomposition (multi-domain ordinal structure) | [B03 OV/QK Decomposition](/mechanistic-validity/framework/metrics/#b03) | Structural |
+| Ablation | [A01 Pearl SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
+| Cross-task generalization (years, months, days, letters) | [D06 Cross-Task Transfer](/mechanistic-validity/framework/metrics/#d06) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -39,23 +39,23 @@ This extends the Greater-Than claim from a task-specific circuit to a *general c
 
 ### Criteria
 
-**[C1 — Falsifiability:](/framework/criteria/construct/falsifiability) Pass.** The claim predicts that successor heads should encode ordinal structure across *multiple* domains in their $W_{OV}$ matrices. A head that encodes year ordering but not month ordering is a year-specific head, not a general successor head. This is a discriminating prediction.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Pass.** The claim predicts that successor heads should encode ordinal structure across *multiple* domains in their $W_{OV}$ matrices. A head that encodes year ordering but not month ordering is a year-specific head, not a general successor head. This is a discriminating prediction.
 
-**[C2 — Structural plausibility:](/framework/criteria/construct/structural-plausibility) Pass.** $W_{OV}$ matrices are inspected and shown to encode ordinal structure across domains. The same heads that boost "32 → 33" also boost "Monday → Tuesday" and "B → C." The structural evidence spans domains.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Pass.** $W_{OV}$ matrices are inspected and shown to encode ordinal structure across domains. The same heads that boost "32 → 33" also boost "Monday → Tuesday" and "B → C." The structural evidence spans domains.
 
-**[C3 — Task specificity:](/framework/criteria/construct/task-specificity) N/A (honest scope — general purpose).** Successor heads are claimed to be general-purpose, not task-specific. The evidence confirms this — they fire across domains. This is the same honest-scope pattern as induction heads: a general mechanism, honestly described as general.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) N/A (honest scope — general purpose).** Successor heads are claimed to be general-purpose, not task-specific. The evidence confirms this — they fire across domains. This is the same honest-scope pattern as induction heads: a general mechanism, honestly described as general.
 
-**[C4 — Minimality:](/framework/criteria/construct/minimality) Pass.** A small number of heads show the multi-domain successor pattern. Not every head in the model does this — the set is selective.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** A small number of heads show the multi-domain successor pattern. Not every head in the model does this — the set is selective.
 
-**[C5 — Convergent validity:](/framework/criteria/construct/convergent-validity) Partial.** Evidence from structural analysis ($W_{OV}$) and behavioral analysis (ablation effects on successor tasks) converges. A third method (e.g., probing for ordinal features, EAP discovery) would strengthen convergence.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Evidence from structural analysis ($W_{OV}$) and behavioral analysis (ablation effects on successor tasks) converges. A third method (e.g., probing for ordinal features, EAP discovery) would strengthen convergence.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | C1 Falsifiability | Pass | Cross-domain structural predictions |
 | C2 Structural plausibility | Pass | Multi-domain $W_{OV}$ ordering |
-| C3 Task specificity | N/A (general) | Multi-domain by design |
-| C4 Minimality | Pass | Small selective set |
-| C5 Convergent validity | Partial | Structural + behavioral |
+| C4 Discriminant validity | N/A (general) | Multi-domain by design |
+| I3 Minimality | Pass | Small selective set |
+| C3 Convergent validity | Partial | Structural + behavioral |
 
 ### Key Distinctions
 
@@ -84,23 +84,23 @@ Four nodes confirmed, three unconnected. A moderately thick network — the cros
 
 ### Criteria
 
-**[I1 — Necessity:](/framework/criteria/internal/necessity) Pass.** Ablating successor heads degrades performance on ordinal/successor tasks across domains. The effect is measurable and domain-general (not just years).
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating successor heads degrades performance on ordinal/successor tasks across domains. The effect is measurable and domain-general (not just years).
 
-**[I2 — Sufficiency:](/framework/criteria/internal/sufficiency) Partial.** The $W_{OV}$ structure implies the heads *can* compute succession. But full isolation (can these heads alone drive successor behavior with everything else ablated?) is not reported.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** The $W_{OV}$ structure implies the heads *can* compute succession. But full isolation (can these heads alone drive successor behavior with everything else ablated?) is not reported.
 
-**[I3 — Specificity:](/framework/criteria/internal/specificity) Partial.** The cross-domain pattern provides implicit specificity: successor heads are specific to *ordinal* tasks. They should not fire on tasks without ordinal structure (sentiment, syntax). This is partially verified — ablation on non-ordinal tasks shows smaller effects.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** The cross-domain pattern provides implicit specificity: successor heads are specific to *ordinal* tasks. They should not fire on tasks without ordinal structure (sentiment, syntax). This is partially verified — ablation on non-ordinal tasks shows smaller effects.
 
-**[I4 — Consistency:](/framework/criteria/internal/consistency) Partial.** Cross-domain consistency is strong (the same heads work across years, months, letters). Cross-model consistency is limited — are the same heads successors in GPT-2 Medium? In Pythia?
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Cross-domain consistency is strong (the same heads work across years, months, letters). Cross-model consistency is limited — are the same heads successors in GPT-2 Medium? In Pythia?
 
-**[I5 — Confound control:](/framework/criteria/internal/confound-control) Not tested.** Single ablation method.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** Single ablation method.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | I1 Necessity | Pass | Cross-domain ablation effects |
 | I2 Sufficiency | Partial | Structural implication, not isolation |
-| I3 Specificity | Partial | Ordinal vs. non-ordinal contrast |
-| I4 Consistency | Partial | Cross-domain strong; cross-model limited |
-| I5 Confound control | Not tested | Single method |
+| I4 Specificity | Partial | Ordinal vs. non-ordinal contrast |
+| M1 Reliability | Partial | Cross-domain strong; cross-model limited |
+| I7 Confound control | Not tested | Single method |
 
 ### Key Distinctions
 
@@ -124,26 +124,26 @@ The top row is well-filled across domains — a strength. The contrast between o
 
 ### Criteria
 
-**[E1 — Intervention reach:](/framework/criteria/external/intervention-reach) Not tested.** Can you steer the model toward successor behavior (make it always predict the next item in any sequence) by stimulating successor heads? Untested.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Not tested.** Can you steer the model toward successor behavior (make it always predict the next item in any sequence) by stimulating successor heads? Untested.
 
-**[E2 — Graded response:](/framework/criteria/external/graded-response) Implicit.** The $W_{OV}$ structure implies graded effects — items further from the reference should receive proportionally stronger boosts. Not directly measured as a dose-response.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Implicit.** The $W_{OV}$ structure implies graded effects — items further from the reference should receive proportionally stronger boosts. Not directly measured as a dose-response.
 
-**[E3 — Selectivity:](/framework/criteria/external/selectivity) Partial.** The cross-domain generality is both a strength and a limitation: the mechanism is selective for ordinal tasks but not selective for any *particular* ordinal domain.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** The cross-domain generality is both a strength and a limitation: the mechanism is selective for ordinal tasks but not selective for any *particular* ordinal domain.
 
-**[E4 — Effect magnitude:](/framework/criteria/external/effect-magnitude) Moderate.** Successor heads contribute meaningfully to ordinal predictions but are not the sole mechanism.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Moderate.** Successor heads contribute meaningfully to ordinal predictions but are not the sole mechanism.
 
-**[E5 — Robustness:](/framework/criteria/external/robustness) Strong (within scope).** Works across years, months, days, letters, numbers. The robustness across domains is the primary evidence.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Strong (within scope).** Works across years, months, days, letters, numbers. The robustness across domains is the primary evidence.
 
-**[E6 — Cross-architecture:](/framework/criteria/external/cross-architecture) Not tested.** Is the successor mechanism a universal attention-head computation or specific to GPT-2's architecture?
+**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** Is the successor mechanism a universal attention-head computation or specific to GPT-2's architecture?
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | E1 Intervention reach | Not tested | — |
 | E2 Graded response | Implicit | Structural prediction |
-| E3 Selectivity | Partial | Selective for ordinal class |
-| E4 Effect magnitude | Moderate | Contributing, not sole mechanism |
-| E5 Robustness | Strong | Multi-domain generalization |
-| E6 Cross-architecture | Not tested | — |
+| I4 Specificity | Partial | Selective for ordinal class |
+| E5 Graded response | Moderate | Contributing, not sole mechanism |
+| E2 Prompt generalization | Strong | Multi-domain generalization |
+| E4 Cross-model recurrence | Not tested | — |
 
 ### Key Distinctions
 
@@ -173,26 +173,26 @@ The structural prediction (items further from reference get proportionally large
 
 ### Criteria
 
-**[M1 — Reliability:](/framework/criteria/measurement/reliability) Not reported.** No confidence intervals on ordinal structure measurements.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** No confidence intervals on ordinal structure measurements.
 
-**[M2 — Invariance:](/framework/criteria/measurement/invariance) Pass (within model).** The same heads show successor structure across domains — strong within-model invariance.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Pass (within model).** The same heads show successor structure across domains — strong within-model invariance.
 
-**[M3 — Baseline separation:](/framework/criteria/measurement/baseline-separation) Pass.** Non-successor heads do not show multi-domain ordinal structure. The measurement cleanly separates.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Non-successor heads do not show multi-domain ordinal structure. The measurement cleanly separates.
 
-**[M4 — Sensitivity:](/framework/criteria/measurement/sensitivity) Good.** The multi-domain criterion is more sensitive than a single-domain criterion — it distinguishes general successor heads from domain-specific ordinal heads.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Good.** The multi-domain criterion is more sensitive than a single-domain criterion — it distinguishes general successor heads from domain-specific ordinal heads.
 
-**[M5 — Calibration:](/framework/criteria/measurement/calibration) Not reported.**
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.**
 
-**[M6 — Construct coverage:](/framework/criteria/measurement/construct-coverage) Good.** Both structural ($W_{OV}$) and behavioral (multi-domain ablation) evidence. Good coverage.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Good.** Both structural ($W_{OV}$) and behavioral (multi-domain ablation) evidence. Good coverage.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | M1 Reliability | Not reported | — |
-| M2 Invariance | Pass | Cross-domain consistency |
-| M3 Baseline separation | Pass | Clear successor/non-successor distinction |
-| M4 Sensitivity | Good | Multi-domain criterion is discriminating |
-| M5 Calibration | Not reported | — |
-| M6 Construct coverage | Good | Structural + behavioral |
+| M6 Invariance | Pass | Cross-domain consistency |
+| M2 Baseline separation | Pass | Clear successor/non-successor distinction |
+| M5 Sensitivity | Good | Multi-domain criterion is discriminating |
+| M4 Calibration | Not reported | — |
+| C3 Convergent validity | Good | Structural + behavioral |
 
 ### Key Distinctions
 
@@ -218,23 +218,23 @@ Cross-domain convergence (off-diagonal same-method cells) is high — the same h
 
 ### Criteria
 
-**[V1 — Level declaration:](/framework/criteria/interpretive/level-declaration) Pass.** Structural + algorithmic — names what the heads compute (ordinal succession) and how ($W_{OV}$ encodes ordering).
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** Structural + algorithmic — names what the heads compute (ordinal succession) and how ($W_{OV}$ encodes ordering).
 
-**[V2 — Level-evidence match:](/framework/criteria/interpretive/level-evidence-match) Strong.** Structural evidence ($W_{OV}$ analysis) directly supports a structural/algorithmic claim.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** Structural evidence ($W_{OV}$ analysis) directly supports a structural/algorithmic claim.
 
-**[V3 — Narrative coherence:](/framework/criteria/interpretive/narrative-coherence) Strong.** "Some heads are reusable successor-computing primitives" is a clean, falsifiable story that explains cross-domain generalization.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** "Some heads are reusable successor-computing primitives" is a clean, falsifiable story that explains cross-domain generalization.
 
-**[V4 — Alternative exclusion:](/framework/criteria/interpretive/alternative-exclusion) Partial.** Could these heads be doing something more general (attention to "related items") that happens to include succession? The structural evidence constrains this — $W_{OV}$ specifically encodes *ordering*, not general similarity. But whether "successor" is exactly right versus "ordinal proximity" is debatable.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** Could these heads be doing something more general (attention to "related items") that happens to include succession? The structural evidence constrains this — $W_{OV}$ specifically encodes *ordering*, not general similarity. But whether "successor" is exactly right versus "ordinal proximity" is debatable.
 
-**[V5 — Scope honesty:](/framework/criteria/interpretive/scope-honesty) Good.** "General-purpose ordinal mechanism" matches the evidence scope.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Good.** "General-purpose ordinal mechanism" matches the evidence scope.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | V1 Level declaration | Pass | Structural + algorithmic |
 | V2 Level-evidence match | Strong | Direct structural support |
-| V3 Narrative coherence | Strong | Cross-domain generalization explained |
-| V4 Alternative exclusion | Partial | "Successor" vs. "ordinal proximity" |
-| V5 Scope honesty | Good | Matches evidence |
+| V2 Level-evidence match | Strong | Cross-domain generalization explained |
+| V3 Alternative level | Partial | "Successor" vs. "ordinal proximity" |
+| V5 Scope declaration | Good | Matches evidence |
 
 ### Key Distinctions
 
