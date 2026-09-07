@@ -21,7 +21,7 @@ Epistatic interaction tests whether components in the proposed circuit functiona
 
 Satisfied when:
 
-1. **Pairwise synergy exceeds additivity.** For at least one component pair (A, B), the joint ablation effect exceeds 2x the sum of individual ablation effects: |effect(A,B) - effect(A) - effect(B)| > 2 * max(|effect(A)|, |effect(B)|).
+1. **Pairwise synergy exceeds additivity.** For at least one component pair (A, B), the joint [ablation](/mechanistic-validity/glossary/#ablation) effect exceeds 2x the sum of individual ablation effects: |effect(A,B) - effect(A) - effect(B)| > 2 * max(|effect(A)|, |effect(B)|).
 2. **Shapley interaction index is significant.** The Shapley interaction index for that pair has p < 0.01 against a null distribution from random component pairs.
 3. **Higher-order interactions are probed.** At minimum, triplet interactions are tested for the top synergistic pairs.
 

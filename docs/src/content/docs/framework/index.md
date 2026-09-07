@@ -72,11 +72,11 @@ The framework draws its criteria from eight scientific traditions, each contribu
 |---|---|---|
 | [Philosophy of science](/mechanistic-validity/framework/lenses/core/philosophy-of-science/) | Falsifiability, severe testing, nomological networks, underdetermination | C1, C3, C4, C5, I5 |
 | [Psychometrics](/mechanistic-validity/framework/lenses/core/measurement-theory/) | Classical test theory, generalizability theory, signal detection, MTMM matrix | M1–M7, C3, C4 |
-| Causal inference | do-calculus, interventionism, transportability, potential outcomes | I1, I2, E4, E5 |
+| [Causal inference](/mechanistic-validity/framework/lenses/supporting/causal-inference/) | do-calculus, interventionism, transportability, potential outcomes | I1, I2, E4, E5 |
 | [Neuroscience](/mechanistic-validity/framework/lenses/core/neuroscience/) | Lesion studies, double dissociation, mutual manipulability, multimodal parcellation | I1, I6, I12, C3 |
 | [Pharmacology](/mechanistic-validity/framework/lenses/core/pharmacology/) | Dose-response, specificity, selectivity, therapeutic index | E5, I4 |
 | [Genetics](/mechanistic-validity/framework/lenses/supporting/genetics/) | Epistasis, rescue experiments, sensitivity analysis (E-value) | I8, I9, I10 |
-| Medical microbiology | Koch's postulates, Hill's criteria | I1, I2, I11, I12 |
+| [Medical microbiology](/mechanistic-validity/framework/lenses/supporting/medical-microbiology/) | Koch's postulates, Hill's criteria | I1, I2, I11, I12 |
 | [Mechanistic interpretability](/mechanistic-validity/framework/lenses/core/mechanistic-interpretability/) | The field's own metrics and evaluation practices | All criteria applied to MI evidence |
 
 The foundation pages explain *why* each criterion is what it is. The pipeline is the operational workflow. A claim can be evaluated without reading the foundations — but they show why the criteria take the form they do.

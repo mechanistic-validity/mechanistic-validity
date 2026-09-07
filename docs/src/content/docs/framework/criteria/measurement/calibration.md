@@ -30,7 +30,7 @@ Calibration transforms a raw score into an interpretable claim. Every reported s
 | IOI | Circuit CMD (lower=better) | UGS: 0.035; EAP(CF): 0.214; random: ~0.75 | MIB benchmark |
 | Greater-Than | Prob diff recovery | 89.5% | Hanna et al. 2023 |
 | SVA | Logit diff faithfulness | 93% | Lazo et al. 2025 |
-| SVA | DAS-IIA (transcoder/CLT) | 0.40–0.60 | Mueller et al. MIB; transcoder papers |
+| SVA | [DAS-IIA](/mechanistic-validity/glossary/#das) (transcoder/CLT) | 0.40–0.60 | Mueller et al. MIB; transcoder papers |
 
 Every result should include a calibration sentence: *"This score of X is [above/within/below] the published range of Y–Z for [task] in [model] ([source])."*
 

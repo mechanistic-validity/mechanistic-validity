@@ -77,6 +77,20 @@ starlight-theme-select {
   font-weight: 400;
 }
 
+/* Add slight top padding to match mechviews spacing */
+.sl-markdown-content .sl-heading-wrapper.level-h1 {
+  padding-top: 10px;
+  font-size: 2rem;
+}
+
+/* Collapse the empty page-title content panel */
+.content-panel:has(> .sl-container:not(:has(*))) {
+  display: none;
+}
+.content-panel:has(> .sl-container:not(:has(*))) + .content-panel {
+  border-top: none;
+}
+
 /* Splash page hero */
 .hero-tagline {
   font-size: 1.25rem;

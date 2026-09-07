@@ -9,7 +9,7 @@ criterion_id: "M3"
 | | |
 |---|---|
 | Validity type | Measurement |
-| Pass condition | The IIA score exceeds both the random-vector baseline AND the untrained-model baseline by a practically meaningful margin (≥0.10 above the higher baseline) |
+| Pass condition | The [IIA](/mechanistic-validity/glossary/#iia) score exceeds both the random-vector baseline AND the untrained-model baseline by a practically meaningful margin (≥0.10 above the higher baseline) |
 | Evidence family | Measurement |
 | Minimum reporting | Random-vector baseline value; untrained-model baseline value; separation magnitude; published SOTA baseline |
 | Common failure mode | Reporting only the absolute IIA score; never computing the baselines |
@@ -36,7 +36,7 @@ This is the core of the original question: "IIA scores are meaningless without b
 
 | Baseline | How to compute | What it measures |
 |---|---|---|
-| Random-vector | Run DAS-IIA with random unit vectors instead of factor decoder directions | Dimensionality-driven false positive rate |
+| Random-vector | Run [DAS-IIA](/mechanistic-validity/glossary/#das) with random unit vectors instead of factor decoder directions | Dimensionality-driven false positive rate |
 | Untrained-model | Run DAS-IIA on same architecture with random (untrained) weights | Architectural prior |
 | Published SOTA | IIA from published transcoders/CLT on same task | Competitive calibration |
 

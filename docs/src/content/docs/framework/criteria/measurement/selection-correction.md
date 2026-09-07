@@ -20,7 +20,7 @@ Selection correction addresses the multiple-comparisons problem: when many candi
 
 Satisfied when:
 
-1. **N is reported.** The total number of candidates tested (heads, features, circuits, SAE latents) is stated.
+1. **N is reported.** The total number of candidates tested (heads, features, circuits, [SAE](/mechanistic-validity/glossary/#sae) latents) is stated.
 2. **The selection rule is stated.** How the reported k were chosen from N — top-k by effect size, threshold, manual inspection.
 3. **Multiplicity is controlled or acknowledged.** Bonferroni, FDR, or permutation correction is applied, or the selection is explicitly labeled as exploratory.
 

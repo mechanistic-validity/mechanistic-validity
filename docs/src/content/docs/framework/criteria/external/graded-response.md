@@ -12,7 +12,7 @@ criterion_id: "E2"
 | Pass condition | The effect scales monotonically with intervention strength; a threshold and plateau are visible |
 | Evidence family | Causal |
 | Minimum reporting | ≥7 intervention-strength values; task metric at each; identification of threshold and plateau |
-| Common failure mode | Testing only 1–2 intervention strengths; never characterizing the dose-response curve |
+| Common failure mode | Testing only 1–2 intervention strengths; never characterizing the [dose-response](/mechanistic-validity/glossary/#dose-response) curve |
 
 ## What this criterion requires
 

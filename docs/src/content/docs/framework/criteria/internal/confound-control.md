@@ -9,7 +9,7 @@ criterion_id: "I5"
 | | |
 |---|---|
 | Validity type | Internal |
-| Pass condition | The ablation effect is not explained by collateral disruption to non-circuit components |
+| Pass condition | The [ablation](/mechanistic-validity/glossary/#ablation) effect is not explained by collateral disruption to non-circuit components |
 | Evidence family | Causal |
 | Minimum reporting | Component-specific ablation result; comparison to full-circuit ablation; mean vs. zero vs. resample comparison |
 | Common failure mode | Running only mean ablation; not checking whether the effect is due to mean-field signal disruption |
@@ -30,7 +30,7 @@ When a component's activation is replaced with the dataset mean, all downstream 
 
 **Fix:** Always run zero and resample alongside mean. If all three show comparable degradation, mean-field confound is ruled out. If mean ablation shows large degradation but zero shows small degradation — the effect may be mean-field disruption, not loss of specific computation.
 
-## Causal scrubbing as confound control
+## [Causal scrubbing](/mechanistic-validity/glossary/#causal-scrubbing) as confound control
 
 Causal scrubbing (`c04causalscrubbing.py`, A01 SCMPearl) replaces activations at each component with activations from a run where the causal variable is absent, while leaving all other activations unchanged. This is a component-specific counterfactual that controls for all pathway confounds simultaneously. A successful causal scrubbing result is the strongest single piece of confound-control evidence.
 

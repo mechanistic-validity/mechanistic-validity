@@ -26,7 +26,7 @@ Satisfied when:
 
 ## This project's results
 
-- An SAE direction aligned at cos = 0.82 with L8H6 W_OV — consistent with an output-writing role in IOI. **This is a structural plausibility result, not a causal result.**
+- An [SAE](/mechanistic-validity/glossary/#sae) direction aligned at cos = 0.82 with L8H6 W_OV — consistent with an output-writing role in IOI. **This is a structural plausibility result, not a causal result.**
 - Another direction aligned at cos = 0.72 with L3H0 — consistent with an early syntactic role.
 
 These findings satisfy structural plausibility for the IOI circuit claim (Finding 25). They do not establish causation; they make the construct coherent.
@@ -45,6 +45,6 @@ For each component: layer/position + why theoretically expected + one weight-spa
 
 ## Common failures
 
-**Ablation-only circuit discovery:** Component added because ablating it degrades performance, with no check of whether its weights are consistent with the claimed role.
+**[Ablation](/mechanistic-validity/glossary/#ablation)-only circuit discovery:** Component added because ablating it degrades performance, with no check of whether its weights are consistent with the claimed role.
 
 **Layer anomalies ignored:** A circuit method nominates a very early-layer head for a late-stage role without explanation.

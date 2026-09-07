@@ -20,7 +20,7 @@ Intervention reach verifies that the intervention *actually changed the target a
 
 1. **Wrong hook point:** The hook name did not match the intended component.
 2. **Effect absorbed upstream:** Skip connections or normalization layers partially mask the intervention.
-3. **Magnitude near zero:** The component was near-inactive on test prompts; ablation delta is near zero regardless.
+3. **Magnitude near zero:** The component was near-inactive on test prompts; [ablation](/mechanistic-validity/glossary/#ablation) delta is near zero regardless.
 4. **Wrong direction:** A steering intervention added a vector not in the expected direction.
 
 Satisfied when: activation value at the hook point is measured before and after intervention; delta is in the predicted direction; magnitude is non-trivial (not near zero).

@@ -29,7 +29,7 @@ Confounding sensitivity does not establish that no confound exists. It establish
 
 ## Distinction from I5 — Confound Control
 
-I5 asks "did you control for confounds?" by comparing ablation methods and checking for mean-field disruption. I10 asks "how robust is your claim to confounds you did not control for?" I5 is a procedural check; I10 is a quantitative sensitivity analysis. They are complementary: I5 addresses known confounds, I10 bounds the impact of unknown ones.
+I5 asks "did you control for confounds?" by comparing [ablation](/mechanistic-validity/glossary/#ablation) methods and checking for mean-field disruption. I10 asks "how robust is your claim to confounds you did not control for?" I5 is a procedural check; I10 is a quantitative sensitivity analysis. They are complementary: I5 addresses known confounds, I10 bounds the impact of unknown ones.
 
 ## Minimum reporting rule
 
