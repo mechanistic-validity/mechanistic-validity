@@ -37,11 +37,24 @@ export default defineConfig({
       },
       sidebar: [
         { label: 'Home', link: '/' },
+        { label: 'Home v2', link: '/home-v2/' },
+        { label: 'Home v3 (Gemini)', link: '/home-v3/' },
+        { label: 'Home v4', link: '/home-v4/' },
+        { label: 'Home v5 (GPT)', link: '/home-v5/' },
+        { label: 'Home v7', link: '/home-v7/' },
+        {
+          label: 'Overview',
+          collapsed: false,
+          items: [
+            { label: 'Framework Overview', link: '/framework/' },
+            { label: 'Using the Framework', link: '/using/' },
+            { label: 'About & Citation', link: '/about/' },
+          ],
+        },
         {
           label: 'Mechanistic Validity Framework',
           collapsed: false,
           items: [
-            { label: 'Framework Overview', link: '/framework/' },
             {
               label: 'Theoretical Foundations',
               collapsed: true,
