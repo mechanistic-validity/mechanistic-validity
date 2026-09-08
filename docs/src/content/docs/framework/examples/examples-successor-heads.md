@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Successor Heads"
+title: "Exploratory Lens Analysis: Successor Heads"
 description: "The general-purpose successor mechanism (Hanna et al. 2023, Gould et al. 2023) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-refusal-direction/
+  label: "Exploratory Lens Analysis: Refusal Direction"
+next:
+  link: /mechanistic-validity/framework/examples/examples-superposition/
+  label: "Exploratory Lens Analysis: Superposition"
 ---
 
-# Case Study: Successor Heads
+# Exploratory Lens Analysis: Successor Heads
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Successor Heads](/mechanistic-validity/framework/audits/successor_heads/).
+:::
+
 
 Building on the Greater-Than analysis, subsequent work ([Gould et al. 2023](https://arxiv.org/abs/2312.09230)) identifies **successor heads** as a general-purpose mechanism — attention heads whose $W_{OV}$ matrices encode *ordinal succession* across multiple domains: days of the week (Monday → Tuesday), months (January → February), numbers (1 → 2), and alphabetical sequences (A → B). The claim is that these heads do not merely implement year comparison but encode a general ordinal-successor function that the model reuses across sequence types.
 
@@ -258,5 +269,3 @@ The filled cells span both rows and columns more broadly than most MI results. A
 - Input encoding → successor head selection: **dashed** (how the model identifies that a token is part of an ordinal sequence is not characterized)
 
 The output pathway (successor head → prediction) is solid and multi-domain confirmed. The input pathway (how tokens are identified as ordinal) is the main uncharacterized link — the heads clearly compute succession, but the upstream mechanism that routes ordinal inputs to them is not described.
-
----

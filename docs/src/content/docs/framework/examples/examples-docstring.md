@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Docstring Circuit"
+title: "Exploratory Lens Analysis: Docstring Circuit"
 description: "The docstring variable-binding circuit (Heimersheim & Janiak 2023) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-global-workspace/
+  label: "Exploratory Lens Analysis: Global Workspace"
+next:
+  link: /mechanistic-validity/framework/examples/examples-gender-bias/
+  label: "Exploratory Lens Analysis: Gender Bias Circuits"
 ---
 
-# Case Study: Docstring Circuit
+# Exploratory Lens Analysis: Docstring Circuit
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Docstring Circuit](/mechanistic-validity/framework/audits/docstring/).
+:::
+
 
 [Heimersheim & Janiak (2023)](https://arxiv.org/abs/2307.13057) identify eight attention heads in a **4-layer attention-only transformer** that predict the next argument name in a Python docstring. Fuzzy previous-token heads and a positional head set up an induction step, and argument movers carry the name from the definition line to the output position. The claimed mechanism tracks which variable names are bound to which argument positions and retrieves the correct name at the appropriate docstring location.
 
@@ -218,5 +229,3 @@ Cells cluster in the necessity column. The algorithmic and computational columns
 - Positional-vs-binding resolution: **absent** (no causal test distinguishes the two)
 
 The graph has solid edges for information flow (where attention looks, where information comes from) but only a dashed edge for the *computation* the circuit performs. The interpretive question ("what does it compute?") corresponds to the weakest edge in the causal graph.
-
----

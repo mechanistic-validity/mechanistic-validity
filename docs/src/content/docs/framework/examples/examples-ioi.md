@@ -1,9 +1,20 @@
 ---
-title: "Case Study: IOI Circuit"
+title: "Exploratory Lens Analysis: IOI Circuit"
 description: "The indirect object identification circuit (Wang et al. 2022) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-gender-bias/
+  label: "Exploratory Lens Analysis: Gender Bias Circuits"
+next:
+  link: /mechanistic-validity/framework/examples/examples-othello/
+  label: "Exploratory Lens Analysis: Othello World Model"
 ---
 
-# Case Study: IOI Circuit
+# Exploratory Lens Analysis: IOI Circuit
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: IOI Circuit](/mechanistic-validity/framework/audits/ioi/).
+:::
+
 
 [Wang et al. (2022)](https://arxiv.org/abs/2211.00593) identify 26 attention heads in GPT-2 Small that form the **indirect object identification circuit** — a mechanism that detects duplicated names, suppresses them, and copies the remaining name to the output. This is the most thoroughly analyzed circuit in mechanistic interpretability.
 
@@ -225,4 +236,3 @@ Most cells empty or structurally ∅. The filled cells cluster in the ablation r
 - Primary → backup name-movers: **dashed** (compensatory activation observed, causal pathway not precisely characterized)
 
 The solid-edge subgraph has a gap: the path from input to S-inhibition is dashed (inferred, not causally confirmed). The circuit has a confirmed output stage and a confirmed intermediate link, but the full input-to-output causal chain has one unverified step.
-

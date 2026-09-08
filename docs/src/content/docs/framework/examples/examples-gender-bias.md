@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Gender Bias Circuits"
+title: "Exploratory Lens Analysis: Gender Bias Circuits"
 description: "Causal mediation analysis of gender bias in GPT-2 (Vig et al. 2020) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-docstring/
+  label: "Exploratory Lens Analysis: Docstring Circuit"
+next:
+  link: /mechanistic-validity/framework/examples/examples-ioi/
+  label: "Exploratory Lens Analysis: IOI Circuit"
 ---
 
-# Case Study: Gender Bias Circuits
+# Exploratory Lens Analysis: Gender Bias Circuits
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Gender Bias Circuits](/mechanistic-validity/framework/audits/gender/).
+:::
+
 
 [Vig et al. (2020)](https://arxiv.org/abs/2010.06032) use causal mediation analysis to identify the attention heads and neurons that mediate gender bias in GPT-2, decomposing the effect of a gendered intervention into a natural direct effect and a natural indirect effect routed through named components. The claim audited here is theirs: gender bias is sparsely mediated, and ten of 144 heads reproduce the effect of intervening on all of them.
 
@@ -266,5 +277,3 @@ The "partial" entries cluster in necessity and representational columns. Crucial
 - Localized components → full bias explanation: **broken** (different methods find different loci; no convergence)
 
 Two solid edges, one dashed, two broken. The broken edges are particularly informative — they represent claims that are not merely untested but actively disconfirmed by evidence (bias re-emergence, method divergence). A causal sufficiency graph with broken edges indicates a theory that is partially falsified, not merely incomplete.
-
----

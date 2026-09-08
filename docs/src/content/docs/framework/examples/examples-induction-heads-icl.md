@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Induction Heads (General ICL)"
+title: "Exploratory Lens Analysis: Induction Heads (General ICL)"
 description: "The claim that induction heads are the mechanism for general in-context learning (Olsson et al. 2022), evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-probing/
+  label: "Exploratory Lens Analysis: Probing Classifiers"
+next:
+  link: /mechanistic-validity/framework/examples/examples-knowledge-neurons/
+  label: "Exploratory Lens Analysis: Knowledge Neurons"
 ---
 
-# Case Study: Induction Heads (General ICL)
+# Exploratory Lens Analysis: Induction Heads (General ICL)
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Induction Heads (General ICL)](/mechanistic-validity/framework/audits/induction_broad/).
+:::
+
 
 [Olsson et al. (2022)](https://arxiv.org/abs/2209.11895) make two distinct claims about induction heads. The first — that induction heads implement token copying via a specific two-head circuit — is well-supported and receives a [Triangulated](/mechanistic-validity/framework/examples/examples-induction-heads) verdict. The second claim is broader: that induction heads are **the mechanism for in-context learning** in general. This page evaluates the second claim.
 

@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Probing Classifiers"
+title: "Exploratory Lens Analysis: Probing Classifiers"
 description: "Linear probing as a methodology for representational claims, evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-sae-features/
+  label: "Exploratory Lens Analysis: SAE Features"
+next:
+  link: /mechanistic-validity/framework/examples/examples-induction-heads-icl/
+  label: "Exploratory Lens Analysis: Induction Heads (General ICL)"
 ---
 
-# Case Study: Probing Classifiers
+# Exploratory Lens Analysis: Probing Classifiers
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Probing Classifiers](/mechanistic-validity/framework/audits/probing/).
+:::
+
 
 Linear probing (Alain & Bengio 2017, Belinkov 2022) trains a linear classifier on model activations to test whether a concept (part-of-speech, syntax tree depth, sentiment, factual knowledge) is **linearly decodable** from the representation. The claim is representational: if a probe succeeds, the model "encodes" or "represents" the probed concept.
 
@@ -258,5 +269,3 @@ Standard probing fills zero interventional cells. It provides observational repr
 - Probe direction → model's actual encoding direction: **dashed** (the probe finds *a* direction; whether it is *the* direction the model uses is unverified)
 
 Two solid edges (trivial: inputs produce activations, probes can decode them) and three dashed-or-absent edges (substantive: does decodability imply representation? does the model use this direction?). The causal sufficiency graph makes visible that the interesting claims — those that go beyond "a classifier works" — have no solid causal support from probing alone.
-
----

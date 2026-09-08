@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Grokking / Modular Addition"
+title: "Exploratory Lens Analysis: Grokking / Modular Addition"
 description: "The modular addition circuit with Fourier features (Nanda et al. 2023) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-greater-than/
+  label: "Exploratory Lens Analysis: Greater-Than Circuit"
+next:
+  link: /mechanistic-validity/framework/examples/examples-refusal-direction/
+  label: "Exploratory Lens Analysis: Refusal Direction"
 ---
 
-# Case Study: Grokking / Modular Addition
+# Exploratory Lens Analysis: Grokking / Modular Addition
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Modular Addition](/mechanistic-validity/framework/audits/grokking/).
+:::
+
 
 [Nanda et al. (2023)](https://arxiv.org/abs/2301.05217) analyze a small transformer trained on **modular addition** ($a + b \mod p$) that undergoes "grokking" — sudden generalization long after memorizing the training set. They claim the model learns a **Fourier-based algorithm**: inputs are embedded into Fourier components (sinusoidal representations of position mod $p$), attention computes trigonometric identities to combine them, and the output reads off the result from the Fourier representation.
 
@@ -224,6 +235,3 @@ Nearly all cells filled. The only systematic gap is that ablation provides neces
 - Full path (input → embedding → attention → output): **solid** (complete end-to-end causal chain verified by exact output reproduction)
 
 All edges solid. Every step in the causal chain is independently verified AND the complete chain reproduces outputs exactly. This is the only MI result with a fully verified causal sufficiency graph — no dashed edges, no unknown interactions, no gaps.
-
----
-

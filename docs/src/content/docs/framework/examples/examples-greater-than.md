@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Greater-Than Circuit"
+title: "Exploratory Lens Analysis: Greater-Than Circuit"
 description: "The Greater-Than circuit (Hanna et al. 2023) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-copy-suppression/
+  label: "Exploratory Lens Analysis: Copy Suppression"
+next:
+  link: /mechanistic-validity/framework/examples/examples-grokking/
+  label: "Exploratory Lens Analysis: Grokking / Modular Addition"
 ---
 
-# Case Study: Greater-Than Circuit
+# Exploratory Lens Analysis: Greater-Than Circuit
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Greater-Than](/mechanistic-validity/framework/audits/greater_than/).
+:::
+
 
 [Hanna et al. (2023)](https://arxiv.org/abs/2305.00586) identify a subgraph of GPT-2 Small that performs the **Greater-Than task** — given "The war lasted from the year 1732 to the year 17\_\_", the model must predict a two-digit suffix greater than 32. The circuit is a set of attention heads that carry the start year YY to the final position, plus MLPs 8–11, which raise the probability of every year above YY. It is found by iterative path patching against a corruption dataset in which every start year is replaced by 01.
 

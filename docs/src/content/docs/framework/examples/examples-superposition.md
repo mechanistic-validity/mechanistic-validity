@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Superposition"
+title: "Exploratory Lens Analysis: Superposition"
 description: "The superposition hypothesis (Elhage et al. 2022) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-successor-heads/
+  label: "Exploratory Lens Analysis: Successor Heads"
+next:
+  link: /mechanistic-validity/framework/examples/examples-global-workspace/
+  label: "Exploratory Lens Analysis: Global Workspace"
 ---
 
-# Case Study: Superposition
+# Exploratory Lens Analysis: Superposition
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Superposition](/mechanistic-validity/framework/audits/superposition/).
+:::
+
 
 [Elhage et al. (2022)](https://arxiv.org/abs/2209.10652) propose the **superposition hypothesis**: neural networks represent more features than they have dimensions by encoding features as nearly-orthogonal directions in activation space. When features are sparse (rarely co-active), the model can "pack" many features into a lower-dimensional space with minimal interference, because the near-orthogonal directions rarely collide.
 
@@ -226,5 +237,3 @@ Strong coverage in the representational column for toy models. Real-model eviden
 - Superposition (theory) → polysemanticity (observation): **dashed** — the theory predicts polysemanticity, but polysemanticity has other possible causes
 
 The toy-model causal graph is fully connected with solid edges. The real-model causal graph has only dashed edges — consistent correlational evidence without confirmed causal pathways at the same precision.
-
----
