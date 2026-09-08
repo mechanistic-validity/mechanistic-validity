@@ -18,11 +18,11 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 |---|---|---|---|
 | Construct | C2 Structural plausibility | C3 Convergent | Partial–Strong |
 | Internal | I4 Specificity | I7 Confound control | Causally suggestive |
-| External | I4 Specificity | E4 Cross-model recurrence | Partial |
+| External | E2/E3 Prompt + Cross-task generalization | E1 Intervention reach | Partial |
 | Measurement | M2 Baseline separation | M1 Reliability | Partial |
 | Interpretive | V2 Level-evidence match | V3 Alternative level | Strong |
 
-**Overall verdict: Mechanistically Supported.** Copy suppression is notable for its unusually clean specificity result (I3) — ablation produces a specific error type rather than general degradation. This is rare in MI and provides stronger evidence than typical necessity results. The capping criterion is I6 (double dissociation): no crossed design has been attempted. The mechanism is a good example of how negative-effect components (inhibitory mechanisms) can be as well-characterized as positive-effect ones.
+**Overall verdict: Mechanistically Supported.** Copy suppression is notable for the direction of its specificity result (I4) — ablation produces a specific error type rather than general degradation — though the discrimination is partial, since either half of the instrument alone clears 50% recovered KL for many layer 9–11 heads. The capping criterion is I6 (double dissociation): the materials are present in Table 2 and never assembled into a crossed design.
 
 ## Metrics used in original work
 
@@ -66,7 +66,7 @@ The copy suppression construct connects to:
 - **DLA signature** — negative direct logit attribution on copy-tempting tokens (behavioral, confirmed)
 - **Interaction with induction heads** — functionally opposes the copying circuit (theoretical, partially confirmed through complementary effects)
 - **Activation boundary** — when does suppression activate vs. permit appropriate copying? (untested)
-- **Cross-model prediction** — do other architectures have analogous anti-copying mechanisms? (untested)
+- **Cross-model prediction** — anti-copying scores correlate across GPT, Pythia and SoLU (phenomenon, confirmed); the mechanism itself is tested only in GPT-2 Small
 - **Training dynamics** — does copy suppression emerge after induction heads? (untested)
 
 Four nodes confirmed, three unconnected. The confirmed nodes establish a coherent negative-effect mechanism, but the boundaries of its activation and its developmental relationship to copying mechanisms remain unexplored.
@@ -85,9 +85,7 @@ Four nodes confirmed, three unconnected. The confirmed nodes establish a coheren
 
 **[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** The effect is specific to suppression of incorrect copying. Ablating these heads does not generally degrade model performance — it specifically increases token repetition errors. This is an unusually clean specificity result because the effect direction is distinctive (increase in a specific error type, not general degradation).
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Demonstrated across varied prompts where copying is inappropriate. Cross-model consistency not reported.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** Single ablation method.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Tied embeddings and LayerNorm are handled explicitly. Data confounds are untouched.
 
 ### Key Distinctions
 
@@ -113,17 +111,13 @@ The distinctive pattern: ablating copy suppression heads produces a *specific er
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** The mechanism operates wherever the model encounters copy-tempting contexts. Its reach is defined by the breadth of such contexts in natural text.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** Four intervention forms are run, but all four are activation edits on one head, so they do not constitute independent intervention families.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** Does stronger copy signal produce stronger suppression? A parametric relationship is not measured.
-
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** The intervention (ablation) selectively produces over-copying without general performance degradation. This is clean selectivity.
-
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Moderate.** The effect is measurable and specific, but copy suppression is one of many mechanisms contributing to output quality. It is not the dominant mechanism for any single task.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Partial.** There is a genuine dose-response at the query side. Every other intervention in the paper is binary.
 
 **[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Works across varied copy-tempting prompts. Not tested on edge cases (when should the model copy vs. suppress?).
 
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** GPT-2 Small only.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** Copy-suppression scores correlate head by head with anti-induction scores across GPT, Pythia and SoLU models, so the phenomenon replicates in three systems. The structured ablation that establishes the mechanism is never run outside GPT-2 Small.
 
 ### Key Distinctions
 
@@ -150,7 +144,7 @@ The key insight from a pharmacological perspective: the selectivity of the full-
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** No confidence intervals.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Spread is reported across data in 100 percentiles, but no interval accompanies any estimate. Cross-model consistency is reported and uneven: GPT-2 Medium recovers two of its three most negative heads, Pythia's copy suppression is weaker, and Stanford GPT-2 Small E's analogue attends to IO and S2 equally.
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** Works across prompt types. Layer/position invariance not tested.
 
@@ -159,8 +153,6 @@ The key insight from a pharmacological perspective: the selectivity of the full-
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Good.** The negative-DLA criterion cleanly identifies suppression heads.
 
 **[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.**
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Good.** Both behavioral (ablation effect) and structural ($W_{OV}$) measurements used.
 
 ### Key Distinctions
 
@@ -189,8 +181,6 @@ The convergent diagonal is strong: heads identified by negative DLA are the same
 **[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** Algorithmic — names what the heads do (suppress copying) and how ($W_{OV}$ anti-copying).
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** Structural + behavioral evidence matches algorithmic claim.
-
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The story is mechanistically precise: model is tempted to copy → copy suppression heads detect this → they subtract the copy signal from logits. The negative-effect framing is clean and testable.
 
 **[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** Could these heads be doing something else that incidentally suppresses copying? The structural evidence (anti-copying $W_{OV}$) constrains alternatives, but the possibility that "suppression" is a side effect of a more general computation is not fully excluded.
 

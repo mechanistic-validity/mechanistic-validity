@@ -4,6 +4,8 @@ validity_type: "External"
 criterion_id: "E4"
 ---
 
+> The framework paper's appendix scorecards call this criterion *cross-model recurrence*. It is the same criterion; this page keeps the name used in the criterion table, and the URL keeps the earlier slug so existing links resolve.
+
 # Criterion E4 — Cross-Model Generalization
 
 | | |

@@ -5,7 +5,7 @@ description: "The docstring variable-binding circuit (Heimersheim & Janiak 2023)
 
 # Case Study: Docstring Circuit
 
-[Heimersheim & Janiak (2023)](https://arxiv.org/abs/2307.13057) identify a circuit in GPT-2 Small that performs **variable binding in Python docstrings** — given a function definition with parameter names, the model must predict the correct parameter name in the docstring description. The claimed mechanism tracks which variable names are bound to which argument positions and retrieves the correct name at the appropriate docstring location.
+[Heimersheim & Janiak (2023)](https://arxiv.org/abs/2307.13057) identify eight attention heads in a **4-layer attention-only transformer** that predict the next argument name in a Python docstring. Fuzzy previous-token heads and a positional head set up an induction step, and argument movers carry the name from the definition line to the output position. The claimed mechanism tracks which variable names are bound to which argument positions and retrieves the correct name at the appropriate docstring location.
 
 This is interesting as a case study because it operates in a specific domain (code) and raises questions about whether "variable binding" is the right construct or whether the circuit is doing something simpler (positional copying).
 
@@ -18,7 +18,7 @@ This is interesting as a case study because it operates in a specific domain (co
 |---|---|---|---|
 | Construct | C1 Falsifiability | C4/C3 Discriminant + Convergence | Partial |
 | Internal | I1 Necessity | I4/I7 | Causally suggestive |
-| External | E5 Graded response | E1–I4 | Weak |
+| External | E5 Graded response | E1/E3/E4 Reach, Cross-task, Cross-model | Weak |
 | Measurement | M2 Baseline separation | M5 Sensitivity | Weak–Partial |
 | Interpretive | V1 Level declaration | V3 Alternative level | Weak–Partial |
 
@@ -30,7 +30,7 @@ This is interesting as a case study because it operates in a specific domain (co
 |---|---|---|
 | Activation patching | [A02 Counterfactual DAS](/mechanistic-validity/framework/metrics/#a02) | Causal |
 | Ablation | [A01 Pearl SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
-| Automated circuit discovery (ACDC) | [A02 Counterfactual DAS](/mechanistic-validity/framework/metrics/#a02) | Causal |
+| Resample ablation under three corruption types | [D01 Faithfulness](/mechanistic-validity/framework/metrics/#d01) | Behavioral |
 
 > To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
 
@@ -48,7 +48,7 @@ This is interesting as a case study because it operates in a specific domain (co
 
 **[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Not tested.** Is this circuit specific to docstring variable binding, or does it also fire on other name-tracking tasks (IOI-like patterns in code, class attribute resolution)? Cross-task evaluation is not reported.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Partial.** A circuit is identified through automated methods (ACDC / activation patching). Whether this is the minimal sufficient set or an over-inclusive one is not systematically tested via leave-one-out.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Partial.** The circuit is identified by resample ablation under three corruption types. Whether this is the minimal sufficient set or an over-inclusive one is not systematically tested via leave-one-out.
 
 **[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** The circuit is identified through activation patching (causal method). Weight-space confirmation of the binding mechanism is limited. A fully independent discovery method (e.g., EAP, probing) has not been applied.
 
@@ -84,9 +84,7 @@ Three nodes confirmed, three unconnected. A thin network — the confirmed nodes
 
 **[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Does ablating the docstring circuit affect other code completion tasks? Other name-tracking tasks? Collateral damage is not measured.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Works across different function definitions and parameter names. Not tested across models or on substantially different code styles.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** Single ablation method.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** The line-counting and repeat-inhibition algorithms are designed out of the prompt set rather than argued away, at a measured cost to model performance (~75% to 56%). Confounds beyond these two are not addressed.
 
 ### Key Distinctions
 
@@ -111,17 +109,13 @@ One cell filled. The diagonal entry confirms necessity, but without off-diagonal
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Not tested.** No steering experiments.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** Four do-operators beyond resample ablation are run and they agree with it. No steering experiment is reported.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** No parametric sweep.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Partial.** Circuit size tracks performance monotonically across two axes. The graded axis is circuit extent, not intervention strength.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Off-target effects on non-docstring code completion unknown.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Disconfirmed.** Circuit and model diverge on a subclass of benign inputs. This is tested and failed, not merely unextended.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Moderate.** The circuit accounts for a substantial portion of the model's variable-binding ability on the tested prompts.
-
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Works across parameter names and function structures. Not tested on naturalistic code (with complex nested functions, default arguments, etc.).
-
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** GPT-2 Small only.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** One released 4-layer toy model; transfer is named as future work with no model, head set or number reported.
 
 ### Key Distinctions
 
@@ -154,13 +148,11 @@ We have two endpoints and nothing between. The curve shape (linear degradation? 
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** Works across function definitions. Not tested across layers or code styles.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Random circuit baselines included in automated discovery.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** The circuit's 42% is set against a 17% chance level with two further reference points. A matched random head set — the control that would show the 42% belongs to *these* heads — is not run.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can the method distinguish "variable binding" from "positional copying"? These produce similar behavioral outputs but imply different mechanisms.
 
 **[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.**
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Primarily behavioral (accuracy on binding task). Structural coverage limited.
 
 ### Key Distinctions
 
@@ -189,8 +181,6 @@ Entirely unfilled. No convergent cells (different methods on same task) and no d
 **[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** Algorithmic — claims the circuit performs variable binding.
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** The evidence is primarily causal (ablation/patching). Structural evidence for *how* binding is implemented in weights is thin. An algorithmic claim ideally needs structural support.
-
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Moderate.** "Variable binding" is a coherent computational story. But whether the circuit truly *binds* variables (tracking argument-parameter associations) or performs simpler positional copying (nth parameter maps to nth docstring slot) is not fully distinguished.
 
 **[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The positional-copying alternative (simpler mechanism producing the same behavior) is not excluded. On the tested prompts, variable binding and positional copying make the same predictions. Distinguishing them requires adversarial prompts where the two strategies diverge.
 

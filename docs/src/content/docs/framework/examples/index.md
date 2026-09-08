@@ -30,7 +30,7 @@ Necessity and sufficiency established with consistent methods; specificity at le
 | Case Study | Claim | Verdict | Capping criteria |
 |---|---|---|---|
 | [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) | Heads that actively suppress incorrect token copying | Mech. Supported | I6 (double dissociation) |
-| [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) | Successor heads encoding ordinal year comparison | Mech. Supported | I5 (rival exclusion), I6 (double dissociation) |
+| [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) | Attention heads plus MLPs 8–11 raising probability of every year above the start year | Mech. Supported | I5 (rival exclusion), I6 (double dissociation) |
 | [Modular Addition](/mechanistic-validity/framework/examples/examples-grokking) | Fourier multiplication algorithm in toy transformer | Mech. Supported | I6 (double dissociation) |
 | [Refusal Direction](/mechanistic-validity/framework/examples/examples-refusal-direction) | Single direction mediating safety refusal | Mech. Supported | I6 (double dissociation) |
 | [Successor Heads](/mechanistic-validity/framework/examples/examples-successor-heads) | General-purpose ordinal mechanism across domains | Mech. Supported | I6 (double dissociation) |
@@ -50,9 +50,9 @@ Necessity shown via causal intervention; sufficiency, specificity, or convergenc
 | [Docstring Circuit](/mechanistic-validity/framework/examples/examples-docstring) | Variable binding in Python docstrings | Causally Suggestive | I4 (specificity) |
 | [Gender Bias Circuits](/mechanistic-validity/framework/examples/examples-gender-bias) | Bias localized in removable components | Causally Suggestive | E1 (intervention reach), I4 (specificity) |
 | [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) | 26-head indirect object identification mechanism | Causally Suggestive | E1 (intervention reach), I4 (specificity) |
-| [Othello Board State](/mechanistic-validity/framework/examples/examples-othello) | Linear board-state representation | Causally Suggestive | E1 (intervention reach) |
+| [Othello Board State](/mechanistic-validity/framework/examples/examples-othello) | Nonlinearly decodable board-state representation | Causally Suggestive | E1 (intervention reach) |
 
-The IOI circuit is the most thoroughly analyzed circuit in the literature. It demonstrates strong necessity (I1) and partial sufficiency (I2), but its headline faithfulness numbers are method-conditional: Miller et al. (2024) showed that 87% faithfulness under mean ablation drops below 50% under resample ablation. The ablation method is part of the claim.
+The IOI circuit is the most thoroughly analyzed circuit in the literature. Necessity is partial — knocking out all three Name Mover heads costs only 5% of the logit difference, because backup heads take over — and sufficiency is partial at 87% under mean ablation. That headline number is method-conditional: Miller et al. (2024) move the same quantity from below 0% to over 100% across six methodological choices, which is why stability (M3) and invariance (M6) are both Disconfirmed. The ablation method is part of the claim.
 
 ---
 
@@ -86,7 +86,7 @@ The induction heads claim has two readings. Token copying (the narrow claim) rea
 
 ### I6 caps the field
 
-Double dissociation (I6) is Untested in fifteen of sixteen claims and caps every claim that reaches Mechanistically Supported. The field rarely attempts the crossed design that I6 requires. The one claim that meets I6 — induction heads — advances to Triangulated.
+Double dissociation (I6) is Untested in fourteen of sixteen claims, Inconclusive in one, and caps every claim that reaches Mechanistically Supported. The field rarely attempts the crossed design that I6 requires. The one claim that meets I6 — induction heads, via Feucht et al. (2025) — advances to Triangulated.
 
 ### I8 is universally Untested
 
@@ -94,11 +94,11 @@ Confounding sensitivity (I8) asks how strong an unmeasured confounder would have
 
 ### The toy-model ceiling
 
-Modular addition and superposition reach Mechanistically Supported, not Validated, despite having complete mechanistic accounts within their toy-model scope. The gap is external validity: the account has not been confirmed in production-scale models. This is the field's central scaling challenge.
+Modular addition and superposition reach Mechanistically Supported, not Validated, despite having complete mechanistic accounts within their toy-model scope. Both are capped by double dissociation (I6): importance and sparsity are crossed, but on one outcome, and no converse arm is run. Above that, complementation validity (C6), rescue reversibility (I10) and offset coupling (I12) remain untested.
 
 ### Interpretive inflation
 
-"World model" (Othello), "knowledge neuron" (Meng et al.), "deception feature" — labels that carry theoretical implications beyond what the evidence supports. The framework identifies these via [V4 Unlicensed labeling](/mechanistic-validity/framework/criteria/interpretive/unlicensed-labeling/): a name that imports a property the evidence did not measure.
+"World model" (Othello), "knowledge neuron" (Dai et al.), "monosemantic feature" (SAEs) — labels that carry theoretical implications beyond what the evidence supports. The framework identifies these via [V4 Unlicensed labeling](/mechanistic-validity/framework/criteria/interpretive/unlicensed-labeling/): a name that imports a property the evidence did not measure.
 
 ## Reading the case studies
 

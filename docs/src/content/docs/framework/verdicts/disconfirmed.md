@@ -56,9 +56,12 @@ Each form is informative. Prediction failure narrows the space of viable mechani
 
 ## Characteristic occupants
 
-- **IOI sufficiency under resample ablation** — [Miller et al. (2024)](https://arxiv.org/abs/2407.08734) demonstrated method-conditionality of the sufficiency result
-- **Early "knowledge neuron" localization claims** — initial claims that single neurons store facts were partially disconfirmed by distributed representation evidence
-- **Induction head toxicity claims** — [Wang et al. (2025)](https://arxiv.org/abs/2505.13514) self-withdrawn after methodological concerns
+Two of the sixteen audited claims reach this tier, both on evidence that was collected rather than missing.
+
+- **Knowledge neurons** ([Dai et al., 2022](https://arxiv.org/abs/2104.08696)) — the claim that roughly four feed-forward neurons *store* a relational fact. All three of the paper's own summaries report a correlation between activation and expression while the title claims storage (V2), and the same editing machinery moves non-factual linguistic patterns, so the construct never separates from its neighbor (C4).
+- **Induction heads as the source of general in-context learning** ([Olsson et al., 2022](https://arxiv.org/abs/2209.11895)) — the broad reading. No ablation runs above the twelve small models, so nothing at scale separates induction heads from whatever else forms alongside them (E4, I5), and the adopted measure does not separate general in-context learning from the few-shot accuracy the field reads it as (C4). The narrow reading, that induction heads implement prefix-matching token copying, reaches Triangulated.
+
+Individual criteria are Disconfirmed more often than whole claims. IOI's stability (M3) and invariance (M6) are both Disconfirmed by [Miller et al. (2024)](https://arxiv.org/abs/2407.08734), who move the same faithfulness quantity from below 0% to over 100% across six methodological choices, and the greater-than circuit's cross-model recurrence (E4) is Disconfirmed post-origin — without either claim as a whole reaching this tier.
 
 ## Key references
 

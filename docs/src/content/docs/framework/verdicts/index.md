@@ -150,4 +150,4 @@ New evidence can move a claim to a lower tier. Miller et al. (2024) effectively 
 
 ### The weakest-link principle
 
-The tier is determined by the *weakest gating validity type*, not the average. A claim with excellent internal, external, and interpretive validity but unreliable measurement is bounded at Proposed (measurement failure blocks all upgrades). This prevents impressive evidence in one dimension from masking fundamental problems in another.
+The tier is determined by the *weakest gating criterion*, not by an average over criteria or over validity types. The gates are conjunctive: every criterion a tier names must be met, so one unmet gate holds the claim at the tier below regardless of how strong the rest is. A claim with excellent internal, external and interpretive evidence but no baseline separation (M2) is bounded at Proposed, because M2 gates the first upgrade. This is what prevents impressive evidence in one dimension from masking a fundamental problem in another.
