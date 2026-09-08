@@ -11,6 +11,9 @@ This is a *theoretical claim about the representational strategy* of neural netw
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1/C2 | C3 (real models) | Strong (toy) |

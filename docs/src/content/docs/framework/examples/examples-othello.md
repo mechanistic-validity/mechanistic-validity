@@ -11,6 +11,9 @@ This is a [representational](/mechanistic-validity/framework/modes/representatio
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** E1 (intervention reach).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C1 Falsifiability | I3 Minimality | Partial |

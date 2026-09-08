@@ -13,6 +13,9 @@ The general ICL claim asserts that the same induction-head circuit that copies t
 
 ## Verdict: Disconfirmed
 
+> **Verdict (framework paper, Table 6):** Disconfirmed. **Capped by:** I1 (necessity).
+
+
 | Validity type | Status | Key evidence against |
 |---|---|---|
 | Construct | Weak | "In-context learning" is underspecified — token copying is one instance, not the general capability |

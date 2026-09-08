@@ -11,6 +11,9 @@ This is a structural-level claim with algorithmic aspects: it names specific wei
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I5 (rival mechanism exclusion), I6 (double dissociation).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C2 Structural plausibility | C3 Convergent validity | Strong |

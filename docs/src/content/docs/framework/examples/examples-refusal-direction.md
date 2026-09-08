@@ -13,6 +13,9 @@ The mechanism is defined contrastively: the direction is the difference in mean 
 
 ## Verdict: Mechanistically Supported
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Validity type | Status | Key evidence |
 |---|---|---|
 | Construct | Partial | Falsifiable and structurally plausible; convergent validity untested across independent groups |

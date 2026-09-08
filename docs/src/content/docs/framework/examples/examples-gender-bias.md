@@ -11,6 +11,9 @@ This case study is important because it connects mechanistic claims to real-worl
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** E1 (intervention reach), I4 (specificity).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1 Falsifiability | C4/C3 Discriminant + Convergence | Weak |

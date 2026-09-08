@@ -11,6 +11,9 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Disconfirmed. **Capped by:** I4 (specificity).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1 Falsifiability | C4 Discriminant validity | Partial |

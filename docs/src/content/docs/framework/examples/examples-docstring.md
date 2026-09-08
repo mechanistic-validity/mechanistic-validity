@@ -11,6 +11,9 @@ This is interesting as a case study because it operates in a specific domain (co
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** I4 (specificity).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1 Falsifiability | C4/C3 Discriminant + Convergence | Partial |

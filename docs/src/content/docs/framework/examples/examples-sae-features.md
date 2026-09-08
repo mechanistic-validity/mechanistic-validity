@@ -11,6 +11,9 @@ This case study evaluates SAE features *as a class*. Individual strong features 
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Proposed. **Capped by:** M2 (baseline separation).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C2 Structural plausibility (partial) | C3 Convergent validity | Weak |

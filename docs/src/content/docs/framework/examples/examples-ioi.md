@@ -11,6 +11,9 @@ Below, we evaluate this claim through each of the five validity lenses, applying
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** E1 (intervention reach), I4 (specificity).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C2 Structural plausibility | C4 Discriminant validity | Partial |

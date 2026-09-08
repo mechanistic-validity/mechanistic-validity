@@ -11,6 +11,9 @@ This is the strongest structural evidence in published MI — the weight matrice
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1/C2/C3 (all strong) | — | Strong |

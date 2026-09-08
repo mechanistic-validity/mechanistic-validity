@@ -11,6 +11,9 @@ This case study evaluates probing *as a methodology* rather than a specific circ
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Proposed. **Capped by:** I1 (necessity).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1 Falsifiability (partial) | C3 Convergent validity | Weak |

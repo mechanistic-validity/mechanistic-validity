@@ -11,6 +11,9 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C2 Structural plausibility | C3 Convergent | Partial–Strong |

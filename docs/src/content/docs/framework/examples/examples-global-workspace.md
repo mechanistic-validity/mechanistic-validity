@@ -11,6 +11,9 @@ description: "The global workspace / J-space hypothesis (Todd et al. 2024) evalu
 
 ## Verdict: Mechanistically Supported
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Validity type | Status | Key evidence |
 |---|---|---|
 | Construct | Strong | Well-defined subspace claim; falsifiable predictions about dimensionality and sharing; convergent with independent observations of residual stream structure |

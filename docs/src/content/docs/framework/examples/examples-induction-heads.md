@@ -9,6 +9,9 @@ description: "The induction head mechanism (Olsson et al. 2022) evaluated throug
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Triangulated. **Capped by:** C6 (complementation validity), I3 (minimality), I10 (rescue reversibility), I12 (offset coupling).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C3 Convergent validity | — | Strong |
