@@ -38,7 +38,7 @@ If no published baseline exists for the task/model combination, state this expli
 
 ## Worked example
 
-> "The DAS-IIA score of 0.48 for SVA in GPT-2 Small is within the published transcoder baseline range of 0.40–0.60 (Mueller et al. MIB; Lazo et al. 2025), making it competitive with SOTA for this task. Subject to baseline separation confirmation (M3), this constitutes a calibrated, competitive result."
+> "The DAS-IIA score of 0.48 for SVA in GPT-2 Small is within the published transcoder baseline range of 0.40–0.60 (Mueller et al. MIB; Lazo et al. 2025), making it competitive with SOTA for this task. Subject to baseline separation confirmation (M2), this constitutes a calibrated, competitive result."
 
 This is what a calibrated result statement looks like.
 

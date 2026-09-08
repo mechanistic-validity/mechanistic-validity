@@ -7,7 +7,7 @@ description: "The evidence actively contradicts the mechanistic claim — not in
 
 | | |
 |---|---|
-| Tier | Lateral (outside progression) |
+| Label | Diagnostic (replaces the tier) |
 | What it means | Evidence actively contradicts the claimed mechanism — a specific prediction has failed or the finding is shown to be artifactual |
 | When to assign | A prediction of the mechanism has been tested and refuted, OR the mechanism is demonstrated to be a measurement artifact |
 | Relationship to progressive tiers | Any claim at any progressive tier can be moved to Disconfirmed when contradicting evidence emerges |
@@ -38,7 +38,7 @@ Each form is informative. Prediction failure narrows the space of viable mechani
 | Artifact demonstration | Finding disappears under improved methodology | Patching result vanishes when mean ablation is replaced by resample ablation |
 | Construct dissolution | Named entity is not separable from other processing | "The bias circuit" is indistinguishable from "the gender knowledge circuit" — the construct has no independent existence |
 
-## Minimum reporting for this tier
+## Minimum reporting for this label
 
 - The original claim stated precisely (what was predicted)
 - The disconfirming evidence (what was observed instead)

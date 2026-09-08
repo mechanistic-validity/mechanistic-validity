@@ -38,7 +38,7 @@ Quick-reference definitions for MI methods and scientific concepts referenced ac
 
 ## Scientific foundations
 
-<span id="construct-validity"></span>**Construct validity.** Whether the measurement actually measures the theoretical construct it claims to measure. Adapted from psychometrics (Cronbach & Meehl, 1955). In mechanistic interpretability: does the circuit actually implement the computation the label claims? See the [Stanford Encyclopedia of Philosophy entry on construct validity](https://plato.stanford.edu/entries/reliabilism/) and the [construct validity type](/mechanistic-validity/framework/validity-types/construct/).
+<span id="construct-validity"></span>**Construct validity.** Whether the measurement actually measures the theoretical construct it claims to measure. Adapted from psychometrics (Cronbach & Meehl, 1955). In mechanistic interpretability: does the circuit actually implement the computation the label claims? See the [Stanford Encyclopedia of Philosophy entry on construct validity](https://plato.stanford.edu/entries/measurement-science/) and the [construct validity type](/mechanistic-validity/framework/validity-types/construct/).
 
 <span id="interventionism"></span>**Interventionism.** The philosophical framework (Woodward, 2003) that defines causal claims in terms of interventions: $X$ causes $Y$ if intervening on $X$ (while holding other variables fixed) changes $Y$. Activation patching and ablation are interventionist methods. See the [Stanford Encyclopedia of Philosophy entry on causation and manipulability](https://plato.stanford.edu/entries/causation-mani/).
 

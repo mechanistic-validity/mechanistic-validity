@@ -9,7 +9,7 @@ description: "The mechanism is fully characterized within a stated scope — all
 |---|---|
 | Tier | 5 of 5 (progressive) |
 | What it means | Complete mechanistic account within stated scope — every component characterized, quantitative predictions confirmed |
-| Minimum evidence | All five validity types pass + component-level function ($I_{\text{fun}}$) + novel quantitative prediction confirmed + scope boundary tested + coverage $\kappa > 0.9$ |
+| Requires | Construct: C5 (nomological), C6 (complementation). Measurement: M1--M6 explicitly addressed. Internal: I3 (minimality), I10 (rescue reversibility), I11--I12 (onset and offset coupling). External: E2--E6. Interpretive: V1--V5 audited. Plus everything Triangulated requires |
 | Upgrade | N/A (highest progressive tier) |
 | Downgrade to Triangulated | If completeness fails (uncharacterized components discovered) or a quantitative prediction is refuted |
 

@@ -27,9 +27,9 @@ Satisfied when:
 
 Epistatic interaction does not establish the direction of interaction (whether A modulates B or B modulates A), nor whether the interaction is necessary for the computation. It establishes that the circuit's components are functionally coupled rather than independently contributing.
 
-## Distinction from I3 — Specificity
+## Distinction from I4 — Specificity
 
-I3 tests whether a component's effect is selective for a particular task. I6 tests whether two components interact with each other. A component can be highly task-specific (I3 pass) yet act independently of all other circuit members (I6 fail). Conversely, two components can interact strongly (I6 pass) on a non-specific behavior (I3 fail).
+I4 tests whether a component's effect is selective for a particular task. I9 tests whether two components interact with each other. A component can be highly task-specific (I4 pass) yet act independently of all other circuit members (I9 fail). Conversely, two components can interact strongly (I9 pass) on a non-specific behavior (I4 fail).
 
 ## Minimum reporting rule
 

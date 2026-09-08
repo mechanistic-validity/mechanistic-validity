@@ -84,10 +84,10 @@ Now each step has a specified operation, input, and output.
 
 ## Metrics that provide algorithmic-level evidence
 
-- **A02 (Path patching)** — directed causal evidence of information flow
-- **A04 (Resample ablation)** — sufficiency of the proposed procedure
-- **B02 (OV/QK composition)** — weight-space evidence for step composition
-- **B08 (Edge Jaccard)** — stability of the claimed information-flow graph
+- **A06 (Mediation)** — natural direct and indirect effects along circuit paths, the estimand path patching targets
+- **D01 (Faithfulness)** — whether the proposed procedure reproduces the full model's behavior
+- **B03 (OV/QK Decomp.)** — weight-space evidence for step composition
+- **F13 (Cross-Metric Convergence)** — whether independent discovery methods agree on the claimed information-flow graph
 
 ## Key references
 

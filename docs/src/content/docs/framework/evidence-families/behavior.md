@@ -19,7 +19,7 @@ Methods that measure input-output relations without modifying the model:
 
 ### Behavioral evidence as constraint
 
-Behavioral observations constrain mechanistic claims in two directions. A mechanism that does not reproduce the observed behavior fails [I2 Sufficiency](/mechanistic-validity/framework/criteria/internal/sufficiency/). A mechanism that reproduces the observed behavior but also predicts behavior that the model does not exhibit fails [I3 Specificity](/mechanistic-validity/framework/criteria/internal/specificity/). Both constraints are available purely from behavioral measurement, without opening the model.
+Behavioral observations constrain mechanistic claims in two directions. A mechanism that does not reproduce the observed behavior fails [I2 Sufficiency](/mechanistic-validity/framework/criteria/internal/sufficiency/). A mechanism that reproduces the observed behavior but also predicts behavior that the model does not exhibit fails [I4 Specificity](/mechanistic-validity/framework/criteria/internal/specificity/). Both constraints are available purely from behavioral measurement, without opening the model.
 
 ### Necessary, never sufficient
 
@@ -48,7 +48,7 @@ Behavioral evidence is most directly relevant to:
 | Criterion | How behavioral evidence bears on it |
 |---|---|
 | [I2 Sufficiency](/mechanistic-validity/framework/criteria/internal/sufficiency/) | Does the mechanism reproduce the observed behavior? |
-| [I3 Specificity](/mechanistic-validity/framework/criteria/internal/specificity/) | Does the mechanism predict behavior only on target tasks? |
+| [I4 Specificity](/mechanistic-validity/framework/criteria/internal/specificity/) | Does the mechanism predict behavior only on target tasks? |
 | [E2 Prompt generalization](/mechanistic-validity/framework/criteria/external/prompt-generalization/) | Does the behavior hold on diverse, held-out prompts? |
 | [E5 Graded response](/mechanistic-validity/framework/criteria/external/graded-response/) | Does partial perturbation produce partial behavioral change? |
 | [M5 Sensitivity](/mechanistic-validity/framework/criteria/measurement/sensitivity/) | Can the behavioral metric detect known-true effects? |

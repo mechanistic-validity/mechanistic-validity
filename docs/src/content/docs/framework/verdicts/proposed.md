@@ -63,7 +63,7 @@ A claim can remain at Proposed indefinitely without being wrong or uninteresting
 
 A sparse autoencoder trained on GPT-2 Small residual stream activations produces a feature $f_{42}$ whose decoder direction has high cosine similarity with the "is_noun" probing direction, whose top-activating contexts are predominantly nouns, and whose activation magnitude correlates with the model's confidence on syntactic tasks.
 
-This is a Proposed claim. The evidence is correlational and structural: the feature *looks like* it represents noun-hood. But no intervention has been performed. We do not know whether the feature is *causally relevant* to noun-related computation (I1), whether it is *sufficient* (I2), or whether it is *specific* to noun-hood rather than a correlated property like word frequency (I3).
+This is a Proposed claim. The evidence is correlational and structural: the feature *looks like* it represents noun-hood. But no intervention has been performed. We do not know whether the feature is *causally relevant* to noun-related computation (I1), whether it is *sufficient* (I2), or whether it is *specific* to noun-hood rather than a correlated property like word frequency (I4).
 
 The claim is well-posed (falsifiable, with a defined construct and quantitative measurements). It simply hasn't been causally tested. Moving to Tier 2 requires ablating or patching the feature and demonstrating a noun-specific behavioral change.
 </details>

@@ -1,6 +1,6 @@
 ---
 title: "Tier 3: Mechanistically Supported"
-description: "The mechanism is both necessary and sufficient, with specificity evidence and measurement reliability established."
+description: "The mechanism is both necessary and sufficient, with a specificity test conducted and the result reproduced across two intervention families."
 ---
 
 # Verdict Tier 3: Mechanistically Supported
@@ -42,12 +42,12 @@ Sufficiency is method-dependent. The complement ablation method (zero, mean, res
 
 | Direction | What's required |
 |---|---|
-| → Triangulated | At least two methods with non-overlapping assumptions confirm the same mechanism (C5). External robustness across distributions or model sizes (E5). Cross-procedure agreement characterized quantitatively (V2). |
-| → Causally suggestive (downgrade) | Specificity (I3) fails: the ablation equally impairs unrelated tasks. Or sufficiency (I2) is method-conditional: recovery drops below threshold under a more appropriate ablation method. |
+| → Triangulated | Convergent evidence from independent evidence families (C3) and discriminant validity (C4). Rival mechanism exclusion (I5), double dissociation attempted (I6), confound control (I7). Cross-distribution replication: E4 where the claim asserts reach beyond the systems tested, E2 where it does not. |
+| → Causally suggestive (downgrade) | Specificity (I4) fails: the ablation equally impairs unrelated tasks. Or sufficiency (I2) is method-conditional: recovery drops below threshold under a more appropriate ablation method. |
 
 ## Characteristic occupants
 
-- **Induction heads** ([Olsson et al., 2022](https://arxiv.org/abs/2209.11895)) — necessity, sufficiency, and specificity all demonstrated for in-context copying behavior
+- **Modular addition** ([Nanda et al., 2023](https://arxiv.org/abs/2301.05217)) -- necessity, sufficiency and specificity established for the Fourier algorithm on $(a+b) \bmod p$; double dissociation (I6) caps it
 - **Greater-Than circuit** ([Hanna et al., 2023](https://arxiv.org/abs/2305.00586)) — strong structural plausibility with specificity evidence across related numerical tasks
 - **Copy suppression heads** ([McDougall et al., 2023](https://arxiv.org/abs/2310.04625)) — unusually clean specificity: the heads suppress repeated tokens specifically, with minimal off-target effects
 

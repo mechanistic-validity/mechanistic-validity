@@ -11,13 +11,13 @@ description: "The construct is not defined precisely enough to score — a diagn
 | What it means | The construct is not defined precisely enough to be evaluated against the criteria |
 | When to assign | The claim lacks a falsifiable statement, an operationalized target, or both — scoring would be premature |
 | Resolution path | Sharpen the construct definition until C1 (Falsifiability) and C2 (Structural plausibility) can be assessed |
-| Relationship to progressive tiers | A claim flagged Insufficient has not yet entered the progressive tiers — it sits below Proposed |
+| Relationship to progressive tiers | Insufficient replaces the tier -- the claim holds no position in the hierarchy, rather than a position beneath Proposed |
 
 ## What this verdict establishes
 
 Insufficient is not a negative result. It is a statement that the claim has not yet been formulated precisely enough for the framework to evaluate it. The criteria require a well-defined target: a component, circuit, or mechanism whose existence would be falsifiable and whose structure is at least plausible given the architecture. Without that, scoring the remaining criteria produces meaningless numbers.
 
-Construct validity can fail to be established in two distinct ways, and either is sufficient to assign this label. The target concept can be incoherent — "safety module," "world model," "reasoning" — with no operational definition that a measurement could confirm or refute. Or the concept can be coherent while the available measurement instruments cannot separate it from a null baseline: if no metric distinguishes the claimed component from a random component of the same size and type (M3 baseline separation fails for every candidate instrument), the claim cannot be scored regardless of how precisely it is stated.
+Construct validity can fail to be established in two distinct ways, and either is sufficient to assign this label. The target concept can be incoherent — "safety module," "world model," "reasoning" — with no operational definition that a measurement could confirm or refute. Or the concept can be coherent while the available measurement instruments cannot separate it from a null baseline: if no metric distinguishes the claimed component from a random component of the same size and type (M2 baseline separation fails for every candidate instrument), the claim cannot be scored regardless of how precisely it is stated.
 
 This verdict separates two failure modes that are otherwise conflated: "we tested the claim and it failed" (Disconfirmed) vs. "we cannot test the claim because it is not stated precisely enough" (Insufficient). The distinction matters because the remedies differ — Disconfirmed claims need new evidence or a different hypothesis, while Insufficient claims need a sharper formulation.
 

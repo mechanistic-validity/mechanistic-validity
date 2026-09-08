@@ -82,22 +82,21 @@ To construct the matrix: for each pair $(c_i, c_j)$ in the circuit, ablate $c_i$
 
 A single gene knockout tells you the gene matters. A rescue experiment tells you the deficit was specifically caused by the gene's absence and not by collateral damage. Epistasis mapping tells you the gene interacts with other genes in the pathway. Mendelian randomization tells you the effect operates through the pathway and not through a backdoor. Sensitivity analysis tells you how robust the whole story is to things you did not measure. Each test eliminates a class of alternative explanations that the others cannot.
 
-This lens primarily contributes to internal validity, extending the neuroscience lens's I1--I5 with five additional criteria (I6--I10) that address interaction structure, reversibility, ordering, instrument validity, and confounding sensitivity. It also contributes one criterion to external validity (E7, allelic dose-response), extending the pharmacology lens's E1--E6.
+This lens contributes three internal-validity criteria that no other lens supplies: I9 (epistatic interaction), I10 (rescue reversibility), and I8 (confounding sensitivity). They address interaction structure, reversibility under repair, and robustness to confounders that were never measured. It also supplies three analytical constructs -- knockout ordering, instrument validity, and the allelic series -- which are techniques rather than scored criteria.
 
 ## Criteria
 
 | Code | Criterion | What it asks | Validity type |
 |---|---|---|---|
-| I6 | Epistatic interaction | Do circuit components interact non-additively? | Internal |
-| I7 | Rescue reversibility | Does restoring a corrupted component recover the behavior? | Internal |
-| I8 | Knockout ordering | Does ordered ablation reveal a dependency structure? | Internal |
-| I9 | Instrument validity | Does an upstream variable affect the outcome only through the circuit? | Internal |
-| I10 | Confounding sensitivity | How strong would an unmeasured confounder need to be to explain away the result? | Internal |
-| E7 | Allelic dose-response | Does graded intervention across qualitatively different ablation types produce monotonic degradation? | External |
+| I9 | Epistatic interaction | Do circuit components interact non-additively, and does the direction of interaction distinguish shared pathways from mutual compensation? | Internal |
+| I10 | Rescue reversibility | Does restoring a corrupted component recover the behavior? | Internal |
+| I8 | Confounding sensitivity | How strong would an unmeasured confounder need to be to explain away the result? | Internal |
 
-Epistatic interaction (I6) is the most distinctive contribution of this lens -- it tests whether the circuit is a functional unit with internal coupling, not merely a list of independently necessary components. Rescue reversibility (I7) provides the strongest evidence that an ablation deficit reflects genuine loss of computation rather than distributional disruption. Instrument validity (I9) is the most technically demanding and the least commonly tested in MI.
+All three are Validated-tier criteria. A claim can reach Triangulated without any of them, and in the sixteen audited claims none is confirmed.
 
-### Epistatic interaction (I6)
+Epistatic interaction (I9) is the most distinctive contribution of this lens -- it tests whether the circuit is a functional unit with internal coupling, not merely a list of independently necessary components. Rescue reversibility (I10) provides the strongest evidence that an ablation deficit reflects genuine loss of computation rather than distributional disruption. Confounding sensitivity (I8) is the least commonly tested in MI: it is untested in all sixteen audited claims.
+
+### Epistatic interaction (I9)
 
 Pairwise or higher-order ablation of circuit components should reveal non-additive interactions.
 
@@ -113,7 +112,7 @@ The Shapley interaction index provides a formal measure. For components $i$ and 
 
 **Minimum reporting.** The full $k \times k$ epistasis matrix for all circuit components. The fraction of pairs exceeding the $2\times$ threshold. Shapley interaction indices for at least the top-5 interacting pairs with $p$-values.
 
-### Rescue reversibility (I7)
+### Rescue reversibility (I10)
 
 Corrupting a circuit component and then restoring it should recover the behavior.
 
@@ -131,7 +130,11 @@ $$R_{\text{rescue}} = \frac{M_{\text{rescued}} - M_{\text{corrupt}}}{M_{\text{cl
 
 **Minimum reporting.** The corruption method, the restoration method, $M_{\text{clean}}$, $M_{\text{corrupt}}$, $M_{\text{rescued}}$, and $R_{\text{rescue}}$. If $R_{\text{rescue}} < 0.80$, report a distributional integrity check (e.g., residual stream norm at downstream positions before and after rescue) to diagnose whether the failure reflects irreversible cascading disruption.
 
-### Knockout ordering (I8)
+## Analytical constructs
+
+The three sections below describe techniques this lens supplies. They are not among the 36 criteria and no verdict turns on them.
+
+### Knockout ordering
 
 Ordered sequential ablation of circuit components should reveal a dependency structure.
 
@@ -147,7 +150,7 @@ To construct the ordering: rank circuit components by their predicted importance
 
 **Minimum reporting.** The predicted ordering and its basis. The cumulative degradation curve. Spearman $\rho$ between predicted and observed orderings. If monotonicity is violated at any step, report which component violated it and by how much.
 
-### Instrument validity (I9)
+### Instrument validity
 
 An upstream variable should affect the outcome only through the circuit, satisfying the exclusion restriction of Mendelian randomization.
 
@@ -163,11 +166,13 @@ The two conditions are testable. *Relevance*: regress the circuit's activations 
 
 **Minimum reporting.** The instrument(s) used, with justification for why they satisfy relevance and exclusion a priori. First-stage F-statistic. Overidentification test statistic and $p$-value (if $\geq 2$ instruments). Residual association test (if one instrument). The IV estimate of the circuit's causal effect alongside the naive (OLS) estimate -- divergence between the two indicates confounding that IV corrects for.
 
-### Confounding sensitivity (I10)
+## Criteria, continued
+
+### Confounding sensitivity (I8)
 
 The E-value or a similar sensitivity bound should quantify how strong an unmeasured confounder would need to be to explain away the observed causal effect.
 
-This criterion is distinct from confound control (I5). I5 asks: "did you control for confounds?" -- it requires multi-method comparison and distributional integrity checks to rule out known confounds (off-manifold artifacts, cascading disruption, single-method bias). I10 asks the complementary question: "how robust is your claim to confounds you *did not* control for?" Every ablation study has potential unmeasured confounders -- information in the residual stream that correlates with both the ablated component and the output, backup pathways that partially compensate, or distributional effects that inflate the apparent necessity.
+This criterion is distinct from confound control (I7). I7 asks: "did you control for confounds?" -- it requires multi-method comparison and distributional integrity checks to rule out known confounds (off-manifold artifacts, cascading disruption, single-method bias). I8 asks the complementary question: "how robust is your claim to confounds you *did not* control for?" Every ablation study has potential unmeasured confounders -- information in the residual stream that correlates with both the ablated component and the output, backup pathways that partially compensate, or distributional effects that inflate the apparent necessity.
 
 The E-value ([VanderWeele & Ding 2017](https://doi.org/10.7326/M16-2607)) quantifies this robustness. For an observed effect estimate $\text{RR}$ (risk ratio or analogous effect measure), the E-value is:
 
@@ -177,17 +182,17 @@ The E-value is the minimum strength of association (on the risk-ratio scale) tha
 
 **What it establishes.** A quantitative bound on the vulnerability of the causal claim to unmeasured confounding. A high E-value does not prove the absence of confounders; it establishes that only a very strong confounder could explain the result away.
 
-**What it does not establish.** That no such confounder exists. The E-value is a bound, not a proof. It also does not address confounders that were measured but improperly controlled for -- that is I5.
+**What it does not establish.** That no such confounder exists. The E-value is a bound, not a proof. It also does not address confounders that were measured but improperly controlled for -- that is I7.
 
 **Threshold.** E-value $\geq 2.0$. This means an unmeasured confounder would need to at least double both the treatment-outcome and confounder-outcome associations to explain away the observed effect.
 
 **Minimum reporting.** The observed effect estimate and its scale (risk ratio, odds ratio, or standardized mean difference). The E-value for the point estimate. The E-value for the lower bound of the 95% confidence interval (this is the more conservative and more informative number -- if the CI lower-bound E-value is still $\geq 2.0$, the finding is robust even accounting for estimation uncertainty).
 
-### Allelic dose-response (E7)
+### Allelic series
 
 Graded intervention across qualitatively different ablation types should produce monotonic degradation.
 
-This criterion extends the pharmacology lens's graded response (E2) in a specific direction. E2 varies *how much* of a single intervention type is applied (interpolating from 0 to 1 for one ablation method). E7 varies *what kind* of intervention is applied, across an ordered series of qualitatively different ablation types. The analogy is to allelic series in genetics: a set of mutations in the same gene with increasing severity (null, hypomorph, dominant negative), each producing a graded phenotype. If the phenotypic severity tracks the allelic severity, the gene-phenotype relationship is robust and the mechanism is well-defined.
+This construct extends graded response (E5) in a specific direction. E5 varies *how much* of a single intervention type is applied (interpolating from 0 to 1 for one ablation method). The allelic series varies *what kind* of intervention is applied, across an ordered series of qualitatively different ablation types. The analogy is to allelic series in genetics: a set of mutations in the same gene with increasing severity (null, hypomorph, dominant negative), each producing a graded phenotype. If the phenotypic severity tracks the allelic severity, the gene-phenotype relationship is robust and the mechanism is well-defined.
 
 In MI, the "allelic series" is a set of ablation types ordered by expected severity:
 
@@ -221,12 +226,12 @@ If the behavioral degradation is monotonically increasing across this series, th
 
 ## Verdicts
 
-The genetics lens strengthens verdict transitions primarily through internal validity:
+All three criteria this lens supplies sit at the Validated tier. It gates no transition below that, and a claim reaching Triangulated without any of them is the expected case rather than an exception.
 
-- **Proposed → Causally suggestive:** The genetics lens does not gate this transition. I1 (necessity) from the neuroscience lens remains the entry requirement.
-- **Causally suggestive → Mechanistically supported:** I10 (rescue reversibility) strengthens this transition by establishing that the ablation deficit is specifically reversible, not an artifact of cascading disruption. This complements I2 (sufficiency) from the neuroscience lens.
-- **Mechanistically supported → Triangulated:** I9 (epistatic interaction) and I6 (double dissociation) provide evidence from a different analytical framework -- interaction structure rather than single-component intervention -- strengthening the triangulation case. E5 (graded response) contributes the allelic dose-response analogue.
-- **Triangulated → Validated:** I7 (confound control) and I8 (confounding sensitivity) address threats no other lens tests -- backdoor confounding and hidden bias, and how strong an unmeasured confounder would have to be to explain the result away. A circuit that passes all genetics criteria alongside the criteria from other lenses has survived the most comprehensive set of causal tests available.
+- **Proposed → Causally suggestive:** the genetics lens contributes nothing. I1 (necessity) and M2 (baseline separation) are the entry requirements.
+- **Causally suggestive → Mechanistically supported:** nothing. The tier turns on I2, I4 and E1.
+- **Mechanistically supported → Triangulated:** nothing directly. The lens's analytical constructs -- knockout ordering and the allelic series -- can supply evidence a reader weighs under I5 and I7, both of which the tier requires.
+- **Triangulated → Validated:** I8, I9 and I10. Confounding sensitivity bounds the hidden bias no other lens tests; epistatic interaction establishes internal coupling; rescue reversibility separates a genuine loss of computation from cascading disruption. All three are untested in every one of the sixteen audited claims.
 
 ## Protocol
 
@@ -236,13 +241,15 @@ For a proposed circuit $C$ with components $\{c_1, \ldots, c_k\}$ and behavior $
 
 2. **Rescue reversibility.** For each major component, corrupt it (mean or resample ablation), then restore the clean activation at that site. Report $R_{\text{rescue}}$ for each component. If any rescue fails ($R_{\text{rescue}} < 0.80$), diagnose whether the failure reflects cascading disruption (check downstream residual stream norms).
 
+The three steps below exercise the lens's analytical constructs rather than scored criteria.
+
 3. **Knockout ordering.** Predict an ablation ordering from individual effect sizes or causal graph structure. Ablate components sequentially in this order, recording cumulative degradation. Report the Spearman $\rho$ between predicted and observed orderings. Verify monotonicity.
 
 4. **Instrument validity.** Identify at least one upstream variable as a candidate instrument. Test relevance (first-stage F $> 10$) and exclusion (residual association after conditioning on circuit activations). If $\geq 2$ instruments are available, run the overidentification test.
 
-5. **Confounding sensitivity.** Compute the E-value for the principal necessity effect (from I1) and for the rescue effect (from I7). Report E-values for both the point estimate and the lower CI bound.
+5. **Confounding sensitivity.** Compute the E-value for the principal necessity effect (from I1) and for the rescue effect (from I10). Report E-values for both the point estimate and the lower CI bound.
 
-6. **Allelic dose-response.** Apply $\geq 3$ qualitatively different ablation types (rank reduction, mean, resample, zero) to the circuit. Report degradation at each type and the rank correlation with expected severity.
+6. **Allelic series.** Apply $\geq 3$ qualitatively different ablation types (rank reduction, mean, resample, zero) to the circuit. Report degradation at each type and the rank correlation with expected severity.
 
 A skipped step must be named in the verdict.
 

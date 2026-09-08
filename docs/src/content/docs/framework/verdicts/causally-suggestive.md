@@ -41,7 +41,7 @@ This is where the majority of published mechanistic interpretability findings cu
 
 | Direction | What's required |
 |---|---|
-| → Mechanistically supported | Sufficiency (I2): circuit alone recovers target behavior. Specificity (I3): selectivity index SI > 10 or meaningful task separation. Consistency (I4): replication across templates/methods/seeds. Reliability (M1): bootstrap $\rho_{XX'} \geq 0.7$ |
+| → Mechanistically supported | Sufficiency (I2): circuit alone recovers target behavior. Specificity (I4): intervening on the circuit affects this task more than matched control tasks. Intervention reach (E1): the result reproduced under at least two intervention families, which agree |
 | → Proposed (downgrade) | The causal effect disappears under a more appropriate ablation method (e.g., mean → resample), or the random-component control produces equal effect |
 | → Underdetermined | Multiple non-overlapping circuits produce equivalent necessity effects and cannot be distinguished |
 
