@@ -1,10 +1,10 @@
 ---
 title: "Rival Mechanism Exclusion"
 validity_type: "Internal"
-criterion_id: "I6"
+criterion_id: "I5"
 ---
 
-# Criterion I6 — Rival Mechanism Exclusion
+# Criterion I5 — Rival Mechanism Exclusion
 
 | | |
 |---|---|

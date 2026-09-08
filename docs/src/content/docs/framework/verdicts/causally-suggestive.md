@@ -9,9 +9,9 @@ description: "There is causal evidence that the claimed mechanism is involved in
 |---|---|
 | Tier | 2 of 5 (progressive) |
 | What it means | Necessity established — removing the mechanism changes behavior — but sufficiency and specificity remain open |
-| Minimum evidence | I1 (necessity) + E4 (effect magnitude) + V1 (level declaration) |
-| Upgrade to Mechanistically supported | Sufficiency (I2) + Specificity (I3) + Consistency (I4) + Measurement reliability (M1) |
-| Downgrade to Proposed | If the causal effect is shown to be an artifact of the ablation method or indistinguishable from random controls |
+| Requires | Internal: I1 (necessity). Measurement: M2 (baseline separation) |
+| Upgrade to Mechanistically supported | I2 (sufficiency) + I4 (specificity) + E1 (intervention reach) |
+| Downgrade to Proposed | If the causal effect is an artifact of the ablation method, or if M2 fails and the score is indistinguishable from random or untrained baselines |
 
 ## What this tier establishes
 

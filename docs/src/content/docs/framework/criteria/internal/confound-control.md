@@ -1,10 +1,10 @@
 ---
 title: "Confound Control"
 validity_type: "Internal"
-criterion_id: "I5"
+criterion_id: "I7"
 ---
 
-# Criterion I5 — Confound Control
+# Criterion I7 — Confound Control
 
 | | |
 |---|---|

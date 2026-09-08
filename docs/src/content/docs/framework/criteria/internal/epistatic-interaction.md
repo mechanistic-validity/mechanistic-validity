@@ -1,10 +1,10 @@
 ---
 title: "Epistatic Interaction"
 validity_type: "Internal"
-criterion_id: "I6"
+criterion_id: "I9"
 ---
 
-# Criterion I6 — Epistatic Interaction
+# Criterion I9 — Epistatic Interaction
 
 | | |
 |---|---|

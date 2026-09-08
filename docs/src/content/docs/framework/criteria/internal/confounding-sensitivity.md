@@ -1,10 +1,10 @@
 ---
 title: "Confounding Sensitivity"
 validity_type: "Internal"
-criterion_id: "I10"
+criterion_id: "I8"
 ---
 
-# Criterion I10 — Confounding Sensitivity
+# Criterion I8 — Confounding Sensitivity
 
 | | |
 |---|---|

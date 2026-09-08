@@ -1,10 +1,10 @@
 ---
 title: "Baseline Separation"
 validity_type: "Measurement"
-criterion_id: "M3"
+criterion_id: "M2"
 ---
 
-# Criterion M3 — Baseline Separation
+# Criterion M2 — Baseline Separation
 
 | | |
 |---|---|

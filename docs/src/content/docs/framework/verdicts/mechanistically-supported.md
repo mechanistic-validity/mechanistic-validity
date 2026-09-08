@@ -9,9 +9,9 @@ description: "The mechanism is both necessary and sufficient, with specificity e
 |---|---|
 | Tier | 3 of 5 (progressive) |
 | What it means | Necessity, sufficiency, and specificity all established under at least one method |
-| Minimum evidence | I1 (necessity) + I2 (sufficiency) + I3 (specificity) + I4 (consistency) + M1 (reliability $\geq$ 0.7) |
-| Upgrade to Triangulated | Multi-method convergence (C5) + external robustness (E5) + cross-procedure agreement (V2) |
-| Downgrade to Causally suggestive | If specificity (I3) fails, or if sufficiency (I2) is shown to be method-conditional |
+| Requires | Internal: I2 (sufficiency), I4 (specificity). External: E1 (intervention reach). Plus everything Causally Suggestive requires |
+| Upgrade to Triangulated | C3--C4 (convergent and discriminant validity) + I5--I7 (rival exclusion, double dissociation, confound control) + E2, E4 (prompt and cross-model generalization) |
+| Downgrade to Causally suggestive | If specificity (I4) fails, or if sufficiency (I2) is shown to be method-conditional |
 
 ## What this tier establishes
 

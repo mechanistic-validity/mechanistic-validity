@@ -10,7 +10,8 @@ description: "A mechanistic claim has been stated with enough precision to be ev
 | Tier | 1 of 5 (progressive) |
 | What it means | A claim is falsifiable and measured, but not yet causally tested |
 | Minimum evidence | Defined construct + falsifiable prediction + at least one measurement |
-| Upgrade to Causally suggestive | At least one well-controlled causal experiment demonstrating necessity (I1) |
+| Requires | Construct: C1 (falsifiability), C2 (structural plausibility) |
+| Upgrade to Causally suggestive | I1 (necessity) + M2 (baseline separation) |
 | Downgrade | N/A (lowest progressive tier) |
 
 ## What this tier establishes

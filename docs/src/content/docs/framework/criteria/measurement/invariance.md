@@ -1,10 +1,10 @@
 ---
 title: "Invariance"
 validity_type: "Measurement"
-criterion_id: "M2"
+criterion_id: "M6"
 ---
 
-# Criterion M2 — Invariance
+# Criterion M6 — Invariance
 
 | | |
 |---|---|

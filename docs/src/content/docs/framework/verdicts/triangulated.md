@@ -9,9 +9,9 @@ description: "Multiple independent lines of evidence converge on the same mechan
 |---|---|
 | Tier | 4 of 5 (progressive) |
 | What it means | Multiple methods with non-overlapping assumptions converge on the same mechanism |
-| Minimum evidence | C5 (multi-method convergence) + E5 (external robustness) + V2 (cross-procedure agreement) + nomological network density |
+| Requires | Construct: C3 (convergent), C4 (discriminant). Internal: I5 (rival mechanism exclusion), I6 (double dissociation), I7 (confound control). External: E2 (prompt generalization), E4 (cross-model generalization) |
 | Upgrade to Validated | Completeness — every component's function characterized, quantitative predictions confirmed, scope boundary tested |
-| Downgrade to Mechanistically supported | If convergence fails (methods disagree on core components) or external robustness is refuted |
+| Downgrade to Mechanistically supported | If convergent validity (C3) fails because methods disagree on core components, or a rival mechanism (I5) is not excluded |
 
 ## What this tier establishes
 

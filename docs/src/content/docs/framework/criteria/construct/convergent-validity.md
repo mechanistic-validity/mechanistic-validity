@@ -1,10 +1,10 @@
 ---
 title: "Convergent Validity"
 validity_type: "Construct"
-criterion_id: "C5"
+criterion_id: "C3"
 ---
 
-# Criterion C5 — Convergent Validity
+# Criterion C3 — Convergent Validity
 
 | | |
 |---|---|

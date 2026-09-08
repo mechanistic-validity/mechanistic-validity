@@ -1,10 +1,10 @@
 ---
 title: "Calibration"
 validity_type: "Measurement"
-criterion_id: "M5"
+criterion_id: "M4"
 ---
 
-# Criterion M5 — Calibration
+# Criterion M4 — Calibration
 
 | | |
 |---|---|
