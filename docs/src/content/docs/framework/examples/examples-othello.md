@@ -1,25 +1,28 @@
 ---
 title: "Case Study: Othello World Model"
-description: "The Othello-GPT world model (Li et al. 2023) evaluated through all five validity lenses."
+description: "The Othello-GPT world model (Li et al. 2023) evaluated through the five core lenses."
 ---
 
 # Case Study: Othello World Model
 
-[Li et al. (2023)](https://arxiv.org/abs/2210.13382) train a GPT on Othello game transcripts and claim the model develops an internal **world model** — a linear representation of the board state that tracks which squares are occupied by black, white, or empty. The claim is that the model does not merely memorize move sequences but represents the underlying game state, and that this representation is causally used during move prediction.
+[Li et al. (2023)](https://arxiv.org/abs/2210.13382) train a GPT on Othello game transcripts and claim the model develops an internal **world model** — a representation of the board state that tracks which squares are occupied by black, white, or empty, decoded by nonlinear probes across all 64 tiles where linear probes never dip below 20% error. The claim is that the model does not merely memorize move sequences but represents the underlying game state, and that this representation is causally used during move prediction.
 
 This is a [representational](/mechanistic-validity/framework/modes/representational)-level claim with algorithmic implications: it asserts not just that board state information is present in activations but that the model constructs and uses a world model for prediction.
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** E1 (intervention reach).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
-| Construct (Phil. Sci.) | C1 Falsifiability | I3 Minimality | Partial |
+| Construct (Phil. Sci.) | C1 Falsifiability, C3 Convergent validity (both confirmed) | C6 Complementation validity (untested) | Partial |
 | Internal (Neuroscience) | I1 Necessity (partial) | I7 Confound control | Weak–Partial |
-| External (Pharmacology) | E1 Intervention reach | E5/I4/E4 Most criteria | Partial |
+| External (Pharmacology) | E4 Cross-model generalization, E2 Prompt generalization, E6 Novel prediction | E1 Intervention reach (the capping criterion) | Partial |
 | Measurement (Measurement Theory) | M6 Invariance (partial) | M4/M5 Sensitivity + Calibration | Weak |
 | Interpretive (MI) | V2 Level-evidence match | V3 Alternative level | Partial |
 
-**Overall verdict: Causally suggestive.** The Othello world model has genuine evidence for board-state representation (probe results are real and causal interventions work), but the interpretive framing ("world model") exceeds what the evidence establishes. The primary gaps are confound control (I7 — is the probe direction causally real or an artifact?), alternative exclusion (V3 — heuristics vs. genuine spatial reasoning), and scope honesty (V5 — "world model" carries implications beyond "linear board-state decodability").
+**Overall verdict: Causally suggestive.** The Othello world model has genuine evidence for board-state representation — probe results are real and causal interventions work — but the interpretive framing ("world model") exceeds what the evidence establishes. The claim is capped by intervention reach (E1): one intervention operator, reported under three outcome metrics. Above that it is blocked by double dissociation (I6), and the label question is carried by unlicensed labeling (V4), since "world model" is defined and only a state summary is ever measured.
 
 This case study illustrates a pattern worth naming: **interpretive inflation** — a mechanistic finding (linear probe recovers board state) is described using a term (world model) that implies more structure, compositionality, and causal role than the evidence supports. The finding is real; the label is aspirational. The framework's contribution here is not to dismiss the finding but to name precisely where the label exceeds the evidence and what additional tests would close the gap.
 
@@ -44,11 +47,11 @@ This case study illustrates a pattern worth naming: **interpretive inflation** �
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Partial.** The representation is linearly decodable — a probe recovers board state at high accuracy. But linear decodability does not establish structural plausibility in the weight-space sense. A world model should correspond to some identifiable structure in the model's parameters (attention patterns that track spatial relationships, MLP neurons that compute legal moves). The probe result is an activation-space finding, not a weight-space one.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Pass.** The Othello model is trained on a single task, so cross-task evaluation in the traditional sense does not apply. However, the world model claim is specific — it claims board-state representation, not generic sequence memorization. The probe results show that the model tracks board state rather than superficial sequence statistics, which is a form of discriminant validity.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Partial.** Two constructs the board representation might be confused with are excluded by measurement. Removing a quarter of the game tree leaves the error rate at 0.02%, which separates the representation from memorized transcripts, and the randomized network fixes how much a probe recovers from an untrained network at the same capacity. The construct never separated from is the weaker reading of the paper's own claim: a decodable state summary that the next-move computation reads.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Not tested.** Is the full residual stream necessary to represent the board state, or could a smaller subspace suffice? The probe identifies a linear subspace, but whether this subspace is minimal (no further compression possible) is not systematically tested.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Not applicable.** One activation vector holds all 64 tiles, so there are no components to prune.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Two methods are used: linear probing (a representational method) and causal intervention (patching board-state information). These have partially overlapping assumptions — both rely on the activation space being the right level of analysis. A weight-space method (identifying which attention heads or MLP layers implement the world model) would provide stronger convergence.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) **Confirmed.** Three readouts point the same way: a nonlinear probe decodes the board, editing the decoded state moves the predictions, and error, F1 and KL divergence agree on the size of that effect. The agreement is weaker than it looks, because the intervention is gradient descent on the same probe's class score, so the observational and causal instruments share their definition of the representation.
 
 ### Key Distinctions
 
@@ -61,7 +64,7 @@ This case study illustrates a pattern worth naming: **interpretive inflation** �
 The Othello world model connects to:
 - **Linear decodability** — probe recovers board state from residual stream (representational, confirmed)
 - **Causal intervention** — patching board-state information shifts predictions (causal, confirmed)
-- **Spatial structure** — does the representation encode spatial adjacency relationships? (partially explored by Nanda)
+- **Spatial structure** — Nanda's follow-up recovers a linear representation under a mine/theirs basis rather than black/white, which strengthens the linearity result and shows the probe target was never varied at origin (scored under I5 and M3)
 - **Legal move computation** — does the model use board state to determine legal moves, or are legal moves computed separately? (untested)
 - **Training dynamics** — does board-state representation emerge at a specific training phase? (untested)
 - **Weight-space implementation** — which attention heads or MLP layers construct the representation? (partially explored)
@@ -83,9 +86,7 @@ Two nodes confirmed, one partially explored, four untested. A thin network for s
 
 **[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** The probe specifically decodes board state, not other features (move legality, piece count, game phase). This establishes that the representation is specific to board state. But whether intervening on the board-state representation *only* changes board-state-relevant predictions (not general prediction quality) is not systematically measured.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** The representation is tested across game positions (not just one board state). The probe accuracy is high across diverse positions. But cross-model consistency (does a differently-trained Othello-GPT develop the same representation?) is not reported.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Weak.** The patching intervention assumes that the linear probe direction is the causally relevant direction. But patching along a probe direction may work because it moves activations in a way that incidentally helps prediction, not because the direction is the model's internal representation. Neel Nanda's follow-up work raises this concern: the "world model" may be an artifact of the probe rather than a property of the model.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Three confounds are handled by design. Training-set overlap is removed by truncating the game tree, and by the fact that the network never sees a board state as input. Distributional support is removed by the unnatural benchmark. Probe capacity is held fixed against a randomized network, so decoding power is subtracted from decoded content. The confound left uncontrolled is the probe target itself, which fixes what counts as the board state before any measurement begins.
 
 ### Key Distinctions
 
@@ -111,17 +112,13 @@ Two cells filled (both in the patching row). The ablation row and the control co
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Pass.** Patching board-state information changes model predictions across many game positions. The intervention has broad reach within the task.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Untested — the capping criterion.** One intervention operator is used, reported under three outcome metrics. Reproducing the result under a second intervention family is what would lift the claim to Mechanistically Supported.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** Does patching a "stronger" board-state signal (further from the actual state) produce a proportionally larger prediction change? A parametric dose-response is not reported.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) **Partial.** Two intervention-strength knobs are swept and the response is graded in the shape a mechanism predicts: too many layers reaches back into layers whose representations are unreliable, too few leaves the network no computation to propagate the edit, and the error rises on both sides. The knob never swept is the size of the edit itself against a graded behavioral outcome, so the dose-response curve the criterion asks for is absent.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Does board-state intervention only change move predictions, or does it also affect the model's confidence, attention patterns, or other outputs? Off-target effects are not measured.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) **Confirmed.** The causal result is measured on a thousand cases per subset rather than on selected examples, and the unnatural subset is off-distribution by construction, since those boards cannot arise from legal play. Probing runs on two training distributions that differ in kind — strategic human play against uniformly sampled legal moves. Generalization across inputs is demonstrated at scale and in the hardest available direction.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Moderate.** The linear probe achieves high accuracy (~90%+ on board-state recovery), and patching produces measurable prediction changes. The effect is real but the magnitude of the causal intervention (how much of prediction quality it explains) is not precisely quantified.
-
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Works across diverse game positions. Not tested across different game phases (opening vs. endgame) or board sizes.
-
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** The result is specific to one model architecture trained on Othello. Whether similar world models emerge in different architectures (e.g., Mamba, state-space models) is unknown.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Confirmed on post-origin evidence.** Absent at origin, which trains one architecture twice; seven architectures were tested later [Yuan and Søgaard, 2025].
 
 ### Key Distinctions
 
@@ -151,17 +148,15 @@ The curve has one confirmed point (full-strength patching works) and a layer-wis
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** Are the probe results stable across different probe training runs? Different probe architectures? No test-retest or bootstrap stability is reported.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Confirmed.** Probe accuracies are re-run 100 times and the deviations are reported in Tables 4 and 5 of the origin paper.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** The probe works across game positions, providing some invariance. But invariance across layers (does the representation look the same at every layer?) is partially explored — the representation builds up across layers, which is informative but complicates invariance claims.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) **Confirmed.** The result is reported over every axis the design makes available rather than at one favorable setting: eight layers, two training distributions, a randomized control network, game progression, probe capacity, natural and unnatural boards, and three outcome metrics. The layerwise profile is interpretable and matches what probing studies of natural language report.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** The probe accuracy is high, but what is the baseline? A probe trained on random activations (not from an Othello-trained model) should fail. This baseline is partially addressed — probes on untrained models recover little board state. But the critical baseline is: what accuracy does a probe achieve on a model that memorizes sequences without a world model? This is harder to construct and not reported.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Confirmed.** Three floors are reported: an untrained network, a constant guess, and null intervention baselines of 2.68 and 2.59 against measured errors of 0.12 and 0.06.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can the probe distinguish between a genuine world model and a model that uses heuristic shortcut features (e.g., "this square was recently played, so it's probably occupied")? The probe's sensitivity to genuine spatial reasoning versus statistical shortcuts is unclear.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.** What does 90% probe accuracy mean? Is it "the model has a strong world model" or "90% of board state is linearly decodable, which is expected even without a world model"? Without calibration against models of known capability, the number is hard to interpret.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** The probe measures one aspect of the world model (static board state). A complete world model would also track legal moves, strategic evaluation, and game dynamics. Only board-state recovery is tested.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** The causal measure is calibrated: an error is a count of false positives and false negatives against the post-intervention legal-move set, it has a null floor, and three metrics that weight errors differently agree. The observational measure is not — footnote 5 concedes that occupancy alone is a linear function of the input, so part of the 3-way probe's accuracy is available without any board representation, and no analysis says how much.
 
 ### Key Distinctions
 
@@ -187,15 +182,15 @@ One convergent cell partially filled (probing and patching partially agree on bo
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [representational](/mechanistic-validity/framework/modes/representational) level — it asserts that the model encodes board state as a linear representation in activation space.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** No sentence declares what level of description the claim is pitched at. The level has to be read off the vocabulary, which moves: the introduction and the contribution list say world model, the experimental sections say representation of the board state, and the conclusion puts the two together by glossing the board as the Othello world.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** Representational evidence (linear probing) supports a representational claim. The causal intervention adds algorithmic-level evidence. The evidence matches or exceeds the claim level.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) **Partial.** Against the authors' own definition — an understandable model of the process producing the sequences — the evidence covers the state and stops short of the process. What is measured is that the board state is decodable and that editing it moves the predictions. The rules that generate the sequences are touched once, in Appendix E, which reports that single-tile attribution recovers the AND inside one line and fails on the OR across lines.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Moderate.** "The model builds a world model and uses it for prediction" is a coherent story. But "world model" is a strong term that implies a structured, compositional representation of game state. The evidence shows that board state is linearly decodable — this is consistent with a world model but also consistent with a set of independent features that happen to correlate with board state. The narrative slightly overstates the structural implications.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** One alternative is stated as a hypothesis and killed with an experiment: memorized transcripts cannot explain a 0.02% error rate on a game tree a quarter of which was withheld. The alternative at the level immediately below the claim is never stated. §4 poses the open question as decodable versus causally decodable, and once causality is established the paper treats the world-model reading as settled, with no intermediate reading — a causally-used state summary — considered.
 
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The key alternative is that the model uses heuristic features (recency of play, local board patterns) that happen to correlate with board state, rather than constructing a genuine spatial representation. This alternative would also produce high probe accuracy and partially successful patching. The authors do not fully exclude it. Nanda's replication work suggests the truth may be between the two — some genuine board-state tracking, but less than "world model" implies.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Confirmed.** The synthetic scope is declared in the title, in §1.1 and in the conclusion.
 
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Partial.** "World model" implies more than what is demonstrated. The evidence supports "linear board-state representation." Whether this constitutes a "world model" in the computational theory of mind sense — a structured representation used for planning and counterfactual reasoning — is not established. The label carries philosophical weight that the evidence does not fully bear.
+**[V4 — Unlicensed labeling:](/mechanistic-validity/framework/criteria/interpretive/unlicensed-labeling) Partial.** "World model" is defined in the paper, and what is measured is a decodable, causally-used state summary. Whether that constitutes a world model in the computational-theory-of-mind sense — a structured representation used for planning and counterfactual reasoning — is not established.
 
 ### Key Distinctions
 

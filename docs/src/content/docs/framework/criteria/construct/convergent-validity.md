@@ -1,10 +1,10 @@
 ---
 title: "Convergent Validity"
 validity_type: "Construct"
-criterion_id: "C5"
+criterion_id: "C3"
 ---
 
-# Criterion C5 — Convergent Validity
+# Criterion C3 — Convergent Validity
 
 | | |
 |---|---|
@@ -20,7 +20,7 @@ Running one metric and claiming a circuit is not enough. Convergent validity req
 
 Satisfied when:
 
-1. **≥2 metrics from different evidence families** have been run. Two [ablation](/mechanistic-validity/glossary/#ablation) variants (both causal) do not satisfy — they measure the same thing differently. Metrics must come from different epistemic traditions: e.g., causal + structural, or representational + behavioral.
+1. **≥3 metrics from different evidence families** have been run. Two [ablation](/mechanistic-validity/glossary/#ablation) variants (both causal) do not satisfy — they measure the same thing differently. Families count as independent when the failure of one's core assumption would not automatically invalidate the other: e.g., causal + structural + representational.
 2. **The metrics agree on component membership.** Jaccard ≥ 0.5 is a reasonable pass threshold for circuits of ≤ 20 components.
 3. **Disagreement is treated as a finding.** Low Jaccard overlap must be reported as a primary result and investigated — not silently resolved by choosing the preferred metric.
 
@@ -44,7 +44,7 @@ All three interpretations are scientifically important. Convergent validity is f
 | Activation statistics (LLC, probe accuracy) | Structural / Representational |
 | Bootstrap stability | Measurement |
 
-Any two metrics from different evidence families constitute a valid test.
+Three metrics from different evidence families constitute the test at Triangulated; two establish a partial result.
 
 ## Minimum reporting rule
 

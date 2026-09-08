@@ -1,15 +1,18 @@
 ---
 title: "Case Study: IOI Circuit"
-description: "The indirect object identification circuit (Wang et al. 2022) evaluated through all five validity lenses."
+description: "The indirect object identification circuit (Wang et al. 2022) evaluated through the five core lenses."
 ---
 
 # Case Study: IOI Circuit
 
 [Wang et al. (2022)](https://arxiv.org/abs/2211.00593) identify 26 attention heads in GPT-2 Small that form the **indirect object identification circuit** — a mechanism that detects duplicated names, suppresses them, and copies the remaining name to the output. This is the most thoroughly analyzed circuit in mechanistic interpretability.
 
-Below, we evaluate this claim through each of the five validity lenses, applying the full criteria set.
+Below, we evaluate this claim through each of the five core lenses, applying the full criteria set.
 
 ## Composite Verdict
+
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** E1 (intervention reach), I4 (specificity).
+
 
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
@@ -19,7 +22,7 @@ Below, we evaluate this claim through each of the five validity lenses, applying
 | Measurement (Measurement Theory) | M2 Baseline separation | M1/M4 Reliability + Calibration | Partial |
 | Interpretive (MI) | V2 Level-evidence match | V3 Alternative level | Strong |
 
-**Overall verdict: Causally suggestive, approaching Mechanistically supported.** The IOI circuit has strong necessity and sufficiency evidence (I1, I2), strong narrative coherence (V2), and confirmed structural plausibility (C2). It stalls short of Mechanistically supported because specificity (I4/C4), confound control (I7), measurement reliability (M1), and alternative exclusion (V3) are all untested or weak. This is the most thoroughly analyzed circuit in MI — the remaining gaps reflect the difficulty of the bar, not deficiencies of the paper.
+**Overall verdict: Causally Suggestive.** The IOI circuit has confirmed falsifiability (C1) and novel prediction (E6), and sufficiency holds on average — mean-ablating everything outside the circuit leaves 87% of the logit difference (I2). Component-level necessity is weaker than the narrative suggests: knocking out all three Name Mover heads costs a 5% drop, because backup heads take over (I1). It stops short of Mechanistically Supported on intervention reach (E1), where methods disagree across three granularities, and specificity (I4), where head overlap and task effect give opposite verdicts.
 
 ## Metrics used in original work
 
@@ -42,11 +45,11 @@ Below, we evaluate this claim through each of the five validity lenses, applying
 
 ### Criteria
 
-**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Implicit pass.** The claim generates testable predictions — name-mover heads should have $W_{OV}$ matrices that copy names, S-inhibition heads should attend from the IO position to the S position. These were not pre-registered but are concrete enough that failure would disconfirm the claim. The label "name mover" would be falsified by a $W_{OV}$ that does not preferentially copy name tokens.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) **Confirmed.** Each of the 26 heads carries a role assignment tied to a path-patching prediction the experiment could have contradicted, and the three validation criteria are stated as quantities with the direction of failure fixed before they are computed. The strongest evidence that the criteria are live is that the paper reports failing one of them, and says so in the introduction.
 
-**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Pass.** The $W_{OV}$ matrices of name-mover heads (9.9, 9.6, 10.0) show copying structure — high singular values along name-token directions. S-inhibition heads (7.3, 7.9, 8.6) attend from the final position to the position of the repeated subject. The structural signatures match the claimed roles.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) **Partial.** Weight-level validation exists and is quantitative for the two Name Mover classes: the copy score pushes the residual stream through the head's OV matrix and the unembedding, and it separates from an average head by a wide margin in both directions. For the remaining classes the paper names the parameter-level checks it would need and states it did not run them, and §5 records that one class's attention pattern is not understood at all.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Not tested.** The IOI circuit is not evaluated on related tasks (subject-verb agreement, gendered pronouns, etc.). If the same 26 heads also rank highly for other syntactic tasks, the circuit may be capturing general syntactic processing rather than task-specific IOI computation.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Inconclusive.** The origin never compares the IOI circuit against a circuit for a different task, so nothing in it bears on the question. Post-origin the evidence conflicts: [Merullo et al. (2024)](https://arxiv.org/abs/2410.01434) find 78% head overlap between the IOI and Colored Objects circuits in GPT-2 Medium, while [Hanna et al. (2024)](https://arxiv.org/abs/2403.17806) find cross-task faithfulness near zero for most task pairs in GPT-2 Small. Different models, different quantities, unreconciled.
 
 **[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Complicated.** The 26-head circuit includes backup name-mover heads that are individually unnecessary — the primary name movers suffice. The backups activate compensatorily when primaries are ablated, raising the question of whether the circuit is over-inclusive under normal operation. Whether backups are "in the circuit" depends on the definition of minimality.
 
@@ -67,7 +70,7 @@ The IOI circuit connects to:
 - **Template generalization** — ABBA/BABA variants activate the same circuit (scope, confirmed)
 - **Cross-task prediction** — does the circuit fire on related syntactic tasks? (untested)
 - **Training dynamics** — does the circuit emerge at a specific phase? (untested)
-- **Cross-model prediction** — do other GPT-2 scales use the same structure? (untested)
+- **Cross-model prediction** — GPT-2 Medium at origin, Pythia post-origin (partially confirmed)
 
 Four nodes confirmed, three unconnected. A moderately thick network — strong, but with clear gaps at the generalization edges.
 
@@ -79,15 +82,13 @@ Four nodes confirmed, three unconnected. A moderately thick network — strong, 
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass (method-conditional).** The authors ablate each head individually (mean ablation) and measure the change in logit difference. The name-mover heads each produce large effects when ablated — removing head 9.9 alone drops the logit difference by approximately 1.2 points. An equal-size random-component baseline is included. But [Miller et al. (2024)](https://arxiv.org/abs/2407.08734) show that the same circuit's faithfulness varies from 87% under mean ablation to below 50% under other methods. The necessity claim is conditional on the ablation method.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) **Partial.** Necessity is demonstrated by knockout, and the source reports the demonstration failing at the level of the circuit's headline component class: removing all three Name Mover Heads leaves 95% of the logit difference. The per-node necessity test is existentially quantified — "there exists a subset K" — so each minimality score is conditional on a co-ablated set selected to make that score large, and the paper states the resulting effects are small.
 
-**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass (method-conditional).** Wang et al. test sufficiency by running the model with everything *outside* the 26-head circuit mean-ablated. The circuit alone recovers 87% of the full model's logit difference. This is the strongest form of sufficiency — isolation rather than just restoration. However, this number is also ablation-method-dependent.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) **Partial.** Sufficiency is measured directly: everything outside the circuit is mean-ablated against the p_ABC reference distribution, and the surviving average logit difference is 87% of the model's. The source reports a single average with no dispersion and no per-example figure, and the paper itself flags that this number does not settle the account.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** The authors do not systematically test whether the IOI circuit degrades unrelated tasks when ablated. A formal double-dissociation test — ablate the IOI circuit and measure SVA, ablate the SVA circuit and measure IOI — has not been reported.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Inconclusive.** Merullo et al. (2024) measure both head overlap and task effect, and the two give opposite verdicts. Alongside E1, this is the criterion capping the claim.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** The circuit generalizes across name substitutions and ABBA/BABA template variants. Cross-seed and cross-checkpoint consistency are not tested. Cross-model consistency (does GPT-2 Medium use the same circuit?) is not evaluated.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** All analysis uses mean ablation. Resample ablation would control for distributional disruption, but the full circuit analysis was not replicated under alternative methods.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Sequence length is controlled twice. Name frequency is not, and the analysis is not replicated under an alternative ablation method.
 
 ### Key Distinctions
 
@@ -98,11 +99,11 @@ Four nodes confirmed, three unconnected. A moderately thick network — strong, 
 
 |  | IOI task | SVA task | Factual recall | Pronoun resolution |
 |---|---|---|---|---|
-| Ablate IOI circuit | **↓↓ (87%)** | ? | ? | ? |
+| Ablate IOI circuit | **↓ (5% for Name Mover knockout)** | ? | ? | ? |
 | Ablate SVA circuit | ? | ? | ? | ? |
 | Ablate factual circuit | ? | ? | ? | ? |
 
-One cell filled out of twelve. The diagonal entry is strong ($D_{11}$ = 87% drop), but without off-diagonal measurements we cannot distinguish "IOI-specific mechanism" from "general syntactic bottleneck." The matrix makes visible exactly what's missing: every `?` is an untested double-dissociation leg.
+One cell filled out of twelve. The diagonal entry is weaker than the narrative suggests — knocking out all three Name Mover heads costs a 5% drop, because backup heads take over — and without off-diagonal measurements we cannot distinguish "IOI-specific mechanism" from "general syntactic bottleneck." The matrix makes visible exactly what's missing: every `?` is an untested double-dissociation leg.
 
 ---
 
@@ -112,17 +113,13 @@ One cell filled out of twelve. The diagonal entry is strong ($D_{11}$ = 87% drop
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Not tested.** No activation steering experiments have been reported for the IOI circuit. Can you steer the model toward or away from IOI behavior by injecting signal along the circuit's principal directions? This would test whether the circuit is merely descriptive or genuinely manipulable.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Inconclusive.** One ablation value at origin across three granularities, and the methods disagree with one another. This is the criterion that caps the claim: what it needs is adjudication between existing results, not a first experiment.
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Partial.** Ablating individual heads produces graded effects — removing head 9.9 has a larger effect than removing head 10.7. But a parametric dose-response (ablating at varying strengths, or patching at varying magnitudes) is not systematically reported.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Does intervening on the IOI circuit affect only IOI behavior, or does it produce off-target effects? If steering the name-mover heads also changes factual recall or pronoun resolution, the intervention is not selective — same gap as I4 specificity.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Disconfirmed.** At 106 clean/corrupted prompt pairs, model and circuit diverge. This is tested and failed, not merely unextended.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Strong on-task.** The circuit accounts for 87% of the logit difference, which is a large effect. This establishes that the circuit is a major contributor, not a marginal one.
-
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Name substitutions preserve the effect. But robustness across syntactic variations, sentence lengths, and naturalistic (non-template) prompts is not systematically tested.
-
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** The analysis is restricted to GPT-2 Small. Whether the same circuit structure exists in GPT-2 Medium/Large, Pythia, or other architectures is unknown.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** GPT-2 Medium is run at origin, and the circuit has since been reproduced across Pythia models. What has not been shown is that the seven head classes recur with the same roles.
 
 ### Key Distinctions
 
@@ -134,7 +131,7 @@ One cell filled out of twelve. The diagonal entry is strong ($D_{11}$ = 87% drop
 
 The IOI circuit's dose-response curve is mostly unknown. We have:
 - **α = 0** (no intervention): full performance
-- **α = 1** (complete mean ablation): 87% logit difference drop
+- **α = 1** (mean-ablating everything outside the circuit): 87% of the logit difference is retained; knocking out the Name Movers themselves costs 5%
 - **Individual heads**: removing 9.9 drops ~1.2 points, removing 10.7 drops less — discrete points, not a sweep
 
 What's missing:
@@ -152,17 +149,15 @@ The curve is two endpoints with no interior. We know the maximum effect is large
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** No bootstrap confidence intervals or test-retest measurements are provided for the faithfulness scores. We do not know whether the 87% faithfulness figure has a confidence interval of ±2% or ±15%.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Inconclusive.** Sample sizes are disclosed for every estimate, and dispersion is shown where the quantity is an attention probability. The quantity the argument rests on gets neither: faithfulness is reported once, as 0.46, with no interval, no resampling and no per-example spread, and the same holds for the incompleteness and minimality scores. Dispersion reported for the peripheral measurements and withheld from the central one.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** The ABBA/BABA template comparison provides some measurement invariance evidence — the circuit identification is stable across template variants. But invariance across prompt distributions (formal text vs. dialogue vs. code) is not tested.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Disconfirmed.** Faithfulness differs across the origin's own ABBA/BABA templates. This is not an untested extension: the measurement has been shown not to hold across the conditions the paper itself uses.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** A random-component baseline is included. The IOI circuit's effect size is clearly separated from the baseline distribution, establishing that the measurement is detecting a real signal above noise.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) **Partial.** Three baselines are present. The copy-score baselines are average-head comparisons and separate cleanly (>95% vs <20%; 98% vs 12%), and the completeness test carries a random-subset baseline over ten uniformly sampled K. The circuit-level baseline is the naïve circuit of §4.3, and it does not separate: the paper's own word is "comparable", and because faithfulness is the gap |F(M) − F(C)|, the naïve circuit's 0.1 is a *smaller* gap than the published circuit's 0.46.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Not explicitly tested.** Can the measurement distinguish the IOI circuit from a slightly different circuit (e.g., 24 of the 26 heads)? The sensitivity curve — faithfulness as a function of circuit size — is partially implicit in the analysis but not reported as a formal sensitivity assessment.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.** Is 87% faithfulness "good"? Without calibration against a gold standard or against known-correct circuits, the number is hard to interpret in absolute terms.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** The primary metric is logit difference. This captures the direction of the model's prediction but not its confidence, calibration, or full distributional effects. Accuracy and cross-entropy are occasionally mentioned but not systematically reported as complementary metrics.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** The outcome metric is well calibrated: logit difference carries a sign, a zero point meaning indifference between IO and S, and a measured model value of 3.56 over 100,000 examples. The validation metric inherits the units and none of the calibration — faithfulness is an unsigned distance with no upper bound, no null value and no stated threshold separating faithful from unfaithful, reported as a single average.
 
 ### Key Distinctions
 
@@ -190,15 +185,13 @@ Reliability: unknown (no confidence intervals reported for the 87% figure). The 
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is clearly at the [algorithmic](/mechanistic-validity/framework/modes/algorithmic) level — it names a multi-step computation (detect duplicates → inhibit → copy) implemented by specific components.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** The unit of description is declared exactly: a subgraph over model components, with the contrast against feature-level circuits stated rather than left implicit. The algorithm is also stated, as three steps mapped one-to-one onto three head classes. What is never declared is the relation between the two descriptions — whether the three-step algorithm is a claim about the computation the heads perform or a summary of where information travels.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** The evidence includes both behavioral effects (ablation changes outputs) and structural signatures ($W_{OV}$ analysis), which jointly support an algorithmic-level claim. The evidence is not solely behavioral (which would support only a computational-level claim).
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) **Partial.** The evidence matches the claim at one step of three. For S-Inhibition the paper measures the content of what is moved, decomposes it into token and position components, and shows an additive model of the two predicts logit difference to within 7% — algorithm-level evidence for an algorithm-level claim. For duplicate detection and induction the corresponding parameter-level evidence is named and not run, and the paper states it did not investigate how the induction-to-position mechanism works.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The three-stage story (duplicate detection → S-inhibition → name-mover copying) is logically coherent and consistent with the layer ordering of the identified heads. The narrative explains *why* each component is needed, not just that it is needed.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) **Inconclusive.** A strictly simpler description of the same behavior is built at origin. The naïve circuit drops the Backup and Negative Name Movers and half the Duplicate Token and Induction heads, and it matches the published circuit on the criterion the paper leads with. Two of the three completeness samplers separate them; the third separates neither. The source constructs its own simpler rival and does not defeat it on faithfulness. [Méloux et al. (2025)](https://arxiv.org/abs/2410.10186) find further faithful circuits with different membership.
 
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** [Méloux et al. (2025)](https://arxiv.org/abs/2410.10186) find alternative circuits for IOI with comparable faithfulness but different membership. The IOI circuit is *a* faithful circuit, possibly not *the* unique one. The "detect → inhibit → copy" algorithm might also be implementable by different head subsets, meaning the algorithm is underdetermined by the data.
-
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Partial.** The paper tests on template-generated prompts and generalizes to "the IOI task." Whether the circuit handles naturalistic IOI (where the names are not cleanly separated, or where there are more than two names) is unclear. The scope of the claim slightly exceeds the scope of the evidence.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) **Confirmed.** Scope is declared in five places, and in the two that matter most: the abstract concedes remaining gaps before any result is given, and the introduction states the circuit fails the hardest of the paper's own tests. The exclusions are stated as design decisions rather than discovered afterwards, and §5 frames the whole result as a model organism, which names the generalization limit rather than leaving the reader to infer it.
 
 ### Key Distinctions
 

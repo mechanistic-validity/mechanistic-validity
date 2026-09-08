@@ -87,11 +87,11 @@ Why this fails: "Moving names" is not a mathematical specification of an input-o
 
 ## Metrics that provide functional-level evidence
 
-- **B02 (OV/QK composition analysis)** — weight-space characterization of the head's operation
-- **B05 (NMF/ICA on weight matrices)** — decomposition of the operation into interpretable factors
-- **A05 (Weight-extended analysis)** — connecting weight structure to functional claims
-- **B06 (Norm trajectory)** — how component output magnitude evolves (operational fingerprint)
-- **D01 (Logit attribution)** — direct contribution to output (one aspect of function)
+- **B03 (OV/QK Decomp.)** — weight-space characterization of the head's operation
+- **B08 (ICA/NMF)** — decomposition of the operation into interpretable factors
+- **A09 (MDL / SLT)** — description length of the weight structure behind a functional claim
+- **B05 (Norm Trajectory)** — how component output magnitude evolves (operational fingerprint)
+- **D02 (Logit Diff)** — direct contribution to output (one aspect of function)
 
 ## Key references
 

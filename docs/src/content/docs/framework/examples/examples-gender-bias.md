@@ -1,27 +1,32 @@
 ---
 title: "Case Study: Gender Bias Circuits"
-description: "Gender bias localization and debiasing (Bolukbasi et al. 2016, Vig et al. 2020, Ravfogel et al. 2020) evaluated through all five validity lenses."
+description: "Causal mediation analysis of gender bias in GPT-2 (Vig et al. 2020) evaluated through the five core lenses."
 ---
 
 # Case Study: Gender Bias Circuits
 
-Multiple papers attempt to locate and remove **gender bias** in language models. [Bolukbasi et al. (2016)](https://arxiv.org/abs/1607.06520) identify a "gender direction" in word embeddings. [Vig et al. (2020)](https://arxiv.org/abs/2010.06032) use causal mediation analysis to identify attention heads that mediate gender bias in GPT-2. Ravfogel et al. (2020) use iterative nullspace projection (INLP) to remove gender information from representations. The shared claim: gender bias is localized in identifiable components (directions, heads, subspaces) and can be surgically removed.
+[Vig et al. (2020)](https://arxiv.org/abs/2010.06032) use causal mediation analysis to identify the attention heads and neurons that mediate gender bias in GPT-2, decomposing the effect of a gendered intervention into a natural direct effect and a natural indirect effect routed through named components. The claim audited here is theirs: gender bias is sparsely mediated, and ten of 144 heads reproduce the effect of intervening on all of them.
+
+The wider debiasing literature — a "gender direction" in embeddings [Bolukbasi et al. 2016](https://arxiv.org/abs/1607.06520), iterative nullspace projection [Ravfogel et al. 2020] — makes the stronger claim that bias can be surgically removed. That claim is not the one scored below, and where the two diverge the difference is noted.
 
 This case study is important because it connects mechanistic claims to real-world consequences — debiasing tools are deployed in practice. The stakes for getting the mechanism wrong are higher than for academic circuit analysis.
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Causally Suggestive. **Capped by:** E1 (intervention reach), I4 (specificity).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1 Falsifiability | C4/C3 Discriminant + Convergence | Weak |
 | Internal | I1 Necessity (partial) | I4/M1/I7 | Weak |
-| External | E1 Intervention reach | I4/E2 Specificity + Prompt gen. | Weak |
+| External | E2 Prompt generalization | E1/E3 Intervention reach + Cross-task | Weak |
 | Measurement | M2 Baseline separation | M1/M6/C3 | Weak |
 | Interpretive | V1 Level declaration | V2/V3/V5 | Weak |
 
-**Overall verdict: Causally Suggestive — with fundamental construct problems.** Gender bias circuits score weakly across all five lenses. The core issue is not lack of evidence but **construct incoherence** (C3): "gender bias" and "gender knowledge" are not separable at the mechanistic level, which means the construct itself may not be well-defined enough to have a circuit. This is not a measurement problem or an evidence problem — it is a *theory* problem.
+**Overall verdict: Causally Suggestive.** The claim is capped by intervention reach (E1) and specificity (I4). Causal mediation is the single instrument throughout, so every agreement between results is the method with itself, and no second intervention family has been run. Underneath that sits a construct problem: **discriminant validity** (C4) is untested, because "gender bias" and "gender knowledge" are not separated at the mechanistic level, and a construct that cannot be told apart from its neighbor cannot be localized to a circuit.
 
-This case study illustrates the framework's most important function: sometimes the right verdict is not "the evidence is insufficient" but "the construct is not coherent enough to evaluate." When task specificity (C3) fails fundamentally — when the phenomenon cannot be separated from a related phenomenon that uses the same components — the mechanistic claim cannot be established regardless of how much evidence is collected. The framework names this problem rather than hiding it behind aggregate scores.
+This case study illustrates the framework's most important function: sometimes the right verdict is not "the evidence is insufficient" but "the construct is not coherent enough to evaluate." When discriminant validity (C4) fails fundamentally — when the phenomenon cannot be separated from a related phenomenon that uses the same components — the mechanistic claim cannot be established regardless of how much evidence is collected. The framework names this problem rather than hiding it behind aggregate scores.
 
 ## Metrics used in original work
 
@@ -42,15 +47,15 @@ This case study illustrates the framework's most important function: sometimes t
 
 ### Criteria
 
-**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Partial.** Each approach makes testable predictions: removing the gender direction should reduce bias on benchmark tests; ablating mediating heads should reduce gendered predictions. These are testable. But "bias" itself is a contested construct — different benchmarks measure different things, and success on one does not guarantee success on others.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) **Confirmed.** The sparsity claim is put as a quantity that could have come out any way. The search runs over all 144 heads and reports how many are needed to reach the all-head effect; the answer could have been 100, and it was 10. Two negative cases are named in advance and one of them fires: the untrained model shows neither the effect nor the structure, and the gender-neutral arm — the same instrument on the same templates with a different treatment target — fails to show the concentrated structure, reported as a negative result rather than dropped.
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Partial.** A single "gender direction" is structurally plausible in embedding space (it exists and is measurable). Whether bias in a deep transformer is captured by a single direction per layer, rather than being distributed across many parameters, is a much stronger structural assumption. Vig et al.'s identification of mediating attention heads is more structurally detailed but still does not explain *how* the heads encode bias.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Weak — critical gap.** The core problem: "gender information" is not separable from "gender-related knowledge." Removing the model's ability to distinguish gender also removes its ability to correctly resolve gendered pronouns, understand gendered language, or perform tasks that require gender knowledge. The circuit for bias and the circuit for legitimate gender processing may be the same circuit. Task specificity cannot be established because the two "tasks" are not separable.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Not tested — the construct problem.** Nothing separates the bias mechanism from a mechanism for gender competence, because no second construct is ever localized. The outcome is a ratio over two pronouns and nothing else is measured, so there is no quantity on which a competence mechanism could show up. Where the two constructs collide the paper handles it by deletion: definitionally gendered professions are dropped from the total-effect calculation rather than analyzed as the contrasting case.
 
 **[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Unclear.** Is one direction minimal? INLP iteratively finds multiple directions, suggesting the first direction is not sufficient. Is one set of attention heads minimal? Vig et al. identify many heads, not a clean minimal set.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Different methods (direction removal, INLP, causal mediation, activation steering) identify different components as "where bias lives." They do not converge on the same locus. This may reflect genuine distribution of bias rather than method disagreement — but without convergence, the construct "gender bias circuit" is method-dependent.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) **Confirmed.** Convergence at origin is broad and shallow. Two mediator families run on three datasets give the same sparsity picture, and four outcome scales give it again, so the result is robust to the unit of analysis and to the metric. What they share is the instrument: every number is a natural indirect effect produced by the same interchange intervention. The one check of a different kind is the TE ≈ NDE + NIE decomposition, which holds the mediation numbers against a quantity they were not fitted to.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
@@ -87,13 +92,11 @@ Two nodes confirmed (direction exists, trained-benchmark scores improve), three 
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Partial.** Removing the gender direction / ablating mediating heads reduces bias on tested benchmarks. But the reduction is often incomplete, and bias re-emerges on different benchmarks or in different contexts. Necessity is benchmark-specific.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) N/A.** The design's estimands are natural direct and indirect effects. Neither can be put in the form necessity requires, so the criterion has nothing to register on.
 
-**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Not demonstrated.** Can you *induce* gender bias by stimulating the identified components? Activation steering along gender directions does produce gendered outputs — but this is sufficiency for gender *information*, not specifically for *bias*. The distinction matters.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** Ten of 144 heads reproduce the effect of intervening on all of them, which is sufficiency for the measured effect. No capability is measured, so this is sufficiency for the estimand rather than for a behavior.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak.** Removing the gender direction reduces bias *and* degrades gender-related task performance. The intervention is not specific to bias — it removes gender information broadly. This is the fundamental problem with the approach: bias and knowledge share components.
-
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Weak.** Debiasing interventions that work on one benchmark often fail on others (Gonen & Goldberg 2019). The effect does not replicate robustly across evaluation settings. Different prompt templates, different bias metrics, and different downstream tasks give different results.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) **Not tested.** Off-target effects have nowhere to register. The primary measure and all three alternates are computed over a two-element outcome set, so an intervention that wrecked the model's syntax or its factual recall would leave every reported number untouched. The paper sees this and says so — it notes the distributions could be extended to the full vocabulary, that doing so would reveal consequences it currently cannot see, and then declines.
 
 **[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Weak.** The primary confound: removing gender information (debiasing) may simply make the model *worse at predicting* in gendered contexts, producing apparent debiasing as a side effect of degradation. Without controlling for overall quality loss, the debiasing effect is confounded.
 
@@ -128,26 +131,21 @@ The critical finding: the "bias benchmark" column and the "gender knowledge" col
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** Debiasing interventions change model outputs. But whether they change the *right* thing (bias without knowledge loss) is disputed.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Not tested.** Causal mediation is the single instrument throughout, so every agreement is the method with itself. No second intervention family has been run. This is one of the two criteria capping the claim.
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Sometimes.** Scaling the projection magnitude produces graded effects. But the useful range (enough to reduce bias, not enough to degrade performance) is narrow and context-dependent.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak.** Interventions are not selective — they affect both bias and legitimate gender knowledge. This is the pharmacological equivalent of a drug with severe side effects that cannot be separated from the therapeutic effect.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) **Confirmed.** The claim is tested on three prompt sets that were not built the same way: a seventeen-template generator over 169 professions, and two Winograd-schema coreference sets whose bias lives in which of two entities a pronoun resolves to. The result that carries the paper — sparsity of the indirect effect — holds on all of them. The paper also refuses to pool: it reports that effect magnitudes differ across the sets and names the construction property it attributes the difference to.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Variable.** Large on the benchmarks used during development. Smaller or absent on held-out benchmarks.
-
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Weak.** The most robust finding is that debiasing is brittle — it works on tested settings and fails on untested ones (Gonen & Goldberg 2019).
-
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** Bias exists across architectures. Whether the same debiasing technique transfers is model-dependent.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** Bias exists across architectures. Whether the same debiasing technique transfers is model-dependent.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | E1 Intervention reach | Partial | Changes outputs; not always correctly |
-| E2 Graded response | Sometimes | Narrow useful range |
 | I4 Specificity | Weak | Bias + knowledge inseparable |
 | E5 Graded response | Variable | Benchmark-specific |
 | E2 Prompt generalization | Weak | Brittle across settings |
-| E4 Cross-model recurrence | Partial | Technique transfer variable |
+| E4 Cross-model generalization | Partial | Technique transfer variable |
 
 ### Key Distinctions
 
@@ -179,15 +177,13 @@ What's missing:
 
 **[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Weak.** Different bias benchmarks give different answers. The measurement of "bias" itself is unreliable across metrics.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Weak.** A model that appears debiased on one benchmark appears biased on another. The measurement is not invariant across evaluation conditions.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) **Confirmed.** Invariance is tested along more axes than the criterion usually sees — five GPT-2 sizes, three datasets, two mediator families, four metrics, six model families — and the answer differs by axis. Inside the autoregressive family the sparsity and decomposability patterns hold, and the paper says which conclusion that licenses. Outside it the neuron-level pattern does not transfer, and the paper reports the failure in its own words and declines to explain it.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** Gender direction projections clearly separate male/female-associated words. But separating "bias" from "knowledge" in the measurement is the unsolved problem.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** A randomly initialized GPT2-small, matched on everything but training, is carried through the identical pipeline at both the head and the neuron level as a negative control.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can the metric distinguish between "the model is unbiased" and "the model has learned to hide bias from the benchmark"? Gonen & Goldberg's "lipstick on a pig" result suggests the latter is common.
 
 **[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Poorly understood.** What level of bias-benchmark performance constitutes "debiased"? There is no agreed threshold.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Each benchmark measures one facet of bias. No single metric captures the full construct. "Bias" is a multi-dimensional construct measured by one-dimensional metrics.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
@@ -223,21 +219,18 @@ Cross-benchmark convergence (the off-diagonal cells) is low to moderate — diff
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Partial.** The claims range from representational ("bias lives in a direction") to implementational ("these heads mediate bias") without always distinguishing the levels.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Confirmed.** The level is declared twice and in the places where it binds. The introduction names the analysis as structural-behavioral and says which half each claim comes from — components on the structural side, model outputs on the behavioral side. The methodology fixes the admissible mediators before any measurement and defines the response variable as a function of the model's predictions rather than of its internal state. No claim sits at a level the declaration fails to cover.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** Direction-based methods provide representational evidence. Causal mediation provides causal evidence. But the stronger claim ("bias can be surgically removed") requires implementational evidence that is not provided.
-
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Weak.** "Bias lives in one place and can be removed" is narratively simple but inconsistent with the evidence (bias re-emerges, removal causes side effects). The narrative coherence breaks down under scrutiny.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** Every headline claim — sparsity, synergy, decomposition into direct and indirect parts — is a property of the measured effect distribution, at the implementational-topographic level the paper declares.
 
 **[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The primary alternative: bias is not a localized property but an emergent property of the full model — a consequence of training data distribution reflected throughout all parameters. Under this alternative, surgical removal is fundamentally impossible, and apparent debiasing is actually degradation-masking. This alternative is not excluded.
 
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Often violated.** "We removed gender bias from the model" claims far more than "we reduced scores on bias benchmark X by projecting out direction Y." The scope inflation is particularly concerning given practical deployment.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Pass.** Each restriction is declared where it binds rather than collected at the end, and components carry no names at all — only an index and an estimand. The scope inflation belongs to the downstream debiasing literature, not to the audited claim.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | V1 Level declaration | Partial | Mixed levels |
 | V2 Level-evidence match | Partial | Representational evidence for implementational claims |
-| V2 Level-evidence match | Weak | Narrative contradicted by replication failures |
 | V3 Alternative level | Weak | Distributed bias alternative not excluded |
 | V5 Scope declaration | Often violated | "Debiased" exceeds evidence |
 

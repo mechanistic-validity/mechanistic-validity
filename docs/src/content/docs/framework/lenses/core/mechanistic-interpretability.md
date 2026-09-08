@@ -9,7 +9,7 @@ This lens asks one question: **does the claim match the strength and scope of th
 
 Every MI result pairs a measurement with an interpretation. The measurement might be an IIA score, a faithfulness percentage, a logit difference, an ablation effect, or an alignment score. The interpretation is the claim attached to that measurement: "the model *computes* indirect object identification through a circuit of 26 heads," or "induction heads *implement* in-context learning." Whether the interpretation is justified depends on whether the claim is stated at a level the evidence can actually support.
 
-This is the only lens in the framework not imported from another field. The pharmacological, measurement-theoretic, neuroscientific, and philosophical lenses each bring criteria developed and validated in their home disciplines. The criteria here are derived from the empirical track record of MI itself — from published cases where the number was real but the sentence outran it, and from analysis of what a corrected sentence would have required.
+This is the only lens in the framework not imported from another field. The other seven — pharmacology, measurement theory, neuroscience, philosophy of science, genetics, causal inference and medical microbiology — each bring criteria developed and validated in their home disciplines. The criteria here are derived from the empirical track record of MI itself — from published cases where the number was real but the sentence outran it, and from analysis of what a corrected sentence would have required.
 
 The positive formulation: these are standards to meet, not failures to avoid. Meeting them distinguishes a contribution ready for scrutiny from one that requires qualification. MI is a young field. Most published work does not yet meet all of them. That is expected and not a criticism — it is the specification of what would strengthen each claim.
 
@@ -123,19 +123,21 @@ We extend Marr's three levels with four implementational sub-modes to capture th
 
 ## The criteria
 
-### Level declaration
+### Level declaration (V1)
 
 Every principal quantitative claim must name the level at which it is stated before the evidence is collected.
 
 An IIA score is an implementational-representational measurement: it tells us that some transformation of activations at a specific location tracks a causal variable. "The model *computes* a function" is a computational claim. "The model *represents* the variable linearly at that location" is a representational claim, which linear IIA can support because the linearity constraint on the alignment map is itself representational evidence. "The activation at that location *tracks* the causal variable" is an implementational claim that any IIA score, linear or not, supports.
 
-[Sutter et al. (NeurIPS 2025)](https://arxiv.org/abs/2501.07615) show why this matters precisely. Unconstrained nonlinear IIA achieves near-perfect scores on random-initialization models. The score is a correct measurement — there does exist a nonlinear transformation that maps the random activations onto the target variable. But the claim "the model encodes X" is a representational claim that the score does not support, because the same score would appear in a model with no encoding at all. The level mismatch is the problem, not the score.
+[Sutter et al. (NeurIPS 2025)](https://arxiv.org/abs/2507.08802) show why this matters precisely. Unconstrained nonlinear IIA achieves near-perfect scores on random-initialization models. The score is a correct measurement — there does exist a nonlinear transformation that maps the random activations onto the target variable. But the claim "the model encodes X" is a representational claim that the score does not support, because the same score would appear in a model with no encoding at all. The level mismatch is the problem, not the score.
 
 **What to declare.** The level ($I$, $A$, or $C$, and within implementational, the sub-mode) of each principal quantitative claim. If the planned narrative will use a higher-level sentence than the evidence supports, the additional evidence required for the upgrade should be named before the experiment.
 
 ![Description Levels and Evidence Requirements — Marr's three levels with implementational sub-modes and description creep arrow](/figures/marr_levels.svg)
 
-### Circuit non-uniqueness
+### Alternative level (V3)
+
+A finding consistent with more than one account at a different level should name the alternatives rather than assert the one the narrative prefers. Circuit non-uniqueness is the concrete form this takes in MI.
 
 Activation patching returns *a* circuit that is faithful to a behavior under a specific procedure on a specific prompt distribution. It does not return *the* circuit.
 
@@ -159,7 +161,7 @@ The Jaccard similarity between the two circuits (weight-based vs. activation-pat
 If we had reported only the weight-space result, the Jaccard of 0.61 is potential future evidence. If we reported only the activation patching result, the weight-space structure would be uncharacterized. Reporting both gives a more informative picture than either alone.
 </details>
 
-### Level-evidence separation
+### Level-evidence match (V2)
 
 After analysis, audit every sentence in the narrative against the level of the evidence supporting it. A sentence that uses algorithmic or computational language must be traced to algorithmic or computational evidence.
 
@@ -176,7 +178,7 @@ The partial evidence table provides reference for commonly seen patterns:
 | "Main role" claimed with $\kappa < 0.9$ | Scope overclaim | "On the tested distribution ($\kappa = X$), consistent with role $R$" |
 | Single-model mechanism claim | Architecture-specific | "In [model family], a mechanism consistent with…" |
 
-### Coverage quantification and scope honesty
+### Scope declaration (V5)
 
 Claims should be stated at the scope the evidence licenses, not the scope the narrative implies.
 
@@ -192,7 +194,15 @@ This is not pessimism. A finding with $\kappa = 0.77$ on a well-designed distrib
 
 **What to report.** $\kappa$ for the primary claim. If $\kappa < 0.9$, the uncharacterized fraction acknowledged rather than subsumed into a scope-claiming summary.
 
-### Cross-architecture evidence requirement
+### Unlicensed labeling (V4)
+
+A functional label should be licensed by evidence about function, not by evidence about location. "Head 9.9 is in the IOI circuit" and "Head 9.9 is a name-mover" are different claims: the first needs only an ablation result, the second needs the weight structure to match the claimed function, the head not to perform that function on non-target inputs, and the label to make a prediction that can fail.
+
+The slide from identity to role happens in one sentence in most papers. It is the cheapest overclaim available, because the label carries a mechanistic story the patching result did not establish, and because once a name is in circulation later work inherits it without re-testing it. "World model", "knowledge neuron" and "monosemantic feature" are the three the audits flag most often.
+
+**What to report.** For every named role: the structural measurement that licenses the name, the off-target check, and one prediction the label makes that a differently-named component would not. Where a label is imported from another field, what the imported term entails and which of those entailments were measured.
+
+### Cross-architecture evidence (E4, scored under external validity)
 
 Claims about mechanisms — as opposed to claims about components in a specific model — should include evidence from at least one other model family, or be explicitly bounded to the tested family.
 
@@ -204,26 +214,27 @@ Cross-architecture evidence does not require the same circuit. It requires an an
 
 ## Verdicts
 
-- **Proposed → Causally suggestive:** Requires I1 (level declaration at the implementational level). A claim stated at the algorithmic or computational level without level declaration cannot be upgraded.
-- **Causally suggestive → Mechanistically supported:** Requires I3 (level-evidence separation audited) and I4 (coverage $\kappa$ reported). A finding where $\kappa$ is high and no upward drift is present is ready for this upgrade.
-- **Mechanistically supported → Triangulated:** Requires I2 (non-uniqueness addressed via at least two procedures) and, ideally, I5 (cross-architecture evidence or explicit bound).
-- **Triangulated → Validated:** Requires all five criteria met and $\kappa > 0.9$ on a representative distribution.
+- **Proposed:** contributes V1 (level declaration). The entry tier requires the construct be defined under a declared description mode, and V1 is that declaration.
+- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2, I4 and E1.
+- **Mechanistically supported → Triangulated:** contributes I5 (rival mechanism exclusion, circuit non-uniqueness addressed via at least two procedures) and, ideally, E4 (cross-model generalization, or an explicit bound).
+- **Triangulated → Validated:** contributes V1–V5, all of which the tier requires explicitly audited: level declaration, level-evidence match, alternative level, unlicensed labeling and scope declaration, with $\kappa$ reported for the primary claim.
 
 ## Protocol
 
 For any reported finding:
 
 1. **Level declaration.** Label every principal quantitative claim with its level before collecting evidence. If the narrative will use higher-level language, name the additional evidence required for the upgrade.
-2. **Circuit non-uniqueness.** Name the discovery procedure. Report the circuit as "a circuit faithful to $B$ under procedure $P$." Apply at least two procedures with different assumptions if uniqueness is central to the claim.
-3. **Level-evidence separation.** After analysis, audit every sentence in the narrative. Flag upward drift from $I$ to $A$ or $A$ to $C$. Downgrade or add evidence.
-4. **Coverage quantification.** Compute $\kappa$. State the scope of the claim at the level $\kappa$ licenses.
-5. **Cross-architecture evidence.** State a matching criterion. Report findings in at least one other model family, or explicitly bound the claim.
+2. **Alternative level.** Name the discovery procedure. Report the circuit as "a circuit faithful to $B$ under procedure $P$." Apply at least two procedures with different assumptions if uniqueness is central to the claim.
+3. **Level-evidence match.** After analysis, audit every sentence in the narrative. Flag upward drift from $I$ to $A$ or $A$ to $C$. Downgrade or add evidence.
+4. **Scope declaration.** Compute $\kappa$. State the scope of the claim at the level $\kappa$ licenses.
+5. **Unlicensed labeling.** For each named role, give the structural measurement licensing the name, the off-target check, and one prediction the label makes.
+6. **Cross-architecture evidence.** State a matching criterion. Report findings in at least one other model family, or explicitly bound the claim.
 
 A skipped step must be named in the verdict.
 
 ## Case studies
 
-For full worked examples applying all five lenses (including interpretive validity) to published claims:
+For full worked examples applying all eight lenses (including interpretive validity) to published claims:
 
 - [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — "the circuit" language for a single-procedure result
 - [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — level declarations match evidence; full nomological network

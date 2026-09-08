@@ -64,14 +64,14 @@ Eight disciplines contribute to the framework. Each grounds one or two validity 
 
 ## Verdict tiers
 
-The framework assigns one of eight verdict tiers to each audited claim. The tiers encode which validity types have been addressed:
+The framework assigns each audited claim to one of five verdict tiers, or replaces the tier with one of three diagnostic labels. The tiers encode which validity types have been addressed:
 
 | Tier | Meaning | Minimum evidence |
 |---|---|---|
 | **Proposed** | Structural or representational evidence only | C1–C2 defined; at least one admissible measurement |
 | **Causally Suggestive** | Necessity shown, sufficiency not established | I1 confirmed; M2 passes |
 | **Mechanistically Supported** | Necessity + sufficiency with consistent methods | I2 established; E1 across ≥2 methods; I4 at least partially confirmed |
-| **Triangulated** | Narrowed to this mechanism | C3 convergence; E2/E4 replication; I6 dissociation; I5 rival exclusion; C4 discriminant; I7 confound control |
+| **Triangulated** | Multiple converging lines of independent evidence | C3 convergence; E2/E4 replication; I6 dissociation; I5 rival exclusion; C4 discriminant; I7 confound control |
 | **Validated** | Characterized, not merely identified | M1–M6; V1–V5; E2–E6; C5; C6, I3, I10–I12 |
 | **Underdetermined** | Multiple mechanisms fit | Cannot resolve between rivals |
 | **Insufficient** | Cannot be assessed | Construct not defined enough to score |

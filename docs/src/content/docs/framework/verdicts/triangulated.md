@@ -9,9 +9,9 @@ description: "Multiple independent lines of evidence converge on the same mechan
 |---|---|
 | Tier | 4 of 5 (progressive) |
 | What it means | Multiple methods with non-overlapping assumptions converge on the same mechanism |
-| Minimum evidence | C5 (multi-method convergence) + E5 (external robustness) + V2 (cross-procedure agreement) + nomological network density |
-| Upgrade to Validated | Completeness — every component's function characterized, quantitative predictions confirmed, scope boundary tested |
-| Downgrade to Mechanistically supported | If convergence fails (methods disagree on core components) or external robustness is refuted |
+| Requires | Construct: C3 (convergent), C4 (discriminant). Internal: I5 (rival mechanism exclusion), I6 (double dissociation), I7 (confound control). External: E2 (prompt generalization), E4 (cross-model generalization) |
+| Upgrade to Validated | C5--C6 (nomological and complementation validity) + M1--M6 addressed + I3, I10--I12 (minimality, rescue reversibility, onset and offset coupling) + E2--E6 + V1--V5 audited |
+| Downgrade to Mechanistically supported | If convergent validity (C3) fails because methods disagree on core components, or a rival mechanism (I5) is not excluded |
 
 ## What this tier establishes
 
@@ -25,8 +25,8 @@ Convergence is formalized via the robust core: the intersection of circuits iden
 
 > **Verdict:** Triangulated — `[implementational-topographic]`
 > **Claim:** Induction heads (L5H5, L5H1 in GPT-2 Small) implement in-context copying via QK composition with previous-token heads.
-> **Met:** C5 (attention pattern analysis + QK weight decomposition + training dynamics + behavioral ablation all converge), E5 (mechanism found in GPT-2 Small, Medium, and Large), V2 (manual circuit identification and ACDC agree on core heads, Jaccard = 0.72)
-> **Open:** $I_{\text{fun}}$ (complete component-level function for all supporting heads), quantitative prediction (novel prediction not yet tested)
+> **Met:** C3 (attention pattern analysis + QK weight decomposition + training dynamics + behavioral ablation all converge; manual identification and ACDC agree on core heads, Jaccard = 0.72), E4 (mechanism found in GPT-2 Small, Medium, and Large), I6 (double dissociation between induction and previous-token heads)
+> **Open:** C6 (complementation validity -- two named roles, ablated one at a time and never together), I3 (minimality, unattempted), I10 (rescue reversibility, unattempted), I12 (offset coupling, no published offset test)
 > **Scope:** GPT-2 family, in-context copying of arbitrary tokens, sequences with repeated subsequences
 
 ## Minimum reporting for this tier
@@ -41,7 +41,7 @@ Convergence is formalized via the robust core: the intersection of circuits iden
 
 | Direction | What's required |
 |---|---|
-| → Validated | Every component's input-output function characterized ($I_{\text{fun}}$). At least one novel quantitative prediction confirmed post-hoc. Scope boundary explicitly tested (mechanism fails just outside scope). Coverage $\kappa > 0.9$. |
+| → Validated | Nomological and complementation validity (C5--C6). Measurement M1--M6 explicitly addressed. Minimality, rescue reversibility and onset--offset coupling (I3, I10--I12). External validity across prompts, tasks, models, dose and novel prediction (E2--E6). Interpretive validity audited (V1--V5). |
 | → Mechanistically supported (downgrade) | Methods are shown to share a hidden assumption (their "independence" was illusory). Or external robustness fails: mechanism does not transfer to claimed distributions/sizes. |
 
 ## What convergence is NOT

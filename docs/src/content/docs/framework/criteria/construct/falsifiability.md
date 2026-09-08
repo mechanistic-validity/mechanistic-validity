@@ -42,4 +42,4 @@ Falsifiability lives under construct validity because the problem is about the *
 
 ## Relation to other criteria
 
-Falsifiability interacts with **minimality (C4)**: a non-minimal circuit is harder to falsify because many components provide fallback explanations. It also interacts with **convergent validity (C5)**: when metrics from different evidence families disagree, the falsifiability condition must specify which metric's result counts as disconfirmation.
+Falsifiability interacts with **minimality (I3)**: a non-minimal circuit is harder to falsify because many components provide fallback explanations. It also interacts with **convergent validity (C3)**: when metrics from different evidence families disagree, the falsifiability condition must specify which metric's result counts as disconfirmation.

@@ -1,10 +1,10 @@
 ---
 title: "Rescue Reversibility"
 validity_type: "Internal"
-criterion_id: "I7"
+criterion_id: "I10"
 ---
 
-# Criterion I7 — Rescue Reversibility
+# Criterion I10 — Rescue Reversibility
 
 | | |
 |---|---|

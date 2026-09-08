@@ -28,10 +28,10 @@ Three dimensions:
 
 The `c11bootstrap.py` script implements bootstrap stability for circuit faithfulness. The `reconstruction_metrics` function in `factor_analysis.py` provides stability for reconstruction quality metrics.
 
-## Reliability vs. consistency (I4)
+## Reliability vs. stability (M3)
 
 - **Reliability (M1):** Does the *metric* give the same answer when re-applied?
-- **Consistency (I4):** Does the *causal effect* hold across experimental variation?
+- **Stability (M3):** Does the *score* survive a different defensible analysis choice — a different threshold, component count, or ablation method?
 
 High reliability, low consistency: metric is stable but the effect it measures varies across prompt families. Low reliability, high apparent consistency: metric is noisy but averages out to a consistent-looking result. Report both.
 

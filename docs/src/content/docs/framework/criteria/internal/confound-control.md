@@ -1,10 +1,10 @@
 ---
 title: "Confound Control"
 validity_type: "Internal"
-criterion_id: "I5"
+criterion_id: "I7"
 ---
 
-# Criterion I5 — Confound Control
+# Criterion I7 — Confound Control
 
 | | |
 |---|---|
@@ -22,7 +22,7 @@ Satisfied when:
 
 1. **Component-specific ablation** (ablating only the target, not adjacent components) produces the same degradation as the full-circuit ablation.
 2. **Mean ablation is compared to zero and resample ablation.** Mean ablation changes the mean-field signal to all downstream heads — can cause cascade failures unrelated to the target component. If zero and resample produce comparable degradation, the mean-field confound is ruled out.
-3. **The effect is not due to hub disruption.** Component-specific ablation paired with specificity test (I3) together rule out the hub confound.
+3. **The effect is not due to hub disruption.** Component-specific ablation paired with specificity test (I4) together rule out the hub confound.
 
 ## The mean-field confound
 
@@ -36,7 +36,7 @@ Causal scrubbing (`c04causalscrubbing.py`, A01 SCMPearl) replaces activations at
 
 ## Confound control vs. rival mechanisms
 
-I5 asks whether the causal effect is due to the nominated component's *specific computation* or to *collateral disruption*. It does not ask whether a *different* set of components could produce the same effect without collateral disruption — that is the domain of [I6 Rival Mechanism Exclusion](/mechanistic-validity/framework/criteria/internal/rival-mechanism-exclusion/). A claim can pass I5 (the effect is genuinely due to this component, not collateral damage) while failing I6 (other components could produce the same effect).
+I7 asks whether the causal effect is due to the nominated component's *specific computation* or to *collateral disruption*. It does not ask whether a *different* set of components could produce the same effect without collateral disruption — that is the domain of [I5 Rival Mechanism Exclusion](/mechanistic-validity/framework/criteria/internal/rival-mechanism-exclusion/). A claim can pass I7 (the effect is genuinely due to this component, not collateral damage) while failing I5 (other components could produce the same effect).
 
 ## Minimum reporting rule
 

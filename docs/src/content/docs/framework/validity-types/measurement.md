@@ -4,7 +4,7 @@ title: "Measurement Validity"
 
 # Measurement Validity
 
-Are the instruments trustworthy? Once the construct is defined, the measurement tools used to detect it must be reliable (stable across repetitions), calibrated (separable from random baselines), and invariant (consistent across conditions). A metric that gives different answers when run with different random seeds is not evidence. Measurement validity evaluates the metric, not the claim — a distinction that matters because the two have different remedies. A construct-validity failure calls for a clearer construct; a measurement-validity failure calls for a better-characterized instrument.
+Are the instruments trustworthy? Once the construct is defined, the measurement tools used to detect it must be reliable (stable across repetitions), separable from random and untrained baselines, calibrated (the numbers map onto a known scale), and invariant (consistent across conditions). A metric that gives different answers when run with different random seeds is not evidence. Measurement validity evaluates the metric, not the claim — a distinction that matters because the two have different remedies. A construct-validity failure calls for a clearer construct; a measurement-validity failure calls for a better-characterized instrument.
 
 ## Position in the Dependency Chain
 

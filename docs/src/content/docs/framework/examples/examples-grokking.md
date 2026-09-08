@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Grokking / Modular Addition"
-description: "The modular addition circuit with Fourier features (Nanda et al. 2023) evaluated through all five validity lenses."
+description: "The modular addition circuit with Fourier features (Nanda et al. 2023) evaluated through the five core lenses."
 ---
 
 # Case Study: Grokking / Modular Addition
@@ -11,17 +11,20 @@ This is the strongest structural evidence in published MI — the weight matrice
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
 | Construct | C1/C2/C3 (all strong) | — | Strong |
 | Internal | I2/I7 (sufficiency + confound) | I6 (double dissociation) | Mechanistically Supported |
-| External | E1–E2, E4–E5 (all pass) | E4 Cross-model recurrence | Partial |
-| Measurement | All criteria pass | — | Strong |
+| External | E1/E2 Intervention reach + Prompt generalization | E5 Graded response | Partial |
+| Measurement | M2/M6 Baseline separation + Invariance | M5/M7 Sensitivity + Selection correction | Partial–Strong |
 | Interpretive | V3 Alternative level | — | Strong |
 
 **Overall verdict: Mechanistically Supported.** The modular addition circuit has strong structural and causal evidence — the algorithm is mathematically specified and every weight matrix is accounted for. The capping criterion is I6 (double dissociation): no study has tested a second behavior that the Fourier circuit spares while ablating a matched control circuit impairs. Despite the completeness of the reverse engineering, this crossed-design test has not been performed.
 
-The scope limitation is also significant: E6 (cross-architecture) is untested. A toy model (1-layer, mod-113 arithmetic) with strong internal validity but no external validity across architectures or tasks establishes a proof of concept rather than a general finding.
+The scope limitation is narrower than it looks: E4 is partial rather than untested — one- and two-layer transformers are run at origin, and nothing larger. The capping criterion remains I6.
 
 ## Metrics used in original work
 
@@ -47,11 +50,11 @@ The scope limitation is also significant: E6 (cross-architecture) is untested. A
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Strong pass.** This is the paper's primary achievement. The embedding matrix entries are verified to approximate $\cos(2\pi k a/p)$ and $\sin(2\pi k a/p)$ for specific frequencies $k$. The attention pattern implements the trigonometric addition formula. The unembedding reads off the result. Every weight matrix is accounted for — not just "consistent with" but "mathematically predicted by" the Fourier algorithm.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Pass (single task).** The model is trained on one task. Specificity is trivially satisfied — there is no off-task to test.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Partial.** Excluded loss rises during circuit formation while train loss stays flat, which separates the Fourier mechanism from memorization. No neighboring construct is localized to separate it from.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** The circuit uses the full model (it is a 1-layer transformer). But every component is accounted for — no redundant parameters. The circuit is minimal in the sense that removing any Fourier frequency degrades performance on the corresponding input pairs.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Partial.** Every key frequency is load-bearing on a leave-one-out at frequency granularity. At neuron granularity it does not hold: 79 of 512 neurons fail the polynomial fit the account predicts.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Strong pass.** The Fourier structure is identified through: (1) weight-space analysis (Fourier decomposition of $W_E$), (2) activation-space analysis (probing for Fourier components), (3) mechanistic prediction (computing exact predicted outputs from the algorithm and comparing to actual outputs), and (4) training dynamics analysis (watching Fourier components emerge during grokking). Four independent lines of evidence converge.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** The Fourier structure is identified through weight-space analysis (Fourier decomposition of $W_E$), activation-space analysis (probing for Fourier components), and mechanistic prediction (computing exact predicted outputs from the algorithm and comparing to actual outputs). Three evidence families at origin, but all three descend from Fourier-space ablation, so their agreement is partly the same primitive with itself.
 
 ### Key Distinctions
 
@@ -84,17 +87,15 @@ Six nodes confirmed, one unconnected. The thickest nomological network of any MI
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass.** The Fourier algorithm, when executed manually on the model's weights, reproduces the model's outputs to high precision. This is the strongest possible sufficiency: the algorithm *is* the model, not just a description of it.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass (trivial).** Single-task model — no off-task to test.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) N/A.** One task; the model has no off-target behavior to spare. This is a statement about the setting, not a pass — a single-task toy model licenses less than a model doing many things.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass.** The Fourier structure emerges consistently across different random seeds (the specific frequencies chosen may vary, but the algorithm class is the same). The grokking transition reliably produces the same kind of structure.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Pass.** The mechanistic account is so complete that confounds are ruled out — the algorithm predicts outputs from weights alone, with no unexplained variance.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) **Partial.** Training the models is what buys the controls. Data fraction, modulus, depth, seed, regularizer type and weight-decay strength are all varied rather than found, and the λ = 0 run is the sharpest: with the regularizer removed the excluded loss stays flat, so the circuit does not form and grokking does not occur. What remains uncontrolled is on the analysis side, where thresholds are fixed, and in the architecture, since every mainline conclusion rests on one width and one depth.
 
 ### Key Distinctions
 
 - **Lesion vs stimulation:** Both directions are demonstrated: ablating individual Fourier components degrades specific inputs (lesion), and the complete algorithm reproduces outputs from weights alone (equivalent to showing sufficiency without stimulation artifacts).
 - **Structural vs functional connectivity:** Structural connectivity (weight-space Fourier patterns) and functional connectivity (which inputs activate which components during inference) are both fully characterized and perfectly aligned. In real models, these often dissociate.
-- **Single vs double dissociation:** Trivially satisfied. Per-frequency ablation shows that each frequency is necessary for its corresponding input pairs and unnecessary for others — this is a complete dissociation matrix within the single-task domain.
+- **Single vs double dissociation:** Not demonstrated. Per-frequency ablation is a within-mechanism decomposition, not a crossed design: no second mechanism has been shown intact under an ablation that breaks the Fourier circuit. This is the criterion that caps the claim.
 
 ### Dissociation Matrix
 
@@ -104,7 +105,7 @@ Six nodes confirmed, one unconnected. The thickest nomological network of any MI
 | Ablate frequency $k_2$ | No effect | **↓↓ (strong)** | No effect |
 | Ablate frequency $k_3$ | No effect | No effect | **↓↓ (strong)** |
 
-A clean diagonal matrix — each frequency is necessary and sufficient for its corresponding inputs, and unnecessary for others. This is the textbook double-dissociation pattern, achieved because the mechanism is fully decomposable into independent frequency channels. No other MI result has this level of dissociation evidence.
+A clean diagonal within a single mechanism — each frequency is load-bearing for its own input pairs. This is frequency-level decomposability, not double dissociation: a crossed design needs a second mechanism that survives what breaks this one, and none has been run.
 
 ---
 
@@ -116,15 +117,11 @@ A clean diagonal matrix — each frequency is necessary and sufficient for its c
 
 **[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Pass.** You can manipulate specific Fourier components and predict the exact change in outputs. Complete intervention control.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Pass.** Partially ablating a Fourier component (scaling it down) produces graded degradation proportional to the scaling factor. Perfect dose-response.
-
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** Intervening on one frequency affects only the input pairs that rely on that frequency. Clean selectivity.
-
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Complete.** The algorithm accounts for 100% of the model's computation. No unexplained variance.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** Ablation is binary per component. No intervention interpolates between full and zero strength, so no dose-response curve exists.
 
 **[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Pass (within scope).** The algorithm works for all inputs in the modular arithmetic domain.
 
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Weak — the critical gap.** This is a 1-layer toy transformer. Whether real models (GPT-2, Pythia) use Fourier-like representations for arithmetic is unknown. The algorithmic insight may not transfer to models with multiple layers, larger vocabularies, and diverse training data.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Weak — the critical gap.** This is a 1-layer toy transformer. Whether real models (GPT-2, Pythia) use Fourier-like representations for arithmetic is unknown. The algorithmic insight may not transfer to models with multiple layers, larger vocabularies, and diverse training data.
 
 ### Key Distinctions
 
@@ -137,10 +134,10 @@ A clean diagonal matrix — each frequency is necessary and sufficient for its c
 The grokking/modular addition circuit provides the ideal dose-response:
 - **Dose axis:** Scaling factor applied to a Fourier frequency component (0 = fully ablated, 1 = normal)
 - **Response axis:** Accuracy on input pairs relying on that frequency
-- **Observed relationship:** Perfectly proportional — graded degradation tracks scaling factor linearly
-- **EC₅₀:** Approximately 0.5 (half-strength component produces half the accuracy benefit)
-- **Selectivity:** Perfect — intervening on frequency $k$ affects only input pairs involving $k$, with zero off-target effects
-- **Therapeutic window:** Infinite — any intervention strength between 0 and 1 is "safe" (produces only the intended, predicted effect)
+- **Observed relationship:** not measured — the dose axis here is circuit *extent* (which frequencies are removed), not intervention *strength*
+- **EC₅₀:** undefined — no intervention interpolates between full and zero strength
+- **Selectivity:** intervening on frequency $k$ affects the input pairs involving $k$; the measurement is at frequency granularity, not intervention strength
+- **Therapeutic window:** undefined — a window requires a strength axis, and none was swept
 
 This is the pharmacological ideal: a perfectly linear dose-response with perfect selectivity and no off-target effects. It serves as a reference standard against which real-model dose-response curves should be compared.
 
@@ -152,17 +149,15 @@ This is the pharmacological ideal: a perfectly linear dose-response with perfect
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass.** The Fourier decomposition is deterministic — same model, same result every time. Replication across seeds confirms the finding.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Partial.** Repetition is real at the level of training: five seeds at the mainline configuration, all five carried through the mechanism analysis, and a standard deviation of loss over runs reported. Repetition is absent at the level of the measurements that carry the mechanism claim — the fraction of variance explained is quoted as one number per direction with no interval, so the reader cannot tell how much of a 93.2% would survive resampling.
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Pass.** The measurement works regardless of which specific frequencies the model chose — the *type* of algorithm is invariant across training runs.
 
 **[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Random models show no Fourier structure. The signal is clearly above noise.
 
-**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Pass.** The Fourier decomposition precisely identifies which components contribute and which do not.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Not tested.** The controls are all known-negatives (untrained models, non-key frequencies). Nothing with a known answer is planted and recovered, so the instrument's floor is unmeasured.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Pass.** The algorithm's output matches the model's output to numerical precision — perfect calibration.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Complete.** Every parameter is explained. Nothing is left unmeasured.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** Loss is reported in nats on a task whose chance level is fixed and known, so a number like 5.27 can be read directly as worse than a model predicting uniformly — more calibration than most interpretability results carry. The reference itself is never computed: "worse than uniform" is asserted and log 113 ≈ 4.73 appears nowhere, so the margin above chance has to be reconstructed by the reader. The fraction-of-variance-explained instrument has no false-positive reference at all.
 
 ### Key Distinctions
 
@@ -188,13 +183,11 @@ All convergent cells are high — four independent methods identify the same str
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/mechanistic-validity/framework/modes/algorithmic) level — it fully specifies the algorithm in terms of weight matrices.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** The level is legible from usage and never declared. The abstract puts an algorithm-level claim and an implementation-level method in consecutive sentences, and §3.1 states the algorithm as a four-step procedure without saying whether the claim is about the function computed, the algorithm used, or the weights that realize it. A reader can reconstruct the answer; the paper does not supply it.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong pass.** The evidence *is* the structure — weight matrices are directly decoded into the algorithm. Evidence and claim are at the same level.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) **Partial.** The evidence sits mostly at the weight level for an algorithm-level claim, which is a close match and unusual in this audit set. The overreach is in the word *fully*: by the paper's own numbers 79 of 512 neurons fall outside the single-frequency polynomial account, two of four attention heads receive a role introduced with "We speculate", and the headline logit reconstruction explains 95% of variance rather than all of it.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The story (embed as Fourier → combine via trig identities → decode result) is mathematically precise and mechanistically complete.
-
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Pass.** The mechanistic account is so complete that alternative explanations are effectively excluded — you cannot explain why the weights have Fourier structure if the model is not computing via Fourier.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** Memorization is addressed and refuted. The basis alternative is not: Zhong et al. (2023) give two distinct algorithms over the same five frequencies, and the metrics that would separate them are not run here.
 
 **[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Pass — with a caveat.** The claim is honest about scope (modular addition in a toy model). The caveat is that readers may over-generalize: "transformers learn Fourier algorithms" is not what the paper shows. The paper shows that *this* toy model learns *this* Fourier algorithm.
 

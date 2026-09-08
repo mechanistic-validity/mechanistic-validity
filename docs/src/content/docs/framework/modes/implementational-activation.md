@@ -75,11 +75,11 @@ Why this fails on two levels: (1) High activation magnitude is not evidence of a
 
 ## Metrics that provide statistical-level evidence
 
-- **E01 (PCA dimensionality)** — effective rank and variance explained per component
-- **E02 (Participation ratio)** — spectral concentration of output covariance
-- **E05 (Intrinsic dimension)** — manifold dimensionality of activation clouds
-- **E06 (Persistent homology)** — topological features of activation geometry
-- **D05 (Per-token NLL)** — positional statistics of where the circuit is most active
+- **E06 (PCA Dim.)** — effective rank and variance explained per component
+- **E08 (Participation Ratio)** — spectral concentration of output covariance
+- **E07 (Intrinsic Dim.)** — manifold dimensionality of activation clouds
+- **E09 (Persistent Homology)** — topological features of activation geometry
+- **D04 (CE Delta)** — positional statistics of where the circuit is most active
 
 ## Key references
 

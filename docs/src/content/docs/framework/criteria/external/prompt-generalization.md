@@ -30,4 +30,4 @@ IOI circuit studies typically use template-generated sentences ("When Mary and J
 
 ## Connection to the chain
 
-Required for Validated tier. Without prompt generalization, the mechanism may be an artifact of the specific input distribution used for discovery, not a general property of the model.
+Required for Triangulated where the claim does not assert reach beyond the systems tested; cross-model generalization (E4) carries the same gate where it does. Without prompt generalization, the mechanism may be an artifact of the specific input distribution used for discovery, not a general property of the model.

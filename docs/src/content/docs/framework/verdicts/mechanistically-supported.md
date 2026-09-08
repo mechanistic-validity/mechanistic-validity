@@ -1,6 +1,6 @@
 ---
 title: "Tier 3: Mechanistically Supported"
-description: "The mechanism is both necessary and sufficient, with specificity evidence and measurement reliability established."
+description: "The mechanism is both necessary and sufficient, with a specificity test conducted and the result reproduced across two intervention families."
 ---
 
 # Verdict Tier 3: Mechanistically Supported
@@ -9,9 +9,9 @@ description: "The mechanism is both necessary and sufficient, with specificity e
 |---|---|
 | Tier | 3 of 5 (progressive) |
 | What it means | Necessity, sufficiency, and specificity all established under at least one method |
-| Minimum evidence | I1 (necessity) + I2 (sufficiency) + I3 (specificity) + I4 (consistency) + M1 (reliability $\geq$ 0.7) |
-| Upgrade to Triangulated | Multi-method convergence (C5) + external robustness (E5) + cross-procedure agreement (V2) |
-| Downgrade to Causally suggestive | If specificity (I3) fails, or if sufficiency (I2) is shown to be method-conditional |
+| Requires | Internal: I2 (sufficiency), I4 (specificity). External: E1 (intervention reach). Plus everything Causally Suggestive requires |
+| Upgrade to Triangulated | C3--C4 (convergent and discriminant validity) + I5--I7 (rival exclusion, double dissociation, confound control) + E2, E4 (prompt and cross-model generalization) |
+| Downgrade to Causally suggestive | If specificity (I4) fails, or if sufficiency (I2) is shown to be method-conditional |
 
 ## What this tier establishes
 
@@ -25,8 +25,8 @@ Sufficiency is method-dependent. The complement ablation method (zero, mean, res
 
 > **Verdict:** Mechanistically supported — `[implementational-topographic]`
 > **Claim:** Heads L9H9, L9H6, L10H0 are necessary and sufficient for name-mover behavior in IOI.
-> **Met:** I1 (necessity, $\Delta$ logit diff > 0.7 under zero + mean ablation), I2 (sufficiency, 87% recovery), I3 (SI = 14.2 vs. SVA task), I4 (consistent across 3 prompt templates), M1 ($\rho_{XX'} = 0.84$)
-> **Open:** E5 (cross-model), C5 (multi-method convergence), V2 (cross-procedure agreement)
+> **Met:** I1 (necessity, $\Delta$ logit diff > 0.7 under zero + mean ablation), I2 (sufficiency, 87% recovery), I4 (specificity, SI = 14.2 vs. SVA task), E1 (intervention reach, zero and mean ablation agree), E2 (prompt generalization, consistent across 3 templates), M1 (reliability, $\rho_{XX'} = 0.84$)
+> **Open:** E4 (cross-model generalization), C3 (convergent validity across methods), I5 (rival mechanism exclusion)
 > **Scope:** GPT-2 Small, IOI task, Wang et al. prompt distribution
 
 ## Minimum reporting for this tier
@@ -42,12 +42,12 @@ Sufficiency is method-dependent. The complement ablation method (zero, mean, res
 
 | Direction | What's required |
 |---|---|
-| → Triangulated | At least two methods with non-overlapping assumptions confirm the same mechanism (C5). External robustness across distributions or model sizes (E5). Cross-procedure agreement characterized quantitatively (V2). |
-| → Causally suggestive (downgrade) | Specificity (I3) fails: the ablation equally impairs unrelated tasks. Or sufficiency (I2) is method-conditional: recovery drops below threshold under a more appropriate ablation method. |
+| → Triangulated | Convergent evidence from independent evidence families (C3) and discriminant validity (C4). Rival mechanism exclusion (I5), double dissociation attempted (I6), confound control (I7). Cross-distribution replication: E4 where the claim asserts reach beyond the systems tested, E2 where it does not. |
+| → Causally suggestive (downgrade) | Specificity (I4) fails: the ablation equally impairs unrelated tasks. Or sufficiency (I2) is method-conditional: recovery drops below threshold under a more appropriate ablation method. |
 
 ## Characteristic occupants
 
-- **Induction heads** ([Olsson et al., 2022](https://arxiv.org/abs/2209.11895)) — necessity, sufficiency, and specificity all demonstrated for in-context copying behavior
+- **Modular addition** ([Nanda et al., 2023](https://arxiv.org/abs/2301.05217)) -- necessity, sufficiency and specificity established for the Fourier algorithm on $(a+b) \bmod p$; double dissociation (I6) caps it
 - **Greater-Than circuit** ([Hanna et al., 2023](https://arxiv.org/abs/2305.00586)) — strong structural plausibility with specificity evidence across related numerical tasks
 - **Copy suppression heads** ([McDougall et al., 2023](https://arxiv.org/abs/2310.04625)) — unusually clean specificity: the heads suppress repeated tokens specifically, with minimal off-target effects
 

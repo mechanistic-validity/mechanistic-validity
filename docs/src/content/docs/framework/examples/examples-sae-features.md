@@ -1,27 +1,30 @@
 ---
 title: "Case Study: SAE Features"
-description: "Sparse autoencoder features (Bricken et al. 2023, Templeton et al. 2024) evaluated through all five validity lenses."
+description: "Sparse autoencoder features (Cunningham et al. 2024) evaluated through the five core lenses."
 ---
 
 # Case Study: SAE Features
 
-Sparse autoencoder features ([Bricken et al. 2023](https://transformer-circuits.pub/2023/monosemantic-features/index.html), [Templeton et al. 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html)) are directions in activation space extracted by training an overcomplete dictionary. Each feature is given a label — "Golden Gate Bridge," "deception," "code syntax" — based on the inputs that maximally activate it. The claim is that these features are real computational units: [representational](/mechanistic-validity/framework/modes/representational)-level entities that the model uses during inference.
+Sparse autoencoder features ([Cunningham et al. 2024](https://arxiv.org/abs/2309.08600)) are directions in activation space extracted by training an overcomplete dictionary on residual-stream activations, evaluated by automated interpretability scoring on 150 features per method against six baselines — the default basis, random directions, PCA, ICA, top-K PCA and top-K ICA — and by activation patching on 50 IOI data points, in Pythia-70M and Pythia-410M. Each feature is given a label — "Golden Gate Bridge," "deception," "code syntax" — based on the inputs that maximally activate it, and the claim is that these features are real computational units: [representational](/mechanistic-validity/framework/modes/representational)-level entities the model uses during inference. The scaled-up dictionaries of [Bricken et al. 2023](https://transformer-circuits.pub/2023/monosemantic-features/index.html) and [Templeton et al. 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html) make the same claim at larger scale.
 
 This case study evaluates SAE features *as a class*. Individual strong features (those that replicate and steer) score higher; the bulk of the dictionary scores lower. The evaluations below reflect the typical case.
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Proposed. **Capped by:** M2 (baseline separation).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C2 Structural plausibility (partial) | C3 Convergent validity | Weak |
-| Internal (Neuroscience) | I2 Sufficiency (strong features) | I4/M1/I7 Most criteria | Weak |
-| External (Pharmacology) | E1 Intervention reach (partial) | I4/E2/E4 Most criteria | Weak |
-| Measurement (Measurement Theory) | M2 Baseline separation (partial) | M1 Reliability | Weak |
-| Interpretive (MI) | V1 Level declaration | V3/V5 Alternatives + scope | Weak |
+| Internal (Neuroscience) | I1, I2, I3, I5, I7, I9 (all partial) | I4 Specificity (inconclusive), I6, I8, I10, I11, I12 (untested) | Weak |
+| External (Pharmacology) | E4 Cross-model generalization (confirmed) | E3 Cross-task generalization (untested) | Partial |
+| Measurement (Measurement Theory) | M4 Calibration (partial), M6 Invariance (partial) | M5 Sensitivity (disconfirmed), M2 Baseline separation (the capping criterion) | Weak |
+| Interpretive (MI) | V5 Scope declaration (confirmed) | V1, V2, V3, V4 (all partial) | Weak |
 
 **Overall verdict: Proposed.** SAE features as a class are capped by M2 (baseline separation): SAEBench demonstrated that some evaluation metrics score higher on random models than trained ones, undermining the assumption that high scores reflect learned structure. The strongest individual features (those that replicate across seeds, respond to steering, and have coherent decoder vectors) may approach Causally Suggestive with further evidence, but the bulk of any SAE dictionary remains at Proposed — the features have been identified and labeled, but the evidence for their reality as model-intrinsic computational units is thin across all five validity types.
 
-This is not a claim that SAE features are wrong — many may be real. It is a claim that the evidence for their validity, measured against the same standards applied to circuits, has not been marshaled. The primary gaps are convergent validity (C5 — does a different method find the same features?), measurement reliability (M1 — does a different training run find the same features?), and alternative exclusion (V3 — is the label the right one?). These three gaps share a common theme: the features may be properties of the dictionary rather than properties of the model.
+This is not a claim that SAE features are wrong — many may be real. It is a claim that the evidence for their validity, measured against the same standards applied to circuits, has not been marshaled. The primary gaps are baseline separation (M2 — does the dictionary separate from a random network?), convergent validity (C3 — does a different method find the same features?), specificity (I4 — single-feature ablation moves 12,000 logits, left unanalyzed), and unlicensed labeling (V4 — is the label the right one?). These three gaps share a common theme: the features may be properties of the dictionary rather than properties of the model.
 
 ## Metrics used in original work
 
@@ -46,9 +49,9 @@ This is not a claim that SAE features are wrong — many may be real. It is a cl
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Partial.** The decoder vector $W_{\text{dec}}[f]$ should project onto semantically coherent tokens through the unembedding matrix. Some features pass this check ("Golden Gate Bridge" projects onto bridge-related tokens). Many features lack this structural verification.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Not tested.** Features are evaluated on their *maximally activating examples* — a discovery-set evaluation. Specificity would require showing that a "deception" feature activates on deception and *does not* activate on closely related non-deception (sarcasm, fiction, hypotheticals). This discriminant testing is rarely performed.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Partial.** The origin defines its construct as a dictionary feature approximating an unknown ground-truth network feature, and its case studies score against a weaker operational stand-in: whether a direction admits one human-readable explanation. The neighboring constructs it must separate from — an atomic unit, a complete unit, and a direction that is an artifact of the dictionary — are the ones the follow-up tests, and atomicity fails: meta-SAE decomposition of a 49,152-latent GPT-2 dictionary recovers further structure inside latents.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Open question.** Does a feature correspond to one computational role, or is it a blend of multiple roles that co-occur in training data? Polysemantic features — those that activate on apparently unrelated concepts — fail this criterion. The extent of polysemanticity in typical SAE dictionaries is debated.
+**[C6 — Complementation validity:](/mechanistic-validity/framework/criteria/construct/complementation-validity) Untested.** Does a feature correspond to one computational role, or is it a blend of multiple roles that co-occur in training data? Feature splitting is the open question and no test of atomicity is run. Meta-SAEs decompose latents further, which disconfirms the reading that SAE features are atomic units.
 
 **[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** SAE features are identified by one method. A different SAE with different hyperparameters or random seed may produce a different feature set. Cross-seed consistency is partially reported for strong features but not systematically measured at Jaccard level across the full dictionary.
 
@@ -91,11 +94,9 @@ A thin nomological network. Two rows partially confirmed, several untested. The 
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Sometimes (via steering).** Clamping a feature to a high activation value can steer model outputs — the "Golden Gate Bridge" feature reliably produces bridge-related text. This is a form of sufficiency: the feature direction alone drives the behavior. But steering is blunt (high-magnitude clamping may go off-manifold), and many features do not produce coherent effects when steered.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Does ablating a "deception" feature selectively impair deception-related outputs without affecting other capabilities? This requires measuring collateral damage, which is rarely done for individual features.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) **Inconclusive.** The off-target extent of the intervention was measured, disclosed in one clause of a figure caption, and then removed from view. Ablating a single dictionary feature moves twelve thousand logits down; the paper names the one that moves most and reads the intervention as confirming the feature's interpretation. Nothing establishes that the other movements are noise — no comparison to ablating a random direction of the same norm, no report of which tokens they are, and a display threshold chosen for clarity rather than derived from a null.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Weak.** Cross-seed replication shows that strong features (high-frequency, high-magnitude) are relatively stable. Weaker features may not replicate. No systematic cross-checkpoint or cross-model consistency has been reported.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not tested.** Steering typically uses a single method (activation addition at a fixed scale). Multi-method comparison (clamping at different layers, steering via different feature dictionaries) is not performed.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Three designed controls are run, including an α = 0 dictionary. What is absent is a bound on how strong an unmeasured confounder would need to be (I8).
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
@@ -132,22 +133,17 @@ The matrix is extremely sparse. Even for the best-characterized features, only t
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Partial.** Clamping at different multipliers (1x, 5x, 10x the typical activation magnitude) produces graded effects — stronger clamping produces more extreme outputs. But the dose-response is often nonlinear and poorly characterized. At high multipliers, outputs become incoherent rather than showing more of the feature.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Does steering along "deception" selectively increase deception without affecting fluency, factuality, or other behaviors? Off-target effects are rarely measured. The intervention may be producing general distributional shift rather than targeted behavioral change.
-
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Variable.** Some features produce large, clear effects (Golden Gate Bridge). Others produce weak or incoherent effects. The distribution of effect magnitudes across the dictionary is not systematically reported.
-
 **[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Unknown.** Does the Golden Gate Bridge feature work equally well on questions, stories, code prompts, and multilingual inputs? Robustness across prompt distributions is not systematically tested.
 
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Not tested.** SAE features are model-specific by construction — each dictionary is trained on one model's activations. Whether "the same feature" exists across models requires a separate alignment step that is not standard.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Confirmed.** The method transfers everywhere tried: Pythia, GPT-2 small and Gemma 2 2B [Leask et al. 2025].
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | E1 Intervention reach | Partial | Works for some features, untested for most |
-| E2 Graded response | Partial | Nonlinear, breaks at high magnitudes |
 | I4 Specificity | Not tested | Off-target effects unmeasured |
 | E5 Graded response | Variable | Some strong, most unknown |
 | E2 Prompt generalization | Unknown | No cross-distribution testing |
-| E4 Cross-model recurrence | Not tested | Model-specific by construction |
+| E4 Cross-model generalization | Not tested | Model-specific by construction |
 
 ### Key Distinctions
 
@@ -179,17 +175,15 @@ The dose-response evidence shows that *something* happens when you intervene, bu
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Weak.** Different SAE training runs (different seeds, hyperparameters) produce different dictionaries. The Jaccard overlap between features identified by two independent SAEs is low for most of the dictionary. The metric's test-retest reliability is poor.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Inconclusive.** The training appendix specifies the optimizer, the data volume and the epoch count and says nothing about seeds or repeated runs, and no figure caption reports variation across training runs. Figure 2's error bars are confidence intervals over the 150 scored features from a single dictionary, which measures scoring spread rather than training reliability. The follow-up supplies the missing test at one width and finds high agreement, so the picture depends on which evidence is admitted.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Not tested.** Do SAE features show the same properties when the dictionary is trained on different data subsets? When applied to different layers? Measurement invariance across conditions is not reported.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** All layers of Pythia-70M are covered, across five expansion ratios and two scoring regimes.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** Strong features (high activation, clear semantic coherence) are clearly separated from noise. But the boundary between "real features" and "dictionary artifacts" is not well-defined. How many of the 16,384 features in a typical SAE are real?
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Inconclusive — the capping criterion.** The dictionary separates from random directions, but not from a random network when that control is run [Heap et al. 2025], and one SAEBench metric scores higher on a randomly initialized model than a trained one [Karvonen et al. 2025]. The origin's within-model controls and the later random-network controls disagree.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can the metric distinguish between a genuine "deception" feature and a "formal language" feature that happens to co-occur with deception in the training data? The sensitivity to genuine semantic distinctions versus statistical co-occurrence is not characterized.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.** What activation level constitutes "the feature is on"? Thresholds are typically chosen post-hoc. Without calibration, activation magnitudes are hard to interpret.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Max-activating examples capture the top-activating tail. They do not capture: the feature's behavior at moderate activations, its interactions with other features, its role in downstream computation, or its boundary cases (what it *almost* fires on but doesn't).
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** The metric is a correlation, so zero has a meaning independent of the experiment: a description that predicts activations no better than chance. The paper does not hide what the scale delivers — the unselected first-five sample includes a negative score of −0.11 and a top score of 0.57. What is missing is any conversion of a score of 0.33 into a statement about how much of a feature's behavior is explained.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
@@ -225,21 +219,20 @@ The only filled cell (cross-seed SAE comparison) shows low-moderate agreement fo
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [representational](/mechanistic-validity/framework/modes/representational) level — features are directions in activation space that encode information about inputs.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** The formal object and the metric are declared exactly: rows of a learned matrix, and a correlation between simulated and actual activations. The word carrying the claim is less disciplined — across four sentences "feature" denotes a unit of the network to be reverse engineered, a row of the dictionary, and a real-world property that text corresponds to, and the last sentence uses two of those senses at once.
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Weak.** The primary evidence for feature identity is behavioral (max-activating examples, steering). But the claim is representational — it asserts that the model *encodes* this information, not just that manipulating the direction changes behavior. Behavioral evidence (steering) underdetermines representational claims: a direction can produce deceptive outputs when steered without being "the deception representation."
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Variable.** "Golden Gate Bridge" is narratively coherent — the feature fires on bridge-related content and steers toward bridge-related output. "Deception" is less coherent — what exactly is the model encoding? Intent to deceive? Surface patterns associated with deceptive text? The narrative coherence varies by feature.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Not done.** For most features, alternative explanations are not considered. A "deception" feature might equally be a "formal language + negation" feature, a "long-sentence" feature, or a "training-data-artifact" feature. Without discriminant testing (C4), alternatives are not excluded.
 
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Not done.** For most features, alternative explanations are not considered. A "deception" feature might equally be a "formal language + negation" feature, a "long-sentence" feature, or a "training-data-artifact" feature. Without discriminant testing (C3), alternatives are not excluded.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Confirmed.** Both the origin and the follow-up declare their limits and quantify them [Leask et al. 2025].
 
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Often missing.** Feature labels like "deception" imply a broad, abstract semantic concept. The evidence (max-activating examples from one model, one layer) supports only a narrow scope — "this direction in this layer activates on these inputs." The label exceeds the evidence.
+**[V4 — Unlicensed labeling:](/mechanistic-validity/framework/criteria/interpretive/unlicensed-labeling) Partial.** "Monosemantic" projects semantics onto a sparsity constraint. The origin hedges consistently; downstream labels such as "deception" do not.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | V1 Level declaration | Pass | Representational level stated |
 | V2 Level-evidence match | Weak | Behavioral evidence for representational claim |
-| V2 Level-evidence match | Variable | Strong for concrete, weak for abstract features |
 | V3 Alternative level | Not done | No discriminant testing |
 | V5 Scope declaration | Often missing | Labels exceed evidence scope |
 

@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Induction Heads"
-description: "The induction head mechanism (Olsson et al. 2022) evaluated through all five validity lenses."
+description: "The induction head mechanism (Olsson et al. 2022) evaluated through the five core lenses."
 ---
 
 # Case Study: Induction Heads
@@ -9,15 +9,18 @@ description: "The induction head mechanism (Olsson et al. 2022) evaluated throug
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Triangulated. **Capped by:** C6 (complementation validity), I3 (minimality), I10 (rescue reversibility), I12 (offset coupling).
+
+
 | Lens | Strongest criterion | Weakest criterion | Overall |
 |---|---|---|---|
 | Construct (Phil. Sci.) | C3 Convergent validity | — | Strong |
-| Internal (Neuroscience) | M1 Reliability | I7 Confound control | Mechanistically supported |
-| External (Pharmacology) | E4 Cross-model recurrence | — | Strong |
+| Internal (Neuroscience) | I1/I11 Necessity + Onset coupling | I3/I10/I12 Minimality, Rescue, Offset | Triangulated |
+| External (Pharmacology) | E4 Cross-model generalization | — | Strong |
 | Measurement (Measurement Theory) | M6 Invariance | M4 Calibration | Strong |
 | Interpretive (MI) | V3 Alternative level | — | Strong |
 
-**Overall verdict: Triangulated.** Induction heads pass all five criteria for construct validity, four of five for internal validity, all six for external validity, and all five for interpretive validity. Evidence converges across multiple independent lenses with non-overlapping assumptions. This is the strongest mechanistic claim in MI — it reaches Triangulated status primarily because the mechanism is simple, general-purpose, and independently verifiable from multiple angles. The single remaining gap (I7 — systematic multi-method comparison) is a reporting gap, not an evidence gap, since path patching partially addresses confounds.
+**Overall verdict: Triangulated.** Induction heads reach Triangulated on 14 Confirmed and 16 Partially confirmed criteria, with six Untested. Evidence converges across five families — eigenvalues, behavioral evaluators, ablation, scaling and training dynamics — with non-overlapping assumptions. Validated is blocked by four criteria the paper never attempts: complementation validity (C6), because the two named roles are ablated one at a time and never together; minimality (I3); rescue reversibility (I10); and offset coupling (I12).
 
 ## Metrics used in original work
 
@@ -43,9 +46,9 @@ description: "The induction head mechanism (Olsson et al. 2022) evaluated throug
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Pass.** An induction head requires a $W_{OV}$ matrix that copies the attended-to token's identity to the output. It also requires a compositional partner — a previous-token head in an earlier layer whose $W_{QK}$ enables the attending-to-next pattern. Both are verified: the $W_{OV}$ matrices have copying structure, and the compositional partner exists.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) N/A (honest scope).** Induction heads fire on any repeated sequence. This is not a specificity failure — it is an honest scope claim. The construct is described as a general-purpose mechanism, not a task-specific circuit.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Partial.** The two behavioral evaluators are built to separate induction from repeated-token memorization, which is a real discriminant test. It is not extended to further neighboring constructs.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** The mechanism requires exactly two components: the previous-token head and the induction head. Removing either breaks the mechanism. No redundancy.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Not tested.** The account names two components, but no leave-one-out establishes that each earns its place; the authors themselves name the obstacle, which is that every ablation effect is marginal. This is one of four criteria capping the claim.
 
 **[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Pass.** The mechanism was discovered through behavioral analysis (in-context learning curves) and confirmed through structural analysis ($W_{OV}$ and $W_{QK}$ inspection) — two evidence families with non-overlapping assumptions. It replicates across model families.
 
@@ -80,13 +83,11 @@ Six independent predictions, six independent confirmations. A thick nomological 
 
 **[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating induction heads degrades in-context learning performance. The effect is specific to tasks involving repeated sequences — on non-repeated text, ablation has a smaller effect. This includes an implicit specificity control.
 
-**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass (path-level).** Path patching confirms that patching only the output of the previous-token head through the induction head is sufficient to restore the behavior. This is sufficiency at the *path* level — stronger than component-level sufficiency because it isolates the compositional mechanism.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) **Partial.** No experiment reconstructs the copying behavior from induction heads alone. The two nearest things are both weaker than sufficiency: Argument 2 shows that the architectural capacity for induction suffices to produce in-context learning in a one-layer model that previously had none, which is sufficiency of the architecture rather than of the heads, and Scherlis's replication substitutes an idealized induction pattern and recovers most of the head's loss contribution — a comment on the paper rather than an experiment in it.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass (honest scope).** The double dissociation holds: ablating induction heads impairs in-context learning but not tasks that do not involve repetition. The mechanism is specific to repetition-based in-context learning.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** Every head is ablated, so off-target effects are measured throughout, and the effect concentrates on repetition-bearing sequences. The crossed design that would make this a dissociation is a separate criterion (I6) and was not run at origin.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass (cross-scale).** The mechanism is identified across multiple model sizes (small to GPT-3-scale) and across model families. The training dynamics signature — a phase change in loss curves — replicates across independent training runs. Unusually strong consistency.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Not directly tested.** Path patching partially addresses confounds by isolating the compositional path rather than ablating entire components. A systematic multi-method comparison has not been reported.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Three exogenous confounds are checked, including scheduled hyperparameters. What is not addressed is a shared latent cause that would produce heads and capability together.
 
 ### Key Distinctions
 
@@ -111,17 +112,13 @@ The forward dissociation is demonstrated: ablating induction heads selectively i
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Implicit pass.** The mechanism operates naturally across all repeated-sequence contexts — it does not need to be artificially activated. Any repeated sequence triggers the mechanism, demonstrating that it has broad reach within its scope.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** One intervention primitive at origin: pattern-preserving zero ablation of a head. A second intervention family that agrees with it has not been run.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Pass.** The in-context learning effect strengthens with more repetitions and longer contexts. The mechanism shows the expected dose-response: more signal (more repetitions) produces more effect (stronger copying).
-
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** Ablating induction heads selectively impairs in-context copying without catastrophically degrading other model capabilities. The intervention is targeted.
-
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Large.** In two-layer attention-only models, induction heads account for nearly all of the in-context learning signal ($F \approx 0.95$). In larger models, the effect is distributed but induction heads remain major contributors.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) **Partial.** Measurement is graded and intervention is not. Both evaluators return continuous scores on stated ranges, footnote 5 says the construct is a continuum rather than a threshold, and the in-context learning score is tracked at every snapshot. The intervention is a zero vector substituted for one head: binary, one head at a time, with no interpolation between ablated and intact.
 
 **[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Strong.** The mechanism operates on arbitrary repeated sequences — not just specific token types, syntactic structures, or prompt templates. This is robustness by scope: the mechanism is defined over a broad input class.
 
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Pass.** Identified in GPT-2, GPT-3-scale models, and other architectures. Structurally analogous heads appear wherever attention + residual stream composition is available.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Pass.** Identified in GPT-2, GPT-3-scale models, and other architectures. Structurally analogous heads appear wherever attention + residual stream composition is available.
 
 ### Key Distinctions
 
@@ -148,17 +145,15 @@ The key pharmacological insight: this is one of the few MI mechanisms where the 
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Strong (implicit).** The induction head identification criterion (CopyScore on $W_{OV}$ + attention pattern on repeated sequences) produces consistent results across analyses. Different researchers examining the same model identify the same heads.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Later work repeats the measurements across seeds in two-layer models. The origin measurements themselves are never repeated, and no interval accompanies any of them.
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Strong.** The measurement is invariant across model sizes — the same identification criteria work from small models to GPT-3-scale. This is measurement invariance in the measurement-theoretic sense: the metric generalizes.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Non-induction heads clearly fail the CopyScore criterion. The measurement cleanly separates heads that implement the mechanism from heads that do not.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) **Partial.** Every head in every ablated model is ablated at every snapshot, so an induction head's effect is read against the empirical distribution of all head effects in the same model — an implicit matched comparison at more than fifty thousand ablations. The one-layer model supplies a clean architectural negative control: no induction heads form and no in-context learning develops. What is missing is an explicit random-head or random-init control, and footnote 17 shows why one is needed.
 
-**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Good.** CopyScore has a natural threshold that separates induction from non-induction heads. The bimodal distribution (most heads score low, induction heads score high) makes the measurement sensitive without requiring arbitrary threshold choices.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) **Partial.** A known-positive exists and is used: the two-layer attention-only induction circuit was derived from weights in the previous paper, so the Appendix can ask whether the activation evaluators recover a mechanism already established independently, and they do. The smeared-key architecture is a designed positive of a different kind. Neither is a planted circuit of known strength, so nothing says how weak a real induction head could be and still be detected.
 
 **[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Partial.** The behavioral calibration is implicit — heads identified by CopyScore do in fact drive in-context learning when tested causally. Formal calibration curves are not reported.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Good.** The identification uses multiple signals (CopyScore, attention pattern, training dynamics signature), providing good coverage of the construct from different angles.
 
 ### Key Distinctions
 
@@ -188,9 +183,7 @@ The convergent diagonal (two methods, same construct) shows high agreement. The 
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** The evidence includes behavioral effects (ablation), structural signatures ($W_{OV}$, $W_{QK}$), and compositional analysis (path patching). This multi-modal evidence supports an algorithmic-level claim.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The two-head composition story is mechanistically precise: the previous-token head shifts the key one position back, enabling the induction head to attend to the token *after* the match and copy it forward. The story explains *why* both heads are needed and what each contributes.
-
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Strong.** The mechanism is simple enough (two components, one compositional path) that alternative explanations are constrained. You could dispute whether "induction head" is the right name, but it is hard to dispute the mechanical account of what the heads do.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) **Partial.** One alternative at a competing level is addressed — basic copying heads — and it is handled by argument rather than test. The paper's own higher-level redescription, in-context nearest neighbor, is offered as compatible with the copying account rather than as a rival, and two candidate relations between the levels are proposed. Neither is tested and the paper does not claim otherwise.
 
 **[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Pass.** The claim is "general-purpose in-context copying on repeated sequences" — and the evidence covers this full scope. The authors do not overclaim task-specific function.
 

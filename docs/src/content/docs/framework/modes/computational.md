@@ -86,10 +86,10 @@ This satisfies all three requirements: specification, normative account, and err
 
 ## Metrics that provide computational-level evidence
 
-- **D01 (Behavioral: logit attribution)** — measures output quality across conditions
-- **D07 (Generalization gap)** — tests whether the circuit generalizes beyond its discovery distribution
-- **A06 (Probabilistic specificity)** — tests whether the circuit is task-specific or a general bottleneck
-- **F03 (Nomological validity)** — whether the circuit obeys theoretical predictions about the task
+- **D02 (Logit Diff)** — measures output quality across conditions
+- **D09 (Generalization Gap)** — tests whether the circuit generalizes beyond its discovery distribution
+- **D06 (Cross-Task)** — whether a circuit discovered on one task transfers to a related one; the same measurement separates a task-specific mechanism from a general bottleneck, and it is the evidence C5 (nomological validity) draws on
+- **D08 (Prompt Paraphrase)** — whether the account survives semantically equivalent restatements of the task
 
 ## Key references
 
