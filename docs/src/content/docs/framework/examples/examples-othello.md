@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Othello World Model"
+title: "Exploratory Lens Analysis: Othello World Model"
 description: "The Othello-GPT world model (Li et al. 2023) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-ioi/
+  label: "Exploratory Lens Analysis: IOI Circuit"
+next:
+  link: /mechanistic-validity/framework/examples/examples-sae-features/
+  label: "Exploratory Lens Analysis: SAE Features"
 ---
 
-# Case Study: Othello World Model
+# Exploratory Lens Analysis: Othello World Model
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Othello World Model](/mechanistic-validity/framework/audits/othello/).
+:::
+
 
 [Li et al. (2023)](https://arxiv.org/abs/2210.13382) train a GPT on Othello game transcripts and claim the model develops an internal **world model** — a representation of the board state that tracks which squares are occupied by black, white, or empty, decoded by nonlinear probes across all 64 tiles where linear probes never dip below 20% error. The claim is that the model does not merely memorize move sequences but represents the underlying game state, and that this representation is causally used during move prediction.
 
@@ -226,5 +237,3 @@ Cells cluster in the representational column — the evidence establishes that b
 - Board-state representation → counterfactual reasoning: **absent** (no evidence)
 
 The solid edges confirm that board-state information exists and is causally relevant. The dashed edges represent the interpretive gap: we cannot determine whether the board-state representation is the primary algorithmic pathway for prediction (supporting "world model") or a correlated byproduct of features that drive prediction through other pathways (supporting "heuristic features"). The absent edge (counterfactual reasoning) represents the strongest implication of "world model" that has no supporting evidence.
-
----

@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Copy Suppression"
+title: "Exploratory Lens Analysis: Copy Suppression"
 description: "The copy suppression mechanism (McDougall et al. 2023) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-induction-heads/
+  label: "Exploratory Lens Analysis: Induction Heads"
+next:
+  link: /mechanistic-validity/framework/examples/examples-greater-than/
+  label: "Exploratory Lens Analysis: Greater-Than Circuit"
 ---
 
-# Case Study: Copy Suppression
+# Exploratory Lens Analysis: Copy Suppression
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Copy Suppression](/mechanistic-validity/framework/audits/copy_suppression/).
+:::
+
 
 [McDougall et al. (2023)](https://arxiv.org/abs/2310.04625) identify **copy suppression heads** in GPT-2 Small — attention heads that detect when the model is about to copy a token and actively suppress that copying. The mechanism functions as an anti-induction circuit: where induction heads promote copying repeated tokens, copy suppression heads inhibit it, preventing the model from naively repeating tokens that appear in context but are not the correct next prediction.
 
@@ -217,6 +228,3 @@ The ablation and DLA rows provide necessity and representational evidence. Weigh
 - Interaction with induction/name-mover heads: **dashed** (the functional opposition is observed but the causal pathway of interaction is not directly patched)
 
 Two solid edges (the output pathway is verified), two dashed edges (the input/detection pathway and the interaction with complementary mechanisms). The mechanism's *effect* is causally verified; its *activation trigger* is characterized observationally but not causally.
-
----
-

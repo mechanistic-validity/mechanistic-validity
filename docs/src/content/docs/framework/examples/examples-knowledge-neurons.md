@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Knowledge Neurons"
+title: "Exploratory Lens Analysis: Knowledge Neurons"
 description: "Factual knowledge localization in feed-forward neurons (Dai et al. 2022) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-induction-heads-icl/
+  label: "Exploratory Lens Analysis: Induction Heads (General ICL)"
+next:
+  link: /mechanistic-validity/framework/examples/
+  label: Lens Applications
 ---
 
-# Case Study: Knowledge Neurons
+# Exploratory Lens Analysis: Knowledge Neurons
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Knowledge Neurons](/mechanistic-validity/framework/audits/knowledge_neurons/).
+:::
+
 
 [Dai et al. (2022)](https://arxiv.org/abs/2104.08696) attribute a relational fact to roughly four feed-forward neurons in BERT-base-cased, using integrated gradients over the intermediate activations of an FFN layer read as the value slots of a key–value memory. The evaluation runs over 253,448 ParaRel cloze prompts covering 27,738 facts and 34 relations.
 

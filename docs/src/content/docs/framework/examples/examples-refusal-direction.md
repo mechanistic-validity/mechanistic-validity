@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Refusal Direction"
+title: "Exploratory Lens Analysis: Refusal Direction"
 description: "The refusal direction mechanism (Arditi et al. 2024) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-grokking/
+  label: "Exploratory Lens Analysis: Grokking / Modular Addition"
+next:
+  link: /mechanistic-validity/framework/examples/examples-successor-heads/
+  label: "Exploratory Lens Analysis: Successor Heads"
 ---
 
-# Case Study: Refusal Direction
+# Exploratory Lens Analysis: Refusal Direction
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Refusal Direction](/mechanistic-validity/framework/audits/refusal/).
+:::
+
 
 [Arditi et al. (2024)](https://arxiv.org/abs/2406.11717) identify a **refusal direction** in the residual stream of chat-tuned language models — a single linear direction whose presence causes the model to refuse harmful requests. Subtracting this direction from the residual stream at inference time disables refusal without retraining, while adding it induces refusal on benign inputs.
 
