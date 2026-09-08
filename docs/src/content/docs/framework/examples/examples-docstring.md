@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Docstring Circuit"
-description: "The docstring variable-binding circuit (Heimersheim & Janiak 2023) evaluated through all five validity lenses."
+description: "The docstring variable-binding circuit (Heimersheim & Janiak 2023) evaluated through the five core lenses."
 ---
 
 # Case Study: Docstring Circuit
@@ -78,7 +78,7 @@ Three nodes confirmed, three unconnected. A thin network — the confirmed nodes
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating the identified circuit heads degrades variable-binding accuracy in docstrings. The model fails to predict the correct parameter name.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) **Partial.** Necessity is tested component by component and the tests bite. Every head in the circuit is knocked out by resampling and the drop in logit difference is read off, under three corruptions that each remove a different piece of information — which is what lets a head be shown necessary for the B_doc value specifically rather than for the task in general. One ablation regime carries all of it: zero and mean ablation are named alongside the method chosen and never run.
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** Activation patching restores behavior on corrupted inputs. But full circuit isolation (ablate everything outside) is not the primary methodology.
 
@@ -146,13 +146,13 @@ We have two endpoints and nothing between. The curve shape (linear degradation? 
 
 **[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not reported.** No confidence intervals.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** Works across function definitions. Not tested across layers or code styles.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) **Not tested.** The same conclusion is never re-derived under a changed condition and shown to hold. The three corruptions probe different pieces of information, so they are complementary rather than redundant, and no result is reported twice under two settings for comparison. Both patching directions were in fact run, but only the selected ones are reported, which converts a possible invariance check into a presentation choice.
 
 **[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** The circuit's 42% is set against a 17% chance level with two further reference points. A matched random head set — the control that would show the 42% belongs to *these* heads — is not run.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can the method distinguish "variable binding" from "positional copying"? These produce similar behavioral outputs but imply different mechanisms.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.**
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** The metric is well chosen for what is claimed. Logit difference against the highest wrong answer, recomputed each time, cannot be gamed by a model that raises all argument names together, and the success rate is read directly off the task. The two scales are then compared without adjustment: the 42% circuit is set beside a 56% full model that the isolating prompts have already depressed from about 75%, which the authors say themselves.
 
 ### Key Distinctions
 
@@ -184,7 +184,7 @@ Entirely unfilled. No convergent cells (different methods on same task) and no d
 
 **[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The positional-copying alternative (simpler mechanism producing the same behavior) is not excluded. On the tested prompts, variable binding and positional copying make the same predictions. Distinguishing them requires adversarial prompts where the two strategies diverge.
 
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Partial.** "Variable binding" implies a general-purpose mechanism. The evidence is from templated Python docstrings — a narrow domain.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) **Confirmed.** The limit is declared before the argument rather than conceded after it. The epistemic header states that the circuit recovers up to half of model performance and that leads remain unfollowed, and it sits above the first result. The exclusions are then named individually: heads known to be essential that the patching method cannot surface, a head whose ablation improves performance, and a list of components the authors cannot account for.
 
 ### Key Distinctions
 

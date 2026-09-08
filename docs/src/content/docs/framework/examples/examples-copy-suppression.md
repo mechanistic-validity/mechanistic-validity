@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Copy Suppression"
-description: "The copy suppression mechanism (McDougall et al. 2023) evaluated through all five validity lenses."
+description: "The copy suppression mechanism (McDougall et al. 2023) evaluated through the five core lenses."
 ---
 
 # Case Study: Copy Suppression
@@ -48,9 +48,9 @@ This is unusual because it is defined by what it *prevents* rather than what it 
 
 **[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Partial.** Copy suppression is not task-specific — it operates across any context where token repetition is likely but incorrect. This is an honest scope claim (like induction heads), but the boundary of when suppression activates versus when copying is appropriate is not precisely characterized.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Pass.** A small number of heads are identified. Each contributes independently measurable negative DLA.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) **Partial.** The object under study is a single attention head, so minimality can only be tested inside the explanation rather than over a component set. Preserving the QK mechanism alone recovers 95.2% and the OV mechanism alone 81.1%, while preserving both and deleting everything else recovers 76.9% — each half is individually mild and their conjunction is what costs, which is evidence that both earn their place. There is no component set left to prune.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Identified through DLA (behavioral) and confirmed through $W_{OV}$ analysis (structural). Two method families, partially independent.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) **Confirmed.** Four instruments bear on the same claim and agree. Weight products give 84.70% and 95.72% with no intervention at all; hand-coding of dataset examples gives 80%; a structured ablation that deletes everything except the two weight mechanisms preserves 76.9% of the head's effect; and out-of-distribution behavior on repeated random tokens ranks the same head first. These differ in kind rather than in granularity — parameters, observation, causation, a different distribution — so their agreement is not arithmetic.
 
 ### Key Distinctions
 
@@ -79,11 +79,11 @@ Four nodes confirmed, three unconnected. The confirmed nodes establish a coheren
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Ablating copy suppression heads causes the model to *over-copy* — token repetition probability increases on prompts where copying would be incorrect. This is a specific and interpretable necessity result.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) **Partial.** Necessity is established for a path and not for the head. Decomposing the head's effect into direct and indirect routes shows the direct path carries most of the loss change, which localizes the contribution cleanly. In absolute terms nothing depends on the head: its whole direct effect is a thousandth of the model's loss, the sign of its contribution is close to balanced across completions, and the same is true of most heads in its layers.
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** The mechanism is demonstrated through its effect (suppressing logits), but a full isolation test (can these heads alone prevent copying when the rest of the model promotes it?) is not reported.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass.** The effect is specific to suppression of incorrect copying. Ablating these heads does not generally degrade model performance — it specifically increases token repetition errors. This is an unusually clean specificity result because the effect direction is distinctive (increase in a specific error type, not general degradation).
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) **Partial.** Specificity is tested and comes out split, with both halves in the same appendix. CSPA applied to every layer 9–11 head recovers most for L10H7, which is the result the criterion asks for. The components of that instrument do not discriminate: the OV and QK ablations taken separately clear 50% recovered KL for many other heads, so what is specific to L10H7 is the conjunction rather than either mechanism.
 
 **[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Tied embeddings and LayerNorm are handled explicitly. Data confounds are untouched.
 
@@ -115,7 +115,7 @@ The distinctive pattern: ablating copy suppression heads produces a *specific er
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Partial.** There is a genuine dose-response at the query side. Every other intervention in the paper is binary.
 
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Works across varied copy-tempting prompts. Not tested on edge cases (when should the model copy vs. suppress?).
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) **Confirmed.** This is the claim's distinguishing feature. The headline number is an average over OpenWebText, GPT-2's own pretraining distribution, rather than over a template set built for the hypothesis, and it is reported per percentile of effect size, with the preserved fraction highest where mean ablation is most destructive. Two further distributions are checked — IOI and repeated sequences of uniformly random tokens — the second sharing no structure with the first.
 
 **[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** Copy-suppression scores correlate head by head with anti-induction scores across GPT, Pythia and SoLU models, so the phenomenon replicates in three systems. The structured ablation that establishes the mechanism is never run outside GPT-2 Small.
 
@@ -148,11 +148,11 @@ The key insight from a pharmacological perspective: the selectivity of the full-
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** Works across prompt types. Layer/position invariance not tested.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Copy suppression heads show clearly negative DLA on copy-tempting tokens, while other heads do not. Clean separation.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) **Partial.** Two baselines carry the argument and both are the right shape. Mean ablation of the direct effect is the denominator of the effect-explained ratio, so every percentage is already expressed against a null, and the same-matching QK circuit is a baseline chosen because tied embeddings make that rival live. What is missing is a null for 76.9% itself: Appendix J.3 shows the component ablations clear 50% for many heads, so the reference distribution the headline number needs is the one not constructed.
 
-**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Good.** The negative-DLA criterion cleanly identifies suppression heads.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) **Not tested.** Every control in the paper is a known-negative — the same-matching baseline, the layer 9–11 head sweep, mean ablation — and each establishes what the measurement returns when copy suppression should be absent. None establishes what it returns when a mechanism of known strength is present, because none is planted and recovered. A head with half the mechanism would score some number, and nothing says which.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.**
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** The validation metric is well chosen and its failure mode is stated by the authors. KL divergence has a meaningful zero, is linear in the log-probabilities the ablation produces, and Appendix J.1 names the case it will miss — a logit change too small to move a small probability, which costs loss and not KL. Calibration of the underlying effect thins out: the head's whole direct contribution is about a thousandth of the model's OpenWebText loss, and the same explanation scores 82% or 45% depending on which loss metric is chosen.
 
 ### Key Distinctions
 
@@ -180,7 +180,7 @@ The convergent diagonal is strong: heads identified by negative DLA are the same
 
 **[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** Algorithmic — names what the heads do (suppress copying) and how ($W_{OV}$ anti-copying).
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** Structural + behavioral evidence matches algorithmic claim.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) **Partial.** Evidence and claim are matched on two of three axes. The mechanism claim is carried by weight-level evidence, the right level for a claim about what a matrix does, and the coverage claim by a distribution-level average, the right level for a claim about a training distribution. The unmatched axis is the one the authors name: when and how much copy suppression fires. Both idealized approximations shift real attention substantially, and the query-side direction that matters most is perpendicular to the one the account uses.
 
 **[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** Could these heads be doing something else that incidentally suppresses copying? The structural evidence (anti-copying $W_{OV}$) constrains alternatives, but the possibility that "suppression" is a side effect of a more general computation is not fully excluded.
 

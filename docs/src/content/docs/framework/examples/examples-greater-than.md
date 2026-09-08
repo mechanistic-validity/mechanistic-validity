@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Greater-Than Circuit"
-description: "The Greater-Than circuit (Hanna et al. 2023) evaluated through all five validity lenses."
+description: "The Greater-Than circuit (Hanna et al. 2023) evaluated through the five core lenses."
 ---
 
 # Case Study: Greater-Than Circuit

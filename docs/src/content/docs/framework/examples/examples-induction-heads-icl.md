@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Induction Heads (General ICL)"
-description: "The claim that induction heads are the mechanism for general in-context learning (Olsson et al. 2022), evaluated through the mechanistic validity framework."
+description: "The claim that induction heads are the mechanism for general in-context learning (Olsson et al. 2022), evaluated through the five core lenses."
 ---
 
 # Case Study: Induction Heads (General ICL)

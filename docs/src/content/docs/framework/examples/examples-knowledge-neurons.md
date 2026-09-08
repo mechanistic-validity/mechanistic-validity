@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Knowledge Neurons"
-description: "Factual knowledge localization in feed-forward neurons (Dai et al. 2022) evaluated through all five validity lenses."
+description: "Factual knowledge localization in feed-forward neurons (Dai et al. 2022) evaluated through the five core lenses."
 ---
 
 # Case Study: Knowledge Neurons

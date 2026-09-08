@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Global Workspace"
-description: "The global workspace / J-space hypothesis (Gurnee et al. 2026) evaluated through the mechanistic validity framework."
+description: "The global workspace / J-space hypothesis (Gurnee et al. 2026) evaluated through the five core lenses."
 ---
 
 # Case Study: Global Workspace

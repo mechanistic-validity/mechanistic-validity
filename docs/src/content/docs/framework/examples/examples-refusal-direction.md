@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Refusal Direction"
-description: "The refusal direction mechanism (Arditi et al. 2024) evaluated through the mechanistic validity framework."
+description: "The refusal direction mechanism (Arditi et al. 2024) evaluated through the five core lenses."
 ---
 
 # Case Study: Refusal Direction

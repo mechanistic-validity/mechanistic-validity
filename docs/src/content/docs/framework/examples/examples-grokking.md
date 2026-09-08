@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Grokking / Modular Addition"
-description: "The modular addition circuit with Fourier features (Nanda et al. 2023) evaluated through all five validity lenses."
+description: "The modular addition circuit with Fourier features (Nanda et al. 2023) evaluated through the five core lenses."
 ---
 
 # Case Study: Grokking / Modular Addition
@@ -89,7 +89,7 @@ Six nodes confirmed, one unconnected. The thickest nomological network of any MI
 
 **[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) N/A.** One task; the model has no off-target behavior to spare. This is a statement about the setting, not a pass — a single-task toy model licenses less than a model doing many things.
 
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Pass.** The mechanistic account is so complete that confounds are ruled out — the algorithm predicts outputs from weights alone, with no unexplained variance.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) **Partial.** Training the models is what buys the controls. Data fraction, modulus, depth, seed, regularizer type and weight-decay strength are all varied rather than found, and the λ = 0 run is the sharpest: with the regularizer removed the excluded loss stays flat, so the circuit does not form and grokking does not occur. What remains uncontrolled is on the analysis side, where thresholds are fixed, and in the architecture, since every mainline conclusion rests on one width and one depth.
 
 ### Key Distinctions
 
@@ -149,7 +149,7 @@ This is the pharmacological ideal: a perfectly linear dose-response with perfect
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass.** The Fourier decomposition is deterministic — same model, same result every time. Replication across seeds confirms the finding.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Partial.** Repetition is real at the level of training: five seeds at the mainline configuration, all five carried through the mechanism analysis, and a standard deviation of loss over runs reported. Repetition is absent at the level of the measurements that carry the mechanism claim — the fraction of variance explained is quoted as one number per direction with no interval, so the reader cannot tell how much of a 93.2% would survive resampling.
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Pass.** The measurement works regardless of which specific frequencies the model chose — the *type* of algorithm is invariant across training runs.
 
@@ -157,7 +157,7 @@ This is the pharmacological ideal: a perfectly linear dose-response with perfect
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Not tested.** The controls are all known-negatives (untrained models, non-key frequencies). Nothing with a known answer is planted and recovered, so the instrument's floor is unmeasured.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Pass.** The algorithm's output matches the model's output to numerical precision — perfect calibration.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** Loss is reported in nats on a task whose chance level is fixed and known, so a number like 5.27 can be read directly as worse than a model predicting uniformly — more calibration than most interpretability results carry. The reference itself is never computed: "worse than uniform" is asserted and log 113 ≈ 4.73 appears nowhere, so the margin above chance has to be reconstructed by the reader. The fraction-of-variance-explained instrument has no false-positive reference at all.
 
 ### Key Distinctions
 
@@ -183,9 +183,9 @@ All convergent cells are high — four independent methods identify the same str
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is at the [structural](/mechanistic-validity/framework/modes/algorithmic) level — it fully specifies the algorithm in terms of weight matrices.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** The level is legible from usage and never declared. The abstract puts an algorithm-level claim and an implementation-level method in consecutive sentences, and §3.1 states the algorithm as a four-step procedure without saying whether the claim is about the function computed, the algorithm used, or the weights that realize it. A reader can reconstruct the answer; the paper does not supply it.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong pass.** The evidence *is* the structure — weight matrices are directly decoded into the algorithm. Evidence and claim are at the same level.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) **Partial.** The evidence sits mostly at the weight level for an algorithm-level claim, which is a close match and unusual in this audit set. The overreach is in the word *fully*: by the paper's own numbers 79 of 512 neurons fall outside the single-frequency polynomial account, two of four attention heads receive a role introduced with "We speculate", and the headline logit reconstruction explains 95% of variance rather than all of it.
 
 **[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** Memorization is addressed and refuted. The basis alternative is not: Zhong et al. (2023) give two distinct algorithms over the same five frequencies, and the metrics that would separate them are not run here.
 
