@@ -224,9 +224,9 @@ If the behavioral degradation is monotonically increasing across this series, th
 The genetics lens strengthens verdict transitions primarily through internal validity:
 
 - **Proposed → Causally suggestive:** The genetics lens does not gate this transition. I1 (necessity) from the neuroscience lens remains the entry requirement.
-- **Causally suggestive → Mechanistically supported:** I7 (rescue reversibility) strengthens this transition by establishing that the ablation deficit is specifically reversible, not an artifact of cascading disruption. This complements I2 (sufficiency) from the neuroscience lens.
-- **Mechanistically supported → Triangulated:** I6 (epistatic interaction) and I8 (knockout ordering) provide evidence from a different analytical framework (interaction structure rather than single-component intervention), strengthening the triangulation case. E7 (allelic dose-response) contributes cross-method robustness evidence.
-- **Triangulated → Validated:** I9 (instrument validity) and I10 (confounding sensitivity) address threats to validity that no other lens tests -- backdoor confounding and hidden bias. A circuit that passes all genetics criteria alongside the criteria from other lenses has survived the most comprehensive set of causal tests available.
+- **Causally suggestive → Mechanistically supported:** I10 (rescue reversibility) strengthens this transition by establishing that the ablation deficit is specifically reversible, not an artifact of cascading disruption. This complements I2 (sufficiency) from the neuroscience lens.
+- **Mechanistically supported → Triangulated:** I9 (epistatic interaction) and I6 (double dissociation) provide evidence from a different analytical framework -- interaction structure rather than single-component intervention -- strengthening the triangulation case. E5 (graded response) contributes the allelic dose-response analogue.
+- **Triangulated → Validated:** I7 (confound control) and I8 (confounding sensitivity) address threats no other lens tests -- backdoor confounding and hidden bias, and how strong an unmeasured confounder would have to be to explain the result away. A circuit that passes all genetics criteria alongside the criteria from other lenses has survived the most comprehensive set of causal tests available.
 
 ## Protocol
 

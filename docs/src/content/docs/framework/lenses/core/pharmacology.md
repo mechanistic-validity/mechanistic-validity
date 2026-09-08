@@ -201,9 +201,9 @@ The absence of cross-architecture evidence does not invalidate a finding. It bou
 ## Verdicts
 
 - **Proposed → Causally suggestive:** Requires I1 (necessity) from the neuroscience lens. Pharmacology does not gate the first upgrade.
-- **Causally suggestive → Mechanistically supported:** Requires at minimum E4 (effect magnitude) — the absolute effect must be large enough that the computational story is coherent.
-- **Mechanistically supported → Triangulated:** Requires E2 (graded response) and E3 (selectivity). Without a dose-response curve, the claimed mechanism's strength cannot be characterized.
-- **Triangulated → Validated:** Requires E5 (robustness) and, ideally, E6 (cross-architecture generalization).
+- **Causally suggestive → Mechanistically supported:** Contributes M4 (calibration) — the numbers must mean something before the computational story is coherent. Raw effect magnitude is deliberately not a criterion: it confounds the component's role with the network's compensatory reserve, so a load-bearing component can show a small ablation effect.
+- **Mechanistically supported → Triangulated:** Contributes E5 (graded response) and I4 (specificity). Without a dose-response curve, the claimed mechanism's strength cannot be characterized.
+- **Triangulated → Validated:** Contributes E5 (graded response) across conditions and, ideally, E6 (novel prediction) — a mechanism that predicts an untested dose-response shape.
 
 ## Protocol
 

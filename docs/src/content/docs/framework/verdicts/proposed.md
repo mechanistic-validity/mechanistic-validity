@@ -27,7 +27,7 @@ A claim can remain at Proposed indefinitely without being wrong or uninteresting
 > **Verdict:** Proposed — `[representational-statistical]`
 > **Claim:** SAE feature $f_{42}$ in GPT-2 Small layer 8 represents noun-hood.
 > **Met:** Defined construct (noun-hood), falsifiable prediction (feature activates selectively on nouns), measurement (cosine similarity = 0.82 with probing direction, top-20 contexts are 18/20 nouns)
-> **Open:** I1 (necessity), I2 (sufficiency), I3 (specificity vs. word frequency)
+> **Open:** I1 (necessity), M2 (baseline separation), I2 (sufficiency), I4 (specificity vs. word frequency)
 > **Scope:** GPT-2 Small, residual stream layer 8, Pile-10k distribution
 
 ## Minimum reporting for this tier

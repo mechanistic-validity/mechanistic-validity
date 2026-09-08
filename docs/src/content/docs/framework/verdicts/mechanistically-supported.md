@@ -25,8 +25,8 @@ Sufficiency is method-dependent. The complement ablation method (zero, mean, res
 
 > **Verdict:** Mechanistically supported — `[implementational-topographic]`
 > **Claim:** Heads L9H9, L9H6, L10H0 are necessary and sufficient for name-mover behavior in IOI.
-> **Met:** I1 (necessity, $\Delta$ logit diff > 0.7 under zero + mean ablation), I2 (sufficiency, 87% recovery), I3 (SI = 14.2 vs. SVA task), I4 (consistent across 3 prompt templates), M1 ($\rho_{XX'} = 0.84$)
-> **Open:** E5 (cross-model), C5 (multi-method convergence), V2 (cross-procedure agreement)
+> **Met:** I1 (necessity, $\Delta$ logit diff > 0.7 under zero + mean ablation), I2 (sufficiency, 87% recovery), I4 (specificity, SI = 14.2 vs. SVA task), E1 (intervention reach, zero and mean ablation agree), E2 (prompt generalization, consistent across 3 templates), M1 (reliability, $\rho_{XX'} = 0.84$)
+> **Open:** E4 (cross-model generalization), C3 (convergent validity across methods), I5 (rival mechanism exclusion)
 > **Scope:** GPT-2 Small, IOI task, Wang et al. prompt distribution
 
 ## Minimum reporting for this tier

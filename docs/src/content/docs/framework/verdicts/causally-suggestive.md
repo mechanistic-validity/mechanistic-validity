@@ -25,8 +25,8 @@ This is where the majority of published mechanistic interpretability findings cu
 
 > **Verdict:** Causally suggestive — `[implementational-topographic]`
 > **Claim:** The IOI circuit (26 heads across layers 0-11) is necessary for indirect object identification in GPT-2 Small.
-> **Met:** I1 (mean ablation of circuit heads reduces logit diff by 0.73, vs. 0.12 for size-matched random set), E4 (absolute effect = 2.1 logits), V1 (claim stated at head level)
-> **Open:** I2 (sufficiency under resample ablation), I3 (specificity vs. general language tasks), C5 (multi-method convergence)
+> **Met:** I1 (mean ablation of circuit heads reduces logit diff by 0.73), M2 (0.73 against 0.12 for a size-matched random set), V1 (claim stated at head level)
+> **Open:** I2 (sufficiency under resample ablation), I4 (specificity vs. general language tasks), C3 (convergent validity across methods), E5 (graded response under partial ablation)
 > **Scope:** GPT-2 Small, IOI task, ABBA template distribution
 
 ## Minimum reporting for this tier

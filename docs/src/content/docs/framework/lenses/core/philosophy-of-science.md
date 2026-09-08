@@ -217,7 +217,7 @@ Reporting underdetermination explicitly is a stronger finding than suppressing i
 Construct validity gates advancement through the [verdict tiers](/mechanistic-validity/framework/verdicts/):
 
 - **Proposed → Causally suggestive:** Requires C1 (falsifiability). Without a pre-registered disconfirming condition, no amount of ablation evidence upgrades the verdict.
-- **Mechanistically supported → Triangulated:** Requires at least one construct criterion beyond C1. Typically C2 (structural plausibility) or C5 (convergent validity).
+- **Mechanistically supported → Triangulated:** Requires at least one construct criterion beyond C1. Typically C2 (structural plausibility) or C3 (convergent validity).
 - **Triangulated → Validated:** Requires substantial construct validity coverage — C1 through C5.
 
 A claim can have perfect [internal validity](/mechanistic-validity/framework/validity-types/internal) (all ablations, all patching, full consistency) and still stall at Mechanistically supported because the construct itself is poorly defined.

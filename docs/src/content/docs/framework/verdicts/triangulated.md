@@ -25,7 +25,7 @@ Convergence is formalized via the robust core: the intersection of circuits iden
 
 > **Verdict:** Triangulated — `[implementational-topographic]`
 > **Claim:** Induction heads (L5H5, L5H1 in GPT-2 Small) implement in-context copying via QK composition with previous-token heads.
-> **Met:** C5 (attention pattern analysis + QK weight decomposition + training dynamics + behavioral ablation all converge), E5 (mechanism found in GPT-2 Small, Medium, and Large), V2 (manual circuit identification and ACDC agree on core heads, Jaccard = 0.72)
+> **Met:** C3 (attention pattern analysis + QK weight decomposition + training dynamics + behavioral ablation all converge; manual identification and ACDC agree on core heads, Jaccard = 0.72), E4 (mechanism found in GPT-2 Small, Medium, and Large), I6 (double dissociation between induction and previous-token heads)
 > **Open:** $I_{\text{fun}}$ (complete component-level function for all supporting heads), quantitative prediction (novel prediction not yet tested)
 > **Scope:** GPT-2 family, in-context copying of arbitrary tokens, sequences with repeated subsequences
 

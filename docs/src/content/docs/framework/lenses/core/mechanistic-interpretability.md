@@ -204,10 +204,10 @@ Cross-architecture evidence does not require the same circuit. It requires an an
 
 ## Verdicts
 
-- **Proposed → Causally suggestive:** Requires I1 (level declaration at the implementational level). A claim stated at the algorithmic or computational level without level declaration cannot be upgraded.
-- **Causally suggestive → Mechanistically supported:** Requires I3 (level-evidence separation audited) and I4 (coverage $\kappa$ reported). A finding where $\kappa$ is high and no upward drift is present is ready for this upgrade.
-- **Mechanistically supported → Triangulated:** Requires I2 (non-uniqueness addressed via at least two procedures) and, ideally, I5 (cross-architecture evidence or explicit bound).
-- **Triangulated → Validated:** Requires all five criteria met and $\kappa > 0.9$ on a representative distribution.
+- **Proposed → Causally suggestive:** Contributes V1 (level declaration) at the implementational level. A claim stated at the algorithmic or computational level without level declaration cannot be upgraded.
+- **Causally suggestive → Mechanistically supported:** Contributes V2 (level-evidence match, separation audited) and V5 (scope declaration, coverage $\kappa$ reported). A finding where $\kappa$ is high and no upward drift is present is ready for this upgrade.
+- **Mechanistically supported → Triangulated:** Contributes I5 (rival mechanism exclusion, circuit non-uniqueness addressed via at least two procedures) and, ideally, E4 (cross-model generalization, or an explicit bound).
+- **Triangulated → Validated:** Requires all five of this lens's criteria met and $\kappa > 0.9$ on a representative distribution.
 
 ## Protocol
 
