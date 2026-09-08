@@ -46,13 +46,13 @@ This case study illustrates a fundamental principle of the framework: **a measur
 
 ### Criteria
 
-**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) **Confirmed.** The claim form yields a prediction that can come out either way, and it came out both ways in work the anchor reports side by side. Modify a representation along a probe-identified direction and the original model's behavior should move: [Giulianelli et al. (2018)](https://arxiv.org/abs/1808.08079) find it does, on the examples the property is defined over, and [Elazar et al. (2021)](https://arxiv.org/abs/2006.00995) find that removing a well-decoded property need not cost the original task.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Confirmed.** The claim form yields a prediction that can come out either way, and it came out both ways in work the anchor reports side by side. Modify a representation along a probe-identified direction and the original model's behavior should move: [Giulianelli et al. (2018)](https://arxiv.org/abs/1808.08079) find it does, on the examples the property is defined over, and [Elazar et al. (2021)](https://arxiv.org/abs/2006.00995) find that removing a well-decoded property need not cost the original task.
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Weak.** Probes operate on activations, not weights. They do not identify *which* parameters encode the concept or *how* the encoding is implemented in the model's architecture. A probe success is consistent with intentional encoding, accidental encoding, and encoding-as-artifact.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Disconfirmed.** The construct is "the model represents z", and it has two neighbors a good instrument must separate it from: "the probe learned z from its own training data" and "any representation of this dimensionality carries z". Both separation tests were run and both came back negative. Control tasks show nonlinear probes reaching high accuracy at low selectivity, which reads as memorization by the probe rather than information in the representation, and random baselines show untrained features already decode the property.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Disconfirmed.** The construct is "the model represents z", and it has two neighbors a good instrument must separate it from: "the probe learned z from its own training data" and "any representation of this dimensionality carries z". Both separation tests were run and both came back negative. Control tasks show nonlinear probes reaching high accuracy at low selectivity, which reads as memorization by the probe rather than information in the representation, and random baselines show untrained features already decode the property.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) **Not tested.** The unit of analysis is a whole intermediate output — a layer's representation, or another component taken entire — and the framework offers no operation that removes part of it and asks whether the rest still supports the property. Minimization is applied to the probe instead: the trade-off reported is accuracy against probe complexity, and the one method that prunes the model's own weights is presented as a way to improve that trade-off rather than to identify a minimal sufficient component set.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Not tested.** The unit of analysis is a whole intermediate output — a layer's representation, or another component taken entire — and the framework offers no operation that removes part of it and asks whether the rest still supports the property. Minimization is applied to the probe instead: the trade-off reported is accuracy against probe complexity, and the one method that prunes the model's own weights is presented as a way to improve that trade-off rather than to identify a minimal sufficient component set.
 
 **[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Probing is typically the *only* method used. Convergent validity would require confirming the representation claim via an independent method — causal intervention along the probe direction, weight-space analysis, or cross-method agreement. When probing alone is the evidence, convergent validity is absent by definition.
 
@@ -91,9 +91,9 @@ One node confirmed by construction (decodability), one or two partially tested i
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) **Inconclusive — the capping criterion.** Standard probing performs no removal, so on its own it cannot address necessity at all. Where removal was performed, the result went against the claim: projecting a property out of the representation need not cost the original task, however well the probe decoded it, and the authors of that experiment conclude probing does not always identify features the model uses.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Inconclusive — the capping criterion.** Standard probing performs no removal, so on its own it cannot address necessity at all. Where removal was performed, the result went against the claim: projecting a property out of the representation need not cost the original task, however well the probe decoded it, and the authors of that experiment conclude probing does not always identify features the model uses.
 
-**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) **Not applicable.** Probing is a map out of the representation: g reads f_l(x) and emits ẑ, and nothing in the definition writes a value of z back into f. The two models are trained in separate steps with no path from the second to the first. Sufficiency asks what happens when the property is installed, so within the method as specified there is no operation the criterion could attach to.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Not applicable.** Probing is a map out of the representation: g reads f_l(x) and emits ẑ, and nothing in the definition writes a value of z back into f. The two models are trained in separate steps with no path from the second to the first. Sufficiency asks what happens when the property is installed, so within the method as specified there is no operation the criterion could attach to.
 
 **[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Disconfirmed.** A control dataset holds the property non-discriminative for the original task and the probe recovers it anyway, so decodability does not localize to the task.
 
@@ -130,7 +130,7 @@ Entirely empty for standard probing. Even DAS-style extensions fill at most one 
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) **Inconclusive.** Probing has no intervention of its own, so reach is measured by whether interventions applied to probe-identified directions agree about what the model uses. They do not: Giulianelli's positive conclusion is set against Elazar's negative one explicitly, with two more results on the positive side and one more on the negative. No result is retracted and none is preferred.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Inconclusive.** Probing has no intervention of its own, so reach is measured by whether interventions applied to probe-identified directions agree about what the model uses. They do not: Giulianelli's positive conclusion is set against Elazar's negative one explicitly, with two more results on the positive side and one more on the negative. No result is retracted and none is preferred.
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) N/A.** No intervention = no dose-response.
 
@@ -167,7 +167,7 @@ For standard probing, the dose-response section is N/A — no intervention means
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Not tested.** A review reports no variance of its own, so the evidence is what the review requires of the studies it reviews. Its five stated concerns — controls, probe choice, causal claims, datasets versus tasks, pre-defined properties — and its closing list of what a probing experiment should do mention neither repeated runs, seeds, confidence intervals nor significance testing.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Not tested.** A review reports no variance of its own, so the evidence is what the review requires of the studies it reviews. Its five stated concerns — controls, probe choice, causal claims, datasets versus tasks, pre-defined properties — and its closing list of what a probing experiment should do mention neither repeated runs, seeds, confidence intervals nor significance testing.
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Weak.** A probe trained on one dataset may not transfer to another. The measurement is distribution-specific rather than model-intrinsic.
 
@@ -211,7 +211,7 @@ Entirely empty. Standard probing does not produce MTMM data because it uses one 
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** The anchor's formalism is a level declaration: it fixes which objects a probing result is about, down to the dependence of the reported number on four separate arguments, and the figure enumerates the components so the reader can see what is held fixed. Practice does not declare — the anchor reports that the terms in which probing results are stated, quality, readability, usability, appear without precise definitions.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Partial.** The anchor's formalism is a level declaration: it fixes which objects a probing result is about, down to the dependence of the reported number on four separate arguments, and the figure enumerates the components so the reader can see what is held fixed. Practice does not declare — the anchor reports that the terms in which probing results are stated, quality, readability, usability, appear without precise definitions.
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Disconfirmed.** The evidence supports extractability; the claim made is representation. Probe success is reported as "the model represents X" when what holds is "X is decodable from layer L by a classifier of the stated capacity" — and the model may not *use* the information at all.
 
