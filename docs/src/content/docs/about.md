@@ -25,7 +25,7 @@ If you use or reference this framework, please cite:
 ```bibtex
 @software{tower2026mechanisticvalidity,
   author    = {Tower, Elliot},
-  title     = {Mechanistic Validity: A Validity Theory and Evidence Standard for Mechanistic Claims},
+  title     = {Mechanistic Validity: A Validity Theory, Research Methodology, and Evidence Standard for Mechanistic Claims},
   year      = {2026},
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.20478480},
