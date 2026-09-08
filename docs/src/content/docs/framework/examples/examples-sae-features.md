@@ -1,9 +1,20 @@
 ---
-title: "Case Study: SAE Features"
+title: "Exploratory Lens Analysis: SAE Features"
 description: "Sparse autoencoder features (Cunningham et al. 2024) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-othello/
+  label: "Exploratory Lens Analysis: Othello World Model"
+next:
+  link: /mechanistic-validity/framework/examples/examples-probing/
+  label: "Exploratory Lens Analysis: Probing Classifiers"
 ---
 
-# Case Study: SAE Features
+# Exploratory Lens Analysis: SAE Features
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: SAE Features](/mechanistic-validity/framework/audits/sae/).
+:::
+
 
 Sparse autoencoder features ([Cunningham et al. 2024](https://arxiv.org/abs/2309.08600)) are directions in activation space extracted by training an overcomplete dictionary on residual-stream activations, evaluated by automated interpretability scoring on 150 features per method against six baselines — the default basis, random directions, PCA, ICA, top-K PCA and top-K ICA — and by activation patching on 50 IOI data points, in Pythia-70M and Pythia-410M. Each feature is given a label — "Golden Gate Bridge," "deception," "code syntax" — based on the inputs that maximally activate it, and the claim is that these features are real computational units: [representational](/mechanistic-validity/framework/modes/representational)-level entities the model uses during inference. The scaled-up dictionaries of [Bricken et al. 2023](https://transformer-circuits.pub/2023/monosemantic-features/index.html) and [Templeton et al. 2024](https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html) make the same claim at larger scale.
 
@@ -268,5 +279,3 @@ Most cells empty or structurally invalid (∅). The two interventional rows (zer
 - Feature → output logits: **dashed** (decoder vector projects onto logits, but whether this pathway is causally active during normal inference is untested)
 
 No solid edges. The entire causal graph for SAE features operates in the "suggestive but unconfirmed" regime. This is the fundamental interpretive gap: features are identified and labeled, but their causal role in the model's computation is inferred rather than demonstrated.
-
----

@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Global Workspace"
+title: "Exploratory Lens Analysis: Global Workspace"
 description: "The global workspace / J-space hypothesis (Gurnee et al. 2026) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/examples-superposition/
+  label: "Exploratory Lens Analysis: Superposition"
+next:
+  link: /mechanistic-validity/framework/examples/examples-docstring/
+  label: "Exploratory Lens Analysis: Docstring Circuit"
 ---
 
-# Case Study: Global Workspace
+# Exploratory Lens Analysis: Global Workspace
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Global Workspace](/mechanistic-validity/framework/audits/workspace/).
+:::
+
 
 Gurnee et al. (2026) provide evidence for a **global workspace** structure in transformer language models — a low-dimensional subspace of the residual stream (dubbed "J-space"), recovered as the expected Jacobian $J_\ell$ of the final-layer residual with respect to layer $\ell$, proposed as the set of contents the model can verbally report and reason over. The claim is that the residual stream is not used uniformly: a structured, shared subspace mediates inter-component communication, analogous to the global workspace theory in cognitive neuroscience (Baars, 1988; Dehaene et al., 2014).
 

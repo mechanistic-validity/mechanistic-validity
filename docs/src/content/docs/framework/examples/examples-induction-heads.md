@@ -1,9 +1,20 @@
 ---
-title: "Case Study: Induction Heads"
+title: "Exploratory Lens Analysis: Induction Heads"
 description: "The induction head mechanism (Olsson et al. 2022) evaluated through the five core lenses."
+prev:
+  link: /mechanistic-validity/framework/examples/
+  label: Lens Applications
+next:
+  link: /mechanistic-validity/framework/examples/examples-copy-suppression/
+  label: "Exploratory Lens Analysis: Copy Suppression"
 ---
 
-# Case Study: Induction Heads
+# Exploratory Lens Analysis: Induction Heads
+
+:::note[Disclaimer]
+This page is an exploratory reading, not part of the paper. It applies the framework's five lenses to the claim as an illustration. For the audit as published, see [Case Studies: Induction Heads](/mechanistic-validity/framework/audits/induction/).
+:::
+
 
 [Olsson et al. (2022)](https://arxiv.org/abs/2209.11895) describe **induction heads** — a two-component mechanism (previous-token head + induction head) that implements in-context learning by attending to the token following the previous occurrence of the current token, then copying it to the output. This is arguably the strongest mechanistic claim in MI, combining structural clarity with broad replication.
 
@@ -218,6 +229,3 @@ More cells filled than typical MI studies. The path-patching row provides both n
 - Full path (input → prev-token → induction → output): **solid** (the complete causal chain is verified end-to-end via path patching)
 
 All edges in the causal graph are solid — no dashed/inferred links. This is the only MI circuit where the full input-to-output causal chain is verified without gaps. The simplicity of the mechanism (two components, one path) makes complete causal verification tractable.
-
----
-
