@@ -99,4 +99,5 @@ The causal inference lens does not gate specific verdict transitions — unlike 
 - **Proposed → Causally suggestive:** I1 (necessity) is the gate. The causal inference lens formalizes I1 as a do-operation: $P(Y \mid \text{do}(X := 0)) \neq P(Y)$.
 - **Causally suggestive → Mechanistically supported:** I2 (sufficiency) is stated as a stronger do-operation. The cascading-disruption confound is a formal violation of the interventionist condition.
 - **Mechanistically supported → Triangulated:** Multiple causal identification strategies (ablation + path patching + causal scrubbing) provide identification under different assumptions. Convergence across identification strategies is stronger than convergence across variations of one strategy.
-- **Triangulated → Validated:** E4 (cross-model generalization) is formally a transportability claim. The causal inference lens provides the conditions under which it is valid.
+- **Mechanistically supported → Triangulated:** E4 (cross-model generalization) is formally a transportability claim, and the causal inference lens provides the conditions under which it is valid.
+- **Triangulated → Validated:** E5 (graded response) is a heterogeneous-treatment-effect claim; the potential-outcomes framework supplies the estimand.

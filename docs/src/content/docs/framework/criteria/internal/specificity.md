@@ -1,10 +1,10 @@
 ---
 title: "Specificity"
 validity_type: "Internal"
-criterion_id: "I3"
+criterion_id: "I4"
 ---
 
-# Criterion I3 — Specificity
+# Criterion I4 — Specificity
 
 | | |
 |---|---|

@@ -1,35 +1,39 @@
 ---
-title: "Case Study: Knowledge Neurons / ROME"
-description: "Factual knowledge localization and model editing (Meng et al. 2022) evaluated through all five validity lenses."
+title: "Case Study: Knowledge Neurons"
+description: "Factual knowledge localization in feed-forward neurons (Dai et al. 2022) evaluated through the five core lenses."
 ---
 
-# Case Study: Knowledge Neurons / ROME
+# Case Study: Knowledge Neurons
 
-[Meng et al. (2022)](https://arxiv.org/abs/2202.05262) claim that **factual knowledge is localized in specific MLP layers** of large language models — that "The Eiffel Tower is in Paris" is stored in identifiable MLP weight matrices, and that editing these weights (ROME / MEMIT) can change the model's factual beliefs. The claim has two parts: (1) a localization claim (knowledge is in specific MLPs) and (2) a practical application (you can edit it there).
+[Dai et al. (2022)](https://arxiv.org/abs/2104.08696) attribute a relational fact to roughly four feed-forward neurons in BERT-base-cased, using integrated gradients over the intermediate activations of an FFN layer read as the value slots of a key–value memory. The evaluation runs over 253,448 ParaRel cloze prompts covering 27,738 facts and 34 relations.
 
-This is among the most commercially impactful MI claims — it led to model editing tools. It is also among the most contested — subsequent work questions whether the edits are stable, generalizable, or actually targeting the right mechanism.
+Zeroing those activations lowers the correct-answer probability by 29.03% and doubling them raises it by 31.17%, against a count-matched activation-magnitude baseline that moves the same quantity by −1.47% and −1.27%. Rewriting the value slots installs a substituted entity as the top prediction 34.4% of the time, against the baseline's 0.0%.
 
 ## Composite Verdict
 
-| Lens | Strongest | Weakest | Overall |
-|---|---|---|---|
-| Construct | C1 Falsifiability | C4 Discriminant validity | Partial |
-| Internal | I1 Necessity | I4 Specificity | Disconfirmed |
-| External | E5 Graded response | I4 Specificity | Weak |
-| Measurement | M1 Reliability | M6/M5 Invariance + Sensitivity | Weak |
-| Interpretive | V1 Level declaration | V3 Alternative level | Weak |
+> **Verdict (framework paper, Table 6):** Disconfirmed. **Capped by:** I4 (specificity).
 
-**Overall verdict: Disconfirmed.** The knowledge neurons localization claim fails decisively on specificity (I4). Subsequent work shows that fact editing raises inter-relation perplexity — the edits are not specific to the target fact but corrupt related knowledge. The off-target effects are measured and reported in the original work but not interpreted as a specificity failure. The framework identifies this as a disconfirming result: the mechanism claimed (localized factual storage) predicts that editing one fact should leave related facts intact, and it does not. The practical tool (ROME) can work for the wrong mechanistic reasons — the edit succeeds on the target while corrupting neighbors, which is consistent with distributed rather than localized storage.
+| Lens | Strongest criterion | Weakest criterion | Overall |
+|---|---|---|---|
+| Construct (Phil. Sci.) | C1 Falsifiability, C2 Structural plausibility (both confirmed) | C4 Discriminant validity (disconfirmed) | Weak |
+| Internal (Neuroscience) | I1/I2 Necessity + Sufficiency (both partial) | I4 Specificity (inconclusive, the capping criterion) | Weak |
+| External (Pharmacology) | E2 Prompt generalization, E6 Novel prediction (both confirmed) | E3 Cross-task generalization (untested) | Weak |
+| Measurement (Meas. Theory) | M2 Baseline separation (confirmed) | M1/M3/M5/M7 (all untested) | Weak |
+| Interpretive (MI) | V1 Level declaration (partial) | V2 Level-evidence match (disconfirmed) | Weak |
+
+**Overall verdict: Disconfirmed.** The primary reading — that these roughly four neurons *store* the relational fact — fails on two counts that were tested rather than skipped. All three of the paper's own summaries report a *correlation* between activation and expression while the title and abstract claim storage (V2). And the same editing machinery moves non-factual linguistic patterns [Niu et al. 2024], so the construct never separates from its neighbor (C4).
+
+Weaker readings of the same evidence survive. That manipulating these neurons changes how strongly the model expresses the fact is **Causally Suggestive**. That editing them edits *that* fact and leaves unrelated knowledge alone is **Disconfirmed**: Table 6 of the origin gives an inter-relation perplexity rise of 7.2 for the identified neurons against 4.3 for random ones, and §5.1 reads the same table as showing little negative influence on other knowledge. That the account holds beyond BERT-base-cased is **Insufficient** — one model, and the generalization is asserted with no experiment behind it.
 
 ## Metrics used in original work
 
 | Method | Our metric | Family |
 |---|---|---|
-| Causal tracing (activation patching with noise) | [A02 Counterfactual DAS](/mechanistic-validity/framework/metrics/#a02) | Causal |
-| Rank-one model editing (ROME) | [A01 SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
-| MEMIT (multi-layer editing) | [A01 SCM](/mechanistic-validity/framework/metrics/#a01) | Causal |
-
-> To run these metrics yourself, see [Experiment 10: Published Circuit Evaluation](https://github.com/mechanistic-validity/mechanistic-validity-experiments/tree/main/experiments/10_published_circuit_evaluation).
+| Integrated gradients over FFN activations | [A06 Mediation](/mechanistic-validity/framework/metrics/#a06) | Causal |
+| Suppression and amplification of activations | [D02 Logit-Diff Recovery](/mechanistic-validity/framework/metrics/#d02) | Behavioral |
+| Value-slot rewriting | [D01 Faithfulness](/mechanistic-validity/framework/metrics/#d01) | Behavioral |
+| Activation-magnitude control attributor | [F06 Baseline Separation](/mechanistic-validity/framework/metrics/#f06) | Measurement |
+| Cross-relation perplexity | [D03 KL Divergence](/mechanistic-validity/framework/metrics/#d03) | Behavioral |
 
 ---
 
@@ -39,195 +43,142 @@ This is among the most commercially impactful MI claims — it led to model edit
 
 ### Criteria
 
-**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Pass.** The claim predicts: (1) causal tracing should show that early-site MLP layers are the critical path for factual recall, (2) rank-one edits to those layers should change the model's factual outputs. Both are testable and concrete.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Confirmed.** The hypothesis is a signed prediction on a measured quantity, run in both directions on 34 relations. Zeroing should lower the correct-answer probability, doubling should raise it, and a count-matched control attributor should do neither. The control could have reproduced either effect and reproduced neither: 1.47% against 29.03% under suppression, and a 1.27% *decrease* against a 31.17% increase under amplification, where the control moves in the wrong direction entirely.
 
-**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Partial.** The "knowledge is in MLP weights" claim is plausible — MLP layers have the capacity to store key-value associations. But whether a single fact corresponds to a localized rank-one update (vs. being distributed across many parameters) is a strong structural assumption that is not independently verified.
+**[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Confirmed.** The account names a concrete component and shows the algebra that makes it a memory. Equation (3) is put beside Equation (2) and the two are read as the same query–key–value operation under a different nonlinearity, licensing the first FFN layer as keys and the second as values. The intervention then lands on the object the account says holds the memory: editing modifies the value slots indexed by the attributed neuron.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Weak.** The critical question: does editing "Eiffel Tower → Rome" affect *only* Eiffel Tower queries, or does it corrupt related knowledge (French landmarks, Paris facts, tower-related queries)? Subsequent work (Hoelscher-Obermaier et al. 2023, Hase et al. 2024) finds that edits often have unintended side effects — the intervention is not as specific as claimed.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** One attributor against one contrast, agreeing on one coarse property. Nothing independent of integrated gradients selects the same neurons.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Unclear.** Is one MLP layer the minimal locus, or could the fact be edited at multiple locations? MEMIT (the multi-layer extension) suggests the latter — facts may be distributed, and ROME's single-layer assumption may be over-localizing.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Disconfirmed.** The neighboring construct is named in the source: §3.3 says the coarse set may hold neurons that express syntactic or lexical information. The paper removes them by a sharing rule resting on two stated hypotheses — that true positives recur across paraphrases and false positives do not — and then never measures whether the retained neurons carry syntactic or lexical signal. [Niu et al. (2024)](https://arxiv.org/abs/2405.02421) show the same editing machinery moves non-factual linguistic patterns, so the competitor was filtered out by assumption rather than separated by measurement.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Causal tracing (activation patching) identifies the critical layers. ROME edits at those layers and works. But these two steps are not independent — ROME is designed to edit where causal tracing points. An independent method (probing, weight-space analysis) finding the same localization would be stronger.
+**[C5 — Nomological validity:](/mechanistic-validity/framework/criteria/construct/nomological-validity) Partial.** Two theories say where to look — the key–value memory reading of FFN layers, and the localization premise behind model editing. Neither is tested as a network.
 
 ### Key Distinctions
 
-- **Observable vs theoretical:** "Knowledge neuron" bridges from an observable (causal tracing identifies MLP layers whose corruption disrupts recall) to a theoretical entity (a neuron that *stores* a fact). The gap is substantial — causal importance during processing does not entail storage. The theoretical label outruns the observable evidence.
-- **Underdetermination:** Two theories equally explain the causal tracing results: (1) facts are stored in MLP layers (the authors' interpretation), and (2) MLP layers are processing bottlenecks for entity representations. Both predict that corrupting these layers disrupts recall; both predict that editing there changes outputs. The data underdetermines which interpretation is correct, and the ripple effects arguably favor interpretation (2).
-- **Naming requires criteria:** "Knowledge neuron" is a theoretically loaded name applied to an operationally thin finding (causal importance for factual recall). The name asserts storage, but the evidence only shows processing relevance. A more operationally grounded name like "fact-critical MLP unit" would better match the evidence without presupposing a storage mechanism.
-
-### Nomological Network
-
-The knowledge neuron / ROME framework connects to:
-- **Causal tracing** — corrupting identified MLP layers degrades factual recall (causal, confirmed)
-- **Edit success** — rank-one updates at those layers change target outputs (causal, confirmed)
-- **Ripple effects** — edits corrupt related knowledge (observed, documented by follow-up work)
-- **Multi-layer distribution** — MEMIT's success suggests facts are not purely localized (structural, partially confirmed)
-- **Independent localization** — probing or weight-space analysis finding the same layers without causal tracing guidance (untested)
-- **Cross-fact consistency** — does the "storage location" follow a predictable pattern across facts? (partially tested, results variable)
-- **Alternative explanation** — MLP layers as entity-processing bottlenecks rather than fact storage (untested as a formal alternative)
-
-Four nodes confirmed/observed, but two of them (ripple effects, multi-layer distribution) actually *undermine* the localization interpretation. The network is unusual: confirmed nodes partly contradict the theoretical framework they were meant to support.
+- **Operationalism vs realism:** "Knowledge neuron" names the output of a procedure, and the paper's own summaries describe what the procedure finds as a correlate of expression. The construct is operational; the title's claim is realist.
+- **Confirmation vs corroboration:** the web-crawled-text prediction (E6) is genuine corroboration — the account made it before the test and it could have failed.
+- **Underdetermination:** storage and expression predict the same activation correlation, and no experiment here separates them.
 
 ---
 
 ## Neuroscience Lens — Internal Validity
 
-*Does the evidence establish localized storage, not just processing involvement?*
+*Does the evidence establish implementation?*
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Pass.** Causal tracing shows that corrupting the identified MLP layers degrades factual recall for the target fact. The effect is specific to the fact being tested.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Partial.** Zeroing the identified activations produces a deficit the matched control does not reproduce — 29.03% against 1.47% — consistent across all 34 relations rather than driven by a few. It is a decrement, not a collapse: the reported quantity is an average change ratio, so a 29.03% drop leaves most of the correct-answer probability intact and the fact still expressed after the neurons are switched off.
 
-**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass (narrow).** ROME edits at the identified layer successfully change the model's output for the target query. This is a form of sufficiency — intervening at the identified locus is sufficient to change the behavior. But it is narrow sufficiency: the edit works for the specific query template tested, not necessarily for all ways of asking about the same fact.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** Two results push toward sufficiency and neither reaches it. Doubling the activations raises the correct probability by 31.17%, and rewriting the value slots makes the substituted entity the top prediction 34.4% of the time against 0.0% for random neurons. Both are changes to a fact the model already expresses through the rest of its machinery, and the authors' own remedy for the 34.4% is to include more neurons.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak — the critical gap.** This is where the claim breaks down. Editing "Eiffel Tower is in Paris" to "Eiffel Tower is in Rome" may also change answers to "What country is the Eiffel Tower in?" (should still be France) or corrupt knowledge about Rome. The edit is not specific to the target fact — it bleeds into related knowledge. This is the "ripple effect" problem documented by subsequent work.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Untested.** Set size is an input, not a result: thresholds are tuned to hold the count near four neurons before any effect is measured.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Works across many facts (ROME is tested on thousands of subject-relation-object triples). But the *quality* of edits varies — some generalize, some don't, and the conditions for success are not fully characterized.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Inconclusive — the capping criterion.** The origin tests specificity three times and gets two answers. It holds at identification: fact pairs from different relations share 0.09 neurons against the control's 1.92. It holds at erasure: zeroing a relation's twenty most frequent neurons raises that relation's perplexity by 36.7% to 141.2% while raising other relations' by 1.1% to 10.1%. It reverses at update: rewriting the value slots raises inter-relation perplexity by 7.2 against 4.3 for random neurons, so the located units damage other knowledge *more* than random ones do.
 
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Weak.** Causal tracing uses a specific corruption method (noise injection). Whether the identified locus is specific to factual recall or is a general bottleneck for any query involving the subject entity is not controlled. A component could be "where the subject is processed" rather than "where the fact is stored."
+**[I5 — Rival mechanism exclusion:](/mechanistic-validity/framework/criteria/internal/rival-mechanism-exclusion) Untested.** One alternative is ruled out and it is an alternative about method — the activation baseline stands for the possibility that the units are merely input-sensitive. A rival *mechanism* would be a different account of what these units do in the forward pass: routing a fact computed elsewhere, or amplifying a signal already present. The paper's framing forecloses the question by assuming the FFN module is where facts live.
+
+**[I6 — Double dissociation:](/mechanistic-validity/framework/criteria/internal/double-dissociation) Untested.** One mechanism localized and one behavior measured, so neither arm of the crossed design exists.
+
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Wording is controlled by requiring recurrence across roughly nine templates. Fact frequency in the training corpus is not.
+
+**[I9 — Epistatic interaction:](/mechanistic-validity/framework/criteria/internal/epistatic-interaction) Untested.** Every manipulation hits the whole set at once, so no individual contribution separates.
+
+**[I10 — Rescue reversibility:](/mechanistic-validity/framework/criteria/internal/rescue-reversibility) Untested.** The damage is analytic and invertible — the activations are set to zero and could be set back — and the restore is never run.
 
 ### Key Distinctions
 
-- **Localization vs distributed:** The entire debate hinges on this distinction. ROME assumes localization (facts stored at specific sites), but the ripple effects and MEMIT's multi-layer approach suggest distribution. The evidence is more consistent with a distributed picture where causal tracing identifies bottlenecks in a distributed process rather than discrete storage locations.
-- **Lesion vs stimulation:** Both directions are tested: causal tracing is a lesion study (corrupt and observe degradation), while ROME is a stimulation study (edit and observe changed output). However, the stimulation results are problematically broad — the edit "stimulates" not just the target fact but related knowledge, suggesting the intervention is less precise than lesion studies imply.
-- **Single vs double dissociation:** Only single dissociation — corrupting the MLP layer impairs factual recall. Whether corrupting a different layer leaves factual recall intact (while impairing something else) is not systematically tested. The identified layer could be a general processing bottleneck.
+- **Lesion vs stimulation:** both directions are present, which is unusual, and the sign reversal between them rules out a generic damage effect.
+- **Localization vs distributed:** a 29.03% decrement on an average change ratio is consistent with a distributed representation in which these neurons carry one share.
+- **Single vs double dissociation:** neither arm exists. The specificity result that does exist points in two directions depending on which intervention produced it.
 
 ### Dissociation Matrix
 
-|  | Target fact recall | Related fact recall | Entity recognition | Unrelated tasks |
+|  | Target relation | Other relations | Syntactic/lexical patterns | General LM |
 |---|---|---|---|---|
-| Corrupt target MLP layer | **↓↓ (confirmed)** | **↓ (ripple, documented)** | ? | ? |
-| ROME edit at target layer | **Changed (confirmed)** | **Corrupted (documented)** | ? | ? |
-| Corrupt different MLP layer | ? | ? | ? | ? |
-| Corrupt attention layers | ? | ? | ? | ? |
+| Zero identified neurons | **↓ 29.03% (control 1.47%)** | ↑ perplexity 1.1–10.1% | ? | ? |
+| Rewrite value slots | top-1 substitution 34.4% | **↑ perplexity 7.2 (random 4.3)** | moves them [Niu et al. 2024] | ? |
 
-Four cells filled — but two of them (related fact recall column) document *failures* of specificity rather than successes. The matrix reveals that the intervention is too broad: it changes what it targets AND what it shouldn't. The empty rows (different layers, attention) represent the untested controls needed to establish specificity.
+The erasure row and the update row disagree about specificity, which is why I4 is Inconclusive rather than confirmed or failed. The third column is the neighboring construct C4 never separates from.
 
 ---
 
 ## Pharmacology Lens — External Validity
 
-*Does the editing intervention produce clean, predictable effects?*
+*Does intervening on the neurons produce expected downstream effects?*
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** ROME successfully changes model outputs — the intervention reaches downstream behavior. But the reach is often too broad (changes things it shouldn't).
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Partial.** Three intervention forms appear and they agree in direction: zeroing an activation, doubling it, and rewriting the value slot the activation weights. Two act on activations and the third on the weights those activations multiply, so all three enter the forward pass at the same point, and all three are applied to a set chosen by a single attributor.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Not tested.** Can you partially edit a fact (make the model less confident rather than fully switching)? Parametric dose-response is not standard in the ROME framework.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Confirmed.** Survival across roughly nine paraphrase templates is built into the identification procedure, so every retained neuron is one that recurs across restatements of the same fact.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Weak.** The key failure. Edits produce off-target effects on related knowledge. The intervention is not selective.
+**[E3 — Cross-task generalization:](/mechanistic-validity/framework/criteria/external/cross-task-generalization) Untested.** Single-word cloze throughout, named first among the authors' own limitations.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Strong on target.** On the specific query template used, the edit success rate is high (>90% for ROME on the tested benchmark).
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** The origin runs on one model, asserts that the method generalizes, and supplies no experiment; its conclusion lists the multilingual case as future work. What has since transferred is the attribution procedure, across three domains, rather than the storage reading placed on its output.
 
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Partial.** Edits work on the target template but may not generalize to paraphrases or related queries. "Robustness" of the edit (does it hold across phrasings?) is partially demonstrated.
+**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Partial.** The intervention takes two values, zero and double, and the response reverses sign between them — from −29.03% to +31.17% — which rules out a generic damage effect. Nothing between or beyond those points is reported: no interpolation, no multiplier sweep, no curve of effect against strength. The authors call the manipulation a proof of concept and defer precise control.
 
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** ROME/MEMIT have been applied to multiple model families (GPT-J, GPT-NeoX, LLaMA). The causal tracing localization varies somewhat across architectures.
+**[E6 — Novel prediction:](/mechanistic-validity/framework/criteria/external/novel-prediction) Confirmed.** The prediction is derived before the test and could have failed: if these neurons carry a relational fact, text the model never saw during identification should activate them when it expresses that fact and leave them alone when it merely mentions the entities. Both halves hold on web-crawled text — 0.485 for relation-bearing prompts against 0.019 for head-only prompts — and Table 3 gives the sharper form, where the least-activating prompts contain both entities and still fail to fire the neurons.
 
 ### Key Distinctions
 
-- **The system compensates:** This is the defining challenge for knowledge neuron claims. Editing one fact destabilizes related facts because the system's representations are entangled — the model compensates (or fails to) through distributed representations that share parameters. The ripple effects are direct evidence that the system is not modular in the way the localization claim assumes.
-- **Affinity vs efficacy:** ROME demonstrates efficacy on the target query (the edit succeeds) but lacks selectivity (off-target effects). In pharmacological terms, it has high efficacy but poor therapeutic index — the "drug" works but has unacceptable side effects.
-- **The metric is part of the finding:** Edit success is measured by whether the target answer changes on the test template. The metric does not capture whether the model's broader factual network remains coherent. A narrow metric flatters a broad intervention.
-
-### Dose-Response Curve
-
-The ROME dose-response is characterized at only one point:
-- **α = 1** (full rank-one edit): target answer changes with >90% success rate; off-target effects documented but not quantified as a function of dose
-
-What's missing:
-- **No partial edits** — can you apply a fraction of the rank-one update and get graded confidence change?
-- **No off-target dose-response** — at what edit magnitude do ripple effects begin? Is there a threshold below which the target changes but related knowledge is preserved?
-- **No therapeutic window** — the gap between "minimum effective dose" (target changes) and "toxic dose" (related knowledge corrupts) is completely uncharacterized
-
-This is the pharmacological core of the ROME critique: without a dose-response curve, we cannot determine whether clean editing is possible at any dose, or whether the "drug" is inherently non-selective.
+- **Affinity vs efficacy:** the E6 result is affinity evidence of an unusually clean kind. Efficacy at the level the title claims — installing a fact — reaches 34.4%.
+- **The metric is part of the finding:** the same Table 6 supports "little negative influence on other knowledge" in the paper's reading and an adverse specificity result in ours, because a raw perplexity rise and a rise relative to random controls are different quantities.
+- **Naming requires criteria:** the label arrives in the sentence that introduces the method, before any measurement.
 
 ---
 
 ## Measurement Theory Lens — Measurement Validity
 
-*Is causal tracing a reliable metric for localizing knowledge?*
+*Are the metrics reliable?*
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Causal tracing gives consistent results for a given fact. But the localization can differ between related facts, suggesting the measurement is reliable but the underlying phenomenon is complex.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Untested.** Every quantity is a mean reported once, with no interval and no repeated run.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Weak.** The identified "knowledge location" varies by fact, by query phrasing, and by model. The measurement is not invariant across conditions — different prompts for the same fact may point to different layers.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Confirmed.** One negative control runs through the whole paper and is matched on the quantity that would otherwise explain any gap. Raw activation magnitude is put through the identical refining pipeline with thresholds tuned to the same [2, 5] target, yielding 3.96 neurons against 4.13 — the same size. It then separates at every stage measured: suppression, amplification, prompt discrimination, and edit success, where the control succeeds 0.0% of the time.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Partial.** Causal tracing shows clear peaks at specific layers. But whether the baseline (what random layers contribute) is well-characterized is unclear.
+**[M3 — Stability:](/mechanistic-validity/framework/criteria/measurement/stability) Untested.** Three free settings are stated and none of them is perturbed.
 
-**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Unknown.** Can causal tracing distinguish "where the fact is stored" from "where the subject entity is processed"? This is the core sensitivity question and it is not resolved.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Partial.** The outcome quantities are calibrated and the selection quantity is not. A correct-probability change ratio carries a sign, a zero meaning no effect, and a control value measured on the same relations. The attribution score is thresholded at 0.2 of its own per-prompt maximum, which rescales it per prompt and leaves its absolute value uninterpretable, and the surviving neuron count is then set by driving a selection quantity into a target range.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Not reported.** What constitutes a "successful" edit? Success is measured by whether the target answer changes, but whether the model's broader knowledge remains intact is not part of the standard calibration.
+**[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Untested.** One known-negative control and no case where the answer is known in advance.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Measures whether the target answer changes. Does not measure: consistency of related knowledge, model confidence, or downstream reasoning quality.
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Partial.** Per-relation spread is reported across all 34 relations. The generalization claim beyond BERT has no experiment.
+
+**[M7 — Selection correction:](/mechanistic-validity/framework/criteria/measurement/selection-correction) Untested.** Selection happens at four places, is disclosed at all four, and is corrected at none.
 
 ### Key Distinctions
 
-- **Sensitivity vs specificity (of the metric):** Causal tracing has reasonable sensitivity (it reliably identifies layers that matter for factual recall) but poor specificity (it cannot distinguish "where the fact is stored" from "where the subject entity is processed"). This sensitivity/specificity imbalance is the core measurement problem — the metric detects something real but cannot determine what it is detecting.
-- **Convergent vs discriminant validity:** Convergent validity is weak — causal tracing and ROME editing are not truly independent methods (ROME edits where tracing points). Discriminant validity is untested — would causal tracing incorrectly "localize" non-factual knowledge (e.g., syntactic patterns) to the same MLP layers? If so, the method lacks discriminant power for the specific claim of factual storage.
-
-### MTMM Matrix
-
-| | Causal tracing (facts) | ROME edit success (facts) | Causal tracing (syntax) | Probing (facts) |
-|---|---|---|---|---|
-| **Causal tracing (facts)** | — | High (by design) | ? | ? |
-| **ROME edit success (facts)** | High (by design) | — | ? | ? |
-| **Causal tracing (syntax)** | ? | ? | — | ? |
-| **Probing (facts)** | ? | ? | ? | — |
-
-The one filled convergent cell (causal tracing vs. ROME success) is high by design — ROME edits where tracing points, so agreement is circular. The discriminant cells are unfilled: we do not know whether causal tracing identifies the same layers for non-factual tasks (which would undermine the "fact storage" interpretation). The MTMM reveals that the apparent convergence is methodologically forced rather than independently discovered.
+- **Reliability vs validity:** M2 is the strongest cell on this page and it does not rescue the claim. A control that separates cleanly establishes that *something* was found, not that what was found is storage.
+- **True score vs observed score:** the attribution score is normalized per prompt, so its scale carries no information across prompts.
 
 ---
 
 ## MI Lens — Interpretive Validity
 
-*Is "knowledge is localized in MLPs" the right interpretation?*
+*Is the interpretation warranted?*
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** The claim is [implementational](/mechanistic-validity/framework/modes/implementational-functional) — it names where facts are stored and how they can be modified.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Partial.** The unit is declared exactly — a named neuron in a named FFN layer — and the level is not. Storage and expression run together throughout.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** The evidence (causal tracing) is at the causal/behavioral level. The claim (facts are *stored* in MLPs) is a structural/implementational assertion. There is a gap — causal importance does not establish storage.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Disconfirmed.** The claim and the evidence sit at different levels, and the paper says both in its own summary sentences. The title and abstract claim storage, a claim about where a fact is held in the weights. The abstract's statement of the result and the contribution list both report a positive correlation between activation and the expression of the fact, a claim about a signal covarying with an output. The strongest level-matched evidence is the value-slot surgery, and it installs the intended fact 34.4% of the time.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Moderate.** "MLPs store key-value associations; subjects are keys, facts are values; editing the value changes the fact." This is a coherent story but may be overly simplified. The narrative works for the edit success cases but not for the ripple-effect failures.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Inconclusive.** The method alternative is rejected. The storage-versus-expression reading — the one that decides what the title means — is untouched.
 
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The key alternative: MLP layers are where *subject entity representations* are processed, not where *facts are stored*. Under this alternative, ROME edits work because they corrupt the entity representation at a processing bottleneck, not because they target fact storage. This alternative explains both the successes and the failures (ripple effects = corrupted entity representation affects all facts about that entity). It has not been excluded.
+**[V4 — Unlicensed labeling:](/mechanistic-validity/framework/criteria/interpretive/unlicensed-labeling) Partial.** The name arrives before the measurement. §1 introduces the method and the label in one sentence: the neurons the method identifies "are named knowledge neurons." The term states what the procedure is assumed to find rather than abbreviating a result.
 
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Partial.** "Knowledge is localized" is a strong claim. "Causal tracing identifies MLP layers whose corruption disrupts factual recall on template queries" is what is demonstrated. The scope of the evidence is narrower than the scope of the claim.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Partial.** Four limits are declared. The one asserted past is generalization beyond BERT.
 
 ### Key Distinctions
 
-- **Description vs explanation:** "Knowledge neurons store facts" is an explanation. "MLP layers are causally important for factual recall" is a description. The evidence supports the description; the explanation is one of multiple compatible accounts.
-- **Faithfulness vs understanding:** ROME is faithful in a narrow sense (edits change the target output). But the understanding it implies (localized storage) is contested. High narrow faithfulness with questionable broader understanding.
-- **Component identity vs component role:** The components (specific MLP layers) are reliably identified by causal tracing. Their role (storage vs. processing bottleneck) is the interpretive dispute. As with the docstring circuit, identity is established but role is contested.
+- **Description vs explanation:** the description is precise at the level of the unit and imprecise at the level of the claim. That combination is what V2 is built to catch.
+- **Component identity vs component role:** identity is established by an attributor with a matched control. The role — storage — is asserted in the name and measured as correlation.
+- **Faithfulness vs understanding:** the manipulations are real and the reading placed on them is the disconfirmed part.
 
 ### Evidence Convergence Map
 
-- **Implementational → Interpretation:** Partial. Causal tracing identifies specific layers; ROME edits at those layers succeed. But the evidence is implementational in location only — it does not confirm the storage mechanism.
-- **Algorithmic → Interpretation:** Weak. No algorithm for factual recall is specified. The claim jumps from "this layer matters" to "this layer stores facts" without specifying the retrieval algorithm.
-- **Computational → Interpretation:** Partial. We know the model performs factual recall. Whether "key-value lookup in MLP" is the right computational description (vs. "distributed association through residual stream") is unresolved.
-
-### Intervention-Interpretation Matrix
-
-| | Necessity | Sufficiency | Representational | Algorithmic | Computational |
-|---|---|---|---|---|---|
-| Causal tracing (lesion) | ✓ | — | — | ∅ | ∅ |
-| ROME edit (stimulation) | — | ✓ (narrow) | — | ∅ | ∅ |
-| Probing | — | — | — | — | — |
-| Cross-fact comparison | — | — | — | — | — |
-| Multi-layer analysis | — | — | — | Partial | — |
-
-Necessity and sufficiency are confirmed but only in the causal column. The representational and algorithmic columns — where the "storage" claim lives — are empty. The matrix reveals the level mismatch: the evidence is causal (something breaks/changes), but the claim is structural (facts are stored here).
-
-### Causal Sufficiency Graph
-
-- Subject token → MLP layer activation: **solid** (causal tracing confirms)
-- MLP layer activation → factual output: **solid** (editing changes output)
-- MLP weights → fact storage: **dashed** (inferred, not directly demonstrated)
-- Edit at MLP → target change: **solid** (ROME succeeds)
-- Edit at MLP → related knowledge corruption: **solid** (ripple effects documented)
-- Alternative: MLP as entity bottleneck → all entity-related facts: **dashed** (proposed, not causally tested)
-
-The graph has an unusual structure: the solid edges support the *intervention* working but also document its *failures* (ripple effects). The critical "storage" edge is dashed — the central interpretive claim has no solid causal support. The alternative explanation (entity bottleneck) is equally compatible with all solid edges.
-
----
+- **Implementational → Interpretation:** strong for identity. The control separates at every stage.
+- **Representational → Interpretation:** absent. Nothing measures what the retained neurons encode, which is why C4 fails.
+- **Computational → Interpretation:** partial and adverse. The account predicts that editing these neurons edits this fact and spares others; the measurement says they damage other relations more than random neurons do.

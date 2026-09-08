@@ -9,7 +9,7 @@ This lens asks one question: **how much effect, at what strength, on what target
 
 When we ablate a circuit component and report a behavioral change, we are making a claim with a structure pharmacology recognized over a century ago: *this intervention, at this site, through this mechanism, produces this effect.* The entire history of drug development is a history of learning what goes wrong when we report that claim incompletely — when we skip the step of confirming the drug reaches its target, when we report one dose instead of a curve, when we measure on-target effects without measuring off-target ones.
 
-[External validity](/mechanistic-validity/framework/validity-types/external) is the pharmacological question: not whether the effect is real (that is [internal validity](/mechanistic-validity/framework/validity-types/internal)), but how much effect, at what strength, on what target, with what margin. A circuit that satisfies every internal-validity criterion at a single intervention strength can still fail here. The effect may not scale. It may disappear in a different model. Its absolute magnitude may be too small to support the computational story.
+[External validity](/mechanistic-validity/framework/validity-types/external) is the pharmacological question: not whether the effect is real (that is [internal validity](/mechanistic-validity/framework/validity-types/internal)), but how much effect, at what strength, on what target, with what margin. A circuit that satisfies every internal-validity criterion at a single intervention strength can still fail here. The effect may not scale. It may disappear in a different model. It may hold only on the prompts it was discovered on.
 
 There is also a disanalogy worth naming. A drug in a living organism faces degradation, metabolism, plasma protein binding, and blood-brain barrier transport. A steering vector or ablation in a language model does not — the intervention reaches its target instantaneously and completely (by construction), so target engagement is trivially satisfied at the level of the ablation. What is not trivially satisfied is *selective* engagement: ablating a head removes everything it does, not just the computation we are interested in. In MI, the target is a specific subspace or computation — not the component as a whole. Ablating an entire head removes everything it does, not just the one computation we care about. Confirming that an intervention engages the specific target subspace (rather than the full component) is the MI analog of confirming target selectivity in pharmacology.
 
@@ -86,7 +86,7 @@ A wide therapeutic window — a large gap between threshold and off-target onset
 
 ## The criteria
 
-### Intervention reach
+### Intervention reach (E1)
 
 Before interpreting what an ablation reveals, we need to confirm that the ablation actually engaged the computation we intended to engage.
 
@@ -98,7 +98,7 @@ Confirming intervention reach means measuring the activation delta at the target
 
 **What to report.** Activation delta at the target component. Reported separately from the behavioral outcome. If the ablation is known to remove more than the claimed target, this should be stated.
 
-### Graded response
+### Graded response (E5)
 
 A single ablation strength is a single point on a curve. It is not the curve.
 
@@ -112,7 +112,7 @@ where $\alpha$ is the intervention strength (ablation fraction, steering multipl
 
 A wide therapeutic window is evidence for mechanism specificity. A narrow or absent window — where the on-task threshold is near the off-target onset — is evidence that the intervention is not selective.
 
-**What to report.** At least five intervention strengths. $\alpha_{\text{thresh}}$, $\alpha_{\text{plat}}$, and $\alpha_{\text{off}}$ identified or stated as not yet determined. Both on-task and off-task metrics on the same axes.
+**What to report.** At least five intervention strengths. $\alpha_{\text{thresh}}$, $\alpha_{\text{plat}}$, and $\alpha_{\text{off}}$ identified or stated as not yet determined. Both on-task and off-task metrics on the same axes. Report $M_{\text{circuit}}$, $M_{\text{full}}$ and $R = M_{\text{circuit}}/M_{\text{full}}$ at each strength, with the ablation method named. Raw magnitude is not itself a criterion — it confounds the component's role with the network's compensatory reserve — so read $M_{\text{full}}$ against the [M2 baseline separation](/mechanistic-validity/framework/criteria/measurement/baseline-separation) controls rather than against a threshold.
 
 <details class="worked-example">
 <summary>Worked example: steering with a learned direction</summary>
@@ -136,7 +136,7 @@ From this: $\alpha_{\text{thresh}} \approx 1$ (the smallest strength with a noti
 A paper reporting only the $\alpha = 20$ result would report on a point outside the therapeutic window where the intervention is simultaneously damaging the model generally.
 </details>
 
-### Selectivity
+### Specificity (I4)
 
 Selectivity quantifies whether the intervention has greater effect on the claimed target than on everything else.
 
@@ -152,23 +152,9 @@ The choice of off-task benchmark matters more than the threshold. The IOI circui
 
 ![Selectivity Index across circuit claims — bar chart with SI = 10 threshold](/figures/selectivity_index_minimal.svg)
 
-### Effect magnitude
+> **Why effect magnitude is not a criterion.** An earlier draft of this framework scored raw magnitude as a bar of its own. It is not one. The observed magnitude of an ablation effect is a joint property of the component's role and the network's compensatory reserve, so a load-bearing component in a redundant network shows a small effect and an incidental component in a brittle one shows a large effect. The work magnitude was doing is split across three criteria that can each be judged: M2 (is the full-model signal separated from a random baseline?), M4 (does the number mean anything on a stated scale?), and E5 (does the effect track intervention strength?). [Miller, Chughtai, and Saunders (2024)](https://arxiv.org/abs/2407.08734) showed the IOI circuit's 87% recovery holds under mean ablation with the Wang et al. prompt set and moves from below 0% to over 100% across other methodological choices — which is a measurement problem, not a magnitude one.
 
-A statistically reliable and selective effect can still be too small to support the computational story being told.
-
-The recovery fraction alone is not enough. An 87% recovery fraction means something very different when the full-model logit difference is 3.56 (the IOI baseline under Wang et al.'s setup) than when it is 0.05. Both have the same percentage, but the first is a large absolute effect and the second is noise.
-
-The minimum report for effect magnitude is three quantities:
-
-$$M_{\text{circuit}}, \quad M_{\text{full}}, \quad R = \frac{M_{\text{circuit}}}{M_{\text{full}}}$$
-
-where $M$ is the behavioral metric (logit difference, probability, accuracy). And a fourth: the ablation method, named as part of the claim. [Miller, Chughtai, and Saunders (2024)](https://arxiv.org/abs/2407.08734) demonstrated that the IOI circuit's 87% recovery is under mean ablation with the Wang et al. prompt set; under resample ablation or with different prompt distributions, the number changes substantially.
-
-A finding where $R > 0.8$ and $M_{\text{full}}$ is itself large relative to the random baseline supports a strong computational claim. A finding where $R > 0.8$ but $M_{\text{full}} \approx M_{\text{random}}$ does not — the circuit is recovering a large fraction of a small signal.
-
-**What to report.** $M_{\text{circuit}}$, $M_{\text{full}}$, $R$, and the ablation method. If multiple ablation methods are used, report $R$ for each.
-
-### Robustness
+### Prompt generalization (E2)
 
 A circuit finding that holds on a single prompt template is a finding about that template.
 
@@ -178,7 +164,7 @@ Cross-checkpoint replication (does the circuit appear at multiple points in trai
 
 **What to report.** At least one held-out prompt distribution not used during discovery. Cross-checkpoint or cross-scale results reported if available.
 
-### Cross-architecture generalization
+### Cross-model generalization (E4)
 
 The strongest form of external validity asks whether the mechanism appears in a model with a different tokenizer, training corpus, and depth.
 
@@ -200,31 +186,30 @@ The absence of cross-architecture evidence does not invalidate a finding. It bou
 
 ## Verdicts
 
-- **Proposed → Causally suggestive:** Requires I1 (necessity) from the neuroscience lens. Pharmacology does not gate the first upgrade.
-- **Causally suggestive → Mechanistically supported:** Requires at minimum E4 (effect magnitude) — the absolute effect must be large enough that the computational story is coherent.
-- **Mechanistically supported → Triangulated:** Requires E2 (graded response) and E3 (selectivity). Without a dose-response curve, the claimed mechanism's strength cannot be characterized.
-- **Triangulated → Validated:** Requires E5 (robustness) and, ideally, E6 (cross-architecture generalization).
+- **Proposed → Causally suggestive:** contributes nothing. I1 (necessity) and M2 (baseline separation) are the entry requirements.
+- **Causally suggestive → Mechanistically supported:** contributes E1 (intervention reach) and I4 (specificity). Reproducing the result under a second intervention family is what the tier turns on, alongside I2.
+- **Mechanistically supported → Triangulated:** contributes E2 (prompt generalization) and E4 (cross-model generalization) — the tier's cross-distribution replication requirement.
+- **Triangulated → Validated:** contributes E5 (graded response), M4 (calibration) and, ideally, E6 (novel prediction) — a mechanism that predicts an untested dose-response shape.
 
 ## Protocol
 
 For a proposed circuit $C$ and behavior $B$:
 
 1. **Intervention reach.** Measure activation delta at $C$. Report separately from behavioral outcome.
-2. **Graded response.** Sweep at least five intervention strengths from below threshold to above plateau. Report $\alpha_{\text{thresh}}$, $\alpha_{\text{plat}}$, $\alpha_{\text{off}}$, and the therapeutic window.
-3. **Selectivity.** Compute $SI$ at $\alpha_{\text{thresh}}$ with at least one related-task comparison. Include random-component $SI$.
-4. **Effect magnitude.** Report $M_{\text{circuit}}$, $M_{\text{full}}$, and $R$. Name the ablation method.
-5. **Robustness.** Held-out prompt evaluation. Cross-checkpoint and cross-scale if available.
-6. **Cross-architecture generalization.** State matching criterion before testing. Report findings.
+2. **Graded response.** Sweep at least five intervention strengths from below threshold to above plateau. Report $\alpha_{\text{thresh}}$, $\alpha_{\text{plat}}$, $\alpha_{\text{off}}$, the therapeutic window, and $M_{\text{circuit}}$, $M_{\text{full}}$ and $R$ at each strength with the ablation method named.
+3. **Specificity.** Compute $SI$ at $\alpha_{\text{thresh}}$ with at least one related-task comparison. Include random-component $SI$.
+4. **Prompt generalization.** Held-out prompt evaluation. Cross-checkpoint and cross-scale if available.
+5. **Cross-model generalization.** State matching criterion before testing. Report findings.
 
 A skipped step must be named in the verdict.
 
 ## Case studies
 
-For full worked examples applying all five lenses (including external validity) to published claims:
+For full worked examples applying all eight lenses (including external validity) to published claims:
 
 - [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — method-conditional faithfulness; single-dose reporting
 - [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — cross-architecture generalization demonstrated
-- [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) — effect magnitude well-characterized
+- [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) — dose-response well-characterized
 - [Successor Heads](/mechanistic-validity/framework/examples/examples-successor-heads) — cross-domain generalization as convergent evidence
 - [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — unusually clean selectivity
 - [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — full dose-response in toy scope

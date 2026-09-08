@@ -34,7 +34,7 @@ Each criterion receives one of six statuses: **Confirmed**, **Partially confirme
 
 ## Internal validity (I1–I12) — Does the evidence support the causal claim?
 
-The twelve internal criteria fall into four blocks:
+The twelve internal criteria fall into five blocks:
 
 - **I1–I3**: Properties of the set as a whole (necessity, sufficiency, minimality)
 - **I4–I6**: Discrimination across tasks, rival circuits, and both (specificity, rival exclusion, [double dissociation](/mechanistic-validity/glossary/#double-dissociation))
@@ -66,7 +66,7 @@ I6 (double dissociation) caps every claim that reaches Mechanistically Supported
 | E1 | Intervention reach | Has the result been reproduced under at least two intervention families, and do they agree? | [intervention-reach](external/intervention-reach/) |
 | E2 | Prompt generalization | Does it work on diverse prompts? | [prompt-generalization](external/prompt-generalization/) |
 | E3 | Cross-task generalization | Does the mechanism transfer to related tasks? | [cross-task-generalization](external/cross-task-generalization/) |
-| E4 | Cross-model generalization | Does the mechanism appear in other models? | [cross-model-recurrence](external/cross-model-recurrence/) |
+| E4 | Cross-model generalization | Does the mechanism appear in other models? | [cross-model-generalization](external/cross-model-recurrence/) |
 | E5 | Graded response | Does partial [ablation](/mechanistic-validity/glossary/#ablation) produce partial effects? | [graded-response](external/graded-response/) |
 | E6 | Novel prediction | Does the mechanism predict new, untested behaviors? | [novel-prediction](external/novel-prediction/) |
 

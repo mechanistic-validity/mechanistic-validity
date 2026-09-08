@@ -4,6 +4,8 @@ validity_type: "External"
 criterion_id: "E4"
 ---
 
+> The framework paper's appendix scorecards call this criterion *cross-model recurrence*. It is the same criterion; this page keeps the name used in the criterion table, and the URL keeps the earlier slug so existing links resolve.
+
 # Criterion E4 — Cross-Model Generalization
 
 | | |
@@ -30,4 +32,4 @@ Knowledge neurons claims "can be easily generalized" to other models, but the st
 
 ## Connection to the chain
 
-Required for Validated tier. Without cross-model generalization, the mechanism may be an idiosyncrasy of one training run rather than a general computational strategy. Steel (2008): recurrence alone supports limited induction; stronger extrapolation requires evidence that the causally relevant process is preserved.
+Required for Triangulated where the claim asserts reach beyond the systems tested; where it does not, prompt generalization (E2) carries the gate instead. Without cross-model generalization, the mechanism may be an idiosyncrasy of one training run rather than a general computational strategy. Steel (2008): recurrence alone supports limited induction; stronger extrapolation requires evidence that the causally relevant process is preserved.

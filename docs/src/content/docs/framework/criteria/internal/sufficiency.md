@@ -38,7 +38,7 @@ Reference points (GPT-2 Small):
 
 ## What sufficiency does not establish
 
-Sufficiency does not establish specificity. A circuit that recovers 90% of the logit difference might also recover 85% on a completely unrelated task — a general-purpose structure. Task specificity (C3) must be tested separately.
+Sufficiency does not establish specificity. A circuit that recovers 90% of the logit difference might also recover 85% on a completely unrelated task — a general-purpose structure. Task specificity (I4) must be tested separately.
 
 ## Why sufficiency is required for mechanistic claims
 

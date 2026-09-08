@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Superposition"
-description: "The superposition hypothesis (Elhage et al. 2022) evaluated through all five validity lenses."
+description: "The superposition hypothesis (Elhage et al. 2022) evaluated through the five core lenses."
 ---
 
 # Case Study: Superposition
@@ -11,13 +11,16 @@ This is a *theoretical claim about the representational strategy* of neural netw
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C1/C2 | C3 (real models) | Strong (toy) |
+| Construct | C1 Falsifiability, C2 Structural plausibility, C3 Convergent validity, C5 Nomological validity (all confirmed) | C6 Complementation validity (untested) | Strong |
 | Internal | I1/I2 (toy) | I6 (double dissociation) | Mechanistically Supported |
-| External | E1–E2, E4–E5 (toy) | E4 Cross-model recurrence | Partial |
+| External | E5 Graded response, E6 Novel prediction (both confirmed) | E1, E2, E3, E4 (all partial) | Partial |
 | Measurement | M2/M3 (toy) | M6 (real) | Partial |
-| Interpretive | V2 Level-evidence match | V5 (community overstatement) | Partial |
+| Interpretive | V1, V2, V4, V5 (all confirmed) | V3 Alternative level (partial) | Strong |
 
 **Overall verdict: Mechanistically Supported.** The superposition hypothesis has strong structural and causal evidence in toy models — the theory is mathematically precise and empirically confirmed in that setting. The capping criterion is I6 (double dissociation): no study has performed a crossed design testing a second representational property that superposition spares while a matched control feature-packing scheme impairs.
 
@@ -47,11 +50,11 @@ The gap to real models remains the central open question. SAE success is consist
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Pass (in toy models).** The toy model weights are verified to encode features as nearly-orthogonal directions. The Johnson-Lindenstrauss lemma guarantees that this is geometrically possible. The structural evidence directly confirms the theoretical prediction — in the toy setting.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) N/A.** Superposition is a representational strategy, not a task-specific mechanism. It should appear whenever features outnumber dimensions and sparsity allows packing. This is a general theory, not a task-specific circuit.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Partial.** The measures are built to separate outcomes the planted data distinguishes in advance: a feature is unlearned, superposed, or given a dedicated dimension, and the norm of the embedding vector together with the projection of other features onto it decides which. The correlated-feature experiments add a second separation, between superposition and PCA, by driving the model from one to the other as sparsity falls. Discriminant validity for the wider claim rests on polysemanticity implying capacity pressure, which is not itself tested.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) N/A.** Not a circuit claim — minimality does not directly apply.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Partial.** The load-bearing parts are named and the smallest case is solved in closed form. The data assumptions are untested.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** In toy models, superposition is confirmed through multiple analyses (weight geometry, interference patterns, phase diagrams). In real models, superposition is *inferred* (SAE features outnumber neurons, polysemanticity exists) but not directly *confirmed* with the same precision as in toy models.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Confirmed.** Theory and experiment agree, and three outside groups replicated the result before publication. The toy-to-real gap is scored under E2 and E4, not here.
 
 ### Key Distinctions
 
@@ -84,17 +87,15 @@ Five nodes confirmed or consistent (in toy models), two unconnected at real-mode
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Pass (toy).** Stimulating along a feature direction (adding activation in that direction) produces the expected output — the model acts as if the feature is present. In toy models, this is a clean sufficiency result.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass (toy).** In the toy setting, ablating one feature direction selectively impairs that feature without catastrophically affecting others (because directions are nearly orthogonal). Some interference exists (crosstalk), but it is proportional to the geometric dot product — exactly as predicted.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not applicable.** There is one task and one loss, and the paper states that cross-superposition loss comparison fails, so there is no matched control task to be more specific than.
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass.** Superposition emerges consistently across toy model training runs. The phenomenon is robust to random seed, model size (within the overcomplete regime), and training details.
-
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Pass (toy).** In toy models, the mechanistic account is complete enough to rule out confounds — the geometry fully explains the interference patterns.
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) **Partial.** The generator is under complete control, so sparsity, importance, correlation and dimension are set independently rather than adjusted for after the fact, and the phase-change experiment is designed specifically to stop many features from moving at once. The confound that remains is optimization: the authors report that the m = 2 case is much harder for gradient descent than three dimensions and that the reported solutions are selected by loss, so which geometry appears depends on the optimizer.
 
 **For real models:** All criteria drop to "inferred but not demonstrated." Superposition is the *explanation* for why SAE features outnumber neurons, but direct confirmation (measuring the geometry of superposed features in GPT-2, verifying that interference matches predictions) is limited.
 
 ### Key Distinctions
 
-- **Single vs double dissociation:** Toy models achieve double dissociation — ablating feature A impairs task A but not task B, and vice versa. In real models, only single dissociations (SAE feature ablation degrades related inputs) have been shown.
+- **Single vs double dissociation:** No double dissociation is run, in toy models or real ones. Importance and sparsity are crossed, but on a single outcome, and no converse arm shows some property intact while superposition is removed. This is the criterion that caps the claim.
 - **Lesion vs stimulation:** Both lesion (projection out of feature direction) and stimulation (activation addition along feature direction) produce predicted effects in toy models — a strong converging pair. Real models have stimulation evidence (SAE steering) but weaker lesion evidence.
 - **Localization vs distributed:** The theory explicitly predicts distributed representation (features spread across dimensions via superposition). This is a case where "not localized" is the correct mechanistic claim, not a failure of localization.
 
@@ -106,7 +107,7 @@ Five nodes confirmed or consistent (in toy models), two unconnected at real-mode
 | Ablate direction B | Minimal (predicted crosstalk) | **↓↓ (confirmed, toy)** | Minimal (predicted crosstalk) |
 | Ablate direction C | Minimal (predicted crosstalk) | Minimal (predicted crosstalk) | **↓↓ (confirmed, toy)** |
 
-In toy models: full matrix filled with clean double dissociation plus predicted small off-diagonal crosstalk. In real models: no equivalent matrix constructed — only single dissociations via SAE feature ablation have been demonstrated.
+The diagonal is filled by construction — ablating a feature direction removes that feature — and the off-diagonal cells are predicted crosstalk rather than measured converse arms. No experiment shows a property intact while superposition is removed, which is why I6 caps the claim.
 
 ---
 
@@ -116,17 +117,13 @@ In toy models: full matrix filled with clean double dissociation plus predicted 
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Pass (toy).** Feature directions can be stimulated and the effect propagates to outputs. In real models, SAE feature steering is the analog — and it works sometimes.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) **Partial.** Interventions reach four different parts of the setup: the architecture, the data, L1 regularization on the hidden activations, and adversarial training. The last two are aimed at removing superposition and both do, with the cost reported rather than buried — including the admission that attacks had to reach 80% of the input L2 norm to eliminate it. Every intervention is on a toy model, which bounds the reach.
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Pass (toy).** Stimulation magnitude produces graded effects in toy models.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Pass (toy) with predicted crosstalk.** Intervention along one direction slightly activates correlated features — exactly as the interference theory predicts.
+**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) **Partial.** The input distribution is varied along each axis the theory identifies, and the sweeps are wide. What does not vary is the family: synthetic vectors that are zero with a set probability and uniform otherwise, with the authors calling the uniform choice arbitrary. No natural-data distribution appears anywhere, and Open Questions asks whether the importance and sparsity curves of real models can be estimated at all.
 
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) Strong (toy).** Features account for all model behavior in toy settings.
-
-**[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Pass (toy).** Consistent across the input distribution.
-
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) The critical gap.** The theory is demonstrated in toy ReLU networks. Whether it applies to transformers, to models with attention, to models trained on natural language — this is the entire question. The theory *predicts* it should, but direct confirmation is limited to indirect evidence (SAE success implies superposition exists).
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) The critical gap.** The theory is demonstrated in toy ReLU networks. Whether it applies to transformers, to models with attention, to models trained on natural language — this is the entire question. The theory *predicts* it should, but direct confirmation is limited to indirect evidence (SAE success implies superposition exists).
 
 ### Key Distinctions
 
@@ -155,17 +152,15 @@ The toy-model curve is complete and quantitatively predicted by theory. The real
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Pass (toy).** Measurements are deterministic and replicable.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Partial.** Repetition happens and the rule is stated each time, which separates this from an unreported single fit. The rule is selection in two of three cases: the phase diagram averages ten models per point after discarding the worst, the m = 2 geometries are the lowest-loss of several fits, and the neuron-level figures are the best of a thousand. No standard deviation, interval or spread across the repeated fits accompanies any of them.
 
-**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Pass (toy).** The phenomenon is invariant across model sizes (in the overcomplete regime).
+**[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) **Partial.** The phenomenon survives changes of scale and data structure: results are qualitatively similar as features and hidden dimensions grow, and the number of input features stops mattering once it exceeds the hidden dimension. Held fixed are the activation function, the importance-weighted squared-error loss and the optimizer. The one report of varying the activation function comes from an external replicator and finds the phase diagrams differ.
 
 **[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Pass.** Superposition is clearly distinguishable from non-superposition (dedicated-neuron regime). The phase transition between regimes is sharp.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Pass (toy).** The geometric measurements (cosine similarity between feature directions) precisely quantify the degree of superposition.
 
-**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Pass (toy).** Predicted interference matches measured interference quantitatively.
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** In toy models, coverage is complete. In real models, we measure indirect indicators (SAE feature count > neuron count) rather than directly measuring the geometric structure of superposition.
+**[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) **Partial.** Both measures come with an interpretation attached rather than a threshold chosen after the fact: the embedding norm says whether a feature is represented, and the summed projection of other features onto its direction has a stated meaning at 1. Feature dimensionality is anchored by summing to the number of hidden dimensions, which makes it a capacity accounting. Nothing is tied to a quantity outside the toy model.
 
 ### Key Distinctions
 
@@ -195,9 +190,7 @@ Within the toy domain: strong convergent validity — multiple methods agree on 
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Pass.** Representational evidence (geometric analysis) supports a representational claim. Match is direct.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Strong.** The story (features > dimensions → exploit sparsity → pack into nearly-orthogonal directions → accept crosstalk proportional to co-occurrence) is mathematically precise, mechanistically clear, and empirically confirmed in toy settings.
-
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Pass (toy).** In toy models, the geometric account is the only explanation for the observed weight structure. In real models, alternatives exist (polysemanticity could arise from other causes, SAE dictionaries could be overcomplete artifacts).
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Partial.** PCA is examined and closed as a limiting case. The optimization alternative is raised and left open: the $m = 2$ case is reported as hard for gradient descent, its solutions are selected by loss, and an invited comment in the same article shows the global minimum can have a smaller basin of attraction than nearby local minima.
 
 **[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Mostly honest.** The paper is clear that toy models are the primary evidence. The jump to real models is framed as a hypothesis, not a conclusion. Subsequent work (SAE papers) sometimes treats superposition as established in real models, which overstates the evidence.
 

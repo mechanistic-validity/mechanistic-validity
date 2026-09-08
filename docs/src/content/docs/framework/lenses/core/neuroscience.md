@@ -7,7 +7,7 @@ description: "The internal validity lens: does the evidence establish implementa
 
 This lens asks one question: **does the component implement the computation, or just participate in it?**
 
-Activating during a task, or even contributing causally to a task, is not enough. A bottleneck component is causally necessary for every computation that routes through it, but it does not implement any of them in particular. Systems neuroscience developed a checklist — necessity, sufficiency, specificity, consistency, confound control — to draw exactly this distinction. The same checklist applies to circuits in neural networks without modification.
+Activating during a task, or even contributing causally to a task, is not enough. A bottleneck component is causally necessary for every computation that routes through it, but it does not implement any of them in particular. Systems neuroscience developed a checklist — necessity, sufficiency, specificity, double dissociation, confound control — to draw exactly this distinction. The same checklist applies to circuits in neural networks without modification.
 
 The metrics of MI — ablation, activation patching, path patching, steering — are direct analogs of the neuroscience techniques. What MI sometimes lacks is the interpretive framework that makes the results meaningful. An ablation study that reports only necessity, without specificity controls, establishes less than it appears to.
 
@@ -25,7 +25,7 @@ For the full metrics and protocols reference, see [Neuroscience -- Metrics & Pro
 
 Shallice (1988) formalized the logic of dissociation in neuropsychology. A single dissociation — lesioning component A impairs function X — establishes that A contributes to X. But it does not establish specificity, because A might contribute to everything. A double dissociation — lesioning A impairs X but not Y, and lesioning B impairs Y but not X — establishes that A and B are functionally distinct and that neither is simply a general-purpose bottleneck.
 
-In MI: most circuit evaluations perform single dissociations. We ablate the IOI circuit and show that IOI performance drops. But we rarely test the converse — does ablating a different circuit (e.g., the Greater-Than circuit) leave IOI performance intact? Without the second leg of the dissociation, we cannot distinguish "this circuit implements IOI" from "this circuit is a general-purpose component that many tasks route through." Double dissociation is the test for specificity (I3) that the field most consistently skips.
+In MI: most circuit evaluations perform single dissociations. We ablate the IOI circuit and show that IOI performance drops. But we rarely test the converse — does ablating a different circuit (e.g., the Greater-Than circuit) leave IOI performance intact? Without the second leg of the dissociation, we cannot distinguish "this circuit implements IOI" from "this circuit is a general-purpose component that many tasks route through." Double dissociation (I6) is the specificity test the field most consistently skips.
 
 ### Lesion vs stimulation
 
@@ -94,11 +94,11 @@ For formal definitions, quantitative thresholds, and calibration data, see [Inte
 |---|---|---|---|
 | I1 | Necessity | Does removing the component degrade the behavior? | [I1](/mechanistic-validity/framework/criteria/internal/necessity) |
 | I2 | Sufficiency | Does restoring or isolating the component reproduce the behavior? | [I2](/mechanistic-validity/framework/criteria/internal/sufficiency) |
-| I3 | Specificity | Is the effect selective for the claimed function, not generic disruption? | [I3](/mechanistic-validity/framework/criteria/internal/specificity) |
-| I4 | Consistency | Does the effect replicate across prompts, seeds, and checkpoints? | [I4](/mechanistic-validity/framework/criteria/measurement/reliability) |
-| I5 | Confound control | Is the effect not explained by collateral disruption to non-circuit components? | [I5](/mechanistic-validity/framework/criteria/internal/confound-control) |
+| I4 | Specificity | Is the effect selective for the claimed function, not generic disruption? | [I4](/mechanistic-validity/framework/criteria/internal/specificity) |
+| I6 | Double dissociation | Do two interventions cross, each breaking what the other spares? | [I6](/mechanistic-validity/framework/criteria/internal/double-dissociation) |
+| I7 | Confound control | Is the effect not explained by collateral disruption to non-circuit components? | [I7](/mechanistic-validity/framework/criteria/internal/confound-control) |
 
-Necessity (I1) is the easiest to demonstrate and the easiest to overclaim. Sufficiency (I2) is the strongest and the most underreported. Specificity (I3) is what separates a circuit finding from a bottleneck finding.
+Necessity (I1) is the easiest to demonstrate and the easiest to overclaim. Sufficiency (I2) is the strongest and the most underreported. Specificity (I4) is what separates a circuit finding from a bottleneck finding. Cross-prompt, cross-seed and cross-checkpoint replication are not criteria of this lens: they belong to measurement theory, as M1 (reliability) and M3 (stability).
 
 ### Necessity
 
@@ -201,19 +201,19 @@ $$\Delta F = F(C, T) - F_{\text{rand}}(k, T)$$
 
 **Minimum reporting.** Random-component baseline for every reported score. At least one collateral-damage measurement. If a double dissociation is claimed, both ablation directions reported.
 
-### Consistency
+### Double dissociation
 
-The effect should replicate across contexts.
+Two interventions should cross, each breaking what the other spares.
 
-Consistency converts a result from a property of a specific prompt family, random seed, or checkpoint into a property of the model. An inconsistent result is not necessarily false — it is a claim of narrower scope than the original report suggests.
+A single dissociation — ablate circuit $C$, task $A$ degrades and task $B$ does not — is consistent with $C$ being a general bottleneck that task $A$ happens to load more heavily. The crossed design closes that reading: ablate a second circuit $C'$ and show that task $B$ degrades while task $A$ survives. Only then is the pairing of circuit to task established rather than assumed.
 
-Consistency operates along several axes: cross-prompt replication (new templates and paraphrases), cross-checkpoint (different points in training), cross-seed (independently trained models), and cross-model (different families). Each axis provides different evidential value, and each requires its own matching criterion.
+The design requires four cells, and the converse arm is the one the field omits. Reporting the diagonal alone — $C$ breaks $A$, $C'$ breaks $B$ — without the off-diagonal measurements leaves the bottleneck reading untouched.
 
-We recommend reporting consistency with bootstrap confidence intervals on the principal behavioral metric. For a circuit $C$ evaluated on $n$ prompts with metric values $m_1, \ldots, m_n$, the bootstrap 95% confidence interval is computed by resampling with replacement $B$ times (typically $B = 10{,}000$) and taking the 2.5th and 97.5th percentiles of the resampled means.
+Double dissociation is Untested in fourteen of the sixteen audited claims and Inconclusive in one. It caps every claim that reaches Mechanistically Supported, which makes it the single most consequential gap in the field's evidence base.
 
-**Failure modes.** *One-distribution science* — the discovery prompts are reused for evaluation. *Single-seed generalization* — a result from one trained model is presented as a property of the architecture. *Loose cross-model matching* — qualitative resemblance without a quantitative criterion for what counts as "the same circuit."
+**Failure modes.** *Diagonal-only reporting* — the two ablations are run, the two spared cells are not measured. *Asymmetric task difficulty* — task $B$ is easy enough that nothing degrades it, so the spared cell is uninformative. *Overlapping circuits* — $C$ and $C'$ share components, so neither ablation is clean.
 
-**Minimum reporting.** At least two of: cross-prompt, cross-checkpoint, cross-seed replication. Bootstrap 95% confidence intervals on the principal metric.
+**Minimum reporting.** All four cells of the crossed design with the same metric and the same ablation method. The component overlap between $C$ and $C'$. If only the diagonal was run, say so.
 
 ### Confound control
 
@@ -234,16 +234,17 @@ The strongest confound control is multi-method comparison: if the same circuit s
 | Necessity alone | Causal contribution | "Causally implicated" |
 | Sufficiency alone | A capable route exists | "A sufficient route, not shown necessary" |
 | Necessity + sufficiency, no specificity | General-purpose mechanism | "Real mechanism, not shown task-specific" |
-| Necessity + specificity, no consistency | Prompt-family-specific mechanism | "Task-specific on the tested distribution" |
+| Necessity + specificity, no double dissociation | Prompt-family-specific mechanism | "Task-specific on the tested distribution" |
 | All five criteria met | Strong implementation claim | "Implements [function] robustly" |
 
 ## Verdicts
 
 Internal validity is the workhorse of the [verdict system](/mechanistic-validity/framework/verdicts/):
 
-- **Proposed → Causally suggestive:** Requires I1 (necessity). A single ablation result with a random-component baseline.
-- **Causally suggestive → Mechanistically supported:** Requires I1 + I2 (necessity + sufficiency). The circuit must not only be necessary but capable of driving the behavior.
-- **Mechanistically supported → Triangulated:** Requires I1–I5 complete, plus at least one criterion from another validity type.
+- **Proposed → Causally suggestive:** contributes I1 (necessity). The tier also requires M2 (baseline separation), which the measurement-theory lens supplies.
+- **Causally suggestive → Mechanistically supported:** contributes I2 (sufficiency) and I4 (specificity). The tier also requires E1 (intervention reach).
+- **Mechanistically supported → Triangulated:** contributes I6 (double dissociation) and I7 (confound control), alongside C3, C4, I5 and cross-distribution replication from other lenses.
+- **Triangulated → Validated:** contributes nothing further; the remaining internal criteria at that tier are I3, I8 and I10–I12.
 
 Most published MI papers reach Causally suggestive. The gap between Causally suggestive and Mechanistically supported — sufficiency — is where most claims stall.
 
@@ -257,7 +258,7 @@ For a proposed circuit $C$ and behavior $B$, the following protocol operationali
 
 3. **Specificity.** Provide a random-component baseline for every reported score. Measure collateral damage on at least one unrelated task. If a double dissociation is claimed, report both ablation directions.
 
-4. **Consistency.** Replicate across at least two of: prompt templates, training checkpoints, random seeds. Report bootstrap 95% confidence intervals on the principal metric.
+4. **Double dissociation.** Ablate a second circuit and test both tasks. Report all four cells of the crossed design, or state that the crossed design was not attempted.
 
 5. **Confound control.** Apply at least two ablation methods with different distributional assumptions. If only one method is feasible, report a distributional integrity check.
 
@@ -265,12 +266,12 @@ Partial evidence is informative; unreported gaps are not.
 
 ## Case studies
 
-For full worked examples applying all five lenses (including internal validity) to published claims:
+For full worked examples applying all eight lenses (including internal validity) to published claims:
 
-- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — strong I1/I2, weak I3/I5; method-conditional results
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — strong I1/I2, weak I4/I7; method-conditional results
 - [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — reaches Mechanistically supported; path-level sufficiency
 - [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — necessity/sufficiency sometimes; bulk untested
-- [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — unusually clean specificity (I3)
+- [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — unusually clean specificity (I4)
 - [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — all five criteria pass (toy model)
-- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — strong I1/I2, weak I3/I5
-- [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) — measurement without intervention; I1–I3 all untested
+- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — strong I1/I2, weak I4/I7
+- [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) — measurement without intervention; I1, I2 and I4 all untested

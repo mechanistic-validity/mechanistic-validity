@@ -1,10 +1,10 @@
 ---
 title: "Graded Response"
 validity_type: "External"
-criterion_id: "E2"
+criterion_id: "E5"
 ---
 
-# Criterion E2 — Graded Response
+# Criterion E5 — Graded Response
 
 | | |
 |---|---|

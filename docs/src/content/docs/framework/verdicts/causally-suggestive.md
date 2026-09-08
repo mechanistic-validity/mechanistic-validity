@@ -9,9 +9,9 @@ description: "There is causal evidence that the claimed mechanism is involved in
 |---|---|
 | Tier | 2 of 5 (progressive) |
 | What it means | Necessity established — removing the mechanism changes behavior — but sufficiency and specificity remain open |
-| Minimum evidence | I1 (necessity) + E4 (effect magnitude) + V1 (level declaration) |
-| Upgrade to Mechanistically supported | Sufficiency (I2) + Specificity (I3) + Consistency (I4) + Measurement reliability (M1) |
-| Downgrade to Proposed | If the causal effect is shown to be an artifact of the ablation method or indistinguishable from random controls |
+| Requires | Internal: I1 (necessity). Measurement: M2 (baseline separation) |
+| Upgrade to Mechanistically supported | I2 (sufficiency) + I4 (specificity) + E1 (intervention reach) |
+| Downgrade to Proposed | If the causal effect is an artifact of the ablation method, or if M2 fails and the score is indistinguishable from random or untrained baselines |
 
 ## What this tier establishes
 
@@ -25,8 +25,8 @@ This is where the majority of published mechanistic interpretability findings cu
 
 > **Verdict:** Causally suggestive — `[implementational-topographic]`
 > **Claim:** The IOI circuit (26 heads across layers 0-11) is necessary for indirect object identification in GPT-2 Small.
-> **Met:** I1 (mean ablation of circuit heads reduces logit diff by 0.73, vs. 0.12 for size-matched random set), E4 (absolute effect = 2.1 logits), V1 (claim stated at head level)
-> **Open:** I2 (sufficiency under resample ablation), I3 (specificity vs. general language tasks), C5 (multi-method convergence)
+> **Met:** I1 (mean ablation of circuit heads reduces logit diff by 0.73), M2 (0.73 against 0.12 for a size-matched random set), V1 (claim stated at head level)
+> **Open:** I2 (sufficiency under resample ablation), I4 (specificity vs. general language tasks), C3 (convergent validity across methods), E5 (graded response under partial ablation)
 > **Scope:** GPT-2 Small, IOI task, ABBA template distribution
 
 ## Minimum reporting for this tier
@@ -41,7 +41,7 @@ This is where the majority of published mechanistic interpretability findings cu
 
 | Direction | What's required |
 |---|---|
-| → Mechanistically supported | Sufficiency (I2): circuit alone recovers target behavior. Specificity (I3): selectivity index SI > 10 or meaningful task separation. Consistency (I4): replication across templates/methods/seeds. Reliability (M1): bootstrap $\rho_{XX'} \geq 0.7$ |
+| → Mechanistically supported | Sufficiency (I2): circuit alone recovers target behavior. Specificity (I4): intervening on the circuit affects this task more than matched control tasks. Intervention reach (E1): the result reproduced under at least two intervention families, which agree |
 | → Proposed (downgrade) | The causal effect disappears under a more appropriate ablation method (e.g., mean → resample), or the random-component control produces equal effect |
 | → Underdetermined | Multiple non-overlapping circuits produce equivalent necessity effects and cannot be distinguished |
 

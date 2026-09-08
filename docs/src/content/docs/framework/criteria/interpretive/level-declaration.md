@@ -18,27 +18,29 @@ criterion_id: "V1"
 
 Level declaration is the simplest interpretive criterion: before any claim can be evaluated for interpretive validity, it must declare what level of description it is making. Without a declared level, there is no standard against which to measure evidence–claim fit.
 
-The five description mode tags (from [../taxonomy/](../taxonomy/)):
+The seven [description modes](/mechanistic-validity/framework/description-modes/):
 
-| Tag | Meaning | Minimum validity requirements |
+| Mode | Meaning | Minimum validity requirements |
 |---|---|---|
-| `[functional]` | Describes input-output behavior without mechanism | None beyond behavioral evidence |
-| `[representational]` | Claims a variable is encoded at a component | Baseline-separated [IIA](/mechanistic-validity/glossary/#iia) or equivalent |
-| `[causal-mechanistic]` | Claims a component causally implements a computation | Necessity + sufficiency established |
-| `[structural-mechanistic]` | Claims a component's weights implement a computation | Structural plausibility + causal support |
-| `[transportable]` | Claims the mechanism generalizes across contexts | At least one robustness result |
+| [`[computational]`](/mechanistic-validity/framework/modes/computational) | States what problem the system solves, without mechanism | Behavioral evidence on a stated distribution |
+| [`[algorithmic]`](/mechanistic-validity/framework/modes/algorithmic) | Names the steps and their order | Causal evidence for each step and for the ordering |
+| [`[representational]`](/mechanistic-validity/framework/modes/representational) | Claims a variable is encoded at a component | Baseline-separated [IIA](/mechanistic-validity/glossary/#iia) or equivalent |
+| [`[implementational-topographic]`](/mechanistic-validity/framework/modes/implementational-topographic) | Locates the computation in named components | Necessity, with a matched-set control |
+| [`[implementational-connectomic]`](/mechanistic-validity/framework/modes/implementational-connectomic) | Claims a specific edge structure between components | Edge-level causal evidence, not node-level |
+| [`[implementational-functional]`](/mechanistic-validity/framework/modes/implementational-functional) | Claims a component's weights implement the computation | Structural plausibility plus causal support |
+| [`[implementational-activation]`](/mechanistic-validity/framework/modes/implementational-activation) | Claims a specific activation geometry carries the computation | Geometry measured and separated from a baseline |
 
-A verdict without one of these tags is not a verdict — it is a measurement with a story attached.
+A verdict without a declared mode is not a verdict — it is a measurement with a story attached.
 
 ## Why this is required
 
-The most common interpretive failure in MI is implicit level inflation: a paper establishes `[representational]` evidence (high IIA) and implicitly claims `[causal-mechanistic]` status without the additional evidence that requires. Level declaration forces the implicit claim to be explicit, where it can be evaluated.
+The most common interpretive failure in MI is implicit level inflation: a paper establishes `[representational]` evidence (high IIA) and implicitly claims an `[algorithmic]` account without the additional evidence that requires. Level declaration forces the implicit claim to be explicit, where it can be evaluated.
 
 ## Minimum reporting rule
 
-Every verdict must contain one of the five tags verbatim, followed immediately by the scope restriction:
+Every verdict must name one of the seven modes, followed immediately by the scope restriction:
 
-> "**Verdict:** `[causal-mechanistic]` for L8.MLP as a primary SVA locus in GPT-2 Small on the Linzen et al. prompt distribution. Not yet `[transportable]` — cross-architecture generalization has not been established."
+> "**Verdict:** `[implementational-topographic]` for L8.MLP as a primary SVA locus in GPT-2 Small on the Linzen et al. prompt distribution. No `[algorithmic]` claim is made — the operation L8.MLP performs is not established."
 
 ## Relation to other interpretive criteria
 

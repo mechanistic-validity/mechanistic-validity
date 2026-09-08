@@ -71,11 +71,11 @@ The key distinction from topographic: a topographic claim is invariant to permut
 
 ## Metrics that provide connectomic-level evidence
 
-- **A02 (Path patching)** — direct causal evidence of edge-level effects
-- **B02 (OV/QK composition)** — weight-space evidence for compositional wiring
-- **B08 (Edge Jaccard)** — agreement between methods on the edge set
+- **A06 (Mediation)** — natural direct and indirect effects, the edge-level estimand path patching targets
+- **B03 (OV/QK Decomp.)** — weight-space evidence for compositional wiring
+- **F13 (Cross-Metric Convergence)** — agreement between independent methods on the edge set
 - **A13 (PC algorithm)** — observational causal discovery of the graph structure
-- **C01 (Transfer entropy)** — directional information flow between components
+- **C03 (Transfer Entropy)** — directional information flow between components
 
 ## Key references
 

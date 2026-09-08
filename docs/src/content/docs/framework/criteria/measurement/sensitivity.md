@@ -1,10 +1,10 @@
 ---
 title: "Sensitivity"
 validity_type: "Measurement"
-criterion_id: "M4"
+criterion_id: "M5"
 ---
 
-# Criterion M4 — Sensitivity
+# Criterion M5 — Sensitivity
 
 | | |
 |---|---|

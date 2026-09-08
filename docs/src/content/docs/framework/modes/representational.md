@@ -82,11 +82,11 @@ Why this fails: No geometric form is specified (linear? subspace? distributed?).
 
 ## Metrics that provide representational-level evidence
 
-- **E01 (PCA dimensionality)** — geometry of activation subspaces per layer
+- **E06 (PCA Dim.)** — geometry of activation subspaces per layer
 - **E03 (RSA)** — whether neural similarity structure matches task-variable structure
-- **E05 (Intrinsic dimension)** — manifold complexity of representations
-- **E10 (Subspace alignment)** — whether circuit heads share representational geometry
-- **A03 (Interchange intervention)** — causal relevance of specific directions
+- **E07 (Intrinsic Dim.)** — manifold complexity of representations
+- **E05 (Subspace Align.)** — whether circuit heads share representational geometry
+- **A02 (Counterfactual DAS)** — causal relevance of specific directions
 
 ## Key references
 

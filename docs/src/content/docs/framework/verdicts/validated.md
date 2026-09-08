@@ -9,7 +9,7 @@ description: "The mechanism is fully characterized within a stated scope — all
 |---|---|
 | Tier | 5 of 5 (progressive) |
 | What it means | Complete mechanistic account within stated scope — every component characterized, quantitative predictions confirmed |
-| Minimum evidence | All five validity types pass + component-level function ($I_{\text{fun}}$) + novel quantitative prediction confirmed + scope boundary tested + coverage $\kappa > 0.9$ |
+| Requires | Construct: C5 (nomological), C6 (complementation). Measurement: M1--M6 explicitly addressed. Internal: I3 (minimality), I10 (rescue reversibility), I11--I12 (onset and offset coupling). External: E2--E6. Interpretive: V1--V5 audited. Plus everything Triangulated requires |
 | Upgrade | N/A (highest progressive tier) |
 | Downgrade to Triangulated | If completeness fails (uncharacterized components discovered) or a quantitative prediction is refuted |
 
@@ -47,8 +47,12 @@ Why so few claims reach this tier: Validated requires *completeness*, not just *
 
 ## Characteristic occupants
 
-- **Grokking / modular addition** ([Nanda et al., 2023](https://arxiv.org/abs/2301.05217)) — a toy transformer where every weight matrix is explained by the Fourier algorithm, quantitative predictions about periodicity are confirmed, and the scope (one-layer model, single arithmetic task) is explicit
-- **Superposition in toy models** ([Elhage et al., 2022](https://arxiv.org/abs/2209.10652)) — validated as a mathematical framework within toy models with known feature statistics and controlled geometry
+None. No claim in the sixteen audited reaches this tier, and the two that come closest fall short in the same place.
+
+- **Grokking / modular addition** ([Nanda et al., 2023](https://arxiv.org/abs/2301.05217)) reaches **Mechanistically Supported**. Every weight matrix is explained by the Fourier algorithm, quantitative predictions about periodicity are confirmed, and the scope is explicit — and double dissociation (I6) is untested: no second mechanism is shown intact under an ablation that breaks the Fourier circuit.
+- **Superposition in toy models** ([Elhage et al., 2022](https://arxiv.org/abs/2209.10652)) reaches **Mechanistically Supported**, capped by I6 for the same reason: importance and sparsity are crossed, but on one outcome, with no converse arm.
+
+That the tier is empty is a statement about the field's current evidence base, not about the ceiling being unreachable. Both claims above are two experiments away from it.
 
 ## Why "within scope"
 

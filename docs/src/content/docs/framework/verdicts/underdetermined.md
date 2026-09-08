@@ -7,11 +7,11 @@ description: "The evidence is consistent with multiple mechanistic accounts and 
 
 | | |
 |---|---|
-| Tier | Lateral (outside progression) |
+| Label | Diagnostic (replaces the tier) |
 | What it means | Multiple mechanistic accounts are consistent with all available evidence — the data does not distinguish between them |
 | When to assign | Two or more hypotheses have comparable evidential support and no available experiment has been performed to separate them |
 | Resolution path | Identify the discriminating experiment and perform it — the claim then moves to the appropriate progressive tier |
-| Relationship to progressive tiers | A claim at any progressive tier can additionally be flagged as Underdetermined if competing accounts exist at that tier |
+| Relationship to progressive tiers | Underdetermined replaces the tier -- a claim carrying it does not also hold a position in the hierarchy. Where one reading of a claim is Underdetermined, other readings are scored separately and may reach a tier |
 
 ## What this verdict establishes
 
@@ -30,13 +30,13 @@ Formally, let $H_1, H_2, \ldots, H_n$ be competing mechanistic hypotheses for be
 > **Discriminating experiment:** Test on prompts where variable names are reordered relative to argument positions — the two accounts predict different outputs.
 > **Scope:** GPT-2 Small, Python docstring completion, Heimersheim & Janiak prompt distribution
 
-## Minimum reporting for this tier
+## Minimum reporting for this label
 
 - All competing hypotheses stated explicitly with their predictions
 - Evidence that supports each hypothesis listed
 - Explanation of why the available evidence does not discriminate
 - At least one discriminating experiment identified (what would the competing accounts predict differently?)
-- Current progressive tier of the evidence (Underdetermined is overlaid on a progressive tier)
+- The evidence in hand, and which rival specifications it is consistent with
 
 ## Resolution paths
 
@@ -52,9 +52,9 @@ Formally, let $H_1, H_2, \ldots, H_n$ be competing mechanistic hypotheses for be
 - **IOI S-inhibition heads** — inhibition vs. attention-sink accounts both predict the observed attention patterns; targeted intervention on sink tokens would discriminate
 - **Superposition vs. polysemanticity** in real (non-toy) models — whether observed feature interference is superposition (geometric packing) or polysemanticity (intrinsic multi-functionality) remains underdetermined in many cases
 
-## Why this is lateral, not lower
+## Why this replaces the tier rather than lowering it
 
-Underdetermined does not mean "bad evidence." A claim can have strong causal evidence (Tier 2 or 3 level) while simultaneously being underdetermined between competing accounts. The progressive tier captures evidential strength; the Underdetermined flag captures interpretive ambiguity. Both dimensions matter.
+Underdetermined does not mean "bad evidence." A claim can rest on strong causal evidence and still be underdetermined between competing accounts, because the tiers measure how well confirmed a claim is and not whether it is the best confirmed among the available accounts of its phenomenon. Underdetermined records the second question, and a claim that fails it is not assigned a rung.
 
 ## Key references
 

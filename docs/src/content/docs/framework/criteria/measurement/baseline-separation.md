@@ -1,10 +1,10 @@
 ---
 title: "Baseline Separation"
 validity_type: "Measurement"
-criterion_id: "M3"
+criterion_id: "M2"
 ---
 
-# Criterion M3 — Baseline Separation
+# Criterion M2 — Baseline Separation
 
 | | |
 |---|---|
@@ -51,6 +51,6 @@ Every IIA result must report:
 1. The IIA score for the claimed subspace.
 2. The random-vector baseline.
 3. The untrained-model baseline.
-4. The published SOTA baseline (for calibration, M5).
+4. The published SOTA baseline (for calibration, M4).
 
 A paper reporting only the absolute IIA score fails this criterion unconditionally.

@@ -23,7 +23,7 @@ For the full metrics and protocols reference, see [Measurement Theory -- Metrics
 
 A measurement can be perfectly reliable (same result every time) and completely invalid (measuring the wrong thing). A probe that consistently returns 0.85 accuracy on a representation does not mean the representation encodes the claimed variable — it means the probe consistently extracts *something*. Reliability is necessary for validity but does not establish it.
 
-In MI: bootstrap stability (F01) tells us our IIA score is reproducible. It does not tell us the score reflects the circuit's representation rather than the metric's capacity to fit noise. A reliable metric pointed at the wrong target produces confident wrong answers. This is why baseline separation (M3) exists as a separate criterion — it tests whether the metric would produce similar scores on a model with no learned structure.
+In MI: bootstrap stability (F02) tells us our IIA score is reproducible. It does not tell us the score reflects the circuit's representation rather than the metric's capacity to fit noise. A reliable metric pointed at the wrong target produces confident wrong answers. This is why baseline separation (M2) exists as a separate criterion — it tests whether the metric would produce similar scores on a model with no learned structure.
 
 ### Sensitivity vs specificity
 
@@ -110,7 +110,7 @@ Generalizability theory, developed by Cronbach and colleagues in 1972, extends c
 
 ## The criteria
 
-### Reliability
+### Reliability (M1)
 
 A metric whose output changes substantially under irrelevant perturbations cannot support any validity claim. If we resample prompts from the same distribution and the IIA score swings from 0.41 to 0.58, the score is a property of the specific prompt set, not of the circuit.
 
@@ -136,7 +136,7 @@ Suppose we draw 200 bootstrap samples of size 100 from the evaluation set and co
 A reliability check also reveals whether different prompt templates agree. If IOI faithfulness is 0.87 on the original template ("When Mary and John went to the store, John gave a drink to") but 0.61 on a paraphrased template, the score is template-specific and the reliability across templates is low. This is separate from the bootstrap CI, which only captures within-template prompt-sampling variance.
 </details>
 
-### Invariance
+### Invariance (M6)
 
 A metric should give comparable results across model sizes and families. If IIA is 0.78 on GPT-2 Small and 0.31 on Pythia-160M, the difference could mean two things: the mechanism is weaker in Pythia, or the metric is measuring something different in the two models. Invariance testing distinguishes these cases.
 
@@ -146,13 +146,13 @@ In practice, full measurement invariance testing is a substantial undertaking fo
 
 **What to report.** At least two model sizes or families. The untrained-model baseline for each. Any observed differences characterized as potentially reflecting different mechanism strengths, different baseline levels, or potential metric non-invariance.
 
-### Baseline separation
+### Baseline separation (M2)
 
 Delta over a random-vector baseline and an untrained-model baseline should be substantially above zero.
 
 This is the criterion whose absence most often produces false findings in current MI practice.
 
-[Sutter et al. (NeurIPS 2025)](https://arxiv.org/abs/2501.07615) formally proved that unconstrained nonlinear IIA achieves near-perfect scores on random-initialization models. The alignment map has enough degrees of freedom to find a transformation that maps the source activations onto the target variable, regardless of whether the model's representation encodes that variable. The IIA score is a real measurement — it is a correct description of the alignment map's behavior. But without a baseline, it is not a measurement of the circuit's representation.
+[Sutter et al. (NeurIPS 2025)](https://arxiv.org/abs/2507.08802) formally proved that unconstrained nonlinear IIA achieves near-perfect scores on random-initialization models. The alignment map has enough degrees of freedom to find a transformation that maps the source activations onto the target variable, regardless of whether the model's representation encodes that variable. The IIA score is a real measurement — it is a correct description of the alignment map's behavior. But without a baseline, it is not a measurement of the circuit's representation.
 
 The minimum report for any IIA-based finding is three numbers: the score itself ($S_{\text{circuit}}$), the random-vector baseline ($S_{\text{random}}$), and the untrained-model baseline ($S_{\text{untrained}}$). The interpretable findings are:
 
@@ -173,7 +173,7 @@ The deltas are $\Delta_{\text{random}} = 0.48 - 0.38 = 0.10$ and $\Delta_{\text{
 This is a real but modest signal. Whether it is a publishable finding depends on (a) whether the delta is stable across bootstrap resamples — if the CI on $\Delta_{\text{random}}$ is $[0.02, 0.18]$, the signal is real but noisy — and (b) whether the method has fewer parameters than DAS (which achieves 0.86–0.95), which would make a 0.10 delta at lower parameter cost an interesting result. Without the baselines, none of this analysis is possible.
 </details>
 
-### Sensitivity
+### Sensitivity (M5)
 
 A circuit with 12 components in a model with thousands of heads and neurons is a low-prevalence signal. In low-prevalence settings, AUROC can be misleadingly high while precision is poor — the metric ranks circuit members above most non-members, but when it calls something a member, it is wrong most of the time.
 
@@ -189,7 +189,7 @@ For circuit detection specifically, AUPRC (area under the precision-recall curve
 
 ![Signal Detection Framework — two-panel d-prime comparison showing standard vs high random baseline](/figures/signal_detection_minimal.svg)
 
-### Calibration
+### Calibration (M4)
 
 A score is calibrated when we can locate it on a known scale. Without calibration, a number is a relative ranking within one experiment, not a measurement. Two papers reporting "87% faithfulness" may be measuring different quantities; calibration requires enough specificity to determine whether they are comparable.
 
@@ -206,9 +206,31 @@ The following table provides calibration reference points for common tasks and m
 
 All faithfulness numbers should be read as: "recovery under [ablation method] on [prompt distribution]." The IOI circuit's 87% is under mean ablation with the Wang et al. prompt set; [Miller et al. (2024)](https://arxiv.org/abs/2407.08734) show that different choices produce substantially different numbers for the same circuit. A new IIA score of 0.52 on GPT-2 Small SVA sits in the transcoder range and well below the DAS range — whether that is good or bad depends on the method's parameter count and the claim being made.
 
-### Construct coverage
+### Stability (M3)
 
-A metric should measure what it claims to measure rather than a correlated proxy.
+A classification should be robust to perturbations that do not change the claim.
+
+Stability operates along three axes: cross-prompt (new templates and paraphrases), cross-checkpoint (different points in training), and cross-seed (independently trained models). Each carries different evidential value. A result that holds on one prompt family and fails on a paraphrase is not false — it is a claim of narrower scope than the original report suggests.
+
+Report stability with bootstrap confidence intervals on the principal behavioral metric. For a circuit $C$ evaluated on $n$ prompts with metric values $m_1, \ldots, m_n$, the bootstrap 95% confidence interval is obtained by resampling with replacement $B$ times (typically $B = 10{,}000$) and taking the 2.5th and 97.5th percentiles of the resampled means. Calibrations F04 (checkpoint variance), F05 (prompt variance), F09 (intervention robustness) and F10 (hyperparameter sensitivity) each bear on it.
+
+**Failure modes.** *One-distribution science* — the discovery prompts are reused for evaluation. *Single-seed generalization* — a result from one trained model is presented as a property of the architecture. *Loose cross-model matching* — qualitative resemblance without a quantitative criterion for what counts as "the same circuit."
+
+**What to report.** At least two of: cross-prompt, cross-checkpoint, cross-seed replication. Bootstrap 95% confidence intervals on the principal metric.
+
+### Selection correction (M7)
+
+When $k$ findings are selected from $N$ candidates, $N$ should be reported and multiplicity controlled.
+
+Reporting the twelve heads that survived a sweep, without saying that 144 were tested, inflates the family-wise error rate by a factor the reader cannot recover. The candidate set is not only components: methods tried, thresholds swept and layers scanned all enlarge $N$. Benjamini–Hochberg control of the false discovery rate is the standard correction where the tests are many and the goal is a set rather than a single decision. Calibration F15 (multiple comparisons) bears on it.
+
+**Failure modes.** *Silent $N$* — the denominator is never stated. *Sweep laundering* — several thresholds are tried and only the reported one is described. *Correction after selection* — multiplicity is adjusted over the surviving $k$ rather than the tested $N$.
+
+**What to report.** $N$ alongside $k$, counting components tested, methods tried and thresholds swept. The correction applied, or a statement that none was.
+
+### Does the metric measure the construct?
+
+This is not a criterion of its own — it is C4 (discriminant validity) and M5 (sensitivity) seen from the instrument's side — but the instrument-capacity failure it names is specific enough to be worth its own treatment.
 
 [Hewitt and Liang (EMNLP 2019)](https://arxiv.org/abs/1909.03368) showed this failure mode concretely for probes: a probe achieving 90% syntactic accuracy may achieve 85% on a control task where labels are shuffled into word-type statistics. The probe is measuring its own capacity, not the representation's structure. The selectivity — the 5 percentage point gap — is the valid measurement.
 
@@ -232,9 +254,10 @@ The practical test is to vary the alignment map's capacity. If IIA remains high 
 
 Measurement validity gates the interpretation of every other evidence type:
 
-- **Any verdict above Proposed** requires at least a bootstrap CI (reliability) and a random-vector baseline (baseline separation). Without these, a score is a data point, not a finding.
-- **Causally suggestive → Mechanistically supported:** Requires calibration against at least one published reference point.
-- **Mechanistically supported → Triangulated:** Requires invariance across at least two models and construct coverage confirmation.
+- **Proposed → Causally suggestive:** contributes M2 (baseline separation). A score without a random-vector and untrained-model baseline is a data point, not a finding, and this is the one measurement criterion that gates a tier below Validated.
+- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2, I4 and E1.
+- **Mechanistically supported → Triangulated:** contributes nothing further; the tier turns on construct, internal and external criteria.
+- **Triangulated → Validated:** contributes M1, M3, M4, M5 and M6, all of which the tier requires explicitly addressed, plus M7 wherever the findings were selected from a larger candidate set.
 
 ## Protocol
 
@@ -245,13 +268,15 @@ For any reported score from a circuit evaluation metric:
 3. **Baseline separation.** Report $S_{\text{random}}$, $S_{\text{untrained}}$, $\Delta_{\text{random}}$, and $\Delta_{\text{arch}}$. These are the primary reported quantities, not $S_{\text{circuit}}$ alone.
 4. **Sensitivity.** AUPRC alongside AUROC for circuits with fewer than 25 components; state the base rate.
 5. **Calibration.** Locate the score against at least one published baseline on the same task and model; state the ablation method and prompt distribution precisely.
-6. **Construct coverage.** State the alignment map architecture; vary its capacity; run a control task at matched capacity if the representational geometry claim is central.
+6. **Stability.** Replicate across at least two of: prompt templates, training checkpoints, random seeds. Report bootstrap 95% confidence intervals on the principal metric.
+7. **Selection correction.** Report $N$ (components tested, methods tried, thresholds swept) alongside $k$, with the multiplicity correction applied or its absence stated.
+8. **Instrument capacity.** State the alignment map architecture; vary its capacity; run a control task at matched capacity if the representational geometry claim is central.
 
 A skipped step must be named in the verdict.
 
 ## Case studies
 
-For full worked examples applying all five lenses (including measurement validity) to published claims:
+For full worked examples applying all eight lenses (including measurement validity) to published claims:
 
 - [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — reliability untested; single prompt template
 - [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — multiple independent measurements converge

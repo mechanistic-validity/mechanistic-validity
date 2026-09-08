@@ -9,7 +9,7 @@ This lens asks one question: **is the entity you named a coherent construct?**
 
 Every mechanistic claim names a theoretical entity — "the IOI circuit," "an induction head," "the copy-suppression mechanism," "a deception feature." The philosophy of science lens asks whether that entity refers to a determinate computational concept or to a post-hoc grouping of whatever the discovery procedure returned.
 
-The other four lenses evaluate evidence *about* a claim. This one evaluates *the claim itself*. A circuit with strong causal evidence and a poorly defined construct is a strong measurement attached to a weak theory.
+The other seven lenses evaluate evidence *about* a claim. This one evaluates *the claim itself*. A circuit with strong causal evidence and a poorly defined construct is a strong measurement attached to a weak theory.
 
 :::note
 For the full metrics and protocols reference, see [Philosophy of Science -- Metrics & Protocols](/mechanistic-validity/framework/metrics/).
@@ -91,11 +91,12 @@ For formal definitions, quantitative thresholds, and calibration data, see [Cons
 |---|---|---|---|
 | C1 | Falsifiability | Was a disconfirming condition stated before collecting evidence? | [C1](/mechanistic-validity/framework/criteria/construct/falsifiability) |
 | C2 | Structural plausibility | Do weight-space signatures match the claimed computational role? | [C2](/mechanistic-validity/framework/criteria/construct/structural-plausibility) |
-| C3 | Task specificity | Does the circuit score highly only on its discovery task, not unrelated ones? | [C3](/mechanistic-validity/framework/criteria/construct/discriminant-validity) |
-| C4 | Minimality | Is it the smallest set that satisfies sufficiency, with no redundant members? | [C4](/mechanistic-validity/framework/criteria/internal/minimality) |
-| C5 | Convergent validity | Do independent metrics identify the same components? | [C5](/mechanistic-validity/framework/criteria/construct/convergent-validity) |
+| C3 | Convergent validity | Do independent metrics identify the same components? | [C3](/mechanistic-validity/framework/criteria/construct/convergent-validity) |
+| C4 | Discriminant validity | Does the measure distinguish this construct from neighboring ones? | [C4](/mechanistic-validity/framework/criteria/construct/discriminant-validity) |
+| C5 | Nomological validity | Does the claim occupy a determinate position in a web of testable relations? | [C5](/mechanistic-validity/framework/criteria/construct/nomological-validity) |
+| C6 | Complementation validity | Are the construct's labeled subdivisions functionally distinct? | [C6](/mechanistic-validity/framework/criteria/construct/complementation-validity) |
 
-Falsifiability (C1) is a precondition — without it, a claim cannot advance beyond [Proposed](/mechanistic-validity/framework/verdicts/proposed) regardless of other evidence. Convergent validity (C5) is the most powerful and the most frequently absent.
+Falsifiability (C1) is a precondition — without it, a claim cannot advance beyond [Proposed](/mechanistic-validity/framework/verdicts/proposed) regardless of other evidence. Convergent validity (C3) is the most powerful and the most frequently absent.
 
 ### Falsifiability
 
@@ -135,9 +136,9 @@ $$\text{effect}(y_1, y_2) = e_{y_2}^\top \, W_U \, W_{OV}^{(h)} \, W_E \, e_{y_1
 where $e_y$ is a one-hot vector for year token $y$, $W_E$ is the embedding matrix, and $W_U$ is the unembedding matrix. Structural plausibility requires that $\text{effect}(y_1, y_2) > 0$ when $y_2 > y_1$ and $\text{effect}(y_1, y_2) < 0$ when $y_2 < y_1$, at least on average across the relevant year-token pairs. Hanna et al. confirm this pattern: the $W_{OV}$ matrices of their proposed heads encode a monotonic ordering over two-digit year suffixes. A head labeled "successor" whose $W_{OV}$ showed no such ordering would fail structural plausibility regardless of its behavioral effect.
 </details>
 
-### Task specificity
+### Discriminant validity
 
-The proposed circuit should not score highly on unrelated tasks under the same evaluation procedure. This is the construct-validity analog of discriminant validity (Campbell and Fiske 1959): measures of distinct traits should not correlate highly.
+The proposed circuit should not score highly on unrelated tasks under the same evaluation procedure. Campbell and Fiske (1959) put it as a requirement on measures: measures of distinct traits should not correlate highly.
 
 If a circuit discovered for IOI also ranks at the top of Greater-Than, subject-verb agreement, and gendered-pronoun resolution under the same faithfulness metric, one of two things is happening. Either the circuit is genuinely general-purpose — in which case it should be reported as such, not as a task-specific mechanism — or the evaluation procedure is picking up on a confound (such as a bottleneck component that all tasks route through).
 
@@ -153,9 +154,9 @@ where $F(C, T)$ is the faithfulness score. $S = 1$ means zero off-task faithfuln
 
 **Minimum reporting.** At least one evaluation on a related task not used during discovery. Discriminant faithfulness reported alongside discovery-task faithfulness, with the selectivity ratio $S$.
 
-### Minimality
+### Minimality (I3, scored under internal validity)
 
-The circuit should be the smallest set of components that satisfies sufficiency. No member should be redundant.
+The circuit should be the smallest set of components that satisfies sufficiency. No member should be redundant. This lens supplies the argument for the criterion — Craver's difference-making account of what a mechanism's parts are — but the criterion itself is I3, and a verdict scores it under [internal validity](/mechanistic-validity/framework/validity-types/internal).
 
 Craver (2007) defines the components of a mechanism as those whose presence makes a *difference*, not those that are merely present during operation. Adding components to a circuit can only increase apparent sufficiency — an over-inclusive circuit is therefore unfalsifiable by any sufficiency test. If we include every head whose removal causes a nonzero decrease in performance, we will include heads that are incidental rather than constitutive, and the resulting "circuit" will describe the model's general-purpose infrastructure rather than the task-specific mechanism.
 
@@ -202,6 +203,28 @@ This is informative because the methods share almost no assumptions — one inte
 
 **Minimum reporting.** At least two metrics with non-overlapping major assumptions. Agreement reported as Jaccard similarity at the component level, ideally across a threshold sweep.
 
+### Nomological validity
+
+The construct should occupy a determinate position in a web of lawful relations connecting it to other constructs and to observable measurements. The nomological-network material above is this criterion's content: a construct that relates to nothing except the observations it was built to explain is a re-description of the data.
+
+The test is whether the claim licenses predictions outside the evidence that motivated it. Induction heads connect to an attention pattern, a compositional mechanism, a behavioral prediction and a training-dynamics prediction, each independently testable. A circuit whose only support is the faithfulness score it was selected on connects to nothing.
+
+**Failure modes.** *Isolated construct* — no relation to any other named mechanism, task or measurement. *Borrowed network* — the relations belong to a cognitive-science term the paper imported, not to anything measured here.
+
+**Minimum reporting.** At least one relation to a construct or measurement outside the discovery evidence, stated so it could fail.
+
+### Complementation validity
+
+Where a construct is subdivided into labeled parts, those parts should be functionally distinct. The name comes from the genetic complementation test: two mutations are in the same gene if neither restores function in the presence of the other.
+
+A circuit described as three head classes with three roles asserts three distinguishable functions. If ablating class $A$ and ablating class $B$ produce the same deficit, the subdivision is a labeling convention rather than a finding. The test requires ablating the classes both singly and together and showing the joint effect differs from either alone in the way the roles predict.
+
+Complementation validity is Untested in all sixteen audited claims, and it is what caps the one claim that reaches Triangulated.
+
+**Failure modes.** *One-at-a-time ablation* — the named roles are never ablated together, so the subdivision is never tested. *Role naming from attention patterns alone* — the label comes from where a head attends, not from what breaks when it is removed.
+
+**Minimum reporting.** Single and joint ablation for each pair of named roles, on the same metric, with the predicted difference stated in advance.
+
 ## Underdetermination
 
 When evidence is consistent with multiple incompatible explanations, the correct verdict is *underdetermined*, not *solved*. Underdetermination is not a failure — it is a state of evidence that construct validity is equipped to name.
@@ -216,9 +239,10 @@ Reporting underdetermination explicitly is a stronger finding than suppressing i
 
 Construct validity gates advancement through the [verdict tiers](/mechanistic-validity/framework/verdicts/):
 
-- **Proposed → Causally suggestive:** Requires C1 (falsifiability). Without a pre-registered disconfirming condition, no amount of ablation evidence upgrades the verdict.
-- **Mechanistically supported → Triangulated:** Requires at least one construct criterion beyond C1. Typically C2 (structural plausibility) or C5 (convergent validity).
-- **Triangulated → Validated:** Requires substantial construct validity coverage — C1 through C5.
+- **Proposed:** contributes C1 (falsifiability) and C2 (structural plausibility). Both are required at the entry tier: without a pre-registered disconfirming condition, no amount of ablation evidence upgrades the verdict.
+- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2, I4 and E1.
+- **Mechanistically supported → Triangulated:** contributes C3 (convergent validity) and C4 (discriminant validity). The tier requires both, not either.
+- **Triangulated → Validated:** contributes C5 (nomological validity) and C6 (complementation validity), completing construct coverage C1–C6.
 
 A claim can have perfect [internal validity](/mechanistic-validity/framework/validity-types/internal) (all ablations, all patching, full consistency) and still stall at Mechanistically supported because the construct itself is poorly defined.
 
@@ -230,22 +254,24 @@ For a proposed circuit $C$ and behavior $B$, the following protocol operationali
 
 2. **Structural plausibility.** For every named component role, confirm that the weight-space signature matches the claimed mechanism. Report the specific measurements ($W_{OV}$ copying score, attention pattern at relevant positions, direct logit attribution sign) and flag any mismatches.
 
-3. **Task specificity.** Evaluate $C$ on at least one related task not used during discovery. Report faithfulness on the off-task alongside the discovery-task faithfulness, and compute the selectivity ratio $S$.
+3. **Discriminant validity.** Evaluate $C$ on at least one related task not used during discovery. Report faithfulness on the off-task alongside the discovery-task faithfulness, and compute the selectivity ratio $S$.
 
 4. **Minimality.** Per-component leave-one-out ablation within the circuit. Report which components are individually necessary versus jointly necessary. If compensatory or backup mechanisms are observed, report them as such.
 
 5. **Convergent validity.** Apply at least two metrics with non-overlapping major assumptions. Report Jaccard similarity at the component level. If the methods disagree, characterize the disagreement.
 
-6. **Underdetermination.** If an alternative circuit $C'$ with comparable faithfulness is known, report it. State the Jaccard overlap and identify the robust core — the components present in all known faithful circuits.
+6. **Complementation validity.** For each pair of named component roles, ablate singly and jointly. Report whether the joint deficit differs from either single deficit in the way the role assignment predicts.
+
+7. **Underdetermination.** If an alternative circuit $C'$ with comparable faithfulness is known, report it. State the Jaccard overlap and identify the robust core — the components present in all known faithful circuits.
 
 ## Case studies
 
-For full worked examples applying all five lenses (including construct validity) to published claims:
+For full worked examples applying all eight lenses (including construct validity) to published claims:
 
-- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — the most thoroughly analyzed circuit; strong C2, weak C3/C5
-- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — the strongest mechanistic claim; passes C1–C5
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — the most thoroughly analyzed circuit; strong C2, weak C3/C4
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — the strongest mechanistic claim; passes C1–C5, capped by C6
 - [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — weakest construct validity; thin nomological network
 - [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) — best structural plausibility (C2)
 - [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — the ceiling: Validated within toy scope
 - [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — tool works, but construct may be wrong
-- [Gender Bias](/mechanistic-validity/framework/examples/examples-gender-bias) — construct incoherence (C3 fails fundamentally)
+- [Gender Bias](/mechanistic-validity/framework/examples/examples-gender-bias) — construct incoherence (C4 fails fundamentally)

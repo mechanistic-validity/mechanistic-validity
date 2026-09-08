@@ -9,28 +9,28 @@ criterion_id: "E1"
 | | |
 |---|---|
 | Validity type | External |
-| Pass condition | A measurement confirms the target component's activations changed in the predicted direction and magnitude |
+| Pass condition | The result has been reproduced under at least two genuinely distinct intervention families (distinct do-operators, not ablation variants), and they agree |
 | Evidence family | Causal |
-| Minimum reporting | Activation delta at hook point (before vs. after intervention); direction confirmation |
-| Common failure mode | Assuming the intervention reached the target because the code ran; never measuring the activation change |
+| Minimum reporting | Each intervention family used and the operator behind it; the effect estimate under each; whether the families agree in direction and magnitude |
+| Common failure mode | Running several ablation variants that share one underlying do-operator and reporting the agreement as convergence; reporting a single ablation number at origin |
 
 ## What this criterion requires
 
-Intervention reach verifies that the intervention *actually changed the target activations in the predicted way*. Failure modes:
+Ablation and activation patching are formally different do-operators. Ablation performs do(h := 0) or do(h := E[h]) — it removes a component. Patching performs do(h := h') where h' comes from a counterfactual input — it inserts a specific value. These correspond to different interventional distributions and can yield different causal conclusions, which is why mean ablation and resample ablation produce different faithfulness numbers for the same circuit.
 
-1. **Wrong hook point:** The hook name did not match the intended component.
-2. **Effect absorbed upstream:** Skip connections or normalization layers partially mask the intervention.
-3. **Magnitude near zero:** The component was near-inactive on test prompts; [ablation](/mechanistic-validity/glossary/#ablation) delta is near zero regardless.
-4. **Wrong direction:** A steering intervention added a vector not in the expected direction.
+Satisfied when:
 
-Satisfied when: activation value at the hook point is measured before and after intervention; delta is in the predicted direction; magnitude is non-trivial (not near zero).
+1. **At least two intervention families are applied.** The families must differ in kind — removal versus insertion, activation edit versus weight edit — not merely in ablation value.
+2. **The families agree.** They return the same sign and a comparable magnitude for the effect.
+3. **Disagreement is reported, not averaged.** Where families disagree, the disagreement is the result and the criterion is Inconclusive.
 
 ## Minimum reporting rule
 
-- Measure and report activation value at the target hook point before and after intervention (sample of test prompts).
-- Report mean absolute delta and confirm direction.
-- If delta < 0.01 in normalized units: flag — the intervention may not have reached the target.
+- Name every intervention family used and the do-operator each implements.
+- Report the effect estimate under each family, on the same metric and prompt set.
+- State whether the families agree; if they disagree, report the spread rather than a single number.
+- If only one intervention family was used: E1 is unsatisfied — every agreement is the method with itself.
 
 ## Why this is an external validity criterion
 
-Intervention reach is a prerequisite for any external generalization claim. If the intervention did not reach the target reliably in the original setting, there is no basis for cross-model or cross-task generalization. It also functions as a measurement validity check on the experimental procedure.
+Intervention reach is required for Mechanistically Supported, alongside sufficiency (I2) and specificity (I4). A result that holds under one intervention family has not been separated from a property of that family: the same IOI faithfulness quantity spans below 0% to over 100% across methodological choices, so a single number carries no information about which of them the mechanism survives.

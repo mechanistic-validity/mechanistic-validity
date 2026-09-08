@@ -71,13 +71,13 @@ Medical microbiology contributes to the framework not through specific criteria 
 | Mechanism strength tracks capability across checkpoints | Graded co-occurrence; onset coupling | "Mechanism and capability co-emerge during training" |
 | Mechanism persists after capability is fine-tuned away | Offset coupling fails; mechanism may be architectural | "Mechanism persists after capability removal; not tightly coupled" |
 | Evidence is head-level for a subspace-level claim | Level mismatch; V2 not satisfied | "Head-level ablation; subspace claim requires subspace-level evidence" |
-| Criterion structurally unsatisfiable | Limit of the evidence setting | "I6 returns Untested: circuit transplant is incoherent for this architecture" |
+| Criterion structurally unsatisfiable | Limit of the evidence setting | "I2 returns Untested: circuit transplant into a model naive to the capability is incoherent for this architecture" |
 
 ## Verdicts
 
 Medical microbiology shapes the verdict system rather than gating specific transitions:
 
 - **All tiers:** An unsatisfiable criterion is reported as Untested with the obstruction named. It does not count as a failure, and it does not count as a pass.
-- **Causally suggestive → Mechanistically supported:** I11 (onset coupling) strengthens this transition by establishing temporal co-occurrence during training. I11 is adapted from the Fredricks & Relman graded-presence guideline.
-- **Mechanistically supported → Triangulated:** I12 (offset coupling) is the converse test — removing the capability should reduce the mechanism's strength. Together I11 and I12 constitute the developmental coupling block, required for Validated tier.
-- **Triangulated → Validated:** Both directions of developmental coupling (I11 and I12) must be tested. A claim can reach Triangulated without them, but Validated requires that the mechanism and capability track each other in both directions.
+- **Causally suggestive → Mechanistically supported:** contributes nothing. The tier turns on I2, I4 and E1.
+- **Mechanistically supported → Triangulated:** contributes V2 (level-evidence match), through the discipline of stating what a graded presence licenses. I11 and I12 sit above this tier, and a claim reaching Triangulated without either is the expected case.
+- **Triangulated → Validated:** contributes I11 (onset coupling), adapted from the Fredricks & Relman graded-presence guideline, and I12 (offset coupling), its converse — removing the capability should reduce the mechanism's strength. Validated requires that the mechanism and capability track each other in both directions.

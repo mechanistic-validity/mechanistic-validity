@@ -72,11 +72,11 @@ The claim is about *membership in a causal set*, not about the structure of that
 
 ## Metrics that provide topographic-level evidence
 
-- **A01 (Activation patching)** — single-node necessity via mean/resample ablation
-- **A04 (Resample ablation / complement ablation)** — sufficiency of the proposed set
-- **A09 (Hyperparameter sensitivity)** — does the discovered set change with method parameters?
-- **F01 (Seed variance)** — does the set replicate across random seeds?
-- **B08 (Edge Jaccard)** — agreement between discovery methods on the component set
+- **D01 (Faithfulness)** — single-node necessity via mean or resample ablation
+- **D02 (Logit Diff)** — how much of the logit difference the proposed set recovers under complement ablation
+- **F10 (Hyperparameter Sensitivity)** — does the discovered set change with method parameters?
+- **F03 (Seed Variance)** — does the set replicate across random seeds?
+- **F13 (Cross-Metric Convergence)** — agreement between discovery methods on the component set
 
 ## Key references
 

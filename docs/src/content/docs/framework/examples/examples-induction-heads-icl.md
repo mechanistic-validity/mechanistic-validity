@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Induction Heads (General ICL)"
-description: "The claim that induction heads are the mechanism for general in-context learning (Olsson et al. 2022), evaluated through the mechanistic validity framework."
+description: "The claim that induction heads are the mechanism for general in-context learning (Olsson et al. 2022), evaluated through the five core lenses."
 ---
 
 # Case Study: Induction Heads (General ICL)
@@ -12,6 +12,9 @@ The general ICL claim asserts that the same induction-head circuit that copies t
 **Description mode:** `[computational]`. "In-context learning" is pitched at the level of what problem the model solves and why, not at a specific procedure — a computational-mode claim in the sense of [Description Modes](/mechanistic-validity/framework/description-modes/). This is a stronger commitment than the algorithmic-mode token-copying claim, and it requires evidence the token-copying result does not provide.
 
 ## Verdict: Disconfirmed
+
+> **Verdict (framework paper, Table 6):** Disconfirmed. **Capped by:** I1 (necessity).
+
 
 | Validity type | Status | Key evidence against |
 |---|---|---|
@@ -37,7 +40,7 @@ The same paper's token-copying claim (induction heads implement [A][B]...[A] →
 
 This case study illustrates several framework principles:
 
-- **Onset coupling (I11) is weak evidence alone.** It establishes correlation, not causation. The framework requires necessity (I1), sufficiency (I2), and specificity (I3) in addition to developmental coupling.
+- **Onset coupling (I11) is weak evidence alone.** It establishes correlation, not causation. The framework requires necessity (I1), sufficiency (I2), and specificity (I4) in addition to developmental coupling.
 - **Scope matters (V5).** The token-copying claim has an appropriate scope. The general ICL claim exceeds what the evidence supports.
 - **Necessity (I1) is the capping criterion.** The claim is disconfirmed specifically because necessity for the broad claim fails, not because of a weak construct or a measurement artifact — ablating induction heads leaves most ICL performance intact.
 - **Two claims, one paper, two verdicts.** A paper can contain both well-supported and poorly-supported claims. The framework evaluates claims, not papers.

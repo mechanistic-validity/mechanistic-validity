@@ -1,27 +1,30 @@
 ---
 title: "Case Study: Refusal Direction"
-description: "The refusal direction mechanism (Arditi et al. 2024) evaluated through the mechanistic validity framework."
+description: "The refusal direction mechanism (Arditi et al. 2024) evaluated through the five core lenses."
 ---
 
 # Case Study: Refusal Direction
 
 [Arditi et al. (2024)](https://arxiv.org/abs/2406.11717) identify a **refusal direction** in the residual stream of chat-tuned language models — a single linear direction whose presence causes the model to refuse harmful requests. Subtracting this direction from the residual stream at inference time disables refusal without retraining, while adding it induces refusal on benign inputs.
 
-The mechanism is defined contrastively: the direction is the difference in mean activations between harmful and harmless prompt sets. It transfers across prompt categories (not just the ones used to extract it) and across model scales within the same family.
+The mechanism is defined contrastively: the direction is the difference in mean activations between harmful and harmless prompt sets. It transfers across prompt categories (not just the ones used to extract it) and across 13 open-weight chat models in 5 families spanning a 40x parameter range.
 
-**Description mode:** `[implementational-functional]`. The claim specifies what the direction does to the residual stream — an additive or subtractive shift in refusal probability — without asserting an algorithmic account of how that shift propagates to the output. See [Description Modes](/mechanistic-validity/framework/description-modes/).
+**Description mode:** undeclared. Three description modes appear in the paper's first paragraph and none is declared: the title asserts a representational organization while the evidence is causal-behavioral. This is what V1 records as partially confirmed. See [Description Modes](/mechanistic-validity/framework/description-modes/).
 
 ## Verdict: Mechanistically Supported
+
+> **Verdict (framework paper, Table 6):** Mechanistically Supported. **Capped by:** I6 (double dissociation).
+
 
 | Validity type | Status | Key evidence |
 |---|---|---|
 | Construct | Partial | Falsifiable and structurally plausible; convergent validity untested across independent groups |
 | Measurement | Partial | Baseline separation established; reliability across random seeds not reported |
 | Internal | Strong | Necessity (ablation disables refusal), sufficiency (addition induces refusal), specificity (targeted effect on refusal, limited collateral damage) |
-| External | Partial | Cross-prompt generalization demonstrated; cross-model within family; no independent replication |
+| External | Partial | Cross-prompt generalization confirmed (E2); cross-model recurrence confirmed across 13 models in 5 families over a 40x parameter range (E4); graded response untested (E5) |
 | Interpretive | Partial | "Direction" is a subspace claim, consistent with the representational description mode; "refusal" label carries implications about intent that the evidence does not test |
 
-The claim reaches Mechanistically Supported because necessity and sufficiency are both demonstrated with consistent intervention methods, and specificity (I3) is at least partially confirmed. The claim does not reach Triangulated because convergent validity from independent methods is absent, and double dissociation (I6) has not been performed — no published design crosses the ablation and addition manipulations with an independent control direction.
+The claim reaches Mechanistically Supported because necessity and sufficiency are both demonstrated with consistent intervention methods, and specificity (I4) is at least partially confirmed. The claim does not reach Triangulated because convergent validity from independent methods is absent, and double dissociation (I6) has not been performed — no published design crosses the ablation and addition manipulations with an independent control direction.
 
 ## Evidence summary
 
@@ -29,15 +32,15 @@ The claim reaches Mechanistically Supported because necessity and sufficiency ar
 
 **Sufficiency (I2).** Adding the direction to the residual stream on benign prompts induces refusal. The model refuses requests it would otherwise answer.
 
-**Specificity (I3).** The intervention is targeted: disabling refusal does not substantially degrade general capability on standard benchmarks. Collateral damage is limited, though not absent.
+**Specificity (I4).** Six benchmarks and three corpora are checked; disabling refusal does not substantially degrade general capability, with TruthfulQA's fall left unresolved.
 
 **Prompt generalization (E2).** The direction extracted from one set of harmful/harmless pairs transfers to held-out categories of harmful prompts.
 
-**Graded response (E5).** Scaling the direction's magnitude produces graded effects — partial subtraction partially reduces refusal probability.
+**Graded response (E5).** Untested. Strength is promised in §2.4 and every intervention is applied at a coefficient of 1; no partial-strength sweep is reported.
 
 ## Validity concerns
 
-**Unlicensed labeling (V3).** "Refusal direction" implies a unitary mechanism for refusal. The evidence shows a linear direction that separates harmful from harmless activations, but this is consistent with several interpretations: a refusal mechanism, a harm-detection feature, or a safety-training artifact. The label asserts more than the evidence establishes.
+**Unlicensed labeling (V4).** "Refusal direction" implies a unitary mechanism for refusal. The evidence shows a linear direction that separates harmful from harmless activations, but this is consistent with several interpretations: a refusal mechanism, a harm-detection feature, or a safety-training artifact. The label asserts more than the evidence establishes.
 
 **Rival mechanism exclusion.** The direction could encode general uncertainty or caution rather than refusal specifically. No experiment contrasts refusal with other forms of model hesitation.
 

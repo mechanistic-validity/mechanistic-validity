@@ -1,10 +1,10 @@
 ---
 title: "Invariance"
 validity_type: "Measurement"
-criterion_id: "M2"
+criterion_id: "M6"
 ---
 
-# Criterion M2 — Invariance
+# Criterion M6 — Invariance
 
 | | |
 |---|---|
@@ -24,10 +24,10 @@ Invariance asks: when the same metric is applied to a different model size or fa
 
 ## Invariance gates cross-architecture claims
 
-Invariance testing at the measurement level is the prerequisite for making cross-architecture generalization claims (E6). You cannot claim the *mechanism* generalizes across models if you have not established that the *metric* is measuring the same thing across models.
+Invariance testing at the measurement level is the prerequisite for making cross-model generalization claims (E4). You cannot claim the *mechanism* generalizes across models if you have not established that the *metric* is measuring the same thing across models.
 
 ## Minimum reporting rule
 
 - Cross-scale transfer result with null expectation.
 - Template invariance test (Welch ANOVA or equivalent).
-- If invariance was not tested: cross-architecture claims (E6) cannot be made — flag as open criterion.
+- If invariance was not tested: cross-model claims (E4) cannot be made — flag as open criterion.

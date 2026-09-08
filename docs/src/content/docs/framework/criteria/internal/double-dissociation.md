@@ -18,7 +18,7 @@ criterion_id: "I6"
 
 A [double dissociation](/mechanistic-validity/glossary/#double-dissociation) is a crossed design from neuropsychology (Shallice, 1988). It requires two interventions and two tasks: intervention A breaks task 1 but spares task 2; intervention B breaks task 2 but spares task 1. This rules out the possibility that either intervention is simply damaging the system generally.
 
-Scored as met or unmet — no partial credit. Each half is already scored elsewhere (I1 for the necessity arm, M2 for the baseline arm).
+Each half of the crossed design is already scored elsewhere: I1 covers the necessity arm and I4 the sparing arm. I6 scores only whether the two cross. The crossed design licenses a functional separation rather than a modular one (Plaut, 1995).
 
 Satisfied when:
 

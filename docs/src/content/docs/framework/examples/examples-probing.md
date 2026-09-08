@@ -1,6 +1,6 @@
 ---
 title: "Case Study: Probing Classifiers"
-description: "Linear probing as a methodology for representational claims, evaluated through all five validity lenses."
+description: "Linear probing as a methodology for representational claims, evaluated through the five core lenses."
 ---
 
 # Case Study: Probing Classifiers
@@ -11,13 +11,16 @@ This case study evaluates probing *as a methodology* rather than a specific circ
 
 ## Composite Verdict
 
+> **Verdict (framework paper, Table 6):** Proposed. **Capped by:** I1 (necessity).
+
+
 | Lens | Strongest | Weakest | Overall |
 |---|---|---|---|
-| Construct | C1 Falsifiability (partial) | C3 Convergent validity | Weak |
-| Internal | M1 Reliability (partial) | I1/I2/I3 (all untested) | Very weak |
-| External | — | All criteria N/A or untested | N/A |
-| Measurement | M5 (variable) | M2 Baseline separation | Weak |
-| Interpretive | V1 Level declaration | V3/V5 Alternative + Scope | Weak |
+| Construct | C1 Falsifiability (confirmed) | C4 Discriminant validity (disconfirmed) | Weak |
+| Internal | I5 Rival mechanism exclusion, I7 Confound control (both partial) | I4 Specificity (disconfirmed), I1 Necessity (inconclusive, the capping criterion) | Very weak |
+| External | E4 Cross-model generalization (confirmed) | E1 Intervention reach (inconclusive), E5 Graded response (N/A) | Partial |
+| Measurement | M2 Baseline separation (confirmed) | M4 Calibration (disconfirmed), M3 Stability (inconclusive) | Weak |
+| Interpretive | V3 Alternative level, V5 Scope declaration (both confirmed) | V2 Level-evidence match (disconfirmed) | Partial |
 
 **Overall verdict: Proposed (without causal follow-up).** Standard linear probing, without causal intervention or control tasks, does not advance a claim beyond *Proposed*. The evidence establishes decodability but not encoding, representation, or use.
 
@@ -43,13 +46,13 @@ This case study illustrates a fundamental principle of the framework: **a measur
 
 ### Criteria
 
-**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) Partial.** A probe failure (low accuracy) would disconfirm the representation claim. But probe *success* is ambiguous — it could reflect genuine encoding or could reflect that the concept is linearly separable in any high-dimensional space, even without genuine representation. The falsifiability is asymmetric: failure is informative, success is not clearly so.
+**[C1 — Falsifiability:](/mechanistic-validity/framework/criteria/construct/falsifiability) **Confirmed.** The claim form yields a prediction that can come out either way, and it came out both ways in work the anchor reports side by side. Modify a representation along a probe-identified direction and the original model's behavior should move: [Giulianelli et al. (2018)](https://arxiv.org/abs/1808.08079) find it does, on the examples the property is defined over, and [Elazar et al. (2021)](https://arxiv.org/abs/2006.00995) find that removing a well-decoded property need not cost the original task.
 
 **[C2 — Structural plausibility:](/mechanistic-validity/framework/criteria/construct/structural-plausibility) Weak.** Probes operate on activations, not weights. They do not identify *which* parameters encode the concept or *how* the encoding is implemented in the model's architecture. A probe success is consistent with intentional encoding, accidental encoding, and encoding-as-artifact.
 
-**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) Variable.** Some probes test specific concepts (syntax tree depth). Others test broad concepts (sentiment). The discriminant question — does the probe *fail* on closely related non-matches? — is often not tested. A "syntax depth" probe might succeed because the activation space also linearly encodes sentence length, which correlates with depth.
+**[C4 — Discriminant validity:](/mechanistic-validity/framework/criteria/construct/discriminant-validity) **Disconfirmed.** The construct is "the model represents z", and it has two neighbors a good instrument must separate it from: "the probe learned z from its own training data" and "any representation of this dimensionality carries z". Both separation tests were run and both came back negative. Control tasks show nonlinear probes reaching high accuracy at low selectivity, which reads as memorization by the probe rather than information in the representation, and random baselines show untrained features already decode the property.
 
-**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Not applicable.** Probes identify a direction/subspace, not a circuit. The analog of minimality (is this the minimal subspace encoding the concept?) is rarely tested — probes operate at the layer level and do not investigate whether a lower-dimensional subspace would suffice.
+**[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) **Not tested.** The unit of analysis is a whole intermediate output — a layer's representation, or another component taken entire — and the framework offers no operation that removes part of it and asks whether the rest still supports the property. Minimization is applied to the probe instead: the trade-off reported is accuracy against probe complexity, and the one method that prunes the model's own weights is presented as a way to improve that trade-off rather than to identify a minimal sufficient component set.
 
 **[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Weak.** Probing is typically the *only* method used. Convergent validity would require confirming the representation claim via an independent method — causal intervention along the probe direction, weight-space analysis, or cross-method agreement. When probing alone is the evidence, convergent validity is absent by definition.
 
@@ -88,13 +91,11 @@ One node confirmed by construction (decodability), one or two partially tested i
 
 ### Criteria
 
-**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) Not tested (typically).** Standard probing does not ablate the identified direction and measure behavioral change. Without this, we do not know if the probed representation is causally used by the model. It could be a byproduct that the model never reads from.
+**[I1 — Necessity:](/mechanistic-validity/framework/criteria/internal/necessity) **Inconclusive — the capping criterion.** Standard probing performs no removal, so on its own it cannot address necessity at all. Where removal was performed, the result went against the claim: projecting a property out of the representation need not cost the original task, however well the probe decoded it, and the authors of that experiment conclude probing does not always identify features the model uses.
 
-**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Not tested (typically).** Patching along the probe direction to shift behavior is the sufficiency test. DAS (Geiger et al. 2023) does this — it is a probe + causal intervention combined. Standard probing without intervention tests neither necessity nor sufficiency.
+**[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) **Not applicable.** Probing is a map out of the representation: g reads f_l(x) and emits ẑ, and nothing in the definition writes a value of z back into f. The two models are trained in separate steps with no path from the second to the first. Sufficiency asks what happens when the property is installed, so within the method as specified there is no operation the criterion could attach to.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Not tested.** Does intervening on the probed direction *only* change the probed concept's behavior? Without the intervention, this cannot be assessed.
-
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Probes are typically tested on a single distribution. Cross-distribution consistency (different text domains, different model checkpoints) is sometimes reported but not standard.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Disconfirmed.** A control dataset holds the property non-discriminative for the original task and the probe recovers it anyway, so decodability does not localize to the task.
 
 **[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Weak — the critical gap.** The fundamental confound: in high-dimensional activation spaces, *many* concepts are linearly decodable even from random representations ([Hewitt & Liang 2019](https://arxiv.org/abs/1909.03368), "control tasks"). A probe may succeed not because the model encodes the concept but because the concept is linearly separable in any space with sufficient dimensionality. Without a control task (probing on random labels or on a related-but-different concept), probe accuracy is uninterpretable.
 
@@ -129,26 +130,21 @@ Entirely empty for standard probing. Even DAS-style extensions fill at most one 
 
 ### Criteria
 
-**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) Not tested.** Standard probes do not intervene. DAS-style extensions do, and they sometimes find that intervention along the probe direction does *not* produce the expected behavioral change — the representation is present but not causally used.
+**[E1 — Intervention reach:](/mechanistic-validity/framework/criteria/external/intervention-reach) **Inconclusive.** Probing has no intervention of its own, so reach is measured by whether interventions applied to probe-identified directions agree about what the model uses. They do not: Giulianelli's positive conclusion is set against Elazar's negative one explicitly, with two more results on the positive side and one more on the negative. No result is retracted and none is preferred.
 
 **[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) N/A.** No intervention = no dose-response.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) N/A.** No intervention = no selectivity assessment.
-
-**[E5 — Graded response:](/mechanistic-validity/framework/criteria/external/graded-response) N/A.** Probe accuracy is a measurement, not an intervention effect.
-
 **[E2 — Prompt generalization:](/mechanistic-validity/framework/criteria/external/prompt-generalization) Variable.** Some probes generalize across text types. Many do not — performance degrades on out-of-distribution text.
 
-**[E4 — Cross-model recurrence:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Partial.** Probing has been applied across many architectures. Cross-model comparison of probe results is informative but rarely done as a systematic convergent validity check.
+**[E4 — Cross-model generalization:](/mechanistic-validity/framework/criteria/external/cross-model-recurrence) Confirmed.** Portability is established without qualification, from static word embeddings through recurrent and recursive networks to transformers, and outward to speech recognition and computer vision.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | E1 Intervention reach | Not tested | Probes don't intervene |
-| E2 Graded response | N/A | — |
 | I4 Specificity | N/A | — |
 | E5 Graded response | N/A | — |
 | E2 Prompt generalization | Variable | Domain-dependent |
-| E4 Cross-model recurrence | Partial | Applied broadly, rarely compared |
+| E4 Cross-model generalization | Partial | Applied broadly, rarely compared |
 
 ### Key Distinctions
 
@@ -171,17 +167,15 @@ For standard probing, the dose-response section is N/A — no intervention means
 
 ### Criteria
 
-**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) Partial.** Probe accuracy varies with: probe architecture, training hyperparameters, layer choice, and dataset. The same concept probed with different settings gives different accuracy numbers. Reliability is conditional on methodological choices.
+**[M1 — Reliability:](/mechanistic-validity/framework/criteria/measurement/reliability) **Not tested.** A review reports no variance of its own, so the evidence is what the review requires of the studies it reviews. Its five stated concerns — controls, probe choice, causal claims, datasets versus tasks, pre-defined properties — and its closing list of what a probing experiment should do mention neither repeated runs, seeds, confidence intervals nor significance testing.
 
 **[M6 — Invariance:](/mechanistic-validity/framework/criteria/measurement/invariance) Weak.** A probe trained on one dataset may not transfer to another. The measurement is distribution-specific rather than model-intrinsic.
 
-**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Critical gap (without controls).** Without a control task (probing random labels, or probing a selectional baseline), probe accuracy is uninterpretable. [Hewitt & Liang (2019)](https://arxiv.org/abs/1909.03368) show that probes on random labels can achieve non-trivial accuracy in high-dimensional spaces. The baseline is essential and often missing.
+**[M2 — Baseline separation:](/mechanistic-validity/framework/criteria/measurement/baseline-separation) Confirmed.** This is the criterion the literature solved: three control families are formalized, including control tasks [Hewitt & Liang (2019)](https://arxiv.org/abs/1909.03368), random-feature baselines and selectivity. What caps the claim is necessity (I1), not the baseline.
 
 **[M5 — Sensitivity:](/mechanistic-validity/framework/criteria/measurement/sensitivity) Variable.** Linear probes may miss nonlinear representations. This is a known limitation — choosing a linear probe is both a strength (constraining the hypothesis) and a weakness (potentially missing genuine encodings that are nonlinear).
 
 **[M4 — Calibration:](/mechanistic-validity/framework/criteria/measurement/calibration) Poorly understood.** What does 75% probe accuracy mean? Without calibration against models of known representational capacity, the number is hard to interpret. Is 75% "the model represents this concept weakly" or "the probe is underpowered"?
-
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Partial.** Probes measure decodability at a single layer. They do not measure: how the representation is formed (across layers), how it is used (downstream effects), or its role in computation.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
@@ -217,21 +211,18 @@ Entirely empty. Standard probing does not produce MTMM data because it uses one 
 
 ### Criteria
 
-**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) Pass.** Probing makes a [representational](/mechanistic-validity/framework/modes/representational) claim — the model encodes a concept.
+**[V1 — Level declaration:](/mechanistic-validity/framework/criteria/interpretive/level-declaration) **Partial.** The anchor's formalism is a level declaration: it fixes which objects a probing result is about, down to the dependence of the reported number on four separate arguments, and the figure enumerates the components so the reader can see what is held fixed. Practice does not declare — the anchor reports that the terms in which probing results are stated, quality, readability, usability, appear without precise definitions.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** Probing provides representational evidence (the concept is decodable). But "decodable" does not equal "encoded." The model may not *use* this information — it could be a byproduct of other computations. The evidence is necessary but not sufficient for the representational claim.
+**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Disconfirmed.** The evidence supports extractability; the claim made is representation. Probe success is reported as "the model represents X" when what holds is "X is decodable from layer L by a classifier of the stated capacity" — and the model may not *use* the information at all.
 
-**[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Moderate.** "The model represents X because a probe can decode X" is a coherent story, but the inference is fragile. A better narrative requires showing that the model *uses* the representation — which probing alone cannot do.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Confirmed.** Every rival reading of a good probe score is given a measure of its own — control tasks, selectivity, random-feature baselines and description length each target a different alternative account.
 
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Weak.** The primary alternative — "the concept is linearly separable as a geometric artifact of the embedding, not because the model intentionally encodes it" — is not excluded by standard probing. Control tasks partially address this but do not fully resolve it.
-
-**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Often violated.** Probe success is often reported as "the model represents X" when the evidence supports only "X is linearly decodable from layer L on this dataset." The gap between these statements is substantial.
+**[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Confirmed.** The anchor declares scope end to end, conceding limits before any content.
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|
 | V1 Level declaration | Pass | Representational |
 | V2 Level-evidence match | Partial | Decodable does not equal encoded |
-| V2 Level-evidence match | Moderate | Story is coherent but underdetermined |
 | V3 Alternative level | Weak | Geometric artifact not excluded |
 | V5 Scope declaration | Often violated | "Represents" exceeds "decodable" |
 
