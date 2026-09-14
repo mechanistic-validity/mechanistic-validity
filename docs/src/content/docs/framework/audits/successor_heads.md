@@ -1,6 +1,6 @@
 ---
 title: "Successor Heads"
-description: "Criterion audit of the successor heads claim, as submitted."
+description: "Criterion audit of the successor heads claim."
 ---
 
 # Successor Heads

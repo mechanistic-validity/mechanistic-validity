@@ -1,6 +1,6 @@
 ---
 title: "Grokking / Modular Addition"
-description: "Criterion audit of the grokking / modular addition claim, as submitted."
+description: "Criterion audit of the grokking / modular addition claim."
 ---
 
 # Grokking / Modular Addition

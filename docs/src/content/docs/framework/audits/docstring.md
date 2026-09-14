@@ -1,6 +1,6 @@
 ---
 title: "Docstring Circuit"
-description: "Criterion audit of the docstring circuit claim, as submitted."
+description: "Criterion audit of the docstring circuit claim."
 ---
 
 # Docstring Circuit

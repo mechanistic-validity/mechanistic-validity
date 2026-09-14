@@ -1,6 +1,6 @@
 ---
 title: "SAE Features"
-description: "Criterion audit of the sae features claim, as submitted."
+description: "Criterion audit of the sae features claim."
 ---
 
 # SAE Features

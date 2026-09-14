@@ -1,6 +1,6 @@
 ---
 title: "Induction Heads (General ICL)"
-description: "Criterion audit of the induction heads (general icl) claim, as submitted."
+description: "Criterion audit of the induction heads (general icl) claim."
 ---
 
 # Induction Heads (General ICL)

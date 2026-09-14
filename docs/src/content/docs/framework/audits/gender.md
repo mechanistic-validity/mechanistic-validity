@@ -1,6 +1,6 @@
 ---
 title: "Gender Bias Circuits"
-description: "Criterion audit of the gender bias circuits claim, as submitted."
+description: "Criterion audit of the gender bias circuits claim."
 ---
 
 # Gender Bias Circuits

@@ -1,6 +1,6 @@
 ---
 title: "Copy Suppression"
-description: "Criterion audit of the copy suppression claim, as submitted."
+description: "Criterion audit of the copy suppression claim."
 ---
 
 # Copy Suppression

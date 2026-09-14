@@ -1,6 +1,6 @@
 ---
 title: "Greater-Than Circuit"
-description: "Criterion audit of the greater-than circuit claim, as submitted."
+description: "Criterion audit of the greater-than circuit claim."
 ---
 
 # Greater-Than Circuit

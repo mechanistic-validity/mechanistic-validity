@@ -1,6 +1,6 @@
 ---
 title: "Knowledge Neurons"
-description: "Criterion audit of the knowledge neurons claim, as submitted."
+description: "Criterion audit of the knowledge neurons claim."
 ---
 
 # Knowledge Neurons

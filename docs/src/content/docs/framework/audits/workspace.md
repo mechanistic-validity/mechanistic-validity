@@ -1,6 +1,6 @@
 ---
 title: "Global Workspace"
-description: "Criterion audit of the global workspace claim, as submitted."
+description: "Criterion audit of the global workspace claim."
 ---
 
 # Global Workspace

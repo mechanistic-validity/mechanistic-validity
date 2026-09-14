@@ -1,6 +1,6 @@
 ---
 title: "Othello Board State"
-description: "Criterion audit of the othello board state claim, as submitted."
+description: "Criterion audit of the othello board state claim."
 ---
 
 # Othello Board State

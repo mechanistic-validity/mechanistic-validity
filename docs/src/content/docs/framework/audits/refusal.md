@@ -1,6 +1,6 @@
 ---
 title: "Refusal Direction"
-description: "Criterion audit of the refusal direction claim, as submitted."
+description: "Criterion audit of the refusal direction claim."
 ---
 
 # Refusal Direction

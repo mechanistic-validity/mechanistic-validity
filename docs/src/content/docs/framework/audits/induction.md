@@ -1,6 +1,6 @@
 ---
 title: "Induction Heads"
-description: "Criterion audit of the induction heads claim, as submitted."
+description: "Criterion audit of the induction heads claim."
 ---
 
 # Induction Heads

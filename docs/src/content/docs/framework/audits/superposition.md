@@ -1,6 +1,6 @@
 ---
 title: "Superposition"
-description: "Criterion audit of the superposition claim, as submitted."
+description: "Criterion audit of the superposition claim."
 ---
 
 # Superposition

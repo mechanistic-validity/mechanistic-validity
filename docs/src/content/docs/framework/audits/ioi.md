@@ -1,6 +1,6 @@
 ---
 title: "IOI Circuit"
-description: "Criterion audit of the ioi circuit claim, as submitted."
+description: "Criterion audit of the ioi circuit claim."
 ---
 
 # IOI Circuit

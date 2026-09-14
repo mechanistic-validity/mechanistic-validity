@@ -1,6 +1,6 @@
 ---
 title: "Probing Classifiers"
-description: "Criterion audit of the probing classifiers claim, as submitted."
+description: "Criterion audit of the probing classifiers claim."
 ---
 
 # Probing Classifiers
