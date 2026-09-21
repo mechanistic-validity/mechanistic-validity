@@ -32,7 +32,7 @@ Zeroing those activations lowers the correct-answer probability by 29.03% and do
 | Measurement (Meas. Theory) | M2 Baseline separation (confirmed) | M1/M3/M5/M7 (all untested) | Weak |
 | Interpretive (MI) | V1 Level declaration (partial) | V2 Level-evidence match (disconfirmed) | Weak |
 
-**Overall verdict: Disconfirmed.** The primary reading — that these roughly four neurons *store* the relational fact — fails on two counts that were tested rather than skipped. All three of the paper's own summaries report a *correlation* between activation and expression while the title and abstract claim storage (V2). And the same editing machinery moves non-factual linguistic patterns [Niu et al. 2024], so the construct never separates from its neighbor (C4).
+**Overall verdict: Disconfirmed.** The primary reading — that these roughly four neurons *store* the relational fact — fails on two counts that were tested rather than skipped. All three of the paper's own summaries report a *correlation* between activation and expression while the title and abstract claim storage (V2 Level-evidence match). And the same editing machinery moves non-factual linguistic patterns [Niu et al. 2024], so the construct never separates from its neighbor (C4 Discriminant validity).
 
 Weaker readings of the same evidence survive. That manipulating these neurons changes how strongly the model expresses the fact is **Causally Suggestive**. That editing them edits *that* fact and leaves unrelated knowledge alone is **Disconfirmed**: Table 6 of the origin gives an inter-relation perplexity rise of 7.2 for the identified neurons against 4.3 for random ones, and §5.1 reads the same table as showing little negative influence on other knowledge. That the account holds beyond BERT-base-cased is **Insufficient** — one model, and the generalization is asserted with no experiment behind it.
 
@@ -67,7 +67,7 @@ Weaker readings of the same evidence survive. That manipulating these neurons ch
 ### Key Distinctions
 
 - **Operationalism vs realism:** "Knowledge neuron" names the output of a procedure, and the paper's own summaries describe what the procedure finds as a correlate of expression. The construct is operational; the title's claim is realist.
-- **Confirmation vs corroboration:** the web-crawled-text prediction (E6) is genuine corroboration — the account made it before the test and it could have failed.
+- **Confirmation vs corroboration:** the web-crawled-text prediction (E6 Novel prediction) is genuine corroboration — the account made it before the test and it could have failed.
 - **Underdetermination:** storage and expression predict the same activation correlation, and no experiment here separates them.
 
 ---
@@ -109,7 +109,7 @@ Weaker readings of the same evidence survive. That manipulating these neurons ch
 | Zero identified neurons | **↓ 29.03% (control 1.47%)** | ↑ perplexity 1.1–10.1% | ? | ? |
 | Rewrite value slots | top-1 substitution 34.4% | **↑ perplexity 7.2 (random 4.3)** | moves them [Niu et al. 2024] | ? |
 
-The erasure row and the update row disagree about specificity, which is why I4 is Inconclusive rather than confirmed or failed. The third column is the neighboring construct C4 never separates from.
+The erasure row and the update row disagree about specificity, which is why I4 is Inconclusive rather than confirmed or failed. The third column is the neighboring construct C4 Discriminant validity never separates from.
 
 ---
 
@@ -133,7 +133,7 @@ The erasure row and the update row disagree about specificity, which is why I4 i
 
 ### Key Distinctions
 
-- **Affinity vs efficacy:** the E6 result is affinity evidence of an unusually clean kind. Efficacy at the level the title claims — installing a fact — reaches 34.4%.
+- **Affinity vs efficacy:** the E6 Novel prediction result is affinity evidence of an unusually clean kind. Efficacy at the level the title claims — installing a fact — reaches 34.4%.
 - **The metric is part of the finding:** the same Table 6 supports "little negative influence on other knowledge" in the paper's reading and an adverse specificity result in ours, because a raw perplexity rise and a rise relative to random controls are different quantities.
 - **Naming requires criteria:** the label arrives in the sentence that introduces the method, before any measurement.
 
@@ -161,7 +161,7 @@ The erasure row and the update row disagree about specificity, which is why I4 i
 
 ### Key Distinctions
 
-- **Reliability vs validity:** M2 is the strongest cell on this page and it does not rescue the claim. A control that separates cleanly establishes that *something* was found, not that what was found is storage.
+- **Reliability vs validity:** M2 Baseline separation is the strongest cell on this page and it does not rescue the claim. A control that separates cleanly establishes that *something* was found, not that what was found is storage.
 - **True score vs observed score:** the attribution score is normalized per prompt, so its scale carries no information across prompts.
 
 ---
@@ -184,12 +184,12 @@ The erasure row and the update row disagree about specificity, which is why I4 i
 
 ### Key Distinctions
 
-- **Description vs explanation:** the description is precise at the level of the unit and imprecise at the level of the claim. That combination is what V2 is built to catch.
+- **Description vs explanation:** the description is precise at the level of the unit and imprecise at the level of the claim. That combination is what V2 Level-evidence match is built to catch.
 - **Component identity vs component role:** identity is established by an attributor with a matched control. The role — storage — is asserted in the name and measured as correlation.
 - **Faithfulness vs understanding:** the manipulations are real and the reading placed on them is the disconfirmed part.
 
 ### Evidence Convergence Map
 
 - **Implementational → Interpretation:** strong for identity. The control separates at every stage.
-- **Representational → Interpretation:** absent. Nothing measures what the retained neurons encode, which is why C4 fails.
+- **Representational → Interpretation:** absent. Nothing measures what the retained neurons encode, which is why C4 Discriminant validity fails.
 - **Computational → Interpretation:** partial and adverse. The account predicts that editing these neurons edits this fact and spares others; the measurement says they damage other relations more than random neurons do.

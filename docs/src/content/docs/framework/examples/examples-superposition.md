@@ -65,7 +65,7 @@ The gap to real models remains the central open question. SAE success is consist
 
 **[I3 — Minimality:](/mechanistic-validity/framework/criteria/internal/minimality) Partial.** The load-bearing parts are named and the smallest case is solved in closed form. The data assumptions are untested.
 
-**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Confirmed.** Theory and experiment agree, and three outside groups replicated the result before publication. The toy-to-real gap is scored under E2 and E4, not here.
+**[C3 — Convergent validity:](/mechanistic-validity/framework/criteria/construct/convergent-validity) Confirmed.** Theory and experiment agree, and three outside groups replicated the result before publication. The toy-to-real gap is scored under E2 Prompt generalization and E4 Cross-model generalization, not here.
 
 ### Key Distinctions
 
@@ -118,7 +118,7 @@ Five nodes confirmed or consistent (in toy models), two unconnected at real-mode
 | Ablate direction B | Minimal (predicted crosstalk) | **↓↓ (confirmed, toy)** | Minimal (predicted crosstalk) |
 | Ablate direction C | Minimal (predicted crosstalk) | Minimal (predicted crosstalk) | **↓↓ (confirmed, toy)** |
 
-The diagonal is filled by construction — ablating a feature direction removes that feature — and the off-diagonal cells are predicted crosstalk rather than measured converse arms. No experiment shows a property intact while superposition is removed, which is why I6 caps the claim.
+The diagonal is filled by construction — ablating a feature direction removes that feature — and the off-diagonal cells are predicted crosstalk rather than measured converse arms. No experiment shows a property intact while superposition is removed, which is why I6 Double dissociation caps the claim.
 
 ---
 

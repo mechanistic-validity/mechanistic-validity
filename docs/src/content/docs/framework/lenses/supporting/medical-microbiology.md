@@ -78,6 +78,6 @@ Medical microbiology contributes to the framework not through specific criteria 
 Medical microbiology shapes the verdict system rather than gating specific transitions:
 
 - **All tiers:** An unsatisfiable criterion is reported as Untested with the obstruction named. It does not count as a failure, and it does not count as a pass.
-- **Causally suggestive → Mechanistically supported:** contributes nothing. The tier turns on I2, I4 and E1.
-- **Mechanistically supported → Triangulated:** contributes V2 (level-evidence match), through the discipline of stating what a graded presence licenses. I11 and I12 sit above this tier, and a claim reaching Triangulated without either is the expected case.
+- **Causally suggestive → Mechanistically supported:** contributes nothing. The tier turns on I2 Sufficiency, I4 Specificity and E1 Intervention reach.
+- **Mechanistically supported → Triangulated:** contributes V2 (level-evidence match), through the discipline of stating what a graded presence licenses. I11 Onset coupling and I12 Offset coupling sit above this tier, and a claim reaching Triangulated without either is the expected case.
 - **Triangulated → Validated:** contributes I11 (onset coupling), adapted from the Fredricks & Relman graded-presence guideline, and I12 (offset coupling), its converse — removing the capability should reduce the mechanism's strength. Validated requires that the mechanism and capability track each other in both directions.

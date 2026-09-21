@@ -35,7 +35,7 @@ This is the strongest structural evidence in published MI — the weight matrice
 
 **Overall verdict: Mechanistically Supported.** The modular addition circuit has strong structural and causal evidence — the algorithm is mathematically specified and every weight matrix is accounted for. The capping criterion is I6 (double dissociation): no study has tested a second behavior that the Fourier circuit spares while ablating a matched control circuit impairs. Despite the completeness of the reverse engineering, this crossed-design test has not been performed.
 
-The scope limitation is narrower than it looks: E4 is partial rather than untested — one- and two-layer transformers are run at origin, and nothing larger. The capping criterion remains I6.
+The scope limitation is narrower than it looks: E4 Cross-model generalization is partial rather than untested — one- and two-layer transformers are run at origin, and nothing larger. The capping criterion remains I6 Double dissociation.
 
 ## Metrics used in original work
 

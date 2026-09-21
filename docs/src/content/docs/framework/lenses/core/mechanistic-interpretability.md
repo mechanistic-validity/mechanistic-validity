@@ -149,18 +149,6 @@ The recommended language is "a circuit faithful to $B$ under procedure $P$" rath
 
 **What to report.** The discovery procedure named. The circuit described as "a circuit faithful to $B$ under $P$." If multi-procedure agreement has been tested, the Jaccard similarity at the component level $J(C_A, C_B) = |C_A \cap C_B| / |C_A \cup C_B|$.
 
-<details class="worked-example">
-<summary>Worked example: weight-based circuit signatures vs. activation patching</summary>
-
-Consider GPT-2 Small. We identify a set of weight-space directions (via SVD of the OV matrices) that load heavily on layer 8 and layer 9, with OV cosine similarity to the IOI name-mover head signatures above 0.7. This is a structural (connectomic) finding: the weight-space geometry resembles the known IOI circuit topology.
-
-We also run activation patching on the same model, using the Wang et al. IOI prompt set. This returns a set of components with high patching attribution at layers 3, 8, and 9, broadly overlapping with the weight-space finding.
-
-The Jaccard similarity between the two circuits (weight-based vs. activation-patching) is $J = 0.61$. This is substantial convergent evidence: two methods with genuinely different assumptions — one purely weight-space, one activation-based — agree on the majority of components. The 39% disagreement is not a contradiction; it characterizes the current precision of the comparison. We report the circuit as "identified by both weight-signature analysis and activation patching ($J = 0.61$); the shared components are the more robust part of the claim."
-
-If we had reported only the weight-space result, the Jaccard of 0.61 is potential future evidence. If we reported only the activation patching result, the weight-space structure would be uncharacterized. Reporting both gives a more informative picture than either alone.
-</details>
-
 ### Level-evidence match (V2)
 
 After analysis, audit every sentence in the narrative against the level of the evidence supporting it. A sentence that uses algorithmic or computational language must be traced to algorithmic or computational evidence.
@@ -215,7 +203,7 @@ Cross-architecture evidence does not require the same circuit. It requires an an
 ## Verdicts
 
 - **Proposed:** contributes V1 (level declaration). The entry tier requires the construct be defined under a declared description mode, and V1 is that declaration.
-- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2, I4 and E1.
+- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2 Sufficiency, I4 Specificity and E1 Intervention reach.
 - **Mechanistically supported → Triangulated:** contributes I5 (rival mechanism exclusion, circuit non-uniqueness addressed via at least two procedures) and, ideally, E4 (cross-model generalization, or an explicit bound).
 - **Triangulated → Validated:** contributes V1–V5, all of which the tier requires explicitly audited: level declaration, level-evidence match, alternative level, unlicensed labeling and scope declaration, with $\kappa$ reported for the primary claim.
 

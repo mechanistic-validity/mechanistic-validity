@@ -20,7 +20,7 @@ This page is an exploratory reading, not part of the paper. It applies the frame
 
 The mechanism is defined contrastively: the direction is the difference in mean activations between harmful and harmless prompt sets. It transfers across prompt categories (not just the ones used to extract it) and across 13 open-weight chat models in 5 families spanning a 40x parameter range.
 
-**Description mode:** undeclared. Three description modes appear in the paper's first paragraph and none is declared: the title asserts a representational organization while the evidence is causal-behavioral. This is what V1 records as partially confirmed. See [Description Modes](/mechanistic-validity/framework/description-modes/).
+**Description mode:** undeclared. Three description modes appear in the paper's first paragraph and none is declared: the title asserts a representational organization while the evidence is causal-behavioral. This is what V1 Level declaration records as partially confirmed. See [Description Modes](/mechanistic-validity/framework/description-modes/).
 
 ## Verdict: Mechanistically Supported
 

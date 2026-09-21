@@ -109,7 +109,7 @@ The Greater-Than circuit connects to:
 
 ### Key Distinctions
 
-- **Single vs double dissociation:** The paper has the makings of one half and never runs the second. This is the field's most common gap, and it is what caps this claim alongside I5.
+- **Single vs double dissociation:** The paper has the makings of one half and never runs the second. This is the field's most common gap, and it is what caps this claim alongside I5 Rival mechanism exclusion.
 - **Localization vs distributed:** The sign reversal establishes that the circuit's output determines the direction of the effect, which is a stronger localization result than a magnitude drop would be.
 - **Lesion vs stimulation:** Both directions of patching appear — the circuit receives corrupted input in one experiment and clean input in the other — but there is no amplification experiment.
 
@@ -145,7 +145,7 @@ One cell filled. The second component set is identified but never ablated, so th
 ### Key Distinctions
 
 - **The counterfactual is part of the finding:** every patching number here is a number about the 01-dataset. Nothing in the paper varies it, so the intervention families agree only where they share it.
-- **Disagreement reported rather than averaged:** the erasure results decline to support the representational story while patching supports the circuit, and both are reported. That is what E1 asks for; what is missing is a second counterfactual.
+- **Disagreement reported rather than averaged:** the erasure results decline to support the representational story while patching supports the circuit, and both are reported. That is what E1 Intervention reach asks for; what is missing is a second counterfactual.
 - **A failed prediction reported as a finding:** the less-than result is the strongest evidence on the page about what the circuit is not, and it is in the paper rather than in a rebuttal.
 
 ### Dose-Response Curve
@@ -201,8 +201,8 @@ One cell filled. The second component set is identified but never ablated, so th
 
 ### Key Distinctions
 
-- **Description vs explanation:** the paper describes the flow completely and declines to explain the operation. Declining is the right move given the evidence, and it is why V1 and V2 sit at partial rather than lower.
-- **Component identity vs component role:** every role name here is licensed by a measurement, which is why V4 is confirmed where most audited claims are not.
+- **Description vs explanation:** the paper describes the flow completely and declines to explain the operation. Declining is the right move given the evidence, and it is why V1 Level declaration and V2 Level-evidence match sit at partial rather than lower.
+- **Component identity vs component role:** every role name here is licensed by a measurement, which is why V4 Unlicensed labeling is confirmed where most audited claims are not.
 - **Faithfulness vs understanding:** faithfulness is established and understanding is not. The two axes come apart cleanly in this case.
 
 ### Evidence Convergence Map

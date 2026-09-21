@@ -32,4 +32,4 @@ Knowledge neurons: the paper reports that its localization method "can be easily
 
 ## Relation to other interpretive criteria
 
-Scope declaration (V5) closes the interpretive chain: V1 states the mode, V2 checks the evidence supports it, V3 rules out a simpler mode, V4 checks the name does not smuggle in an unmeasured property, and V5 states where all of that stops applying. A claim that passes V1–V4 but skips V5 is locally sound and globally overclaimed.
+Scope declaration (V5) closes the interpretive chain: V1 Level declaration states the mode, V2 Level-evidence match checks the evidence supports it, V3 Alternative level rules out a simpler mode, V4 Unlicensed labeling checks the name does not smuggle in an unmeasured property, and V5 states where all of that stops applying. A claim that passes V1–V4 but skips V5 is locally sound and globally overclaimed.

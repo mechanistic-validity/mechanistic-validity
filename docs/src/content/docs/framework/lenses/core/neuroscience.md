@@ -243,8 +243,8 @@ Internal validity is the workhorse of the [verdict system](/mechanistic-validity
 
 - **Proposed → Causally suggestive:** contributes I1 (necessity). The tier also requires M2 (baseline separation), which the measurement-theory lens supplies.
 - **Causally suggestive → Mechanistically supported:** contributes I2 (sufficiency) and I4 (specificity). The tier also requires E1 (intervention reach).
-- **Mechanistically supported → Triangulated:** contributes I6 (double dissociation) and I7 (confound control), alongside C3, C4, I5 and cross-distribution replication from other lenses.
-- **Triangulated → Validated:** contributes nothing further; the remaining internal criteria at that tier are I3, I8 and I10–I12.
+- **Mechanistically supported → Triangulated:** contributes I6 (double dissociation) and I7 (confound control), alongside C3 Convergent validity, C4 Discriminant validity, I5 Rival mechanism exclusion and cross-distribution replication from other lenses.
+- **Triangulated → Validated:** contributes nothing further; the remaining internal criteria at that tier are I3 Minimality, I8 Confounding sensitivity and I10–I12.
 
 Most published MI papers reach Causally suggestive. The gap between Causally suggestive and Mechanistically supported — sufficiency — is where most claims stall.
 
@@ -268,10 +268,10 @@ Partial evidence is informative; unreported gaps are not.
 
 For full worked examples applying all eight lenses (including internal validity) to published claims:
 
-- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — strong I1/I2, weak I4/I7; method-conditional results
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — strong I1 Necessity/I2 Sufficiency, weak I4 Specificity/I7 Confound control; method-conditional results
 - [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — reaches Mechanistically supported; path-level sufficiency
 - [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — necessity/sufficiency sometimes; bulk untested
 - [Copy Suppression](/mechanistic-validity/framework/examples/examples-copy-suppression) — unusually clean specificity (I4)
 - [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — all five criteria pass (toy model)
-- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — strong I1/I2, weak I4/I7
-- [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) — measurement without intervention; I1, I2 and I4 all untested
+- [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — strong I1 Necessity/I2 Sufficiency, weak I4 Specificity/I7 Confound control
+- [Probing Classifiers](/mechanistic-validity/framework/examples/examples-probing) — measurement without intervention; I1 Necessity, I2 Sufficiency and I4 Specificity all untested

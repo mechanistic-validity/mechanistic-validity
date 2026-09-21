@@ -29,7 +29,7 @@ Confounding sensitivity does not establish that no confound exists. It establish
 
 ## Distinction from I7 — Confound Control
 
-I7 asks "did you control for confounds?" by comparing [ablation](/mechanistic-validity/glossary/#ablation) methods and checking for mean-field disruption. I8 asks "how robust is your claim to confounds you did not control for?" I7 is a procedural check; I8 is a quantitative sensitivity analysis. They are complementary: I7 addresses known confounds, I8 bounds the impact of unknown ones.
+I7 asks "did you control for confounds?" by comparing [ablation](/mechanistic-validity/glossary/#ablation) methods and checking for mean-field disruption. I8 Confounding sensitivity asks "how robust is your claim to confounds you did not control for?" I7 is a procedural check; I8 Confounding sensitivity is a quantitative sensitivity analysis. They are complementary: I7 addresses known confounds, I8 Confounding sensitivity bounds the impact of unknown ones.
 
 ## Minimum reporting rule
 

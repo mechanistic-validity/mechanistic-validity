@@ -26,7 +26,7 @@ Satisfied when:
 
 ## MI example
 
-The induction heads (token copying) case study is capped partly by I12. Induction heads have been shown to appear when in-context learning appears (onset coupling), but the converse — fine-tuning away the copying behavior and checking whether induction heads disappear — has not been tested. Without this, the mechanism could be an architectural feature that persists regardless of the capability.
+The induction heads (token copying) case study is capped partly by I12 Offset coupling. Induction heads have been shown to appear when in-context learning appears (onset coupling), but the converse — fine-tuning away the copying behavior and checking whether induction heads disappear — has not been tested. Without this, the mechanism could be an architectural feature that persists regardless of the capability.
 
 ## Connection to the chain
 

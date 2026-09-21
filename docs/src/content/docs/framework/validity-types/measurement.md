@@ -40,7 +40,7 @@ The pharmacological analogy is assay validation. Before drawing conclusions abou
 | M6 | Invariance | Does the metric behave consistently across conditions (model size, prompt distribution, ablation method)? |
 | M7 | Selection correction | When k findings are selected from N candidates, is N reported and multiplicity controlled? |
 
-M1–M3 address whether the metric produces stable outputs. M4–M5 address whether those outputs are interpretable. M6 addresses whether they generalize across conditions. M7 addresses whether they survive correction for the search that produced them.
+M1–M3 address whether the metric produces stable outputs. M4–M5 address whether those outputs are interpretable. M6 Invariance addresses whether they generalize across conditions. M7 Selection correction addresses whether they survive correction for the search that produced them.
 
 The framework also defines 15 calibration meta-metrics (F01–F15) that map onto M1–M7. These are metrics of metrics: they take another metric's output as input and assess whether it is stable, reproducible, or distinguishable from baselines.
 

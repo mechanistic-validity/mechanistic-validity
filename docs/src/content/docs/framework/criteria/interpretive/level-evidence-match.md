@@ -33,7 +33,7 @@ To satisfy level–evidence match: list every required criterion for the declare
 ## Example: SVA circuit at L8.MLP
 
 Declared tag: `[causal-mechanistic]`  
-Required criteria: I1, I2, I4, M2
+Required criteria: I1 Necessity, I2 Sufficiency, I4 Specificity, M2 Baseline separation
 
 | Criterion | Status | Evidence |
 |---|---|---|
@@ -42,7 +42,7 @@ Required criteria: I1, I2, I4, M2
 | I4 Specificity | **Open** — control-axis [IIA](/mechanistic-validity/glossary/#iia) not computed | — |
 | M2 Baseline separation | **Open** — random-vector baseline not computed | — |
 
-**Verdict:** Evidence does not yet license `[causal-mechanistic]`. Current justified tag: `[representational]` for L8.MLP as an SVA-associated subspace. Upgrade path: run I2 (complement ablation), I4 (control-axis IIA), M2 (random-vector baseline).
+**Verdict:** Evidence does not yet license `[causal-mechanistic]`. Current justified tag: `[representational]` for L8.MLP as an SVA-associated subspace. Upgrade path: run I2 Sufficiency (complement ablation), I4 Specificity (control-axis IIA), M2 (random-vector baseline).
 
 ## Minimum reporting rule
 

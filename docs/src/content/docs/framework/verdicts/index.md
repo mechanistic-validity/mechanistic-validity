@@ -34,7 +34,7 @@ The tier system makes these thresholds explicit. Each tier has a *minimum eviden
 - Construct defined under a declared [description mode](/mechanistic-validity/framework/description-modes/) (C1–C2)
 - At least one admissible measurement conducted
 
-**Characteristic occupants:** Probing classifiers (capped by I1); sparse autoencoder features (capped by M2).
+**Characteristic occupants:** Probing classifiers (capped by I1 Necessity); sparse autoencoder features (capped by M2 Baseline separation).
 
 ---
 
@@ -46,7 +46,7 @@ The tier system makes these thresholds explicit. Each tier has a *minimum eviden
 - Necessity via causal intervention ([I1](/mechanistic-validity/framework/criteria/internal/necessity/) confirmed)
 - At least one measurement passes baseline separation ([M2](/mechanistic-validity/framework/criteria/measurement/baseline-separation/))
 
-**Characteristic occupants:** Docstring circuit (capped by I4); gender bias circuits (capped by E1, I4); IOI circuit (capped by E1, I4); Othello world model (capped by E1).
+**Characteristic occupants:** the docstring circuit, capped by I4 Specificity; the gender bias and IOI circuits, capped by E1 Intervention reach and I4; the Othello world model, capped by E1.
 
 ---
 
@@ -59,7 +59,7 @@ The tier system makes these thresholds explicit. Each tier has a *minimum eviden
 - Intervention reach across ≥2 ablation methods ([E1](/mechanistic-validity/framework/criteria/external/intervention-reach/))
 - Specificity test conducted ([I4](/mechanistic-validity/framework/criteria/internal/specificity/) at least partially confirmed)
 
-**Characteristic occupants:** Copy suppression (capped by I6); greater-than circuit (capped by I5, I6); modular addition (capped by I6); refusal direction (capped by I6); successor heads (capped by I6); superposition (capped by I6); global workspace (capped by I6).
+**Characteristic occupants:** copy suppression, modular addition, the refusal direction, successor heads, superposition and the global workspace subspace, each capped by I6 Double dissociation; the greater-than circuit, capped by I5 Rival mechanism exclusion and I6.
 
 Double dissociation (I6) caps every one of the seven claims that reach this tier.
 
@@ -77,7 +77,7 @@ Double dissociation (I6) caps every one of the seven claims that reach this tier
 - Cross-distribution replication — [E4](/mechanistic-validity/framework/criteria/external/cross-model-recurrence/) where the claim asserts reach beyond the systems tested, [E2](/mechanistic-validity/framework/criteria/external/prompt-generalization/) where it does not
 - Double dissociation attempted ([I6](/mechanistic-validity/framework/criteria/internal/double-dissociation/))
 
-**Characteristic occupants:** Induction heads, token copying (capped by C6, I3, I10, I12).
+**Characteristic occupants:** Induction heads, token copying (capped by C6 Complementation validity, I3 Minimality, I10 Rescue reversibility, I12 Offset coupling).
 
 ---
 
@@ -124,7 +124,7 @@ Three labels sit outside the tier progression. They replace the tier rather than
 
 **Disconfirmation is not failure.** A disconfirmed claim is informative — it narrows the space of possible mechanisms. A field that never disconfirms is not doing science. The lateral position of Disconfirmed (rather than placing it below Proposed) reflects this: disconfirmation is a *different kind of conclusion*, not a worse one.
 
-**Characteristic occupants:** Induction heads, general in-context learning (fails I1); knowledge neurons (fails I4).
+**Characteristic occupants:** Induction heads, general in-context learning (fails I1 Necessity); knowledge neurons (fails I4 Specificity).
 
 ## Verdicts on sixteen claims
 

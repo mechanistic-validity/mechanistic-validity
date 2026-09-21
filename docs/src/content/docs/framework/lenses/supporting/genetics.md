@@ -172,7 +172,7 @@ The two conditions are testable. *Relevance*: regress the circuit's activations 
 
 The E-value or a similar sensitivity bound should quantify how strong an unmeasured confounder would need to be to explain away the observed causal effect.
 
-This criterion is distinct from confound control (I7). I7 asks: "did you control for confounds?" -- it requires multi-method comparison and distributional integrity checks to rule out known confounds (off-manifold artifacts, cascading disruption, single-method bias). I8 asks the complementary question: "how robust is your claim to confounds you *did not* control for?" Every ablation study has potential unmeasured confounders -- information in the residual stream that correlates with both the ablated component and the output, backup pathways that partially compensate, or distributional effects that inflate the apparent necessity.
+This criterion is distinct from confound control (I7). I7 asks: "did you control for confounds?" -- it requires multi-method comparison and distributional integrity checks to rule out known confounds (off-manifold artifacts, cascading disruption, single-method bias). I8 Confounding sensitivity asks the complementary question: "how robust is your claim to confounds you *did not* control for?" Every ablation study has potential unmeasured confounders -- information in the residual stream that correlates with both the ablated component and the output, backup pathways that partially compensate, or distributional effects that inflate the apparent necessity.
 
 The E-value ([VanderWeele & Ding 2017](https://doi.org/10.7326/M16-2607)) quantifies this robustness. For an observed effect estimate $\text{RR}$ (risk ratio or analogous effect measure), the E-value is:
 
@@ -229,8 +229,8 @@ If the behavioral degradation is monotonically increasing across this series, th
 All three criteria this lens supplies sit at the Validated tier. It gates no transition below that, and a claim reaching Triangulated without any of them is the expected case rather than an exception.
 
 - **Proposed → Causally suggestive:** the genetics lens contributes nothing. I1 (necessity) and M2 (baseline separation) are the entry requirements.
-- **Causally suggestive → Mechanistically supported:** nothing. The tier turns on I2, I4 and E1.
-- **Mechanistically supported → Triangulated:** nothing directly. The lens's analytical constructs -- knockout ordering and the allelic series -- can supply evidence a reader weighs under I5 and I7, both of which the tier requires.
+- **Causally suggestive → Mechanistically supported:** nothing. The tier turns on I2 Sufficiency, I4 Specificity and E1 Intervention reach.
+- **Mechanistically supported → Triangulated:** nothing directly. The lens's analytical constructs -- knockout ordering and the allelic series -- can supply evidence a reader weighs under I5 Rival mechanism exclusion and I7 Confound control, both of which the tier requires.
 - **Triangulated → Validated:** I8, I9 and I10. Confounding sensitivity bounds the hidden bias no other lens tests; epistatic interaction establishes internal coupling; rescue reversibility separates a genuine loss of computation from cascading disruption. All three are untested in every one of the sixteen audited claims.
 
 ## Protocol

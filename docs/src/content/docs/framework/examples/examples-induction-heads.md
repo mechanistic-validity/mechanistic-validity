@@ -96,7 +96,7 @@ Six independent predictions, six independent confirmations. A thick nomological 
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** No experiment reconstructs the copying behavior from induction heads alone. The two nearest things are both weaker than sufficiency: Argument 2 shows that the architectural capacity for induction suffices to produce in-context learning in a one-layer model that previously had none, which is sufficiency of the architecture rather than of the heads, and Scherlis's replication substitutes an idealized induction pattern and recovers most of the head's loss contribution — a comment on the paper rather than an experiment in it.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** Every head is ablated, so off-target effects are measured throughout, and the effect concentrates on repetition-bearing sequences. The crossed design that would make this a dissociation is a separate criterion (I6) and was not run at origin.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Partial.** Every head is ablated, so off-target effects are measured throughout, and the effect concentrates on repetition-bearing sequences. The crossed design that would make this a dissociation is a separate criterion (I6 Double dissociation) and was not run at origin.
 
 **[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Three exogenous confounds are checked, including scheduled hyperparameters. What is not addressed is a shared latent cause that would produce heads and capability together.
 

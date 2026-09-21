@@ -107,7 +107,7 @@ A thin nomological network. Two rows partially confirmed, several untested. The 
 
 **[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Inconclusive.** The off-target extent of the intervention was measured, disclosed in one clause of a figure caption, and then removed from view. Ablating a single dictionary feature moves twelve thousand logits down; the paper names the one that moves most and reads the intervention as confirming the feature's interpretation. Nothing establishes that the other movements are noise — no comparison to ablating a random direction of the same norm, no report of which tokens they are, and a display threshold chosen for clarity rather than derived from a null.
 
-**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Three designed controls are run, including an α = 0 dictionary. What is absent is a bound on how strong an unmeasured confounder would need to be (I8).
+**[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Three designed controls are run, including an α = 0 dictionary. What is absent is a bound on how strong an unmeasured confounder would need to be (I8 Confounding sensitivity).
 
 | Criterion | Verdict | Key evidence |
 |---|---|---|

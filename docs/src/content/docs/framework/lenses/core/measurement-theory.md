@@ -255,9 +255,9 @@ The practical test is to vary the alignment map's capacity. If IIA remains high 
 Measurement validity gates the interpretation of every other evidence type:
 
 - **Proposed → Causally suggestive:** contributes M2 (baseline separation). A score without a random-vector and untrained-model baseline is a data point, not a finding, and this is the one measurement criterion that gates a tier below Validated.
-- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2, I4 and E1.
+- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2 Sufficiency, I4 Specificity and E1 Intervention reach.
 - **Mechanistically supported → Triangulated:** contributes nothing further; the tier turns on construct, internal and external criteria.
-- **Triangulated → Validated:** contributes M1, M3, M4, M5 and M6, all of which the tier requires explicitly addressed, plus M7 wherever the findings were selected from a larger candidate set.
+- **Triangulated → Validated:** contributes M1 Reliability, M3 Stability, M4 Calibration, M5 Sensitivity and M6 Invariance, all of which the tier requires explicitly addressed, plus M7 Selection correction wherever the findings were selected from a larger candidate set.
 
 ## Protocol
 

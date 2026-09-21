@@ -80,4 +80,4 @@ I6 (double dissociation) caps every claim that reaches Mechanistically Supported
 | V4 | Unlicensed labeling | Does a name import a property that was not measured? | [unlicensed-labeling](interpretive/unlicensed-labeling/) |
 | V5 | Scope declaration | What does the claim explicitly not cover? | [scope-declaration](interpretive/scope-declaration/) |
 
-V3, V4, and V5 have no counterpart in the validity frameworks surveyed from other fields. They address failure modes specific to mechanistic interpretability: claiming an algorithm when only an implementation was shown (V3), calling a representation a "world model" when only a state summary was demonstrated (V4), and silently generalizing beyond the tested system (V5).
+V3 Alternative level, V4 Unlicensed labeling, and V5 Scope declaration have no counterpart in the validity frameworks surveyed from other fields. They address failure modes specific to mechanistic interpretability: claiming an algorithm when only an implementation was shown (V3), calling a representation a "world model" when only a state summary was demonstrated (V4), and silently generalizing beyond the tested system (V5).

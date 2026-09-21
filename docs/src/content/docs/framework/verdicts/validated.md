@@ -50,7 +50,7 @@ Why so few claims reach this tier: Validated requires *completeness*, not just *
 None. No claim in the sixteen audited reaches this tier, and the two that come closest fall short in the same place.
 
 - **Grokking / modular addition** ([Nanda et al., 2023](https://arxiv.org/abs/2301.05217)) reaches **Mechanistically Supported**. Every weight matrix is explained by the Fourier algorithm, quantitative predictions about periodicity are confirmed, and the scope is explicit — and double dissociation (I6) is untested: no second mechanism is shown intact under an ablation that breaks the Fourier circuit.
-- **Superposition in toy models** ([Elhage et al., 2022](https://arxiv.org/abs/2209.10652)) reaches **Mechanistically Supported**, capped by I6 for the same reason: importance and sparsity are crossed, but on one outcome, with no converse arm.
+- **Superposition in toy models** ([Elhage et al., 2022](https://arxiv.org/abs/2209.10652)) reaches **Mechanistically Supported**, capped by I6 Double dissociation for the same reason: importance and sparsity are crossed, but on one outcome, with no converse arm.
 
 That the tier is empty is a statement about the field's current evidence base, not about the ceiling being unreachable. Both claims above are two experiments away from it.
 

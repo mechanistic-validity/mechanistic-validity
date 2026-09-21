@@ -27,13 +27,13 @@ Satisfied when either:
 
 [V3 Alternative Level](/mechanistic-validity/framework/criteria/interpretive/alternative-level/) addresses competing *interpretations* of the same evidence — different narrative accounts of what the circuit does. Rival mechanism exclusion addresses competing *circuits* — different component sets that produce the same behavior with comparable faithfulness. The first is an interpretive question (what does the evidence mean?). The second is an empirical question (is this the only component set that works?).
 
-A claim can pass V3 (no better interpretation of the evidence exists) while failing I5 (a different set of components produces the same behavior equally well). This is the "a circuit vs. the circuit" distinction.
+A claim can pass V3 Alternative level (no better interpretation of the evidence exists) while failing I5 Rival mechanism exclusion (a different set of components produces the same behavior equally well). This is the "a circuit vs. the circuit" distinction.
 
 ## The Méloux et al. problem
 
 [Méloux et al. (2024)](https://arxiv.org/abs/2407.07498) demonstrated that multiple distinct circuits can achieve comparable faithfulness on the same task in the same model. The IOI circuit identified by Wang et al. is *a* sufficient mechanism for IOI, but alternative head sets also achieve high faithfulness. This finding does not invalidate the original circuit — it invalidates the implicit uniqueness claim.
 
-Without I5, a researcher who finds a faithful circuit has no obligation to test alternatives. The circuit is reported as "the IOI circuit" (definite article implying uniqueness) when the evidence only supports "an IOI circuit" (indefinite article implying sufficiency without uniqueness).
+Without I5 Rival mechanism exclusion, a researcher who finds a faithful circuit has no obligation to test alternatives. The circuit is reported as "the IOI circuit" (definite article implying uniqueness) when the evidence only supports "an IOI circuit" (indefinite article implying sufficiency without uniqueness).
 
 ## How to test for rivals
 
@@ -44,8 +44,8 @@ Without I5, a researcher who finds a faithful circuit has no obligation to test 
 ## Relation to other criteria
 
 - **[I3 Minimality](/mechanistic-validity/framework/criteria/internal/minimality/):** A minimal circuit can still be non-unique — multiple minimal circuits may exist (backup mechanisms, distributed computation). Minimality ensures no redundant members within a circuit; I5 ensures no rival circuits across decompositions.
-- **[I7 Confound Control](/mechanistic-validity/framework/criteria/internal/confound-control/):** Confound control asks whether the effect is due to the nominated component or collateral disruption. I5 asks whether *different* components could produce the same effect without collateral disruption.
-- **[M1 Reliability](/mechanistic-validity/framework/criteria/measurement/reliability/):** Reliability ensures the finding replicates across seeds and methods. I5 goes further: even if the finding replicates perfectly, is the discovered circuit the only one that would?
+- **[I7 Confound Control](/mechanistic-validity/framework/criteria/internal/confound-control/):** Confound control asks whether the effect is due to the nominated component or collateral disruption. I5 Rival mechanism exclusion asks whether *different* components could produce the same effect without collateral disruption.
+- **[M1 Reliability](/mechanistic-validity/framework/criteria/measurement/reliability/):** Reliability ensures the finding replicates across seeds and methods. I5 Rival mechanism exclusion goes further: even if the finding replicates perfectly, is the discovered circuit the only one that would?
 
 ## Minimum reporting rule
 

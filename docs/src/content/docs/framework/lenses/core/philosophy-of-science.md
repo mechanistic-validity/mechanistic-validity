@@ -27,7 +27,7 @@ In MI: the move from "head 9.9 has high direct logit attribution for the IO toke
 
 Popper (1959) distinguished confirmation (accumulating supporting evidence) from corroboration (surviving genuine attempts at falsification). A theory that has been tested only in ways it was designed to pass has been confirmed but not corroborated. Corroboration requires risky predictions — tests the theory could fail.
 
-In MI: a circuit discovered by activation patching and evaluated by activation patching has been confirmed (it passes the test it was built to pass). A circuit discovered by activation patching and evaluated by an independent method (weight-space analysis, causal scrubbing, a behavioral prediction on held-out prompts) has been corroborated — it survived a test it was not optimized for. The distinction matters because confirmation is cheap and corroboration is expensive, and the field's evidence base is dominated by confirmation.
+In MI: a circuit discovered by activation patching and evaluated by activation patching has been confirmed — it passes the test it was built to pass. Re-evaluating it with EAP or DAS is closer to a second run than a second test, because all three intervene on activations and inherit the same assumptions about what an ablation means. A circuit discovered by activation patching and evaluated by a method that could fail differently — a weight-space analysis, a behavioral prediction on held-out prompts, a check against training checkpoints — has been corroborated: it survived a test it was not optimized for. The distinction matters because confirmation is cheap and corroboration is expensive, and the field's evidence base is dominated by confirmation.
 
 ### Operationalism vs realism
 
@@ -73,7 +73,7 @@ Two methods should agree more about the same circuit than about different circui
 | [Lakatos, *Falsification and the Methodology of Scientific Research Programmes*](https://doi.org/10.1017/CBO9780511621123.010) | 1970 | Philosophy of Science | **Progressive vs degenerating programmes** — a construct is progressive if it predicts novel facts beyond the data it was discovered on; a circuit found by patching and only ever evaluated by patching is degenerating |
 | [Woodward, *Making Things Happen*](https://global.oup.com/academic/product/making-things-happen-9780195189537) | 2003 | Philosophy of Science | **Invariant difference-making** — causes must hold under a range of interventions, not just the one tested |
 | [Craver, *Explaining the Brain*](https://global.oup.com/academic/product/explaining-the-brain-9780199568222) | 2007 | Neuroscience / Philosophy | **Constitutive relevance** — mechanistic explanation requires that components make a difference, not merely be present |
-| [Méloux et al., "Not all circuits are the same"](https://arxiv.org/abs/2410.10186) | 2025 | Mechanistic Interpretability | **Construct non-uniqueness** — multiple equally faithful circuits exist for the same task; "the circuit" may not refer to a determinate entity |
+| [Méloux et al., "Everything, Everywhere, All at Once: Is Mechanistic Interpretability Identifiable?"](https://arxiv.org/abs/2502.20914) | 2025 | Mechanistic Interpretability | **Construct non-uniqueness** — multiple equally faithful circuits exist for the same task; "the circuit" may not refer to a determinate entity |
 
 ## Validity type: [Construct validity](/mechanistic-validity/framework/validity-types/construct)
 
@@ -156,7 +156,7 @@ where $F(C, T)$ is the faithfulness score. $S = 1$ means zero off-task faithfuln
 
 ### Minimality (I3, scored under internal validity)
 
-The circuit should be the smallest set of components that satisfies sufficiency. No member should be redundant. This lens supplies the argument for the criterion — Craver's difference-making account of what a mechanism's parts are — but the criterion itself is I3, and a verdict scores it under [internal validity](/mechanistic-validity/framework/validity-types/internal).
+The circuit should be the smallest set of components that satisfies sufficiency. No member should be redundant. This lens supplies the argument for the criterion — Craver's difference-making account of what a mechanism's parts are — but the criterion itself is I3 Minimality, and a verdict scores it under [internal validity](/mechanistic-validity/framework/validity-types/internal).
 
 Craver (2007) defines the components of a mechanism as those whose presence makes a *difference*, not those that are merely present during operation. Adding components to a circuit can only increase apparent sufficiency — an over-inclusive circuit is therefore unfalsifiable by any sufficiency test. If we include every head whose removal causes a nonzero decrease in performance, we will include heads that are incidental rather than constitutive, and the resulting "circuit" will describe the model's general-purpose infrastructure rather than the task-specific mechanism.
 
@@ -178,26 +178,9 @@ We quantify convergent validity using Jaccard similarity at the component level.
 
 $$J(C_A, C_B) = \frac{|C_A \cap C_B|}{|C_A \cup C_B|}$$
 
-$J = 1.0$ means perfect agreement; $J = 0$ means no overlap. In practice, $J > 0.6$ between genuinely independent methods (weight-space classification and activation-based attribution patching, say) is strong convergent validity. $J < 0.3$ between independent methods is a warning that the circuit is method-dependent.
+$J = 1.0$ means perfect agreement; $J = 0$ means no overlap. A single method compared against itself sets the scale: under changes of estimator and aggregation, bootstrap resampling of one discovery method moves circuit size from 5 to 21 edges at a mean pairwise Jaccard of 0.67 ([Méloux et al., 2026](https://arxiv.org/abs/2510.00845)). An overlap between two independent methods means something only when it is read against that spread.
 
 The independence requirement is strict. Two gradient-based attribution methods share the linearity assumption. Two patching methods share the interventionist assumption. Two methods that both threshold at a percentile share the assumption that the relevant components are in the tail of some distribution. For convergent validity to hold, the methods must differ in their *major* assumptions — the ones that determine which components are selected.
-
-<details class="worked-example">
-<summary>Worked example: convergent validity for the IOI circuit</summary>
-
-Wang et al. (2022) identified the IOI circuit primarily through activation patching and direct logit attribution — both grounded in the interventionist framework. Suppose we independently apply a weight-space classifier (which examines $W_{OV}$ and $W_{QK}$ matrices without running any forward passes) and it identifies 20 of the 26 heads, plus 4 heads not in the original circuit.
-
-The two circuits are:
-
-- $C_{\text{AP}}$ = the 26-head activation patching circuit
-- $C_{\text{WC}}$ = the 24-head weight classifier circuit
-
-Their overlap is $|C_{\text{AP}} \cap C_{\text{WC}}| = 20$ heads. Their union is $|C_{\text{AP}} \cup C_{\text{WC}}| = 30$ heads. The Jaccard similarity is:
-
-$$J(C_{\text{AP}}, C_{\text{WC}}) = \frac{20}{30} = 0.67$$
-
-This is informative because the methods share almost no assumptions — one intervenes on activations during forward passes, the other examines static weights. The 6 heads found only by activation patching may implement their role through a dynamic mechanism invisible to weight inspection. The 4 heads found only by weight classification may have the structural signature but not the activation profile on the tested prompts. Both discrepancies are scientifically interesting and should be reported rather than resolved by picking one method's output.
-</details>
 
 **Failure modes.** *Shared-bias convergence* — two metrics converge because they share an assumption (linearity, gradient-based attribution), not because the claim is true. *Pipeline convergence* — one metric's output feeds the other, making agreement circular. *Threshold-dependent agreement* — two methods agree at one threshold but diverge at another; Jaccard should be reported across a range of thresholds.
 
@@ -229,7 +212,7 @@ Complementation validity is Untested in all sixteen audited claims, and it is wh
 
 When evidence is consistent with multiple incompatible explanations, the correct verdict is *underdetermined*, not *solved*. Underdetermination is not a failure — it is a state of evidence that construct validity is equipped to name.
 
-[Méloux et al. (ICLR 2025)](https://arxiv.org/abs/2410.10186) show empirically that underdetermination is the norm in circuit discovery. Using multiple discovery algorithms on the same tasks and models, they find that the circuit you get depends on the search heuristic you use. Different algorithms return circuits with substantially different membership — sometimes with Jaccard similarities as low as $J = 0.2$ — yet each circuit individually passes faithfulness and necessity tests. The circuits are not wrong. They are underdetermined.
+[Méloux et al. (ICLR 2025)](https://arxiv.org/abs/2502.20914) show empirically that underdetermination is the norm in circuit discovery. Using multiple discovery algorithms on the same tasks and models, they find that the circuit you get depends on the search heuristic you use. Different algorithms return circuits with substantially different membership — sometimes with Jaccard similarities as low as $J = 0.2$ — yet each circuit individually passes faithfulness and necessity tests. The circuits are not wrong. They are underdetermined.
 
 This is consistent with a basic observation from philosophy of science (Duhem 1906, [Quine 1951](https://doi.org/10.2307/2181906)): any finite body of evidence is consistent with multiple theories. In the circuit setting, a single behavioral output (logit difference on IOI prompts) constrains the circuit only to the set of component subsets that can produce that output. There are, in general, many such subsets — especially when the model contains redundant or partially overlapping mechanisms. Faithfulness tests reduce this set but do not reduce it to one.
 
@@ -240,7 +223,7 @@ Reporting underdetermination explicitly is a stronger finding than suppressing i
 Construct validity gates advancement through the [verdict tiers](/mechanistic-validity/framework/verdicts/):
 
 - **Proposed:** contributes C1 (falsifiability) and C2 (structural plausibility). Both are required at the entry tier: without a pre-registered disconfirming condition, no amount of ablation evidence upgrades the verdict.
-- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2, I4 and E1.
+- **Causally suggestive → Mechanistically supported:** contributes nothing further; the tier turns on I2 Sufficiency, I4 Specificity and E1 Intervention reach.
 - **Mechanistically supported → Triangulated:** contributes C3 (convergent validity) and C4 (discriminant validity). The tier requires both, not either.
 - **Triangulated → Validated:** contributes C5 (nomological validity) and C6 (complementation validity), completing construct coverage C1–C6.
 
@@ -268,10 +251,10 @@ For a proposed circuit $C$ and behavior $B$, the following protocol operationali
 
 For full worked examples applying all eight lenses (including construct validity) to published claims:
 
-- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — the most thoroughly analyzed circuit; strong C2, weak C3/C4
-- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — the strongest mechanistic claim; passes C1–C5, capped by C6
+- [IOI Circuit](/mechanistic-validity/framework/examples/examples-ioi) — the most thoroughly analyzed circuit; strong C2 Structural plausibility, weak C3 Convergent validity/C4 Discriminant validity
+- [Induction Heads](/mechanistic-validity/framework/examples/examples-induction-heads) — the strongest mechanistic claim; passes C1–C5, capped by C6 Complementation validity
 - [SAE Features](/mechanistic-validity/framework/examples/examples-sae-features) — weakest construct validity; thin nomological network
 - [Greater-Than](/mechanistic-validity/framework/examples/examples-greater-than) — best structural plausibility (C2)
 - [Grokking](/mechanistic-validity/framework/examples/examples-grokking) — the ceiling: Validated within toy scope
 - [Knowledge Neurons](/mechanistic-validity/framework/examples/examples-knowledge-neurons) — tool works, but construct may be wrong
-- [Gender Bias](/mechanistic-validity/framework/examples/examples-gender-bias) — construct incoherence (C4 fails fundamentally)
+- [Gender Bias](/mechanistic-validity/framework/examples/examples-gender-bias) — construct incoherence (C4 Discriminant validity fails fundamentally)

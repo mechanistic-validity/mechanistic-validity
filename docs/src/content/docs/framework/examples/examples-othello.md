@@ -75,7 +75,7 @@ This case study illustrates a pattern worth naming: **interpretive inflation** �
 The Othello world model connects to:
 - **Linear decodability** — probe recovers board state from residual stream (representational, confirmed)
 - **Causal intervention** — patching board-state information shifts predictions (causal, confirmed)
-- **Spatial structure** — Nanda's follow-up recovers a linear representation under a mine/theirs basis rather than black/white, which strengthens the linearity result and shows the probe target was never varied at origin (scored under I5 and M3)
+- **Spatial structure** — Nanda's follow-up recovers a linear representation under a mine/theirs basis rather than black/white, which strengthens the linearity result and shows the probe target was never varied at origin (scored under I5 Rival mechanism exclusion and M3 Stability)
 - **Legal move computation** — does the model use board state to determine legal moves, or are legal moves computed separately? (untested)
 - **Training dynamics** — does board-state representation emerge at a specific training phase? (untested)
 - **Weight-space implementation** — which attention heads or MLP layers construct the representation? (partially explored)

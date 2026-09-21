@@ -26,11 +26,11 @@ Satisfied when:
 
 ## MI example
 
-The induction heads (token copying) case study is capped partly by I3. The proposed circuit includes multiple heads labeled as induction heads, but not every head has been individually tested for necessity within the circuit. Some may be redundant — present because they were included in the initial identification pass, not because each is individually required.
+The induction heads (token copying) case study is capped partly by I3 Minimality. The proposed circuit includes multiple heads labeled as induction heads, but not every head has been individually tested for necessity within the circuit. Some may be redundant — present because they were included in the initial identification pass, not because each is individually required.
 
 ## Relation to I1 and I5
 
-I1 (necessity) tests whether the circuit as a whole is required. I3 tests whether each *component* of the circuit is required. I5 (rival mechanism exclusion) tests whether a different set of components could do the same job. A circuit can pass I1 but fail I3 if it contains unnecessary components.
+I1 (necessity) tests whether the circuit as a whole is required. I3 Minimality tests whether each *component* of the circuit is required. I5 (rival mechanism exclusion) tests whether a different set of components could do the same job. A circuit can pass I1 but fail I3 Minimality if it contains unnecessary components.
 
 ## Connection to the chain
 

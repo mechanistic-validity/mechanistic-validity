@@ -97,7 +97,7 @@ Four nodes confirmed, three unconnected. A moderately thick network — strong, 
 
 **[I2 — Sufficiency:](/mechanistic-validity/framework/criteria/internal/sufficiency) Partial.** Sufficiency is measured directly: everything outside the circuit is mean-ablated against the p_ABC reference distribution, and the surviving average logit difference is 87% of the model's. The source reports a single average with no dispersion and no per-example figure, and the paper itself flags that this number does not settle the account.
 
-**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Inconclusive.** Merullo et al. (2024) measure both head overlap and task effect, and the two give opposite verdicts. Alongside E1, this is the criterion capping the claim.
+**[I4 — Specificity:](/mechanistic-validity/framework/criteria/internal/specificity) Inconclusive.** Merullo et al. (2024) measure both head overlap and task effect, and the two give opposite verdicts. Alongside E1 Intervention reach, this is the criterion capping the claim.
 
 **[I7 — Confound control:](/mechanistic-validity/framework/criteria/internal/confound-control) Partial.** Sequence length is controlled twice. Name frequency is not, and the analysis is not replicated under an alternative ablation method.
 
@@ -184,7 +184,7 @@ The curve is two endpoints with no interior. We know the maximum effect is large
 | **Act. patching (GT)** | ? | ? | — | ? |
 | **Weight analysis (GT)** | ? | ? | ? | — |
 
-One convergent cell partially filled (activation patching vs. weight-space for the same circuit: estimated Jaccard ~0.61). No discriminant cells filled — we don't know if the methods agree *more* about IOI than they agree about everything. Without the discriminant comparison, the convergent evidence could reflect method bias rather than genuine construct convergence.
+One convergent cell partially filled (activation patching and weight-space analysis on the same circuit, with the overlap never characterized). No discriminant cells filled — we don't know if the methods agree *more* about IOI than they agree about everything. Without the discriminant comparison, the convergent evidence could reflect method bias rather than genuine construct convergence.
 
 Reliability: unknown (no confidence intervals reported for the 87% figure). The MTMM cannot be interpreted until reliability establishes a ceiling on correlations.
 
@@ -200,7 +200,7 @@ Reliability: unknown (no confidence intervals reported for the 87% figure). The 
 
 **[V2 — Level-evidence match:](/mechanistic-validity/framework/criteria/interpretive/level-evidence-match) Partial.** The evidence matches the claim at one step of three. For S-Inhibition the paper measures the content of what is moved, decomposes it into token and position components, and shows an additive model of the two predicts logit difference to within 7% — algorithm-level evidence for an algorithm-level claim. For duplicate detection and induction the corresponding parameter-level evidence is named and not run, and the paper states it did not investigate how the induction-to-position mechanism works.
 
-**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Inconclusive.** A strictly simpler description of the same behavior is built at origin. The naïve circuit drops the Backup and Negative Name Movers and half the Duplicate Token and Induction heads, and it matches the published circuit on the criterion the paper leads with. Two of the three completeness samplers separate them; the third separates neither. The source constructs its own simpler rival and does not defeat it on faithfulness. [Méloux et al. (2025)](https://arxiv.org/abs/2410.10186) find further faithful circuits with different membership.
+**[V3 — Alternative level:](/mechanistic-validity/framework/criteria/interpretive/alternative-level) Inconclusive.** A strictly simpler description of the same behavior is built at origin. The naïve circuit drops the Backup and Negative Name Movers and half the Duplicate Token and Induction heads, and it matches the published circuit on the criterion the paper leads with. Two of the three completeness samplers separate them; the third separates neither. The source constructs its own simpler rival and does not defeat it on faithfulness. [Méloux et al. (2025)](https://arxiv.org/abs/2502.20914) find further faithful circuits with different membership.
 
 **[V5 — Scope declaration:](/mechanistic-validity/framework/criteria/interpretive/scope-declaration) Confirmed.** Scope is declared in five places, and in the two that matter most: the abstract concedes remaining gaps before any result is given, and the introduction states the circuit fails the hardest of the paper's own tests. The exclusions are stated as design decisions rather than discovered afterwards, and §5 frames the whole result as a model organism, which names the generalization limit rather than leaving the reader to infer it.
 

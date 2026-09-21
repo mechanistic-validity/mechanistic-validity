@@ -152,7 +152,7 @@ The choice of off-task benchmark matters more than the threshold. The IOI circui
 
 ![Selectivity Index across circuit claims — bar chart with SI = 10 threshold](/figures/selectivity_index_minimal.svg)
 
-> **Why effect magnitude is not a criterion.** An earlier draft of this framework scored raw magnitude as a bar of its own. It is not one. The observed magnitude of an ablation effect is a joint property of the component's role and the network's compensatory reserve, so a load-bearing component in a redundant network shows a small effect and an incidental component in a brittle one shows a large effect. The work magnitude was doing is split across three criteria that can each be judged: M2 (is the full-model signal separated from a random baseline?), M4 (does the number mean anything on a stated scale?), and E5 (does the effect track intervention strength?). [Miller, Chughtai, and Saunders (2024)](https://arxiv.org/abs/2407.08734) showed the IOI circuit's 87% recovery holds under mean ablation with the Wang et al. prompt set and moves from below 0% to over 100% across other methodological choices — which is a measurement problem, not a magnitude one.
+> **Why effect magnitude is not a criterion.** An earlier draft of this framework scored raw magnitude as a bar of its own. It is not one. The observed magnitude of an ablation effect is a joint property of the component's role and the network's compensatory reserve, so a load-bearing component in a redundant network shows a small effect and an incidental component in a brittle one shows a large effect. The work magnitude was doing is split across three criteria that can each be judged: M2 (is the full-model signal separated from a random baseline?), M4 Calibration (does the number mean anything on a stated scale?), and E5 Graded response (does the effect track intervention strength?). [Miller, Chughtai, and Saunders (2024)](https://arxiv.org/abs/2407.08734) showed the IOI circuit's 87% recovery holds under mean ablation with the Wang et al. prompt set and moves from below 0% to over 100% across other methodological choices — which is a measurement problem, not a magnitude one.
 
 ### Prompt generalization (E2)
 
@@ -187,7 +187,7 @@ The absence of cross-architecture evidence does not invalidate a finding. It bou
 ## Verdicts
 
 - **Proposed → Causally suggestive:** contributes nothing. I1 (necessity) and M2 (baseline separation) are the entry requirements.
-- **Causally suggestive → Mechanistically supported:** contributes E1 (intervention reach) and I4 (specificity). Reproducing the result under a second intervention family is what the tier turns on, alongside I2.
+- **Causally suggestive → Mechanistically supported:** contributes E1 (intervention reach) and I4 (specificity). Reproducing the result under a second intervention family is what the tier turns on, alongside I2 Sufficiency.
 - **Mechanistically supported → Triangulated:** contributes E2 (prompt generalization) and E4 (cross-model generalization) — the tier's cross-distribution replication requirement.
 - **Triangulated → Validated:** contributes E5 (graded response), M4 (calibration) and, ideally, E6 (novel prediction) — a mechanism that predicts an untested dose-response shape.
 

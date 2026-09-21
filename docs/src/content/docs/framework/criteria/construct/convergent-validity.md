@@ -21,18 +21,18 @@ Running one metric and claiming a circuit is not enough. Convergent validity req
 Satisfied when:
 
 1. **≥3 metrics from different evidence families** have been run. Two [ablation](/mechanistic-validity/glossary/#ablation) variants (both causal) do not satisfy — they measure the same thing differently. Families count as independent when the failure of one's core assumption would not automatically invalidate the other: e.g., causal + structural + representational.
-2. **The metrics agree on component membership.** Jaccard ≥ 0.5 is a reasonable pass threshold for circuits of ≤ 20 components.
+2. **The metrics agree on component membership.** Overlap is reported, not thresholded: what counts as agreement depends on the size of the circuit and on the spread each metric shows under resampling.
 3. **Disagreement is treated as a finding.** Low Jaccard overlap must be reported as a primary result and investigated — not silently resolved by choosing the preferred metric.
 
 ## When methods disagree
 
-When two discovery methods from different evidence families nominate substantially different component sets (Jaccard < 0.5), the disagreement typically means one of:
+When two discovery methods from different evidence families nominate substantially different component sets, the disagreement typically means one of:
 
 - One metric has a methodological flaw explaining its output;
 - The two metrics are sensitive to different real properties (e.g., structurally consistent but causally inactive components vs. causally active but structurally atypical ones);
 - The construct (e.g., "the SVA circuit") is underspecified and metrics track different things under the same label.
 
-All three interpretations are scientifically important. Convergent validity is failed; the disagreement is the finding.
+All three interpretations are scientifically important. Convergent validity is failed, and the disagreement is reported as a result.
 
 ## Metric coverage for convergent validity
 
@@ -50,5 +50,5 @@ Three metrics from different evidence families constitute the test at Triangulat
 
 - List every metric used and its evidence family.
 - For each pair from different families: Jaccard similarity.
-- If Jaccard ≥ 0.5: note which components appear in all metrics.
-- If Jaccard < 0.5: report disagreement explicitly, list components unique to each metric, state which interpretation is most consistent with the data.
+- Note which components appear in every metric, and which are unique to one.
+- Where the metrics disagree, report the disagreement explicitly and state which of the three interpretations above is most consistent with the data.

@@ -29,7 +29,7 @@ Epistatic interaction does not establish the direction of interaction (whether A
 
 ## Distinction from I4 — Specificity
 
-I4 tests whether a component's effect is selective for a particular task. I9 tests whether two components interact with each other. A component can be highly task-specific (I4 pass) yet act independently of all other circuit members (I9 fail). Conversely, two components can interact strongly (I9 pass) on a non-specific behavior (I4 fail).
+I4 Specificity tests whether a component's effect is selective for a particular task. I9 Epistatic interaction tests whether two components interact with each other. A component can be highly task-specific (I4 pass) yet act independently of all other circuit members (I9 fail). Conversely, two components can interact strongly (I9 pass) on a non-specific behavior (I4 fail).
 
 ## Minimum reporting rule
 
