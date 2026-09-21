@@ -15,10 +15,10 @@ description: "Criterion audit of the grokking / modular addition claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** The network computes $a+b 113$ by multiplying Fourier components at five key frequencies | Mechanistically Supported | Selection correction over the frequency pool (M7) and a positive control (M5) |
-| The five frequencies are the mechanism at neuron granularity | Underdetermined | The leave-one-out runs at frequency level; 79 of 512 neurons fail the polynomial fit the account predicts (I3) |
-| The account fixes which algorithm the network runs | Underdetermined | ([Zhong et al., 2023](https://arxiv.org/abs/2306.17844)) give two algorithms on the same frequencies; the metrics separating them are unrun here (I5) |
-| The progress measures explain grokking generally | Insufficient | Three further tasks are run but only for whether grokking occurs, never for the mechanism (E3) |
+| **Primary.** The network computes $a+b 113$ by multiplying Fourier components at five key frequencies | Mechanistically Supported | Selection correction over the frequency pool (M7) and a positive control (M5 Sensitivity) |
+| The five frequencies are the mechanism at neuron granularity | Underdetermined | The leave-one-out runs at frequency level; 79 of 512 neurons fail the polynomial fit the account predicts (I3 Minimality) |
+| The account fixes which algorithm the network runs | Underdetermined | ([Zhong et al., 2023](https://arxiv.org/abs/2306.17844)) give two algorithms on the same frequencies; the metrics separating them are unrun here (I5 Rival mechanism exclusion) |
+| The progress measures explain grokking generally | Insufficient | Three further tasks are run but only for whether grokking occurs, never for the mechanism (E3 Cross-task generalization) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the grokking / modular addition claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **I6** double dissociation — Unattempted; no second mechanism shown intact under ablation |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Five frequencies treated as interchangeable, never compared in pairs; **E5** graded response — Unattempted; ablation is binary per component, with no interpolation; **I10** rescue reversibility — Unattempted; every intervention substitutes rather than restores; **I12** offset coupling — Unattempted; no test that behavior disappears as the circuit does; **M5** sensitivity — Unattempted; a known-negative control with no known-positive |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **I6** double dissociation — Unattempted; no second mechanism shown intact under ablation |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Five frequencies treated as interchangeable, never compared in pairs; **E5** graded response — Unattempted; ablation is binary per component, with no interpolation; **I10** rescue reversibility — Unattempted; every intervention substitutes rather than restores; **I12** offset coupling — Unattempted; no test that behavior disappears as the circuit does; **M5** sensitivity — Unattempted; a known-negative control with no known-positive |
 
 ## 36-criterion audit
 

@@ -15,10 +15,10 @@ description: "Criterion audit of the ioi circuit claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** A circuit comprising these 26 heads performs IOI in GPT-2 small on the origin templates | Causally Suggestive | Independent evidence (C3), separation from other circuits (I6), and robustness to method and prompt (M3, M6) |
-| These 26 heads are *the* mechanism, to the exclusion of others | Underdetermined | A test that discriminates among rival head sets; naïve and greedy-search circuits reach comparable faithfulness (I5) |
-| The mechanism generalizes across prompts and models | Disconfirmed | Nothing — tested and failed: model and circuit diverge at $10^6$ prompt pairs (E2), and faithfulness varies across the origin's own templates (M6) |
-| The seven classes compose in the stated order, each performing the role its name asserts | Underdetermined | Weight-level accounts for two of seven classes (C2); role semantics currently exceed the evidence (V2) |
+| **Primary.** A circuit comprising these 26 heads performs IOI in GPT-2 small on the origin templates | Causally Suggestive | Independent evidence (C3 Convergent validity), separation from other circuits (I6 Double dissociation), and robustness to method and prompt (M3 Stability, M6 Invariance) |
+| These 26 heads are *the* mechanism, to the exclusion of others | Underdetermined | A test that discriminates among rival head sets; naïve and greedy-search circuits reach comparable faithfulness (I5 Rival mechanism exclusion) |
+| The mechanism generalizes across prompts and models | Disconfirmed | Nothing — tested and failed: model and circuit diverge at $10^6$ prompt pairs (E2 Prompt generalization), and faithfulness varies across the origin's own templates (M6 Invariance) |
+| The seven classes compose in the stated order, each performing the role its name asserts | Underdetermined | Weight-level accounts for two of seven classes (C2 Structural plausibility); role semantics currently exceed the evidence (V2 Level-evidence match) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the ioi circuit claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked. **E1** intervention reach — One ablation value at origin, three granularities; methods disagree; **I4** specificity — Head overlap and task effect give opposite verdicts ([Merullo et al., 2024](https://arxiv.org/abs/2310.08744)) |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Mechanistically Supported. **C4** discriminant validity — 78% overlap ([Merullo et al., 2024](https://arxiv.org/abs/2310.08744)); faithfulness opposite ([Hanna et al., 2024](https://arxiv.org/abs/2403.17806)); **E2** prompt generalization — At $10^6$ clean/corrupted pairs, model and circuit diverge ([uit de Bos & Garriga-Alonso, 2024](https://arxiv.org/abs/2407.15166)); **I5** rival mechanism exclusion — Greedy search finds knockout sets carrying 87% of the behavior; **I6** double dissociation — No IOI test; the nearest design finds none across tasks ([Li & Subramani, 2026](https://arxiv.org/abs/2605.08348)) |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **M5** sensitivity — Unattempted; no planted circuit of known extent |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked. **E1** intervention reach — One ablation value at origin, three granularities; methods disagree; **I4** specificity — Head overlap and task effect give opposite verdicts ([Merullo et al., 2024](https://arxiv.org/abs/2310.08744)) |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Mechanistically Supported. **C4** discriminant validity — 78% overlap ([Merullo et al., 2024](https://arxiv.org/abs/2310.08744)); faithfulness opposite ([Hanna et al., 2024](https://arxiv.org/abs/2403.17806)); **E2** prompt generalization — At $10^6$ clean/corrupted pairs, model and circuit diverge ([uit de Bos & Garriga-Alonso, 2024](https://arxiv.org/abs/2407.15166)); **I5** rival mechanism exclusion — Greedy search finds knockout sets carrying 87% of the behavior; **I6** double dissociation — No IOI test; the nearest design finds none across tasks ([Li & Subramani, 2026](https://arxiv.org/abs/2605.08348)) |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **M5** sensitivity — Unattempted; no planted circuit of known extent |
 
 ## 36-criterion audit
 

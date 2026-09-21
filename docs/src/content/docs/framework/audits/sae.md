@@ -15,8 +15,8 @@ description: "Criterion audit of the sae features claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** Sparse dictionary learning recovers directions more interpretable than PCA, ICA and the neuron basis, and causally usable | Proposed | Baseline separation (M2), where the origin's within-model controls and the later random-network controls disagree; then specificity (I4), independent convergence (C3), separation from other decompositions (I6), and calibration of the scoring instrument (M1, M3, M5, M7) |
-| SAE features are atomic, canonical units of the model | Disconfirmed | Nothing — tested and failed: meta-SAEs decompose latents further (C4), and the instrument cannot distinguish a trained transformer from a random one ([Heap et al., 2025](https://arxiv.org/abs/2501.17727)) |
+| **Primary.** Sparse dictionary learning recovers directions more interpretable than PCA, ICA and the neuron basis, and causally usable | Proposed | Baseline separation (M2), where the origin's within-model controls and the later random-network controls disagree; then specificity (I4), independent convergence (C3 Convergent validity), separation from other decompositions (I6 Double dissociation), and calibration of the scoring instrument (M1 Reliability, M3 Stability, M5 Sensitivity, M7 Selection correction) |
+| SAE features are atomic, canonical units of the model | Disconfirmed | Nothing — tested and failed: meta-SAEs decompose latents further (C4 Discriminant validity), and the instrument cannot distinguish a trained transformer from a random one ([Heap et al., 2025](https://arxiv.org/abs/2501.17727)) |
 | SAE features localize causation better than neurons | Disconfirmed | Nothing — tested and failed: (Mueller et al., 2025) report no causal-localization advantage over the neuron basis |
 
 ## Verdict
@@ -26,10 +26,10 @@ description: "Criterion audit of the sae features claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Blocked. **M2** baseline separation — Separates from random directions; not from a random network when that control is run |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked at Causally Suggestive. **I4** specificity — Single-feature ablation moves 12,000 logits; left unanalyzed |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Causally Suggestive. **I6** double dissociation — Unattempted; no second decomposition shown intact |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Causally Suggestive. **C6** complementation validity — Feature splitting is the open question; no test of atomicity is run; **E3** cross-task generalization — Unattempted; generalization stated as an expectation; **I10** rescue reversibility — Unattempted, though patching is reversible by construction; **I11** onset coupling — Unattempted, and cheap: Pythia ships pretraining checkpoints ([Biderman et al., 2023](https://arxiv.org/abs/2304.01373)); **I12** offset coupling — Unattempted; the nearest result is at an extreme, not a trajectory ([Heap et al., 2025](https://arxiv.org/abs/2501.17727)) |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Blocked. **M2** baseline separation — Separates from random directions; not from a random network when that control is run |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked at Causally Suggestive. **I4** specificity — Single-feature ablation moves 12,000 logits; left unanalyzed |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Causally Suggestive. **I6** double dissociation — Unattempted; no second decomposition shown intact |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Causally Suggestive. **C6** complementation validity — Feature splitting is the open question; no test of atomicity is run; **E3** cross-task generalization — Unattempted; generalization stated as an expectation; **I10** rescue reversibility — Unattempted, though patching is reversible by construction; **I11** onset coupling — Unattempted, and cheap: Pythia ships pretraining checkpoints ([Biderman et al., 2023](https://arxiv.org/abs/2304.01373)); **I12** offset coupling — Unattempted; the nearest result is at an extreme, not a trajectory ([Heap et al., 2025](https://arxiv.org/abs/2501.17727)) |
 
 ## 36-criterion audit
 

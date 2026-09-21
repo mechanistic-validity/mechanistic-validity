@@ -15,10 +15,10 @@ description: "Criterion audit of the global workspace claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** A low-dimensional Jacobian subspace mediates which contents the model reports and reasons over | Mechanistically Supported | A converse dissociation (I6), an unmeasured-confounder bound (I8), and correction for how the token sets were chosen (M7) |
+| **Primary.** A low-dimensional Jacobian subspace mediates which contents the model reports and reasons over | Mechanistically Supported | A converse dissociation (I6 Double dissociation), an unmeasured-confounder bound (I8 Confounding sensitivity), and correction for how the token sets were chosen (M7 Selection correction) |
 | Any direction encoding the concept would serve equally | Disconfirmed | Nothing — named twice and tested twice, and concept vectors do not reproduce the effect |
 | The subspace is a global workspace in the sense the theory intends | Underdetermined | The architectural disanalogies are enumerated by the authors; no experiment separates a workspace from a bottleneck that behaves like one |
-| The result holds beyond one model family | Insufficient | Four models, one laboratory, all closed-weight, effects scale-graded from 54% to 70% (E4) |
+| The result holds beyond one model family | Insufficient | Four models, one laboratory, all closed-weight, effects scale-graded from 54% to 70% (E4 Cross-model recurrence) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the global workspace claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **I6** double dissociation — Single dissociation run cleanly and repeatedly; no converse |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **I6** double dissociation — Single dissociation run cleanly and repeatedly; no converse |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. |
 
 ## 36-criterion audit
 
@@ -88,7 +88,7 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| I6 | Inconclusive or Partially confirmed | Whether a crossing over layer bands meets a criterion asking for two mechanisms |
+| I6 Double dissociation | Inconclusive or Partially confirmed | Whether a crossing over layer bands meets a criterion asking for two mechanisms |
 
 
 ## Exploratory Lens Analysis

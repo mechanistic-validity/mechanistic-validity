@@ -15,10 +15,10 @@ description: "Criterion audit of the greater-than circuit claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** A subgraph of attention heads and MLPs 8–11 performs greater-than on year-span prompts in GPT-2 small | Mechanistically Supported | A second instrument for circuit discovery (C3), a dissociation from the components serving the tasks the circuit fails (I6), and a second model (E4) |
-| The circuit computes the comparison rather than retrieving memorized year associations | Underdetermined | The paper's own structured-number-representation account fails two causal tests and memorization is never tested (I5); no experiment separates a lookup table from a computation (V3) |
-| The circuit implements greater-than as such, firing where the relation applies and not elsewhere | Disconfirmed | Nothing — tested and failed: two prompts requiring less-than recruit the same circuit and the model answers greater, and a non-monotone sequence case does the same (I4, E3) |
-| The same circuit is the mechanism for greater-than beyond GPT-2 small | Disconfirmed | Nothing — tested and failed: the disconfirming evidence is post-origin and in three other model families (E4), and the origin itself runs GPT-2 small only and names the gap |
+| **Primary.** A subgraph of attention heads and MLPs 8–11 performs greater-than on year-span prompts in GPT-2 small | Mechanistically Supported | A second instrument for circuit discovery (C3 Convergent validity), a dissociation from the components serving the tasks the circuit fails (I6 Double dissociation), and a second model (E4 Cross-model recurrence) |
+| The circuit computes the comparison rather than retrieving memorized year associations | Underdetermined | The paper's own structured-number-representation account fails two causal tests and memorization is never tested (I5 Rival mechanism exclusion); no experiment separates a lookup table from a computation (V3 Alternative level) |
+| The circuit implements greater-than as such, firing where the relation applies and not elsewhere | Disconfirmed | Nothing — tested and failed: two prompts requiring less-than recruit the same circuit and the model answers greater, and a non-monotone sequence case does the same (I4 Specificity, E3 Cross-task generalization) |
+| The same circuit is the mechanism for greater-than beyond GPT-2 small | Disconfirmed | Nothing — tested and failed: the disconfirming evidence is post-origin and in three other model families (E4 Cross-model recurrence), and the origin itself runs GPT-2 small only and names the gap |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the greater-than circuit claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **E4** cross-model recurrence — One model at origin; run later, and the circuit differs per model ([Xu, 2026](https://arxiv.org/abs/2606.05378)); **I5** rival mechanism exclusion — Two rivals tested and both left live, the lookup table included; **I6** double dissociation — The makings of one half; the converse is never run |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Heads and MLPs divided by role, with no joint ablation to test it; **I10** rescue reversibility — Direction fixed by path patching; the restore is never framed; **M1** reliability — Dispersion reported twice, both pre-circuit; no interval on any result; **M3** stability — Membership read off heatmaps; no threshold stated, none swept; **M5** sensitivity — Two experiments, both on the real model; no planted mechanism |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **E4** cross-model recurrence — One model at origin; run later, and the circuit differs per model ([Xu, 2026](https://arxiv.org/abs/2606.05378)); **I5** rival mechanism exclusion — Two rivals tested and both left live, the lookup table included; **I6** double dissociation — The makings of one half; the converse is never run |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Heads and MLPs divided by role, with no joint ablation to test it; **I10** rescue reversibility — Direction fixed by path patching; the restore is never framed; **M1** reliability — Dispersion reported twice, both pre-circuit; no interval on any result; **M3** stability — Membership read off heatmaps; no threshold stated, none swept; **M5** sensitivity — Two experiments, both on the real model; no planted mechanism |
 
 ## 36-criterion audit
 
@@ -88,7 +88,7 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| E4 | Disconfirmed or Untested | Whether the later cross-model test was run and failed, or reports a different circuit |
+| E4 Cross-model recurrence | Disconfirmed or Untested | Whether the later cross-model test was run and failed, or reports a different circuit |
 
 
 ## Exploratory Lens Analysis

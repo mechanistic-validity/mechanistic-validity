@@ -15,10 +15,10 @@ description: "Criterion audit of the gender bias circuits claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** Ten of 144 attention heads carry the indirect effect of a gender edit on the pronoun probability ratio, and neurons combine synergistically to produce it | Causally Suggestive | Specificity, which has no second outcome to register on (I4); necessity, which the design's substitution estimands cannot express (I1); correction for a greedy maximum over 144 candidates (M7); and dispersion on the head-level and neuron-level effects that carry the sparsity claim (M1) |
-| These components mediate gender bias rather than gender processing | Underdetermined | A localized gender-competence mechanism to compute an overlap against; none is measured, and the definitionally gendered professions that would carry the test are excluded from the total-effect calculation (C4, V3, I5) |
-| Training is what installs the sparse mediation structure | Underdetermined | A trajectory. The coupling is a single endpoint contrast against one untrained model whose total effects are small rather than absent — 0.07 on WinoBias against GPT2-small's 0.25 (I12) — with no intermediate checkpoint anywhere (I11) |
-| The effect grows with model size and the pattern holds across model families | Disconfirmed | Nothing — tested and failed: the neuron-level pattern does not transfer to the masked language models and the authors state they have no theory for the difference (E4, M6), and the size trend holds on the Winograd sets but not on Professions, where model size is not well correlated with total effect (E4) |
+| **Primary.** Ten of 144 attention heads carry the indirect effect of a gender edit on the pronoun probability ratio, and neurons combine synergistically to produce it | Causally Suggestive | Specificity, which has no second outcome to register on (I4); necessity, which the design's substitution estimands cannot express (I1); correction for a greedy maximum over 144 candidates (M7 Selection correction); and dispersion on the head-level and neuron-level effects that carry the sparsity claim (M1 Reliability) |
+| These components mediate gender bias rather than gender processing | Underdetermined | A localized gender-competence mechanism to compute an overlap against; none is measured, and the definitionally gendered professions that would carry the test are excluded from the total-effect calculation (C4 Discriminant validity, V3 Alternative level, I5 Rival mechanism exclusion) |
+| Training is what installs the sparse mediation structure | Underdetermined | A trajectory. The coupling is a single endpoint contrast against one untrained model whose total effects are small rather than absent — 0.07 on WinoBias against GPT2-small's 0.25 (I12 Offset coupling) — with no intermediate checkpoint anywhere (I11 Onset coupling) |
+| The effect grows with model size and the pattern holds across model families | Disconfirmed | Nothing — tested and failed: the neuron-level pattern does not transfer to the masked language models and the authors state they have no theory for the difference (E4 Cross-model recurrence, M6 Invariance), and the size trend holds on the Winograd sets but not on Professions, where model size is not well correlated with total effect (E4 Cross-model recurrence) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the gender bias circuits claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked. **E1** intervention reach — One instrument throughout, so every agreement is the method with itself; **I4** specificity — A two-element outcome set leaves off-target damage nowhere to register |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Mechanistically Supported. **C4** discriminant validity — No second construct is ever localized, so nothing can separate from it; **I6** double dissociation — One behavior by construction, so the second dissociation cannot be run |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **E3** cross-task generalization — One two-candidate setup throughout; generality claimed, not shown; **I10** rescue reversibility — Counterfactual activations exist for every example; no recovery is read; **I11** onset coupling — Two states, before training and after; no sequence to locate an onset in |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked. **E1** intervention reach — One instrument throughout, so every agreement is the method with itself; **I4** specificity — A two-element outcome set leaves off-target damage nowhere to register |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Mechanistically Supported. **C4** discriminant validity — No second construct is ever localized, so nothing can separate from it; **I6** double dissociation — One behavior by construction, so the second dissociation cannot be run |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **E3** cross-task generalization — One two-candidate setup throughout; generality claimed, not shown; **I10** rescue reversibility — Counterfactual activations exist for every example; no recovery is read; **I11** onset coupling — Two states, before training and after; no sequence to locate an onset in |
 
 ## 36-criterion audit
 
@@ -88,7 +88,7 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| I6 | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
+| I6 Double dissociation | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
 
 
 ## Exploratory Lens Analysis

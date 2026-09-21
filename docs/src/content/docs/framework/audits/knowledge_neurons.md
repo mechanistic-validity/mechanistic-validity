@@ -15,10 +15,10 @@ description: "Criterion audit of the knowledge neurons claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** These roughly four feed-forward neurons store the relational fact | Disconfirmed | Nothing — tested and failed: all three of the paper's own summaries report a correlation between activation and expression while the title and abstract claim storage (V2), and the same editing machinery moves non-factual linguistic patterns, so the construct never separates from its neighbor (C4) |
+| **Primary.** These roughly four feed-forward neurons store the relational fact | Disconfirmed | Nothing — tested and failed: all three of the paper's own summaries report a correlation between activation and expression while the title and abstract claim storage (V2 Level-evidence match), and the same editing machinery moves non-factual linguistic patterns, so the construct never separates from its neighbor (C4 Discriminant validity) |
 | Manipulating these neurons changes how strongly the model expresses the fact | Causally Suggestive | Specificity, tested and inconclusive (I4); sufficiency reaches a 34.4% edit success rate on a fact the rest of the model still expresses (I2) |
-| Editing these neurons edits that fact and leaves unrelated knowledge alone | Disconfirmed | Nothing — tested and failed: Table 6 gives an inter-relation perplexity rise of 7.2 for the identified neurons against 4.3 for random ones, and §5.1 reads the same table as little negative influence on other knowledge (I4) |
-| The account holds beyond BERT-base-cased | Insufficient | One model, and the generalization is asserted with no experiment behind it (E4, V5); what has since transferred is the attribution procedure rather than the storage reading |
+| Editing these neurons edits that fact and leaves unrelated knowledge alone | Disconfirmed | Nothing — tested and failed: Table 6 gives an inter-relation perplexity rise of 7.2 for the identified neurons against 4.3 for random ones, and §5.1 reads the same table as little negative influence on other knowledge (I4 Specificity) |
+| The account holds beyond BERT-base-cased | Insufficient | One model, and the generalization is asserted with no experiment behind it (E4 Cross-model recurrence, V5 Scope declaration); what has since transferred is the attribution procedure rather than the storage reading |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the knowledge neurons claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked. **I4** specificity — Holds at identification and erasure, fails on other knowledge: results point both ways |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Mechanistically Supported. **C4** discriminant validity — Competitor named and filtered out; the same machinery moves it ([Niu et al., 2024](https://arxiv.org/abs/2405.02421)); **I5** rival mechanism exclusion — The one alternative ruled out is about method; the FFN framing forecloses the rest; **I6** double dissociation — One mechanism localized and one behavior measured, so neither arm exists |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **C6** complementation validity — Relation sets separate at identification; no joint suppression is run; **E3** cross-task generalization — Single-word cloze throughout, named first among the authors' limitations; **I3** minimality — Set size is an input, held near four neurons before any effect is measured; **I10** rescue reversibility — The damage is analytic and invertible, and the restore is never run; **M1** reliability — Every quantity a mean reported once, with no interval or repeated run; **M3** stability — Three free settings stated and none of them perturbed; **M5** sensitivity — One known-negative control and no case where the answer is known in advance |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked. **I4** specificity — Holds at identification and erasure, fails on other knowledge: results point both ways |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Mechanistically Supported. **C4** discriminant validity — Competitor named and filtered out; the same machinery moves it ([Niu et al., 2024](https://arxiv.org/abs/2405.02421)); **I5** rival mechanism exclusion — The one alternative ruled out is about method; the FFN framing forecloses the rest; **I6** double dissociation — One mechanism localized and one behavior measured, so neither arm exists |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **C6** complementation validity — Relation sets separate at identification; no joint suppression is run; **E3** cross-task generalization — Single-word cloze throughout, named first among the authors' limitations; **I3** minimality — Set size is an input, held near four neurons before any effect is measured; **I10** rescue reversibility — The damage is analytic and invertible, and the restore is never run; **M1** reliability — Every quantity a mean reported once, with no interval or repeated run; **M3** stability — Three free settings stated and none of them perturbed; **M5** sensitivity — One known-negative control and no case where the answer is known in advance |
 
 ## 36-criterion audit
 
@@ -88,7 +88,7 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| I6 | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
+| I6 Double dissociation | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
 
 
 ## Exploratory Lens Analysis

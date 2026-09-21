@@ -16,9 +16,9 @@ description: "Criterion audit of the induction heads claim."
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
 | **Primary.** Induction heads implement in-context copying of a token that followed the same context earlier | Triangulated | Minimality (I3), complementation validity (C6), rescue reversibility (I10) and offset coupling (I12) |
-| The mechanism is the source of in-context learning as measured by token-loss difference | Mechanistically Supported | Necessity above 345M survives a decorrelating control, but the metric is uncalibrated (M4) |
-| The mechanism is the source of in-context learning generally | Disconfirmed | Nothing — tested and failed; the bridge from the small-model result to the 13B claim is analogy (V2) |
-| The two heads compose in the stated order, each performing the role its name asserts | Underdetermined | Weight-level derivation covers the two-layer case only; role semantics exceed it elsewhere (C2) |
+| The mechanism is the source of in-context learning as measured by token-loss difference | Mechanistically Supported | Necessity above 345M survives a decorrelating control, but the metric is uncalibrated (M4 Calibration) |
+| The mechanism is the source of in-context learning generally | Disconfirmed | Nothing — tested and failed; the bridge from the small-model result to the 13B claim is analogy (V2 Level-evidence match) |
+| The two heads compose in the stated order, each performing the role its name asserts | Underdetermined | Weight-level derivation covers the two-layer case only; role semantics exceed it elsewhere (C2 Structural plausibility) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the induction heads claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Reached. |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked. **C6** complementation validity — Two named roles, ablated one at a time and never together; **I3** minimality — Unattempted; the authors name the obstacle in marginal effects; **I10** rescue reversibility — Unattempted; pattern-preserving ablation already caches the clean run; **I12** offset coupling — Unattempted at origin; no published offset test for induction heads |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Reached. |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked. **C6** complementation validity — Two named roles, ablated one at a time and never together; **I3** minimality — Unattempted; the authors name the obstacle in marginal effects; **I10** rescue reversibility — Unattempted; pattern-preserving ablation already caches the clean run; **I12** offset coupling — Unattempted at origin; no published offset test for induction heads |
 
 ## 36-criterion audit
 

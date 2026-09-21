@@ -15,10 +15,10 @@ description: "Criterion audit of the successor heads claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** A single head's effective OV circuit increments an ordinal token to its successor, and mod-10 features carry the index it acts on | Mechanistically Supported | Necessity measured rather than ranked (I1); a known-positive control (M5); correction for the head, feature and $$ selections (M7); and the feature account does not reproduce the greater-than bias the same weights show, which the authors state as incomplete (V2) |
-| The head is specific to succession | Disconfirmed | Nothing — tested and failed: on natural text acronym and greater-than behavior take 23.8% and 18.9% of winning cases, and the paper reframes the head as interpretably polysemantic (I4) |
-| The mod-10 mechanism recurs across architectures and sizes, as the abstract states | Underdetermined | Mechanistic recurrence is one case study plus two appendix replications against broad behavioral recurrence (E4); Llama-7B fails the held-out Roman-numeral task where the Pythia models do not (E4, M6), and putting the head on synthesised Roman-numeral representations drops top-1 accuracy to 0.125 (E3, E6) |
-| The emergence of successor heads during training explains when the incrementation behavior appears | Underdetermined | Successor scores are tracked across checkpoints in two model families and the heads are seen to emerge, but nothing is plotted against a behavior or a loss curve, and the phase change the induction-head comparison predicts is absent (I11); no checkpoint interval shows the mechanism lapsing (I12) |
+| **Primary.** A single head's effective OV circuit increments an ordinal token to its successor, and mod-10 features carry the index it acts on | Mechanistically Supported | Necessity measured rather than ranked (I1); a known-positive control (M5 Sensitivity); correction for the head, feature and $$ selections (M7 Selection correction); and the feature account does not reproduce the greater-than bias the same weights show, which the authors state as incomplete (V2 Level-evidence match) |
+| The head is specific to succession | Disconfirmed | Nothing — tested and failed: on natural text acronym and greater-than behavior take 23.8% and 18.9% of winning cases, and the paper reframes the head as interpretably polysemantic (I4 Specificity) |
+| The mod-10 mechanism recurs across architectures and sizes, as the abstract states | Underdetermined | Mechanistic recurrence is one case study plus two appendix replications against broad behavioral recurrence (E4 Cross-model recurrence); Llama-7B fails the held-out Roman-numeral task where the Pythia models do not (E4 Cross-model recurrence, M6 Invariance), and putting the head on synthesised Roman-numeral representations drops top-1 accuracy to 0.125 (E3 Cross-task generalization, E6 Novel prediction) |
+| The emergence of successor heads during training explains when the incrementation behavior appears | Underdetermined | Successor scores are tracked across checkpoints in two model families and the heads are seen to emerge, but nothing is plotted against a behavior or a loss curve, and the phase change the induction-head comparison predicts is absent (I11 Onset coupling); no checkpoint interval shows the mechanism lapsing (I12 Offset coupling) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the successor heads claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **I6** double dissociation — Neither arm run, and the polysemantic head makes the converse hard |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Eight task classes scored individually and never ablated in pairs; **I10** rescue reversibility — Both ablations reversible and the clean run in hand; restore never run; **I12** offset coupling — The checkpoint data exists and is read in the forward direction only; **M5** sensitivity — Every control a known-negative; no planted circuit recovered |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **I6** double dissociation — Neither arm run, and the polysemantic head makes the converse hard |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Eight task classes scored individually and never ablated in pairs; **I10** rescue reversibility — Both ablations reversible and the clean run in hand; restore never run; **I12** offset coupling — The checkpoint data exists and is read in the forward direction only; **M5** sensitivity — Every control a known-negative; no planted circuit recovered |
 
 ## 36-criterion audit
 

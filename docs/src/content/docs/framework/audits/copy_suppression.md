@@ -15,10 +15,10 @@ description: "Criterion audit of the copy suppression claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** Copy suppression is the main role of Negative Head L10H7 in GPT-2 Small, covering at least 76.9% of its direct effect | Mechanistically Supported | A dissociation from the backup-head mechanism the same ablation moves (I6), a known-strength positive control fixing the method's floor (M5), and correction for the top-5% slices the headline figures are computed on (M7) |
-| The token the head suppresses is the source token itself | Disconfirmed | Nothing — tested and failed: in 42.00% of large-attention pairs the source token is suppressed without being the most suppressed, and a semantically related token takes first place in 90% of those (M6); the authors conclude the mechanism is better read as semantic copy suppression and keep the coarser name elsewhere (V3) |
-| Copy suppression is what separates L10H7 from the other heads in its layers | Underdetermined | Either half of the instrument alone clears 50% recovered KL for many layer 9–11 heads, so the conjunction rather than the mechanism does the separating (I4, C4); the queryside direction perpendicular to the IO unembedding matters more than the parallel one and is left uncharacterized (I5) |
-| Negative Heads do copy suppression across models | Proposed | The structured ablation is never run outside GPT-2 Small (E4); GPT-2 Medium recovers two of its three most negative heads, Pythia's copy suppression is weaker, and Stanford GPT-2 Small E's analogue attends to IO and S2 equally (M1) |
+| **Primary.** Copy suppression is the main role of Negative Head L10H7 in GPT-2 Small, covering at least 76.9% of its direct effect | Mechanistically Supported | A dissociation from the backup-head mechanism the same ablation moves (I6 Double dissociation), a known-strength positive control fixing the method's floor (M5 Sensitivity), and correction for the top-5% slices the headline figures are computed on (M7 Selection correction) |
+| The token the head suppresses is the source token itself | Disconfirmed | Nothing — tested and failed: in 42.00% of large-attention pairs the source token is suppressed without being the most suppressed, and a semantically related token takes first place in 90% of those (M6 Invariance); the authors conclude the mechanism is better read as semantic copy suppression and keep the coarser name elsewhere (V3 Alternative level) |
+| Copy suppression is what separates L10H7 from the other heads in its layers | Underdetermined | Either half of the instrument alone clears 50% recovered KL for many layer 9–11 heads, so the conjunction rather than the mechanism does the separating (I4 Specificity, C4 Discriminant validity); the queryside direction perpendicular to the IO unembedding matters more than the parallel one and is left uncharacterized (I5 Rival mechanism exclusion) |
+| Negative Heads do copy suppression across models | Proposed | The structured ablation is never run outside GPT-2 Small (E4 Cross-model recurrence); GPT-2 Medium recovers two of its three most negative heads, Pythia's copy suppression is weaker, and Stanford GPT-2 Small E's analogue attends to IO and S2 equally (M1 Reliability) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the copy suppression claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **I6** double dissociation — Materials present in Table 2, never assembled into a dissociation |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — OV and QK split within one head; the across-head trans test is absent; **I10** rescue reversibility — Clean activations already in hand; the restore is never run; **I12** offset coupling — Pythia checkpoints already in use; no offset observed anywhere; **M5** sensitivity — Every control is a known-negative; no planted mechanism recovered |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **I6** double dissociation — Materials present in Table 2, never assembled into a dissociation |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — OV and QK split within one head; the across-head trans test is absent; **I10** rescue reversibility — Clean activations already in hand; the restore is never run; **I12** offset coupling — Pythia checkpoints already in use; no offset observed anywhere; **M5** sensitivity — Every control is a known-negative; no planted mechanism recovered |
 
 ## 36-criterion audit
 

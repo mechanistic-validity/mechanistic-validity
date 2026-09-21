@@ -15,10 +15,10 @@ description: "Criterion audit of the probing classifiers claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** A probing result licenses that property $z$ is extractable from the representation by a classifier of the stated capacity | Proposed | Necessity: the method performs no removal of its own, and where removal was performed the studies the anchor reports disagree four ways (I1, E1) |
-| A good probe score shows that the model represents $z$ | Disconfirmed | Nothing — tested and failed: control tasks attribute most of a nonlinear probe's accuracy to the probe itself, and even random features decode the property (C4) |
-| A good probe score shows that the model uses $z$ in producing its output | Disconfirmed | Nothing — tested and failed: a control dataset holds $z$ non-discriminative for the original task and the probe recovers it anyway, so decodability does not localize to the task (I4) |
-| Interventions on a probe-identified direction show which features the model uses | Underdetermined | A result that decides the four-way disagreement among the intervention studies of §4.3 (I1, E1). This is the broad scope, under which **I2** and **E5** are unattempted; under probing as §2 defines it, a read-out with no path writing back in, they are not applicable |
+| **Primary.** A probing result licenses that property $z$ is extractable from the representation by a classifier of the stated capacity | Proposed | Necessity: the method performs no removal of its own, and where removal was performed the studies the anchor reports disagree four ways (I1, E1 Intervention reach) |
+| A good probe score shows that the model represents $z$ | Disconfirmed | Nothing — tested and failed: control tasks attribute most of a nonlinear probe's accuracy to the probe itself, and even random features decode the property (C4 Discriminant validity) |
+| A good probe score shows that the model uses $z$ in producing its output | Disconfirmed | Nothing — tested and failed: a control dataset holds $z$ non-discriminative for the original task and the probe recovers it anyway, so decodability does not localize to the task (I4 Specificity) |
+| Interventions on a probe-identified direction show which features the model uses | Underdetermined | A result that decides the four-way disagreement among the intervention studies of §4.3 (I1 Necessity, E1 Intervention reach). This is the broad scope, under which **I2 Sufficiency** and **E5 Graded response** are unattempted; under probing as §2 defines it, a read-out with no path writing back in, they are not applicable |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the probing classifiers claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Blocked. **I1** necessity — Standard probing performs no removal; removal studies disagree four ways |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked at Causally Suggestive. **E1** intervention reach — Probing has no intervention of its own; those applied to it disagree; **I4** specificity — A control dataset holds the property constant and probing fails on it |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Causally Suggestive. **C4** discriminant validity — Two neighbors the instrument must separate: probe memorization, random features; **I6** double dissociation — Needs two properties and two behaviors; the framework supplies one of each |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Causally Suggestive. **I3** minimality — The unit is a whole intermediate output; no operation removes part of one; **I10** rescue reversibility — Every catalogued intervention runs one way, projecting or training out; **I11** onset coupling — The original model is taken as given and trained once; **I12** offset coupling — The converse needs the training sequence onset coupling also lacks; **M1** reliability — A review reports no variance; the anchor states what it requires of studies |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Blocked. **I1** necessity — Standard probing performs no removal; removal studies disagree four ways |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked at Causally Suggestive. **E1** intervention reach — Probing has no intervention of its own; those applied to it disagree; **I4** specificity — A control dataset holds the property constant and probing fails on it |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Causally Suggestive. **C4** discriminant validity — Two neighbors the instrument must separate: probe memorization, random features; **I6** double dissociation — Needs two properties and two behaviors; the framework supplies one of each |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Causally Suggestive. **I3** minimality — The unit is a whole intermediate output; no operation removes part of one; **I10** rescue reversibility — Every catalogued intervention runs one way, projecting or training out; **I11** onset coupling — The original model is taken as given and trained once; **I12** offset coupling — The converse needs the training sequence onset coupling also lacks; **M1** reliability — A review reports no variance; the anchor states what it requires of studies |
 
 ## 36-criterion audit
 
@@ -88,7 +88,7 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| I6 | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
+| I6 Double dissociation | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
 
 
 ## Exploratory Lens Analysis

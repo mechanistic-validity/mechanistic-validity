@@ -15,10 +15,10 @@ description: "Criterion audit of the induction heads (general icl) claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** Induction heads are the mechanistic source of general in-context learning in transformers of any size | Disconfirmed | Nothing — tested and failed: no ablation runs above the twelve small models, so nothing at scale separates induction heads from whatever else forms alongside them (E4, I5), and the adopted measure does not separate general in-context learning from the few-shot accuracy the field reads it as (C4) |
-| The phase change at which induction heads form is when in-context learning arrives | Underdetermined | A test that separates the rival the authors state in Argument 1 — that the phase change is when layer composition becomes available, forming induction heads and other composition mechanisms together — from the causal reading (I5, I7, V3) |
-| The share of in-context learning induction heads account for is the majority | Insufficient | No admissible measurement of the share: the paper's summary table asserts it while the semi-empirical argument offered for it states no fraction (I2), the ablation is single-head and all-or-nothing (E5), and the headline metric is written down five times with four of them reversing its sign (M4) |
-| The copying the ablations cover is the literal case of a general retrieval mechanism | Underdetermined | The bridge is the in-context nearest-neighbor analogy, argued rather than derived (C2), and the paper's own strength table labels its large-model rows correlational and Argument 6 analogy (V2) |
+| **Primary.** Induction heads are the mechanistic source of general in-context learning in transformers of any size | Disconfirmed | Nothing — tested and failed: no ablation runs above the twelve small models, so nothing at scale separates induction heads from whatever else forms alongside them (E4 Cross-model recurrence, I5 Rival mechanism exclusion), and the adopted measure does not separate general in-context learning from the few-shot accuracy the field reads it as (C4 Discriminant validity) |
+| The phase change at which induction heads form is when in-context learning arrives | Underdetermined | A test that separates the rival the authors state in Argument 1 — that the phase change is when layer composition becomes available, forming induction heads and other composition mechanisms together — from the causal reading (I5 Rival mechanism exclusion, I7 Confound control, V3 Alternative level) |
+| The share of in-context learning induction heads account for is the majority | Insufficient | No admissible measurement of the share: the paper's summary table asserts it while the semi-empirical argument offered for it states no fraction (I2 Sufficiency), the ablation is single-head and all-or-nothing (E5 Graded response), and the headline metric is written down five times with four of them reversing its sign (M4 Calibration) |
+| The copying the ablations cover is the literal case of a general retrieval mechanism | Underdetermined | The bridge is the in-context nearest-neighbor analogy, argued rather than derived (C2 Structural plausibility), and the paper's own strength table labels its large-model rows correlational and Argument 6 analogy (V2 Level-evidence match) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the induction heads (general icl) claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Blocked. **I1** necessity — Ablation carries the metric in twelve models and the construct nowhere |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked at Causally Suggestive. **I2** sufficiency — A semi-empirical argument stands in; nothing reconstructs the behavior |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Causally Suggestive. **C4** discriminant validity — The title says general in-context learning; the measure is loss at token 500; **E4** cross-model recurrence — The signature holds across 34 models; nothing distinguishes the heads at scale; **I5** rival mechanism exclusion — The composition rival is named twice by the authors and excluded neither time; **I6** double dissociation — No second head population is defined that could be ablated against a second outcome |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Causally Suggestive. **C6** complementation validity — The composition-head alternative is what a trans test would settle; **I3** minimality — Every ablation marginal and single-head, in the redundancy regime that defeats it; **I10** rescue reversibility — The clean patterns are already cached; the restore costs one pass and is not run; **M1** reliability — One run per model, and at scale the evidence is timing across fifteen snapshots; **M5** sensitivity — Only known-positive is literal copying in a two-layer model (Elhage et al., 2021) |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Blocked. **I1** necessity — Ablation carries the metric in twelve models and the construct nowhere |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked at Causally Suggestive. **I2** sufficiency — A semi-empirical argument stands in; nothing reconstructs the behavior |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Causally Suggestive. **C4** discriminant validity — The title says general in-context learning; the measure is loss at token 500; **E4** cross-model recurrence — The signature holds across 34 models; nothing distinguishes the heads at scale; **I5** rival mechanism exclusion — The composition rival is named twice by the authors and excluded neither time; **I6** double dissociation — No second head population is defined that could be ablated against a second outcome |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Causally Suggestive. **C6** complementation validity — The composition-head alternative is what a trans test would settle; **I3** minimality — Every ablation marginal and single-head, in the redundancy regime that defeats it; **I10** rescue reversibility — The clean patterns are already cached; the restore costs one pass and is not run; **M1** reliability — One run per model, and at scale the evidence is timing across fifteen snapshots; **M5** sensitivity — Only known-positive is literal copying in a two-layer model (Elhage et al., 2021) |
 
 ## 36-criterion audit
 
@@ -88,7 +88,7 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| I5 | Disconfirmed or Inconclusive | Whether a rival named and never excluded is a failure or an absence |
+| I5 Rival mechanism exclusion | Disconfirmed or Inconclusive | Whether a rival named and never excluded is a failure or an absence |
 
 
 ## Exploratory Lens Analysis

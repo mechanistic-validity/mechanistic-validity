@@ -15,10 +15,10 @@ description: "Criterion audit of the othello board state claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** Othello-GPT carries a decodable representation of board state that its move predictions causally use | Causally Suggestive | Necessity by removal (I1), a second intervention operator (E1), a dissociation (I6), and a known-positive control, which the origin does not contain (M5) |
-| The representation is a model of the process producing the sequences, which is the paper's own definition of a world model | Underdetermined | An experiment separating that from a decodable, causally-used state summary, which every result in the paper also satisfies (V4, V3); the rule composition that would distinguish them is measured once and fails on the OR across lines (V2, I9) |
-| The board state is encoded nonlinearly | Underdetermined | A perturbation of the probe target, held at black/white/empty throughout and the one configuration the stability sweep never varied (M3, I5) |
-| The account travels beyond Othello and beyond this architecture | Insufficient | The origin runs one task on one architecture trained twice, and lists other games and natural language as future work; E3 and E4 are scored on post-origin evidence |
+| **Primary.** Othello-GPT carries a decodable representation of board state that its move predictions causally use | Causally Suggestive | Necessity by removal (I1), a second intervention operator (E1 Intervention reach), a dissociation (I6 Double dissociation), and a known-positive control, which the origin does not contain (M5 Sensitivity) |
+| The representation is a model of the process producing the sequences, which is the paper's own definition of a world model | Underdetermined | An experiment separating that from a decodable, causally-used state summary, which every result in the paper also satisfies (V4 Unlicensed labeling, V3 Alternative level); the rule composition that would distinguish them is measured once and fails on the OR across lines (V2 Level-evidence match, I9 Epistatic interaction) |
+| The board state is encoded nonlinearly | Underdetermined | A perturbation of the probe target, held at black/white/empty throughout and the one configuration the stability sweep never varied (M3, I5 Rival mechanism exclusion) |
+| The account travels beyond Othello and beyond this architecture | Insufficient | The origin runs one task on one architecture trained twice, and lists other games and natural language as future work; E3 Cross-task generalization and E4 Cross-model recurrence are scored on post-origin evidence |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the othello board state claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Blocked. **E1** intervention reach — One intervention operator, reported under three outcome metrics |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked at Mechanistically Supported. **I6** double dissociation — One representation, one behavior; no converse leg is available |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **C6** complementation validity — Sixty-four tiles, intervened on one at a time throughout; **I11** onset coupling — Training-step axis available and explicitly declined; **I12** offset coupling — Two models differ in competence; the coupling is never analyzed |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Blocked. **E1** intervention reach — One intervention operator, reported under three outcome metrics |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked at Mechanistically Supported. **I6** double dissociation — One representation, one behavior; no converse leg is available |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Mechanistically Supported. **C6** complementation validity — Sixty-four tiles, intervened on one at a time throughout; **I11** onset coupling — Training-step axis available and explicitly declined; **I12** offset coupling — Two models differ in competence; the coupling is never analyzed |
 
 ## 36-criterion audit
 
@@ -88,8 +88,8 @@ Criterion judgments this audit record leaves contested: each carries an argument
 
 | Criterion | In tension | What would settle it |
 |---|---|---|
-| M5 | Partially confirmed or Untested | Whether one instrument's known-positive licenses a sensitivity verdict for another |
-| I6 | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
+| M5 Sensitivity | Partially confirmed or Untested | Whether one instrument's known-positive licenses a sensitivity verdict for another |
+| I6 Double dissociation | Untested or Not applicable | Whether a design supplying one mechanism and one behavior leaves double dissociation unattempted or unaskable |
 
 
 ## Exploratory Lens Analysis

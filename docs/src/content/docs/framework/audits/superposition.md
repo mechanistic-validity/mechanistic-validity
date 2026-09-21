@@ -15,10 +15,10 @@ description: "Criterion audit of the superposition claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** A ReLU network on sparse features represents more features than it has dimensions, in geometries set by sparsity and importance | Mechanistically Supported | A converse arm, with some property shown intact while superposition is removed (I6); correction for the lowest-loss selection the reported geometries are drawn from (M7); an input distribution outside the synthetic family (E2) |
-| The reported geometries are properties of the optimum rather than of the optimizer | Underdetermined | The $m=2$ case is reported as much harder for gradient descent and its solutions are selected by loss (I7, M7); an invited comment in the same article shows the global minimum can have a smaller basin of attraction than nearby local minima, and the paper leaves it open (V3) |
-| The phase diagram is fixed by sparsity and importance alone | Disconfirmed | Nothing — tested and failed: the paper holds the activation function fixed across every one of its own experiments, and a replication carried in the same article finds the phase diagrams look quite different under other activation functions (M3, M6) |
-| Language models represent features in superposition | Insufficient | Every measurement is on a toy model, and the paper labels its real-model section validation by consistency with existing reports rather than measurement taken here (E4); no natural-data distribution appears anywhere, and Open Questions asks whether real importance and sparsity curves can be estimated at all (E2) |
+| **Primary.** A ReLU network on sparse features represents more features than it has dimensions, in geometries set by sparsity and importance | Mechanistically Supported | A converse arm, with some property shown intact while superposition is removed (I6 Double dissociation); correction for the lowest-loss selection the reported geometries are drawn from (M7 Selection correction); an input distribution outside the synthetic family (E2 Prompt generalization) |
+| The reported geometries are properties of the optimum rather than of the optimizer | Underdetermined | The $m=2$ case is reported as much harder for gradient descent and its solutions are selected by loss (I7 Confound control, M7 Selection correction); an invited comment in the same article shows the global minimum can have a smaller basin of attraction than nearby local minima, and the paper leaves it open (V3 Alternative level) |
+| The phase diagram is fixed by sparsity and importance alone | Disconfirmed | Nothing — tested and failed: the paper holds the activation function fixed across every one of its own experiments, and a replication carried in the same article finds the phase diagrams look quite different under other activation functions (M3 Stability, M6 Invariance) |
+| Language models represent features in superposition | Insufficient | Every measurement is on a toy model, and the paper labels its real-model section validation by consistency with existing reports rather than measurement taken here (E4 Cross-model recurrence); no natural-data distribution appears anywhere, and Open Questions asks whether real importance and sparsity curves can be estimated at all (E2 Prompt generalization) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the superposition claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **I6** double dissociation — Importance and sparsity are crossed, but on one outcome; no converse arm is run |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Ground truth is available by construction and the test is not run; **I10** rescue reversibility — Adversarial training reduces superposition; nothing is corrupted and then restored; **I12** offset coupling — Offset never run; the learning-dynamics section is limited by the authors' own account |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **I6** double dissociation — Importance and sparsity are crossed, but on one outcome; no converse arm is run |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **C6** complementation validity — Ground truth is available by construction and the test is not run; **I10** rescue reversibility — Adversarial training reduces superposition; nothing is corrupted and then restored; **I12** offset coupling — Offset never run; the learning-dynamics section is limited by the authors' own account |
 
 ## 36-criterion audit
 

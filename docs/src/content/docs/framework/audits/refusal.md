@@ -15,10 +15,10 @@ description: "Criterion audit of the refusal direction claim."
 
 | **Reading** | **Verdict** | **Missing** |
 |---|---|---|
-| **Primary.** Ablating one difference-in-means direction stops refusal on harmful instructions and adding it induces refusal on harmless ones, across 13 chat models | Mechanistically Supported | A second estimator for the direction, since the three implementations are consumers of one difference in means (C3); a dissociation from any other behavior's direction (I6); sensitivity of the extraction to its own three thresholds (M3) |
-| The direction carries refusal rather than harmfulness | Underdetermined | The estimator is the axis along which mean harmful and harmless activations differ, which a harmfulness direction satisfies exactly (V4); the two constructs are separated by citation rather than by experiment (C4); base models that never refuse express the same direction (I11) |
-| Refusal is organized along one dimension of the residual stream | Underdetermined | The interventions license a lever rather than a representational organization, which the authors concede by calling the work an existence proof (V2); no rank above one is ever ablated and the search enumerates single vectors only (I3); refusal is scored as a twelve-substring match, an output property a single direction would control either way (V3) |
-| Orthogonalizing the direction removes refusal whatever the prompting condition | Disconfirmed | Nothing — tested and failed: with its default system prompt the orthogonalized LLAMA-2 70B yields 4.4% attack success against 62.9% without it, so refusal produced on instruction survives an edit that removes the learned propensity (I1, M6) |
+| **Primary.** Ablating one difference-in-means direction stops refusal on harmful instructions and adding it induces refusal on harmless ones, across 13 chat models | Mechanistically Supported | A second estimator for the direction, since the three implementations are consumers of one difference in means (C3 Convergent validity); a dissociation from any other behavior's direction (I6 Double dissociation); sensitivity of the extraction to its own three thresholds (M3 Stability) |
+| The direction carries refusal rather than harmfulness | Underdetermined | The estimator is the axis along which mean harmful and harmless activations differ, which a harmfulness direction satisfies exactly (V4 Unlicensed labeling); the two constructs are separated by citation rather than by experiment (C4 Discriminant validity); base models that never refuse express the same direction (I11 Onset coupling) |
+| Refusal is organized along one dimension of the residual stream | Underdetermined | The interventions license a lever rather than a representational organization, which the authors concede by calling the work an existence proof (V2 Level-evidence match); no rank above one is ever ablated and the search enumerates single vectors only (I3 Minimality); refusal is scored as a twelve-substring match, an output property a single direction would control either way (V3 Alternative level) |
+| Orthogonalizing the direction removes refusal whatever the prompting condition | Disconfirmed | Nothing — tested and failed: with its default system prompt the orthogonalized LLAMA-2 70B yields 4.4% attack success against 62.9% without it, so refusal produced on instruction survives an edit that removes the learned propensity (I1 Necessity, M6 Invariance) |
 
 ## Verdict
 
@@ -27,10 +27,10 @@ description: "Criterion audit of the refusal direction claim."
 | **Tier** | **Requires** | **Missing** |
 |---|---|---|
 | Proposed | construct (C1–C2) | Reached. |
-| Causally Suggestive | measurement (M2); internal (I1) | Reached. |
-| Mechanistically Supported | internal (I2, I4); external (E1) | Reached. |
-| Triangulated | construct (C3–C4); internal (I5–I7); external (E2, E4) | Blocked. **I6** double dissociation — One direction and one behavior, tested in both directions of effect |
-| Validated | construct (C5–C6); measurement (M1–M6); internal (I3, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **E3** cross-task generalization — Every behavior tested is refusal or its absence; **E5** graded response — Strength is promised in 2.4 and every intervention has a coefficient of 1; **I10** rescue reversibility — The inverse is known in closed form and the restore is never run; **M3** stability — Three thresholds and one objective, none of them moved |
+| Causally Suggestive | measurement (M2 Baseline separation); internal (I1 Necessity) | Reached. |
+| Mechanistically Supported | internal (I2 Sufficiency, I4 Specificity); external (E1 Intervention reach) | Reached. |
+| Triangulated | construct (C3–C4); internal (I5–I7); external (E2 Prompt generalization, E4 Cross-model recurrence) | Blocked. **I6** double dissociation — One direction and one behavior, tested in both directions of effect |
+| Validated | construct (C5–C6); measurement (M1–M6); internal (I3 Minimality, I10–I12); external (E2–E6); interpretive (V1–V5) | Blocked at Triangulated. **E3** cross-task generalization — Every behavior tested is refusal or its absence; **E5** graded response — Strength is promised in 2.4 and every intervention has a coefficient of 1; **I10** rescue reversibility — The inverse is known in closed form and the restore is never run; **M3** stability — Three thresholds and one objective, none of them moved |
 
 ## 36-criterion audit
 
